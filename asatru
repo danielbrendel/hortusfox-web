@@ -1,0 +1,43 @@
+<?php
+
+/*
+    Asatru PHP (dnyAsatruPHP) developed by Daniel Brendel
+    
+    (C) 2019 - 2023 by Daniel Brendel
+    
+    Version: 1.0
+    Contact: dbrendel1988<at>gmail<dot>com
+    GitHub: https://github.com/danielbrendel/
+    
+    Released under the MIT license
+*/
+
+//Set application root directory path
+define('ASATRU_APP_ROOT', __DIR__);
+
+//Require constants
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/constants.php';
+
+//Require .env config management
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/dotenv.php';
+
+//Parse .env file if it exists
+if (file_exists('.env')) {
+    env_parse('.env');
+}
+
+//Include CLI handler
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/console.php';
+
+//Require database handler
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/database.php';
+
+//Process further if in debug mode
+if ((isset($_ENV['APP_DEBUG'])) && ($_ENV['APP_DEBUG'])) {
+    Asatru\Console\handleInput($argv);
+} else {
+    echo "\033[31mCLI tool is only available in debug mode\033[39m\n";
+}
+
+//Success, we can end script execution
+exit(0);

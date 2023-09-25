@@ -1,0 +1,84 @@
+/*
+    app.scss
+*/
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(10, 10, 10);
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.is-image-container {
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: unset;
+}
+
+.column-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2.5em;
+    color: rgb(250, 250, 250);
+}
+
+h2 {
+    font-size: 2.0em;
+    margin-bottom: 30px;
+    color: rgb(200, 200, 200);
+}
+
+.locations {
+    text-align: center;
+}
+
+.locations a {
+    color: rgb(100, 100, 100);
+}
+
+.locations a:hover {
+    color: rgb(100, 100, 100);
+}
+
+.location {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 230px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 23px;
+    background-color: rgba(159, 172, 132, 0.2);
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.location:hover {
+    background-color: rgba(159, 172, 132, 0.35);
+}
+
+.location-title {
+    text-align: center;
+    font-size: 2.3em;
+    margin-bottom: 20px;
+    background-color: rgba(115, 143, 100, 0.9);
+    color: #c3e4a3;
+}
+
+.location-icon {
+    text-align: center;
+}
+
+.location-icon i {
+    color: #99ac97;
+}
