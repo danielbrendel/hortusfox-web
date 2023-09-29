@@ -50,7 +50,8 @@ class IndexController extends BaseController {
 		$plants = PlantsModel::getAll($location);
 		
 		return parent::view(['content', 'plants'], [
-			'plants' => $plants
+			'plants' => $plants,
+			'location' => $location
 		]);
 	}
 
@@ -69,5 +70,41 @@ class IndexController extends BaseController {
 		return parent::view(['content', 'details'], [
 			'plant' => $plant_data
 		]);
+	}
+
+	/**
+	 * Handles URL: /plants/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_plant($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'name' => 'required',
+			'location' => 'required',
+			'perennial' => 'required',
+			'cutting_month' => 'required',
+			'date_of_purchase' => 'required',
+			'humidity' => 'required',
+			'light_level' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			FlashMessage::setMsg('error', 'Invalid data given');
+			return back();
+		}
+
+		$name = $request->params()->query('name', null);
+		$location = $request->params()->query('location', null);
+		$perennial = $request->params()->query('perennial', false);
+		$cutting_month = $request->params()->query('cutting_month', null);
+		$date_of_purchase = $request->params()->query('date_of_purchase', null);
+		$humidity = $request->params()->query('humidity', 0);
+		$light_level = $request->params()->query('light_level', '');
+
+		$plant_id = PlantsModel::addPlant($name, $location, $perennial, $cutting_month, $date_of_purchase, $humidity, $light_level);
+
+		return redirect('/plants/details/' . $plant_id);
 	}
 }

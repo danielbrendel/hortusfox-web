@@ -30,10 +30,16 @@ class PlantsModel_Migration {
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('name VARCHAR(512) NOT NULL');
         $this->database->add('description TEXT NULL');
+        $this->database->add('tags VARCHAR(1024) NULL');
         $this->database->add('location INT NOT NULL');
         $this->database->add('photo VARCHAR(512) NOT NULL');
         $this->database->add('last_watered DATETIME NULL');
         $this->database->add('last_repotted DATETIME NULL');
+        $this->database->add('perennial BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('cutting_month INT NOT NULL');
+        $this->database->add('date_of_purchase DATETIME NOT NULL');
+        $this->database->add('humidity INT NOT NULL');
+        $this->database->add('light_level VARCHAR(512) NOT NULL');
         $this->database->add('notes TEXT NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();

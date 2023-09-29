@@ -6,12 +6,14 @@
 			<h1>{{ __('app.plants') }}</h1>
 
 			<div>
-                <a class="button is-success" href="javascript:void(0);">{{ __('app.add_plant') }}</a>
+                <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = {{ $location }}; window.vue.bShowAddPlant = true;">{{ __('app.add_plant') }}</a>
             </div>
 
 			<div class="plants">
 				@foreach ($plants as $plant)
-                    {{ $plant->get('name') }}
+                    <div class="plant-card" style="background-image: url('{{ $plant->get('photo') }}');">
+						<div class="plant-card-title">{{ $plant->get('name') }}</div>
+					</div>
 				@endforeach
 			</div>
 		</div>

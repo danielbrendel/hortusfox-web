@@ -19,5 +19,6 @@ return [
     array('/', 'GET', 'index@index'),
     array('/plants/location/{id}', 'GET', 'index@plants_from_location'),
     array('/plants/details/{id}', 'GET', 'index@view_plant_details'),
+    array('/plants/add', 'POST', 'index@add_plant'),
     array('$404', 'ANY', 'error404@index')
 ];
