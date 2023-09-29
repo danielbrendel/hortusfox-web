@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-with, initial-scale=1.0">
 		
-		<title>{{ ASATRU_FW_NAME }} - The lightweight MVC web framework</title>
+		<title>Plant Manager App</title>
 
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
 

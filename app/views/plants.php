@@ -7,6 +7,7 @@
 
 			<div class="margin-vertical">
                 <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = {{ $location }}; window.vue.bShowAddPlant = true;">{{ __('app.add_plant') }}</a>
+				&nbsp;&nbsp;&nbsp;<a class="is-default-link is-fixed-button-link" href="{{ url('/') }}">{{ __('app.back_to_locations') }}</a>
             </div>
 
 			<div class="plants">

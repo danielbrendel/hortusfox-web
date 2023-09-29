@@ -18,6 +18,20 @@ class LocationsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return string
+     * @throws \Exception
+     */
+    public static function getNameById($id)
+    {
+        try {
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ? LIMIT 1', [$id])->first()?->get('name');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

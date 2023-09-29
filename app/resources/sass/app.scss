@@ -39,6 +39,20 @@ h2 {
     color: rgb(200, 200, 200);
 }
 
+.is-default-link {
+    color: rgb(79, 134, 202);
+}
+
+.is-default-link:hover {
+    color: rgb(79, 134, 202);
+    text-decoration: underline;
+}
+
+.is-fixed-button-link {
+    position: relative;
+    top: 5px;
+}
+
 .locations {
     text-align: center;
 }
@@ -98,8 +112,9 @@ h2 {
     width: 265px;
     @media screen and (max-width: 552px) {
         width: 95%;
+        height: 530px;
     }
-    height: 530px;
+    height: 398px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -129,4 +144,52 @@ h2 {
     color: rgb(200, 200, 200);
     font-size: 1.3em;
     text-align: center;
+}
+
+.plant-info {
+    padding: 20px;
+}
+
+.plant-info table {
+    width: 100%;
+    color: rgb(200, 200, 200);
+}
+
+.plant-info table strong {
+    color: rgb(200, 200, 200);
+}
+
+.plant-info thead {
+    background-color: rgba(104, 145, 194, 0.5);
+}
+
+.plant-info table td {
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+.is-color-yes {
+    color: rgb(115, 214, 103);
+}
+
+.is-color-no {
+    color: rgb(212, 67, 67)
+}
+
+.is-not-available {
+    color: rgb(100, 100, 100);
+    font-style: italic;
+}
+
+.plant-description {
+    min-height: 119px;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    background-color: rgba(90, 90, 90, 0.5);
+    font-size: 1.4em;
+    border: 1px solid rgb(100, 100, 100);
+    border-left: 3px solid rgb(163, 122, 61);
+    border-radius: 4px;
 }
