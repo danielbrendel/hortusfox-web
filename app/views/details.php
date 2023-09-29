@@ -70,7 +70,7 @@
 
 								<tr>
 									<td><strong>{{ __('app.humidity') }}</strong></td>
-									<td>{{ $plant->get('humidity') }}</td>
+									<td>{{ $plant->get('humidity') . '%' }}</td>
 								</tr>
 
 								<tr>

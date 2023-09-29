@@ -51,7 +51,7 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="checkbox" name="perennial" value="1">Perennial
+									<input type="checkbox" name="perennial" value="1">&nbsp;{{ __('app.perennial') }}
 								</div>
 							</div>
 
