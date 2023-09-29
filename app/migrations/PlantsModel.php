@@ -40,6 +40,7 @@ class PlantsModel_Migration {
         $this->database->add('date_of_purchase DATETIME NOT NULL');
         $this->database->add('humidity INT NOT NULL');
         $this->database->add('light_level VARCHAR(512) NOT NULL');
+        $this->database->add('health_state VARCHAR(512) NOT NULL DEFAULT \'in_good_standing\'');
         $this->database->add('notes TEXT NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();

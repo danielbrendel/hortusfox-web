@@ -10,6 +10,10 @@
 				&nbsp;&nbsp;&nbsp;<a class="is-default-link is-fixed-button-link" href="{{ url('/plants/location/' . $plant->get('location')) }}">{{ __('app.back_to_list') }}</a>
             </div>
 
+			@if ($plant->get('health_state') !== 'in_good_standing')
+				<div class="plant-warning">{{ __('app.plant_warning', ['reason' => __('app.' . $plant->get('health_state'))]) }}</div>
+			@endif
+
 			<div class="plant-info">
 				<div class="columns">
 					<div class="column is-half">
@@ -72,6 +76,11 @@
 								<tr>
 									<td><strong>{{ __('app.light_level') }}</strong></td>
 									<td>{{ $plant->get('light_level') }}</td>
+								</tr>
+
+								<tr>
+									<td><strong>{{ __('app.health_state') }}</strong></td>
+									<td><span class="plant-state-{{ $plant->get('health_state') }}">{!! ($plant->get('health_state') === 'in_good_standing') ? '<i class="far fa-check-circle is-color-yes"></i>&nbsp;' : '' !!}{{ __('app.' . $plant->get('health_state')) }}</span></td>
 								</tr>
 
 								<tr>

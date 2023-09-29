@@ -182,14 +182,36 @@ h2 {
 }
 
 .plant-description {
-    min-height: 119px;
+    min-height: 75px;
     margin-top: 35px;
     margin-bottom: 10px;
     padding: 10px;
     color: rgb(200, 200, 200);
     background-color: rgba(90, 90, 90, 0.5);
-    font-size: 1.4em;
+    font-size: 1.0em;
     border: 1px solid rgb(100, 100, 100);
     border-left: 3px solid rgb(163, 122, 61);
     border-radius: 4px;
+}
+
+.plant-state-in-good-standing {
+    color: rgb(115, 214, 103);
+}
+
+.plant-state-overwatered {
+    color: rgb(54, 105, 201);
+}
+
+.plant-state-withering {
+    color: rgb(156, 115, 67);
+}
+
+.plant-state-infected {
+    color: rgb(173, 86, 86);
+}
+
+.plant-warning {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: rgb(212, 50, 50);
 }
