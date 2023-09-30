@@ -6,6 +6,7 @@
 		
 		<title>Plant Manager App</title>
 
+		<link rel="icon" type="image/png" href="{{ asset('logo.png') }}"/>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
 
 		@if (env('APP_DEBUG'))
