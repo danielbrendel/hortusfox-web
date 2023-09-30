@@ -64,5 +64,7 @@ return [
 	'warning_plants_title' => 'The following plants need special attention',
 	'warning_plants_all_ok' => 'Hurray! No plants are currently endangered',
 	'view_plant_details' => 'View plant details',
-	'log_title' => 'Log'
+	'log_title' => 'Log',
+	'loading_please_wait' => 'Please wait...',
+	'error' => 'Error'
 ];

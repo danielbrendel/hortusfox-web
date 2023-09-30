@@ -95,7 +95,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="document.getElementById('frmAddPlant').submit();">{{ __('app.add') }}</button>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddPlant').submit();">{{ __('app.add') }}</button>
 						<button class="button" onclick="window.vue.bShowAddPlant = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
@@ -123,7 +123,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="document.getElementById('frmEditText').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditText').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditText = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
@@ -151,7 +151,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="document.getElementById('frmEditBoolean').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditBoolean').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditBoolean = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
@@ -179,7 +179,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="document.getElementById('frmEditInteger').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditInteger').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditInteger = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
@@ -207,7 +207,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="document.getElementById('frmEditDate').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditDate').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditDate = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
@@ -235,7 +235,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="document.getElementById('frmEditCombo').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditCombo').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditCombo = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
@@ -263,7 +263,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="document.getElementById('frmEditPhoto').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPhoto').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditPhoto = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>

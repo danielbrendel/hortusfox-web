@@ -10,11 +10,11 @@
 
 return [
     'csrf_token_invalid' => 'CSRF token is missing or invalid',
-    'item_required' => 'Item {key} is required.',
-    'item_email' => 'Item {key} must be a valid E-Mail address',
-    'item_too_short' => 'Item length of {key} must be greater than {min}',
-    'item_too_large' => 'Item length of {key} must be less than {max}',
-    'item_datetime' => 'Item {key} is not a valid datetime object',
-    'item_number' => 'Item {key} is not a valid number',
-	'item_regex' => 'Item {key} does not fit pattern {pattern}'
+    'item_required' => 'Feld {key} muss angegeben werden.',
+    'item_email' => 'Feld {key} muss eine gültige E-Mail Adresse sein',
+    'item_too_short' => 'Der Wert von {key} muss größer als {min} sein',
+    'item_too_large' => 'Der Wert von {key} muss kleiner als {max} sein',
+    'item_datetime' => 'Für {key} wurde kein gültiges Datum angegeben',
+    'item_number' => 'Für {key} wurde keine gültige Zahl angegeben',
+	'item_regex' => 'Feld {key} entspricht nicht dem Muster {pattern}'
 ];

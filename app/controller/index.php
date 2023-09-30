@@ -108,7 +108,13 @@ class IndexController extends BaseController {
 		]);
 
 		if (!$validator->isValid()) {
-			FlashMessage::setMsg('error', 'Invalid data given');
+			$errorstr = '';
+			foreach ($validator->errorMsgs() as $err) {
+				$errorstr .= $err . '<br/>';
+			}
+
+			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
+			
 			return back();
 		}
 

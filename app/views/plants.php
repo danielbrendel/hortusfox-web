@@ -10,6 +10,8 @@
 				&nbsp;&nbsp;&nbsp;<a class="is-default-link is-fixed-button-link" href="{{ url('/') }}">{{ __('app.back_to_dashboard') }}</a>
             </div>
 
+			@include('flashmsg.php')
+
 			<div class="plants">
 				@foreach ($plants as $plant)
 					<a href="{{ url('/plants/details/' . $plant->get('id')) }}">

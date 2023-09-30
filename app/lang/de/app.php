@@ -64,5 +64,7 @@ return [
 	'warning_plants_title' => 'Gefährdete Pflanzen',
 	'warning_plants_all_ok' => 'Super! Momentan sind keine Pflanzen in schlechtem Zustand',
 	'view_plant_details' => 'Gehe zu den Pflanzendetails',
-	'log_title' => 'Logbuch'
+	'log_title' => 'Logbuch',
+	'loading_please_wait' => 'Bitte warten...',
+	'error' => 'Fehler'
 ];

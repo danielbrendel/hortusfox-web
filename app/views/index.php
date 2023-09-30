@@ -6,7 +6,6 @@
 			<h1>{{ __('app.dashboard') }}</h1>
 
 			<h2>{{ __('app.welcome_message', ['name' => $user->get('name')]) }}</h2>
-
 			
 			@if (count($warning_plants) > 0)
 				<div class="warning-plants has-warnings">
