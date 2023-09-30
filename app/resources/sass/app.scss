@@ -48,6 +48,15 @@ h2 {
     text-decoration: underline;
 }
 
+.is-yellow-link {
+    color: rgb(156, 115, 67);
+}
+
+.is-yellow-link:hover {
+    color: rgb(156, 115, 67);
+    text-decoration: underline;
+}
+
 .is-fixed-button-link {
     position: relative;
     top: 5px;
@@ -289,4 +298,46 @@ h2 {
         margin-bottom: 30px;
     }
     color: rgb(212, 50, 50);
+}
+
+.warning-plants {
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 45px;
+    padding: 0 15px 15px 15px;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 4px;
+}
+
+.has-warnings {
+    background-color: rgba(123, 50, 50, 0.5);
+}
+
+.is-all-ok {
+    background-color: rgba(50, 123, 56, 0.5);
+}
+
+.warning-plants-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    color: rgb(200, 200, 200);
+}
+
+.warning-plants-title-no-margin-bottom {
+    margin-bottom: unset;
+}
+
+.warning-plants-content {
+
+}
+
+.warning-plants-item {
+    color: rgb(150, 150, 150);
+    margin-bottom: 10px;
+}
+
+.warning-plants-item strong {
+    
 }

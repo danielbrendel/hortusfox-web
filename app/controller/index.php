@@ -30,9 +30,13 @@ class IndexController extends BaseController {
 	 */
 	public function index($request)
 	{
+		$user = UserModel::getAuthUser();
 		$locs = LocationsModel::getAll();
+		$warning_plants = PlantsModel::getWarningPlants();
 		
 		return parent::view(['content', 'index'], [
+			'user' => $user,
+			'warning_plants' => $warning_plants,
 			'locations' => $locs
 		]);
 	}

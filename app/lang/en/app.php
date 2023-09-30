@@ -9,6 +9,8 @@
 */
 
 return [
+	'dashboard' => 'Dashboard',
+	'welcome_message' => 'Hi {name}, welcome back!',
 	'locations' => 'Locations',
 	'select_location_to_proceed' => 'Select a location to view the associated plants',
 	'plants' => 'Plants',
@@ -47,7 +49,7 @@ return [
 	'yes' => 'Yes',
 	'no' => 'No',
 	'back_to_list' => 'Back to list',
-	'back_to_locations' => 'Back to locations',
+	'back_to_dashboard' => 'Back to dashboard',
 	'name' => 'Name',
 	'photo' => 'Photo',
 	'add' => 'Add',
@@ -58,4 +60,7 @@ return [
 	'light_level_sunny' => 'Sunny',
 	'light_level_half_shade' => 'Half-Shade',
 	'light_level_full_shade' => 'Full Shade',
+	'warning_plants_title' => 'The following plants need special attention',
+	'warning_plants_all_ok' => 'Hurray! No plants are currently endangered',
+	'view_plant_details' => 'View plant details'
 ];

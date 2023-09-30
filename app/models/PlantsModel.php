@@ -37,6 +37,19 @@
         }
 
         /**
+         * @return mixed
+         * @throws \Exception
+         */
+        public static function getWarningPlants()
+        {
+            try {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE health_state <> \'in_good_standing\' ORDER BY last_edited_date DESC');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * @return int
          * @throws \Exception
          */

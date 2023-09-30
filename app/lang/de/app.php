@@ -9,6 +9,8 @@
 */
 
 return [
+	'dashboard' => 'Dashboard',
+	'welcome_message' => 'Hallo {name}, willkommen zurück!',
 	'locations' => 'Räume',
 	'select_location_to_proceed' => 'Wähle einen Raum aus, um dessen Pflanzen zu verwalten',
 	'plants' => 'Pflanzen',
@@ -47,7 +49,7 @@ return [
 	'yes' => 'Ja',
 	'no' => 'Nein',
 	'back_to_list' => 'Zur Liste',
-	'back_to_locations' => 'Zur Ortsübersicht',
+	'back_to_dashboard' => 'Zum Dashboard',
 	'name' => 'Name',
 	'photo' => 'Foto',
 	'add' => 'Hinzufügen',
@@ -58,4 +60,7 @@ return [
 	'light_level_sunny' => 'Sonnig',
 	'light_level_half_shade' => 'Halbschatten',
 	'light_level_full_shade' => 'Schatten',
+	'warning_plants_title' => 'Gefährdete Pflanzen',
+	'warning_plants_all_ok' => 'Super! Momentan sind keine Pflanzen in schlechtem Zustand',
+	'view_plant_details' => 'Gehe zu den Pflanzendetails'
 ];
