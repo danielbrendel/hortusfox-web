@@ -56,6 +56,11 @@
         public static function addPlant($name, $location, $perennial, $cutting_month, $date_of_purchase, $humidity, $light_level)
         {
             try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
                 if ((!isset($_FILES['photo'])) || ($_FILES['photo']['error'] !== UPLOAD_ERR_OK)) {
                     throw new \Exception('Errorneous file');
                 }
@@ -70,11 +75,13 @@
 
                 move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name));
 
-                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, cutting_month, date_of_purchase, humidity, light_level) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [
-                    $name, $location, $file_name, $perennial, $cutting_month, $date_of_purchase, $humidity, $light_level
+                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, cutting_month, date_of_purchase, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+                    $name, $location, $file_name, $perennial, $cutting_month, $date_of_purchase, $humidity, $light_level, $user->get('id')
                 ]);
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+
+                LogModel::addLog($user->get('id'), 'add_plant', $name);
 
                 return $query->get('id');
             } catch (\Exception $e) {
@@ -98,6 +105,8 @@
                 }
 
                 static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
+            
+                LogModel::addLog($user->get('id'), $attribute, $value);
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -133,6 +142,8 @@
                 move_uploaded_file($_FILES[$value]['tmp_name'], public_path('/img/' . $file_name));
 
                 static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name, $user->get('id'), $plantId]);
+            
+                LogModel::addLog($user->get('id'), $attribute, $value);
             } catch (\Exception $e) {
                 throw $e;
             }

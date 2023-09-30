@@ -34,6 +34,7 @@ return [
 	'plant_warning' => 'Achtung: Diese Pflanze braucht besondere Aufmerksamkeit. Grund: {reason}',
 	'notes' => 'Notizen',
 	'select_month' => '- Monat auswählen -',
+	'select_light_level' => '- Lichtempfindlichkeit wählen -',
 	'january' => 'Januar',
 	'february' => 'Februar',
 	'march' => 'März',
@@ -62,5 +63,6 @@ return [
 	'light_level_full_shade' => 'Schatten',
 	'warning_plants_title' => 'Gefährdete Pflanzen',
 	'warning_plants_all_ok' => 'Super! Momentan sind keine Pflanzen in schlechtem Zustand',
-	'view_plant_details' => 'Gehe zu den Pflanzendetails'
+	'view_plant_details' => 'Gehe zu den Pflanzendetails',
+	'log_title' => 'Logbuch'
 ];

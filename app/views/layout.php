@@ -84,7 +84,12 @@
 							<div class="field">
 								<label class="label">{{ __('app.light_level') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="light_level" required>
+									<select name="light_level">
+										<option value="">{{ __('app.select_light_level') }}</option>
+										<option value="light_level_sunny">{{ __('app.light_level_sunny') }}</option>
+										<option value="light_level_half_shade">{{ __('app.light_level_half_shade') }}</option>
+										<option value="light_level_full_shade">{{ __('app.light_level_full_shade') }}</option>
+									</select>
 								</div>
 							</div>
 						</form>

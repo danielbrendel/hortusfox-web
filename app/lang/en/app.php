@@ -34,6 +34,7 @@ return [
 	'plant_warning' => 'Warning: This plant requires special monitoring. Reason: {reason}',
 	'notes' => 'Notes',
 	'select_month' => '- Select month -',
+	'select_light_level' => '- Select light level -',
 	'january' => 'January',
 	'february' => 'February',
 	'march' => 'March',
@@ -62,5 +63,6 @@ return [
 	'light_level_full_shade' => 'Full Shade',
 	'warning_plants_title' => 'The following plants need special attention',
 	'warning_plants_all_ok' => 'Hurray! No plants are currently endangered',
-	'view_plant_details' => 'View plant details'
+	'view_plant_details' => 'View plant details',
+	'log_title' => 'Log'
 ];
