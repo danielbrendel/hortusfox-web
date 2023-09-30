@@ -52,4 +52,10 @@ return [
 	'photo' => 'Foto',
 	'add' => 'Hinzufügen',
 	'cancel' => 'Abbrechen',
+	'last_edited_by' => 'Zuletzt bearbeitet: {when} (von {name})',
+	'edit_property' => 'Eigenschaft bearbeiten',
+	'save' => 'Speichern',
+	'light_level_sunny' => 'Sonnig',
+	'light_level_half_shade' => 'Halbschatten',
+	'light_level_full_shade' => 'Schatten',
 ];

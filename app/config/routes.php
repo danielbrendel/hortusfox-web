@@ -20,5 +20,7 @@ return [
     array('/plants/location/{id}', 'GET', 'index@plants_from_location'),
     array('/plants/details/{id}', 'GET', 'index@view_plant_details'),
     array('/plants/add', 'POST', 'index@add_plant'),
+    array('/plants/details/edit', 'POST', 'index@edit_plant_details'),
+    array('/plants/details/edit/photo', 'POST', 'index@edit_plant_details_photo'),
     array('$404', 'ANY', 'error404@index')
 ];

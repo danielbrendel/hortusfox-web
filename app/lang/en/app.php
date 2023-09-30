@@ -52,5 +52,10 @@ return [
 	'photo' => 'Photo',
 	'add' => 'Add',
 	'cancel' => 'Cancel',
-	'last_edited_by' => 'Last edited: {when} (by {name})'
+	'last_edited_by' => 'Last edited: {when} (by {name})',
+	'edit_property' => 'Edit property',
+	'save' => 'Save',
+	'light_level_sunny' => 'Sunny',
+	'light_level_half_shade' => 'Half-Shade',
+	'light_level_full_shade' => 'Full Shade',
 ];

@@ -50,7 +50,7 @@
                 $file_ext = static::getImageType($_FILES['photo']['tmp_name']);
 
                 if ($file_ext === null) {
-                    throw new \Exception('File is not a  valid image');
+                    throw new \Exception('File is not a valid image');
                 }
 
                 $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.' . $file_ext;
@@ -64,6 +64,62 @@
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
 
                 return $query->get('id');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $plantId
+         * @param $attribute
+         * @param $value
+         * @return void
+         * @throws \Exception
+         */
+        public static function editPlantAttribute($plantId, $attribute, $value)
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $plantId
+         * @param $attribute
+         * @param $value
+         * @return void
+         * @throws \Exception
+         */
+        public static function editPlantPhoto($plantId, $attribute, $value)
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                if ((!isset($_FILES[$value])) || ($_FILES[$value]['error'] !== UPLOAD_ERR_OK)) {
+                    throw new \Exception('Errorneous file');
+                }
+
+                $file_ext = static::getImageType($_FILES[$value]['tmp_name']);
+
+                if ($file_ext === null) {
+                    throw new \Exception('File is not a valid image');
+                }
+
+                $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.' . $file_ext;
+
+                move_uploaded_file($_FILES[$value]['tmp_name'], public_path('/img/' . $file_name));
+
+                static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name, $user->get('id'), $plantId]);
             } catch (\Exception $e) {
                 throw $e;
             }

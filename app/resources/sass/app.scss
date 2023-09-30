@@ -57,6 +57,14 @@ h2 {
     color: rgb(150, 150, 150);
 }
 
+.is-color-darker {
+    color: rgb(100, 100, 100);
+}
+
+.float-right {
+    float: right;
+}
+
 .locations {
     text-align: center;
 }
@@ -157,24 +165,29 @@ h2 {
     z-index: 2;
 }
 
-.plant-info {
-    padding: 20px;
+.plant-column {
+    @media screen and (min-width: 520px) {
+        padding: 20px;
+    }
+    @media screen and (max-width: 520px) {
+        display: inline-block;
+    }
 }
 
-.plant-info table {
+.plant-column table {
     width: 100%;
     color: rgb(200, 200, 200);
 }
 
-.plant-info table strong {
+.plant-column table strong {
     color: rgb(200, 200, 200);
 }
 
-.plant-info thead {
+.plant-column thead {
     background-color: rgba(104, 145, 194, 0.5);
 }
 
-.plant-info table td {
+.plant-column table td {
     border: 1px solid rgb(200, 200, 200);
     padding: 10px;
 }
@@ -192,9 +205,9 @@ h2 {
     font-style: italic;
 }
 
-.plant-description {
+.plant-notes {
+    width: 100%;
     min-height: 75px;
-    margin-top: 35px;
     margin-bottom: 10px;
     padding: 10px;
     color: rgb(200, 200, 200);
@@ -203,6 +216,54 @@ h2 {
     border: 1px solid rgb(100, 100, 100);
     border-left: 3px solid rgb(163, 122, 61);
     border-radius: 4px;
+}
+
+.plant-notes-content {
+    position: relative;
+    display: inline-block;
+    width: 90%;
+}
+
+.plant-notes-edit {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.plant-photo {
+    position: relative;
+    width: 329px;
+    height: 496px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: right;
+}
+
+.plant-photo-overlay {
+    width: 100%;
+    height: 100%;
+}
+
+.plant-photo-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.plant-photo-overlay .plant-photo-edit {
+    visibility: hidden;
+}
+
+.plant-photo-overlay:hover .plant-photo-edit {
+    visibility: visible;
+}
+
+.plant-photo-edit {
+    position: absolute;
+    top: 43%;
+    left: 42%;
+}
+
+.plant-photo-edit i {
+    color: rgb(200, 200, 200);
 }
 
 .plant-state-in-good-standing {
@@ -224,5 +285,8 @@ h2 {
 .plant-warning {
     margin-top: 10px;
     margin-bottom: 10px;
+    @media screen and (max-width: 510px) {
+        margin-bottom: 30px;
+    }
     color: rgb(212, 50, 50);
 }

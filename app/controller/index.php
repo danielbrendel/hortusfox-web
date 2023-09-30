@@ -118,4 +118,57 @@ class IndexController extends BaseController {
 
 		return redirect('/plants/details/' . $plant_id);
 	}
+
+	/**
+	 * Handles URL: /plants/details/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_plant_details($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'attribute' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			FlashMessage::setMsg('error', 'Invalid data given');
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$attribute = $request->params()->query('attribute', null);
+		$value = $request->params()->query('value', false);
+		
+		PlantsModel::editPlantAttribute($plant, $attribute, $value);
+
+		return redirect('/plants/details/' . $plant);
+	}
+
+	/**
+	 * Handles URL: /plants/details/edit/photo
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_plant_details_photo($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'attribute' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			FlashMessage::setMsg('error', 'Invalid data given');
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$attribute = $request->params()->query('attribute', null);
+		
+		PlantsModel::editPlantPhoto($plant, $attribute, 'value');
+
+		return redirect('/plants/details/' . $plant);
+	}
 }

@@ -95,8 +95,195 @@
 					</footer>
 				</div>
 			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditText}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditText = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditText" method="POST" action="{{ url('/plants/details/edit') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditTextPlantId"/>
+							<input type="hidden" name="attribute" id="inpEditTextAttribute"/>
+
+							<div class="field">
+								<div class="control">
+									<input type="text" class="input" name="value" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="document.getElementById('frmEditText').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditText = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditBoolean}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditBoolean = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditBoolean" method="POST" action="{{ url('/plants/details/edit') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditBooleanPlantId"/>
+							<input type="hidden" name="attribute" id="inpEditBooleanAttribute"/>
+
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" name="value" value="1">&nbsp;<span id="property-hint"></span>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="document.getElementById('frmEditBoolean').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditBoolean = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditInteger}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditInteger = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditInteger" method="POST" action="{{ url('/plants/details/edit') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditIntegerPlantId"/>
+							<input type="hidden" name="attribute" id="inpEditIntegerAttribute"/>
+
+							<div class="field">
+								<div class="control">
+									<input type="number" class="input" name="value" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="document.getElementById('frmEditInteger').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditInteger = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditDate}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditDate = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditDate" method="POST" action="{{ url('/plants/details/edit') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditDatePlantId"/>
+							<input type="hidden" name="attribute" id="inpEditDateAttribute"/>
+
+							<div class="field">
+								<div class="control">
+									<input type="date" class="input" name="value" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="document.getElementById('frmEditDate').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditDate = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditCombo}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditCombo = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditCombo" method="POST" action="{{ url('/plants/details/edit') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditComboPlantId"/>
+							<input type="hidden" name="attribute" id="inpEditComboAttribute"/>
+
+							<div class="field">
+								<div class="control">
+									<select name="value" id="selEditCombo"></select>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="document.getElementById('frmEditCombo').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditCombo = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditPhoto}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditPhoto = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditPhoto" method="POST" action="{{ url('/plants/details/edit/photo') }}" enctype="multipart/form-data">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditPhotoPlantId"/>
+							<input type="hidden" name="attribute" id="inpEditPhotoAttribute"/>
+
+							<div class="field">
+								<div class="control">
+									<input type="file" class="input" name="value" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="document.getElementById('frmEditPhoto').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditPhoto = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
 		</div>
 
 		<script src="{{ asset('js/app.js') }}"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function(){
+				@foreach (LocationsModel::getAll() as $location)
+				window.vue.comboLocation.push({ ident: {{ $location->get('id') }}, label: '{{ $location->get('name') }}'});
+				@endforeach
+
+				@foreach (UtilsModule::GetMonthList() as $key => $value)
+				window.vue.comboCuttingMonth.push({ ident: {{ $key }}, label: '{{ $value }}'});
+				@endforeach
+				
+				window.vue.comboLightLevel.push({ ident: 'light_level_sunny', label: '{{ __('app.light_level_sunny') }}'});
+				window.vue.comboLightLevel.push({ ident: 'light_level_half_shade', label: '{{ __('app.light_level_half_shade') }}'});
+				window.vue.comboLightLevel.push({ ident: 'light_level_full_shade', label: '{{ __('app.light_level_full_shade') }}'});
+				window.vue.comboHealthState.push({ ident: 'in_good_standing', label: '{{ __('app.in_good_standing') }}'});
+				window.vue.comboHealthState.push({ ident: 'overwatered', label: '{{ __('app.overwatered') }}'});
+				window.vue.comboHealthState.push({ ident: 'withering', label: '{{ __('app.withering') }}'});
+				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __('app.infected') }}'});
+			});
+		</script>
 	</body>
 </html>
