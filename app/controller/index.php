@@ -66,9 +66,20 @@ class IndexController extends BaseController {
 		$plant_id = $request->arg('id');
 
 		$plant_data = PlantsModel::getDetails($plant_id);
+
+		$edit_user_name = '';
+		$edit_user_when = '';
+
+		$userdata = UserModel::getUserById($plant_data->get('last_edited_user'));
+		if ($userdata) {
+			$edit_user_name = $userdata->get('name');
+			$edit_user_when = (new Carbon($plant_data->get('last_edited_date')))->diffForHumans();
+		}
 		
 		return parent::view(['content', 'details'], [
-			'plant' => $plant_data
+			'plant' => $plant_data,
+			'edit_user_name' => $edit_user_name,
+			'edit_user_when' => $edit_user_when
 		]);
 	}
 

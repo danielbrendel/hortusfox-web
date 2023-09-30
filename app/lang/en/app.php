@@ -52,4 +52,5 @@ return [
 	'photo' => 'Photo',
 	'add' => 'Add',
 	'cancel' => 'Cancel',
+	'last_edited_by' => 'Last edited: {when} (by {name})'
 ];

@@ -23,6 +23,12 @@ class BaseController extends Asatru\Controller\Controller {
 			$this->layout = $layout;
 		}
 
+		$auth_user = UserModel::getAuthUser();
+		if (!$auth_user) {
+			http_response_code(403);
+			exit('403 - Access Forbidden.');
+		}
+
 		$lang = env('APP_LANG', 'en');
 		if (($lang !== null) && (is_string($lang))) {
 			setLanguage($lang);

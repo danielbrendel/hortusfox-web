@@ -10,6 +10,10 @@
 				&nbsp;&nbsp;&nbsp;<a class="is-default-link is-fixed-button-link" href="{{ url('/plants/location/' . $plant->get('location')) }}">{{ __('app.back_to_list') }}</a>
             </div>
 
+			<div class="margin-vertical is-default-text-color">
+				{{ __('app.last_edited_by', ['name' => $edit_user_name, 'when' => $edit_user_when]) }}
+			</div>
+
 			@if ($plant->get('health_state') !== 'in_good_standing')
 				<div class="plant-warning">{{ __('app.plant_warning', ['reason' => __('app.' . $plant->get('health_state'))]) }}</div>
 			@endif
