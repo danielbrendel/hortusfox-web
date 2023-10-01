@@ -267,7 +267,7 @@ class IndexController extends BaseController {
 			$plant = $request->params()->query('plant', null);
 			$location = $request->params()->query('location', 0);
 
-			PlantsModel::removePhoto($plant);
+			PlantsModel::removePlant($plant);
 
 			return redirect('/plants/location/' . $location);
 		} catch (\Exception $e) {

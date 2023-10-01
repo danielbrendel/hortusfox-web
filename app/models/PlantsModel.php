@@ -288,7 +288,7 @@
          * @return void
          * @throws \Exception
          */
-        public static function removePhoto($plantId)
+        public static function removePlant($plantId)
         {
             try {
                 $user = UserModel::getAuthUser();
