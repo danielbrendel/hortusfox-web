@@ -196,6 +196,10 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="vertical-margin">
+				<a class="button is-danger" href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ __('app.remove_plant') }}</a>
+			</div>
 		</div>
 	</div>
 

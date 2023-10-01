@@ -26,6 +26,7 @@ window.vue = new Vue({
         comboLightLevel: [],
         comboHealthState: [],
         confirmPhotoRemoval: 'Are you sure you want to remove this photo?',
+        confirmPlantRemoval: 'Are you sure you want to remove this plant?',
     },
 
     methods: {
@@ -161,6 +162,15 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
+        },
+
+        deletePlant: function(plant, retloc)
+        {
+            if (!confirm(window.vue.confirmPlantRemoval)) {
+                return;
+            }
+
+            location.href = window.location.origin + '/plants/remove?plant=' + plant + '&location=' + retloc;
         },
     }
 });

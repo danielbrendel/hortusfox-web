@@ -284,6 +284,29 @@
         }
 
         /**
+         * @param $plantId
+         * @return void
+         * @throws \Exception
+         */
+        public static function removePhoto($plantId)
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                $plant = PlantsModel::getDetails($plantId);
+
+                static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$plantId]);
+
+                LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_plant', '');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * Return the associated table name of the migration
          * 
          * @return string

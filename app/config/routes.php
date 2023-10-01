@@ -24,6 +24,7 @@ return [
     array('/plants/details/edit/photo', 'POST', 'index@edit_plant_details_photo'),
     array('/plants/details/gallery/add', 'POST', 'index@add_plant_gallery_photo'),
     array('/plants/details/gallery/photo/remove', 'POST', 'index@remove_gallery_photo'),
+    array('/plants/remove', 'ANY', 'index@remove_plant'),
     array('/profile', 'GET', 'index@view_profile'),
     array('/search', 'GET', 'index@view_search'),
     array('/search/perform', 'POST', 'index@perform_search'),

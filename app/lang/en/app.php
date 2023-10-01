@@ -87,5 +87,7 @@ return [
 	'search_name' => 'Include names in search',
 	'search_tags' => 'Include tags in search',
 	'search_notes' => 'Include notes in search',
-	'no_tags_specified' => 'No tags specified yet'
+	'no_tags_specified' => 'No tags specified yet',
+	'remove_plant' => 'Remove plant',
+	'confirmPlantRemoval' => 'Are you sure you want to remove this plant?'
 ];

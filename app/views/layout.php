@@ -336,6 +336,7 @@
 				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __('app.infected') }}'});
 
 				window.vue.confirmPhotoRemoval = '{{ __('app.confirmPhotoRemoval') }}';
+				window.vue.confirmPlantRemoval = '{{ __('app.confirmPlantRemoval') }}';
 
 				window.vue.initNavBar();
 			});

@@ -256,6 +256,27 @@ class IndexController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function remove_plant($request)
+	{
+		try {
+			$plant = $request->params()->query('plant', null);
+			$location = $request->params()->query('location', 0);
+
+			PlantsModel::removePhoto($plant);
+
+			return redirect('/plants/location/' . $location);
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
 	 * Handles URL: /profile
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
