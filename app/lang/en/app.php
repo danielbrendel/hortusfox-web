@@ -9,6 +9,7 @@
 */
 
 return [
+	'workspace_title' => '{name} (powered by ' . env('APP_NAME') . ')',
 	'dashboard' => 'Dashboard',
 	'welcome_message' => 'Hi {name}, welcome back!',
 	'locations' => 'Locations',

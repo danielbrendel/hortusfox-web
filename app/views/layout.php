@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-with, initial-scale=1.0">
 		
-		<title>{{ env('APP_NAME') }}</title>
+		<title>{{ __('app.workspace_title', ['name' => env('APP_WORKSPACE')]) }}</title>
 
 		<link rel="icon" type="image/png" href="{{ asset('logo.png') }}"/>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
