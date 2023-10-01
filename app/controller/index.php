@@ -218,6 +218,8 @@ class IndexController extends BaseController {
 
 		PlantPhotoModel::uploadPhoto($plant, $label);
 
+		FlashMessage::setMsg('success', __('app.photo_uploaded_successfully'));
+
 		return redirect('/plants/details/' . $plant);
 	}
 

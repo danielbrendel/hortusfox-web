@@ -467,12 +467,16 @@ h2 {
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .stats-item {
     position: relative;
     display: inline-block;
     width: 194px;
+    @media screen and (max-width: 512px) {
+        width: 149px;
+    }
     height: 135px;
     margin-left: 10px;
     margin-right: 10px;

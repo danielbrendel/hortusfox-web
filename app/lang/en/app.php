@@ -74,5 +74,7 @@ return [
 	'label' => 'Label',
 	'confirmPhotoRemoval' => 'Are you sure you want to remove this photo?',
 	'users' => 'Users',
-	'endangered' => 'Endangered'
+	'endangered' => 'Endangered',
+	'photo_uploaded_successfully' => 'Photo was uploaded successfully',
+	'success' => 'Success'
 ];
