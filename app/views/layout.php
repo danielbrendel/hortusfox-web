@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-with, initial-scale=1.0">
 		
-		<title>Plant Manager App</title>
+		<title>{{ env('APP_NAME') }}</title>
 
 		<link rel="icon" type="image/png" href="{{ asset('logo.png') }}"/>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
@@ -19,6 +19,8 @@
 	
 	<body>
 		<div id="app">
+			@include('navbar.php')
+
 			<div class="container">
 				{%content%}
 			</div>
@@ -34,8 +36,6 @@
 						<form id="frmAddPlant" method="POST" action="{{ url('/plants/add') }}" enctype="multipart/form-data">
 							@csrf
 
-							<input type="hidden" name="location" id="inpLocationId"/>
-
 							<div class="field">
 								<label class="label">{{ __('app.name') }}</label>
 								<div class="control">
@@ -44,9 +44,20 @@
 							</div>
 
 							<div class="field">
+								<label class="label">{{ __('app.location') }}</label>
+								<div class="control">
+									<select name="location" class="input" id="inpLocationId">
+										@foreach (LocationsModel::getAll() as $location)
+											<option value="{{ $location->get('id') }}">{{ $location->get('name') }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
-									<input type="file" name="photo" required>
+									<input type="file" class="input" name="photo" required>
 								</div>
 							</div>
 
@@ -59,7 +70,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.cutting_month') }}</label>
 								<div class="control">
-									<select name="cutting_month">
+									<select name="cutting_month" class="input">
 										<option value="">{{ __('app.select_month') }}</option>
 										@foreach (UtilsModule::getMonthList() as $key => $month)
 											<option value="{{ $key + 1 }}">{{ $month }}</option>
@@ -71,7 +82,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.date_of_purchase') }}</label>
 								<div class="control">
-									<input type="date" name="date_of_purchase" required>
+									<input type="date" class="input" name="date_of_purchase" required>
 								</div>
 							</div>
 
@@ -85,7 +96,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.light_level') }}</label>
 								<div class="control">
-									<select name="light_level">
+									<select name="light_level" class="input">
 										<option value="">{{ __('app.select_light_level') }}</option>
 										<option value="light_level_sunny">{{ __('app.light_level_sunny') }}</option>
 										<option value="light_level_half_shade">{{ __('app.light_level_half_shade') }}</option>
@@ -325,6 +336,8 @@
 				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __('app.infected') }}'});
 
 				window.vue.confirmPhotoRemoval = '{{ __('app.confirmPhotoRemoval') }}';
+
+				window.vue.initNavBar();
 			});
 		</script>
 	</body>

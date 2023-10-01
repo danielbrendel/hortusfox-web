@@ -28,11 +28,12 @@ class LogModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $user
      * @param $limit
      * @return array
      * @throws \Exception
      */
-    public static function getHistory($limit = 100, $user = null)
+    public static function getHistory($user = null, $limit = 100)
     {
         try {
             $result = [];

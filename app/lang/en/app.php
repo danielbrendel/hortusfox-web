@@ -76,5 +76,9 @@ return [
 	'users' => 'Users',
 	'endangered' => 'Endangered',
 	'photo_uploaded_successfully' => 'Photo was uploaded successfully',
-	'success' => 'Success'
+	'success' => 'Success',
+	'search' => 'Search',
+	'profile' => 'Profile',
+	'profile_hint' => 'Logged in as {name} ({email})',
+	'last_authored_plants' => 'Last authored plants'
 ];

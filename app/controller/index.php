@@ -246,4 +246,23 @@ class IndexController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /profile
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler
+	 */
+	public function view_profile($request)
+	{
+		$user = UserModel::getAuthUser();
+		$plants = PlantsModel::getAuthoredPlants($user->get('id'));
+		$log = LogModel::getHistory($user->get('id'));
+		
+		return parent::view(['content', 'profile'], [
+			'user' => $user,
+			'plants' => $plants,
+			'log' => $log
+		]);
+	}
 }

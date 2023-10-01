@@ -25,6 +25,20 @@
         }
 
         /**
+         * @param $userId
+         * @return mixed
+         * @throws \Exception
+         */
+        public static function getAuthoredPlants($userId)
+        {
+            try {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE last_edited_user = ? ORDER BY last_edited_date DESC', [$userId]);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * @param $id
          * @return mixed
          * @throws \Exception
