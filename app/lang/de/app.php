@@ -9,7 +9,7 @@
 */
 
 return [
-	'workspace_title' => '{name} (powered by ' . env('APP_NAME') . ')',
+	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
 	'dashboard' => 'Dashboard',
 	'welcome_message' => 'Hallo {name}, willkommen zurück!',
 	'locations' => 'Räume',
@@ -77,5 +77,17 @@ return [
 	'users' => 'User',
 	'endangered' => 'Gefährdet',
 	'photo_uploaded_successfully' => 'Das Foto wurde erfolgreich hochgeladen',
-	'success' => 'Erfolg'
+	'success' => 'Erfolg',
+	'profile' => 'Profil',
+	'profile_hint' => 'Angemeldet als {name} ({email})',
+	'last_authored_plants' => 'Zuletzt bearbeitete Pflanzen',
+	'search' => 'Suche',
+	'search_hint' => 'Die Datenbank durchsuchen',
+	'input_search' => 'Gibt den Suchtext hier ein',
+	'search_name' => 'Nach Namen suchen',
+	'search_tags' => 'Nach Tags suchen',
+	'search_notes' => 'Nach Notizen suchen',
+	'no_tags_specified' => 'Es wurden noch keine Tags hinzugefügt',
+	'remove_plant' => 'Pflanze entfernen',
+	'confirmPlantRemoval' => 'Bist du sicher, dass du diese Pflanze entfernen möchtest?'
 ];

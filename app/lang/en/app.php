@@ -9,7 +9,7 @@
 */
 
 return [
-	'workspace_title' => '{name} (powered by ' . env('APP_NAME') . ')',
+	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
 	'dashboard' => 'Dashboard',
 	'welcome_message' => 'Hi {name}, welcome back!',
 	'locations' => 'Locations',
