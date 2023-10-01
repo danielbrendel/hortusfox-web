@@ -81,9 +81,12 @@ class IndexController extends BaseController {
 			$edit_user_name = $userdata->get('name');
 			$edit_user_when = (new Carbon($plant_data->get('last_edited_date')))->diffForHumans();
 		}
+
+		$photos = PlantPhotoModel::getPlantGallery($plant_id);
 		
 		return parent::view(['content', 'details'], [
 			'plant' => $plant_data,
+			'photos' => $photos,
 			'edit_user_name' => $edit_user_name,
 			'edit_user_when' => $edit_user_when
 		]);
@@ -182,5 +185,61 @@ class IndexController extends BaseController {
 		PlantsModel::editPlantPhoto($plant, $attribute, 'value');
 
 		return redirect('/plants/details/' . $plant);
+	}
+
+	/**
+	 * Handles URL: /plants/details/gallery/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_plant_gallery_photo($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'label' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			$errorstr = '';
+			foreach ($validator->errorMsgs() as $err) {
+				$errorstr .= $err . '<br/>';
+			}
+
+			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
+			
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$label = $request->params()->query('label', '');
+
+		PlantPhotoModel::uploadPhoto($plant, $label);
+
+		return redirect('/plants/details/' . $plant);
+	}
+
+	/**
+	 * Handles URL: /plants/details/gallery/photo/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function remove_gallery_photo($request)
+	{
+		try {
+			$photo = $request->params()->query('photo', null);
+
+			PlantPhotoModel::removePhoto($photo);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
 	}
 }

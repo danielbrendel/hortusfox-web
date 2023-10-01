@@ -130,6 +130,48 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="columns plant-column">
+				<div class="column is-full">
+					<div class="plant-gallery">
+						<div class="plant-gallery-title">{{ __('app.photos') }}</div>
+
+						<div class="plant-gallery-upload">
+							<a class="button is-link" href="javascript:void(0);" onclick="window.vue.showPhotoUpload({{ $plant->get('id') }});">{{ __('app.upload') }}</a>
+						</div>
+
+						<div class="plant-gallery-photos">
+							@if (count($photos) > 0)
+								@foreach ($photos as $photo)
+									<div class="plant-gallery-item" id="photo-gallery-item-{{ $photo->get('id') }}">
+										<div class="plant-gallery-item-header">
+											<div class="plant-gallery-item-header-label">{{ $photo->get('label') }}</div>
+
+											<div class="plant-gallery-item-header-action">
+												<a href="javascript:void(0);" onclick="window.vue.deletePhoto({{ $photo->get('id') }}, 'photo-gallery-item-{{ $photo->get('id') }}');"><i class="fas fa-trash-alt"></i></a>
+											</div>
+										</div>
+
+										<div class="plant-gallery-item-photo">
+											<a href="{{ asset('img/' . $photo->get('original')) }}" target="_blank">
+												<div class="plant-gallery-item-photo-overlay"></div>
+
+												<img class="plant-gallery-item-photo-image" src="{{ asset('img/' . $photo->get('thumb')) }}" alt="photo"/>
+											</a>
+										</div>
+
+										<div class="plant-gallery-item-footer">
+											{{ (new Carbon($photo->get('created_at')))->diffForHumans() }}
+										</div>
+									</div>
+								@endforeach
+							@else
+								<strong>{{ __('app.no_photos_yet') }}</strong>
+							@endif
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 

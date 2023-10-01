@@ -6,6 +6,9 @@
 
 import './../sass/app.scss';
 
+window.axios = require('axios');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 window.vue = new Vue({
     el: '#app',
 
@@ -17,10 +20,12 @@ window.vue = new Vue({
         bShowEditDate: false,
         bShowEditCombo: false,
         bShowEditPhoto: false,
+        bShowUploadPhoto: false,
         comboLocation: [],
         comboCuttingMonth: [],
         comboLightLevel: [],
         comboHealthState: [],
+        confirmPhotoRemoval: 'Are you sure you want to remove this photo?',
     },
 
     methods: {
@@ -105,6 +110,30 @@ window.vue = new Vue({
             document.getElementById('inpEditPhotoPlantId').value = plant;
             document.getElementById('inpEditPhotoAttribute').value = property;
             window.vue.bShowEditPhoto = true;
+        },
+
+        showPhotoUpload: function(plant)
+        {
+            document.getElementById('inpUploadPhotoPlantId').value = plant;
+            window.vue.bShowUploadPhoto = true;
+        },
+
+        deletePhoto: function(photo, target)
+        {
+            if (!confirm(window.vue.confirmPhotoRemoval)) {
+                return;
+            }
+
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/details/gallery/photo/remove', { photo: photo }, function(response){
+                if (response.code == 200) {
+                    let elem = document.getElementById(target);
+                    if (elem) {
+                        elem.remove();
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
         },
     }
 });

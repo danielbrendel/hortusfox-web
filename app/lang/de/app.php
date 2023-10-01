@@ -66,5 +66,11 @@ return [
 	'view_plant_details' => 'Gehe zu den Pflanzendetails',
 	'log_title' => 'Logbuch',
 	'loading_please_wait' => 'Bitte warten...',
-	'error' => 'Fehler'
+	'error' => 'Fehler',
+	'photos' => 'Fotos',
+	'no_photos_yet' => 'Momentan gibt es keine Fotos in dieser Galerie',
+	'upload' => 'Hochladen',
+	'upload_photo' => 'Foto hochladen',
+	'label' => 'Bezeichnung',
+	'confirmPhotoRemoval' => 'Bist du sicher, dass du dieses Foto entfernen möchtest?'
 ];

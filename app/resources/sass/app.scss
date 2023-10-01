@@ -373,3 +373,92 @@ h2 {
 .log-item strong {
     
 }
+
+.plant-gallery {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.plant-gallery-title {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: rgb(150, 150, 150);
+}
+
+.plant-gallery-upload {
+    margin-bottom: 20px;
+}
+
+.plant-gallery-photos {
+    margin-top: 30px;
+}
+
+.plant-gallery-photos strong {
+    color: rgb(100, 100, 100);
+}
+
+.plant-gallery-item {
+    position: relative;
+    display: inline-block;
+    width: 315px;
+    height: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    background-color: rgb(200, 200, 200);
+    border-radius: 4px;
+}
+
+.plant-gallery-item-header {
+    padding: 10px;
+}
+
+.plant-gallery-item-header-label {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+}
+
+.plant-gallery-item-header-action {
+    display: inline-block;
+    float: right;
+}
+
+.plant-gallery-item-header-action i {
+    color: rgb(173, 86, 86);
+}
+
+.plant-gallery-item-header-action i:hover {
+    color: rgb(173, 90, 90);
+}
+
+.plant-gallery-item-photo {
+    position: relative;
+}
+
+.plant-gallery-item-photo-overlay {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 98%;
+}
+
+.plant-gallery-item-photo-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.plant-gallery-item-photo-image {
+}
+
+.plant-gallery-item-photo-overlay .plant-gallery-item-photo-image {
+    visibility: hidden;
+}
+
+.plant-gallery-item-photo-overlay:hover .plant-gallery-item-photo-image {
+    visibility: visible;
+}
+
+.plant-gallery-item-footer {
+    padding: 10px;
+    color: rgb(100, 100, 100);
+}

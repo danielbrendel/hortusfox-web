@@ -66,5 +66,11 @@ return [
 	'view_plant_details' => 'View plant details',
 	'log_title' => 'Log',
 	'loading_please_wait' => 'Please wait...',
-	'error' => 'Error'
+	'error' => 'Error',
+	'photos' => 'Photos',
+	'no_photos_yet' => 'There are currently no additional photos uploaded',
+	'upload' => 'Upload',
+	'upload_photo' => 'Upload photo',
+	'label' => 'Label',
+	'confirmPhotoRemoval' => 'Are you sure you want to remove this photo?'
 ];

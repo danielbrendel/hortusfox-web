@@ -8,19 +8,20 @@ class LogModel extends \Asatru\Database\Model {
 
     /**
      * @param $user
+     * @param $target
      * @param $property
      * @param $value
      * @return void
      * @throws \Exception
      */
-    public static function addLog($user, $property, $value)
+    public static function addLog($user, $target, $property, $value)
     {
         try {
             if ((is_string($value)) && (strlen($value) >= self::LOG_MAX_STRING_LENGTH)) {
                 $value = substr($value, 0, self::LOG_MAX_STRING_LENGTH - 4) . '...';
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (user, property, value) VALUES(?, ?, ?)', [$user, $property, $value]);
+            static::raw('INSERT INTO `' . self::tableName() . '` (user, target, property, value) VALUES(?, ?, ?, ?)', [$user, $target, $property, $value]);
         } catch (\Exception $e) {
             throw $e;
         }

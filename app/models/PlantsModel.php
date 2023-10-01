@@ -65,7 +65,7 @@
                     throw new \Exception('Errorneous file');
                 }
 
-                $file_ext = static::getImageType($_FILES['photo']['tmp_name']);
+                $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
 
                 if ($file_ext === null) {
                     throw new \Exception('File is not a valid image');
@@ -81,7 +81,7 @@
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
 
-                LogModel::addLog($user->get('id'), 'add_plant', $name);
+                LogModel::addLog($user->get('id'), $location, 'add_plant', $name);
 
                 return $query->get('id');
             } catch (\Exception $e) {
@@ -106,7 +106,7 @@
 
                 static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
             
-                LogModel::addLog($user->get('id'), $attribute, $value);
+                LogModel::addLog($user->get('id'), $plantId, $attribute, $value);
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -131,7 +131,7 @@
                     throw new \Exception('Errorneous file');
                 }
 
-                $file_ext = static::getImageType($_FILES[$value]['tmp_name']);
+                $file_ext = UtilsModule::getImageExt($_FILES[$value]['tmp_name']);
 
                 if ($file_ext === null) {
                     throw new \Exception('File is not a valid image');
@@ -143,32 +143,10 @@
 
                 static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name, $user->get('id'), $plantId]);
             
-                LogModel::addLog($user->get('id'), $attribute, $value);
+                LogModel::addLog($user->get('id'), $plantId, $attribute, $value);
             } catch (\Exception $e) {
                 throw $e;
             }
-        }
-
-        /**
-         * @param $ext
-         * @param $file
-         * @return mixed|null
-         */
-        private static function getImageType($file)
-        {
-            $imagetypes = [
-                'png' => IMAGETYPE_PNG,
-                'jpg' => IMAGETYPE_JPEG,
-                'gif' => IMAGETYPE_GIF
-            ];
-
-            foreach ($imagetypes as $ext => $type) {
-                if (exif_imagetype($file) === $type) {
-                    return $ext;
-                }
-            }
-
-            return null;
         }
 
         /**

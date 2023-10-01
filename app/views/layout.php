@@ -269,6 +269,40 @@
 					</footer>
 				</div>
 			</div>
+
+			<div class="modal" :class="{'is-active': bShowUploadPhoto}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.upload_photo') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowUploadPhoto = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmUploadPhoto" method="POST" action="{{ url('/plants/details/gallery/add') }}" enctype="multipart/form-data">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpUploadPhotoPlantId"/>
+
+							<div class="field">
+								<div class="control">
+									<input type="file" class="input" name="photo" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.label') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="label" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmUploadPhoto').submit();">{{ __('app.upload') }}</button>
+						<button class="button" onclick="window.vue.bShowUploadPhoto = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
 		</div>
 
 		<script src="{{ asset('js/app.js') }}"></script>
@@ -289,6 +323,8 @@
 				window.vue.comboHealthState.push({ ident: 'overwatered', label: '{{ __('app.overwatered') }}'});
 				window.vue.comboHealthState.push({ ident: 'withering', label: '{{ __('app.withering') }}'});
 				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __('app.infected') }}'});
+
+				window.vue.confirmPhotoRemoval = '{{ __('app.confirmPhotoRemoval') }}';
 			});
 		</script>
 	</body>
