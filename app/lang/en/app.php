@@ -72,5 +72,7 @@ return [
 	'upload' => 'Upload',
 	'upload_photo' => 'Upload photo',
 	'label' => 'Label',
-	'confirmPhotoRemoval' => 'Are you sure you want to remove this photo?'
+	'confirmPhotoRemoval' => 'Are you sure you want to remove this photo?',
+	'users' => 'Users',
+	'endangered' => 'Endangered'
 ];

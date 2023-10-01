@@ -193,4 +193,22 @@ class UtilsModule {
 
         return true;
     }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function getStats()
+    {
+        try {
+            return [
+                'users' => UserModel::getCount(),
+                'locations' => LocationsModel::getCount(),
+                'plants' => PlantsModel::getCount(),
+                'endangered' => PlantsModel::getEndangeredCount()
+            ];
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }

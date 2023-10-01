@@ -72,5 +72,7 @@ return [
 	'upload' => 'Hochladen',
 	'upload_photo' => 'Foto hochladen',
 	'label' => 'Bezeichnung',
-	'confirmPhotoRemoval' => 'Bist du sicher, dass du dieses Foto entfernen möchtest?'
+	'confirmPhotoRemoval' => 'Bist du sicher, dass du dieses Foto entfernen möchtest?',
+	'users' => 'User',
+	'endangered' => 'Gefährdet'
 ];

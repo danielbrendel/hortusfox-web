@@ -8,6 +8,8 @@
      * This class extends the base model class and represents your associated table
      */ 
     class PlantsModel extends \Asatru\Database\Model {
+        const PLANT_STATE_GOOD = 'in_good_standing';
+
         /**
          * @param $location
          * @return mixed
@@ -144,6 +146,32 @@
                 static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name, $user->get('id'), $plantId]);
             
                 LogModel::addLog($user->get('id'), $plantId, $attribute, $value);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @return int
+         * @throws \Exception
+         */
+        public static function getCount()
+        {
+            try {
+                return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '`')->first()->get('count');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @return int
+         * @throws \Exception
+         */
+        public static function getEndangeredCount()
+        {
+            try {
+                return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '` WHERE health_state <> ?', [self::PLANT_STATE_GOOD])->first()->get('count');
             } catch (\Exception $e) {
                 throw $e;
             }

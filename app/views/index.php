@@ -6,6 +6,28 @@
 			<h1>{{ __('app.dashboard') }}</h1>
 
 			<h2>{{ __('app.welcome_message', ['name' => $user->get('name')]) }}</h2>
+
+			<div class="stats">
+				<div class="stats-item">
+					<div class="stats-item-count">500</div>
+					<div class="stats-item-label">{{ __('app.locations') }}</div>
+				</div>
+
+				<div class="stats-item">
+					<div class="stats-item-count">500</div>
+					<div class="stats-item-label">{{ __('app.users') }}</div>
+				</div>
+
+				<div class="stats-item">
+					<div class="stats-item-count">500</div>
+					<div class="stats-item-label">{{ __('app.plants') }}</div>
+				</div>
+
+				<div class="stats-item">
+					<div class="stats-item-count">500</div>
+					<div class="stats-item-label">{{ __('app.endangered') }}</div>
+				</div>
+			</div>
 			
 			@if (count($warning_plants) > 0)
 				<div class="warning-plants has-warnings">

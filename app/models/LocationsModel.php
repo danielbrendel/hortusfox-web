@@ -32,6 +32,19 @@ class LocationsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @return int
+     * @throws \Exception
+     */
+    public static function getCount()
+    {
+        try {
+            return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '`')->first()->get('count');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string
