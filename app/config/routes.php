@@ -25,5 +25,7 @@ return [
     array('/plants/details/gallery/add', 'POST', 'index@add_plant_gallery_photo'),
     array('/plants/details/gallery/photo/remove', 'POST', 'index@remove_gallery_photo'),
     array('/profile', 'GET', 'index@view_profile'),
+    array('/search', 'GET', 'index@view_search'),
+    array('/search/perform', 'POST', 'index@perform_search'),
     array('$404', 'ANY', 'error404@index')
 ];

@@ -192,6 +192,98 @@
         }
 
         /**
+         * @param $text
+         * @param $search_name
+         * @param $search_tags
+         * @param $search_notes
+         * @return mixed
+         * @throws \Exception
+         */
+        /*public static function performSearch($text, $search_name, $search_tags, $search_notes)
+        {
+            try {
+                $text = trim(strtolower($text));
+
+                $result = static::where('name', '<>', null);
+
+                if ($search_name) {
+                    $result = $result->whereOr('LOWER(name)', 'LIKE', '%' . $text . '%');
+                }
+
+                if ($search_tags) {
+                    $result = $result->whereOr('LOWER(tags)', 'LIKE', '%' . $text . '%');
+                }
+
+                if ($search_notes) {
+                    $result = $result->whereOr('LOWER(notes)', 'LIKE', '%' . $text . '%');
+                }
+
+                return $result->orderBy('last_edited_date', 'DESC')->get();
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }*/
+
+        /**
+         * @param $text
+         * @param $search_name
+         * @param $search_tags
+         * @param $search_notes
+         * @return mixed
+         * @throws \Exception
+         */
+        public static function performSearch($text, $search_name, $search_tags, $search_notes)
+        {
+            try {
+                $text = trim(strtolower($text));
+
+                $query = 'SELECT * FROM `' . self::tableName() . '` ';
+                $hasAny = false;
+
+                $args = [];
+
+                if ($search_name) {
+                    if ($hasAny) {
+                        $query .= ' OR WHERE LOWER(name) LIKE ? ';
+                    } else {
+                        $query .= ' WHERE LOWER(name) LIKE ? ';
+                    }
+
+                    $args[] = '%' . $text . '%';
+                    $hasAny = true;
+                }
+
+                if ($search_tags) {
+                    if ($hasAny) {
+                        $query .= ' OR LOWER(tags) LIKE ? ';
+                    } else {
+                        $query .= ' WHERE LOWER(tags) LIKE ? ';
+                    }
+
+                    $args[] = '%' . $text . '%';
+                    $hasAny = true;
+                }
+
+                if ($search_notes) {
+                    if ($hasAny) {
+                        $query .= ' OR LOWER(notes) LIKE ? ';
+                    } else {
+                        $query .= ' WHERE LOWER(notes) LIKE ? ';
+                    }
+
+                    $args[] = '%' . $text . '%';
+                    $hasAny = true;
+                }
+
+                $query .= ' ORDER BY last_edited_date DESC';
+                
+                return static::raw($query, $args);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * Return the associated table name of the migration
          * 
          * @return string

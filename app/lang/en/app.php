@@ -77,8 +77,14 @@ return [
 	'endangered' => 'Endangered',
 	'photo_uploaded_successfully' => 'Photo was uploaded successfully',
 	'success' => 'Success',
-	'search' => 'Search',
 	'profile' => 'Profile',
 	'profile_hint' => 'Logged in as {name} ({email})',
-	'last_authored_plants' => 'Last authored plants'
+	'last_authored_plants' => 'Last authored plants',
+	'search' => 'Search',
+	'search_hint' => 'Search through the database',
+	'input_search' => 'Enter text to search for',
+	'search_name' => 'Include names in search',
+	'search_tags' => 'Include tags in search',
+	'search_notes' => 'Include notes in search',
+	'no_tags_specified' => 'No tags specified yet'
 ];

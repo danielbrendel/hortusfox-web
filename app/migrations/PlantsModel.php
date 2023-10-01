@@ -29,8 +29,8 @@ class PlantsModel_Migration {
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('name VARCHAR(512) NOT NULL');
-        $this->database->add('tags VARCHAR(1024) NULL');
         $this->database->add('location INT NOT NULL');
+        $this->database->add('tags VARCHAR(1024) NULL');
         $this->database->add('photo VARCHAR(512) NOT NULL');
         $this->database->add('last_watered DATETIME NULL');
         $this->database->add('last_repotted DATETIME NULL');

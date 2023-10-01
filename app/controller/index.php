@@ -84,11 +84,19 @@ class IndexController extends BaseController {
 			$edit_user_when = (new Carbon($plant_data->get('last_edited_date')))->diffForHumans();
 		}
 
+		$tagstr = $plant_data->get('tags');
+		if (substr($tagstr, strlen($tagstr) - 1, 1) !== ' ') {
+			$tagstr .= ' ';
+		}
+
+		$tags = explode(' ', $tagstr);
+
 		$photos = PlantPhotoModel::getPlantGallery($plant_id);
 		
 		return parent::view(['content', 'details'], [
 			'plant' => $plant_data,
 			'photos' => $photos,
+			'tags' => $tags,
 			'edit_user_name' => $edit_user_name,
 			'edit_user_when' => $edit_user_when
 		]);
@@ -227,7 +235,7 @@ class IndexController extends BaseController {
 	 * Handles URL: /plants/details/gallery/photo/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function remove_gallery_photo($request)
 	{
@@ -264,5 +272,52 @@ class IndexController extends BaseController {
 			'plants' => $plants,
 			'log' => $log
 		]);
+	}
+
+	/**
+	 * Handles URL: /search
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler
+	 */
+	public function view_search($request)
+	{
+		$user = UserModel::getAuthUser();
+
+		$query = $request->params()->query('query', '');
+
+		return parent::view(['content', 'search'], [
+			'user' => $user,
+			'query' => $query
+		]);
+	}
+
+	/**
+	 * Handles URL: /search/perform
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler|Asatru\View\RedirectHandler
+	 */
+	public function perform_search($request)
+	{
+		try {
+			$user = UserModel::getAuthUser();
+
+			$text = $request->params()->query('text', '');
+			$search_name = $request->params()->query('search_name', true);
+			$search_tags = $request->params()->query('search_tags', false);
+			$search_notes = $request->params()->query('search_notes', false);
+			
+			$search_result = PlantsModel::performSearch($text, $search_name, $search_tags, $search_notes);
+
+			return parent::view(['content', 'search'], [
+				'user' => $user,
+				'query' => $text,
+				'plants' => $search_result
+			]);
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/search');
+		}
 	}
 }

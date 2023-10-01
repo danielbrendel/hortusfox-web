@@ -70,36 +70,40 @@ window.vue = new Vue({
             }
         },
 
-        showEditText: function(plant, property)
+        showEditText: function(plant, property, defval)
         {
             document.getElementById('inpEditTextPlantId').value = plant;
             document.getElementById('inpEditTextAttribute').value = property;
+            document.getElementById('inpEditTextValue').value = defval;
             window.vue.bShowEditText = true;
         },
 
-        showEditBoolean: function(plant, property, hint)
+        showEditBoolean: function(plant, property, hint, defval)
         {
             document.getElementById('inpEditBooleanPlantId').value = plant;
             document.getElementById('inpEditBooleanAttribute').value = property;
             document.getElementById('property-hint').innerHTML = hint;
+            document.getElementById('inpEditBooleanValue').checked = defval;
             window.vue.bShowEditBoolean = true;
         },
 
-        showEditInteger: function(plant, property)
+        showEditInteger: function(plant, property, defval)
         {
             document.getElementById('inpEditIntegerPlantId').value = plant;
             document.getElementById('inpEditIntegerAttribute').value = property;
+            document.getElementById('inpEditIntegerValue').value = defval;
             window.vue.bShowEditInteger = true;
         },
 
-        showEditDate: function(plant, property)
+        showEditDate: function(plant, property, defval)
         {
             document.getElementById('inpEditDatePlantId').value = plant;
             document.getElementById('inpEditDateAttribute').value = property;
+            document.getElementById('inpEditDateValue').value = defval;
             window.vue.bShowEditDate = true;
         },
 
-        showEditCombo: function(plant, property, combo)
+        showEditCombo: function(plant, property, combo, defval)
         {
             document.getElementById('inpEditComboPlantId').value = plant;
             document.getElementById('inpEditComboAttribute').value = property;
@@ -111,6 +115,10 @@ window.vue = new Vue({
 
             let sel = document.getElementById('selEditCombo');
             if (sel) {
+                for (let i = sel.options.length - 1; i >= 0; i--) {
+                    sel.remove(i);
+                }
+
                 combo.forEach(function(elem, index){
                     let opt = document.createElement('option');
                     opt.value = elem.ident;
@@ -118,6 +126,8 @@ window.vue = new Vue({
                     sel.add(opt);
                 });
             }
+
+            document.getElementById('selEditCombo').value = defval;
 
             window.vue.bShowEditCombo = true;
         },

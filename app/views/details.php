@@ -32,12 +32,12 @@
 						<tbody>
 							<tr>
 								<td><strong>{{ __('app.name') }}</strong></td>
-								<td>{{ $plant->get('name') }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'name');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{{ $plant->get('name') }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'name', '{{ $plant->get('name') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
 								<td><strong>{{ __('app.location') }}</strong></td>
-								<td>{{ LocationsModel::getNameById($plant->get('location')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'location', window.vue.comboLocation);"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{{ LocationsModel::getNameById($plant->get('location')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'location', window.vue.comboLocation, {{ $plant->get('location') }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
@@ -49,7 +49,7 @@
 										<span class="is-not-available">N/A</span>
 									@endif
 
-									<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'last_watered');"><i class="fas fa-edit is-color-darker"></i></a></span>
+									<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'last_watered', '{{ ($plant->get('last_watered')) ? date('Y-m-d', strtotime($plant->get('last_watered'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
 								</td>
 							</tr>
 
@@ -62,39 +62,39 @@
 										<span class="is-not-available">N/A</span>
 									@endif
 
-									<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'last_repotted');"><i class="fas fa-edit is-color-darker"></i></a></span>
+									<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'last_repotted', '{{ ($plant->get('last_repotted')) ? date('Y-m-d', strtotime($plant->get('last_repotted'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
 								</td>
 								</td>
 							</tr>
 
 							<tr>
 								<td><strong>{{ __('app.perennial') }}</strong></td>
-								<td>{!! ($plant->get('perennial')) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'perennial', '{{ __('app.perennial') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{!! ($plant->get('perennial')) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'perennial', '{{ __('app.perennial') }}', {{ ($plant->get('perennial')) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
 								<td><strong>{{ __('app.cutting_month') }}</strong></td>
-								<td>{{ UtilsModule::getMonthList()[$plant->get('cutting_month')] }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'cutting_month', window.vue.comboCuttingMonth);"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{{ UtilsModule::getMonthList()[$plant->get('cutting_month')] }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'cutting_month', window.vue.comboCuttingMonth, {{ $plant->get('cutting_month') }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
 								<td><strong>{{ __('app.date_of_purchase') }}</strong></td>
-								<td>{{ date('Y-m-d', strtotime($plant->get('date_of_purchase'))) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'date_of_purchase');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{{ date('Y-m-d', strtotime($plant->get('date_of_purchase'))) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'date_of_purchase', '{{ ($plant->get('date_of_purchase')) ? date('Y-m-d', strtotime($plant->get('date_of_purchase'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
 								<td><strong>{{ __('app.humidity') }}</strong></td>
-								<td>{{ $plant->get('humidity') . '%' }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditInteger({{ $plant->get('id') }}, 'humidity');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{{ $plant->get('humidity') . '%' }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditInteger({{ $plant->get('id') }}, 'humidity', '{{ $plant->get('humidity') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
 								<td><strong>{{ __('app.light_level') }}</strong></td>
-								<td>{{ __('app.' . $plant->get('light_level')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'light_level', window.vue.comboLightLevel);"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{{ __('app.' . $plant->get('light_level')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'light_level', window.vue.comboLightLevel, '{{ $plant->get('light_level') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
 								<td><strong>{{ __('app.health_state') }}</strong></td>
-								<td><span class="plant-state-{{ $plant->get('health_state') }}">{!! ($plant->get('health_state') === 'in_good_standing') ? '<i class="far fa-check-circle is-color-yes"></i>&nbsp;' : '' !!}{{ __('app.' . $plant->get('health_state')) }}</span> <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'health_state', window.vue.comboHealthState);"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td><span class="plant-state-{{ $plant->get('health_state') }}">{!! ($plant->get('health_state') === 'in_good_standing') ? '<i class="far fa-check-circle is-color-yes"></i>&nbsp;' : '' !!}{{ __('app.' . $plant->get('health_state')) }}</span> <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'health_state', window.vue.comboHealthState, '{{ $plant->get('health_state') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -113,6 +113,30 @@
 
 			<div class="columns plant-column">
 				<div class="column is-full">
+					<div class="plant-tags">
+						<div class="plant-tags-content">
+							@if (strlen($plant->get('tags')) > 1)
+								@foreach ($tags as $tag)
+									@if (strlen($tag) > 0)
+										<div class="plant-tags-item"><a href="{{ url('/search?query=' . $tag) }}">{{ $tag }}</a></div>
+									@endif
+								@endforeach
+							@else
+								<strong class="is-default-text-color">{{ __('app.no_tags_specified') }}</strong>
+							@endif
+						</div>
+
+						<div class="plant-tags-edit">
+							<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'tags', '{{ $plant->get('tags') }}');">
+								<i class="fas fa-edit is-color-darker"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="columns plant-column">
+				<div class="column is-full">
 					<div class="plant-notes">
 						<div class="plant-notes-content">
 							@if (is_string($plant->get('notes')))
@@ -123,7 +147,7 @@
 						</div>
 
 						<div class="plant-notes-edit">
-							<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'notes');">
+							<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'notes', '{{ $plant->get('notes') ?? '' }}');">
 								<i class="fas fa-edit is-color-darker"></i>
 							</a>
 						</div>

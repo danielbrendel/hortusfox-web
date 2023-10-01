@@ -129,7 +129,7 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="text" class="input" name="value" required>
+									<input type="text" class="input" name="value" id="inpEditTextValue" required>
 								</div>
 							</div>
 						</form>
@@ -157,7 +157,7 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="checkbox" name="value" value="1">&nbsp;<span id="property-hint"></span>
+									<input type="checkbox" name="value" id="inpEditBooleanValue" value="1">&nbsp;<span id="property-hint"></span>
 								</div>
 							</div>
 						</form>
@@ -185,7 +185,7 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="number" class="input" name="value" required>
+									<input type="number" class="input" name="value" id="inpEditIntegerValue" required>
 								</div>
 							</div>
 						</form>
@@ -213,7 +213,7 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="date" class="input" name="value" required>
+									<input type="date" class="input" name="value" id="inpEditDateValue" required>
 								</div>
 							</div>
 						</form>
@@ -241,7 +241,7 @@
 
 							<div class="field">
 								<div class="control">
-									<select name="value" id="selEditCombo"></select>
+									<select class="input" name="value" id="selEditCombo"></select>
 								</div>
 							</div>
 						</form>

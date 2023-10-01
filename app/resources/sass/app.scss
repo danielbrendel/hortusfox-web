@@ -79,6 +79,54 @@ h2 {
     float: right;
 }
 
+.navbar-item a {
+    color: rgb(200, 200, 200);
+}
+
+.navbar-item a:hover {
+    color: rgb(250, 250, 250);
+}
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+    background-color: rgba(255, 255, 255, 0.0) !important;
+    color: rgb(180, 180, 180) !important;
+}
+
+.navbar-item, .navbar-burger, .navbar-link {
+    color: rgb(190, 190, 190);
+}
+
+.navbar-dropdown {
+    background-color: rgb(50, 50, 48);
+}
+
+.navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+@media screen and (max-width: 1087px) {
+    .navbar-menu {
+        background-color: rgb(50, 50, 48);
+    }
+}
+
+a.navbar-burger:hover {
+    color: rgb(200, 200, 200);
+}
+
+.navbar-start {
+    @media screen and (min-width: 1088px) {
+        flex-grow: 1;
+        justify-content: center;
+    }
+}
+
+.navbar-item-only-mobile {
+    @media screen and (min-width: 1089px) {
+        display: none;
+    }
+}
+
 .locations {
     text-align: center;
 }
@@ -220,7 +268,9 @@ h2 {
 }
 
 .plant-notes {
+    position: relative;
     width: 100%;
+    min-width: 345px;
     min-height: 75px;
     margin-bottom: 10px;
     padding: 10px;
@@ -505,50 +555,47 @@ h2 {
     text-align: center;
 }
 
-.navbar-item a {
-    color: rgb(200, 200, 200);
+.plant-tags {
+    position: relative;
 }
 
-.navbar-item a:hover {
-    color: rgb(250, 250, 250);
+.plant-tags-content {
+    position: relative;
+    display: inline-block;
+    width: 90%;
 }
 
-a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
-    background-color: rgba(255, 255, 255, 0.0) !important;
-    color: rgb(180, 180, 180) !important;
+.plant-tags-edit {
+    position: relative;
+    display: inline-block;
+    float: right;
 }
 
-.navbar-item, .navbar-burger, .navbar-link {
+.plant-tags-item {
+    position: relative;
+    display: inline-block;
+    min-width: 90px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 9px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 16px;
+    text-align: center;
+    background-color: rgba(200, 200, 200, 0.3);
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 10px;
+}
+
+.plant-tags-item:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.plant-tags-item a {
     color: rgb(190, 190, 190);
 }
 
-.navbar-dropdown {
-    background-color: rgb(50, 50, 48);
-}
-
-.navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
-    background-color: rgba(0, 0, 0, 0.0);
-}
-
-@media screen and (max-width: 1087px) {
-    .navbar-menu {
-        background-color: rgb(50, 50, 48);
-    }
-}
-
-a.navbar-burger:hover {
-    color: rgb(200, 200, 200);
-}
-
-.navbar-start {
-    @media screen and (min-width: 1088px) {
-        flex-grow: 1;
-        justify-content: center;
-    }
-}
-
-.navbar-item-only-mobile {
-    @media screen and (min-width: 1089px) {
-        display: none;
-    }
+.plant-tags-item a:hover {
+    color: rgb(230, 230, 230);
 }
