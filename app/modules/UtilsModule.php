@@ -205,7 +205,6 @@ class UtilsModule {
                 'users' => UserModel::getCount(),
                 'locations' => LocationsModel::getCount(),
                 'plants' => PlantsModel::getCount(),
-                'endangered' => PlantsModel::getEndangeredCount(),
                 'tasks' => TasksModel::getOpenTaskCount()
             ];
         } catch (\Exception $e) {

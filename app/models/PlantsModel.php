@@ -179,19 +179,6 @@
         }
 
         /**
-         * @return int
-         * @throws \Exception
-         */
-        public static function getEndangeredCount()
-        {
-            try {
-                return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '` WHERE health_state <> ?', [self::PLANT_STATE_GOOD])->first()->get('count');
-            } catch (\Exception $e) {
-                throw $e;
-            }
-        }
-
-        /**
          * @param $text
          * @param $search_name
          * @param $search_tags

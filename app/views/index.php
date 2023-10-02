@@ -9,23 +9,23 @@
 
 			<div class="stats">
 				<div class="stats-item">
-					<div class="stats-item-count">{{ $stats['locations'] }}</div>
-					<div class="stats-item-label">{{ __('app.locations') }}</div>
-				</div>
-
-				<div class="stats-item">
-					<div class="stats-item-count">{{ $stats['users'] }}</div>
-					<div class="stats-item-label">{{ __('app.users') }}</div>
-				</div>
-
-				<div class="stats-item">
 					<div class="stats-item-count">{{ $stats['plants'] }}</div>
 					<div class="stats-item-label">{{ __('app.plants') }}</div>
 				</div>
 
 				<div class="stats-item">
-					<div class="stats-item-count">{{ $stats['endangered'] }}</div>
-					<div class="stats-item-label">{{ __('app.endangered') }}</div>
+					<div class="stats-item-count">{{ $stats['locations'] }}</div>
+					<div class="stats-item-label">{{ __('app.locations') }}</div>
+				</div>
+
+				<div class="stats-item">
+					<div class="stats-item-count">{{ $stats['tasks'] }}</div>
+					<div class="stats-item-label">{{ __('app.tasks') }}</div>
+				</div>
+
+				<div class="stats-item">
+					<div class="stats-item-count">{{ $stats['users'] }}</div>
+					<div class="stats-item-label">{{ __('app.users') }}</div>
 				</div>
 			</div>
 			

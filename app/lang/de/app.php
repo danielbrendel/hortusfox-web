@@ -75,7 +75,6 @@ return [
 	'label' => 'Bezeichnung',
 	'confirmPhotoRemoval' => 'Bist du sicher, dass du dieses Foto entfernen möchtest?',
 	'users' => 'User',
-	'endangered' => 'Gefährdet',
 	'photo_uploaded_successfully' => 'Das Foto wurde erfolgreich hochgeladen',
 	'success' => 'Erfolg',
 	'profile' => 'Profil',
