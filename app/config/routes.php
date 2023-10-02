@@ -28,5 +28,9 @@ return [
     array('/profile', 'GET', 'index@view_profile'),
     array('/search', 'GET', 'index@view_search'),
     array('/search/perform', 'POST', 'index@perform_search'),
+    array('/tasks', 'GET', 'index@view_tasks'),
+    array('/tasks/create', 'POST', 'index@create_task'),
+    array('/tasks/edit', 'POST', 'index@edit_task'),
+    array('/tasks/toggle', 'POST', 'index@toggle_task'),
     array('$404', 'ANY', 'error404@index')
 ];

@@ -22,6 +22,12 @@
             </div>
 
             <div class="navbar-item">
+                <a href="{{ url('/tasks') }}">
+                    <i class="fas fa-tasks" title="{{ __('app.tasks') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.tasks') }}</span>
+                </a>
+            </div>
+
+            <div class="navbar-item">
                 <a href="{{ url('/search') }}">
                     <i class="fas fa-search" title="{{ __('app.search') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.search') }}</span>
                 </a>

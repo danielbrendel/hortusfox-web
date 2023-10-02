@@ -314,6 +314,74 @@
 					</footer>
 				</div>
 			</div>
+
+			<div class="modal" :class="{'is-active': bShowCreateTask}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.create_task') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowCreateTask = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmCreateTask" method="POST" action="{{ url('/tasks/create') }}">
+							@csrf
+
+							<div class="field">
+								<label class="label">{{ __('app.title') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="title" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.description') }}</label>
+								<div class="control">
+									<textarea name="description" class="textarea"></textarea>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmCreateTask').submit();">{{ __('app.create_task') }}</button>
+						<button class="button" onclick="window.vue.bShowCreateTask = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditTask}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_task') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditTask = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditTask" method="POST" action="{{ url('/tasks/edit') }}">
+							@csrf
+
+							<input type="hidden" name="task" id="inpEditTaskId"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.title') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="title" id="inpEditTaskTitle" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.description') }}</label>
+								<div class="control">
+									<textarea name="description" class="textarea" id="inpEditTaskDescription"></textarea>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditTask').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditTask = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
 		</div>
 
 		<script src="{{ asset('js/app.js') }}"></script>

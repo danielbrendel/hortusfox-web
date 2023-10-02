@@ -89,5 +89,17 @@ return [
 	'search_notes' => 'Include notes in search',
 	'no_tags_specified' => 'No tags specified yet',
 	'remove_plant' => 'Remove plant',
-	'confirmPlantRemoval' => 'Are you sure you want to remove this plant?'
+	'confirmPlantRemoval' => 'Are you sure you want to remove this plant?',
+	'tasks' => 'Tasks',
+	'tasks_hint' => 'Here you can manage required tasks for your plant care',
+	'create_task' => 'Create task',
+	'create_new' => 'Create new task',
+	'title' => 'Title',
+	'description' => 'Description',
+	'task_created_successfully' => 'Task was created successfully',
+	'tasks_todo' => 'To-Do',
+	'tasks_done' => 'Done',
+	'done' => 'Done',
+	'edit_task' => 'Edit task',
+	'task_edited_successfully' => 'Task was successfully edited'
 ];

@@ -21,6 +21,8 @@ window.vue = new Vue({
         bShowEditCombo: false,
         bShowEditPhoto: false,
         bShowUploadPhoto: false,
+        bShowCreateTask: false,
+        bShowEditTask: false,
         comboLocation: [],
         comboCuttingMonth: [],
         comboLightLevel: [],
@@ -171,6 +173,29 @@ window.vue = new Vue({
             }
 
             location.href = window.location.origin + '/plants/remove?plant=' + plant + '&location=' + retloc;
+        },
+
+        toggleTaskStatus: function(id)
+        {
+            window.vue.ajaxRequest('post', window.location.origin + '/tasks/toggle', { task: id }, function(response){
+                if (response.code == 200) {
+                    let elem = document.getElementById('task-item-' + id);
+                    if (elem) {
+                        elem.remove();
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        editTask: function(id)
+        {
+            document.getElementById('inpEditTaskId').value = id;
+            document.getElementById('inpEditTaskTitle').value = document.getElementById('task-item-title-' + id).innerText;
+            document.getElementById('inpEditTaskDescription').value = document.getElementById('task-item-description-' + id).innerText;
+
+            window.vue.bShowEditTask = true;
         },
     }
 });

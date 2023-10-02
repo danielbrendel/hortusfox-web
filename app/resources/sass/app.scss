@@ -599,3 +599,79 @@ a.navbar-burger:hover {
 .plant-tags-item a:hover {
     color: rgb(230, 230, 230);
 }
+
+.tasks {
+    margin-bottom: 50px;
+}
+
+.task {
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: 25px;
+    background-color: rgba(50, 50, 50, 0.76);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 4px;
+}
+
+.task-header {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background-color: rgb(35, 35, 35);
+}
+
+.task-header-title {
+    position: relative;
+    display: inline-block;
+    top: -5px;
+    font-size: 1.5em;
+    color: rgb(200, 200, 200);
+}
+
+.task-header-action {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.task-header-action a {
+    color: rgb(150, 150, 150);
+}
+
+.task-description {
+    position: relative;
+    margin-bottom: 43px;
+    padding: 10px;
+    font-size: 1.0em;
+    color: rgb(150, 150, 150);
+}
+
+.task-footer {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(10, 10, 10);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 0.8em;
+}
+
+.task-footer-date {
+    position: relative;
+    display: inline-block;
+}
+
+.task-footer-action {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.task-footer-action a {
+    color: rgb(150, 150, 150);
+}
