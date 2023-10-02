@@ -22,9 +22,9 @@
   "homepage": "https://github.com/danielbrendel/dnyAsatruPHP-App#readme",
   "devDependencies": {
     "css-loader": "^5.2.7",
-    "sass": "^1.63.4",
+    "sass": "^1.68.0",
     "sass-loader": "^10.4.1",
-    "webpack": "^5.87.0",
+    "webpack": "^5.88.2",
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
