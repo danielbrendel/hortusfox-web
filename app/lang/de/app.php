@@ -88,5 +88,17 @@ return [
 	'search_notes' => 'Nach Notizen suchen',
 	'no_tags_specified' => 'Es wurden noch keine Tags hinzugefügt',
 	'remove_plant' => 'Pflanze entfernen',
-	'confirmPlantRemoval' => 'Bist du sicher, dass du diese Pflanze entfernen möchtest?'
+	'confirmPlantRemoval' => 'Bist du sicher, dass du diese Pflanze entfernen möchtest?',
+	'tasks' => 'Aufgaben',
+	'tasks_hint' => 'Hier kannst du wichtige Aufgaben verwalten.',
+	'create_task' => 'Aufgabe erstellen',
+	'create_new' => 'Neue Aufgabe erstellen',
+	'title' => 'Titel',
+	'description' => 'Beschreibung',
+	'task_created_successfully' => 'Die Aufgabe wurde erfolgreich erstellt',
+	'tasks_todo' => 'Zu tun',
+	'tasks_done' => 'Erledigt',
+	'done' => 'Erledigt',
+	'edit_task' => 'Aufgabe bearbeiten',
+	'task_edited_successfully' => 'Die Aufgabe wurde erfolgreich aktualisiert'
 ];
