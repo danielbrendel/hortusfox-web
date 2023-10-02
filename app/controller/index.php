@@ -59,7 +59,8 @@ class IndexController extends BaseController {
 		
 		return parent::view(['content', 'plants'], [
 			'plants' => $plants,
-			'location' => $location
+			'location' => $location,
+			'location_name' => LocationsModel::getNameById($location)
 		]);
 	}
 

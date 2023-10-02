@@ -7,7 +7,7 @@
 
             <h2 class="smaller-headline">{{ __('app.search_hint') }}</h2>
 
-            <div class="vertical-margin">
+            <div class="margin-vertical">
                 <form method="POST" action="{{ url('/search/perform') }}">
                     @csrf
 

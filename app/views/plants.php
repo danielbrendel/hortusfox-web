@@ -3,7 +3,7 @@
 
 	<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/plants.jpg') }}');">
 		<div class="column-overlay">
-			<h1>{{ __('app.plants') }}</h1>
+			<h1>{{ $location_name }}</h1>
 
 			<div class="margin-vertical">
                 <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = {{ $location }}; window.vue.bShowAddPlant = true;">{{ __('app.add_plant') }}</a>
