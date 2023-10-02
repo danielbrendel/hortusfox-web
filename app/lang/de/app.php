@@ -83,7 +83,7 @@ return [
 	'last_authored_plants' => 'Zuletzt bearbeitete Pflanzen',
 	'search' => 'Suche',
 	'search_hint' => 'Die Datenbank durchsuchen',
-	'input_search' => 'Gibt den Suchtext hier ein',
+	'input_search' => 'Gib den Suchtext hier ein',
 	'search_name' => 'Nach Namen suchen',
 	'search_tags' => 'Nach Tags suchen',
 	'search_notes' => 'Nach Notizen suchen',
