@@ -68,13 +68,6 @@
 							</div>
 
 							<div class="field">
-								<label class="label">{{ __('app.date_of_purchase') }}</label>
-								<div class="control">
-									<input type="date" class="input" name="date_of_purchase" required>
-								</div>
-							</div>
-
-							<div class="field">
 								<label class="label">{{ __('app.humidity') }}</label>
 								<div class="control">
 									<input type="number" min="0" max="100" class="input" name="humidity" required>

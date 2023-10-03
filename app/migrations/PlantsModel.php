@@ -37,7 +37,7 @@ class PlantsModel_Migration {
         $this->database->add('last_repotted DATETIME NULL');
         $this->database->add('perennial BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('cutting_month INT NULL');
-        $this->database->add('date_of_purchase DATETIME NOT NULL');
+        $this->database->add('date_of_purchase DATETIME NULL');
         $this->database->add('humidity INT NOT NULL');
         $this->database->add('light_level VARCHAR(512) NOT NULL');
         $this->database->add('health_state VARCHAR(512) NOT NULL DEFAULT \'in_good_standing\'');

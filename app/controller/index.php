@@ -114,7 +114,6 @@ class IndexController extends BaseController {
 		$validator = new Asatru\Controller\PostValidator([
 			'name' => 'required',
 			'location' => 'required',
-			'date_of_purchase' => 'required',
 			'humidity' => 'required',
 			'light_level' => 'required'
 		]);
@@ -133,11 +132,10 @@ class IndexController extends BaseController {
 		$name = $request->params()->query('name', null);
 		$location = $request->params()->query('location', null);
 		$perennial = $request->params()->query('perennial', false);
-		$date_of_purchase = $request->params()->query('date_of_purchase', null);
 		$humidity = $request->params()->query('humidity', 0);
 		$light_level = $request->params()->query('light_level', '');
 
-		$plant_id = PlantsModel::addPlant($name, $location, $perennial, $date_of_purchase, $humidity, $light_level);
+		$plant_id = PlantsModel::addPlant($name, $location, $perennial, $humidity, $light_level);
 
 		return redirect('/plants/details/' . $plant_id);
 	}

@@ -69,13 +69,12 @@
          * @param $name
          * @param $location
          * @param $perennial
-         * @param $date_of_purchase
          * @param $humidity
          * @param $light_level
          * @return int
          * @throws \Exception
          */
-        public static function addPlant($name, $location, $perennial, $date_of_purchase, $humidity, $light_level)
+        public static function addPlant($name, $location, $perennial, $humidity, $light_level)
         {
             try {
                 $user = UserModel::getAuthUser();
@@ -97,8 +96,8 @@
 
                 move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name));
 
-                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, date_of_purchase, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                    $name, $location, $file_name, $perennial, $date_of_purchase, $humidity, $light_level, $user->get('id')
+                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+                    $name, $location, $file_name, $perennial, $humidity, $light_level, $user->get('id')
                 ]);
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();

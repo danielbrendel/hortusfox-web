@@ -84,7 +84,15 @@
 
 							<tr>
 								<td><strong>{{ __('app.date_of_purchase') }}</strong></td>
-								<td>{{ date('Y-m-d', strtotime($plant->get('date_of_purchase'))) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'date_of_purchase', '{{ ($plant->get('date_of_purchase')) ? date('Y-m-d', strtotime($plant->get('date_of_purchase'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>
+									@if ($plant->get('date_of_purchase'))
+										{{ date('Y-m-d', strtotime($plant->get('date_of_purchase'))) }}
+									@else
+										<span class="is-not-available">N/A</span>
+									@endif
+									
+									<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'date_of_purchase', '{{ ($plant->get('date_of_purchase')) ? date('Y-m-d', strtotime($plant->get('date_of_purchase'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+								</td>
 							</tr>
 
 							<tr>
