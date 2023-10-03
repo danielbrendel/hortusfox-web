@@ -66,10 +66,16 @@
         }
 
         /**
+         * @param $name
+         * @param $location
+         * @param $perennial
+         * @param $date_of_purchase
+         * @param $humidity
+         * @param $light_level
          * @return int
          * @throws \Exception
          */
-        public static function addPlant($name, $location, $perennial, $cutting_month, $date_of_purchase, $humidity, $light_level)
+        public static function addPlant($name, $location, $perennial, $date_of_purchase, $humidity, $light_level)
         {
             try {
                 $user = UserModel::getAuthUser();
@@ -91,8 +97,8 @@
 
                 move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name));
 
-                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, cutting_month, date_of_purchase, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                    $name, $location, $file_name, $perennial, $cutting_month, $date_of_purchase, $humidity, $light_level, $user->get('id')
+                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, date_of_purchase, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+                    $name, $location, $file_name, $perennial, $date_of_purchase, $humidity, $light_level, $user->get('id')
                 ]);
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
@@ -119,8 +125,8 @@
                 if (!$user) {
                     throw new \Exception('Invalid user');
                 }
-
-                static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
+                
+                static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [($value !== '#null') ? $value : null, $user->get('id'), $plantId]);
             
                 LogModel::addLog($user->get('id'), $plantId, $attribute, $value);
             } catch (\Exception $e) {

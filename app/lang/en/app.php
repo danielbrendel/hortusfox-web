@@ -100,5 +100,6 @@ return [
 	'tasks_done' => 'Done',
 	'done' => 'Done',
 	'edit_task' => 'Edit task',
-	'task_edited_successfully' => 'Task was successfully edited'
+	'task_edited_successfully' => 'Task was successfully edited',
+	'scientific_name' => 'Scientific name'
 ];

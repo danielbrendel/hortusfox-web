@@ -36,6 +36,11 @@
 							</tr>
 
 							<tr>
+								<td><strong>{{ __('app.scientific_name') }}</strong></td>
+								<td>{!! ($plant->get('scientific_name')) ?? '<span class="is-not-available">N/A</span>' !!} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'scientific_name', '{{ ($plant->get('scientific_name')) ?? '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+							</tr>
+
+							<tr>
 								<td><strong>{{ __('app.location') }}</strong></td>
 								<td>{{ LocationsModel::getNameById($plant->get('location')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'location', window.vue.comboLocation, {{ $plant->get('location') }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
@@ -74,7 +79,7 @@
 
 							<tr>
 								<td><strong>{{ __('app.cutting_month') }}</strong></td>
-								<td>{{ UtilsModule::getMonthList()[$plant->get('cutting_month')] }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'cutting_month', window.vue.comboCuttingMonth, {{ $plant->get('cutting_month') }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>{!! ($plant->get('cutting_month')) ? UtilsModule::getMonthList()[$plant->get('cutting_month')] : '<span class="is-not-available">N/A</span>' !!} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'cutting_month', window.vue.comboCuttingMonth, {{ ($plant->get('cutting_month')) ?? '0' }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 							</tr>
 
 							<tr>
@@ -138,6 +143,8 @@
 			<div class="columns plant-column">
 				<div class="column is-full">
 					<div class="plant-notes">
+						<a name="plant-notes-anchor"></a>
+
 						<div class="plant-notes-content">
 							@if (is_string($plant->get('notes')))
 								{{ $plant->get('notes') }}
@@ -147,7 +154,7 @@
 						</div>
 
 						<div class="plant-notes-edit">
-							<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'notes', '{{ $plant->get('notes') ?? '' }}');">
+							<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'notes', '{{ $plant->get('notes') ?? '' }}', 'plant-notes-anchor');">
 								<i class="fas fa-edit is-color-darker"></i>
 							</a>
 						</div>
@@ -163,6 +170,8 @@
 						<div class="plant-gallery-upload">
 							<a class="button is-link" href="javascript:void(0);" onclick="window.vue.showPhotoUpload({{ $plant->get('id') }});">{{ __('app.upload') }}</a>
 						</div>
+
+						<a name="plant-gallery-photo-anchor"></a>
 
 						<div class="plant-gallery-photos">
 							@if (count($photos) > 0)
@@ -197,8 +206,10 @@
 				</div>
 			</div>
 
-			<div class="margin-vertical">
-				<a class="button is-danger" href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ __('app.remove_plant') }}</a>
+			<div class="columns plant-column">
+				<div class="column is-full">
+					<a class="button is-danger" href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ __('app.remove_plant') }}</a>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -73,11 +73,12 @@ window.vue = new Vue({
             }
         },
 
-        showEditText: function(plant, property, defval)
+        showEditText: function(plant, property, defval, anchor = '')
         {
             document.getElementById('inpEditTextPlantId').value = plant;
             document.getElementById('inpEditTextAttribute').value = property;
             document.getElementById('inpEditTextValue').value = defval;
+            document.getElementById('inpEditTextAnchor').value = anchor;
             window.vue.bShowEditText = true;
         },
 

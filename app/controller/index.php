@@ -114,8 +114,6 @@ class IndexController extends BaseController {
 		$validator = new Asatru\Controller\PostValidator([
 			'name' => 'required',
 			'location' => 'required',
-			'perennial' => 'required',
-			'cutting_month' => 'required',
 			'date_of_purchase' => 'required',
 			'humidity' => 'required',
 			'light_level' => 'required'
@@ -135,12 +133,11 @@ class IndexController extends BaseController {
 		$name = $request->params()->query('name', null);
 		$location = $request->params()->query('location', null);
 		$perennial = $request->params()->query('perennial', false);
-		$cutting_month = $request->params()->query('cutting_month', null);
 		$date_of_purchase = $request->params()->query('date_of_purchase', null);
 		$humidity = $request->params()->query('humidity', 0);
 		$light_level = $request->params()->query('light_level', '');
 
-		$plant_id = PlantsModel::addPlant($name, $location, $perennial, $cutting_month, $date_of_purchase, $humidity, $light_level);
+		$plant_id = PlantsModel::addPlant($name, $location, $perennial, $date_of_purchase, $humidity, $light_level);
 
 		return redirect('/plants/details/' . $plant_id);
 	}
@@ -166,10 +163,11 @@ class IndexController extends BaseController {
 		$plant = $request->params()->query('plant', null);
 		$attribute = $request->params()->query('attribute', null);
 		$value = $request->params()->query('value', false);
+		$anchor = $request->params()->query('anchor', '');
 		
 		PlantsModel::editPlantAttribute($plant, $attribute, $value);
 
-		return redirect('/plants/details/' . $plant);
+		return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
 	}
 
 	/**
@@ -229,7 +227,7 @@ class IndexController extends BaseController {
 
 		FlashMessage::setMsg('success', __('app.photo_uploaded_successfully'));
 
-		return redirect('/plants/details/' . $plant);
+		return redirect('/plants/details/' . $plant . '#plant-gallery-photo-anchor');
 	}
 
 	/**

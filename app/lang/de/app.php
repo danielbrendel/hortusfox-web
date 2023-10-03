@@ -100,5 +100,6 @@ return [
 	'tasks_done' => 'Erledigt',
 	'done' => 'Erledigt',
 	'edit_task' => 'Aufgabe bearbeiten',
-	'task_edited_successfully' => 'Die Aufgabe wurde erfolgreich aktualisiert'
+	'task_edited_successfully' => 'Die Aufgabe wurde erfolgreich aktualisiert',
+	'scientific_name' => 'Wissenschaftlicher Name'
 ];

@@ -68,18 +68,6 @@
 							</div>
 
 							<div class="field">
-								<label class="label">{{ __('app.cutting_month') }}</label>
-								<div class="control">
-									<select name="cutting_month" class="input">
-										<option value="">{{ __('app.select_month') }}</option>
-										@foreach (UtilsModule::getMonthList() as $key => $month)
-											<option value="{{ $key + 1 }}">{{ $month }}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>
-
-							<div class="field">
 								<label class="label">{{ __('app.date_of_purchase') }}</label>
 								<div class="control">
 									<input type="date" class="input" name="date_of_purchase" required>
@@ -126,6 +114,7 @@
 
 							<input type="hidden" name="plant" id="inpEditTextPlantId"/>
 							<input type="hidden" name="attribute" id="inpEditTextAttribute"/>
+							<input type="hidden" name="anchor" id="inpEditTextAnchor"/>
 
 							<div class="field">
 								<div class="control">
@@ -391,6 +380,7 @@
 				window.vue.comboLocation.push({ ident: {{ $location->get('id') }}, label: '{{ $location->get('name') }}'});
 				@endforeach
 
+				window.vue.comboCuttingMonth.push({ ident: '#null', label: 'N/A'});
 				@foreach (UtilsModule::GetMonthList() as $key => $value)
 				window.vue.comboCuttingMonth.push({ ident: {{ $key }}, label: '{{ $value }}'});
 				@endforeach
