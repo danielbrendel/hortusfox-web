@@ -178,6 +178,9 @@ a.navbar-burger:hover {
 
 .plants {
     margin-top: 30px;
+    @media screen and (max-width: 552px) {
+        text-align: center;
+    }
 }
 
 .plant-card {
@@ -185,8 +188,8 @@ a.navbar-burger:hover {
     display: inline-block;
     width: 265px;
     @media screen and (max-width: 552px) {
-        width: 95%;
-        height: 530px;
+        width: 145px;
+        height: 257px;
     }
     height: 398px;
     margin-left: 10px;
@@ -213,18 +216,27 @@ a.navbar-burger:hover {
     width: 100%;
     height: 69px;
     padding-top: 17px;
-    padding-left: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     color: rgb(200, 200, 200);
-    font-size: 1.3em;
     text-align: center;
+    font-size: 1.3em;
+    @media screen and (max-width: 552px) {
+        padding-top: 22px;
+        font-size: 0.9em;
+    }
 }
 
 .plant-card-health-state {
     position: absolute;
     top: 5px;
-    right: 12px;
+    right: 6px;
     z-index: 2;
+}
+
+.plant-card-health-state i {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 32%;
 }
 
 .plant-column {
@@ -233,6 +245,8 @@ a.navbar-burger:hover {
     }
     @media screen and (max-width: 520px) {
         display: inline-block;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
@@ -514,6 +528,8 @@ a.navbar-burger:hover {
 }
 
 .plant-gallery-item-footer {
+    position: relative;
+    top: -3px;
     padding: 10px;
     color: rgb(100, 100, 100);
 }
