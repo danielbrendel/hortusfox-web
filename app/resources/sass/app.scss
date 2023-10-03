@@ -650,6 +650,11 @@ a.navbar-burger:hover {
     color: rgb(150, 150, 150);
 }
 
+.task-description pre {
+    background-color: inherit;
+    color: inherit;
+}
+
 .task-footer {
     position: absolute;
     bottom: 0;

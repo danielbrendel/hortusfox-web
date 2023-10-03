@@ -1,4 +1,4 @@
-# HortusFox - A self-hosted plant care system
+# HortusFox - A self-hosted collaborative plants management system
 
 (C) 2023 by Daniel Brendel
 
@@ -8,10 +8,11 @@
 Released under the MIT license
 
 ## Description
-HortusFox is a self-hosted plant care system which you can use in your own environment to manage all your home plants.
-You can add your plants with various details and photos and assign them to a location of your home. There is a dashboard
+HortusFox is a self-hosted collaborative plants management system which you can use in your own environment to manage all your plants.
+You can add your plants with various details and photos and assign them to a location of your environment. There is a dashboard
 available that shows all important overview information. The system does also feature a warning system in order to indicate
-which plants need special care, user authentication and a history log of what actions users have taken.
+which plants need special care, user authentication, tasks and a history log of what actions users have taken. The system features
+collaborative management, so you can manage your plants with multiple users.
 
 ## System requirements
 - PHP ^8.2

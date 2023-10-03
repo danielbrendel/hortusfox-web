@@ -390,6 +390,8 @@
 				window.vue.confirmPlantRemoval = '{{ __('app.confirmPlantRemoval') }}';
 
 				window.vue.initNavBar();
+
+				window.currentOpenTaskCount = {{ TasksModel::getOpenTaskCount() }};
 			});
 		</script>
 	</body>

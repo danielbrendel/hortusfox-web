@@ -13,7 +13,14 @@ class TasksModel extends \Asatru\Database\Model {
     public static function addTask($title, $description = '')
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
             static::raw('INSERT INTO `' . self::tableName() . '` (title, description) VALUES(?, ?)', [$title, $description]);
+
+            LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -29,7 +36,14 @@ class TasksModel extends \Asatru\Database\Model {
     public static function editTask($taskId, $title, $description)
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
             static::raw('UPDATE `' . self::tableName() . '` SET title = ?, description = ? WHERE id = ?', [$title, $description, $taskId]);
+
+            LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -43,7 +57,14 @@ class TasksModel extends \Asatru\Database\Model {
     public static function setTaskDone($taskId)
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
             static::raw('UPDATE `' . self::tableName() . '` SET done = 1 WHERE id = ?', [$taskId]);
+
+            LogModel::addLog($user->get('id'), 'tasks', 'set_done', $taskId);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -57,7 +78,14 @@ class TasksModel extends \Asatru\Database\Model {
     public static function toggleTaskStatus($taskId)
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
             static::raw('UPDATE `' . self::tableName() . '` SET done = NOT done WHERE id = ?', [$taskId]);
+
+            LogModel::addLog($user->get('id'), 'tasks', 'toggle_status', $taskId);
         } catch (\Exception $e) {
             throw $e;
         }

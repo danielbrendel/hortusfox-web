@@ -25,7 +25,7 @@
                                 <div class="task-header-title" id="task-item-title-{{ $task->get('id') }}">{{ $task->get('title') }}</div>
                                 <div class="task-header-action"><a href="javascript:void(0);" onclick="window.vue.editTask({{ $task->get('id') }});"><i class="fas fa-edit"></i></a></div>
                             </div>
-                            <div class="task-description" id="task-item-description-{{ $task->get('id') }}">{{ ($task->get('description')) ?? 'N/A' }}</div>
+                            <div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{{ ($task->get('description')) ?? 'N/A' }}</pre></div>
                             <div class="task-footer">
                                 <div class="task-footer-date">{{ (new Carbon($task->get('created_at')))->diffForHumans() }}</div>
                                 <div class="task-footer-action">
