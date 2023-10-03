@@ -248,6 +248,11 @@ a.navbar-burger:hover {
         padding-left: 15px;
         padding-right: 15px;
     }
+    @media screen and (max-width: 365px) {
+        display: inline-block;
+        padding-left: unset;
+        padding-right: unset;
+    }
 }
 
 .plant-column table {
