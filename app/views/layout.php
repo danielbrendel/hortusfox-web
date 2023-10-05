@@ -435,6 +435,8 @@
 					</footer>
 				</div>
 			</div>
+
+			@include('scroller.php')
 		</div>
 
 		<script src="{{ asset('js/app.js') }}"></script>
