@@ -53,11 +53,14 @@ class IndexController extends BaseController {
 	 */
 	public function plants_from_location($request)
 	{
+		$user = UserModel::getAuthUser();
+
 		$location = $request->arg('id');
 
 		$plants = PlantsModel::getAll($location);
 		
 		return parent::view(['content', 'plants'], [
+			'user' => $user,
 			'plants' => $plants,
 			'location' => $location,
 			'location_name' => LocationsModel::getNameById($location)
