@@ -31,6 +31,7 @@ window.vue = new Vue({
         comboHealthState: [],
         confirmPhotoRemoval: 'Are you sure you want to remove this photo?',
         confirmPlantRemoval: 'Are you sure you want to remove this plant?',
+        confirmSetAllWatered: 'Are you sure you want to update the last watered date of all these plants?',
     },
 
     methods: {
@@ -207,6 +208,15 @@ window.vue = new Vue({
             document.getElementById('inpEditTaskDescription').value = document.getElementById('task-item-description-' + id).innerText;
 
             window.vue.bShowEditTask = true;
+        },
+
+        updateLastWatered: function(id)
+        {
+            if (!confirm(window.vue.confirmSetAllWatered)) {
+                return;
+            }
+
+            location.href = window.location.origin + '/plants/location/' + id + '/water';
         },
     }
 });

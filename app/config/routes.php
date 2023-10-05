@@ -18,6 +18,7 @@
 return [
     array('/', 'GET', 'index@index'),
     array('/plants/location/{id}', 'GET', 'index@plants_from_location'),
+    array('/plants/location/{id}/water', 'ANY', 'index@set_plants_watered'),
     array('/plants/details/{id}', 'GET', 'index@view_plant_details'),
     array('/plants/add', 'POST', 'index@add_plant'),
     array('/plants/details/edit', 'POST', 'index@edit_plant_details'),

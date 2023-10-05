@@ -75,6 +75,14 @@ h2 {
     color: rgb(100, 100, 100);
 }
 
+.is-action-button-margin {
+    margin-right: 10px;
+    @media screen and (max-width: 376px) {
+        margin-right: 15px;
+    }
+    margin-bottom: 10px;
+}
+
 .float-right {
     float: right;
 }

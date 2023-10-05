@@ -108,5 +108,8 @@ return [
 	'edit_preferences' => 'Edit preferences',
 	'language' => 'Language',
 	'show_log' => 'Show log',
-	'preferences_saved_successfully' => 'Preferences were saved successfully'
+	'preferences_saved_successfully' => 'Preferences were saved successfully',
+	'set_watered' => 'Set all to watered',
+	'all_plants_watered' => 'Last watered status has been updated for these plants',
+	'confirmSetAllWatered' => 'Are you sure you want to update the last watered date of all these plants?'
 ];

@@ -313,6 +313,20 @@
         }
 
         /**
+         * @param $location
+         * @return void
+         * @throws \Exception
+         */
+        public static function updateLastWatered($location)
+        {
+            try {
+                static::raw('UPDATE `' . self::tableName() . '` SET last_watered = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * @param $plantId
          * @return void
          * @throws \Exception

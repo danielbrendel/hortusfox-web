@@ -108,5 +108,8 @@ return [
 	'edit_preferences' => 'Einstellungen bearbeiten',
 	'language' => 'Sprache',
 	'show_log' => 'Logbuch anzeigen',
-	'preferences_saved_successfully' => 'Die Einstellungen wurden erfolgreich gespeichert'
+	'preferences_saved_successfully' => 'Die Einstellungen wurden erfolgreich gespeichert',
+	'set_watered' => 'Alle auf gewässert setzen',
+	'all_plants_watered' => 'Der Gewässert-Status der Pflanzen wurde aktualisiert',
+	'confirmSetAllWatered' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gewässert-Datum auf heute setzen?'
 ];

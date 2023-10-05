@@ -459,6 +459,7 @@
 
 				window.vue.confirmPhotoRemoval = '{{ __('app.confirmPhotoRemoval') }}';
 				window.vue.confirmPlantRemoval = '{{ __('app.confirmPlantRemoval') }}';
+				window.vue.confirmSetAllWatered = '{{ __('app.confirmSetAllWatered') }}';
 
 				window.vue.initNavBar();
 
