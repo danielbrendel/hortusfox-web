@@ -106,6 +106,7 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
 
 .navbar-dropdown {
     background-color: rgb(50, 50, 48);
+    padding-top: unset;
 }
 
 .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {

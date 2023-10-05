@@ -38,6 +38,20 @@
                     <i class="fas fa-user" title="{{ __('app.profile') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.profile') }}</span>
                 </a>
             </div>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    {{ __('app.locations') }}
+                </a>
+
+                <div class="navbar-dropdown">
+                    @foreach (LocationsModel::getAll() as $location_item)
+                        <a class="navbar-item" href="{{ url('/plants/location/' . $location_item->get('id')) }}">
+                            {{ $location_item->get('name') }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </nav>
