@@ -151,8 +151,12 @@ a.navbar-burger:hover {
 .location {
     position: relative;
     display: inline-block;
-    width: 300px;
+    width: 250px;
     height: 230px;
+    @media screen and (max-width: 830px) {
+        width: 134px;
+        height: 108px;
+    }
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 23px;
@@ -167,6 +171,9 @@ a.navbar-burger:hover {
 .location-title {
     text-align: center;
     font-size: 2.3em;
+    @media screen and (max-width: 830px) {
+        font-size: 1.2em;
+    }
     margin-bottom: 20px;
     background-color: rgba(115, 143, 100, 0.9);
     color: #c3e4a3;
@@ -178,6 +185,10 @@ a.navbar-burger:hover {
 
 .location-icon i {
     color: #99ac97;
+    font-size: 8em;
+    @media screen and (max-width: 830px) {
+        font-size: 2em;
+    }
 }
 
 .margin-vertical {
