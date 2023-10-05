@@ -235,6 +235,41 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowEditLinkText}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditLinkText = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditLinkText" method="POST" action="{{ url('/plants/details/edit/link') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditLinkTextPlantId"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.text') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="text" id="inpEditLinkTextValue" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.link') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="link" id="inpEditLinkTextLink" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditLinkText').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditLinkText = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			<div class="modal" :class="{'is-active': bShowEditPhoto}">
 				<div class="modal-background"></div>
 				<div class="modal-card">

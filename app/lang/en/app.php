@@ -101,5 +101,7 @@ return [
 	'done' => 'Done',
 	'edit_task' => 'Edit task',
 	'task_edited_successfully' => 'Task was successfully edited',
-	'scientific_name' => 'Scientific name'
+	'scientific_name' => 'Scientific name',
+	'text' => 'Text',
+	'link' => 'Link'
 ];

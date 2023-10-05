@@ -37,7 +37,19 @@
 
 							<tr>
 								<td><strong>{{ __('app.scientific_name') }}</strong></td>
-								<td>{!! ($plant->get('scientific_name')) ?? '<span class="is-not-available">N/A</span>' !!} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'scientific_name', '{{ ($plant->get('scientific_name')) ?? '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+								<td>
+									@if ($plant->get('scientific_name'))
+										@if ((is_string($plant->get('knowledge_link'))) && (strlen($plant->get('knowledge_link') > 0)))
+											<a class="is-default-link" href="{{ $plant->get('knowledge_link') }}" target="_blank">{{ $plant->get('scientific_name') }}</a>
+										@else
+											{{ $plant->get('scientific_name') }}
+										@endif
+									@else
+										<span class="is-not-available">N/A</span>
+									@endif
+								
+									<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditLinkText({{ $plant->get('id') }}, '{{ ($plant->get('scientific_name')) ?? '' }}', '{{ ($plant->get('knowledge_link')) ?? '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+								</td>
 							</tr>
 
 							<tr>
@@ -127,6 +139,8 @@
 			<div class="columns plant-column">
 				<div class="column is-full">
 					<div class="plant-tags">
+						<a name="plant-tags-anchor"></a>
+
 						<div class="plant-tags-content">
 							@if (strlen($plant->get('tags')) > 1)
 								@foreach ($tags as $tag)
@@ -140,7 +154,7 @@
 						</div>
 
 						<div class="plant-tags-edit">
-							<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'tags', '{{ $plant->get('tags') }}');">
+							<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'tags', '{{ $plant->get('tags') }}', 'plant-tags-anchor');">
 								<i class="fas fa-edit is-color-darker"></i>
 							</a>
 						</div>

@@ -20,6 +20,7 @@ window.vue = new Vue({
         bShowEditDate: false,
         bShowEditCombo: false,
         bShowEditPhoto: false,
+        bShowEditLinkText: false,
         bShowUploadPhoto: false,
         bShowCreateTask: false,
         bShowEditTask: false,
@@ -134,6 +135,14 @@ window.vue = new Vue({
             document.getElementById('selEditCombo').value = defval;
 
             window.vue.bShowEditCombo = true;
+        },
+
+        showEditLinkText: function(plant, text, link)
+        {
+            document.getElementById('inpEditLinkTextPlantId').value = plant;
+            document.getElementById('inpEditLinkTextValue').value = text;
+            document.getElementById('inpEditLinkTextLink').value = link;
+            window.vue.bShowEditLinkText = true;
         },
 
         showEditPhoto: function(plant, property)

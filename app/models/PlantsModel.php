@@ -139,6 +139,35 @@
 
         /**
          * @param $plantId
+         * @param $text
+         * @param $link
+         * @return void
+         * @throws \Exception
+         */
+        public static function editPlantLink($plantId, $text, $link = '')
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                if (strlen($link) > 0) {
+                    if ((strpos($link, 'http://') === false) && (strpos($link, 'https://') === false)) {
+                        $link = '';
+                    }
+                }
+                
+                static::raw('UPDATE `' . self::tableName() . '` SET scientific_name = ?, knowledge_link = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$text, $link, $user->get('id'), $plantId]);
+            
+                LogModel::addLog($user->get('id'), $plantId, 'scientific_name|knowledge_link', $text . '|' . (strlen($link) > 0) ? $link : 'null');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $plantId
          * @param $attribute
          * @param $value
          * @return void

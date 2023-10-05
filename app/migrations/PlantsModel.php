@@ -30,6 +30,7 @@ class PlantsModel_Migration {
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('name VARCHAR(512) NOT NULL');
         $this->database->add('scientific_name VARCHAR(512) NULL');
+        $this->database->add('knowledge_link VARCHAR(512) NULL');
         $this->database->add('location INT NOT NULL');
         $this->database->add('tags VARCHAR(1024) NOT NULL DEFAULT \'\'');
         $this->database->add('photo VARCHAR(512) NOT NULL');

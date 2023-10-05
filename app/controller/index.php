@@ -169,6 +169,34 @@ class IndexController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/details/edit/link
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_plant_link($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'text' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			FlashMessage::setMsg('error', 'Invalid data given');
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$text = $request->params()->query('text', null);
+		$link = $request->params()->query('link', false);
+		$anchor = $request->params()->query('anchor', '');
+		
+		PlantsModel::editPlantLink($plant, $text, $link);
+
+		return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+	}
+
+	/**
 	 * Handles URL: /plants/details/edit/photo
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
