@@ -72,6 +72,8 @@ class IndexController extends BaseController {
 	 */
 	public function view_plant_details($request)
 	{
+		$user = UserModel::getAuthUser();
+
 		$plant_id = $request->arg('id');
 
 		$plant_data = PlantsModel::getDetails($plant_id);
@@ -95,6 +97,7 @@ class IndexController extends BaseController {
 		$photos = PlantPhotoModel::getPlantGallery($plant_id);
 		
 		return parent::view(['content', 'details'], [
+			'user' => $user,
 			'plant' => $plant_data,
 			'photos' => $photos,
 			'tags' => $tags,
