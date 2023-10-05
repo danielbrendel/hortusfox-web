@@ -134,31 +134,31 @@ class UtilsModule {
     {
         list($width, $height) = getimagesize($srcfile);
 
-        $factor = 1.0;
+        $factor = config('resize')->default;
 
         if ($width > $height) {
             if (($width >= 800) and ($width < 1000)) {
-                $factor = 0.5;
+                $factor = config('resize')->factor_1;
             } else if (($width >= 1000) and ($width < 1250)) {
-                $factor = 0.4;
+                $factor = config('resize')->factor_2;
             } else if (($width >= 1250) and ($width < 1500)) {
-                $factor = 0.4;
+                $factor = config('resize')->factor_3;
             } else if (($width >= 1500) and ($width < 2000)) {
-                $factor = 0.3;
+                $factor = config('resize')->factor_4;
             } else if ($width >= 2000) {
-                $factor = 0.2;
+                $factor = config('resize')->factor_5;
             }
         } else {
             if (($height >= 800) and ($height < 1000)) {
-                $factor = 0.5;
+                $factor = config('resize')->factor_1;
             } else if (($height >= 1000) and ($height < 1250)) {
-                $factor = 0.4;
+                $factor = config('resize')->factor_2;
             } else if (($height >= 1250) and ($height < 1500)) {
-                $factor = 0.4;
+                $factor = config('resize')->factor_3;
             } else if (($height >= 1500) and ($height < 2000)) {
-                $factor = 0.3;
+                $factor = config('resize')->factor_4;
             } else if ($height >= 2000) {
-                $factor = 0.2;
+                $factor = config('resize')->factor_5;
             }
         }
 

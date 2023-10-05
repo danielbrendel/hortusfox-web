@@ -92,12 +92,16 @@
                     throw new \Exception('File is not a valid image');
                 }
 
-                $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.' . $file_ext;
+                $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
 
-                move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name));
+                move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name . '.' . $file_ext));
+
+                if (!UtilsModule::createThumbFile(public_path('/img/' . $file_name . '.' . $file_ext), UtilsModule::getImageType($file_ext, public_path('/img/' . $file_name)), public_path('/img/' . $file_name), $file_ext)) {
+                    throw new \Exception('createThumbFile failed');
+                }
 
                 static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                    $name, $location, $file_name, $perennial, $humidity, $light_level, $user->get('id')
+                    $name, $location, $file_name . '_thumb.' . $file_ext, $perennial, $humidity, $light_level, $user->get('id')
                 ]);
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
@@ -158,11 +162,15 @@
                     throw new \Exception('File is not a valid image');
                 }
 
-                $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.' . $file_ext;
+                $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
 
-                move_uploaded_file($_FILES[$value]['tmp_name'], public_path('/img/' . $file_name));
+                move_uploaded_file($_FILES[$value]['tmp_name'], public_path('/img/' . $file_name . '.' . $file_ext));
 
-                static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name, $user->get('id'), $plantId]);
+                if (!UtilsModule::createThumbFile(public_path('/img/' . $file_name . '.' . $file_ext), UtilsModule::getImageType($file_ext, public_path('/img/' . $file_name)), public_path('/img/' . $file_name), $file_ext)) {
+                    throw new \Exception('createThumbFile failed');
+                }
+
+                static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name . '_thumb.' . $file_ext, $user->get('id'), $plantId]);
             
                 LogModel::addLog($user->get('id'), $plantId, $attribute, $value);
             } catch (\Exception $e) {
