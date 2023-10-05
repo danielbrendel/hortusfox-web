@@ -7,6 +7,12 @@
 
             <div class="margin-vertical is-default-text-color">{{ __('app.profile_hint', ['name' => $user->get('name'), 'email' => $user->get('email')]) }}</div>
 
+			@include('flashmsg.php')
+
+			<div class="margin-vertical">
+				<a class="button is-link" href="javascript:void(0);" onclick="window.vue.bShowEditPreferences = true;">{{ __('app.preferences') }}</a>
+			</div>
+
 			<div class="plants">
                 <h2 class="smaller-headline">{{ __('app.last_authored_plants') }}</h2>
 
@@ -31,16 +37,18 @@
 				@endforeach
 			</div>
 
-            @if (count($log) > 0)
-				<div class="log">
-					<div class="log-title">{{ __('app.log_title') }}</div>
+			@if ($user->get('show_log'))
+				@if (count($log) > 0)
+					<div class="log">
+						<div class="log-title">{{ __('app.log_title') }}</div>
 
-					<div class="log-content">
-						@foreach ($log as $entry)
-							<div class="log-item">[{{ $entry['date'] }}] ({{ $entry['user'] }}) {{ $entry['property'] }} =&gt; {{ $entry['value'] }} @ {{ $entry['target'] }}</div>
-						@endforeach
+						<div class="log-content">
+							@foreach ($log as $entry)
+								<div class="log-item">[{{ $entry['date'] }}] ({{ $entry['user'] }}) {{ $entry['property'] }} =&gt; {{ $entry['value'] }} @ {{ $entry['target'] }}</div>
+							@endforeach
+						</div>
 					</div>
-				</div>
+				@endif
 			@endif
 		</div>
 	</div>

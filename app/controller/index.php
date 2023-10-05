@@ -321,6 +321,39 @@ class IndexController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /profile/preferences
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_preferences($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'lang' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			$errorstr = '';
+			foreach ($validator->errorMsgs() as $err) {
+				$errorstr .= $err . '<br/>';
+			}
+
+			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
+			
+			return back();
+		}
+
+		$lang = $request->params()->query('lang', 'en');
+		$show_log = $request->params()->query('show_log', false);
+
+		UserModel::editPreferences($lang, $show_log);
+
+		FlashMessage::setMsg('success', __('app.preferences_saved_successfully'));
+
+		return redirect('/profile');
+	}
+
+	/**
 	 * Handles URL: /search
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

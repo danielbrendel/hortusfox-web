@@ -27,6 +27,7 @@ return [
     array('/plants/details/gallery/photo/remove', 'POST', 'index@remove_gallery_photo'),
     array('/plants/remove', 'ANY', 'index@remove_plant'),
     array('/profile', 'GET', 'index@view_profile'),
+    array('/profile/preferences', 'POST', 'index@edit_preferences'),
     array('/search', 'GET', 'index@view_search'),
     array('/search/perform', 'POST', 'index@perform_search'),
     array('/tasks', 'GET', 'index@view_tasks'),

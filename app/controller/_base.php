@@ -29,9 +29,13 @@ class BaseController extends Asatru\Controller\Controller {
 			exit('403 - Access Forbidden.');
 		}
 
-		$lang = env('APP_LANG', 'en');
-		if (($lang !== null) && (is_string($lang))) {
-			setLanguage($lang);
+		if ((is_string($auth_user->get('lang'))) && (strlen($auth_user->get('lang')) > 0)) {
+			setLanguage($auth_user->get('lang'));
+		} else {
+			$lang = env('APP_LANG', 'en');
+			if (($lang !== null) && (is_string($lang))) {
+				setLanguage($lang);
+			}
 		}
 	}
 

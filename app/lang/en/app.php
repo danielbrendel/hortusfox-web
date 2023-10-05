@@ -103,5 +103,10 @@ return [
 	'task_edited_successfully' => 'Task was successfully edited',
 	'scientific_name' => 'Scientific name',
 	'text' => 'Text',
-	'link' => 'Link'
+	'link' => 'Link',
+	'preferences' => 'Preferences',
+	'edit_preferences' => 'Edit preferences',
+	'language' => 'Language',
+	'show_log' => 'Show log',
+	'preferences_saved_successfully' => 'Preferences were saved successfully'
 ];

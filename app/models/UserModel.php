@@ -51,6 +51,26 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $lang
+     * @param $show_log
+     * @return void
+     * @throws \Exception
+     */
+    public static function editPreferences($lang, $show_log)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET lang = ?, show_log = ? WHERE id = ?', [$lang, $show_log, $user->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

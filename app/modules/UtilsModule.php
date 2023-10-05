@@ -211,4 +211,21 @@ class UtilsModule {
             throw $e;
         }
     }
+
+    /**
+     * @return array
+     */
+    public static function getLanguageList()
+    {
+        $result = [];
+
+        $files = scandir(app_path('/lang'));
+        foreach ($files as $file) {
+            if (substr($file, 0, 1) !== '.') {
+                $result[] = $file;
+            }
+        }
+
+        return $result;
+    }
 }

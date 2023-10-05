@@ -103,5 +103,10 @@ return [
 	'task_edited_successfully' => 'Die Aufgabe wurde erfolgreich aktualisiert',
 	'scientific_name' => 'Wissenschaftlicher Name',
 	'text' => 'Text',
-	'link' => 'Link'
+	'link' => 'Link',
+	'preferences' => 'Einstellungen',
+	'edit_preferences' => 'Einstellungen bearbeiten',
+	'language' => 'Sprache',
+	'show_log' => 'Logbuch anzeigen',
+	'preferences_saved_successfully' => 'Die Einstellungen wurden erfolgreich gespeichert'
 ];

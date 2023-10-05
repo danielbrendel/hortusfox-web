@@ -24,6 +24,7 @@ window.vue = new Vue({
         bShowUploadPhoto: false,
         bShowCreateTask: false,
         bShowEditTask: false,
+        bShowEditPreferences: false,
         comboLocation: [],
         comboCuttingMonth: [],
         comboLightLevel: [],

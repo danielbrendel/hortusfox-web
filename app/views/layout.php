@@ -399,6 +399,42 @@
 					</footer>
 				</div>
 			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditPreferences}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_preferences') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditPreferences = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditPreferences" method="POST" action="{{ url('/profile/preferences') }}">
+							@csrf
+
+							<div class="field">
+								<label class="label">{{ __('app.language') }}</label>
+								<div class="control">
+									<select class="input" name="lang" id="selEditCombo">
+										@foreach (UtilsModule::getLanguageList() as $lang)
+											<option value="{{ $lang }}" {{ ($user->get('lang') === $lang) ? 'selected' : ''}}>{{ $lang }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" name="show_log" value="1" {{ ($user->get('show_log')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_log') }}
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPreferences').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditPreferences = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
 		</div>
 
 		<script src="{{ asset('js/app.js') }}"></script>
