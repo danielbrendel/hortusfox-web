@@ -26,6 +26,12 @@
 
                     <div class="field">
                         <div class="control">
+                            <input type="checkbox" name="search_scientific_name" value="1" checked>&nbsp;<span class="is-default-text-color">{{ __('app.search_scientific_name') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
                             <input type="checkbox" name="search_tags" value="1" checked>&nbsp;<span class="is-default-text-color">{{ __('app.search_tags') }}</span>
                         </div>
                     </div>
@@ -46,25 +52,29 @@
 
             @if (isset($plants))
                 <div class="plants">
-                    @foreach ($plants as $plant)
-                        <a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-                            <div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
-                                <div class="plant-card-overlay">
-                                    <div class="plant-card-health-state">
-                                        @if ($plant->get('health_state') === 'overwatered')
-                                            <i class="fas fa-water plant-state-overwatered"></i>
-                                        @elseif ($plant->get('health_state') === 'withering')
-                                            <i class="fab fa-pagelines plant-state-withering"></i>
-                                        @elseif ($plant->get('health_state') === 'infected')
-                                            <i class="fas fa-biohazard plant-state-infected"></i>
-                                        @endif
-                                    </div>
+                    @if (count($plants) > 0)
+                        @foreach ($plants as $plant)
+                            <a href="{{ url('/plants/details/' . $plant->get('id')) }}">
+                                <div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
+                                    <div class="plant-card-overlay">
+                                        <div class="plant-card-health-state">
+                                            @if ($plant->get('health_state') === 'overwatered')
+                                                <i class="fas fa-water plant-state-overwatered"></i>
+                                            @elseif ($plant->get('health_state') === 'withering')
+                                                <i class="fab fa-pagelines plant-state-withering"></i>
+                                            @elseif ($plant->get('health_state') === 'infected')
+                                                <i class="fas fa-biohazard plant-state-infected"></i>
+                                            @endif
+                                        </div>
 
-                                    <div class="plant-card-title">{{ $plant->get('name') }}</div>
+                                        <div class="plant-card-title">{{ $plant->get('name') }}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    @endforeach
+                            </a>
+                        @endforeach
+                    @else
+                        <span class="is-color-darker">{{ __('app.no_plants_found') }}</span>
+                    @endif
                 </div>
             @endif
 		</div>

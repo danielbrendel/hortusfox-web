@@ -84,6 +84,7 @@ return [
 	'search_hint' => 'Search through the database',
 	'input_search' => 'Enter text to search for',
 	'search_name' => 'Include names in search',
+	'search_scientific_name' => 'Include scientific names in search',
 	'search_tags' => 'Include tags in search',
 	'search_notes' => 'Include notes in search',
 	'no_tags_specified' => 'No tags specified yet',
@@ -111,5 +112,6 @@ return [
 	'preferences_saved_successfully' => 'Preferences were saved successfully',
 	'set_watered' => 'Set all to watered',
 	'all_plants_watered' => 'Last watered status has been updated for these plants',
-	'confirmSetAllWatered' => 'Are you sure you want to update the last watered date of all these plants?'
+	'confirmSetAllWatered' => 'Are you sure you want to update the last watered date of all these plants?',
+	'no_plants_found' => 'There were no plants found using your search query'
 ];

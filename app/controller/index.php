@@ -415,10 +415,11 @@ class IndexController extends BaseController {
 
 			$text = $request->params()->query('text', '');
 			$search_name = $request->params()->query('search_name', true);
+			$search_scientific_name = $request->params()->query('search_scientific_name', true);
 			$search_tags = $request->params()->query('search_tags', false);
 			$search_notes = $request->params()->query('search_notes', false);
 			
-			$search_result = PlantsModel::performSearch($text, $search_name, $search_tags, $search_notes);
+			$search_result = PlantsModel::performSearch($text, $search_name, $search_scientific_name, $search_tags, $search_notes);
 
 			return parent::view(['content', 'search'], [
 				'user' => $user,

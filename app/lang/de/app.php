@@ -84,6 +84,7 @@ return [
 	'search_hint' => 'Die Datenbank durchsuchen',
 	'input_search' => 'Gib den Suchtext hier ein',
 	'search_name' => 'Nach Namen suchen',
+	'search_scientific_name' => 'Nach wissenschaftlichem Namen suchen',
 	'search_tags' => 'Nach Tags suchen',
 	'search_notes' => 'Nach Notizen suchen',
 	'no_tags_specified' => 'Es wurden noch keine Tags hinzugefügt',
@@ -111,5 +112,6 @@ return [
 	'preferences_saved_successfully' => 'Die Einstellungen wurden erfolgreich gespeichert',
 	'set_watered' => 'Alle auf gewässert setzen',
 	'all_plants_watered' => 'Der Gewässert-Status der Pflanzen wurde aktualisiert',
-	'confirmSetAllWatered' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gewässert-Datum auf heute setzen?'
+	'confirmSetAllWatered' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gewässert-Datum auf heute setzen?',
+	'no_plants_found' => 'Es konnten keine Pflanzen anhand der Suchanfrage gefunden werden'
 ];
