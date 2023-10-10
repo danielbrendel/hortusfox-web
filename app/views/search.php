@@ -14,7 +14,7 @@
                     <div class="field">
                         <label class="label is-default-text-color">{{ __('app.input_search') }}</label>
                         <div class="control">
-                            <input type="text" class="input" name="text" value="{{ ($query) ?? '' }}" required>
+                            <input type="text" class="input is-input-dark" name="text" value="{{ ($query) ?? '' }}" required>
                         </div>
                     </div>
 
