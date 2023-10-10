@@ -465,6 +465,7 @@
 
 				window.vue.initNavBar();
 
+				window.currentLocale = '{{ UtilsModule::getLanguage() }}';
 				window.currentOpenTaskCount = {{ TasksModel::getOpenTaskCount() }};
 
 				@if (isset($_action_query))

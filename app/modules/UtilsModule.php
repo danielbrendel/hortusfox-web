@@ -5,6 +5,24 @@
  */
 class UtilsModule {
     /**
+     * @param $lang
+     * @return void
+     */
+    public static function setLanguage($lang)
+    {
+        setLanguage($lang);
+        $_COOKIE['current_language'] = $lang;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getLanguage()
+    {
+        return $_COOKIE['current_language'];
+    }
+
+    /**
      * @return array
      */
     public static function GetMonthList()
