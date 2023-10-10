@@ -341,6 +341,12 @@
 
                 $plant = PlantsModel::getDetails($plantId);
 
+                if (file_exists(public_path('/img/' . $plant->get('photo')))) {
+                    unlink(public_path('/img/' . $plant->get('photo')));
+                }
+
+                PlantPhotoModel::clearForPlant($plantId);
+
                 static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$plantId]);
 
                 LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_plant', '');

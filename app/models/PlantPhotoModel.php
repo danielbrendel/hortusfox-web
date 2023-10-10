@@ -86,6 +86,31 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $plantId
+     * @return void
+     * @throws \Exception
+     */
+    public static function clearForPlant($plantId)
+    {
+        try {
+            $rows = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ?', [$plantId]);
+            foreach ($rows as $row) {
+                if (file_exists(public_path('/img/' . $row->get('original')))) {
+                    unlink(public_path('/img/' . $row->get('original')));
+                }
+
+                if (file_exists(public_path('/img/' . $row->get('thumb')))) {
+                    unlink(public_path('/img/' . $row->get('thumb')));
+                }
+
+                static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$row->get('id')]);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string
