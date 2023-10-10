@@ -466,6 +466,10 @@
 				window.vue.initNavBar();
 
 				window.currentOpenTaskCount = {{ TasksModel::getOpenTaskCount() }};
+
+				@if (isset($_action_query))
+					document.getElementById('{{ $_action_query }}').click();
+				@endif
 			});
 		</script>
 	</body>

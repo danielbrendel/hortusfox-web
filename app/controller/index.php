@@ -397,7 +397,8 @@ class IndexController extends BaseController {
 
 		return parent::view(['content', 'search'], [
 			'user' => $user,
-			'query' => $query
+			'query' => $query,
+			'_action_query' => 'action-search'
 		]);
 	}
 

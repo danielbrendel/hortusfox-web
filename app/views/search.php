@@ -38,7 +38,7 @@
 
                     <div class="field">
                         <div class="control">
-                            <input type="submit" class="button is-link" value="{{ __('app.search') }}">
+                            <input type="submit" class="button is-link" id="action-search" value="{{ __('app.search') }}">
                         </div>
                     </div>
                 </form>
