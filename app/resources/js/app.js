@@ -9,6 +9,8 @@ import './../sass/app.scss';
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+window.constChatMessageQueryRefreshRate = 1000 * 15;
+
 window.vue = new Vue({
     el: '#app',
 
@@ -36,6 +38,7 @@ window.vue = new Vue({
         confirmPlantRemoval: 'Are you sure you want to remove this plant?',
         confirmSetAllWatered: 'Are you sure you want to update the last watered date of all these plants?',
         confirmInventoryItemRemoval: 'Are you sure you want to remove this item?',
+        newChatMessage: 'New'
     },
 
     methods: {
@@ -342,6 +345,46 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
+        },
+
+        refreshChat: function(auth_user)
+        {
+            window.vue.ajaxRequest('get', window.location.origin + '/chat/query', {}, function(response) {
+                if (response.code == 200) {
+                    response.messages.forEach(function(elem, index) {
+                        document.getElementById('chat').innerHTML = window.vue.renderNewChatMessage(elem, auth_user) + document.getElementById('chat').innerHTML;
+                    });
+                }
+            });
+
+            setTimeout(window.vue.refreshChat, window.constChatMessageQueryRefreshRate);
+        },
+
+        renderNewChatMessage: function(elem, auth_user)
+        {
+            let chatmsgright = '';
+            if (elem.userId == auth_user) {
+                chatmsgright = 'chat-message-right';
+            }
+
+            let html = `
+                <div class="chat-message ` + chatmsgright + `">
+                    <div class="chat-message-user">
+                        <div class="is-inline-block">` + elem.userName + `</div>
+                        <div class="chat-message-new">` + window.vue.newChatMessage + `</div>
+                    </div>
+
+                    <div class="chat-message-content">
+                        <pre>` + elem.message + `</pre>
+                    </div>
+
+                    <div class="chat-message-info">
+                        ` + elem.diffForHumans + `
+                    </div>
+                </div>
+            `;
+
+            return html;
         },
     }
 });

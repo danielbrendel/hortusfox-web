@@ -92,6 +92,25 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateLastSeenMsg($id)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET last_seen_msg = ? WHERE id = ?', [$id, $user->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

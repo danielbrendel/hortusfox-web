@@ -122,5 +122,9 @@ return [
 	'edit_inventory_item' => 'Edit inventory item',
 	'manage_groups' => 'Manage groups',
 	'token' => 'Token',
-	'close' => 'Close'
+	'close' => 'Close',
+	'chat' => 'Chat',
+	'chat_hint' => 'This is the group chat of the workspace',
+	'send' => 'send',
+	'new' => 'New'
 ];

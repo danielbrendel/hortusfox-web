@@ -93,6 +93,10 @@ h2 {
     text-decoration: underline;
 }
 
+.is-stretched {
+    width: 100%;
+}
+
 .float-right {
     float: right;
 }
@@ -144,6 +148,35 @@ a.navbar-burger:hover {
     @media screen and (min-width: 1089px) {
         display: none;
     }
+}
+
+.notification-badge {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.notification-badge .notify-badge {
+    @media screen and (min-width: 1089px) {
+        position: absolute;
+        right: -5px;
+        top: 4px;
+    }
+    @media screen and (max-width: 1087px) {
+        position: relative;
+        right: -4px;
+        top: -10px;
+    }
+    padding: 1px 7px;
+    border-radius: 50%;
+    background: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    font-size: 0.8em;
+}
+
+.notify-badge .notify-badge-count {
+    position: relative;
+    top: -2px;
 }
 
 .locations {
@@ -841,6 +874,56 @@ a.navbar-burger:hover {
 .inventory-groups a:hover {
     color: rgb(50, 50, 50);
     text-decoration: underline;
+}
+
+.chat-message {
+    position: relative;
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 10px;
+}
+
+.chat-message-right {
+    margin-left: 10%;
+    background-color: rgba(115, 143, 100, 0.9);
+}
+
+.chat-message-user {
+    position: relative;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: rgb(123, 193, 223);
+}
+
+.chat-message-new {
+    position: relative;
+    display: inline-block;
+    background-color: rgb(212, 130, 67);
+    border: 1px solid rgb(92, 64, 25);
+    color: rgb(250, 250, 250);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 0.5em;
+    text-transform: uppercase;
+    float: right;
+}
+
+.chat-message-content {
+    position: relative;
+}
+
+.chat-message-content pre {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.chat-message-info {
+    position: relative;
+    margin-top: 10px;
+    font-size: 0.76em;
+    color: rgb(155, 155, 155);
 }
 
 .scroll-to-top {

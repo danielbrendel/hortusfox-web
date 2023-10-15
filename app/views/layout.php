@@ -2,7 +2,7 @@
 <html lang="{{ getLocale() }}">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-with, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<title>{{ __('app.workspace_title', ['name' => env('APP_WORKSPACE')]) }}</title>
 
@@ -623,6 +623,7 @@
 				window.vue.confirmPlantRemoval = '{{ __('app.confirmPlantRemoval') }}';
 				window.vue.confirmSetAllWatered = '{{ __('app.confirmSetAllWatered') }}';
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
+				window.vue.newChatMessage = '{{ __('app.new') }}';
 
 				window.vue.initNavBar();
 
@@ -635,6 +636,10 @@
 
 				@if (isset($_expand_inventory_item))
 					window.vue.expandInventoryItem('inventory-item-body-{{ $_expand_inventory_item }}');
+				@endif
+
+				@if ((isset($_refresh_chat)) && ($_refresh_chat === true))
+					window.vue.refreshChat({{ $user->get('id') }});
 				@endif
 			});
 		</script>

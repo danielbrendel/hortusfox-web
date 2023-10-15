@@ -790,4 +790,89 @@ class IndexController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /chat
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler
+	 */
+	public function view_chat($request)
+	{
+		$user = UserModel::getAuthUser();
+
+		$messages = ChatMsgModel::getChat();
+
+		return parent::view(['content', 'chat'], [
+			'user' => $user,
+			'messages' => $messages,
+			'_refresh_chat' => true
+		]);
+	}
+
+	/**
+	 * Handles URL: /chat/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_chat_message($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'message' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			$errorstr = '';
+			foreach ($validator->errorMsgs() as $err) {
+				$errorstr .= $err . '<br/>';
+			}
+
+			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
+			
+			return back();
+		}
+
+		$message = $request->params()->query('message', null);
+
+		ChatMsgModel::addMessage($message);
+
+		return redirect('/chat');
+	}
+
+	/**
+	 * Handles URL: /chat/query
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function query_chat_messages($request)
+	{
+		try {
+			$result = [];
+
+			$messages = ChatMsgModel::getLatestMessages();
+
+			foreach ($messages as $message) {
+				$result[] = [
+					'id' => $message->get('id'),
+					'userId' => $message->get('userId'),
+					'userName' => UserModel::getNameById($message->get('userId')),
+					'message' => $message->get('message'),
+					'created_at' => $message->get('created_at'),
+					'diffForHumans' => (new Carbon($message->get('created_at')))->diffForHumans(),
+				];
+			}
+
+			return json([
+				'code' => 200,
+				'messages' => $result
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

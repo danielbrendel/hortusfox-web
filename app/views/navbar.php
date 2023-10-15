@@ -40,6 +40,20 @@
             </div>
 
             <div class="navbar-item">
+                <a href="{{ url('/chat') }}" class="notification-badge">
+                    <i class="fas fa-comments" title="{{ __('app.chat') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.chat') }}</span>
+                    
+                    @if (ChatMsgModel::getUnreadCount() > 0)
+                        <span class="notify-badge">
+                            <span class="notify-badge-count">
+                                {{ ChatMsgModel::getUnreadCount() }}
+                            </span>
+                        </span>
+                    @endif
+                </a>
+            </div>
+
+            <div class="navbar-item">
                 <a href="{{ url('/profile') }}">
                     <i class="fas fa-user" title="{{ __('app.profile') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.profile') }}</span>
                 </a>

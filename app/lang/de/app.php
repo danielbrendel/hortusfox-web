@@ -122,5 +122,9 @@ return [
 	'edit_inventory_item' => 'Eintrag bearbeiten',
 	'manage_groups' => 'Gruppen verwalten',
 	'token' => 'Token',
-	'close' => 'Schließen'
+	'close' => 'Schließen',
+	'chat' => 'Chat',
+	'chat_hint' => 'Hier können Nachrichten ausgetauscht werden',
+	'send' => 'Senden',
+	'new' => 'Neu'
 ];

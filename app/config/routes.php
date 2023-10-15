@@ -44,5 +44,8 @@ return [
     array('/inventory/group/add', 'POST', 'index@add_inventory_group_item'),
     array('/inventory/group/edit', 'POST', 'index@edit_inventory_group_item'),
     array('/inventory/group/remove', 'ANY', 'index@remove_inventory_group_item'),
+    array('/chat', 'GET', 'index@view_chat'),
+    array('/chat/add', 'POST', 'index@add_chat_message'),
+    array('/chat/query', 'GET', 'index@query_chat_messages'),
     array('$404', 'ANY', 'error404@index')
 ];
