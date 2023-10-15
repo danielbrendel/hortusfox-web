@@ -732,6 +732,117 @@ a.navbar-burger:hover {
     color: rgb(150, 150, 150);
 }
 
+.inventory {
+    margin-bottom: 50px;
+}
+
+.inventory-item-group {
+    position: relative;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(200, 200, 200, 0.76);
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.inventory-item {
+    position: relative;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(50, 50, 50, 0.76);
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.inventory-item-header {
+    position: relative;
+}
+
+.inventory-item-name {
+    position: relative;
+    display: inline-block;
+    min-width: 50%;
+}
+
+.inventory-item-name a {
+    color: rgb(150, 150, 150);
+}
+
+.inventory-item-name a:hover {
+    color: rgb(150, 150, 150);
+}
+
+.inventory-item-amount {
+    position: relative;
+    display: inline-block;
+}
+
+.inventory-item-amount i {
+    color: rgb(150, 150, 150);
+}
+
+.inventory-item-amount span {
+    color: rgb(215, 215, 215);
+}
+
+.is-inventory-item-empty {
+    color: rgb(212, 50, 50) !important;
+}
+
+.inventory-item-actions {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.inventory-item-actions i {
+    color: rgb(100, 100, 100);
+}
+
+.inventory-item-body {
+    position: relative;
+    display: none;
+}
+
+.inventory-item-description {
+    position: relative;
+    color: rgb(100, 100, 100);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inventory-item-description pre {
+    background-color: inherit;
+    color: inherit;
+}
+
+.inventory-item-photo {
+    position: relative;
+}
+
+.inventory-item-author {
+    position: relative;
+    color: rgb(100, 100, 100);
+    margin-top: 10px;
+}
+
+.inventory-groups {
+    width: 100%;
+}
+
+.inventory-groups a {
+    color: rgb(50, 50, 50);
+}
+
+.inventory-groups a:hover {
+    color: rgb(50, 50, 50);
+    text-decoration: underline;
+}
+
 .scroll-to-top {
     position: fixed;
     z-index: 3;

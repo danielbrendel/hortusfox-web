@@ -93,7 +93,7 @@ return [
 	'tasks' => 'Aufgaben',
 	'tasks_hint' => 'Hier kannst du wichtige Aufgaben verwalten.',
 	'create_task' => 'Aufgabe erstellen',
-	'create_new' => 'Neue Aufgabe erstellen',
+	'create_new' => 'Neu erstellen',
 	'title' => 'Titel',
 	'description' => 'Beschreibung',
 	'task_created_successfully' => 'Die Aufgabe wurde erfolgreich erstellt',
@@ -113,5 +113,14 @@ return [
 	'set_watered' => 'Alle auf gewässert setzen',
 	'all_plants_watered' => 'Der Gewässert-Status der Pflanzen wurde aktualisiert',
 	'confirmSetAllWatered' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gewässert-Datum auf heute setzen?',
-	'no_plants_found' => 'Es konnten keine Pflanzen anhand der Suchanfrage gefunden werden'
+	'no_plants_found' => 'Es konnten keine Pflanzen anhand der Suchanfrage gefunden werden',
+	'inventory' => 'Inventar',
+	'inventory_hint' => 'Hier kann das Inventar verwaltet werden',
+	'group' => 'Gruppe',
+	'confirmInventoryItemRemoval' => 'Soll der Eintrag wirklich entfernt werden?',
+	'add_inventory_item' => 'Neuen Eintrag hinzufügen',
+	'edit_inventory_item' => 'Eintrag bearbeiten',
+	'manage_groups' => 'Gruppen verwalten',
+	'token' => 'Token',
+	'close' => 'Schließen'
 ];

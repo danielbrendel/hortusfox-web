@@ -28,6 +28,12 @@
             </div>
 
             <div class="navbar-item">
+                <a href="{{ url('/inventory') }}">
+                    <i class="fas fa-warehouse" title="{{ __('app.inventory') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.inventory') }}</span>
+                </a>
+            </div>
+
+            <div class="navbar-item">
                 <a href="{{ url('/search') }}">
                     <i class="fas fa-search" title="{{ __('app.search') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.search') }}</span>
                 </a>

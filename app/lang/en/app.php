@@ -93,7 +93,7 @@ return [
 	'tasks' => 'Tasks',
 	'tasks_hint' => 'Here you can manage required tasks for your plant care',
 	'create_task' => 'Create task',
-	'create_new' => 'Create new task',
+	'create_new' => 'Create new',
 	'title' => 'Title',
 	'description' => 'Description',
 	'task_created_successfully' => 'Task was created successfully',
@@ -113,5 +113,14 @@ return [
 	'set_watered' => 'Set all to watered',
 	'all_plants_watered' => 'Last watered status has been updated for these plants',
 	'confirmSetAllWatered' => 'Are you sure you want to update the last watered date of all these plants?',
-	'no_plants_found' => 'There were no plants found using your search query'
+	'no_plants_found' => 'There were no plants found using your search query',
+	'inventory' => 'Inventory',
+	'inventory_hint' => 'Manage here your inventory',
+	'group' => 'Group',
+	'confirmInventoryItemRemoval' => 'Are you sure you want to remove this item?',
+	'add_inventory_item' => 'Add inventory item',
+	'edit_inventory_item' => 'Edit inventory item',
+	'manage_groups' => 'Manage groups',
+	'token' => 'Token',
+	'close' => 'Close'
 ];

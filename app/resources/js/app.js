@@ -25,6 +25,9 @@ window.vue = new Vue({
         bShowCreateTask: false,
         bShowEditTask: false,
         bShowEditPreferences: false,
+        bShowAddInventoryItem: false,
+        bShowEditInventoryItem: false,
+        bShowManageGroups: false,
         comboLocation: [],
         comboCuttingMonth: [],
         comboLightLevel: [],
@@ -32,6 +35,7 @@ window.vue = new Vue({
         confirmPhotoRemoval: 'Are you sure you want to remove this photo?',
         confirmPlantRemoval: 'Are you sure you want to remove this plant?',
         confirmSetAllWatered: 'Are you sure you want to update the last watered date of all these plants?',
+        confirmInventoryItemRemoval: 'Are you sure you want to remove this item?',
     },
 
     methods: {
@@ -217,6 +221,127 @@ window.vue = new Vue({
             }
 
             location.href = window.location.origin + '/plants/location/' + id + '/water';
+        },
+
+        expandInventoryItem: function(id)
+        {
+            let elem = document.getElementById(id);
+            if (elem) {
+                if ((elem.style.display === 'none') || (elem.style.display == '')) {
+                    elem.style.display = 'unset';
+                } else {
+                    elem.style.display = 'none';
+                }
+            }
+        },
+
+        incrementInventoryItem: function(id, target)
+        {
+            window.vue.ajaxRequest('get', window.location.origin + '/inventory/amount/increment?id=' + id, {}, function(response) {
+                if (response.code == 200) {
+                    let elem = document.getElementById(target);
+                    if (elem) {
+                        elem.innerHTML = response.amount;
+
+                        if (response.amount == 0) {
+                            elem.classList.add('is-inventory-item-empty');
+                        } else {
+                            elem.classList.remove('is-inventory-item-empty');
+                        }
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        decrementInventoryItem: function(id, target)
+        {
+            window.vue.ajaxRequest('get', window.location.origin + '/inventory/amount/decrement?id=' + id, {}, function(response) {
+                if (response.code == 200) {
+                    let elem = document.getElementById(target);
+                    if (elem) {
+                        elem.innerHTML = response.amount;
+
+                        if (response.amount == 0) {
+                            elem.classList.add('is-inventory-item-empty');
+                        } else {
+                            elem.classList.remove('is-inventory-item-empty');
+                        }
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        editInventoryItem: function(id, name, group, description)
+        {
+            document.getElementById('inpInventoryItemId').value = id;
+            document.getElementById('inpInventoryItemName').value = name;
+            document.getElementById('inpInventoryItemGroup').value = group;
+            document.getElementById('inpInventoryItemDescription').value = document.getElementById(description).innerText;
+
+            window.vue.bShowEditInventoryItem = true;
+        },
+
+        deleteInventoryItem: function(id, target)
+        {
+            if (!confirm(window.vue.confirmInventoryItemRemoval)) {
+                return;
+            }
+
+            window.vue.ajaxRequest('get', window.location.origin + '/inventory/remove?id=' + id, {}, function(response) {
+                if (response.code == 200) {
+                    let elem = document.getElementById(target);
+                    if (elem) {
+                        elem.remove();
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        editInventoryGroupItem: function(id, what, def)
+        {
+            let input = prompt(what, def);
+
+            if (input.length > 0) {
+                window.vue.ajaxRequest('post', window.location.origin + '/inventory/group/edit', {
+                    id: id,
+                    what: what,
+                    value: input
+                }, function(response) {
+                    if (response.code == 200) {
+                        if (what === 'token') {
+                            document.getElementById('inventory-group-elem-token-' + id).innerText = input;
+                        } else if (what === 'label') {
+                            document.getElementById('inventory-group-elem-label-' + id).innerText = input;
+                        }
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            }
+        },
+
+        removeInventoryGroupItem: function(id, target)
+        {
+            if (!confirm(window.vue.confirmInventoryItemRemoval)) {
+                return;
+            }
+
+            window.vue.ajaxRequest('get', window.location.origin + '/inventory/group/remove?id=' + id, {}, function(response) {
+                if (response.code == 200) {
+                    let elem = document.getElementById(target);
+                    if (elem) {
+                        elem.remove();
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
         },
     }
 });

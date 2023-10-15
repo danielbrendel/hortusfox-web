@@ -400,6 +400,166 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowAddInventoryItem}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_inventory_item') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowAddInventoryItem = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmAddInventoryItem" method="POST" action="{{ url('/inventory/add') }}" enctype="multipart/form-data">
+							@csrf
+
+							<div class="field">
+								<label class="label">{{ __('app.name') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="name" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.group') }}</label>
+								<div class="control">
+									<select name="group" class="input">
+										@foreach (InvGroupModel::getAll() as $group_item)
+											<option value="{{ $group_item->get('token') }}">{{ $group_item->get('label') }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.photo') }}</label>
+								<div class="control">
+									<input type="file" class="input" name="photo" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.description') }}</label>
+								<div class="control">
+									<textarea class="textarea" name="description"></textarea>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddInventoryItem').submit();">{{ __('app.add') }}</button>
+						<button class="button" onclick="window.vue.bShowAddInventoryItem = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditInventoryItem}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_inventory_item') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditInventoryItem = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditInventoryItem" method="POST" action="{{ url('/inventory/edit') }}" enctype="multipart/form-data">
+							@csrf
+
+							<input type="hidden" name="id" id="inpInventoryItemId"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.name') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="name" id="inpInventoryItemName" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.group') }}</label>
+								<div class="control">
+									<select name="group" class="input" id="inpInventoryItemGroup">
+										@foreach (InvGroupModel::getAll() as $group_item)
+											<option value="{{ $group_item->get('token') }}">{{ $group_item->get('label') }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.photo') }}</label>
+								<div class="control">
+									<input type="file" class="input" name="photo" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.description') }}</label>
+								<div class="control">
+									<textarea class="textarea" name="description" id="inpInventoryItemDescription"></textarea>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditInventoryItem').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditInventoryItem = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowManageGroups}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.manage_groups') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowManageGroups = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<table class="table inventory-groups">
+							<thead>
+								<tr>
+									<td>{{ __('app.token') }}</td>
+									<td>{{ __('app.label') }}</td>
+									<td></td>
+								</tr>
+							</thead>
+
+							<tbody>
+								@foreach (InvGroupModel::getAll() as $group_item)
+									<tr id="inventory-group-item-{{ $group_item->get('id') }}">
+										<td><a href="javascript:void(0);" id="inventory-group-elem-token-{{ $group_item->get('id') }}" onclick="window.vue.editInventoryGroupItem({{ $group_item->get('id') }}, 'token', '{{ $group_item->get('token') }}');">{{ $group_item->get('token') }}</a></td>
+										<td><a href="javascript:void(0);" id="inventory-group-elem-label-{{ $group_item->get('id') }}" onclick="window.vue.editInventoryGroupItem({{ $group_item->get('id') }}, 'label', '{{ $group_item->get('label') }}');">{{ $group_item->get('label') }}</a></td>
+										<td><a href="javascript:void(0);" onclick="window.vue.removeInventoryGroupItem({{ $group_item->get('id') }}, 'inventory-group-item-{{ $group_item->get('id') }}');"><i class="fas fa-times"></i></a></td>
+									</tr>
+								@endforeach
+							</tbody>
+						</table>
+
+						<div><hr/></div>
+
+						<form id="frmAddInventoryGroup" method="POST" action="{{ url('/inventory/group/add') }}">
+							@csrf
+
+							<div class="field">
+								<label class="label">{{ __('app.token') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="token" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.label') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="label" required>
+								</div>
+							</div>
+
+							<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddInventoryGroup').submit();">{{ __('app.add') }}</button>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button" onclick="window.vue.bShowManageGroups = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			<div class="modal" :class="{'is-active': bShowEditPreferences}">
 				<div class="modal-background"></div>
 				<div class="modal-card">
@@ -462,6 +622,7 @@
 				window.vue.confirmPhotoRemoval = '{{ __('app.confirmPhotoRemoval') }}';
 				window.vue.confirmPlantRemoval = '{{ __('app.confirmPlantRemoval') }}';
 				window.vue.confirmSetAllWatered = '{{ __('app.confirmSetAllWatered') }}';
+				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
 
 				window.vue.initNavBar();
 
@@ -470,6 +631,10 @@
 
 				@if (isset($_action_query))
 					document.getElementById('{{ $_action_query }}').click();
+				@endif
+
+				@if (isset($_expand_inventory_item))
+					window.vue.expandInventoryItem('inventory-item-body-{{ $_expand_inventory_item }}');
 				@endif
 			});
 		</script>

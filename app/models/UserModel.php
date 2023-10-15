@@ -71,6 +71,27 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return string
+     * @throws \Exception
+     */
+    public static function getNameById($id)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+
+            return $row->get('name');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

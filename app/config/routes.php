@@ -35,5 +35,14 @@ return [
     array('/tasks/create', 'POST', 'index@create_task'),
     array('/tasks/edit', 'POST', 'index@edit_task'),
     array('/tasks/toggle', 'POST', 'index@toggle_task'),
+    array('/inventory', 'GET', 'index@view_inventory'),
+    array('/inventory/add', 'POST', 'index@add_inventory_item'),
+    array('/inventory/edit', 'POST', 'index@edit_inventory_item'),
+    array('/inventory/amount/increment', 'ANY', 'index@inc_inventory_item'),
+    array('/inventory/amount/decrement', 'ANY', 'index@dec_inventory_item'),
+    array('/inventory/remove', 'ANY', 'index@remove_inventory_item'),
+    array('/inventory/group/add', 'POST', 'index@add_inventory_group_item'),
+    array('/inventory/group/edit', 'POST', 'index@edit_inventory_group_item'),
+    array('/inventory/group/remove', 'ANY', 'index@remove_inventory_group_item'),
     array('$404', 'ANY', 'error404@index')
 ];
