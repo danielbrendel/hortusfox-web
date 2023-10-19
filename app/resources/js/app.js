@@ -353,6 +353,11 @@ window.vue = new Vue({
                 if (response.code == 200) {
                     response.messages.forEach(function(elem, index) {
                         document.getElementById('chat').innerHTML = window.vue.renderNewChatMessage(elem, auth_user) + document.getElementById('chat').innerHTML;
+                    
+                        let audio = new Audio(window.location.origin + '/snd/new_message.wav');
+                        audio.onloadeddata = function() {
+                            audio.play();
+                        };
                     });
                 }
             });

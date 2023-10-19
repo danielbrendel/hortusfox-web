@@ -736,7 +736,12 @@ class IndexController extends BaseController {
 		$token = $request->params()->query('token', null);
 		$label = $request->params()->query('label', null);
 
-		InvGroupModel::addItem($token, $label);
+		try {
+			InvGroupModel::addItem($token, $label);
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
 
 		return redirect('/inventory');
 	}

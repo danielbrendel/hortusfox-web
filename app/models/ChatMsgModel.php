@@ -37,7 +37,9 @@ class ChatMsgModel extends \Asatru\Database\Model {
         try {
             $result = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY created_at DESC LIMIT ' . $limit);
 
-            UserModel::updateLastSeenMsg($result->get(0)->get('id'));
+            if (count($result) > 0) {
+                UserModel::updateLastSeenMsg($result->get(0)->get('id'));
+            }
 
             return $result;
         } catch (\Exception $e) {

@@ -60,6 +60,8 @@ class InvGroupModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
+            $token = trim(strtolower($token));
+
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE token = ?', [$token])->first();
             if ($row) {
                 throw new \Exception('Token already in use: ' . $token);
@@ -97,7 +99,7 @@ class InvGroupModel extends \Asatru\Database\Model {
 
             if ($what === 'token') {
                 static::raw('UPDATE `' . self::tableName() . '` SET token = ? WHERE id = ?', [
-                    $value, $id
+                    trim(strtolower($value)), $id
                 ]);
             } else if ($what === 'label') {
                 static::raw('UPDATE `' . self::tableName() . '` SET label = ? WHERE id = ?', [
