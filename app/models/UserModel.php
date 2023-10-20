@@ -52,11 +52,12 @@ class UserModel extends \Asatru\Database\Model {
 
     /**
      * @param $lang
+     * @param $chatcolor
      * @param $show_log
      * @return void
      * @throws \Exception
      */
-    public static function editPreferences($lang, $show_log)
+    public static function editPreferences($lang, $chatcolor, $show_log)
     {
         try {
             $user = static::getAuthUser();
@@ -64,7 +65,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET lang = ?, show_log = ? WHERE id = ?', [$lang, $show_log, $user->get('id')]);
+            static::raw('UPDATE `' . self::tableName() . '` SET lang = ?, chatcolor = ?, show_log = ? WHERE id = ?', [$lang, $chatcolor, $show_log, $user->get('id')]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -93,6 +94,32 @@ class UserModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
+     * @return string
+     * @throws \Exception
+     */
+    public static function getChatColorForUser($id)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+
+            $color = $row->get('chatcolor');
+            if (($color === null) || (strlen($color) === 0)) {
+                return '#7BC1DF';
+            }
+
+            return $color;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
      * @return void
      * @throws \Exception
      */
@@ -105,6 +132,64 @@ class UserModel extends \Asatru\Database\Model {
             }
 
             static::raw('UPDATE `' . self::tableName() . '` SET last_seen_msg = ? WHERE id = ?', [$id, $user->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateOnlineStatus()
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET last_action = CURRENT_TIMESTAMP WHERE id = ?', [$user->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public static function isUserOnline($id)
+    {
+        try {
+            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            if (!$row) {
+                return false;
+            }
+
+            return Carbon::parse($row->get('last_action'))->diffInMinutes() <= env('APP_ONLINEMINUTELIMIT', 15);
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function getOnlineUsers()
+    {
+        try {
+            $result = [];
+
+            $rows = static::raw('SELECT * FROM `' . self::tableName() . '`');
+            foreach ($rows as $row) {
+                if (static::isUserOnline($row->get('id'))) {
+                    $result[] = $row;
+                }
+            }
+
+            return $result;
         } catch (\Exception $e) {
             throw $e;
         }

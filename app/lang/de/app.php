@@ -126,5 +126,7 @@ return [
 	'chat' => 'Chat',
 	'chat_hint' => 'Hier können Nachrichten ausgetauscht werden',
 	'send' => 'Senden',
-	'new' => 'Neu'
+	'new' => 'Neu',
+	'chatcolor' => 'Farbe des Namens im Chat',
+	'currentlyOnline' => 'Gerade online: '
 ];

@@ -10,6 +10,7 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.constChatMessageQueryRefreshRate = 1000 * 15;
+window.constChatUserListRefreshRate = 1000 * 15;
 
 window.vue = new Vue({
     el: '#app',
@@ -38,7 +39,8 @@ window.vue = new Vue({
         confirmPlantRemoval: 'Are you sure you want to remove this plant?',
         confirmSetAllWatered: 'Are you sure you want to update the last watered date of all these plants?',
         confirmInventoryItemRemoval: 'Are you sure you want to remove this item?',
-        newChatMessage: 'New'
+        newChatMessage: 'New',
+        currentlyOnline: 'Currently online: '
     },
 
     methods: {
@@ -375,7 +377,7 @@ window.vue = new Vue({
             let html = `
                 <div class="chat-message ` + chatmsgright + `">
                     <div class="chat-message-user">
-                        <div class="is-inline-block">` + elem.userName + `</div>
+                        <div class="is-inline-block" style="color: ` + elem.chatcolor + `;">` + elem.userName + `</div>
                         <div class="chat-message-new">` + window.vue.newChatMessage + `</div>
                     </div>
 
@@ -390,6 +392,27 @@ window.vue = new Vue({
             `;
 
             return html;
+        },
+
+        refreshUserList: function()
+        {
+            window.vue.ajaxRequest('get', window.location.origin + '/user/online', {}, function(response) {
+                if (response.code == 200) {
+                    let target = document.getElementById('chat-user-list');
+                    target.innerHTML = window.vue.currentlyOnline;
+
+                    response.users.forEach(function(elem, index) {
+                        let comma = '';
+                        if (index < response.users.length - 1) {
+                            comma = ', ';
+                        }
+                        
+                        target.innerHTML += elem.name + comma;
+                    });
+                }
+            });
+
+            setTimeout(window.vue.refreshUserList, window.constChatUserListRefreshRate);
         },
     }
 });

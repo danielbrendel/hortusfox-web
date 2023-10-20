@@ -359,7 +359,8 @@ class IndexController extends BaseController {
 	public function edit_preferences($request)
 	{
 		$validator = new Asatru\Controller\PostValidator([
-			'lang' => 'required'
+			'lang' => 'required',
+			'chatcolor' => 'required'
 		]);
 
 		if (!$validator->isValid()) {
@@ -374,9 +375,10 @@ class IndexController extends BaseController {
 		}
 
 		$lang = $request->params()->query('lang', 'en');
+		$chatcolor = $request->params()->query('chatcolor', null);
 		$show_log = $request->params()->query('show_log', false);
 
-		UserModel::editPreferences($lang, $show_log);
+		UserModel::editPreferences($lang, $chatcolor, $show_log);
 
 		FlashMessage::setMsg('success', __('app.preferences_saved_successfully'));
 
@@ -864,6 +866,7 @@ class IndexController extends BaseController {
 					'userId' => $message->get('userId'),
 					'userName' => UserModel::getNameById($message->get('userId')),
 					'message' => $message->get('message'),
+					'chatcolor' => UserModel::getChatColorForUser($message->get('userId')),
 					'created_at' => $message->get('created_at'),
 					'diffForHumans' => (new Carbon($message->get('created_at')))->diffForHumans(),
 				];
@@ -872,6 +875,37 @@ class IndexController extends BaseController {
 			return json([
 				'code' => 200,
 				'messages' => $result
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /user/online
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function get_online_users($request)
+	{
+		try {
+			$result = [];
+
+			$users = UserModel::getOnlineUsers();
+
+			foreach ($users as $user) {
+				$result[] = [
+					'name' => $user->get('name')
+				];
+			}
+
+			return json([
+				'code' => 200,
+				'users' => $result
 			]);
 		} catch (\Exception $e) {
 			return json([

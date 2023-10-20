@@ -32,8 +32,10 @@ class UserModel_Migration {
         $this->database->add('email VARCHAR(512) NOT NULL');
         $this->database->add('token VARCHAR(1024) NOT NULL');
         $this->database->add('lang VARCHAR(512) NULL');
+        $this->database->add('chatcolor VARCHAR(512) NULL');
         $this->database->add('show_log BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('last_seen_msg INT NULL');
+        $this->database->add('last_action TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }

@@ -24,12 +24,16 @@
                 </form>
             </div>
 
+            @if (env('APP_SHOWCHATONLINEUSERS', false))
+                <div class="chat-user-list" id="chat-user-list"></div>
+            @endif
+
             @if (isset($messages))
                 <div class="chat" id="chat">
                     @foreach ($messages as $message)
                         <div class="chat-message {{ ($message->get('userId') == $user->get('id')) ? 'chat-message-right' : '' }}">
                             <div class="chat-message-user">
-                                <div class="is-inline-block">{{ UserModel::getNameById($message->get('userId')) }}</div>
+                                <div class="is-inline-block" style="color: {{ UserModel::getChatColorForUser($message->get('userId')) }};">{{ UserModel::getNameById($message->get('userId')) }}</div>
                                 @if (ChatViewModel::handleNewMessage($user->get('id'), $message->get('id')))
                                     <div class="chat-message-new">{{ __('app.new') }}</div>
                                 @endif

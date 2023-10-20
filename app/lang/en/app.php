@@ -126,5 +126,7 @@ return [
 	'chat' => 'Chat',
 	'chat_hint' => 'This is the group chat of the workspace',
 	'send' => 'send',
-	'new' => 'New'
+	'new' => 'New',
+	'chatcolor' => 'Username chat color',
+	'currentlyOnline' => 'Currently online: '
 ];

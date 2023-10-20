@@ -29,6 +29,8 @@ class BaseController extends Asatru\Controller\Controller {
 			exit('403 - Access Forbidden.');
 		}
 
+		UserModel::updateOnlineStatus();
+
 		if ((is_string($auth_user->get('lang'))) && (strlen($auth_user->get('lang')) > 0)) {
 			UtilsModule::setLanguage($auth_user->get('lang'));
 		} else {

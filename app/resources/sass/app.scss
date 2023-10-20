@@ -894,7 +894,7 @@ a.navbar-burger:hover {
     position: relative;
     font-size: 1.2em;
     margin-bottom: 10px;
-    color: rgb(123, 193, 223);
+    //color: rgb(123, 193, 223);
 }
 
 .chat-message-new {
@@ -924,6 +924,13 @@ a.navbar-burger:hover {
     margin-top: 10px;
     font-size: 0.76em;
     color: rgb(155, 155, 155);
+}
+
+.chat-user-list {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 23px;
+    color: rgb(92, 255, 0);
 }
 
 .scroll-to-top {

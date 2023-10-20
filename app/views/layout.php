@@ -583,6 +583,13 @@
 							</div>
 
 							<div class="field">
+							<label class="label">{{ __('app.chatcolor') }}</label>
+								<div class="control">
+									<input type="color" name="chatcolor" value="{{ UserModel::getChatColorForUser($user->get('id')) }}">
+								</div>
+							</div>
+
+							<div class="field">
 								<div class="control">
 									<input type="checkbox" name="show_log" value="1" {{ ($user->get('show_log')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_log') }}
 								</div>
@@ -624,6 +631,7 @@
 				window.vue.confirmSetAllWatered = '{{ __('app.confirmSetAllWatered') }}';
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
 				window.vue.newChatMessage = '{{ __('app.new') }}';
+				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 
 				window.vue.initNavBar();
 
@@ -640,6 +648,10 @@
 
 				@if ((isset($_refresh_chat)) && ($_refresh_chat === true))
 					window.vue.refreshChat({{ $user->get('id') }});
+
+					@if (env('APP_SHOWCHATONLINEUSERS', false))
+						window.vue.refreshUserList();
+					@endif
 				@endif
 			});
 		</script>
