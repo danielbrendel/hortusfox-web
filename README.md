@@ -96,7 +96,21 @@ If you want to test it now you can again browse to the URL and then open the con
 ```javascript
 document.cookie = 'auth_token=your_auth_token_here; path=/';
 ```
-If everything went right, you should then see your dashboard. You next step is to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">mobile app</a> for your users.
+If everything went right, you should then see your dashboard. Last but not least you need to add all your locations of your
+local environment to the database. Therefore go to the locations table and add your locatios:
+
+```sql
+INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
+(
+    NULL,
+    'Name of location', 
+    'fas fa-leaf', 
+    1, 
+    CURRENT_TIMESTAMP
+);
+```
+The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
+You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Finally your next step is to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">mobile app</a> for your users.
 
 ## System requirements
 - PHP ^8.2
