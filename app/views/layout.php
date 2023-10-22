@@ -356,6 +356,13 @@
 									<textarea name="description" class="textarea"></textarea>
 								</div>
 							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.due') }}</label>
+								<div class="control">
+									<input type="date" class="input" name="due_date">
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
@@ -389,6 +396,13 @@
 								<label class="label">{{ __('app.description') }}</label>
 								<div class="control">
 									<textarea name="description" class="textarea" id="inpEditTaskDescription"></textarea>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.due') }}</label>
+								<div class="control">
+									<input type="date" class="input" name="due_date" id="inpEditTaskDueDate">
 								</div>
 							</div>
 						</form>

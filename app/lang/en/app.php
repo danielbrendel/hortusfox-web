@@ -130,5 +130,8 @@ return [
 	'new' => 'New',
 	'chatcolor' => 'Username chat color',
 	'currentlyOnline' => 'Currently online: ',
-	'no_photo_available' => 'No photo available'
+	'no_photo_available' => 'No photo available',
+	'due' => 'Due',
+	'overdue_tasks' => 'Overdue tasks',
+	'view_task_details' => 'View task details'
 ];

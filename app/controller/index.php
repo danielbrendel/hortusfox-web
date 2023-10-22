@@ -33,12 +33,14 @@ class IndexController extends BaseController {
 		$user = UserModel::getAuthUser();
 		$locs = LocationsModel::getAll();
 		$warning_plants = PlantsModel::getWarningPlants();
+		$overdue_tasks = TasksModel::getOverdueTasks();
 		$log = LogModel::getHistory();
 		$stats = UtilsModule::getStats();
 		
 		return parent::view(['content', 'index'], [
 			'user' => $user,
 			'warning_plants' => $warning_plants,
+			'overdue_tasks' => $overdue_tasks,
 			'locations' => $locs,
 			'log' => $log,
 			'stats' => $stats
@@ -484,8 +486,13 @@ class IndexController extends BaseController {
 
 		$title = $request->params()->query('title', null);
 		$description = $request->params()->query('description', '');
+		$due_date = $request->params()->query('due_date', '');
 
-		TasksModel::addTask($title, $description);
+		if (strlen($due_date) === 0) {
+			$due_date = null;
+		}
+
+		TasksModel::addTask($title, $description, $due_date);
 
 		FlashMessage::setMsg('success', __('app.task_created_successfully'));
 
@@ -520,12 +527,17 @@ class IndexController extends BaseController {
 		$task = $request->params()->query('task', null);
 		$title = $request->params()->query('title', null);
 		$description = $request->params()->query('description', '');
+		$due_date = $request->params()->query('due_date', '');
 
-		TasksModel::editTask($task, $title, $description);
+		if (strlen($due_date) === 0) {
+			$due_date = null;
+		}
+
+		TasksModel::editTask($task, $title, $description, $due_date);
 
 		FlashMessage::setMsg('success', __('app.task_edited_successfully'));
 
-		return redirect('/tasks');
+		return redirect('/tasks#task-anchor-' . $task);
 	}
 
 	/**

@@ -44,6 +44,18 @@
 					<div class="warning-plants-title warning-plants-title-no-margin-bottom"><i class="far fa-check-circle is-color-yes"></i>&nbsp;{{ __('app.warning_plants_all_ok') }}</div>
 				</div>
 			@endif
+
+			@if (count($overdue_tasks) > 0)
+			<div class="overdue-tasks">
+				<div class="overdue-tasks-title">{{ __('app.overdue_tasks') }}</div>
+
+				<div class="overdue-tasks-content">
+					@foreach ($overdue_tasks as $overdue_task)
+						<div class="overdue-tasks-item">{{ $overdue_task->get('title') }} | {{ date('Y-m-d', strtotime($overdue_task->get('due_date'))) }} | <a class="is-yellow-link" href="{{ url('/tasks#task-anchor-' . $overdue_task->get('id')) }}">{{ __('app.view_task_details') }}</a></div>
+					@endforeach
+				</div>
+			</div>
+			@endif
 			
 			<div class="locations">
 				@foreach ($locations as $location)

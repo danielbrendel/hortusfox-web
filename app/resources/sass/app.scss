@@ -479,6 +479,33 @@ a.navbar-burger:hover {
     
 }
 
+.overdue-tasks {
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 45px;
+    padding: 0 15px 15px 15px;
+    background-color: rgba(123, 50, 50, 0.5);
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 4px;
+}
+
+.overdue-tasks-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    color: rgb(200, 200, 200);
+}
+
+.overdue-tasks-content {
+
+}
+
+.overdue-tasks-item {
+    color: rgb(150, 150, 150);
+    margin-bottom: 10px;
+}
+
 .log {
     position: relative;
     width: 100%;
@@ -753,6 +780,16 @@ a.navbar-burger:hover {
 .task-footer-date {
     position: relative;
     display: inline-block;
+    width: 43%;
+}
+
+.task-footer-due {
+    position: relative;
+    display: inline-block;
+}
+
+.is-task-overdue {
+    color: rgb(212, 50, 50);
 }
 
 .task-footer-action {

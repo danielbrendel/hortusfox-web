@@ -7,18 +7,19 @@ class TasksModel extends \Asatru\Database\Model {
     /**
      * @param $title
      * @param $description
+     * @param $due_date
      * @return void
      * @throws \Exception
      */
-    public static function addTask($title, $description = '')
+    public static function addTask($title, $description = '', $due_date = null)
     {
         try {
             $user = UserModel::getAuthUser();
             if (!$user) {
                 throw new \Exception('Invalid user');
             }
-
-            static::raw('INSERT INTO `' . self::tableName() . '` (title, description) VALUES(?, ?)', [$title, $description]);
+            
+            static::raw('INSERT INTO `' . self::tableName() . '` (title, description, due_date) VALUES(?, ?, ?)', [$title, $description, $due_date]);
 
             LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title);
         } catch (\Exception $e) {
@@ -30,10 +31,11 @@ class TasksModel extends \Asatru\Database\Model {
      * @param $taskId
      * @param $title
      * @param $description
+     * @param $due_date
      * @return void
      * @throws \Exception
      */
-    public static function editTask($taskId, $title, $description)
+    public static function editTask($taskId, $title, $description, $due_date)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -41,7 +43,7 @@ class TasksModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET title = ?, description = ? WHERE id = ?', [$title, $description, $taskId]);
+            static::raw('UPDATE `' . self::tableName() . '` SET title = ?, description = ?, due_date = ? WHERE id = ?', [$title, $description, $due_date, $taskId]);
 
             LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title);
         } catch (\Exception $e) {
@@ -101,6 +103,19 @@ class TasksModel extends \Asatru\Database\Model {
     {
         try {
             return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = ? ORDER BY created_at DESC LIMIT ' . $limit, [$done]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getOverdueTasks()
+    {
+        try {
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = 0 AND DATE(due_date) < CURRENT_DATE ORDER BY due_date ASC');
         } catch (\Exception $e) {
             throw $e;
         }
