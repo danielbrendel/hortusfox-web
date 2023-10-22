@@ -131,7 +131,7 @@ return [
 	'chatcolor' => 'Farbe des Namens im Chat',
 	'currentlyOnline' => 'Gerade online: ',
 	'no_photo_available' => 'Kein Foto verfügbar',
-	'due' => 'Due',
+	'due' => 'Fällig',
 	'overdue_tasks' => 'Überfällige Aufgaben',
 	'view_task_details' => 'Gehe zu den Details'
 ];
