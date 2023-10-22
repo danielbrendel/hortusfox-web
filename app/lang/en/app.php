@@ -128,5 +128,6 @@ return [
 	'send' => 'send',
 	'new' => 'New',
 	'chatcolor' => 'Username chat color',
-	'currentlyOnline' => 'Currently online: '
+	'currentlyOnline' => 'Currently online: ',
+	'no_photo_available' => 'No photo available'
 ];

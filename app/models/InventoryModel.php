@@ -23,31 +23,33 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid group token: ' . $group);
             }
 
-            if ((!isset($_FILES['photo'])) || ($_FILES['photo']['error'] !== UPLOAD_ERR_OK)) {
-                throw new \Exception('Errorneous file');
-            }
-
-            $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
-
-            if ($file_ext === null) {
-                throw new \Exception('File is not a valid image');
-            }
-
-            $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
-
-            move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name . '.' . $file_ext));
-
-            if (!UtilsModule::createThumbFile(public_path('/img/' . $file_name . '.' . $file_ext), UtilsModule::getImageType($file_ext, public_path('/img/' . $file_name)), public_path('/img/' . $file_name), $file_ext)) {
-                throw new \Exception('createThumbFile failed');
-            }
-
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, photo, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                $name, $group, $description, $file_name . '_thumb.' . $file_ext, $user->get('id')
+            static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+                $name, $group, $description, $user->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'add_inventory_item', $name);
-
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+
+            if ((isset($_FILES['photo'])) && ($_FILES['photo']['error'] === UPLOAD_ERR_OK)) {
+                $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
+
+                if ($file_ext === null) {
+                    throw new \Exception('File is not a valid image');
+                }
+
+                $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
+
+                move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name . '.' . $file_ext));
+
+                if (!UtilsModule::createThumbFile(public_path('/img/' . $file_name . '.' . $file_ext), UtilsModule::getImageType($file_ext, public_path('/img/' . $file_name)), public_path('/img/' . $file_name), $file_ext)) {
+                    throw new \Exception('createThumbFile failed');
+                }
+
+                static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
+                    $file_name . '_thumb.' . $file_ext, $row->get('id')
+                ]);
+            }
+
+            LogModel::addLog($user->get('id'), 'inventory', 'add_inventory_item', $name);
 
             return $row->get('id');
         } catch (\Exception $e) {

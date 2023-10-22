@@ -47,11 +47,21 @@
 
                             <div class="inventory-item-body" id="inventory-item-body-{{ $inventory->get($i)->get('id') }}">
                                 <div class="inventory-item-description" id="inventory-item-description-{{ $inventory->get($i)->get('id') }}">
-                                    <pre>{{ ($inventory->get($i)->get('description')) ?? 'N/A' }}</pre>
+                                    <pre>
+                                        @if ((is_string($inventory->get($i)->get('description'))) && (strlen($inventory->get($i)->get('description')) > 0))
+                                            {{ $inventory->get($i)->get('description') }}
+                                        @else
+                                            {{ 'N/A' }}
+                                        @endif
+                                    </pre>
                                 </div>
 
                                 <div class="inventory-item-photo">
-                                    <img src="{{ asset('/img/' . $inventory->get($i)->get('photo')) }}" alt="photo"/>
+                                    @if (($inventory->get($i)->get('photo')) && (file_exists(public_path('/img/' . $inventory->get($i)->get('photo')))))
+                                        <img src="{{ asset('/img/' . $inventory->get($i)->get('photo')) }}" alt="photo"/>
+                                    @else
+                                        <p>{{ __('app.no_photo_available') }}</p>
+                                    @endif
                                 </div>
 
                                 <div class="inventory-item-author">
