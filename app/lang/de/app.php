@@ -53,6 +53,7 @@ return [
 	'back_to_list' => 'Zur Liste',
 	'back_to_dashboard' => 'Zum Dashboard',
 	'name' => 'Name',
+	'email' => 'E-Mail',
 	'photo' => 'Foto',
 	'add' => 'Hinzufügen',
 	'cancel' => 'Abbrechen',

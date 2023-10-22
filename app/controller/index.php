@@ -359,6 +359,8 @@ class IndexController extends BaseController {
 	public function edit_preferences($request)
 	{
 		$validator = new Asatru\Controller\PostValidator([
+			'name' => 'required|min:1',
+			'email' => 'required|email',
 			'lang' => 'required',
 			'chatcolor' => 'required'
 		]);
@@ -374,11 +376,13 @@ class IndexController extends BaseController {
 			return back();
 		}
 
+		$name = $request->params()->query('name', null);
+		$email = $request->params()->query('email', null);
 		$lang = $request->params()->query('lang', 'en');
 		$chatcolor = $request->params()->query('chatcolor', null);
 		$show_log = $request->params()->query('show_log', false);
 
-		UserModel::editPreferences($lang, $chatcolor, $show_log);
+		UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log);
 
 		FlashMessage::setMsg('success', __('app.preferences_saved_successfully'));
 

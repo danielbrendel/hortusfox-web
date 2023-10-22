@@ -572,6 +572,20 @@
 							@csrf
 
 							<div class="field">
+								<label class="label">{{ __('app.name') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="name" value="{{ $user->get('name') }}">
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.email') }}</label>
+								<div class="control">
+									<input type="email" class="input" name="email" value="{{ $user->get('email') }}">
+								</div>
+							</div>
+
+							<div class="field">
 								<label class="label">{{ __('app.language') }}</label>
 								<div class="control">
 									<select class="input" name="lang" id="selEditCombo">

@@ -53,6 +53,7 @@ return [
 	'back_to_list' => 'Back to list',
 	'back_to_dashboard' => 'Back to dashboard',
 	'name' => 'Name',
+	'email' => 'E-Mail',
 	'photo' => 'Photo',
 	'add' => 'Add',
 	'cancel' => 'Cancel',

@@ -51,13 +51,15 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $name
+     * @param $email
      * @param $lang
      * @param $chatcolor
      * @param $show_log
      * @return void
      * @throws \Exception
      */
-    public static function editPreferences($lang, $chatcolor, $show_log)
+    public static function editPreferences($name, $email, $lang, $chatcolor, $show_log)
     {
         try {
             $user = static::getAuthUser();
@@ -65,7 +67,9 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET lang = ?, chatcolor = ?, show_log = ? WHERE id = ?', [$lang, $chatcolor, $show_log, $user->get('id')]);
+            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, lang = ?, chatcolor = ?, show_log = ? WHERE id = ?', [
+                trim($name), trim($email), $lang, $chatcolor, $show_log, $user->get('id')
+            ]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -87,6 +91,27 @@ class UserModel extends \Asatru\Database\Model {
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
 
             return $row->get('name');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return string
+     * @throws \Exception
+     */
+    public static function getEMailById($id)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+
+            return $row->get('email');
         } catch (\Exception $e) {
             throw $e;
         }
