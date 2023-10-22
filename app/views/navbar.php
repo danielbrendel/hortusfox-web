@@ -16,8 +16,8 @@
 
         <div class="navbar-end">
             <div class="navbar-item">
-                <a href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = 0; window.vue.bShowAddPlant = true;">
-                    <i class="fas fa-leaf" title="{{ __('app.add_plant') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.add_plant') }}</span>
+                <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = 0; window.vue.bShowAddPlant = true;">
+                    {{ __('app.add_plant') }}
                 </a>
             </div>
 
