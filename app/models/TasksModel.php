@@ -102,7 +102,11 @@ class TasksModel extends \Asatru\Database\Model {
     public static function getTasks($done = false, $limit = 100)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = ? ORDER BY created_at DESC LIMIT ' . $limit, [$done]);
+            if (!$done) {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = ? ORDER BY -due_date DESC, created_at DESC LIMIT ' . $limit, [$done]);
+            } else {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = ? ORDER BY created_at DESC LIMIT ' . $limit, [$done]);
+            }
         } catch (\Exception $e) {
             throw $e;
         }
