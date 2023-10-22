@@ -232,11 +232,7 @@ window.vue = new Vue({
         {
             let elem = document.getElementById(id);
             if (elem) {
-                if ((elem.style.display === 'none') || (elem.style.display == '')) {
-                    elem.style.display = 'unset';
-                } else {
-                    elem.style.display = 'none';
-                }
+                elem.classList.toggle('expand');
             }
         },
 

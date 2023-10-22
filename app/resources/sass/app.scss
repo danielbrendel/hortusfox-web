@@ -838,7 +838,17 @@ a.navbar-burger:hover {
 
 .inventory-item-body {
     position: relative;
-    display: none;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-transition: opacity 1s ease-out;
+    -moz-transition: opacity 1s ease-out;
+    transition: opacity 1s ease-out;
+}
+
+.inventory-item-body.expand {
+    height: auto;
+    opacity: 1;
 }
 
 .inventory-item-description {
