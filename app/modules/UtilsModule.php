@@ -4,6 +4,8 @@
  * This class represents your module
  */
 class UtilsModule {
+    const TYPING_SECONDS = 5;
+
     /**
      * @param $lang
      * @return void
@@ -245,5 +247,13 @@ class UtilsModule {
         }
 
         return $result;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isTyping($dt)
+    {
+        return ($dt !== null) && (Carbon::parse($dt)->diffInSeconds() <= self::TYPING_SECONDS);
     }
 }

@@ -181,6 +181,49 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateChatTyping()
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET last_typing = CURRENT_TIMESTAMP WHERE id = ?', [$user->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return bool
+     * @throws \Exception
+     */
+    public static function isAnyoneTypingInChat()
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            $rows = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id <> ?', [$user->get('id')]);
+            foreach ($rows as $row) {
+                if ((static::isUserOnline($row->get('id'))) && (UtilsModule::isTyping($row->get('last_typing')))) {
+                    return true;
+                }
+            }
+
+            return false;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $id
      * @return bool
      */

@@ -937,6 +937,15 @@ a.navbar-burger:hover {
     color: rgb(155, 155, 155);
 }
 
+.chat-typing-indicator {
+    display: none;
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+.chat-typing-indicator.visible {
+    display: block;
+}
+
 .chat-user-list {
     position: relative;
     margin-top: 10px;

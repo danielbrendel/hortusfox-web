@@ -15,7 +15,7 @@
 
                     <div class="field has-addons">
                         <div class="control is-stretched">
-                            <input class="input is-input-dark" type="text" name="message">
+                            <input class="input is-input-dark" type="text" name="message" onkeypress="window.vue.handleChatInput();">
                         </div>
                         <div class="control">
                             <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('frmSendChatMessage').submit();">{{ __('app.send') }}</a>
@@ -28,8 +28,16 @@
                 <div class="chat-user-list" id="chat-user-list"></div>
             @endif
 
-            @if (isset($messages))
-                <div class="chat" id="chat">
+            <div class="chat" id="chat">
+                <div class="chat-message chat-typing-indicator">
+                    <div class="chat-message-content">
+                        <span><i id="chat-typing-circle-1" class="fas fa-circle"></i></span>
+                        <span><i id="chat-typing-circle-2" class="fas fa-circle"></i></span>
+                        <span><i id="chat-typing-circle-3" class="fas fa-circle"></i></span>
+                    </div>
+                </div>
+
+                @if (isset($messages))
                     @foreach ($messages as $message)
                         <div class="chat-message {{ ($message->get('userId') == $user->get('id')) ? 'chat-message-right' : '' }}">
                             <div class="chat-message-user">
@@ -48,8 +56,8 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-            @endif
+                @endif
+            </div>
 		</div>
 	</div>
 

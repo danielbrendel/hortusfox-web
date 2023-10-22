@@ -11,6 +11,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.constChatMessageQueryRefreshRate = 1000 * 15;
 window.constChatUserListRefreshRate = 1000 * 15;
+window.constChatTypingRefreshRate = 2000;
 
 window.vue = new Vue({
     el: '#app',
@@ -40,7 +41,11 @@ window.vue = new Vue({
         confirmSetAllWatered: 'Are you sure you want to update the last watered date of all these plants?',
         confirmInventoryItemRemoval: 'Are you sure you want to remove this item?',
         newChatMessage: 'New',
-        currentlyOnline: 'Currently online: '
+        currentlyOnline: 'Currently online: ',
+        chatTypingEnable: false,
+        chatTypingTimer: null,
+        chatTypingHide: null,
+        chatTypingCounter: 1
     },
 
     methods: {
@@ -409,6 +414,91 @@ window.vue = new Vue({
             });
 
             setTimeout(window.vue.refreshUserList, window.constChatUserListRefreshRate);
+        },
+
+        refreshTypingStatus: function()
+        {
+            if (!window.vue.chatTypingEnable) {
+                return;
+            }
+
+            window.vue.ajaxRequest('get', window.location.origin + '/chat/typing/update', {}, function(response){
+                if (response.code != 200) {
+                    console.error(response.msg);
+                }
+            });
+
+            setTimeout(function(){
+                window.vue.chatTypingTimer = null;
+            }, 5000);
+        },
+
+        handleChatInput: function()
+        {
+            if (!window.vue.chatTypingTimer) {
+                window.vue.chatTypingTimer = setTimeout(function(){
+                    window.vue.refreshTypingStatus();
+                }, 1000);
+            }
+        },
+
+        handleTypingIndicator: function()
+        {
+            window.vue.ajaxRequest('get', window.location.origin + '/chat/typing', {}, function(response){
+                if (response.code == 200) {
+                    if (response.status) {
+                        let elem = document.getElementsByClassName('chat-typing-indicator')[0];
+                        elem.style.display = 'block';
+
+                        window.vue.chatTypingHide = setTimeout(window.vue.hideChatTypingIndicator, 6550);
+                    }
+                }
+            });
+
+            setTimeout(window.vue.handleTypingIndicator, window.constChatTypingRefreshRate);
+        },
+
+        hideChatTypingIndicator: function()
+        {
+            if (window.vue.chatTypingHide !== null) {
+                let elem = document.getElementsByClassName('chat-typing-indicator')[0];
+                elem.style.display = 'none';
+
+                window.vue.chatTypingHide = null;
+            }
+        },
+
+        animateChatTypingIndicator: function()
+        {
+            let indicator = document.getElementsByClassName('chat-typing-indicator')[0];
+            if (indicator.style.display === 'block') {
+                window.vue.removePreviousChatIndicatorCircleStyle();
+
+                let elem = document.getElementById('chat-typing-circle-' + window.vue.chatTypingCounter.toString());
+                elem.style.color = 'rgb(50, 50, 50)';
+                elem.classList.add('fa-lg');
+
+                window.vue.chatTypingCounter++;
+                if (window.vue.chatTypingCounter > 3) {
+                    window.vue.chatTypingCounter = 1;
+                }
+            }
+
+            setTimeout(window.vue.animateChatTypingIndicator, 350);
+        },
+
+        removePreviousChatIndicatorCircleStyle: function()
+        {
+            let previous = window.vue.chatTypingCounter - 1;
+            if (previous == 0) {
+                previous = 3;
+            }
+
+            let elem = document.getElementById('chat-typing-circle-' + previous.toString());
+            if (elem.classList.contains('fa-lg')) {
+                elem.classList.remove('fa-lg');
+                elem.style.color = 'inherit';
+            }
         },
     }
 });

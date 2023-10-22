@@ -39,6 +39,9 @@ APP_ONLINEMINUTELIMIT=5
 # Use this setting if you want to show or hide the current online user list in the chat
 APP_SHOWCHATONLINEUSERS=false
 
+# Use this setting if you want to show or hide an indiactor if someone types a chat message
+APP_SHOWCHATTYPINGINDICATOR=false
+
 # This must be set to true for the product to work in order to enable database connection
 DB_ENABLE=true
 
@@ -73,7 +76,7 @@ Now browse to http://localhost:8000/ and you should see a message indicating tha
 At this point you need to create your database users. Go to your database control panel and switch to the users table.
 Add all new users that should get access to the application. The following is an example:
 ```sql
-INSERT INTO `users` (`id`, `name`, `email`, `token`, `lang`, `chatcolor`, `show_log`, `last_seen_msg`, `last_action`, `created_at`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `token`, `lang`, `chatcolor`, `show_log`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
 (
     NULL, 
     'Username', 
@@ -82,7 +85,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `token`, `lang`, `chatcolor`, `show_
     NULL, 
     NULL, 
     1, 
-    NULL, 
+    NULL,
+    NULL,
     CURRENT_TIMESTAMP, 
     CURRENT_TIMESTAMP
 );

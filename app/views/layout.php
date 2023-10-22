@@ -647,6 +647,8 @@
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 
+				window.vue.chatTypingEnable = {{ (env('APP_SHOWCHATTYPINGINDICATOR', false)) ? 'true' : 'false' }};
+
 				window.vue.initNavBar();
 
 				window.currentLocale = '{{ UtilsModule::getLanguage() }}';
@@ -662,9 +664,14 @@
 
 				@if ((isset($_refresh_chat)) && ($_refresh_chat === true))
 					window.vue.refreshChat({{ $user->get('id') }});
-
+					
 					@if (env('APP_SHOWCHATONLINEUSERS', false))
 						window.vue.refreshUserList();
+					@endif
+
+					@if (env('APP_SHOWCHATTYPINGINDICATOR', false))
+						window.vue.handleTypingIndicator();
+						window.vue.animateChatTypingIndicator();
 					@endif
 				@endif
 			});

@@ -889,6 +889,51 @@ class IndexController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /chat/typing/update
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function update_chat_typing($request)
+	{
+		try {
+			UserModel::updateChatTyping();
+			
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /chat/typing
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function get_chat_typing_status($request)
+	{
+		try {
+			$status = UserModel::isAnyoneTypingInChat();
+
+			return json([
+				'code' => 200,
+				'status' => $status
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /user/online
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
@@ -903,7 +948,8 @@ class IndexController extends BaseController {
 
 			foreach ($users as $user) {
 				$result[] = [
-					'name' => $user->get('name')
+					'name' => $user->get('name'),
+					'typing' => UtilsModule::isTyping($user->get('last_typing'))
 				];
 			}
 

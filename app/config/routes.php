@@ -47,6 +47,8 @@ return [
     array('/chat', 'GET', 'index@view_chat'),
     array('/chat/add', 'POST', 'index@add_chat_message'),
     array('/chat/query', 'GET', 'index@query_chat_messages'),
+    array('/chat/typing', 'ANY', 'index@get_chat_typing_status'),
+    array('/chat/typing/update', 'ANY', 'index@update_chat_typing'),
     array('/user/online', 'ANY', 'index@get_online_users'),
     array('$404', 'ANY', 'error404@index')
 ];
