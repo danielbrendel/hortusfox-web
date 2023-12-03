@@ -10,9 +10,7 @@ class UserModel extends \Asatru\Database\Model {
     public static function getAuthUser()
     {
         try {
-            $auth_token = ($_COOKIE['auth_token']) ?? null;
-
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE token = ?', [$auth_token])->first();
+            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE session = ? AND status = 1', [session_id()])->first();
             if (!$data) {
                 return null;
             }
@@ -20,6 +18,118 @@ class UserModel extends \Asatru\Database\Model {
             return $data;
         } catch (\Exception $e) {
             return null;
+        }
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return void
+     * @throws \Exception
+     */
+    public static function login($email, $password)
+    {
+        try {
+            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$email])->first();
+            if (!$data) {
+                throw new \Exception(__('app.user_not_found', ['email' => $email]));
+            }
+
+            if (!password_verify($password, $data->get('password'))) {
+                throw new \Exception(__('app.password_mismatch'));
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET status = 1, session = ? WHERE id = ?', [session_id(), $data->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function logout()
+    {
+        try {
+            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE session = ? AND status = 1', [session_id()])->first();
+            if (!$data) {
+                throw new \Exception('No authenticated session.');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET status = 0, session = NULL WHERE id = ?', [$data->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $password
+     * @return void
+     * @throws \Exception
+     */
+    public static function updatePassword($password)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            $password = password_hash($password, PASSWORD_BCRYPT);
+
+            static::raw('UPDATE `' . self::tableName() . '` SET password = ? WHERE id = ?', [$password, $user->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $email
+     * @return void
+     * @throws \Exception
+     */
+    public static function restorePassword($email)
+    {
+        try {
+            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$email])->first();
+            if (!$data) {
+                throw new \Exception(__('app.user_not_found', ['email' => $email]));
+            }
+
+            $reset_token = md5(random_bytes(55) . date('Y-m-d H:i:s'));
+
+            static::raw('UPDATE `' . self::tableName() . '` SET password_reset = ? WHERE id = ?', [$reset_token, $data->get('id')]);
+
+            $mailobj = new Asatru\SMTPMailer\SMTPMailer();
+            $mailobj->setRecipient($email);
+            $mailobj->setSubject(__('app.reset_password'));
+            $mailobj->setView('mailreset', [], ['workspace' => env('APP_WORKSPACE'), 'token' => $reset_token]);
+            $mailobj->send();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $reset_token
+     * @param $password
+     * @return void
+     * @throws \Exception
+     */
+    public static function resetPassword($reset_token, $password)
+    {
+        try {
+            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE password_reset = ?', [$reset_token])->first();
+            if (!$data) {
+                throw new \Exception('Token not found');
+            }
+
+            $password = password_hash($password, PASSWORD_BCRYPT);
+
+            static::raw('UPDATE `' . self::tableName() . '` SET password_reset = NULL, password = ? WHERE id = ?', [$password, $data->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
         }
     }
 

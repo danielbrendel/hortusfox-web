@@ -10,6 +10,18 @@
 
 return [
 	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
+	'enter_email' => 'Gib deine E-Mail ein',
+	'enter_password' => 'Gib dein Passwort ein',
+	'enter_password_confirmation' => 'Bestätige dein Passwort',
+	'login' => 'Anmelden',
+	'user_not_found' => 'User konnte nicht gefunden werden: {email}',
+	'password_mismatch' => 'Die Passwörter stimmen nicht überein',
+	'password' => 'Passwort',
+	'password_confirmation' => 'Passwort (Bestätigung)',
+	'restore_password' => 'Passwort wiederherstellen',
+	'restore_password_info' => 'Bitte befolge die Anweisungen, die an dein E-Mail Konto geschickt wurden.',
+	'reset_password' => 'Passwort zurücksetzen',
+	'reset_password_hint' => 'Bitte navigiere zum folgenden Link, um deinen Zugriff auf {workspace} wiederzuerlangen: <a href="{url}">Zugang wiedererlangen</a>',
 	'dashboard' => 'Dashboard',
 	'welcome_message' => 'Hallo {name}, willkommen zurück!',
 	'locations' => 'Räume',

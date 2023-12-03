@@ -10,6 +10,18 @@
 
 return [
 	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
+	'enter_email' => 'Enter your e-mail',
+	'enter_password' => 'Enter your password',
+	'enter_password_confirmation' => 'Confirm your password',
+	'login' => 'Login',
+	'user_not_found' => 'User not found: {email}',
+	'password_mismatch' => 'The passwords do not match',
+	'password' => 'Password',
+	'password_confirmation' => 'Password (confirmation)',
+	'restore_password' => 'Restore password',
+	'restore_password_info' => 'Please follow the instructions that were sent to your E-Mail account.',
+	'reset_password' => 'Reset password',
+	'reset_password_hint' => 'Please navigate on the following link in order to reset your password for your access to {workspace}: <a href="{url}">Reset password</a>',
 	'dashboard' => 'Dashboard',
 	'welcome_message' => 'Hi {name}, welcome back!',
 	'locations' => 'Locations',

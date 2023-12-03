@@ -59,6 +59,12 @@
                 </a>
             </div>
 
+            <div class="navbar-item">
+                <a href="{{ url('/logout') }}">
+                    <i class="fas fa-sign-out-alt" title="{{ __('app.logout') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.logout') }}</span>
+                </a>
+            </div>
+
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                     {{ __('app.locations') }}

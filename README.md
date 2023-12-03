@@ -62,6 +62,27 @@ DB_DATABASE=hortusfox
 
 # Database driver. This needs to be unaltered for now
 DB_DRIVER=mysql
+
+# The name of the e-mail sender
+SMTP_FROMNAME="Test"
+
+# The e-mail address of the sender
+SMTP_FROMADDRESS="test@domain.tld"
+
+# Hostname or address to your SMTP mail provider
+SMTP_HOST=""
+
+# Port to be used for connecting to the host
+SMTP_PORT=587
+
+# Your SMTP username
+SMTP_USERNAME=""
+
+# Your SMTP password for authentication
+SMTP_PASSWORD=""
+
+# Communication encryption
+SMTP_ENCRYPTION=tls
 ```
 After saving the file you can now let the product create all neccessary tables via the following command:
 ```shell
@@ -76,12 +97,15 @@ Now browse to http://localhost:8000/ and you should see a message indicating tha
 At this point you need to create your database users. Go to your database control panel and switch to the users table.
 Add all new users that should get access to the application. The following is an example:
 ```sql
-INSERT INTO `users` (`id`, `name`, `email`, `token`, `lang`, `chatcolor`, `show_log`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `lang`, `chatcolor`, `show_log`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
 (
     NULL, 
     'Username', 
     'name@example.com', 
-    'your_auth_token_here', 
+    'your_password_token_here',
+    NULL,
+    NULL,
+    0,
     NULL, 
     NULL, 
     1, 
@@ -91,17 +115,15 @@ INSERT INTO `users` (`id`, `name`, `email`, `token`, `lang`, `chatcolor`, `show_
     CURRENT_TIMESTAMP
 );
 ```
-As you might have noticed the values that you need to customize are name, email and token. All others are left with their default values.
-The auth token must be created manually. For testing purposes you might just want to quickly use something like:
+As you might have noticed the values that you need to customize are name, email and password. All others are left with their default values.
+The password hash must be created manually. For testing purposes you might just want to quickly use something like:
 ```shell
-php -r "echo md5(random_bytes(55) . date('Y-m-d H:i:s'));"
+php -r "echo password_hash('test', PASSWORD_BCRYPT);"
 ```
-If you want to test it now you can again browse to the URL and then open the console and set your auth cookie:
-```javascript
-document.cookie = 'auth_token=your_auth_token_here; path=/';
-```
-If everything went right, you should then see your dashboard. Last but not least you need to add all your locations of your
-local environment to the database. Therefore go to the locations table and add your locatios:
+If you want to test it now you can again browse to the URL and the system will redirect you to the /auth page.
+After logging in, you should then be redirected to your dashboard. Users can change their passwords in their profile preferences. They can also
+reset their password. Therefore an e-mail will be sent to them with restoration instructions. Last but not least you need to add all your locations 
+of your local environment to the database. Therefore go to the locations table and add your locatios:
 
 ```sql
 INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
@@ -114,7 +136,7 @@ INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 );
 ```
 The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
-You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Finally your next step is to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">mobile app</a> for your users.
+You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Additionally you might want to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">android mobile app</a> for your users.
 
 ## System requirements
 - PHP ^8.2

@@ -48,6 +48,120 @@ class IndexController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /auth
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler
+	 */
+	public function auth($request)
+	{
+		$view = new Asatru\View\ViewHandler();
+		$view->setLayout('auth');
+
+		return $view;
+	}
+
+	/**
+	 * Handles URL: /login
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function login($request)
+	{
+		try {
+			$email = $request->params()->query('email', null);
+			$password = $request->params()->query('password', null);
+			
+			UserModel::login($email, $password);
+
+			return redirect('/');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /logout
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function logout($request)
+	{
+		try {
+			UserModel::logout();
+
+			return redirect('/');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /password/restore
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function restore_password($request)
+	{
+		try {
+			$email = $request->params()->query('email', null);
+
+			UserModel::restorePassword($email);
+
+			FlashMessage::setMsg('success', __('app.restore_password_info'));
+
+			return redirect('/');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /password/reset
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler
+	 */
+	public function view_reset_password($request)
+	{
+		$token = $request->params()->query('token');
+
+		return view('pwreset', [], ['token' => $token]);
+	}
+
+	/**
+	 * Handles URL: /password/reset
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function reset_password($request)
+	{
+		try {
+			$token = $request->params()->query('token', null);
+			$password = $request->params()->query('password', null);
+			$password_confirmation = $request->params()->query('password_confirmation', null);
+
+			if ($password !== $password_confirmation) {
+				throw new \Exception(__('app.password_mismatch'));
+			}
+
+			UserModel::resetPassword($token, $password);
+
+			return redirect('/');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/location/{id}
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
@@ -360,33 +474,47 @@ class IndexController extends BaseController {
 	 */
 	public function edit_preferences($request)
 	{
-		$validator = new Asatru\Controller\PostValidator([
-			'name' => 'required|min:1',
-			'email' => 'required|email',
-			'lang' => 'required',
-			'chatcolor' => 'required'
-		]);
+		try {
+			$validator = new Asatru\Controller\PostValidator([
+				'name' => 'required|min:1',
+				'email' => 'required|email',
+				'lang' => 'required',
+				'chatcolor' => 'required'
+			]);
 
-		if (!$validator->isValid()) {
-			$errorstr = '';
-			foreach ($validator->errorMsgs() as $err) {
-				$errorstr .= $err . '<br/>';
+			if (!$validator->isValid()) {
+				$errorstr = '';
+				foreach ($validator->errorMsgs() as $err) {
+					$errorstr .= $err . '<br/>';
+				}
+
+				FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
+				
+				return back();
 			}
 
-			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
-			
-			return back();
+			$name = $request->params()->query('name', null);
+			$email = $request->params()->query('email', null);
+			$lang = $request->params()->query('lang', 'en');
+			$chatcolor = $request->params()->query('chatcolor', null);
+			$show_log = $request->params()->query('show_log', false);
+
+			UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log);
+
+			$password = $request->params()->query('password', null);
+			if ($password) {
+				$password_confirmation = $request->params()->query('password_confirmation', null);
+				if ($password !== $password_confirmation) {
+					throw new \Exception(__('app.password_mismatch'));
+				}
+
+				UserModel::updatePassword($password);
+			}
+
+			FlashMessage::setMsg('success', __('app.preferences_saved_successfully'));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
 		}
-
-		$name = $request->params()->query('name', null);
-		$email = $request->params()->query('email', null);
-		$lang = $request->params()->query('lang', 'en');
-		$chatcolor = $request->params()->query('chatcolor', null);
-		$show_log = $request->params()->query('show_log', false);
-
-		UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log);
-
-		FlashMessage::setMsg('success', __('app.preferences_saved_successfully'));
 
 		return redirect('/profile');
 	}

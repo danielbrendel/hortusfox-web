@@ -25,18 +25,24 @@ class BaseController extends Asatru\Controller\Controller {
 
 		$auth_user = UserModel::getAuthUser();
 		if (!$auth_user) {
-			http_response_code(403);
-			exit('403 - Access Forbidden.');
-		}
+			$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-		UserModel::updateOnlineStatus();
+			$allowed_urls = array('/auth', '/login', '/password/restore', '/password/reset');
 
-		if ((is_string($auth_user->get('lang'))) && (strlen($auth_user->get('lang')) > 0)) {
-			UtilsModule::setLanguage($auth_user->get('lang'));
+			if (!in_array($url, $allowed_urls)) {
+				header('Location: /auth');
+				exit();
+			}
 		} else {
-			$lang = env('APP_LANG', 'en');
-			if (($lang !== null) && (is_string($lang))) {
-				UtilsModule::setLanguage($lang);
+			UserModel::updateOnlineStatus();
+
+			if ((is_string($auth_user->get('lang'))) && (strlen($auth_user->get('lang')) > 0)) {
+				UtilsModule::setLanguage($auth_user->get('lang'));
+			} else {
+				$lang = env('APP_LANG', 'en');
+				if (($lang !== null) && (is_string($lang))) {
+					UtilsModule::setLanguage($lang);
+				}
 			}
 		}
 	}

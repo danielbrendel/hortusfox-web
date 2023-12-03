@@ -1007,3 +1007,140 @@ a.navbar-burger:hover {
 .scroll-to-top-inner a {
     color: rgb(200, 200, 200);
 }
+
+.auth-main {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.auth-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.auth-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+}
+
+.auth-header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.auth-header img {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
+
+.auth-header h1 {
+    font-size: 2.5em;
+    font-family: Quicksand, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: rgb(150, 150, 150);
+}
+
+.auth-info {
+    position: relative;
+    margin-bottom: 43px;
+}
+
+.auth-info-error {
+    color: rgb(154, 73, 69);
+}
+
+.auth-info-success {
+    color: rgb(69, 154, 83);
+}
+
+.auth-form {
+    position: relative;
+}
+
+.auth-form input[type=email], .auth-form input[type=password] {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.auth-form input[type=email]::placeholder, .auth-form input[type=password]::placeholder {
+    color: rgb(200, 200, 200);
+}
+
+.auth-form input[type=submit] {
+    width: 100%;
+}
+
+.auth-help {
+    position: relative;
+    margin-top: 20px;
+}
+
+.auth-help a {
+    color: rgb(54, 105, 203);
+}
+
+.auth-help a:hover {
+    color: rgb(54, 105, 203);
+    text-decoration: underline;
+}
+
+.reset-main {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.reset-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.reset-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+}
+
+.reset-info {
+    position: relative;
+    margin-bottom: 43px;
+}
+
+.reset-info-error {
+    color: rgb(154, 73, 69);
+}
+
+.reset-info-success {
+    color: rgb(69, 154, 83);
+}
+
+.reset-form {
+    position: relative;
+}
+
+.reset-form input[type=email], .reset-form input[type=password] {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.reset-form input[type=email]::placeholder, .reset-form input[type=password]::placeholder {
+    color: rgb(200, 200, 200);
+}
+
+.reset-form input[type=submit] {
+    width: 100%;
+}

@@ -17,6 +17,12 @@
 
 return [
     array('/', 'GET', 'index@index'),
+    array('/auth', 'GET', 'index@auth'),
+    array('/login', 'POST', 'index@login'),
+    array('/logout', 'ANY', 'index@logout'),
+    array('/password/restore', 'POST', 'index@restore_password'),
+    array('/password/reset', 'GET', 'index@view_reset_password'),
+    array('/password/reset', 'POST', 'index@reset_password'),
     array('/plants/location/{id}', 'GET', 'index@plants_from_location'),
     array('/plants/location/{id}/water', 'ANY', 'index@set_plants_watered'),
     array('/plants/details/{id}', 'GET', 'index@view_plant_details'),

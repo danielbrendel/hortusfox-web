@@ -600,6 +600,20 @@
 							</div>
 
 							<div class="field">
+								<label class="label">{{ __('app.password') }}</label>
+								<div class="control">
+									<input type="password" class="input" name="password">
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.password_confirmation') }}</label>
+								<div class="control">
+									<input type="password" class="input" name="password_confirmation">
+								</div>
+							</div>
+
+							<div class="field">
 								<label class="label">{{ __('app.language') }}</label>
 								<div class="control">
 									<select class="input" name="lang" id="selEditCombo">

@@ -30,7 +30,10 @@ class UserModel_Migration {
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('name VARCHAR(512) NOT NULL');
         $this->database->add('email VARCHAR(512) NOT NULL');
-        $this->database->add('token VARCHAR(1024) NOT NULL');
+        $this->database->add('password VARCHAR(1024) NOT NULL');
+        $this->database->add('password_reset VARCHAR(1024) NULL');
+        $this->database->add('session VARCHAR(1024) NULL');
+        $this->database->add('status BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('lang VARCHAR(512) NULL');
         $this->database->add('chatcolor VARCHAR(512) NULL');
         $this->database->add('show_log BOOLEAN NOT NULL DEFAULT 1');
