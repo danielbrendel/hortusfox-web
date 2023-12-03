@@ -645,6 +645,39 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowCreateNewUser}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.create_user') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowCreateNewUser = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmCreateNewUser" method="POST" action="{{ url('/admin/user/create') }}">
+							@csrf
+
+							<div class="field">
+								<label class="label">{{ __('app.name') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="name" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.email') }}</label>
+								<div class="control">
+									<input type="email" class="input" name="email" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmCreateNewUser').submit();">{{ __('app.create') }}</button>
+						<button class="button" onclick="window.vue.bShowCreateNewUser = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 		</div>
 

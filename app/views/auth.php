@@ -76,7 +76,7 @@
                         <button class="delete" aria-label="close" onclick="window.vue.bShowRestorePassword = false;"></button>
                     </header>
                     <section class="modal-card-body is-stretched">
-                        <form id="frmEditText" method="POST" action="{{ url('/password/restore') }}">
+                        <form id="frmRestorePassword" method="POST" action="{{ url('/password/restore') }}">
                             @csrf
 
                             <div class="field">
@@ -87,7 +87,7 @@
                         </form>
                     </section>
                     <footer class="modal-card-foot is-stretched">
-                        <button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditText').submit();">{{ __('app.restore_password') }}</button>
+                        <button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmRestorePassword').submit();">{{ __('app.restore_password') }}</button>
                         <button class="button" onclick="window.vue.bShowRestorePassword = false;">{{ __('app.cancel') }}</button>
                     </footer>
                 </div>

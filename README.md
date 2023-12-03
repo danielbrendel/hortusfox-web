@@ -93,11 +93,11 @@ you can start it via:
 ```shell
 php asatru serve
 ```
-Now browse to http://localhost:8000/ and you should see a message indicating that the access is forbidden with error 403.
-At this point you need to create your database users. Go to your database control panel and switch to the users table.
-Add all new users that should get access to the application. The following is an example:
+Now browse to http://localhost:8000/ and you should be redirected to the authentication page.
+At this point you need to create your first user. Go to your database control panel and switch to the users table.
+Add the user account that should get access to the application with admin privileges. The following is an example:
 ```sql
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `lang`, `chatcolor`, `show_log`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `admin`, `lang`, `chatcolor`, `show_log`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
 (
     NULL, 
     'Username', 
@@ -106,6 +106,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `sessi
     NULL,
     NULL,
     0,
+    1,
     NULL, 
     NULL, 
     1, 
@@ -115,15 +116,17 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `sessi
     CURRENT_TIMESTAMP
 );
 ```
-As you might have noticed the values that you need to customize are name, email and password. All others are left with their default values.
+As you might have noticed the values that you need to customize are name, email, password and admin. All others are left with their default values.
 The password hash must be created manually. For testing purposes you might just want to quickly use something like:
 ```shell
 php -r "echo password_hash('test', PASSWORD_BCRYPT);"
 ```
-If you want to test it now you can again browse to the URL and the system will redirect you to the /auth page.
-After logging in, you should then be redirected to your dashboard. Users can change their passwords in their profile preferences. They can also
-reset their password. Therefore an e-mail will be sent to them with restoration instructions. Last but not least you need to add all your locations 
-of your local environment to the database. Therefore go to the locations table and add your locatios:
+You may now login with your initial admin user account using your e-mail address and the password of which you have stored the hash in the table.
+After logging in, you should then be redirected to the dashboard. Further users can now be created via the admin area. Users can change their 
+passwords in their profile preferences. They can also reset their password. Therefore an e-mail will be sent to them with restoration instructions.
+Each new created user will get a confirmation e-mail with an automatically generated password in order to log in. It is recommended that users change
+their passwords after their first login.
+Last but not least you need to add all your locations of your local environment to the database. Therefore go to the locations table and add your locatios:
 
 ```sql
 INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES

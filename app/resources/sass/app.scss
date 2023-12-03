@@ -1144,3 +1144,78 @@ a.navbar-burger:hover {
 .reset-form input[type=submit] {
     width: 100%;
 }
+
+.admin-environment {
+    position: relative;
+}
+
+.admin-environment h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.admin-environment label, .admin-environment span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-environment input, .admin-environment select {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-users {
+    position: relative;
+    width: 100%;
+}
+
+.admin-users h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-users-list {
+    position: relative;
+}
+
+.admin-user-account {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.admin-user-account label, .admin-user-account span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-user-account input, .admin-user-account select {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-user-account-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.admin-user-account-item-input {
+    width: 34%;
+}
+
+.admin-user-account-actions {
+    position: relative;
+    display: inline-block;
+}
+
+.admin-user-account-item-centered {
+    text-align: center;
+}
+
+.admin-user-account-action-item {
+    position: relative;
+}
+
+.admin-users-actions {
+    position: relative;
+    margin-top: 20px;
+}

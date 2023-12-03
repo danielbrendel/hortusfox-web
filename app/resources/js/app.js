@@ -33,6 +33,7 @@ window.vue = new Vue({
         bShowEditInventoryItem: false,
         bShowManageGroups: false,
         bShowRestorePassword: false,
+        bShowCreateNewUser: false,
         comboLocation: [],
         comboCuttingMonth: [],
         comboLightLevel: [],

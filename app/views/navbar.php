@@ -59,6 +59,14 @@
                 </a>
             </div>
 
+            @if (UserModel::isCurrentlyAdmin())
+            <div class="navbar-item">
+                <a href="{{ url('/admin') }}">
+                    <i class="fas fa-cog" title="{{ __('app.admin_area') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.admin_area') }}</span>
+                </a>
+            </div>
+            @endif
+
             <div class="navbar-item">
                 <a href="{{ url('/logout') }}">
                     <i class="fas fa-sign-out-alt" title="{{ __('app.logout') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.logout') }}</span>

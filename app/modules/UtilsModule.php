@@ -256,4 +256,52 @@ class UtilsModule {
     {
         return ($dt !== null) && (Carbon::parse($dt)->diffInSeconds() <= self::TYPING_SECONDS);
     }
+
+    /**
+     * @param $workspace
+     * @param $lang
+     * @param $scroller
+     * @param $onlinetimelimit
+     * @param $chatonlineusers
+     * @param $chattypingindicator
+     */
+    public static function saveEnvironment($workspace, $lang, $scroller, $onlinetimelimit, $chatonlineusers, $chattypingindicator)
+    {
+        $new_env_settings = [
+            'APP_WORKSPACE' => $workspace,
+            'APP_LANG' => $lang,
+            'APP_ENABLESCROLLER' => $scroller,
+            'APP_ONLINEMINUTELIMIT' => $onlinetimelimit,
+            'APP_SHOWCHATONLINEUSERS' => $chatonlineusers,
+            'APP_SHOWCHATTYPINGINDICATOR' => $chattypingindicator,
+        ];
+
+        foreach ($new_env_settings as $key => $value) {
+            if (isset($_ENV[$key])) {
+                $_ENV[$key] = $value;
+            }
+        }
+
+        $env_content = "# Automatically generated at " . date('Y-m-d H:i:s') . "\n";
+
+        foreach ($_ENV as $key => $value) {
+            if (gettype($value) === 'boolean') {
+                $env_content .= $key . '=' . (($value) ? "true" : "false");
+            } else if (gettype($value) === 'double') {
+                $env_content .= $key . '=' . $value;
+            } else if (gettype($value) === 'integer') {
+                $env_content .= $key . '=' . $value;
+            } else if (gettype($value) === 'string') {
+                $env_content .= $key . '="' . $value . '"';
+            } else if ($value === null) {
+                $env_content .= $key . '=null';
+            } else {
+                $env_content .= $key . '=' . $value;
+            }
+
+            $env_content .= "\n";
+        }
+
+        file_put_contents(base_path() . '/.env', $env_content);
+    }
 }

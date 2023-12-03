@@ -56,5 +56,10 @@ return [
     array('/chat/typing', 'ANY', 'index@get_chat_typing_status'),
     array('/chat/typing/update', 'ANY', 'index@update_chat_typing'),
     array('/user/online', 'ANY', 'index@get_online_users'),
+    array('/admin', 'GET', 'admin@index'),
+    array('/admin/environment/save', 'POST', 'admin@save_environment'),
+    array('/admin/user/create', 'POST', 'admin@create_user'),
+    array('/admin/user/update', 'POST', 'admin@update_user'),
+    array('/admin/user/remove', 'ANY', 'admin@remove_user'),
     array('$404', 'ANY', 'error404@index')
 ];

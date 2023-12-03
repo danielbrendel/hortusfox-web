@@ -12,5 +12,9 @@
         <p>
             {!! __('app.reset_password_hint', ['workspace' => $workspace, 'url' => url('/password/reset?token=' . $token)]) !!}
         </p>
+
+        <p>
+            <small>Powered by {{ env('APP_NAME') }}</small>
+        </p>
     </body>
 </html>

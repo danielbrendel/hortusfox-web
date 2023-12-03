@@ -104,7 +104,7 @@ class UserModel extends \Asatru\Database\Model {
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($email);
             $mailobj->setSubject(__('app.reset_password'));
-            $mailobj->setView('mailreset', [], ['workspace' => env('APP_WORKSPACE'), 'token' => $reset_token]);
+            $mailobj->setView('mail/mailreset', [], ['workspace' => env('APP_WORKSPACE'), 'token' => $reset_token]);
             $mailobj->send();
         } catch (\Exception $e) {
             throw $e;
@@ -142,6 +142,23 @@ class UserModel extends \Asatru\Database\Model {
         try {
             $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$userId])->first();
             return $data;
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isCurrentlyAdmin()
+    {
+        try {
+            $user = static::getAuthUser();
+            if ((!$user) || (!$user->get('admin'))) {
+                return false;
+            }
+
+            return true;
         } catch (\Exception $e) {
             return null;
         }
@@ -368,6 +385,78 @@ class UserModel extends \Asatru\Database\Model {
             }
 
             return $result;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getAll()
+    {
+        try {
+            return static::raw('SELECT * FROM `' . self::tableName() . '`');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $name
+     * @param $email
+     * @return void
+     * @throws \Exception
+     */
+    public static function createUser($name, $email)
+    {
+        try {
+            $password = substr(md5(random_bytes(55) . date('Y-m-d H:i:s')), 0, 10);
+            
+            static::raw('INSERT INTO `' . self::tableName() . '` (name, email, password) VALUES(?, ?, ?)', [
+                $name, $email, password_hash($password, PASSWORD_BCRYPT)
+            ]);
+
+            $mailobj = new Asatru\SMTPMailer\SMTPMailer();
+            $mailobj->setRecipient($email);
+            $mailobj->setSubject(__('app.account_created'));
+            $mailobj->setView('mail/mailacccreated', [], ['workspace' => env('APP_WORKSPACE'), 'password' => $password]);
+            $mailobj->send();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $name
+     * @param $email
+     * @param $admin
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateUser($id, $name, $email, $admin)
+    {
+        try {
+            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, admin = ? WHERE id = ?', [
+                $name, $email, $admin, $id
+            ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return void
+     * @throws \Exception
+     */
+    public static function removeUser($id)
+    {
+        try {
+            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [
+                $id
+            ]);
         } catch (\Exception $e) {
             throw $e;
         }
