@@ -627,7 +627,7 @@
 							<div class="field">
 							<label class="label">{{ __('app.chatcolor') }}</label>
 								<div class="control">
-									<input type="color" name="chatcolor" value="{{ UserModel::getChatColorForUser($user->get('id')) }}">
+									<input type="color" class="input" name="chatcolor" value="{{ UserModel::getChatColorForUser($user->get('id')) }}">
 								</div>
 							</div>
 
