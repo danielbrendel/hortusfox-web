@@ -1,7 +1,7 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item navbar-item-brand is-font-title" href="{{ url('/') }}">
-            <img src="{{ asset('logo.png') }}"/>&nbsp;{{ __('app.workspace_title', ['name' => env('APP_WORKSPACE')]) }}
+            <img src="{{ asset('logo.png') }}"/>&nbsp;{{ env('APP_WORKSPACE') }}
         </a>
 
         <a id="burger-button" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
