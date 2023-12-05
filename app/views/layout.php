@@ -681,7 +681,7 @@
 			@include('scroller.php')
 		</div>
 
-		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="{{ asset('js/app.js', true) }}"></script>
 		<script>
 			document.addEventListener('DOMContentLoaded', function(){
 				@foreach (LocationsModel::getAll() as $location)
