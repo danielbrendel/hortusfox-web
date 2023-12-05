@@ -47,6 +47,7 @@ return [
 	'infected' => 'Schädlingsbefall',
 	'plant_warning' => 'Achtung: Diese Pflanze braucht besondere Aufmerksamkeit. Grund: {reason}',
 	'notes' => 'Notizen',
+	'no_notes_specified' => 'Es wurden noch keine Notizen verfasst',
 	'select_month' => '- Monat auswählen -',
 	'select_light_level' => '- Lichtempfindlichkeit wählen -',
 	'january' => 'Januar',

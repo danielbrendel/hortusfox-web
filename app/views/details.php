@@ -171,7 +171,7 @@
 							@if (is_string($plant->get('notes')))
 								{{ $plant->get('notes') }}
 							@else
-								<span class="is-not-available">N/A</span>
+								<span class="is-not-available">{{ __('app.no_notes_specified') }}</span>
 							@endif
 						</div>
 
