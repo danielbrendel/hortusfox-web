@@ -214,8 +214,12 @@ a.navbar-burger:hover {
 .location-title {
     text-align: center;
     font-size: 2.3em;
+    padding-bottom: 4px;
     @media screen and (max-width: 830px) {
         font-size: 1.2em;
+    }
+    @media screen and (min-width: 831px) {
+        padding-bottom: 10px;
     }
     margin-bottom: 20px;
     background-color: rgba(115, 143, 100, 0.9);
@@ -456,7 +460,7 @@ a.navbar-burger:hover {
 }
 
 .warning-plants-title {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 10px;
     font-size: 1.3em;
     color: rgb(200, 200, 200);
@@ -464,6 +468,14 @@ a.navbar-burger:hover {
 
 .warning-plants-title-no-margin-bottom {
     margin-bottom: unset;
+}
+
+.warning-plants-title-margin-top-25 {
+    margin-top: 25px;
+}
+
+.warning-plants-title-centered {
+    text-align: center;
 }
 
 .warning-plants-content {
@@ -491,7 +503,7 @@ a.navbar-burger:hover {
 }
 
 .overdue-tasks-title {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 10px;
     font-size: 1.3em;
     color: rgb(200, 200, 200);
