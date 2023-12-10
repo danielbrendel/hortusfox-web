@@ -243,6 +243,28 @@ a.navbar-burger:hover {
     margin-bottom: 20px;
 }
 
+.sorting {
+    position: relative;
+    top: 10px;
+    margin-left: 10px;
+}
+
+.sorting-control {
+    position: relative;
+    display: inline-block;
+}
+
+.sorting-control select {
+    color: rgb(200, 200, 200);
+    background-color: rgba(50, 50, 50, 0.9);
+    border: 1px solid rgb(100, 100, 100);
+    margin-right: 5px;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: rgb(50, 115, 220) !important;
+}
+
 .plants {
     margin-top: 30px;
     @media screen and (max-width: 552px) {

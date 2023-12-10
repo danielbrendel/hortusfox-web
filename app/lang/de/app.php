@@ -166,5 +166,14 @@ return [
 	'user_created_successfully' => 'Neuer User-Account wurde erfolgreich erstellt',
 	'user_updated_successfully' => 'Die Daten wurden erfolgreich aktualisiert',
 	'user_removed_successfully' => 'Das User-Konto wurde erfolgreich entfernt',
-	'confirm_user_removal' => 'Soll dieser Account wirklich entfernt werden?'
+	'confirm_user_removal' => 'Soll dieser Account wirklich entfernt werden?',
+	'sorting_type_name' => 'Alphabetisch',
+	'sorting_type_last_watered' => 'Zuletzt gewässert',
+	'sorting_type_last_repotted' => 'Zuletzt umgetopft',
+	'sorting_type_health_state' => 'Gesundheitsstatus',
+	'sorting_type_perennial' => 'Winterhart',
+	'sorting_type_light_level' => 'Lichtempfindlichkeit',
+	'sorting_type_humidity' => 'Luftfeuchtigkeit',
+	'sorting_dir_asc' => 'Aufsteigend',
+	'sorting_dir_desc' => 'Absteigend'
 ];

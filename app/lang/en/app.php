@@ -166,5 +166,14 @@ return [
 	'user_created_successfully' => 'New user was created successfully',
 	'user_updated_successfully' => 'User data successfully updated',
 	'user_removed_successfully' => 'The user account was removed successfully',
-	'confirm_user_removal' => 'Do you really want to remove this user account?'
+	'confirm_user_removal' => 'Do you really want to remove this user account?',
+	'sorting_type_name' => 'Alphabetically',
+	'sorting_type_last_watered' => 'Last time watered',
+	'sorting_type_last_repotted' => 'Last time repotted',
+	'sorting_type_health_state' => 'Health state',
+	'sorting_type_perennial' => 'Perennial',
+	'sorting_type_light_level' => 'Light Level',
+	'sorting_type_humidity' => 'Humidity',
+	'sorting_dir_asc' => 'Ascending',
+	'sorting_dir_desc' => 'Descending'
 ];

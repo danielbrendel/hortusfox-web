@@ -10,15 +10,65 @@
     class PlantsModel extends \Asatru\Database\Model {
         const PLANT_STATE_GOOD = 'in_good_standing';
 
+        static $sorting_list = [
+            'name',
+            'last_watered',
+            'last_repotted',
+            'health_state',
+            'perennial',
+            'light_level',
+            'humidity'
+        ];
+
+        static $sorting_dir = [
+            'asc',
+            'desc'
+        ];
+
+        /**
+         * @param $type
+         * @throws \Exception
+         */
+        public static function validateSorting($type)
+        {
+            if (!in_array($type, static::$sorting_list)) {
+                throw new \Exception('Invalid sorting type: ' . $type);
+            }
+        }
+
+        /**
+         * @param $dir
+         * @throws \Exception
+         */
+        public static function validateDirection($dir)
+        {
+            if (!in_array($dir, static::$sorting_dir)) {
+                throw new \Exception('Invalid sorting direction: ' . $dir);
+            }
+        }
+
         /**
          * @param $location
+         * @param $sorting
+         * @param $direction
          * @return mixed
          * @throws \Exception
          */
-        public static function getAll($location)
+        public static function getAll($location, $sorting = null, $direction = null)
         {
             try {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? ORDER BY name ASC', [$location]);
+                if ($sorting === null) {
+                    $sorting = 'name';
+                }
+
+                if ($direction === null) {
+                    $direction = 'asc';
+                }
+
+                static::validateSorting($sorting);
+                static::validateDirection($direction);
+
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? ORDER BY ' . $sorting . ' ' . $direction, [$location]);
             } catch (\Exception $e) {
                 throw $e;
             }

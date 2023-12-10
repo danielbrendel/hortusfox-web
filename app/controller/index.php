@@ -173,11 +173,16 @@ class IndexController extends BaseController {
 
 		$location = $request->arg('id');
 
-		$plants = PlantsModel::getAll($location);
+		$sorting = $request->params()->query('sorting', null);
+		$direction = $request->params()->query('direction', null);
+
+		$plants = PlantsModel::getAll($location, $sorting, $direction);
 		
 		return parent::view(['content', 'plants'], [
 			'user' => $user,
 			'plants' => $plants,
+			'sorting_types' => PlantsModel::$sorting_list,
+			'sorting_dirs' => PlantsModel::$sorting_dir,
 			'location' => $location,
 			'location_name' => LocationsModel::getNameById($location)
 		]);
