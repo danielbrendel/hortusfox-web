@@ -1,0 +1,186 @@
+/*
+    install.css
+*/
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: rgb(20, 20, 20);
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#app {
+    position: relative;
+    width: 90%;
+    height: 85%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 73px;
+    padding: 20px;
+    color: rgb(200, 200, 200);
+    background-color: rgb(50, 50, 50);
+    border-radius: 10px;
+    overflow-y: hidden;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#app p {
+    margin-bottom: 40px;
+}
+
+.header {
+    position: relative;
+    margin-top: 5px;
+}
+
+.header img {
+    width: 128px;
+    height: 128px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+}
+
+.install-content {
+    position: absolute;
+    width: 98%;
+    max-height: 40%;
+    top: 50%;
+    transform: translate(-0%, -45%);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.install-action {
+    position: absolute;
+    bottom: 140px;
+    width: 200px;
+    left: 50%;
+    transform: translate(-67%, -0%);
+    z-index: 3;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.install-content table {
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.install-content thead {
+    background-color: rgb(67, 67, 67);
+}
+
+.install-content thead td {
+    padding: 10px;
+    border: 1px solid rgb(100, 100, 100);
+}
+
+.install-content tbody td {
+    width: 200px;
+    padding: 15px;
+    border: 1px solid rgb(100, 100, 100);
+}
+
+.install-content td.is-right {
+    text-align: right;
+}
+
+.is-center-fix {
+    transform: translate(-0%, -32%);
+}
+
+.is-insufficient {
+    color: rgb(220, 85, 79);
+}
+
+.is-successful {
+    color: rgb(76, 190, 79);
+}
+
+.button-stretched {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.install-content form {
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.install-content label {
+    color: rgb(150, 150, 150);
+}
+
+.install-content input {
+    color: rgb(150, 150, 150);
+    background-color: rgb(67, 67, 67);
+}
+
+.install-content a {
+    width: 25%;
+    margin-top: 20px;
+}
+
+.install-content a.is-full-width {
+    width: 100%;
+}
+
+.install-error {
+    position: relative;
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: rgb(220, 85, 79);
+    border: 1px solid rgb(145, 43, 39);
+    color: rgb(200, 200, 200);
+    border-radius: 10px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15px;
+    margin-left: -20px;
+    margin-bottom: -20px;
+    background-color: rgb(59, 59, 59);
+}
+
+.footer-info {
+    position: relative;
+    font-size: 1.0em;
+    top: -17px;
+}
+
+.footer-social {
+    position: relative;
+    top: -15px;
+}
+
+.footer-social a {
+    color: rgb(151, 185, 235);
+}
+
+.footer-social a:hover {
+    color: rgb(179, 202, 235);
+}
