@@ -15,6 +15,9 @@ which plants need special care, user authentication, tasks, inventory management
 users have taken. The system features collaborative management, so you can manage your plants with multiple users.
 
 ## Installation
+
+### Manual Installation
+
 In order to install HortusFox you need to first setup a PHP environment along with a MySQL database
 and also Composer. Afterwards you can clone or download the repository. Then go to the root directory 
 of the project and let Composer install the required dependencies. Note: It is recommended to setup the 
@@ -143,6 +146,19 @@ INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 ```
 The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
 You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Additionally you might want to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">android mobile app</a> for your users.
+
+### Installer
+You can also use the integrated installer in order to install the product. In order for that to do, be sure that you are not running the 
+system via the internal asatru development server. Instead you might want to, for instance, run the system from the context of a webserver 
+environment like XAMPP. If you do that, just create a file named do_install (no file extension) in the root directory of the project and 
+browse to the installer and the system will guide you through the installation process. 
+```
+http://localhost/install
+```
+Be sure that PHP is installed and both your webserver and mysql server are running. If there is no vendor folder already created then 
+the system will try to run Composer in order to install all required dependencies. For that to work you need to have Composer installed 
+on your system. Altough the system tries to create the database for you, sometimes this might fail, so you will have to create the 
+database before running the installation. However all table migrations will then be created by the system.
 
 ## Cronjobs
 Cronjobs are used to regularly execute a specific task. For each cronjob you need to set the cronjob parameter with your token set via APP_CRONPW. The following cronjobs are available:
