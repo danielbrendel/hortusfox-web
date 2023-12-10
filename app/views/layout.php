@@ -636,6 +636,12 @@
 									<input type="checkbox" name="show_log" value="1" {{ ($user->get('show_log')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_log') }}
 								</div>
 							</div>
+
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" name="notify_overdue_tasks" value="1" {{ ($user->get('notify_overdue_tasks')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_overdue_tasks') }}
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">

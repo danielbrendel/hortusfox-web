@@ -139,6 +139,42 @@ class TasksModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getTask($id)
+    {
+        try {
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?')->first();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function cronjob()
+    {
+        try {
+            $tasks = static::getOverdueTasks();
+            foreach ($tasks as $task) {
+                $ckdate = date('Y-m-d H:i:s', strtotime('+' . env('APP_OVERDUETASK_HOURS', 5) . ' hours', strtotime($task->get('due_date'))));
+                
+                $date1 = new DateTime('now');
+                $date2 = new DateTime($ckdate);
+                if ($date1 > $date2) {
+                    OverdueInfoModel::inform($task, env('APP_CRONJOB_MAILLIMIT', 5));
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

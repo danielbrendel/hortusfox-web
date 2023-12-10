@@ -42,6 +42,9 @@ APP_SHOWCHATONLINEUSERS=false
 # Use this setting if you want to show or hide an indiactor if someone types a chat message
 APP_SHOWCHATTYPINGINDICATOR=false
 
+# The authentication token to be used to request cronjobs. Set this to a token of your choice
+APP_CRONPW="your-auth-token"
+
 # This must be set to true for the product to work in order to enable database connection
 DB_ENABLE=true
 
@@ -140,6 +143,13 @@ INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 ```
 The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
 You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Additionally you might want to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">android mobile app</a> for your users.
+
+## Cronjobs
+Cronjobs are used to regularly execute a specific task. For each cronjob you need to set the cronjob parameter with your token set via APP_CRONPW. The following cronjobs are available:
+```sh
+# Used to inform users about overdue tasks. Should be called multiple times per day.
+GET /cronjob/overduetasks?cronpw={your-auth-token} 
+```
 
 ## System requirements
 - PHP ^8.2

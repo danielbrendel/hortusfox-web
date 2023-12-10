@@ -57,6 +57,13 @@
                     </div>
 
                     <div class="field">
+                        <label class="label">{{ __('app.cronpw') }}</label>
+                        <div class="control">
+                            <input type="text" class="input" name="cronpw" value="{{ ((env('APP_CRONPW') !== null) ? env('APP_CRONPW') : '') }}">
+                        </div>
+                    </div>
+
+                    <div class="field">
                         <div class="control">
                             <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
                         </div>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class represents your controller
+ * Admin controller
  */
 class AdminController extends BaseController {
     /**
@@ -53,8 +53,9 @@ class AdminController extends BaseController {
 			$onlinetimelimit = (int)$request->params()->query('onlinetimelimit', env('APP_ONLINEMINUTELIMIT'));
 			$chatonlineusers = (bool)$request->params()->query('chatonlineusers', 0);
 			$chattypingindicator = (bool)$request->params()->query('chattypingindicator', 0);
+			$cronpw = $request->params()->query('cronpw', env('APP_CRONPW'));
 			
-			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $onlinetimelimit, $chatonlineusers, $chattypingindicator);
+			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $cronpw);
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 

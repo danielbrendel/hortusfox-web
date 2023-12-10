@@ -7,7 +7,7 @@
 */
 
 /**
- * Example index controller
+ * Index controller
  */
 class IndexController extends BaseController {
 	const INDEX_LAYOUT = 'layout';
@@ -503,8 +503,9 @@ class IndexController extends BaseController {
 			$lang = $request->params()->query('lang', 'en');
 			$chatcolor = $request->params()->query('chatcolor', null);
 			$show_log = $request->params()->query('show_log', false);
+			$notify_overdue_tasks = $request->params()->query('notify_overdue_tasks', false);
 
-			UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log);
+			UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log, $notify_overdue_tasks);
 
 			$password = $request->params()->query('password', null);
 			if ($password) {

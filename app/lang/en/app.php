@@ -175,5 +175,9 @@ return [
 	'sorting_type_light_level' => 'Light Level',
 	'sorting_type_humidity' => 'Humidity',
 	'sorting_dir_asc' => 'Ascending',
-	'sorting_dir_desc' => 'Descending'
+	'sorting_dir_desc' => 'Descending',
+	'info_task_is_overdue' => 'Task is overdue',
+	'info_task_is_overdue_hint' => 'The task <strong>{name}</strong> is overdue! Due date: {date}. Go to tasks: <a href="{url}">{url}</a>',
+	'notify_overdue_tasks' => 'Notify me about overdue tasks',
+	'cronpw' => 'Cronjob authentication token'
 ];

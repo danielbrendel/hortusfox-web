@@ -264,8 +264,10 @@ class UtilsModule {
      * @param $onlinetimelimit
      * @param $chatonlineusers
      * @param $chattypingindicator
+     * @param $cronpw
+     * @return void
      */
-    public static function saveEnvironment($workspace, $lang, $scroller, $onlinetimelimit, $chatonlineusers, $chattypingindicator)
+    public static function saveEnvironment($workspace, $lang, $scroller, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $cronpw)
     {
         $new_env_settings = [
             'APP_WORKSPACE' => $workspace,
@@ -274,6 +276,7 @@ class UtilsModule {
             'APP_ONLINEMINUTELIMIT' => $onlinetimelimit,
             'APP_SHOWCHATONLINEUSERS' => $chatonlineusers,
             'APP_SHOWCHATTYPINGINDICATOR' => $chattypingindicator,
+            'APP_CRONPW' => $cronpw
         ];
 
         foreach ($new_env_settings as $key => $value) {
