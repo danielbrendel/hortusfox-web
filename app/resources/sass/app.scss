@@ -150,6 +150,21 @@ a.navbar-burger:hover {
     }
 }
 
+.navbar-dropdown-minwidth {
+    @media screen and (min-width: 1089px) {
+        display: block;
+        top: 5px;
+        min-width: 135px;
+        text-align: center;
+    }
+}
+
+.navbar-dropdown-minwidth:not(.is-multiple):not(.is-loading)::after {
+    @media screen and (min-width: 1089px) {
+        top: 20px !important;
+    }
+}
+
 .notification-badge {
     color: rgb(255, 255, 255);
     text-decoration: none;

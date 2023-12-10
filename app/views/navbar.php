@@ -76,7 +76,7 @@
             </div>
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
+                <a class="navbar-link navbar-dropdown-minwidth">
                     {{ __('app.locations') }}
                 </a>
 
