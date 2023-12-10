@@ -267,13 +267,20 @@ a.navbar-burger:hover {
 .sorting-control {
     position: relative;
     display: inline-block;
+    margin-bottom: 10px;
 }
 
-.sorting-control select {
+.sorting-control select, .sorting-control input[type=text] {
     color: rgb(200, 200, 200);
     background-color: rgba(50, 50, 50, 0.9);
     border: 1px solid rgb(100, 100, 100);
     margin-right: 5px;
+}
+
+.sorting-control input[type=text] {
+    height: 27px;
+    border-radius: 290486px;
+    padding-left: 1em;
 }
 
 .select:not(.is-multiple):not(.is-loading)::after {

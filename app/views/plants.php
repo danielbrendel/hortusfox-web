@@ -29,6 +29,10 @@
 						@endforeach
 					</select>
 				</div>
+
+				<div class="sorting-control is-rounded is-small">
+					<input type="text" id="sorting-control-filter-text" placeholder="{{ __('app.filter_by_text') }}">
+				</div>
 			</div>
 
 			<div class="plants">

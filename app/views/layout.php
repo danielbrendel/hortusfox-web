@@ -812,6 +812,13 @@
 						window.vue.animateChatTypingIndicator();
 					@endif
 				@endif
+
+				let plantsFilterSearchInput = document.getElementById('sorting-control-filter-text');
+				if (plantsFilterSearchInput) {
+					plantsFilterSearchInput.addEventListener('input', function() {
+						window.vue.textFilterElements(this.value);
+					});
+				}
 			});
 		</script>
 	</body>

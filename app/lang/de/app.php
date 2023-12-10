@@ -176,6 +176,7 @@ return [
 	'sorting_type_humidity' => 'Luftfeuchtigkeit',
 	'sorting_dir_asc' => 'Aufsteigend',
 	'sorting_dir_desc' => 'Absteigend',
+	'filter_by_text' => 'Mittels Text filtern',
 	'info_task_is_overdue' => 'Aufgabe ist überfällig',
 	'info_task_is_overdue_hint' => 'Die Aufgabe <strong>{name}</strong> ist überfällig! Fälligkeitsdatum: {date}. Gehe zu den Aufgaben: <a href="{url}">{url}</a>',
 	'notify_overdue_tasks' => 'Mich über überfällige Aufgaben informieren',

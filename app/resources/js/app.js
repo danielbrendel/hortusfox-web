@@ -505,5 +505,16 @@ window.vue = new Vue({
                 elem.style.color = 'inherit';
             }
         },
+
+        textFilterElements: function(token) {
+            let elems = document.getElementsByClassName('plant-card-title');
+            for (let i = 0; i < elems.length; i++) {
+                if (!elems[i].innerText.toLowerCase().includes(token.toLowerCase())) {
+                    elems[i].parentNode.parentNode.parentNode.classList.add('is-hidden');
+                } else {
+                    elems[i].parentNode.parentNode.parentNode.classList.remove('is-hidden');
+                }
+            }
+        },
     }
 });

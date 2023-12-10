@@ -176,6 +176,7 @@ return [
 	'sorting_type_humidity' => 'Humidity',
 	'sorting_dir_asc' => 'Ascending',
 	'sorting_dir_desc' => 'Descending',
+	'filter_by_text' => 'Filter by text',
 	'info_task_is_overdue' => 'Task is overdue',
 	'info_task_is_overdue_hint' => 'The task <strong>{name}</strong> is overdue! Due date: {date}. Go to tasks: <a href="{url}">{url}</a>',
 	'notify_overdue_tasks' => 'Notify me about overdue tasks',
