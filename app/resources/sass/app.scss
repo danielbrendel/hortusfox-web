@@ -1273,7 +1273,7 @@ a.navbar-burger:hover {
 }
 
 .admin-user-account-item-input {
-    width: 34%;
+    width: 30%;
 }
 
 .admin-user-account-actions {
@@ -1290,6 +1290,63 @@ a.navbar-burger:hover {
 }
 
 .admin-users-actions {
+    position: relative;
+    margin-top: 20px;
+}
+
+.admin-locations {
+    position: relative;
+    width: 100%;
+}
+
+.admin-locations h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-locations-list {
+    position: relative;
+}
+
+.admin-location {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.admin-location label, .admin-location span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-location input {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-location-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.admin-location-item-input {
+    width: 30%;
+}
+
+.admin-location-actions {
+    position: relative;
+    display: inline-block;
+}
+
+.admin-location-item-centered {
+    text-align: center;
+}
+
+.admin-location-action-item {
+    position: relative;
+}
+
+.admin-locations-actions {
     position: relative;
     margin-top: 20px;
 }

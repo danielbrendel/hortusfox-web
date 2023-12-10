@@ -180,5 +180,13 @@ return [
 	'info_task_is_overdue_hint' => 'The task <strong>{name}</strong> is overdue! Due date: {date}. Go to tasks: <a href="{url}">{url}</a>',
 	'notify_overdue_tasks' => 'Notify me about overdue tasks',
 	'cronpw' => 'Cronjob authentication token',
-	'enable_chat' => 'Enable Chat'
+	'enable_chat' => 'Enable Chat',
+	'add_location' => 'Add location',
+	'icon' => 'Icon',
+	'active' => 'Active',
+	'location_added_successfully' => 'Location was added successfully',
+	'location_updated_successfully' => 'Location was updated successfully',
+	'location_migration' => 'Location to move plants to',
+	'remove_location' => 'Remove location',
+	'location_removed_successfully' => 'Location was successfully removed'
 ];

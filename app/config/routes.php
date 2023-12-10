@@ -61,6 +61,9 @@ return [
     array('/admin/user/create', 'POST', 'admin@create_user'),
     array('/admin/user/update', 'POST', 'admin@update_user'),
     array('/admin/user/remove', 'ANY', 'admin@remove_user'),
+    array('/admin/location/add', 'POST', 'admin@add_location'),
+    array('/admin/location/update', 'POST', 'admin@update_location'),
+    array('/admin/location/remove', 'ANY', 'admin@remove_location'),
     array('/cronjob/overduetasks', 'GET', 'cronjobs@overdue_tasks'),
     array('$404', 'ANY', 'error404@index')
 ];

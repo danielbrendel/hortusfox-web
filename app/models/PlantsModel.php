@@ -385,6 +385,23 @@
         }
 
         /**
+         * @param $from
+         * @param $to
+         * @return void
+         * @throws \Exception
+         */
+        public static function migratePlants($from, $to)
+        {
+            try {
+                static::raw('UPDATE `' . self::tableName() . '` SET location = ? WHERE location = ?', [
+                    $to, $from
+                ]);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * Return the associated table name of the migration
          * 
          * @return string

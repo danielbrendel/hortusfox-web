@@ -165,13 +165,17 @@ class IndexController extends BaseController {
 	 * Handles URL: /plants/location/{id}
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\ViewHandler
+	 * @return Asatru\View\ViewHandler|Asatru\View\RedirectHandler
 	 */
 	public function plants_from_location($request)
 	{
 		$user = UserModel::getAuthUser();
 
 		$location = $request->arg('id');
+
+		if (!LocationsModel::isActive($location)) {
+			return redirect('/');
+		}
 
 		$sorting = $request->params()->query('sorting', null);
 		$direction = $request->params()->query('direction', null);

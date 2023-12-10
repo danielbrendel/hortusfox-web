@@ -132,7 +132,8 @@ After logging in, you should then be redirected to the dashboard. Further users 
 passwords in their profile preferences. They can also reset their password. Therefore an e-mail will be sent to them with restoration instructions.
 Each new created user will get a confirmation e-mail with an automatically generated password in order to log in. It is recommended that users change
 their passwords after their first login.
-Last but not least you need to add all your locations of your local environment to the database. Therefore go to the locations table and add your locatios:
+Last but not least you need to add all your locations of your local environment to the database. You can do that either via the admin section or
+manually by inserting entries into the locations table.
 
 ```sql
 INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
@@ -145,7 +146,8 @@ INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 );
 ```
 The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
-You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Additionally you might want to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">android mobile app</a> for your users.
+You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges. 
+Additionally you might want to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">android mobile app</a> for your users.
 
 ### Installer
 You can also use the integrated installer in order to install the product. In order for that to do, be sure that you are not running the 
@@ -158,7 +160,8 @@ http://localhost/install
 Be sure that PHP is installed and both your webserver and mysql server are running. If there is no vendor folder already created then 
 the system will try to run Composer in order to install all required dependencies. For that to work you need to have Composer installed 
 on your system. Altough the system tries to create the database for you, sometimes this might fail, so you will have to create the 
-database before running the installation. However all table migrations will then be created by the system.
+database before running the installation. However all table migrations will then be created by the system. The system can then be managed
+via the admin section (e.g. environment settings, users, locations).
 
 ## Cronjobs
 Cronjobs are used to regularly execute a specific task. For each cronjob you need to set the cronjob parameter with your token set via APP_CRONPW. The following cronjobs are available:

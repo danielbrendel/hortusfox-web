@@ -28,7 +28,7 @@ class AdminController extends BaseController {
 	public function index($request)
 	{
 		$user = UserModel::getAuthUser();
-		$locs = LocationsModel::getAll();
+		$locs = LocationsModel::getAll(false);
         $user_accounts = UserModel::getAll();
 		
 		return parent::view(['content', 'admin'], [
@@ -129,6 +129,77 @@ class AdminController extends BaseController {
 			UserModel::removeUser($id);
 
 			FlashMessage::setMsg('success', __('app.user_removed_successfully'));
+
+			return redirect('/admin');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/location/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_location($request)
+	{
+		try {
+			$name = $request->params()->query('name', null);
+			$icon = $request->params()->query('icon', null);
+			
+			LocationsModel::addLocation($name, $icon);
+
+			FlashMessage::setMsg('success', __('app.location_added_successfully'));
+
+			return redirect('/admin');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/location/update
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function update_location($request)
+	{
+		try {
+			$id = $request->params()->query('id');
+			$name = $request->params()->query('name', null);
+			$icon = $request->params()->query('icon', null);
+			$active = $request->params()->query('active', 0);
+			
+			LocationsModel::editLocation($id, $name, $icon, (int)$active);
+
+			FlashMessage::setMsg('success', __('app.location_updated_successfully'));
+
+			return redirect('/admin');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/location/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function remove_location($request)
+	{
+		try {
+			$id = $request->params()->query('id');
+			$target = $request->params()->query('target');
+			
+			LocationsModel::removeLocation($id, $target);
+
+			FlashMessage::setMsg('success', __('app.location_removed_successfully'));
 
 			return redirect('/admin');
 		} catch (\Exception $e) {

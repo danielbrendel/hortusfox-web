@@ -180,5 +180,13 @@ return [
 	'info_task_is_overdue_hint' => 'Die Aufgabe <strong>{name}</strong> ist überfällig! Fälligkeitsdatum: {date}. Gehe zu den Aufgaben: <a href="{url}">{url}</a>',
 	'notify_overdue_tasks' => 'Mich über überfällige Aufgaben informieren',
 	'cronpw' => 'Cronjob Authentifizierungs-Token',
-	'enable_chat' => 'Chat aktivieren'
+	'enable_chat' => 'Chat aktivieren',
+	'add_location' => 'Raum hinzufügen',
+	'icon' => 'Icon',
+	'active' => 'Aktiv',
+	'location_added_successfully' => 'Neuer Raum wurde erfolgreich hinzugefügt',
+	'location_updated_successfully' => 'Der Raum wurder erfolgreich aktualisiert',
+	'location_migration' => 'Pflanzen in folgenden Raum verschieben',
+	'remove_location' => 'Raum entfernen',
+	'location_removed_successfully' => 'Der Raum wurde erfolgreich entfernt'
 ];
