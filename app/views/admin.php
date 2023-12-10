@@ -38,6 +38,12 @@
                     </div>
 
                     <div class="field">
+                        <div class="control">
+                            <input type="checkbox" class="checkbox" name="enablechat" value="1" {{ (env('APP_ENABLECHAT')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_chat') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="field">
                         <label class="label">{{ __('app.online_time_limit') }}</label>
                         <div class="control">
                             <input type="number" class="input" name="onlinetimelimit" value="{{ env('APP_ONLINEMINUTELIMIT') }}" required>

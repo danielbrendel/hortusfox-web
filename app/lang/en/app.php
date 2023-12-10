@@ -179,5 +179,6 @@ return [
 	'info_task_is_overdue' => 'Task is overdue',
 	'info_task_is_overdue_hint' => 'The task <strong>{name}</strong> is overdue! Due date: {date}. Go to tasks: <a href="{url}">{url}</a>',
 	'notify_overdue_tasks' => 'Notify me about overdue tasks',
-	'cronpw' => 'Cronjob authentication token'
+	'cronpw' => 'Cronjob authentication token',
+	'enable_chat' => 'Enable Chat'
 ];

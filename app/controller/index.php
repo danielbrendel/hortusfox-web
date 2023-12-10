@@ -952,10 +952,14 @@ class IndexController extends BaseController {
 	 * Handles URL: /chat
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\ViewHandler
+	 * @return Asatru\View\ViewHandler|Asatru\View\RedirectHandler
 	 */
 	public function view_chat($request)
 	{
+		if (!env('APP_ENABLECHAT')) {
+			return redirect('/');
+		}
+
 		$user = UserModel::getAuthUser();
 
 		$messages = ChatMsgModel::getChat();

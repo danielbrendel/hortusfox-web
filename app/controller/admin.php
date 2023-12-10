@@ -50,12 +50,13 @@ class AdminController extends BaseController {
 			$workspace = $request->params()->query('workspace', env('APP_WORKSPACE'));
 			$lang = $request->params()->query('lang', env('APP_LANG'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
+			$enablechat = (bool)$request->params()->query('enablechat', 0);
 			$onlinetimelimit = (int)$request->params()->query('onlinetimelimit', env('APP_ONLINEMINUTELIMIT'));
 			$chatonlineusers = (bool)$request->params()->query('chatonlineusers', 0);
 			$chattypingindicator = (bool)$request->params()->query('chattypingindicator', 0);
 			$cronpw = $request->params()->query('cronpw', env('APP_CRONPW'));
 			
-			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $cronpw);
+			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $cronpw);
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 

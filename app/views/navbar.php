@@ -39,6 +39,7 @@
                 </a>
             </div>
 
+            @if (env('APP_ENABLECHAT'))
             <div class="navbar-item">
                 <a href="{{ url('/chat') }}" class="notification-badge">
                     <i class="fas fa-comments" title="{{ __('app.chat') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.chat') }}</span>
@@ -52,6 +53,7 @@
                     @endif
                 </a>
             </div>
+            @endif
 
             <div class="navbar-item">
                 <a href="{{ url('/profile') }}">

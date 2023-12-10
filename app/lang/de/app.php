@@ -179,5 +179,6 @@ return [
 	'info_task_is_overdue' => 'Aufgabe ist überfällig',
 	'info_task_is_overdue_hint' => 'Die Aufgabe <strong>{name}</strong> ist überfällig! Fälligkeitsdatum: {date}. Gehe zu den Aufgaben: <a href="{url}">{url}</a>',
 	'notify_overdue_tasks' => 'Mich über überfällige Aufgaben informieren',
-	'cronpw' => 'Cronjob Authentifizierungs-Token'
+	'cronpw' => 'Cronjob Authentifizierungs-Token',
+	'enable_chat' => 'Chat aktivieren'
 ];
