@@ -30,11 +30,23 @@ class AdminController extends BaseController {
 		$user = UserModel::getAuthUser();
 		$locs = LocationsModel::getAll(false);
         $user_accounts = UserModel::getAll();
-		
+
+		$new_version = null;
+		$current_version = null;
+
+		$check_version = $request->params()->query('cv', false);
+
+		if ($check_version) {
+			$new_version = VersionModule::getVersion();
+			$current_version = config('version');
+		}
+
 		return parent::view(['content', 'admin'], [
 			'user' => $user,
 			'locations' => $locs,
-            'user_accounts' => $user_accounts
+            'user_accounts' => $user_accounts,
+			'new_version' => $new_version,
+			'current_version' => $current_version
 		]);
 	}
 

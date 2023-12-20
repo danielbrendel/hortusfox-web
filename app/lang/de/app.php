@@ -189,5 +189,8 @@ return [
 	'location_updated_successfully' => 'Der Raum wurder erfolgreich aktualisiert',
 	'location_migration' => 'Pflanzen in folgenden Raum verschieben',
 	'remove_location' => 'Raum entfernen',
-	'location_removed_successfully' => 'Der Raum wurde erfolgreich entfernt'
+	'location_removed_successfully' => 'Der Raum wurde erfolgreich entfernt',
+	'check_for_new_version' => 'Nach neuer Version suchen',
+	'new_version_available' => 'Version {new_version} ist verfügbar. <a href="{url}">Hier beziehen</a>.',
+	'no_new_version_available' => 'Es wird bereits die neuste Version genutzt.'
 ];
