@@ -16,9 +16,11 @@
                     <?php } ?>
                 </div>
             <?php } else { ?>
-                <div class="version-check">
-                    <a class="button is-link" href="{{ url('/admin?cv=1') }}">{{ __('app.check_for_new_version') }}</a>
-                </div>
+                <?php if (env('APP_SERVICE_URL')) { ?>
+                    <div class="version-check">
+                        <a class="button is-link" href="{{ url('/admin?cv=1') }}">{{ __('app.check_for_new_version') }}</a>
+                    </div>
+                <?php } ?>
             <?php } ?>
 
 			<div class="admin-environment">

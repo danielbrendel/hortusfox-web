@@ -11,7 +11,13 @@ class VersionModule {
     public static function getVersion()
     {
         try {
-            $ch = curl_init(env('APP_SERVICE_URL') . '/software/version');
+            $serviceUrl = env('APP_SERVICE_URL');
+
+            if ((!is_string($serviceUrl)) || (!(strlen($serviceUrl) > 0))) {
+                throw new \Exception('No service URL defined.');
+            }
+
+            $ch = curl_init($serviceUrl . '/software/version');
 
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);

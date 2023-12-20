@@ -36,9 +36,13 @@ class AdminController extends BaseController {
 
 		$check_version = $request->params()->query('cv', false);
 
-		if ($check_version) {
-			$new_version = VersionModule::getVersion();
-			$current_version = safe_config('version', '1');
+		try {
+			if ($check_version) {
+				$new_version = VersionModule::getVersion();
+				$current_version = safe_config('version', '1');
+			}
+		} catch (\Exception $e) {
+			addLog(ASATRU_LOG_ERROR, $e->getMessage());
 		}
 
 		return parent::view(['content', 'admin'], [
