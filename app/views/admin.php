@@ -10,7 +10,7 @@
             <?php if ((!empty($new_version)) && (!empty($current_version))) { ?>
                 <div class="version-info">
                     <?php if ($new_version > $current_version) { ?>
-                        <i class="fas fa-download"></i>&nbsp;{!! __('app.new_version_available', ['current_version' => $current_version, 'new_version' => $new_version, 'url' => env('APP_GITHUB_URL') . '/releases']) !!}
+                        <i class="fas fa-download"></i>&nbsp;{!! __('app.new_version_available', ['current_version' => $current_version, 'new_version' => $new_version, 'url' => env('APP_GITHUB_URL') . '/releases/tag/v' . $new_version]) !!}
                     <?php } else { ?>
                         <i class="fas fa-check"></i>&nbsp;{{ __('app.no_new_version_available') }}
                     <?php } ?>

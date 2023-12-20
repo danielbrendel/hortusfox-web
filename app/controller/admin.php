@@ -38,7 +38,7 @@ class AdminController extends BaseController {
 
 		if ($check_version) {
 			$new_version = VersionModule::getVersion();
-			$current_version = safe_config('version');
+			$current_version = safe_config('version', '1');
 		}
 
 		return parent::view(['content', 'admin'], [
