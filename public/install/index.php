@@ -294,6 +294,8 @@
             $env .= 'APP_OVERDUETASK_HOURS=10' . PHP_EOL;
             $env .= 'APP_CRONPW=null' . PHP_EOL;
             $env .= 'APP_CRONJOB_MAILLIMIT=5' . PHP_EOL;
+            $env .= 'APP_GITHUB_URL="https://github.com/danielbrendel/hortusfox-web"' . PHP_EOL;
+            $env .= 'APP_SERVICE_URL="https://www.hortusfox.com"' . PHP_EOL;
             $env .= '' . PHP_EOL;
             $env .= '# Photo resize factors' . PHP_EOL;
             $env .= 'PHOTO_RESIZE_FACTOR_DEFAULT=1.0' . PHP_EOL;
