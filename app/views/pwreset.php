@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <div id="app" class="reset-main" style="background-image: url('{{ asset('img/plants.jpg') }}');">
+        <div id="app" class="reset-main" style="background-image: url('{{ asset('img/background.jpg') }}');">
             <div class="reset-overlay">
                 <div class="reset-content">
                     <h1>{{ __('app.reset_password') }}</h1>

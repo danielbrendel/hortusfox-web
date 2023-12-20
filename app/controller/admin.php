@@ -223,4 +223,52 @@ class AdminController extends BaseController {
 			return back();
 		}
 	}
+
+	/**
+	 * Handles URL: /admin/media/logo
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function upload_media_logo($request)
+	{
+		try {
+			if ((!isset($_FILES['asset'])) || ($_FILES['asset']['error'] !== UPLOAD_ERR_OK) || ($_FILES['asset']['type'] !== 'image/png')) {
+				throw new \Exception('Failed to upload file or invalid file uploaded');
+			}
+
+			move_uploaded_file($_FILES['asset']['tmp_name'], public_path() . '/logo.png');
+
+			FlashMessage::setMsg('success', __('app.media_saved'));
+
+			return redirect('/admin');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/media/background
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function upload_media_background($request)
+	{
+		try {
+			if ((!isset($_FILES['asset'])) || ($_FILES['asset']['error'] !== UPLOAD_ERR_OK) || ($_FILES['asset']['type'] !== 'image/jpeg')) {
+				throw new \Exception('Failed to upload file or invalid file uploaded');
+			}
+
+			move_uploaded_file($_FILES['asset']['tmp_name'], public_path() . '/img/background.jpg');
+
+			FlashMessage::setMsg('success', __('app.media_saved'));
+
+			return redirect('/admin');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
 }

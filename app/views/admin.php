@@ -1,7 +1,7 @@
 <div class="columns">
 	<div class="column is-2"></div>
 
-	<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/plants.jpg') }}');">
+	<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/background.jpg') }}');">
 		<div class="column-overlay">
 			<h1>{{ __('app.admin_area') }}</h1>
 
@@ -82,6 +82,44 @@
                         <label class="label">{{ __('app.cronpw') }}</label>
                         <div class="control">
                             <input type="text" class="input" name="cronpw" value="{{ ((env('APP_CRONPW') !== null) ? env('APP_CRONPW') : '') }}">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="admin-media">
+                <h2>{{ __('app.admin_media') }}</h2>
+
+                <form method="POST" action="{{ url('/admin/media/logo') }}" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="field">
+                        <label class="label">{{ __('app.media_logo') }}</label>
+                        <div class="control">
+                            <input type="file" class="input" name="asset" accept=".png" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
+                        </div>
+                    </div>
+                </form>
+
+                <form method="POST" action="{{ url('/admin/media/background') }}" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="field">
+                        <label class="label">{{ __('app.media_background') }}</label>
+                        <div class="control">
+                            <input type="file" class="input" name="asset" accept=".jpg,.jpeg" required>
                         </div>
                     </div>
 

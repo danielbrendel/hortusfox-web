@@ -192,5 +192,9 @@ return [
 	'location_removed_successfully' => 'Der Raum wurde erfolgreich entfernt',
 	'check_for_new_version' => 'Nach neuer Version suchen',
 	'new_version_available' => 'Version {new_version} ist verfügbar. <a href="{url}">Hier beziehen</a>.',
-	'no_new_version_available' => 'Es wird bereits die neuste Version genutzt.'
+	'no_new_version_available' => 'Es wird bereits die neuste Version genutzt.',
+	'admin_media' => 'Medien',
+	'media_logo' => 'Arbeitsraum Logo (.png image)',
+	'media_background' => 'Arbeitsraum Hintergrundbild (.jpg)',
+	'media_saved' => 'Das Asset wurde erfolgreich gespeichert'
 ];

@@ -192,5 +192,9 @@ return [
 	'location_removed_successfully' => 'Location was successfully removed',
 	'check_for_new_version' => 'Check for new version',
 	'new_version_available' => 'Version {new_version} is available. Get it <a href="{url}">here</a>.',
-	'no_new_version_available' => 'You are using the latest version.'
+	'no_new_version_available' => 'You are using the latest version.',
+	'admin_media' => 'Media',
+	'media_logo' => 'Workspace logo (.png image)',
+	'media_background' => 'Workspace background image (.jpg)',
+	'media_saved' => 'Media was saved successfully'
 ];

@@ -1244,6 +1244,30 @@ a.navbar-burger:hover {
     background-color: rgb(50, 50, 50);
 }
 
+.admin-media {
+    position: relative;
+    width: 100%;
+}
+
+.admin-media h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-media label {
+    color: rgb(150, 150, 150);
+}
+
+.admin-media input {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-media input[type=submit] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 .admin-users {
     position: relative;
     width: 100%;

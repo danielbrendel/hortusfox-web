@@ -64,6 +64,8 @@ return [
     array('/admin/location/add', 'POST', 'admin@add_location'),
     array('/admin/location/update', 'POST', 'admin@update_location'),
     array('/admin/location/remove', 'ANY', 'admin@remove_location'),
+    array('/admin/media/logo', 'POST', 'admin@upload_media_logo'),
+    array('/admin/media/background', 'POST', 'admin@upload_media_background'),
     array('/cronjob/overduetasks', 'GET', 'cronjobs@overdue_tasks'),
     array('$404', 'ANY', 'error404@index')
 ];

@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <div id="app" class="auth-main" style="background-image: url('{{ asset('img/plants.jpg') }}');">
+        <div id="app" class="auth-main" style="background-image: url('{{ asset('img/background.jpg') }}');">
             <div class="auth-overlay">
                 <div class="auth-content">
                     <div class="auth-header">
