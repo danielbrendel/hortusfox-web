@@ -97,6 +97,10 @@ h2 {
     width: 100%;
 }
 
+.is-pointer {
+    cursor: pointer;
+}
+
 .float-right {
     float: right;
 }
@@ -346,11 +350,27 @@ a.navbar-burger:hover {
     }
 }
 
-.plant-card-health-state {
+.plant-card-title-with-hint {
+    padding-top: 7px;
+}
+
+.plant-card-title-first {
+}
+
+.plant-card-title-second {
+    color: rgb(150, 150, 150);
+    font-size: 0.8em;
+}
+
+.plant-card-health-state, .plant-card-options {
     position: absolute;
     top: 7px;
     right: 8px;
     z-index: 2;
+}
+
+.plant-card-options {
+    color: rgb(200, 200, 200);
 }
 
 .plant-card-health-state i {

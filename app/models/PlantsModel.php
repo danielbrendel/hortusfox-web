@@ -17,7 +17,8 @@
             'health_state',
             'perennial',
             'light_level',
-            'humidity'
+            'humidity',
+            'history_date'
         ];
 
         static $sorting_dir = [
@@ -68,7 +69,7 @@
                 static::validateSorting($sorting);
                 static::validateDirection($direction);
 
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? ORDER BY ' . $sorting . ' ' . $direction, [$location]);
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? AND history = 0 ORDER BY ' . $sorting . ' ' . $direction, [$location]);
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -110,6 +111,38 @@
         {
             try {
                 return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE health_state <> \'in_good_standing\' ORDER BY last_edited_date DESC');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $limit
+         * @param $sorting
+         * @param $direction
+         * @return mixed
+         * @throws \Exception
+         */
+        public static function getHistory($limit = null, $sorting = null, $direction = null)
+        {
+            try {
+                if ($sorting === null) {
+                    $sorting = 'history_date';
+                }
+
+                if ($direction === null) {
+                    $direction = 'desc';
+                }
+
+                static::validateSorting($sorting);
+                static::validateDirection($direction);
+
+                $strlimit = '';
+                if ($limit) {
+                    $strlimit = ' LIMIT ' . $limit;
+                }
+
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit);
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -264,7 +297,7 @@
         public static function getCount()
         {
             try {
-                return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '`')->first()->get('count');
+                return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '` WHERE history = 0')->first()->get('count');
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -350,6 +383,52 @@
         {
             try {
                 static::raw('UPDATE `' . self::tableName() . '` SET last_watered = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $plantId
+         * @return void
+         * @throws \Exception
+         */
+        public static function markHistorical($plantId)
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                $plant = PlantsModel::getDetails($plantId);
+
+                static::raw('UPDATE `' . self::tableName() . '` SET history = 1, history_date = CURRENT_TIMESTAMP WHERE id = ?', [$plantId]);
+
+                LogModel::addLog($user->get('id'), $plant->get('name'), 'mark_historical', '');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $plantId
+         * @return void
+         * @throws \Exception
+         */
+        public static function unmarkHistorical($plantId)
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                $plant = PlantsModel::getDetails($plantId);
+
+                static::raw('UPDATE `' . self::tableName() . '` SET history = 0, history_date = NULL WHERE id = ?', [$plantId]);
+
+                LogModel::addLog($user->get('id'), $plant->get('name'), 'historical_restore', '');
             } catch (\Exception $e) {
                 throw $e;
             }

@@ -196,5 +196,11 @@ return [
 	'admin_media' => 'Medien',
 	'media_logo' => 'Arbeitsraum Logo (.png image)',
 	'media_background' => 'Arbeitsraum Hintergrundbild (.jpg)',
-	'media_saved' => 'Das Asset wurde erfolgreich gespeichert'
+	'media_saved' => 'Das Asset wurde erfolgreich gespeichert',
+	'enable_history' => 'Historie aktivieren',
+	'history_name' => 'Name der Historie',
+	'confirmPlantAddHistory' => 'Bitte diese Anweisung bestätigen.',
+	'confirmPlantRemoveHistory' => 'Bitte diese Anweisung bestätigen.',
+	'sorting_type_history_date' => 'Historien-Datum',
+	'restore_from_history' => 'Wiederherstellen'
 ];

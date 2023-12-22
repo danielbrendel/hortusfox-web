@@ -230,7 +230,15 @@
 
 			<div class="columns plant-column">
 				<div class="column is-full">
-					<a class="button is-danger" href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ __('app.remove_plant') }}</a>
+					@if (env('APP_ENABLEHISTORY'))
+					<span>
+						<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ env('APP_HISTORY_NAME') }}</a>&nbsp;
+					</span>
+					@endif
+
+					<span>	
+						<a class="button is-danger" href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ __('app.remove_plant') }}</a>&nbsp;
+					</span>
 				</div>
 			</div>
 		</div>

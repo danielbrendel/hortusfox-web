@@ -449,6 +449,10 @@ class IndexController extends BaseController {
 
 			PlantsModel::removePlant($plant);
 
+			if ($location == 0) {
+				return back();
+			}
+
 			return redirect('/plants/location/' . $location);
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
@@ -1116,6 +1120,74 @@ class IndexController extends BaseController {
 				'code' => 500,
 				'msg' => $e->getMessage()
 			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /history
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\ViewHandler|Asatru\View\RedirectHandler
+	 */
+	public function view_history($request)
+	{
+		if (!env('APP_ENABLEHISTORY')) {
+			return redirect('/');
+		}
+
+		$limit = $request->params()->query('limit', null);
+		$sorting = $request->params()->query('sorting', null);
+		$direction = $request->params()->query('direction', null);
+
+		$user = UserModel::getAuthUser();
+
+		$history = PlantsModel::getHistory($limit, $sorting, $direction);
+
+		return parent::view(['content', 'history'], [
+			'user' => $user,
+			'history' => $history,
+			'sorting_types' => PlantsModel::$sorting_list,
+			'sorting_dirs' => PlantsModel::$sorting_dir
+		]);
+	}
+
+	/**
+	 * Handles URL: /plants/history/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_to_history($request)
+	{
+		try {
+			$plant = $request->params()->query('plant', null);
+
+			PlantsModel::markHistorical($plant);
+
+			return redirect('/history');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/history/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function remove_from_history($request)
+	{
+		try {
+			$plant = $request->params()->query('plant', null);
+
+			PlantsModel::unmarkHistorical($plant);
+
+			return redirect('/history');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
 		}
 	}
 }

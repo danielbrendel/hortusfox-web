@@ -44,6 +44,8 @@ window.vue = new Vue({
         confirmPlantRemoval: 'Are you sure you want to remove this plant?',
         confirmSetAllWatered: 'Are you sure you want to update the last watered date of all these plants?',
         confirmInventoryItemRemoval: 'Are you sure you want to remove this item?',
+        confirmPlantAddHistory: 'Please confirm if you want to do this action.',
+        confirmPlantRemoveHistory: 'Please confirm if you want to do this action.',
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
         chatTypingEnable: false,
@@ -194,6 +196,22 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
+        },
+
+        markHistorical: function(plant) {
+            if (!confirm(window.vue.confirmPlantAddHistory)) {
+                return;
+            }
+
+            location.href = window.location.origin + '/plants/history/add?plant=' + plant;
+        },
+
+        unmarkHistorical: function(plant) {
+            if (!confirm(window.vue.confirmPlantRemoveHistory)) {
+                return;
+            }
+
+            location.href = window.location.origin + '/plants/history/remove?plant=' + plant;
         },
 
         deletePlant: function(plant, retloc)
@@ -514,6 +532,14 @@ window.vue = new Vue({
                 } else {
                     elems[i].parentNode.parentNode.parentNode.classList.remove('is-hidden');
                 }
+            }
+        },
+
+        toggleDropdown: function(elem) {
+            if (elem.classList.contains('is-active')) {
+                elem.classList.remove('is-active');
+            } else {
+                elem.classList.add('is-active');
             }
         },
     }

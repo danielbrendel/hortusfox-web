@@ -54,6 +54,14 @@
                 </a>
             </div>
             @endif
+            
+            @if (env('APP_ENABLEHISTORY'))
+            <div class="navbar-item">
+                <a href="{{ url('/history') }}">
+                    <i class="fas fa-history" title="{{ env('APP_HISTORY_NAME') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ env('APP_HISTORY_NAME') }}</span>
+                </a>
+            </div>
+            @endif
 
             <div class="navbar-item">
                 <a href="{{ url('/profile') }}">

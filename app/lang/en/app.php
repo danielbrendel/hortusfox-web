@@ -196,5 +196,11 @@ return [
 	'admin_media' => 'Media',
 	'media_logo' => 'Workspace logo (.png image)',
 	'media_background' => 'Workspace background image (.jpg)',
-	'media_saved' => 'Media was saved successfully'
+	'media_saved' => 'Media was saved successfully',
+	'enable_history' => 'Enable history',
+	'history_name' => 'History name',
+	'confirmPlantAddHistory' => 'Please confirm this action',
+	'confirmPlantRemoveHistory' => 'Please confirm this action',
+	'sorting_type_history_date' => 'History date',
+	'restore_from_history' => 'Restore'
 ];

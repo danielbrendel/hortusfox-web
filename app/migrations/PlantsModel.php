@@ -43,6 +43,8 @@ class PlantsModel_Migration {
         $this->database->add('light_level VARCHAR(512) NOT NULL');
         $this->database->add('health_state VARCHAR(512) NOT NULL DEFAULT \'in_good_standing\'');
         $this->database->add('notes TEXT NULL');
+        $this->database->add('history BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('history_date TIMESTAMP NULL');
         $this->database->add('last_edited_user INT NULL');
         $this->database->add('last_edited_date DATETIME NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');

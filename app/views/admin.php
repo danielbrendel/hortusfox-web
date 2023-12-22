@@ -79,6 +79,19 @@
                     </div>
 
                     <div class="field">
+                        <div class="control">
+                            <input type="checkbox" class="checkbox" name="enablehistory" value="1" {{ (env('APP_ENABLEHISTORY')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_history') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">{{ __('app.history_name') }}</label>
+                        <div class="control">
+                            <input type="text" class="input" name="history_name" value="{{ env('APP_HISTORY_NAME') }}">
+                        </div>
+                    </div>
+
+                    <div class="field">
                         <label class="label">{{ __('app.cronpw') }}</label>
                         <div class="control">
                             <input type="text" class="input" name="cronpw" value="{{ ((env('APP_CRONPW') !== null) ? env('APP_CRONPW') : '') }}">
