@@ -40,35 +40,39 @@
 			</div>
 
 			<div class="plants">
-				@foreach ($history as $plant)
-                    <div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
-                        <div class="plant-card-overlay">
-                            <div class="plant-card-options">
-                                <div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
-                                    <div class="dropdown-trigger">
-                                        <i class="fas fa-ellipsis-v is-pointer" onclick="window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'));"></i>
-                                    </div>
-                                    <div class="dropdown-menu" role="menu">
-                                        <div class="dropdown-content">
-                                            <a href="javascript:void(0);" onclick="window.vue.unmarkHistorical({{ $plant->get('id') }});" class="dropdown-item">
-                                                <i class="fas fa-undo-alt"></i>&nbsp;{{ __('app.restore_from_history') }}
-                                            </a>
+				@if (count($history) > 0)
+					@foreach ($history as $plant)
+						<div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
+							<div class="plant-card-overlay">
+								<div class="plant-card-options">
+									<div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
+										<div class="dropdown-trigger">
+											<i class="fas fa-ellipsis-v is-pointer" onclick="window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'));"></i>
+										</div>
+										<div class="dropdown-menu" role="menu">
+											<div class="dropdown-content">
+												<a href="javascript:void(0);" onclick="window.vue.unmarkHistorical({{ $plant->get('id') }});" class="dropdown-item">
+													<i class="fas fa-undo-alt"></i>&nbsp;{{ __('app.restore_from_history') }}
+												</a>
 
-                                            <a href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, 0);" class="dropdown-item">
-                                                <i class="fas fa-trash-alt"></i>&nbsp;{{ __('app.remove') }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+												<a href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, 0);" class="dropdown-item">
+													<i class="fas fa-trash-alt"></i>&nbsp;{{ __('app.remove') }}
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
 
-                            <div class="plant-card-title plant-card-title-with-hint">
-                                <div class="plant-card-title-first">{{ $plant->get('name') }}</div>
-                                <div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
-                            </div>
-                        </div>
-                    </div>
-				@endforeach
+								<div class="plant-card-title plant-card-title-with-hint">
+									<div class="plant-card-title-first">{{ $plant->get('name') }}</div>
+									<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
+								</div>
+							</div>
+						</div>
+					@endforeach
+				@else
+					<span class="plants-empty">{{ __('app.content_empty') }}</span>
+				@endif
 			</div>
 		</div>
 	</div>

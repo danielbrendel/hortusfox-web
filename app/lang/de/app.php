@@ -199,8 +199,9 @@ return [
 	'media_saved' => 'Das Asset wurde erfolgreich gespeichert',
 	'enable_history' => 'Historie aktivieren',
 	'history_name' => 'Name der Historie',
-	'confirmPlantAddHistory' => 'Bitte diese Anweisung bestätigen.',
-	'confirmPlantRemoveHistory' => 'Bitte diese Anweisung bestätigen.',
+	'confirmPlantAddHistory' => 'Soll diese Aktion wirklich durchgeführt werden?',
+	'confirmPlantRemoveHistory' => 'Soll diese Aktion wirklich durchgeführt werden?',
 	'sorting_type_history_date' => 'Historien-Datum',
-	'restore_from_history' => 'Wiederherstellen'
+	'restore_from_history' => 'Wiederherstellen',
+	'content_empty' => 'Hier ist es momentan ziemlich leer...'
 ];

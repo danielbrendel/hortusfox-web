@@ -199,8 +199,9 @@ return [
 	'media_saved' => 'Media was saved successfully',
 	'enable_history' => 'Enable history',
 	'history_name' => 'History name',
-	'confirmPlantAddHistory' => 'Please confirm this action',
-	'confirmPlantRemoveHistory' => 'Please confirm this action',
+	'confirmPlantAddHistory' => 'Do you want to perform this action?',
+	'confirmPlantRemoveHistory' => 'Do you want to perform this action?',
 	'sorting_type_history_date' => 'History date',
-	'restore_from_history' => 'Restore'
+	'restore_from_history' => 'Restore',
+	'content_empty' => 'It is looking rather empty here...'
 ];

@@ -298,6 +298,13 @@ a.navbar-burger:hover {
     }
 }
 
+.plants-empty {
+    color: rgb(150, 150, 150);
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 1.4em;
+}
+
 .plant-card {
     position: relative;
     display: inline-block;

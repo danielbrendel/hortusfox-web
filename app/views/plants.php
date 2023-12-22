@@ -38,25 +38,29 @@
 			</div>
 
 			<div class="plants">
-				@foreach ($plants as $plant)
-					<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-						<div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
-							<div class="plant-card-overlay">
-								<div class="plant-card-health-state">
-									@if ($plant->get('health_state') === 'overwatered')
-										<i class="fas fa-water plant-state-overwatered"></i>
-									@elseif ($plant->get('health_state') === 'withering')
-										<i class="fab fa-pagelines plant-state-withering"></i>
-									@elseif ($plant->get('health_state') === 'infected')
-										<i class="fas fa-biohazard plant-state-infected"></i>
-									@endif
-								</div>
+				@if (count($plants) > 0)
+					@foreach ($plants as $plant)
+						<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
+							<div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
+								<div class="plant-card-overlay">
+									<div class="plant-card-health-state">
+										@if ($plant->get('health_state') === 'overwatered')
+											<i class="fas fa-water plant-state-overwatered"></i>
+										@elseif ($plant->get('health_state') === 'withering')
+											<i class="fab fa-pagelines plant-state-withering"></i>
+										@elseif ($plant->get('health_state') === 'infected')
+											<i class="fas fa-biohazard plant-state-infected"></i>
+										@endif
+									</div>
 
-								<div class="plant-card-title">{{ $plant->get('name') }}</div>
+									<div class="plant-card-title">{{ $plant->get('name') }}</div>
+								</div>
 							</div>
-						</div>
-					</a>
-				@endforeach
+						</a>
+					@endforeach
+				@else
+					<span class="plants-empty">{{ __('app.content_empty') }}</span>
+				@endif
 			</div>
 		</div>
 	</div>
