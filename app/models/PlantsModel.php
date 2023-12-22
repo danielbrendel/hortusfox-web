@@ -117,13 +117,14 @@
         }
 
         /**
+         * @param $year
          * @param $limit
          * @param $sorting
          * @param $direction
          * @return mixed
          * @throws \Exception
          */
-        public static function getHistory($limit = null, $sorting = null, $direction = null)
+        public static function getHistory($year = null, $limit = null, $sorting = null, $direction = null)
         {
             try {
                 if ($sorting === null) {
@@ -142,7 +143,24 @@
                     $strlimit = ' LIMIT ' . $limit;
                 }
 
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit);
+                if ($year !== null) {
+                    return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE YEAR(history_date) = ? AND history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit, [$year]);
+                } else {
+                    return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit);
+                }
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @return mixed
+         * @throws \Exception
+         */
+        public static function getHistoryYears()
+        {
+            try {
+                return static::raw('SELECT DISTINCT YEAR(history_date) AS history_year FROM `' . self::tableName() . '` WHERE history = 1 AND history_date IS NOT NULL ORDER BY history_date DESC');
             } catch (\Exception $e) {
                 throw $e;
             }

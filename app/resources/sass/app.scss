@@ -565,6 +565,35 @@ a.navbar-burger:hover {
     
 }
 
+.history-years {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+}
+
+.history-year {
+    position: relative;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.history-year a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: rgb(30, 30, 30);
+    background-color: rgba(200, 200, 200, 0.5);
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 20px;
+}
+
+.history-year a:hover {
+    color: rgb(30, 30, 30);
+    background-color: rgba(200, 200, 200, 0.7);
+}
+
 .overdue-tasks {
     position: relative;
     width: 100%;

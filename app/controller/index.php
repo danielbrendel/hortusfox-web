@@ -1135,17 +1135,20 @@ class IndexController extends BaseController {
 			return redirect('/');
 		}
 
+		$year = $request->params()->query('year', null);
 		$limit = $request->params()->query('limit', null);
 		$sorting = $request->params()->query('sorting', null);
 		$direction = $request->params()->query('direction', null);
 
 		$user = UserModel::getAuthUser();
 
-		$history = PlantsModel::getHistory($limit, $sorting, $direction);
+		$years = PlantsModel::getHistoryYears();
+		$history = PlantsModel::getHistory($year, $limit, $sorting, $direction);
 
 		return parent::view(['content', 'history'], [
 			'user' => $user,
 			'history' => $history,
+			'years' => $years,
 			'sorting_types' => PlantsModel::$sorting_list,
 			'sorting_dirs' => PlantsModel::$sorting_dir
 		]);
