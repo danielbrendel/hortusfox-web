@@ -257,6 +257,22 @@ a.navbar-burger:hover {
     }
 }
 
+.last-added-plants {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-bottom: 5px;
+    background-color: rgba(150, 150, 150, 0.3);
+    text-align: center;
+}
+
+.last-added-plants h3 {
+    padding-top: 10px;
+    font-size: 2.0em;
+    color: rgb(150, 150, 150);
+}
+
 .margin-vertical {
     margin-top: 20px;
     margin-bottom: 20px;

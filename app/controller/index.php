@@ -36,6 +36,7 @@ class IndexController extends BaseController {
 		$overdue_tasks = TasksModel::getOverdueTasks();
 		$log = LogModel::getHistory();
 		$stats = UtilsModule::getStats();
+		$last_added_plants = PlantsModel::getLastAddedPlants();
 		
 		return parent::view(['content', 'index'], [
 			'user' => $user,
@@ -43,7 +44,8 @@ class IndexController extends BaseController {
 			'overdue_tasks' => $overdue_tasks,
 			'locations' => $locs,
 			'log' => $log,
-			'stats' => $stats
+			'stats' => $stats,
+			'last_added_plants' => $last_added_plants
 		]);
 	}
 

@@ -90,6 +90,19 @@
         }
 
         /**
+         * @return mixed
+         * @throws \Exception
+         */
+        public static function getLastAddedPlants()
+        {
+            try {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 ORDER BY id DESC LIMIT 6');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * @param $id
          * @return mixed
          * @throws \Exception

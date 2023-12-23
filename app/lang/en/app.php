@@ -203,5 +203,6 @@ return [
 	'confirmPlantRemoveHistory' => 'Do you want to perform this action?',
 	'sorting_type_history_date' => 'History date',
 	'restore_from_history' => 'Restore',
-	'content_empty' => 'It is looking rather empty here...'
+	'content_empty' => 'It is looking rather empty here...',
+	'last_added_plants' => 'Last added plants'
 ];
