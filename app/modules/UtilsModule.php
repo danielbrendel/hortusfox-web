@@ -242,7 +242,13 @@ class UtilsModule {
         $files = scandir(app_path('/lang'));
         foreach ($files as $file) {
             if (substr($file, 0, 1) !== '.') {
-                $result[] = $file;
+                
+
+                $result[] = ['ident' => $file, 'name' => CacheModel::remember('_language_ident_' . $file, 3600 * 24, function() use ($file) {
+                        $olng = new Asatru\Lang\Language($file);
+                        return $olng->query('app._language_ident', $file);
+                    }
+                )];
             }
         }
 

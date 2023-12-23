@@ -41,7 +41,7 @@
                         <div class="control">
                             <select class="input" name="lang">
                                 @foreach (UtilsModule::getLanguageList() as $lang)
-                                    <option value="{{ $lang }}" {{ (env('APP_LANG') === $lang) ? 'selected' : ''}}>{{ $lang }}</option>
+                                    <option value="{{ $lang['ident'] }}" {{ (env('APP_LANG') === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>

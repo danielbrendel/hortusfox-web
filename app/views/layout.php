@@ -618,7 +618,7 @@
 								<div class="control">
 									<select class="input" name="lang" id="selEditCombo">
 										@foreach (UtilsModule::getLanguageList() as $lang)
-											<option value="{{ $lang }}" {{ ($user->get('lang') === $lang) ? 'selected' : ''}}>{{ $lang }}</option>
+											<option value="{{ $lang['ident'] }}" {{ ($user->get('lang') === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
 										@endforeach
 									</select>
 								</div>
@@ -716,11 +716,6 @@
 					</footer>
 				</div>
 			</div>
-
-
-
-
-
 
 			<div class="modal" :class="{'is-active': bShowRemoveLocation}">
 				<div class="modal-background"></div>
