@@ -353,6 +353,12 @@
 
                 $args = [];
 
+                if (substr($text, 0, 1) === '#') {
+                    $text = ltrim(substr($text, 1), '0');
+
+                    return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ? LIMIT 1', [$text]);
+                }
+
                 if ($search_name) {
                     if ($hasAny) {
                         $query .= ' OR LOWER(name) LIKE ? ';
