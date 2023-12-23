@@ -437,6 +437,23 @@ a.navbar-burger:hover {
     padding: 10px;
 }
 
+.plant-details-title {
+    position: relative;
+}
+
+.plant-details-title h1 {
+    display: inline-block;
+}
+
+.plant-details-title h2 {
+    position: relative;
+    display: inline-block;
+    top: 20px;
+    font-size: 1.5em;
+    color: rgb(100, 100, 100);
+    float: right;
+}
+
 .is-color-yes {
     color: rgb(115, 214, 103);
 }

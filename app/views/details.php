@@ -3,7 +3,11 @@
 
 	<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/background.jpg') }}');">
 		<div class="column-overlay">
-			<h1>{{ $plant->get('name') }}</h1>
+			<div class="plant-details-title">
+				<h1>{{ $plant->get('name') }}</h1>
+
+				<h2>{{ $plant_ident }}</h2>
+			</div>
 
 			<div class="margin-vertical">
                 <a class="is-default-link" href="{{ url('/plants/location/' . $plant->get('location')) }}">{{ __('app.back_to_list') }}</a>

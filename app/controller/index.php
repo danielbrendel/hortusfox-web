@@ -232,6 +232,8 @@ class IndexController extends BaseController {
 
 		$plant_data = PlantsModel::getDetails($plant_id);
 
+		$plant_ident = '#' . sprintf('%04d', $plant_data->get('id'));
+		
 		$edit_user_name = '';
 		$edit_user_when = '';
 
@@ -253,6 +255,7 @@ class IndexController extends BaseController {
 		return parent::view(['content', 'details'], [
 			'user' => $user,
 			'plant' => $plant_data,
+			'plant_ident' => $plant_ident,
 			'photos' => $photos,
 			'tags' => $tags,
 			'edit_user_name' => $edit_user_name,
