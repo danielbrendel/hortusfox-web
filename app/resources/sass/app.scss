@@ -315,8 +315,20 @@ a.navbar-burger:hover {
 }
 
 .plants-empty {
+    position: relative;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.plants-empty-image img {
+    width: 256px;
+    height: 256px;
+}
+
+.plants-empty-text {
+    position: relative;
+    top: -20px;
     color: rgb(150, 150, 150);
-    margin-left: 10px;
     font-style: italic;
     font-size: 1.4em;
 }
@@ -966,6 +978,22 @@ a.navbar-burger:hover {
 
 .task-footer-action a {
     color: rgb(150, 150, 150);
+}
+
+.tasks-all-done {
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.tasks-all-done-image img {
+    width: 256px;
+    height: 256px;
+}
+
+.tasks-all-done-text {
+    color: rgb(120, 215, 105);
+    font-size: 2.0em;
 }
 
 .inventory {

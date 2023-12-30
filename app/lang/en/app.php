@@ -211,5 +211,6 @@ return [
 	'last_added_plants' => 'Last added plants',
 	'info' => 'Info',
 	'current_version' => 'Version: {version}',
-	'background_overlay_alpha' => 'Overlay alpha value'
+	'background_overlay_alpha' => 'Overlay alpha value',
+	'all_tasks_done' => 'There are currently no open tasks'
 ];
