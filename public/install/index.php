@@ -286,6 +286,7 @@
             $env .= 'APP_SESSION=true' . PHP_EOL;
             $env .= 'APP_LANG="en"' . PHP_EOL;
             $env .= 'APP_WORKSPACE="' . $workspace . '"' . PHP_EOL;
+            $env .= 'APP_OVERLAYALPHA=null' . PHP_EOL;
             $env .= 'APP_ENABLESCROLLER=true' . PHP_EOL;
             $env .= 'APP_ENABLECHAT=true' . PHP_EOL;
             $env .= 'APP_ONLINEMINUTELIMIT=5' . PHP_EOL;
