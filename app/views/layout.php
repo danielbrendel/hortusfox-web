@@ -639,7 +639,13 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="checkbox" name="notify_overdue_tasks" value="1" {{ ($user->get('notify_overdue_tasks')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_overdue_tasks') }}
+									<input type="checkbox" name="notify_tasks_overdue" value="1" {{ ($user->get('notify_tasks_overdue')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_tasks_overdue') }}
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" name="notify_tasks_tomorrow" value="1" {{ ($user->get('notify_tasks_tomorrow')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_tasks_tomorrow') }}
 								</div>
 							</div>
 						</form>

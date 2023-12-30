@@ -1,19 +1,20 @@
 <?php
 
 /**
- * Class OverdueInfoModel
+ * Class TaskInformerModel
  */ 
-class OverdueInfoModel extends \Asatru\Database\Model {
+class TaskInformerModel extends \Asatru\Database\Model {
     /**
      * @param $userId
      * @param $taskId
+     * @param $what
      * @return bool
      * @throws \Exception
      */
-    public static function userInformed($userId, $taskId)
+    public static function userInformed($userId, $taskId, $what)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE user = ? AND task = ?', [$userId, $taskId])->first();
+            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE user = ? AND task = ? AND what = ?', [$userId, $taskId, $what])->first();
             if ($data) {
                 return true;
             }
@@ -26,18 +27,19 @@ class OverdueInfoModel extends \Asatru\Database\Model {
 
     /**
      * @param $task
+     * @param $what
      * @param $limit
      * @return void
      * @throws \Exception
      */
-    public static function inform($task, $limit = 5)
+    public static function inform($task, $what, $limit = 5)
     {
         try {
             $users = UserModel::getAll();
             $count = 0;
 
             foreach ($users as $user) {
-                if (($user->get('notify_overdue_tasks')) && (!static::userInformed($user->get('id'), $task->get('id')))) {
+                if (($user->get('notify_tasks_' . $what)) && (!static::userInformed($user->get('id'), $task->get('id'), $what))) {
                     if ($count < $limit) {
                         $lang = $user->get('lang');
                         if ($lang === null) {
@@ -48,11 +50,11 @@ class OverdueInfoModel extends \Asatru\Database\Model {
 
                         $mailobj = new Asatru\SMTPMailer\SMTPMailer();
                         $mailobj->setRecipient($user->get('email'));
-                        $mailobj->setSubject(__('app.info_task_is_overdue'));
-                        $mailobj->setView('mail/taskoverdue', [], ['task' => $task, 'user' => $user]);
+                        $mailobj->setSubject(__('app.mail_info_task_' . $what));
+                        $mailobj->setView('mail/task_' . $what, [], ['task' => $task, 'user' => $user]);
                         $mailobj->send();
 
-                        static::raw('INSERT INTO `' . self::tableName() . '` (user, task) VALUES(?, ?)', [$user->get('id'), $task->get('id')]);
+                        static::raw('INSERT INTO `' . self::tableName() . '` (user, task, what) VALUES(?, ?, ?)', [$user->get('id'), $task->get('id'), $what]);
                         
                         $count++;
                     }
@@ -70,6 +72,6 @@ class OverdueInfoModel extends \Asatru\Database\Model {
      */
     public static function tableName()
     {
-        return 'overdueinfo';
+        return 'taskinformer';
     }
 }

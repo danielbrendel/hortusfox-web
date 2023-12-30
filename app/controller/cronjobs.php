@@ -23,7 +23,7 @@ class CronjobsController extends BaseController {
     }
 
     /**
-	 * Handles URL: /overduetasks
+	 * Handles URL: /cronjob/tasks/overdue
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
@@ -31,7 +31,27 @@ class CronjobsController extends BaseController {
     public function overdue_tasks($request)
     {
         try {
-            TasksModel::cronjob();
+            TasksModel::cronjobOverdue();
+
+            return json(['code' => 200]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /cronjob/tasks/tomorrow
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function tomorrow_tasks($request)
+    {
+        try {
+            TasksModel::cronjobTomorrow();
 
             return json(['code' => 200]);
         } catch (\Exception $e) {

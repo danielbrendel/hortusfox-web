@@ -69,6 +69,7 @@ return [
     array('/history', 'GET', 'index@view_history'),
     array('/plants/history/add', 'ANY', 'index@add_to_history'),
     array('/plants/history/remove', 'ANY', 'index@remove_from_history'),
-    array('/cronjob/overduetasks', 'GET', 'cronjobs@overdue_tasks'),
+    array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),
+    array('/cronjob/tasks/tomorrow', 'GET', 'cronjobs@tomorrow_tasks'),
     array('$404', 'ANY', 'error404@index')
 ];

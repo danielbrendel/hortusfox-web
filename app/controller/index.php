@@ -516,9 +516,10 @@ class IndexController extends BaseController {
 			$lang = $request->params()->query('lang', 'en');
 			$chatcolor = $request->params()->query('chatcolor', null);
 			$show_log = $request->params()->query('show_log', false);
-			$notify_overdue_tasks = $request->params()->query('notify_overdue_tasks', false);
+			$notify_tasks_overdue = $request->params()->query('notify_tasks_overdue', false);
+			$notify_tasks_tomorrow = $request->params()->query('notify_tasks_tomorrow', false);
 
-			UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log, $notify_overdue_tasks);
+			UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log, $notify_tasks_overdue, $notify_tasks_tomorrow);
 
 			$password = $request->params()->query('password', null);
 			if ($password) {

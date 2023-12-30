@@ -126,6 +126,20 @@ class TasksModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getTomorrowTasks()
+    {
+        try {
+            $tomorrow = date('Y-m-d', strtotime('+1 day'));
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = 0 AND DATE(due_date) = ? ORDER BY due_date ASC', [$tomorrow]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return int
      * @throws \Exception
      */
@@ -156,7 +170,7 @@ class TasksModel extends \Asatru\Database\Model {
      * @return void
      * @throws \Exception
      */
-    public static function cronjob()
+    public static function cronjobOverdue()
     {
         try {
             $tasks = static::getOverdueTasks();
@@ -166,8 +180,24 @@ class TasksModel extends \Asatru\Database\Model {
                 $date1 = new DateTime('now');
                 $date2 = new DateTime($ckdate);
                 if ($date1 > $date2) {
-                    OverdueInfoModel::inform($task, env('APP_CRONJOB_MAILLIMIT', 5));
+                    TaskInformerModel::inform($task, 'overdue', env('APP_CRONJOB_MAILLIMIT', 5));
                 }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function cronjobTomorrow()
+    {
+        try {
+            $tasks = static::getTomorrowTasks();
+            foreach ($tasks as $task) {
+                TaskInformerModel::inform($task, 'tomorrow', env('APP_CRONJOB_MAILLIMIT', 5));
             }
         } catch (\Exception $e) {
             throw $e;

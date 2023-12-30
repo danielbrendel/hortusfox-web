@@ -103,7 +103,7 @@ Now browse to http://localhost:8000/ and you should be redirected to the authent
 At this point you need to create your first user. Go to your database control panel and switch to the users table.
 Add the user account that should get access to the application with admin privileges. The following is an example:
 ```sql
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `admin`, `lang`, `chatcolor`, `show_log`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `admin`, `lang`, `chatcolor`, `show_log`, `notify_tasks_overdue`, `notify_tasks_tomorrow`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
 (
     NULL, 
     'Username', 
@@ -115,7 +115,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `sessi
     1,
     NULL, 
     NULL, 
-    1, 
+    1,
+    1,
+    1,
     NULL,
     NULL,
     CURRENT_TIMESTAMP, 
@@ -167,7 +169,10 @@ via the admin section (e.g. environment settings, users, locations).
 Cronjobs are used to regularly execute a specific task. For each cronjob you need to set the cronjob parameter with your token set via APP_CRONPW. The following cronjobs are available:
 ```sh
 # Used to inform users about overdue tasks. Should be called multiple times per day.
-GET /cronjob/overduetasks?cronpw={your-auth-token} 
+GET /cronjob/tasks/overdue?cronpw={your-auth-token} 
+
+# Used to inform users about tasks that are due tomorrow. Should be called multiple times per day.
+GET /cronjob/tasks/tomorrow?cronpw={your-auth-token} 
 ```
 
 ## System requirements
