@@ -335,6 +335,10 @@ class UtilsModule {
      */
     public static function saveOverlayAlphaValue($overlayalpha)
     {
+        if (!isset($_ENV['APP_OVERLAYALPHA'])) {
+            $_ENV['APP_OVERLAYALPHA'] = $overlayalpha;
+        }
+
         $new_env_settings = [
             'APP_OVERLAYALPHA' => $overlayalpha,
         ];
