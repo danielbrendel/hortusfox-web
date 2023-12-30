@@ -26,7 +26,7 @@ class CacheModel_Migration {
 	 */
 	public function up()
 	{
-		$this->database = new Asatru\Database\Migration('cachemodel', $this->connection);
+		$this->database = new Asatru\Database\Migration('CacheModel', $this->connection);
 		$this->database->drop();
 		$this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
 		$this->database->add('ident VARCHAR(260) NOT NULL');
@@ -43,7 +43,7 @@ class CacheModel_Migration {
 	 */
 	public function down()
 	{
-		$this->database = new Asatru\Database\Migration('cachemodel', $this->connection);
+		$this->database = new Asatru\Database\Migration('CacheModel', $this->connection);
 		$this->database->drop();
 	}
 }

@@ -123,7 +123,7 @@ class CacheModel extends \Asatru\Database\Model {
 	 */
 	public static function tableName()
 	{
-		return 'cache';
+		return 'CacheModel';
 	}
 }
     
