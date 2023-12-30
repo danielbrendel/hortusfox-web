@@ -542,5 +542,31 @@ window.vue = new Vue({
                 elem.classList.add('is-active');
             }
         },
+
+        selectAdminTab: function(tab) {
+            const tabs = ['environment', 'media', 'users', 'locations', 'info'];
+
+            let selEl = document.querySelector('.admin-' + tab);
+            if (selEl) {
+                tabs.forEach(function(elem, index) {
+                    let otherEl = document.querySelector('.admin-' + elem);
+                    if (otherEl) {
+                        otherEl.classList.add('is-hidden');
+                    }
+
+                    let otherTabs = document.querySelector('.admin-tab-' + elem);
+                    if (otherTabs) {
+                        otherTabs.classList.remove('is-active');
+                    }
+                });
+
+                selEl.classList.remove('is-hidden');
+
+                let selTab = document.querySelector('.admin-tab-' + tab);
+                if (selTab) {
+                    selTab.classList.add('is-active');
+                }
+            }
+        },
     }
 });

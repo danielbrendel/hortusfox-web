@@ -1316,6 +1316,19 @@ a.navbar-burger:hover {
     width: 100%;
 }
 
+.admin-tabs {
+    margin-top: 23px;
+}
+
+.admin-tabs a {
+    color: rgb(200, 200, 200);
+}
+
+.admin-tabs a:hover {
+    color: rgb(230, 230, 230);
+    border-bottom-color: rgb(111, 172, 243);
+}
+
 .admin-environment {
     position: relative;
 }
@@ -1470,6 +1483,15 @@ a.navbar-burger:hover {
 .admin-locations-actions {
     position: relative;
     margin-top: 20px;
+}
+
+.admin-info {
+    position: relative;
+}
+
+.admin-info-version {
+    color: rgb(200, 200, 200);
+    font-size: 1.5em;
 }
 
 .version-check {

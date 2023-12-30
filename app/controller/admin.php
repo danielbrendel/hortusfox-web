@@ -48,7 +48,7 @@ class AdminController extends BaseController {
 		return parent::view(['content', 'admin'], [
 			'user' => $user,
 			'locations' => $locs,
-            'user_accounts' => $user_accounts,
+			'user_accounts' => $user_accounts,
 			'new_version' => $new_version,
 			'current_version' => $current_version
 		]);
@@ -78,7 +78,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=environment');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -101,7 +101,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.user_created_successfully'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=users');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -126,7 +126,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.user_updated_successfully'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=users');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -148,7 +148,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.user_removed_successfully'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=users');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -171,7 +171,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.location_added_successfully'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=locations');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -196,7 +196,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.location_updated_successfully'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=locations');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -219,7 +219,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.location_removed_successfully'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=locations');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -243,7 +243,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.media_saved'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=media');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
@@ -267,7 +267,7 @@ class AdminController extends BaseController {
 
 			FlashMessage::setMsg('success', __('app.media_saved'));
 
-			return redirect('/admin');
+			return redirect('/admin?tab=media');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();

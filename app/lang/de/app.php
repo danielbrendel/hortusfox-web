@@ -205,5 +205,7 @@ return [
 	'sorting_type_history_date' => 'Historien-Datum',
 	'restore_from_history' => 'Wiederherstellen',
 	'content_empty' => 'Hier ist es momentan ziemlich leer...',
-	'last_added_plants' => 'Zuletzt hinzugefügte Pflanzen'
+	'last_added_plants' => 'Zuletzt hinzugefügte Pflanzen',
+	'info' => 'Info',
+	'current_version' => 'Version: {version}'
 ];
