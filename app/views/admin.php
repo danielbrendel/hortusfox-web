@@ -215,7 +215,12 @@
 </div>
 
 <div class="admin-info {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'info')) ? 'is-hidden' : ''}}">
-    <div class="admin-info-version">{{ __('app.current_version', ['version' => config('version')]) }}</div>
+    <div class="admin-info-version">
+        <div class="margin-bottom">{{ __('app.hortusfox_version', ['version' => config('version')]) }}</div>
+        <div class="admin-info-version-smaller">{{ __('app.php_version', ['version' => phpversion()]) }}</div>
+        <div class="admin-info-version-smaller">{{ __('app.mysql_version', ['version' => VersionModel::getSqlVersion()]) }}</div>
+        <div class="admin-info-version-smaller">{{ __('app.server_time', ['time' => date('Y-m-d H:i') . ' (' . date_default_timezone_get() . ')']) }}</div>
+    </div>
 
     <?php if ((!empty($new_version)) && (!empty($current_version))) { ?>
         <div class="version-info">

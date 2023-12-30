@@ -210,7 +210,10 @@ return [
 	'content_empty' => 'It is looking rather empty here...',
 	'last_added_plants' => 'Last added plants',
 	'info' => 'Info',
-	'current_version' => 'Version: {version}',
+	'hortusfox_version' => 'HortusFox v{version}',
+	'php_version' => 'PHP Version: {version}',
+	'mysql_version' => 'MySQL Version: {version}',
+	'server_time' => 'Server time: {time}',
 	'background_overlay_alpha' => 'Overlay alpha value',
 	'all_tasks_done' => 'There are currently no open tasks'
 ];

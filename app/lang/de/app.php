@@ -210,7 +210,10 @@ return [
 	'content_empty' => 'Hier ist es momentan ziemlich leer...',
 	'last_added_plants' => 'Zuletzt hinzugefügte Pflanzen',
 	'info' => 'Info',
-	'current_version' => 'Version: {version}',
+	'hortusfox_version' => 'HortusFox v{version}',
+	'php_version' => 'PHP Version: {version}',
+	'mysql_version' => 'MySQL Version: {version}',
+	'server_time' => 'Server time: {time}',
 	'background_overlay_alpha' => 'Alpha-Wert des Overlays',
 	'all_tasks_done' => 'Gegenwärtig gibt es keine offenen Aufgaben'
 ];

@@ -278,6 +278,10 @@ a.navbar-burger:hover {
     margin-bottom: 20px;
 }
 
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
 .sorting {
     position: relative;
     top: 10px;
@@ -1520,6 +1524,11 @@ a.navbar-burger:hover {
 .admin-info-version {
     color: rgb(200, 200, 200);
     font-size: 1.5em;
+}
+
+.admin-info-version-smaller {
+    color: rgb(150, 150, 150);
+    font-size: 0.76em;
 }
 
 .version-check {
