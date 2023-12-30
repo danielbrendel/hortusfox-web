@@ -220,6 +220,7 @@
         <div class="admin-info-version-smaller">{{ __('app.php_version', ['version' => phpversion()]) }}</div>
         <div class="admin-info-version-smaller">{{ __('app.mysql_version', ['version' => VersionModel::getSqlVersion()]) }}</div>
         <div class="admin-info-version-smaller">{{ __('app.server_time', ['time' => date('Y-m-d H:i') . ' (' . date_default_timezone_get() . ')']) }}</div>
+        <div class="admin-info-version-smaller">{{ __('app.render_time', ['time' => round(microtime(true) - ASATRU_START, 4)]) }}</div>
     </div>
 
     <?php if ((!empty($new_version)) && (!empty($current_version))) { ?>

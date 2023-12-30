@@ -214,6 +214,7 @@ return [
 	'php_version' => 'PHP Version: {version}',
 	'mysql_version' => 'MySQL Version: {version}',
 	'server_time' => 'Server time: {time}',
+	'render_time' => 'Render time: {time}s',
 	'background_overlay_alpha' => 'Alpha-Wert des Overlays',
 	'all_tasks_done' => 'Gegenwärtig gibt es keine offenen Aufgaben'
 ];
