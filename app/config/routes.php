@@ -66,6 +66,7 @@ return [
     array('/admin/location/remove', 'ANY', 'admin@remove_location'),
     array('/admin/media/logo', 'POST', 'admin@upload_media_logo'),
     array('/admin/media/background', 'POST', 'admin@upload_media_background'),
+    array('/admin/media/overlay/alpha', 'POST', 'admin@save_overlay_alpha'),
     array('/history', 'GET', 'index@view_history'),
     array('/plants/history/add', 'ANY', 'index@add_to_history'),
     array('/plants/history/remove', 'ANY', 'index@remove_from_history'),

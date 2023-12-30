@@ -66,7 +66,6 @@ class AdminController extends BaseController {
 			$workspace = $request->params()->query('workspace', env('APP_WORKSPACE'));
 			$lang = $request->params()->query('lang', env('APP_LANG'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
-			$overlayalpha = $request->params()->query('overlayalpha', env('APP_OVERLAYALPHA'));
 			$enablechat = (bool)$request->params()->query('enablechat', 0);
 			$onlinetimelimit = (int)$request->params()->query('onlinetimelimit', env('APP_ONLINEMINUTELIMIT'));
 			$chatonlineusers = (bool)$request->params()->query('chatonlineusers', 0);
@@ -75,7 +74,7 @@ class AdminController extends BaseController {
 			$history_name = $request->params()->query('history_name', env('APP_HISTORY_NAME'));
 			$cronpw = $request->params()->query('cronpw', env('APP_CRONPW'));
 			
-			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $overlayalpha, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $cronpw);
+			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $cronpw);
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
@@ -267,6 +266,28 @@ class AdminController extends BaseController {
 			move_uploaded_file($_FILES['asset']['tmp_name'], public_path() . '/img/background.jpg');
 
 			FlashMessage::setMsg('success', __('app.media_saved'));
+
+			return redirect('/admin?tab=media');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/media/overlay/alpha
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function save_overlay_alpha($request)
+	{
+		try {
+			$overlayalpha = $request->params()->query('overlayalpha', env('APP_OVERLAYALPHA'));
+			
+			UtilsModule::saveOverlayAlphaValue($overlayalpha);
+
+			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
 			return redirect('/admin?tab=media');
 		} catch (\Exception $e) {

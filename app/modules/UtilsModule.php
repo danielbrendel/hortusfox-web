@@ -264,41 +264,17 @@ class UtilsModule {
     }
 
     /**
-     * @param $workspace
-     * @param $lang
-     * @param $scroller
-     * @param $overlayalpha
-     * @param $enablechat
-     * @param $onlinetimelimit
-     * @param $chatonlineusers
-     * @param $chattypingindicator
-     * @param $enablehistory
-     * @param $history_name
-     * @param $cronpw
+     * @param array $settings
      * @return void
      */
-    public static function saveEnvironment($workspace, $lang, $scroller, $overlayalpha, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $cronpw)
+    public static function saveEnvSettings(array $settings)
     {
-        $new_env_settings = [
-            'APP_WORKSPACE' => $workspace,
-            'APP_LANG' => $lang,
-            'APP_ENABLESCROLLER' => $scroller,
-            'APP_OVERLAYALPHA' => $overlayalpha,
-            'APP_ENABLECHAT' => $enablechat,
-            'APP_ONLINEMINUTELIMIT' => $onlinetimelimit,
-            'APP_SHOWCHATONLINEUSERS' => $chatonlineusers,
-            'APP_SHOWCHATTYPINGINDICATOR' => $chattypingindicator,
-            'APP_ENABLEHISTORY' => $enablehistory,
-            'APP_HISTORY_NAME' => $history_name,
-            'APP_CRONPW' => $cronpw
-        ];
-
-        foreach ($new_env_settings as $key => $value) {
+        foreach ($settings as $key => $value) {
             if (isset($_ENV[$key])) {
                 $_ENV[$key] = $value;
             }
         }
-
+        
         $env_content = "# Automatically generated at " . date('Y-m-d H:i:s') . "\n";
 
         foreach ($_ENV as $key => $value) {
@@ -320,5 +296,49 @@ class UtilsModule {
         }
 
         file_put_contents(base_path() . '/.env', $env_content);
+    }
+
+    /**
+     * @param $workspace
+     * @param $lang
+     * @param $scroller
+     * @param $enablechat
+     * @param $onlinetimelimit
+     * @param $chatonlineusers
+     * @param $chattypingindicator
+     * @param $enablehistory
+     * @param $history_name
+     * @param $cronpw
+     * @return void
+     */
+    public static function saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $cronpw)
+    {
+        $new_env_settings = [
+            'APP_WORKSPACE' => $workspace,
+            'APP_LANG' => $lang,
+            'APP_ENABLESCROLLER' => $scroller,
+            'APP_ENABLECHAT' => $enablechat,
+            'APP_ONLINEMINUTELIMIT' => $onlinetimelimit,
+            'APP_SHOWCHATONLINEUSERS' => $chatonlineusers,
+            'APP_SHOWCHATTYPINGINDICATOR' => $chattypingindicator,
+            'APP_ENABLEHISTORY' => $enablehistory,
+            'APP_HISTORY_NAME' => $history_name,
+            'APP_CRONPW' => $cronpw
+        ];
+
+        static::saveEnvSettings($new_env_settings);
+    }
+
+    /**
+     * @param $overlayalpha
+     * @return void
+     */
+    public static function saveOverlayAlphaValue($overlayalpha)
+    {
+        $new_env_settings = [
+            'APP_OVERLAYALPHA' => $overlayalpha,
+        ];
+
+        static::saveEnvSettings($new_env_settings);
     }
 }

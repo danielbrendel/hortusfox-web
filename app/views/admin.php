@@ -43,13 +43,6 @@
         </div>
 
         <div class="field">
-            <label class="label">{{ __('app.background_overlay_alpha') }}</label>
-            <div class="control">
-                <input type="text" class="input" name="overlayalpha" value="{{ ((env('APP_OVERLAYALPHA')) ? env('APP_OVERLAYALPHA') : '0.5') }}" required>
-            </div>
-        </div>
-
-        <div class="field">
             <div class="control">
                 <input type="checkbox" class="checkbox" name="enablechat" value="1" {{ (env('APP_ENABLECHAT')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_chat') }}</span>
             </div>
@@ -129,6 +122,23 @@
             <label class="label">{{ __('app.media_background') }}</label>
             <div class="control">
                 <input type="file" class="input" name="asset" accept=".jpg,.jpeg" required>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
+            </div>
+        </div>
+    </form>
+
+    <form method="POST" action="{{ url('/admin/media/overlay/alpha') }}">
+        @csrf
+        
+        <div class="field">
+            <label class="label">{{ __('app.background_overlay_alpha') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="overlayalpha" value="{{ ((env('APP_OVERLAYALPHA')) ? env('APP_OVERLAYALPHA') : '0.5') }}" required>
             </div>
         </div>
 
