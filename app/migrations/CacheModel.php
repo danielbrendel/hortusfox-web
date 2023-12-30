@@ -4,7 +4,7 @@
 	Asatru PHP - Migration vor Caching
 */
 
-class Cache_Migration {
+class CacheModel_Migration {
 	private $database = null;
 	private $connection = null;
 
