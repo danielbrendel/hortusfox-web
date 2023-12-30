@@ -210,5 +210,6 @@ return [
 	'content_empty' => 'Hier ist es momentan ziemlich leer...',
 	'last_added_plants' => 'Zuletzt hinzugefügte Pflanzen',
 	'info' => 'Info',
-	'current_version' => 'Version: {version}'
+	'current_version' => 'Version: {version}',
+	'background_overlay_alpha' => 'Alpha-Wert des Overlays'
 ];

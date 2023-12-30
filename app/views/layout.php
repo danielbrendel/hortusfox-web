@@ -22,7 +22,17 @@
 			@include('navbar.php')
 
 			<div class="container">
-				{%content%}
+				<div class="columns">
+					<div class="column is-2"></div>
+
+					<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/background.jpg') }}');">
+						<div class="column-overlay" {!! ((env('APP_OVERLAYALPHA')) ? 'style="background-color: rgba(0, 0, 0, ' . env('APP_OVERLAYALPHA') . ');"': '') !!}>
+							{%content%}
+						</div>
+					</div>
+
+					<div class="column is-2"></div>
+				</div>
 			</div>
 
 			<div class="modal" :class="{'is-active': bShowAddPlant}">

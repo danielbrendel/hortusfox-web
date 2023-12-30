@@ -66,6 +66,7 @@ class AdminController extends BaseController {
 			$workspace = $request->params()->query('workspace', env('APP_WORKSPACE'));
 			$lang = $request->params()->query('lang', env('APP_LANG'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
+			$overlayalpha = $request->params()->query('overlayalpha', env('APP_OVERLAYALPHA'));
 			$enablechat = (bool)$request->params()->query('enablechat', 0);
 			$onlinetimelimit = (int)$request->params()->query('onlinetimelimit', env('APP_ONLINEMINUTELIMIT'));
 			$chatonlineusers = (bool)$request->params()->query('chatonlineusers', 0);
@@ -74,7 +75,7 @@ class AdminController extends BaseController {
 			$history_name = $request->params()->query('history_name', env('APP_HISTORY_NAME'));
 			$cronpw = $request->params()->query('cronpw', env('APP_CRONPW'));
 			
-			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $cronpw);
+			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $overlayalpha, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $cronpw);
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 

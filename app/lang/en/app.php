@@ -210,5 +210,6 @@ return [
 	'content_empty' => 'It is looking rather empty here...',
 	'last_added_plants' => 'Last added plants',
 	'info' => 'Info',
-	'current_version' => 'Version: {version}'
+	'current_version' => 'Version: {version}',
+	'background_overlay_alpha' => 'Overlay alpha value'
 ];
