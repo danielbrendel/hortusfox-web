@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Asatru PHP - Exception</title>
 
@@ -25,12 +26,24 @@
 				height: 100%;
 			}
 
+            @media screen and (max-width: 1087px) {
+                .ex_image {
+                    display: none;
+                }
+            }
+
             .ex_box {
                 position: absolute;
 				display: inline-block;
                 width: 69%;
 				height: 100%;
 				overflow-y: auto;
+            }
+
+            @media screen and (max-width: 1087px) {
+                .ex_box {
+                    width: 100%;
+                }
             }
 			
 			.ex_header_num {
@@ -76,24 +89,25 @@
 				position: relative;
 				margin-left: 10px;
                 margin-right: 10px;
-				margin-top: 20px;
-				padding-top: 10px;
-				padding-bottom: 10px;
-				padding-left: 50px;
-				padding-right: 50px;
-				width: 51px;
-				border: 1px solid rgb(51, 63, 104);
-				border-radius: 5px;
-				background-color: rgb(45, 95, 245);
+				margin-top: 30px;
 			}
 			
 			.ex_refresh a {
+                width: 51px;
+                padding-top: 10px;
+				padding-bottom: 10px;
+				padding-left: 50px;
+				padding-right: 50px;
 				color: rgb(235, 235, 235);
+                background-color: rgb(45, 95, 245);
+                border: 1px solid rgb(51, 63, 104);
+				border-radius: 5px;
 				text-decoration: none;
 			}
 			
 			.ex_refresh a:hover {
 				color: rgb(255, 255, 255);
+                background-color: rgb(67, 111, 245);
 				text-decoration: none;
 			}
 
@@ -167,7 +181,7 @@
                     
                     <?php foreach ($stacktrace as $item) { ?>
                         <div class="ex_trace_content_col_<?= (($tableswitch) ? '1' : '2') ?>">
-                            #<?= $stackcounter ?> <?= ((isset($item['file'])) ? $item['file'] : 'internal function') ?><?= (isset($item['line']) ? '(' . $item['line'] . ')' : '') ?>: <?= $item['function'] ?>
+                            #<?= $stackcounter ?> <?= ((isset($item['file'])) ? $item['file'] : 'internal function') ?><?= (isset($item['line']) ? '(' . $item['line'] . ')' : '') ?>: <?= isset($item['class']) ? $item['class'] . '::' : '' ?><?= $item['function'] ?>
                             <?php if ((isset($item['args'])) && (count($item['args']) > 0)) { ?>
                                 (
                                 <?php $argcnt = 0; ?>
