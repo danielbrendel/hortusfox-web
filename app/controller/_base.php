@@ -27,7 +27,14 @@ class BaseController extends Asatru\Controller\Controller {
 		if (!$auth_user) {
 			$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-			$allowed_urls = array('/auth', '/login', '/password/restore', '/password/reset');
+			$allowed_urls = array(
+				'/auth', 
+				'/login', 
+				'/password/restore', 
+				'/password/reset',
+				'/cronjob/tasks/overdue',
+				'/cronjob/tasks/tomorrow'
+			);
 
 			if (!in_array($url, $allowed_urls)) {
 				header('Location: /auth');
