@@ -38,6 +38,7 @@ class UserModel_Migration {
         $this->database->add('lang VARCHAR(512) NULL');
         $this->database->add('chatcolor VARCHAR(512) NULL');
         $this->database->add('show_log BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('show_plants_aoru BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('notify_tasks_overdue BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('notify_tasks_tomorrow BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('last_seen_msg INT NULL');

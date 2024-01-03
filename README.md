@@ -103,7 +103,7 @@ Now browse to http://localhost:8000/ and you should be redirected to the authent
 At this point you need to create your first user. Go to your database control panel and switch to the users table.
 Add the user account that should get access to the application with admin privileges. The following is an example:
 ```sql
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `admin`, `lang`, `chatcolor`, `show_log`, `notify_tasks_overdue`, `notify_tasks_tomorrow`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `admin`, `lang`, `chatcolor`, `show_log`, `show_plants_aoru`, `notify_tasks_overdue`, `notify_tasks_tomorrow`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
 (
     NULL, 
     'Username', 
@@ -115,6 +115,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `sessi
     1,
     NULL, 
     NULL, 
+    1,
     1,
     1,
     1,

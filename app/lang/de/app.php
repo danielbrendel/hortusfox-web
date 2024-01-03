@@ -209,6 +209,7 @@ return [
 	'restore_from_history' => 'Wiederherstellen',
 	'content_empty' => 'Hier ist es momentan ziemlich leer...',
 	'last_added_plants' => 'Zuletzt hinzugefügte Pflanzen',
+	'last_authored_plants' => 'Zuletzt bearbeitete Pflanzen',
 	'info' => 'Info',
 	'hortusfox_version' => 'HortusFox v{version}',
 	'php_version' => 'PHP Version: {version}',

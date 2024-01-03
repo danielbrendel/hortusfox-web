@@ -36,7 +36,12 @@ class IndexController extends BaseController {
 		$overdue_tasks = TasksModel::getOverdueTasks();
 		$log = LogModel::getHistory();
 		$stats = UtilsModule::getStats();
-		$last_added_plants = PlantsModel::getLastAddedPlants();
+
+		if ($user->get('show_plants_aoru')) {
+			$last_plants_list = PlantsModel::getLastAddedPlants();
+		} else {
+			$last_plants_list = PlantsModel::getLastAuthoredPlants();
+		}
 		
 		return parent::view(['content', 'index'], [
 			'user' => $user,
@@ -45,7 +50,7 @@ class IndexController extends BaseController {
 			'locations' => $locs,
 			'log' => $log,
 			'stats' => $stats,
-			'last_added_plants' => $last_added_plants
+			'last_plants_list' => $last_plants_list
 		]);
 	}
 

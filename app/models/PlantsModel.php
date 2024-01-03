@@ -103,6 +103,19 @@
         }
 
         /**
+         * @return mixed
+         * @throws \Exception
+         */
+        public static function getLastAuthoredPlants()
+        {
+            try {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 AND last_edited_user IS NOT NULL ORDER BY last_edited_date DESC LIMIT 6');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * @param $id
          * @return mixed
          * @throws \Exception

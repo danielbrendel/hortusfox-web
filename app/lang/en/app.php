@@ -209,6 +209,7 @@ return [
 	'restore_from_history' => 'Restore',
 	'content_empty' => 'It is looking rather empty in here...',
 	'last_added_plants' => 'Last added plants',
+	'last_authored_plants' => 'Last authored plants',
 	'info' => 'Info',
 	'hortusfox_version' => 'HortusFox v{version}',
 	'php_version' => 'PHP Version: {version}',

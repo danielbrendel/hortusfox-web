@@ -68,12 +68,18 @@
 	@endforeach
 </div>
 
-<div class="last-added-plants">
-	<h3>{{ __('app.last_added_plants') }}</h3>
+<div class="last-added-or-authored-plants">
+	<h3>
+		@if ($user->get('show_plants_aoru'))
+			{{ __('app.last_added_plants') }}
+		@else
+			{{ __('app.last_authored_plants') }}
+		@endif
+	</h3>
 
-	@if (count($last_added_plants) > 0)
+	@if (count($last_plants_list) > 0)
 	<div class="plants">
-		@foreach ($last_added_plants as $plant)
+		@foreach ($last_plants_list as $plant)
 			<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
 				<div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
 					<div class="plant-card-overlay">
