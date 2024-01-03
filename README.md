@@ -179,4 +179,4 @@ GET /cronjob/tasks/tomorrow?cronpw={your-auth-token}
 ## System requirements
 - PHP ^8.2
 - MySQL (10.4.27-MariaDB or similar)
-- Standard PHP extensions
+- SMTP server for e-mailing
