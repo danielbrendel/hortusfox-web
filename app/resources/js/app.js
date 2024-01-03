@@ -420,7 +420,7 @@ window.vue = new Vue({
 
         refreshUserList: function()
         {
-            window.vue.ajaxRequest('get', window.location.origin + '/user/online', {}, function(response) {
+            window.vue.ajaxRequest('get', window.location.origin + '/chat/user/online', {}, function(response) {
                 if (response.code == 200) {
                     let target = document.getElementById('chat-user-list');
                     target.innerHTML = window.vue.currentlyOnline;
