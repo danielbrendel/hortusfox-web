@@ -527,10 +527,16 @@ window.vue = new Vue({
         textFilterElements: function(token) {
             let elems = document.getElementsByClassName('plant-card-title');
             for (let i = 0; i < elems.length; i++) {
+                let target = elems[i].parentNode;
+                
+                while (!target.classList.contains('plant-card')) {
+                    target = target.parentNode;
+                }
+
                 if (!elems[i].innerText.toLowerCase().includes(token.toLowerCase())) {
-                    elems[i].parentNode.parentNode.parentNode.classList.add('is-hidden');
+                    target.classList.add('is-hidden');
                 } else {
-                    elems[i].parentNode.parentNode.parentNode.classList.remove('is-hidden');
+                    target.classList.remove('is-hidden');
                 }
             }
         },
