@@ -658,6 +658,24 @@
 									<input type="checkbox" name="notify_tasks_tomorrow" value="1" {{ ($user->get('notify_tasks_tomorrow')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_tasks_tomorrow') }}
 								</div>
 							</div>
+
+							<fieldset>
+								<legend>{{ __('app.last_added_or_updated_plants_hint') }}</legend>
+
+								<div class="field">
+									<div class="control">
+										<input type="radio" name="show_plants_aoru" id="show_plants_aoru_added" value="1" {{ ($user->get('show_plants_aoru')) ? 'checked' : ''}}>
+										<label for="show_plants_aoru_added">{{ __('app.show_plants_aoru_added') }}</label>
+									</div>
+								</div>
+
+								<div class="field">
+									<div class="control">
+										<input type="radio" name="show_plants_aoru" id="show_plants_aoru_updated" value="0" {{ (!$user->get('show_plants_aoru')) ? 'checked' : ''}}>
+										<label for="show_plants_aoru_updated">{{ __('app.show_plants_aoru_updated') }}</label>
+									</div>
+								</div>
+							</fieldset>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">

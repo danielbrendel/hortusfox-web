@@ -217,5 +217,8 @@ return [
 	'server_time' => 'Server time: {time}',
 	'render_time' => 'Render time: {time}s',
 	'background_overlay_alpha' => 'Alpha-Wert des Overlays',
-	'all_tasks_done' => 'Gegenwärtig gibt es keine offenen Aufgaben'
+	'all_tasks_done' => 'Gegenwärtig gibt es keine offenen Aufgaben',
+	'last_added_or_updated_plants_hint' => 'Welche letzten Pflanzen sollen im Dashboard angezeigt werden?',
+	'show_plants_aoru_added' => 'Zuletzt hinzugefügt',
+	'show_plants_aoru_updated' => 'Zuletzt bearbeitet',
 ];

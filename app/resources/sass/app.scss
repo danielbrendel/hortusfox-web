@@ -168,6 +168,14 @@ a.navbar-burger:hover {
     }
 }
 
+fieldset legend {
+    margin-bottom: 5px !important;
+}
+
+fieldset .field {
+    margin-bottom: unset !important;
+}
+
 .notification-badge {
     color: rgb(255, 255, 255);
     text-decoration: none;

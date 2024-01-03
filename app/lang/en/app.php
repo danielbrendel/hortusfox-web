@@ -217,5 +217,8 @@ return [
 	'server_time' => 'Server time: {time}',
 	'render_time' => 'Render time: {time}s',
 	'background_overlay_alpha' => 'Overlay alpha value',
-	'all_tasks_done' => 'There are currently no open tasks'
+	'all_tasks_done' => 'There are currently no open tasks',
+	'last_added_or_updated_plants_hint' => 'Select recent plants mode',
+	'show_plants_aoru_added' => 'Show last added plants',
+	'show_plants_aoru_updated' => 'Show last authored plants',
 ];
