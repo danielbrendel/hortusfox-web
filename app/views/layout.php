@@ -634,8 +634,8 @@
 								</div>
 							</div>
 
-							<div class="field">
-							<label class="label">{{ __('app.chatcolor') }}</label>
+							<div class="field {{ ((!env('APP_ENABLECHAT')) ? 'is-hidden': '') }}">
+								<label class="label">{{ __('app.chatcolor') }}</label>
 								<div class="control">
 									<input type="color" class="input" name="chatcolor" value="{{ UserModel::getChatColorForUser($user->get('id')) }}">
 								</div>
