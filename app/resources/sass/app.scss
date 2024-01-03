@@ -11,7 +11,6 @@ html, body {
 }
 
 body {
-
     overflow-x: hidden;
 }
 
@@ -223,7 +222,7 @@ a.navbar-burger:hover {
     margin-right: 10px;
     margin-bottom: 23px;
     background-color: rgba(159, 172, 132, 0.2);
-    border: 1px solid rgb(200, 200, 200);
+    border: 1px solid rgb(80, 80, 80);
 }
 
 .location:hover {
@@ -232,10 +231,12 @@ a.navbar-burger:hover {
 
 .location-title {
     text-align: center;
-    font-size: 2.3em;
+    font-size: 2.0em;
     padding-bottom: 4px;
     @media screen and (max-width: 830px) {
-        font-size: 1.2em;
+        font-size: 1.0em;
+        padding-top: 2px;
+        padding-bottom: 5px;
     }
     @media screen and (min-width: 831px) {
         padding-bottom: 10px;
@@ -251,9 +252,12 @@ a.navbar-burger:hover {
 
 .location-icon i {
     color: #99ac97;
-    font-size: 8em;
+    font-size: 5em;
     @media screen and (max-width: 830px) {
         font-size: 2em;
+    }
+    @media screen and (min-width: 831px) {
+        margin-top: 25px;
     }
 }
 
