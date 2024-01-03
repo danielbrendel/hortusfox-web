@@ -8,7 +8,7 @@
 
 <div class="sorting">
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/history?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') }}' + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') }}';">
+		<select onchange="location.href = '{{ url('/plants/history?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') }}' + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') }}';">
 			@foreach ($sorting_types as $sorting_type)
 				<option value="{{ $sorting_type }}" {{ ((isset($_GET['sorting'])) && ($_GET['sorting'] === $sorting_type)) ? 'selected' : '' }}>{{ __('app.sorting_type_' . $sorting_type) }}</option>
 			@endforeach
@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/history?sorting=' . ((isset($_GET['sorting'])) ? $_GET['sorting'] : 'name')) }}&direction=' + this.value + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') }}';">
+		<select onchange="location.href = '{{ url('/plants/history?sorting=' . ((isset($_GET['sorting'])) ? $_GET['sorting'] : 'name')) }}&direction=' + this.value + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') }}';">
 			@foreach ($sorting_dirs as $sorting_dir)
 				<option value="{{ $sorting_dir }}" {{ ((isset($_GET['direction'])) && ($_GET['direction'] === $sorting_dir)) ? 'selected' : '' }}>{{ __('app.sorting_dir_' . $sorting_dir) }}</option>
 			@endforeach
@@ -30,7 +30,7 @@
 
 <div class="history-years">
 	@foreach ($years as $year)
-		<div class="history-year"><a href="{{ url('/history?year=' . $year->get('history_year')) }}">{{ $year->get('history_year') }}</a></div>
+		<div class="history-year"><a href="{{ url('/plants/history?year=' . $year->get('history_year')) }}">{{ $year->get('history_year') }}</a></div>
 	@endforeach
 </div>
 
