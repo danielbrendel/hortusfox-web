@@ -1,11 +1,23 @@
-# HortusFox - A self-hosted collaborative plant management system
+<h1 align="center">
+    <img src="public/logo.png" width="256"/><br/>
+    HortusFox
+</h1>
 
-(C) 2023 - 2024 by Daniel Brendel
+<p align="center">
+    A self-hosted collaborative plant management system<br/>
+    (C) 2023 - 2024 by Daniel Brendel
+</p>
 
-**Contact**: dbrendel1988(at)gmail(dot)com\
-**GitHub**: https://github.com/danielbrendel
+<p align="center">
+    <a href="https://www.hortusfox.com/">www.hortusfox.com</a>
+</p>
 
-Released under the MIT license
+<p align="center">
+    <img src="https://img.shields.io/badge/web-php-orange" alt="web-php"/>
+    <img src="https://img.shields.io/badge/db-mysql-pink" alt="db-mysql"/>
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="license-mit"/>
+    <img src="https://img.shields.io/badge/maintained-yes-green" alt="maintained-yes"/>
+</p>
 
 ## Description
 HortusFox is a self-hosted collaborative plant management system which you can use in your own environment to manage all your plants.
@@ -14,7 +26,13 @@ available that shows all important overview information. The system does also fe
 which plants need special care, user authentication, tasks, inventory management, collaborative chat and a history log of what actions 
 users have taken. The system features collaborative management, so you can manage your plants with multiple users.
 
+## Resources
+- [Official Homepage](https://www.hortusfox.com/)
+- [Documentation](https://hortusfox.github.io/)
+
 ## Installation
+1. [Manual installation](#manual-installation)
+2. [Using the Installer](#installer)
 
 ### Manual Installation
 
