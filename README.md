@@ -26,6 +26,18 @@ available that shows all important overview information. The system does also fe
 which plants need special care, user authentication, tasks, inventory management, collaborative chat and a history log of what actions 
 users have taken. The system features collaborative management, so you can manage your plants with multiple users.
 
+## Features
+- 🪴Plant management
+- 🏠Custom locations
+- 📜Tasks system 
+- 📖Inventory system
+- 🔍Search feature
+- 🕰️History feature
+- 💬Group chat
+- ⚙️Profile management
+- 🔑Admin dashboard
+- 📢Reminders
+
 ## Resources
 - [Official Homepage](https://www.hortusfox.com/)
 - [Documentation](https://hortusfox.github.io/)
