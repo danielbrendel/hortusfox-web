@@ -43,8 +43,50 @@ users have taken. The system features collaborative management, so you can manag
 - [Documentation](https://hortusfox.github.io/)
 
 ## Installation
-1. [Manual installation](#manual-installation)
-2. [Using the Installer](#installer)
+1. [Docker and Docker Compose (Recommended)](#docker-and-docker-compose)
+2. [Manual installation](#manual-installation)
+3. [Using the Installer](#installer)
+
+### Docker and Docker Compose
+Using Docker and Docker Compose simplifies the setup process and ensures consistency across different environments. Follow these steps:
+
+Prerequisites
+- Docker installed on your system
+- Docker Compose installed on your system
+
+Steps
+
+1. Clone the repository:
+
+```shell
+git clone git@github.com:danielbrendel/hortusfox-web.git
+cd hortusfox-web
+```
+
+2. Run the application using Docker Compose:
+
+```shell
+docker-compose up -d
+```
+
+3. The application should now be running on http://localhost:8080.
+
+
+### Environment Variables
+Configure the application using environment variables.
+
+Set these in your docker-compose.yml file:
+
+| Variable           | Description            | Default           | Required |
+|--------------------|------------------------|-------------------|:--------:|
+| DB_HOST            | Database host          | db                |    Yes   |
+| DB_PORT            | Database port          | 3306              |    Yes   |
+| DB_DATABASE        | Database name          | hortusfox         |    Yes   |
+| DB_USERNAME        | Database user          | root              |    Yes   |
+| DB_PASSWORD        | Database password      | my-secret-pw      |    Yes   |
+| APP_DEBUG          | Enable debug mode      | false             |    No    |
+| HORTUSFOX_ADMIN    | Default admin email    | admin@example.com |    No    |
+| HORTUSFOX_PASSWORD | Default admin password | Auto-generated    |    No    |
 
 ### Manual Installation
 
