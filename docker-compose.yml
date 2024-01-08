@@ -6,9 +6,9 @@ services:
     ports:
       - "8080:80"
     environment:
-      APP_DEBUG: "false"
+      APP_DEBUG: "true"
       APP_BASEDIR: ""
-      APP_SESSION: "false"
+      APP_SESSION: "true"
       APP_LANG: "en"
       APP_WORKSPACE: "My home"
       APP_ENABLESCROLLER: "true"
