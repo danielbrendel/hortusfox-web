@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    image: danielbrendel/hortusfox-web:latest
+    ports:
+      - "8080:80"
+    environment:
+      APP_DEBUG: "true"
+      APP_LANG: "en"
+      APP_WORKSPACE: "My plant home"
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: hortusfox
+      DB_USERNAME: root
+      DB_CHARSET: "utf8mb4"
+      DB_USER: root
+      DB_PASSWORD: my-secret-pw
+      SMTP_FROMNAME: "Test"
+      SMTP_FROMADDRESS: "test@domain.tld"
+      SMTP_HOST: ""
+      SMTP_PORT: 587
+      SMTP_USERNAME: ""
+      SMTP_PASSWORD: ""
+      SMTP_ENCRYPTION: tls
+    depends_on:
+      - db
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: hortusfox
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

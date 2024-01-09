@@ -27,24 +27,82 @@ which plants need special care, user authentication, tasks, inventory management
 users have taken. The system features collaborative management, so you can manage your plants with multiple users.
 
 ## Features
-- 🪴Plant management
-- 🏠Custom locations
-- 📜Tasks system 
-- 📖Inventory system
-- 🔍Search feature
-- 🕰️History feature
-- 💬Group chat
-- ⚙️Profile management
-- 🔑Admin dashboard
-- 📢Reminders
+- 🪴 Plant management
+- 🏠 Custom locations
+- 📜 Tasks system 
+- 📖 Inventory system
+- 🔍 Search feature
+- 🕰️ History feature
+- 💬 Group chat
+- ⚙️ Profile management
+- 🔑 Admin dashboard
+- 📢 Reminders
 
 ## Resources
 - [Official Homepage](https://www.hortusfox.com/)
 - [Documentation](https://hortusfox.github.io/)
 
 ## Installation
-1. [Manual installation](#manual-installation)
+1. [Docker and Docker Compose](#docker-and-docker-compose)
 2. [Using the Installer](#installer)
+3. [Manual installation](#manual-installation)
+
+### Docker and Docker Compose
+Using Docker and Docker Compose simplifies the setup process and ensures consistency across different environments.
+
+Prerequisites
+- Docker installed on your system
+- Docker Compose installed on your system
+
+Follow these steps:
+
+1. Clone the repository:
+
+```shell
+git clone git@github.com:danielbrendel/hortusfox-web.git
+cd hortusfox-web
+```
+
+2. Set environment variables
+
+Configure the application using environment variables.
+
+Set these in your docker-compose.yml file:
+
+| Variable           | Description            | Default           | Required |
+|--------------------|------------------------|-------------------|:--------:|
+| DB_HOST            | Database host          | db                |    Yes   |
+| DB_PORT            | Database port          | 3306              |    Yes   |
+| DB_DATABASE        | Database name          | hortusfox         |    Yes   |
+| DB_USERNAME        | Database user          | root              |    Yes   |
+| DB_PASSWORD        | Database password      | my-secret-pw      |    Yes   |
+| APP_DEBUG          | Enable debug mode      | false             |    No    |
+| APP_SESSION        | Enable sessions        | true              |    Yes   |
+| HORTUSFOX_ADMIN    | Default admin email    | admin@example.com |    No    |
+| HORTUSFOX_PASSWORD | Default admin password | Auto-generated    |    No    |
+
+3. Make the image and run the application using Docker Compose:
+
+```shell
+docker build ./ -t danielbrendel/hortusfox-web:latest
+docker-compose up -d
+```
+
+4. The application should now be running on http://localhost:8080.
+
+### Installer
+You can also use the integrated installer in order to install the product. In order for that to do, be sure that you are not running the 
+system via the internal asatru development server. Instead you might want to, for instance, run the system from the context of a webserver 
+environment like XAMPP. If you do that, just create a file named do_install (no file extension) in the root directory of the project and 
+browse to the installer and the system will guide you through the installation process. 
+```
+http://localhost/install
+```
+Be sure that PHP is installed and both your webserver and mysql server are running. If there is no vendor folder already created then 
+the system will try to run Composer in order to install all required dependencies. For that to work you need to have Composer installed 
+on your system. Altough the system tries to create the database for you, sometimes this might fail, so you will have to create the 
+database before running the installation. However all table migrations will then be created by the system. The system can then be managed
+via the admin section (e.g. environment settings, users, locations).
 
 ### Manual Installation
 
@@ -179,22 +237,8 @@ INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 );
 ```
 The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
-You can use all free FontAwesome icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges. 
+You can use all free FontAwesome icons (v5.15.4 free icons). For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges. 
 Additionally you might want to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">android mobile app</a> for your users.
-
-### Installer
-You can also use the integrated installer in order to install the product. In order for that to do, be sure that you are not running the 
-system via the internal asatru development server. Instead you might want to, for instance, run the system from the context of a webserver 
-environment like XAMPP. If you do that, just create a file named do_install (no file extension) in the root directory of the project and 
-browse to the installer and the system will guide you through the installation process. 
-```
-http://localhost/install
-```
-Be sure that PHP is installed and both your webserver and mysql server are running. If there is no vendor folder already created then 
-the system will try to run Composer in order to install all required dependencies. For that to work you need to have Composer installed 
-on your system. Altough the system tries to create the database for you, sometimes this might fail, so you will have to create the 
-database before running the installation. However all table migrations will then be created by the system. The system can then be managed
-via the admin section (e.g. environment settings, users, locations).
 
 ## Cronjobs
 Cronjobs are used to regularly execute a specific task. For each cronjob you need to set the cronjob parameter with your token set via APP_CRONPW. The following cronjobs are available:
