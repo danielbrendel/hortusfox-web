@@ -7,15 +7,8 @@ services:
       - "8080:80"
     environment:
       APP_DEBUG: "true"
-      APP_BASEDIR: ""
-      APP_SESSION: "true"
       APP_LANG: "en"
-      APP_WORKSPACE: "My home"
-      APP_ENABLESCROLLER: "true"
-      APP_OVERLAYALPHA: "null"
-      APP_ENABLECHAT: "false"
-      DB_ENABLE: "true"
-      DB_DRIVER: "mysql"
+      APP_WORKSPACE: "My plant home"
       DB_HOST: db
       DB_PORT: 3306
       DB_DATABASE: hortusfox
@@ -23,7 +16,13 @@ services:
       DB_CHARSET: "utf8mb4"
       DB_USER: root
       DB_PASSWORD: my-secret-pw
-      # Add other environment variables here as needed
+      SMTP_FROMNAME: "Test"
+      SMTP_FROMADDRESS: "test@domain.tld"
+      SMTP_HOST: ""
+      SMTP_PORT: 587
+      SMTP_USERNAME: ""
+      SMTP_PASSWORD: ""
+      SMTP_ENCRYPTION: tls
     depends_on:
       - db
 

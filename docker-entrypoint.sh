@@ -16,9 +16,66 @@ configure_php_error_reporting() {
         echo 'display_errors = Off' >> /usr/local/etc/php/conf.d/errors.ini
     else
         # Show all errors if APP_DEBUG is true
-        echo 'error_reporting = E_ALL' > /usr/local/etc/php/conf.d/errors.ini
+        echo 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT' > /usr/local/etc/php/conf.d/errors.ini
         echo 'display_errors = On' >> /usr/local/etc/php/conf.d/errors.ini
     fi
+}
+
+# Function to create the .env file
+create_environment_file() {
+    # Remove if already exists
+    rm -f "/var/www/html/.env"
+
+    # App settings
+    echo "APP_NAME=\"HortusFox\"" >> /var/www/html/.env
+    echo "APP_DEBUG=$APP_DEBUG" >> /var/www/html/.env
+    echo "APP_BASEDIR=\"\"" >> /var/www/html/.env
+    echo "APP_SESSION=true" >> /var/www/html/.env
+    echo "APP_LANG=\"en\"" >> /var/www/html/.env
+    echo "APP_WORKSPACE=\"$APP_WORKSPACE\"" >> /var/www/html/.env
+    echo "APP_ENABLESCROLLER=true" >> /var/www/html/.env
+    echo "APP_OVERLAYALPHA=null" >> /var/www/html/.env
+    echo "APP_ENABLECHAT=true" >> /var/www/html/.env
+    echo "APP_ONLINEMINUTELIMIT=5" >> /var/www/html/.env
+    echo "APP_SHOWCHATONLINEUSERS=false" >> /var/www/html/.env
+    echo "APP_SHOWCHATTYPINGINDICATOR=false" >> /var/www/html/.env
+    echo "APP_OVERDUETASK_HOURS=10" >> /var/www/html/.env
+    echo "APP_CRONPW=null" >> /var/www/html/.env
+    echo "APP_CRONJOB_MAILLIMIT=5" >> /var/www/html/.env
+    echo "APP_GITHUB_URL=\"https://github.com/danielbrendel/hortusfox-web\"" >> /var/www/html/.env
+    echo "APP_SERVICE_URL=\"https://www.hortusfox.com\"" >> /var/www/html/.env
+    echo "APP_ENABLEHISTORY=true" >> /var/www/html/.env
+    echo "APP_HISTORY_NAME=\"History\"" >> /var/www/html/.env
+
+    # Photo resize factors
+    echo "PHOTO_RESIZE_FACTOR_DEFAULT=1.0" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_1=0.5" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_2=0.4" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_3=0.4" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_4=0.3" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_5=0.2" >> /var/www/html/.env
+
+    # Database settings
+    echo "DB_ENABLE=true" >> /var/www/html/.env
+    echo "DB_HOST=$DB_HOST" >> /var/www/html/.env
+    echo "DB_USER=$DB_USERNAME" >> /var/www/html/.env
+    echo "DB_PASSWORD=\"$DB_PASSWORD\"" >> /var/www/html/.env
+    echo "DB_PORT=3306" >> /var/www/html/.env
+    echo "DB_DATABASE=$DB_DATABASE" >> /var/www/html/.env
+    echo "DB_DRIVER=mysql" >> /var/www/html/.env
+    echo "DB_CHARSET=\"$DB_CHARSET\"" >> /var/www/html/.env
+
+    # SMTP settings
+    echo "SMTP_FROMNAME=\"Test\"" >> /var/www/html/.env
+    echo "SMTP_FROMADDRESS=\"test@domain.tld\"" >> /var/www/html/.env
+    echo "SMTP_HOST=\"\"" >> /var/www/html/.env
+    echo "SMTP_PORT=587" >> /var/www/html/.env
+    echo "SMTP_USERNAME=\"\"" >> /var/www/html/.env
+    echo "SMTP_PASSWORD=\"\"" >> /var/www/html/.env
+    echo "SMTP_ENCRYPTION=tls" >> /var/www/html/.env
+
+    # Logging
+    echo "LOG_ENABLE=false" >> /var/www/html/.env
 }
 
 # Function to check if the admin user exists
@@ -44,6 +101,9 @@ create_admin_user() {
 
 # Configure PHP error reporting
 configure_php_error_reporting
+
+# Create .env configuration file
+create_environment_file
 
 # Run database migrations
 echo "Running database migrations..."
