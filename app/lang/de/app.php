@@ -221,4 +221,12 @@ return [
 	'last_added_or_updated_plants_hint' => 'Welche letzten Pflanzen sollen im Dashboard angezeigt werden?',
 	'show_plants_aoru_added' => 'Zuletzt hinzugefügt',
 	'show_plants_aoru_updated' => 'Zuletzt bearbeitet',
+	'mail' => 'Mail',
+	'smtp_fromname' => 'E-Mail sender name',
+	'smtp_fromaddress' => 'E-Mail sender address',
+	'smtp_host' => 'SMTP Host',
+	'smtp_port' => 'SMTP Port',
+	'smtp_username' => 'SMTP Username',
+	'smtp_password' => 'SMTP Password',
+	'smtp_encryption' => 'SMTP Encryption'
 ];

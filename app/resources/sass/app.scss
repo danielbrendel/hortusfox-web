@@ -1529,6 +1529,24 @@ fieldset .field {
     margin-top: 20px;
 }
 
+.admin-mail {
+    position: relative;
+}
+
+.admin-mail h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.admin-mail label, .admin-mail span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-mail input, .admin-mail select {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
 .admin-info {
     position: relative;
 }

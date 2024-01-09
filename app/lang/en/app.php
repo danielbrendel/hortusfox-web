@@ -221,4 +221,12 @@ return [
 	'last_added_or_updated_plants_hint' => 'Select recent plants mode',
 	'show_plants_aoru_added' => 'Show last added plants',
 	'show_plants_aoru_updated' => 'Show last authored plants',
+	'mail' => 'Mail',
+	'smtp_fromname' => 'E-Mail sender name',
+	'smtp_fromaddress' => 'E-Mail sender address',
+	'smtp_host' => 'SMTP Host',
+	'smtp_port' => 'SMTP Port',
+	'smtp_username' => 'SMTP Username',
+	'smtp_password' => 'SMTP Password',
+	'smtp_encryption' => 'SMTP Encryption'
 ];

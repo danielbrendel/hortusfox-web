@@ -8,6 +8,7 @@
         <li class="admin-tab-media {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'media')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('media');">{{ __('app.admin_media') }}</a></li>
         <li class="admin-tab-users {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'users')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('users');">{{ __('app.users') }}</a></li>
         <li class="admin-tab-locations {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'locations')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('locations');">{{ __('app.locations') }}</a></li>
+        <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('mail');">{{ __('app.mail') }}</a></li>
         <li class="admin-tab-info {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'info')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('info');">{{ __('app.info') }}</a></li>
     </ul>
 </div>
@@ -222,6 +223,69 @@
     <div class="admin-locations-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewLocation = true;">{{ __('app.add_location') }}</a></span>
     </div>
+</div>
+
+<div class="admin-mail {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'mail')) ? 'is-hidden' : ''}}">
+    <h2>{{ __('app.mail') }}</h2>
+
+    <form method="POST" action="{{ url('/admin/mail/save') }}">
+        @csrf 
+
+        <div class="field">
+            <label class="label">{{ __('app.smtp_fromname') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="smtp_fromname" value="{{ env('SMTP_FROMNAME') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.smtp_fromaddress') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="smtp_fromaddress" value="{{ env('SMTP_FROMADDRESS') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.smtp_host') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="smtp_host" value="{{ env('SMTP_HOST') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.smtp_port') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="smtp_port" value="{{ env('SMTP_PORT') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.smtp_username') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="smtp_username" value="{{ env('SMTP_USERNAME') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.smtp_password') }}</label>
+            <div class="control">
+                <input type="password" class="input" name="smtp_password" value="{{ env('SMTP_PASSWORD') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.smtp_encryption') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="smtp_encryption" value="{{ env('SMTP_ENCRYPTION') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div class="admin-info {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'info')) ? 'is-hidden' : ''}}">

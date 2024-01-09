@@ -295,4 +295,32 @@ class AdminController extends BaseController {
 			return back();
 		}
 	}
+
+	/**
+	 * Handles URL: /admin/mail/save
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function save_mail_settings($request)
+	{
+		try {
+			$smtp_fromname = $request->params()->query('smtp_fromname', env('SMTP_FROMNAME'));
+			$smtp_fromaddress = $request->params()->query('smtp_fromaddress', env('SMTP_FROMADDRESS'));
+			$smtp_host = $request->params()->query('smtp_host', env('SMTP_HOST'));
+			$smtp_port = $request->params()->query('smtp_port', env('SMTP_PORT'));
+			$smtp_username = $request->params()->query('smtp_username', env('SMTP_USERNAME'));
+			$smtp_password = $request->params()->query('smtp_password', env('SMTP_PASSWORD'));
+			$smtp_encryption = $request->params()->query('smtp_encryption', env('SMTP_ENCRYPTION'));
+			
+			UtilsModule::saveMailSettings($smtp_fromname, $smtp_fromaddress, $smtp_host, $smtp_port, $smtp_username, $smtp_password, $smtp_encryption);
+
+			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
+
+			return redirect('/admin?tab=mail');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
 }
