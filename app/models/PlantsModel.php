@@ -531,6 +531,27 @@
         }
 
         /**
+         * @param $plantId
+         * @return void
+         * @throws \Exception
+         */
+        public static function setUpdated($plantId)
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                static::raw('UPDATE `' . self::tableName() . '` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
+                    $user->get('id'), $plantId
+                ]);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * Return the associated table name of the migration
          * 
          * @return string

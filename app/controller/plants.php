@@ -263,6 +263,7 @@ class PlantsController extends BaseController {
 		$label = $request->params()->query('label', '');
 
 		PlantPhotoModel::uploadPhoto($plant, $label);
+		PlantsModel::setUpdated($plant);
 
 		FlashMessage::setMsg('success', __('app.photo_uploaded_successfully'));
 
@@ -281,6 +282,7 @@ class PlantsController extends BaseController {
 			$photo = $request->params()->query('photo', null);
 
 			PlantPhotoModel::removePhoto($photo);
+			//PlantsModel::setUpdated($plant);
 
 			return json([
 				'code' => 200
