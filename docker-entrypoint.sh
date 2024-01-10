@@ -30,7 +30,6 @@ create_environment_file() {
     echo "APP_NAME=\"HortusFox\"" >> /var/www/html/.env
     echo "APP_DEBUG=$APP_DEBUG" >> /var/www/html/.env
     echo "APP_BASEDIR=\"\"" >> /var/www/html/.env
-    echo "APP_SESSION=true" >> /var/www/html/.env
     echo "APP_LANG=\"en\"" >> /var/www/html/.env
     echo "APP_WORKSPACE=\"$APP_WORKSPACE\"" >> /var/www/html/.env
     echo "APP_ENABLESCROLLER=true" >> /var/www/html/.env
@@ -46,6 +45,11 @@ create_environment_file() {
     echo "APP_SERVICE_URL=\"https://www.hortusfox.com\"" >> /var/www/html/.env
     echo "APP_ENABLEHISTORY=true" >> /var/www/html/.env
     echo "APP_HISTORY_NAME=\"History\"" >> /var/www/html/.env
+
+    # Session
+    echo "SESSION_ENABLE=true" >> /var/www/html/.env
+    echo "SESSION_DURATION=31536000" >> /var/www/html/.env
+    echo "SESSION_NAME=null" >> /var/www/html/.env
 
     # Photo resize factors
     echo "PHOTO_RESIZE_FACTOR_DEFAULT=1.0" >> /var/www/html/.env

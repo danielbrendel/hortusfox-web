@@ -283,7 +283,6 @@
             $env .= 'APP_CONTACT="dbrendel1988@gmail.com"' . PHP_EOL;
             $env .= 'APP_DEBUG=true' . PHP_EOL;
             $env .= 'APP_BASEDIR=""' . PHP_EOL;
-            $env .= 'APP_SESSION=true' . PHP_EOL;
             $env .= 'APP_LANG="en"' . PHP_EOL;
             $env .= 'APP_WORKSPACE="' . $workspace . '"' . PHP_EOL;
             $env .= 'APP_OVERLAYALPHA=null' . PHP_EOL;
@@ -299,6 +298,11 @@
             $env .= 'APP_SERVICE_URL="https://www.hortusfox.com"' . PHP_EOL;
             $env .= 'APP_ENABLEHISTORY=true' . PHP_EOL;
             $env .= 'APP_HISTORY_NAME="History"' . PHP_EOL;
+            $env .= '' . PHP_EOL;
+            $env .= '# Session' . PHP_EOL;
+            $env .= 'SESSION_ENABLE=true' . PHP_EOL;
+            $env .= 'SESSION_DURATION=31536000' . PHP_EOL;
+            $env .= 'SESSION_NAME=null' . PHP_EOL;
             $env .= '' . PHP_EOL;
             $env .= '# Photo resize factors' . PHP_EOL;
             $env .= 'PHOTO_RESIZE_FACTOR_DEFAULT=1.0' . PHP_EOL;

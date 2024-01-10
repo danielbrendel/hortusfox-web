@@ -77,7 +77,6 @@ Set these in your docker-compose.yml file:
 | DB_USERNAME        | Database user          | root              |    Yes   |
 | DB_PASSWORD        | Database password      | my-secret-pw      |    Yes   |
 | APP_DEBUG          | Enable debug mode      | false             |    No    |
-| APP_SESSION        | Enable sessions        | true              |    Yes   |
 | HORTUSFOX_ADMIN    | Default admin email    | admin@example.com |    No    |
 | HORTUSFOX_PASSWORD | Default admin password | Auto-generated    |    No    |
 
