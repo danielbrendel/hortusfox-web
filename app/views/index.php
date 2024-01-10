@@ -99,6 +99,14 @@
 			</a>
 		@endforeach
 		</div>
+	@else
+	<div class="plants-empty">
+		<div class="plants-empty-image">
+			<img src="{{ asset('img/plantsempty.png') }}" alt="image"/>
+		</div>
+
+		<div class="plants-empty-text">{{ __('app.content_empty') }}</div>
+	</div>
 	@endif
 </div>
 
