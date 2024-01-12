@@ -110,6 +110,24 @@ set_apache_server_name() {
     fi
 }
 
+# Function to check DB connection
+check_db() {
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT 1;" > /dev/null 2>&1
+}
+
+# Function to wait for the database
+wait_for_db() {
+    local delay=3  # delay in seconds
+    local attempt=0
+
+    while ! check_db; do
+        echo "Waiting for database to become available... Attempt $attempt"
+        sleep "$delay"
+    done
+
+    echo "Database is available."
+}
+
 # Configure PHP error reporting
 configure_php_error_reporting
 
@@ -118,6 +136,9 @@ create_environment_file
 
 # To get rid of apache warnings, you can set the server name with the env var.
 set_apache_server_name
+
+# Call the wait_for_db function
+wait_for_db
 
 # Run database migrations
 echo "Running database migrations..."
