@@ -22,10 +22,5 @@ if ((isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) && ($_SERVER['HTTP_X_FORWARDED_P
     $_SERVER['HTTPS'] = 'on';
 }
 
-//Set data for a long-term session
-$session_cookie_duration = 60 * 60 * 24 * 365;
-ini_set('session.cookie_lifetime', $session_cookie_duration);
-ini_set('session.gc_maxlifetime', $session_cookie_duration);
-
 //Include the framework bootstrap script in order to process the application
 require_once __DIR__ . '/../vendor/danielbrendel/asatru-php-framework/src/bootstrap.php';
