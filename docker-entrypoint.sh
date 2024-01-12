@@ -83,12 +83,13 @@ create_environment_file() {
 }
 
 # Function to check if the admin user exists
-check_admin_user_exists() {
+add_admin_user_if_missing() {
     local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM users WHERE email='$ADMIN_EMAIL';")
     if [[ $user_count -gt 0 ]]; then
-        return 0
+        echo "Admin user ($ADMIN_EMAIL) already exists. Skipping user creation."
     else
-        return 1
+        echo "Admin user ($ADMIN_EMAIL) does not exist. Creating..."
+        create_admin_user
     fi
 }
 
@@ -103,23 +104,27 @@ create_admin_user() {
     echo "Admin user created. Username: $ADMIN_EMAIL, Password: $ADMIN_PASSWORD"
 }
 
+set_apache_server_name() {
+    if [ -n "$APACHE_SERVER_NAME" ]; then
+        echo "ServerName $APACHE_SERVER_NAME" >> /etc/apache2/apache2.conf;
+    fi
+}
+
 # Configure PHP error reporting
 configure_php_error_reporting
 
 # Create .env configuration file
 create_environment_file
 
+# To get rid of apache warnings, you can set the server name with the env var.
+set_apache_server_name
+
 # Run database migrations
 echo "Running database migrations..."
-php asatru migrate:fresh
+php asatru migrate:list
 
-# Check if admin user exists
-if ! check_admin_user_exists; then
-    echo "Admin user ($ADMIN_EMAIL) does not exist. Creating..."
-    create_admin_user
-else
-    echo "Admin user ($ADMIN_EMAIL) already exists. Skipping user creation."
-fi
+# Check if admin user exists and create it if not.
+add_admin_user_if_missing
 
 # Then exec the container's main process (CMD)
 exec "$@"
