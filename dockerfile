@@ -22,6 +22,9 @@ WORKDIR /var/www/html
 # Copy the application source
 COPY . /var/www/html
 
+# Copy the PHP overrides
+COPY ./99-php.ini /usr/local/etc/php/conf.d/
+
 # Copy the Composer dependencies from the first stage
 COPY --from=composer /app/vendor/ /var/www/html/vendor/
 
