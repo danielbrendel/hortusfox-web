@@ -209,26 +209,28 @@
                     throw new \Exception('Invalid user');
                 }
 
-                if ((!isset($_FILES['photo'])) || ($_FILES['photo']['error'] !== UPLOAD_ERR_OK)) {
-                    throw new \Exception('Errorneous file');
-                }
+                if ((isset($_FILES['photo'])) && ($_FILES['photo']['error'] === UPLOAD_ERR_OK)) {
+                    $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
 
-                $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
+                    if ($file_ext === null) {
+                        throw new \Exception('File is not a valid image');
+                    }
+    
+                    $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
+    
+                    move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name . '.' . $file_ext));
+    
+                    if (!UtilsModule::createThumbFile(public_path('/img/' . $file_name . '.' . $file_ext), UtilsModule::getImageType($file_ext, public_path('/img/' . $file_name)), public_path('/img/' . $file_name), $file_ext)) {
+                        throw new \Exception('createThumbFile failed');
+                    }
 
-                if ($file_ext === null) {
-                    throw new \Exception('File is not a valid image');
-                }
-
-                $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
-
-                move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name . '.' . $file_ext));
-
-                if (!UtilsModule::createThumbFile(public_path('/img/' . $file_name . '.' . $file_ext), UtilsModule::getImageType($file_ext, public_path('/img/' . $file_name)), public_path('/img/' . $file_name), $file_ext)) {
-                    throw new \Exception('createThumbFile failed');
+                    $fullFileName = $file_name . '_thumb.' . $file_ext;
+                } else {
+                    $fullFileName = 'placeholder.jpg';
                 }
 
                 static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                    $name, $location, $file_name . '_thumb.' . $file_ext, $perennial, $humidity, $light_level, $user->get('id')
+                    $name, $location, $fullFileName, $perennial, $humidity, $light_level, $user->get('id')
                 ]);
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
