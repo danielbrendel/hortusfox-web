@@ -121,5 +121,9 @@ else
     echo "Admin user ($ADMIN_EMAIL) already exists. Skipping user creation."
 fi
 
+# Set permissions to folders for file upload
+chown -R www-data:www-data /var/www/html/public/img
+chmod -R 755 /var/www/html/public/img
+
 # Then exec the container's main process (CMD)
 exec "$@"

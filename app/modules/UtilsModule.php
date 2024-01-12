@@ -185,7 +185,7 @@ class UtilsModule {
         $newwidth = $factor * $width;
         $newheight = $factor * $height;
 
-        $dstimg = imagecreatetruecolor($newwidth, $newheight);
+        $dstimg = @imagecreatetruecolor($newwidth, $newheight);
         if (!$dstimg)
             return false;
         
@@ -193,13 +193,13 @@ class UtilsModule {
         switch ($imgtype) {
             case IMAGETYPE_PNG:
                 $srcimage = imagecreatefrompng($srcfile);
-                imagecopyresampled($dstimg, $srcimage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+                @imagecopyresampled($dstimg, $srcimage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
                 static::correctImageRotation($srcfile, $dstimg);
                 imagepng($dstimg, $basefile . "_thumb." . $fileext);
                 break;
             case IMAGETYPE_JPEG:
                 $srcimage = imagecreatefromjpeg($srcfile);
-                imagecopyresampled($dstimg, $srcimage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+                @imagecopyresampled($dstimg, $srcimage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
                 static::correctImageRotation($srcfile, $dstimg);
                 imagejpeg($dstimg, $basefile . "_thumb." . $fileext);
                 break;
