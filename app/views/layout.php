@@ -67,7 +67,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
-									<input type="file" class="input" name="photo" required>
+									<input type="file" class="input" name="photo">
 								</div>
 							</div>
 
@@ -87,7 +87,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.light_level') }}</label>
 								<div class="control">
-									<select name="light_level" class="input">
+									<select name="light_level" class="input" required>
 										<option value="">{{ __('app.select_light_level') }}</option>
 										<option value="light_level_sunny">{{ __('app.light_level_sunny') }}</option>
 										<option value="light_level_half_shade">{{ __('app.light_level_half_shade') }}</option>
@@ -95,10 +95,12 @@
 									</select>
 								</div>
 							</div>
+
+							<input type="submit" class="is-hidden" id="submit-add-plant">
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddPlant').submit();">{{ __('app.add') }}</button>
+						<button class="button is-success" id="button-add-plant" onclick="document.getElementById('frmAddPlant').addEventListener('submit', function() { document.getElementById('button-add-plant').innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; return true; }); document.getElementById('submit-add-plant').click();">{{ __('app.add') }}</button>
 						<button class="button" onclick="window.vue.bShowAddPlant = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
