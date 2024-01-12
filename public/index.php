@@ -17,6 +17,11 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
 }
 
+// For https when behind a reverse proxy
+if ((isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) && ($_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')) {
+    $_SERVER['HTTPS'] = 'on';
+}
+
 //Set data for a long-term session
 $session_cookie_duration = 60 * 60 * 24 * 365;
 ini_set('session.cookie_lifetime', $session_cookie_duration);
