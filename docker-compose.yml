@@ -22,7 +22,6 @@ services:
       SMTP_PORT: 587
       SMTP_USERNAME: ""
       SMTP_PASSWORD: ""
-      SMTP_ENCRYPTION: tls
     depends_on:
       - db
 

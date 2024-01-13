@@ -70,12 +70,12 @@ create_environment_file() {
     echo "DB_CHARSET=\"$DB_CHARSET\"" >> /var/www/html/.env
 
     # SMTP settings
-    echo "SMTP_FROMNAME=\"Test\"" >> /var/www/html/.env
-    echo "SMTP_FROMADDRESS=\"test@domain.tld\"" >> /var/www/html/.env
-    echo "SMTP_HOST=\"\"" >> /var/www/html/.env
-    echo "SMTP_PORT=587" >> /var/www/html/.env
-    echo "SMTP_USERNAME=\"\"" >> /var/www/html/.env
-    echo "SMTP_PASSWORD=\"\"" >> /var/www/html/.env
+    echo "SMTP_FROMNAME=\"$SMTP_FROMNAME\"" >> /var/www/html/.env
+    echo "SMTP_FROMADDRESS=\"$SMTP_FROMADDRESS\"" >> /var/www/html/.env
+    echo "SMTP_HOST=\"$SMTP_HOST\"" >> /var/www/html/.env
+    echo "SMTP_PORT=$SMTP_PORT" >> /var/www/html/.env
+    echo "SMTP_USERNAME=\"$SMTP_USERNAME\"" >> /var/www/html/.env
+    echo "SMTP_PASSWORD=\"$SMTP_PASSWORD\"" >> /var/www/html/.env
     echo "SMTP_ENCRYPTION=tls" >> /var/www/html/.env
 
     # Logging
@@ -117,11 +117,12 @@ check_db() {
 
 # Function to wait for the database
 wait_for_db() {
-    local delay=3  # delay in seconds
-    local attempt=0
+    local delay=5  # delay in seconds
+    local attempt=1
 
     while ! check_db; do
-        echo "Waiting for database to become available... Attempt $attempt"
+        echo "Waiting for database to be available... Attempt $attempt"
+        attempt=$((attempt+1))
         sleep "$delay"
     done
 
@@ -142,7 +143,7 @@ wait_for_db
 
 # Run database migrations
 echo "Running database migrations..."
-php asatru migrate:list
+php asatru migrate:fresh
 
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing
