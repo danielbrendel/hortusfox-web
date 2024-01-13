@@ -70,12 +70,12 @@ create_environment_file() {
     echo "DB_CHARSET=\"$DB_CHARSET\"" >> /var/www/html/.env
 
     # SMTP settings
-    echo "SMTP_FROMNAME=\"Test\"" >> /var/www/html/.env
-    echo "SMTP_FROMADDRESS=\"test@domain.tld\"" >> /var/www/html/.env
-    echo "SMTP_HOST=\"\"" >> /var/www/html/.env
-    echo "SMTP_PORT=587" >> /var/www/html/.env
-    echo "SMTP_USERNAME=\"\"" >> /var/www/html/.env
-    echo "SMTP_PASSWORD=\"\"" >> /var/www/html/.env
+    echo "SMTP_FROMNAME=\"$SMTP_FROMNAME\"" >> /var/www/html/.env
+    echo "SMTP_FROMADDRESS=\"$SMTP_FROMADDRESS\"" >> /var/www/html/.env
+    echo "SMTP_HOST=\"$SMTP_HOST\"" >> /var/www/html/.env
+    echo "SMTP_PORT=$SMTP_PORT" >> /var/www/html/.env
+    echo "SMTP_USERNAME=\"$SMTP_USERNAME\"" >> /var/www/html/.env
+    echo "SMTP_PASSWORD=\"$SMTP_PASSWORD\"" >> /var/www/html/.env
     echo "SMTP_ENCRYPTION=tls" >> /var/www/html/.env
 
     # Logging
@@ -83,12 +83,13 @@ create_environment_file() {
 }
 
 # Function to check if the admin user exists
-check_admin_user_exists() {
+add_admin_user_if_missing() {
     local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM users WHERE email='$ADMIN_EMAIL';")
     if [[ $user_count -gt 0 ]]; then
-        return 0
+        echo "Admin user ($ADMIN_EMAIL) already exists. Skipping user creation."
     else
-        return 1
+        echo "Admin user ($ADMIN_EMAIL) does not exist. Creating..."
+        create_admin_user
     fi
 }
 
@@ -103,23 +104,49 @@ create_admin_user() {
     echo "Admin user created. Username: $ADMIN_EMAIL, Password: $ADMIN_PASSWORD"
 }
 
+set_apache_server_name() {
+    if [ -n "$APACHE_SERVER_NAME" ]; then
+        echo "ServerName $APACHE_SERVER_NAME" >> /etc/apache2/apache2.conf;
+    fi
+}
+
+# Function to check DB connection
+check_db() {
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT 1;" > /dev/null 2>&1
+}
+
+# Function to wait for the database
+wait_for_db() {
+    local delay=5  # delay in seconds
+    local attempt=1
+
+    while ! check_db; do
+        echo "Waiting for database to be available... Attempt $attempt"
+        attempt=$((attempt+1))
+        sleep "$delay"
+    done
+
+    echo "Database is available."
+}
+
 # Configure PHP error reporting
 configure_php_error_reporting
 
 # Create .env configuration file
 create_environment_file
 
+# To get rid of apache warnings, you can set the server name with the env var.
+set_apache_server_name
+
+# Call the wait_for_db function
+wait_for_db
+
 # Run database migrations
 echo "Running database migrations..."
 php asatru migrate:fresh
 
-# Check if admin user exists
-if ! check_admin_user_exists; then
-    echo "Admin user ($ADMIN_EMAIL) does not exist. Creating..."
-    create_admin_user
-else
-    echo "Admin user ($ADMIN_EMAIL) already exists. Skipping user creation."
-fi
+# Check if admin user exists and create it if not.
+add_admin_user_if_missing
 
 # Set permissions to folders for file upload
 chown -R www-data:www-data /var/www/html/public/img
