@@ -1,42 +1,75 @@
-version: '3.8'
-
+version: "3"
 services:
-  app:
-    image: danielbrendel/hortusfox-web:latest
-    ports:
-      - "8080:80"
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - "./plants:/var/www/html/public/img"
+      - "./plants_logs:/var/www/html/app/logs"
     environment:
       APP_DEBUG: "true"
+      APP_ADMIN_EMAIL: bob@bob.com
+      APP_ADMIN_PASSWORD: bob
+      APP_LOG_ENABLED: "true"
+      APP_ENABLE_HISTORY: "true"
+      APP_HISTORY_NAME: Graveyard
+      APP_ENABLE_CHAT: "true"
       APP_LANG: "en"
-      APP_WORKSPACE: "My plant home"
+      APP_WORKSPACE: "My House"
+      APP_ENABLESCROLLER: "true"
+      APP_ONLINEMINUTELIMIT: 5
+      APP_SHOWCHATONLINEUSERS: "false"
+      APP_SHOWCHATTYPINGINDICATOR: "false"
+      APP_CRONPW: "your-auth-token"
+      APP_CRON_MAIL_LIMIT: 5
+      PHOTO_RESIZE_FACTOR_DEFAULT: 1.0
+      PHOTO_RESIZE_FACTOR_1: 0.5
+      PHOTO_RESIZE_FACTOR_2: 0.4
+      PHOTO_RESIZE_FACTOR_3: 0.4
+      PHOTO_RESIZE_FACTOR_4: 0.3
+      PHOTO_RESIZE_FACTOR_5: 0.2
+      DB_ENABLE: "true"
       DB_HOST: db
+      DB_USERNAME: hortusfox
+      DB_PASSWORD: "hortusfox"
       DB_PORT: 3306
       DB_DATABASE: hortusfox
-      DB_USERNAME: root
-      DB_CHARSET: "utf8mb4"
-      DB_USER: root
-      DB_PASSWORD: my-secret-pw
-      SMTP_FROMNAME: "Test"
-      SMTP_FROMADDRESS: "test@domain.tld"
-      SMTP_HOST: ""
-      SMTP_PORT: 587
-      SMTP_USERNAME: ""
-      SMTP_PASSWORD: ""
-    depends_on:
-      - db
-
-  db:
-    image: mariadb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw
-      MYSQL_DATABASE: hortusfox
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      DB_DRIVER: mysql
+      DB_CHARSET: "utf8"
+      SMTP_FROMNAME: str
+      SMTP_FROMADDRESS: str
+      SMTP_HOST: str
+      SMTP_PORT: int
+      SMTP_USERNAME: str
+      SMTP_PASSWORD: str
+      SMTP_ENCRYPTION:
+      APACHE_SERVER_NAME:
     ports:
-      - "3306:3306"
+      - 80:80
+  db:
+    container_name: db
+    image: mariadb:11.2
+    environment:
+      MARIADB_ROOT_PASSWORD: YOURPASSWORDHERE
+      MARIADB_USER: hortusfox
+      MARIADB_PASSWORD: hortusfox
+      MARIADB_DATABASE: hortusfox
+      MARIADB_AUTO_UPGRADE: 1
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "/usr/local/bin/healthcheck.sh",
+          "--su-mysql",
+          "--connect",
+          "--innodb_initialized",
+        ]
+      timeout: 20s
+      retries: 10
     volumes:
-      - db_data:/var/lib/mysql
-
-volumes:
-  db_data:
+      - "./mysqldata:/var/lib/mysql"

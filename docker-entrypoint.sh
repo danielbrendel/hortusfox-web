@@ -5,8 +5,9 @@ DEFAULT_ADMIN_EMAIL="admin@example.com"
 DEFAULT_ADMIN_PASSWORD=$(openssl rand -base64 12)  # Generate a random password
 
 # Use environment variables if provided, otherwise use defaults
-ADMIN_EMAIL="${HORTUSFOX_ADMIN:-$DEFAULT_ADMIN_EMAIL}"
-ADMIN_PASSWORD="${HORTUSFOX_PASSWORD:-$DEFAULT_ADMIN_PASSWORD}"
+ADMIN_EMAIL="${APP_ADMIN_EMAIL:-$DEFAULT_ADMIN_EMAIL}"
+ADMIN_PASSWORD="${APP_ADMIN_PASSWORD:-$DEFAULT_ADMIN_PASSWORD}"
+
 
 # Function to set PHP error reporting based on APP_DEBUG
 configure_php_error_reporting() {
@@ -30,21 +31,21 @@ create_environment_file() {
     echo "APP_NAME=\"HortusFox\"" >> /var/www/html/.env
     echo "APP_DEBUG=$APP_DEBUG" >> /var/www/html/.env
     echo "APP_BASEDIR=\"\"" >> /var/www/html/.env
-    echo "APP_LANG=\"en\"" >> /var/www/html/.env
+    echo "APP_LANG=\"$APP_LANG\"" >> /var/www/html/.env
     echo "APP_WORKSPACE=\"$APP_WORKSPACE\"" >> /var/www/html/.env
-    echo "APP_ENABLESCROLLER=true" >> /var/www/html/.env
+    echo "APP_ENABLESCROLLER=$APP_ENABLESCROLLER" >> /var/www/html/.env
     echo "APP_OVERLAYALPHA=null" >> /var/www/html/.env
-    echo "APP_ENABLECHAT=true" >> /var/www/html/.env
-    echo "APP_ONLINEMINUTELIMIT=5" >> /var/www/html/.env
-    echo "APP_SHOWCHATONLINEUSERS=false" >> /var/www/html/.env
-    echo "APP_SHOWCHATTYPINGINDICATOR=false" >> /var/www/html/.env
+    echo "APP_ENABLECHAT=$APP_ENABLE_CHAT" >> /var/www/html/.env
+    echo "APP_ONLINEMINUTELIMIT=$APP_ONLINEMINUTELIMIT" >> /var/www/html/.env
+    echo "APP_SHOWCHATONLINEUSERS=$APP_SHOWCHATONLINEUSERS" >> /var/www/html/.env
+    echo "APP_SHOWCHATTYPINGINDICATOR=$APP_SHOWCHATTYPINGINDICATOR" >> /var/www/html/.env
     echo "APP_OVERDUETASK_HOURS=10" >> /var/www/html/.env
-    echo "APP_CRONPW=null" >> /var/www/html/.env
-    echo "APP_CRONJOB_MAILLIMIT=5" >> /var/www/html/.env
+    echo "APP_CRONPW=\"$APP_CRONPW\"" >> /var/www/html/.env
+    echo "APP_CRONJOB_MAILLIMIT=$APP_CRON_MAIL_LIMIT" >> /var/www/html/.env
     echo "APP_GITHUB_URL=\"https://github.com/danielbrendel/hortusfox-web\"" >> /var/www/html/.env
     echo "APP_SERVICE_URL=\"https://www.hortusfox.com\"" >> /var/www/html/.env
-    echo "APP_ENABLEHISTORY=true" >> /var/www/html/.env
-    echo "APP_HISTORY_NAME=\"History\"" >> /var/www/html/.env
+    echo "APP_ENABLEHISTORY=$APP_ENABLE_HISTORY" >> /var/www/html/.env
+    echo "APP_HISTORY_NAME=\"$APP_HISTORY_NAME\"" >> /var/www/html/.env
 
     # Session
     echo "SESSION_ENABLE=true" >> /var/www/html/.env
@@ -52,21 +53,21 @@ create_environment_file() {
     echo "SESSION_NAME=null" >> /var/www/html/.env
 
     # Photo resize factors
-    echo "PHOTO_RESIZE_FACTOR_DEFAULT=1.0" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_1=0.5" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_2=0.4" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_3=0.4" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_4=0.3" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_5=0.2" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_DEFAULT=$PHOTO_RESIZE_FACTOR_DEFAULT" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_1=$PHOTO_RESIZE_FACTOR_1" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_2=$PHOTO_RESIZE_FACTOR_2" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_3=$PHOTO_RESIZE_FACTOR_3" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_4=$PHOTO_RESIZE_FACTOR_4" >> /var/www/html/.env
+    echo "PHOTO_RESIZE_FACTOR_5=$PHOTO_RESIZE_FACTOR_5" >> /var/www/html/.env
 
     # Database settings
-    echo "DB_ENABLE=true" >> /var/www/html/.env
+    echo "DB_ENABLE=\"$DB_ENABLE\"" >> /var/www/html/.env
     echo "DB_HOST=$DB_HOST" >> /var/www/html/.env
     echo "DB_USER=$DB_USERNAME" >> /var/www/html/.env
     echo "DB_PASSWORD=\"$DB_PASSWORD\"" >> /var/www/html/.env
-    echo "DB_PORT=3306" >> /var/www/html/.env
-    echo "DB_DATABASE=$DB_DATABASE" >> /var/www/html/.env
-    echo "DB_DRIVER=mysql" >> /var/www/html/.env
+    echo "DB_PORT=$DB_PORT" >> /var/www/html/.env
+    echo "DB_DATABASE=\"$DB_DATABASE\"" >> /var/www/html/.env
+    echo "DB_DRIVER=\"$DB_DRIVER\"" >> /var/www/html/.env
     echo "DB_CHARSET=\"$DB_CHARSET\"" >> /var/www/html/.env
 
     # SMTP settings
@@ -76,10 +77,10 @@ create_environment_file() {
     echo "SMTP_PORT=$SMTP_PORT" >> /var/www/html/.env
     echo "SMTP_USERNAME=\"$SMTP_USERNAME\"" >> /var/www/html/.env
     echo "SMTP_PASSWORD=\"$SMTP_PASSWORD\"" >> /var/www/html/.env
-    echo "SMTP_ENCRYPTION=tls" >> /var/www/html/.env
+    echo "SMTP_ENCRYPTION=\"$SMTP_ENCRYPTION\"" >> /var/www/html/.env
 
     # Logging
-    echo "LOG_ENABLE=false" >> /var/www/html/.env
+    echo "LOG_ENABLE=\"$APP_LOG_ENABLED\"" >> /var/www/html/.env
 }
 
 # Function to check if the admin user exists
@@ -142,15 +143,27 @@ set_apache_server_name
 wait_for_db
 
 # Run database migrations
-echo "Running database migrations..."
-php asatru migrate:fresh
+if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$DB_DATABASE' AND TABLE_NAME = 'plants';") -eq 1 ]
+then
+    echo "Running unapplied database migrations..."
+    php asatru migrate:list
+else
+    echo "Running full database migrations..."
+    php asatru migrate:fresh
+fi
 
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing
 
+# copy default images
+cp /tmp/img/* /var/www/html/public/img
+
 # Set permissions to folders for file upload
 chown -R www-data:www-data /var/www/html/public/img
 chmod -R 755 /var/www/html/public/img
+
+# Set permissions to folders for logs
+chown -R www-data:www-data /var/www/html/app/logs
 
 # Then exec the container's main process (CMD)
 exec "$@"

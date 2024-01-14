@@ -1,35 +1,14 @@
-# First stage: Composer installation
-FROM composer:latest as composer
+FROM php:8.2-apache-bookworm
 
-# Set the working directory in the Composer container
-WORKDIR /app
 
-# Copy the composer.json and composer.lock files
-COPY composer.json composer.lock ./
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-# Install dependencies
-RUN composer install --no-scripts --no-autoloader
-
-# Optimize the autoloader
-RUN composer dump-autoload --optimize
-
-# Second stage: Apache + PHP setup
-FROM php:8.2.0-apache
-
-# Set the working directory
-WORKDIR /var/www/html
-
-# Copy the application source
-COPY . /var/www/html
-
-# Copy the PHP overrides
-COPY ./99-php.ini /usr/local/etc/php/conf.d/
-
-# Copy the Composer dependencies from the first stage
-COPY --from=composer /app/vendor/ /var/www/html/vendor/
-
-# Install system dependencies
+RUN rm /etc/apt/preferences.d/no-debian-php
 RUN apt-get update && apt-get install -y \
+    unzip\
+    php-zip\
+    git\
+    php-mysql \
     libpng-dev \
     libjpeg-dev \
     libonig-dev \
@@ -40,18 +19,46 @@ RUN apt-get update && apt-get install -y \
     default-mysql-client && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath
 
 # Configure and install GD
 RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install gd
 
+# Copy content
+
+# Copy from tagged release, useful for CI/CD
+#ENV HF_VERSION 1.6
+#RUN curl -SSL https://github.com/danielbrendel/hortusfox-web/archive/refs/tags/v$HF_VERSION.tar.gz \
+#    | tar -v --strip-components=1 -C /var/www/html -xz
+
+# Copy from master branch
+#RUN curl -SSL https://github.com/danielbrendel/hortusfox-web/tarball/master \
+#    | tar -v --strip-components=1 -C /var/www/html -xz
+
+COPY . /var/www/html
+
+# copy default files in /public/img so they can be copied if needed in entrypoint
+RUN mkdir /tmp/img
+RUN cp /var/www/html/public/img/* /tmp/img
+VOLUME /var/www/html/public/img
+
+# Create volume for logs
+VOLUME /var/www/html/app/logs
+
+# copy PHP config
+RUN cp /var/www/html/99-php.ini /usr/local/etc/php/conf.d/
+
+# install deps
+ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN cd /var/www/html &&  /usr/local/bin/composer install
+
+# Optimize the autoloader
+RUN composer dump-autoload --optimize
+
 # Enable Apache mod_rewrite for .htaccess support
 RUN a2enmod rewrite
 
-# Expose port 80
 EXPOSE 80
 
 # Copy docker-entrypoint.sh into the container
@@ -59,6 +66,7 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Set the script as the entrypoint
+WORKDIR /var/www/html
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Start Apache server (CMD)
