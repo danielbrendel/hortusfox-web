@@ -180,13 +180,13 @@ window.vue = new Vue({
             window.vue.bShowUploadPhoto = true;
         },
 
-        deletePhoto: function(photo, target)
+        deletePhoto: function(photo, plant, target)
         {
             if (!confirm(window.vue.confirmPhotoRemoval)) {
                 return;
             }
 
-            window.vue.ajaxRequest('post', window.location.origin + '/plants/details/gallery/photo/remove', { photo: photo }, function(response){
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/details/gallery/photo/remove', { photo: photo, plant: plant }, function(response){
                 if (response.code == 200) {
                     let elem = document.getElementById(target);
                     if (elem) {

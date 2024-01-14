@@ -202,7 +202,7 @@
 								<div class="plant-gallery-item-header-label">{{ $photo->get('label') }}</div>
 
 								<div class="plant-gallery-item-header-action">
-									<a href="javascript:void(0);" onclick="window.vue.deletePhoto({{ $photo->get('id') }}, 'photo-gallery-item-{{ $photo->get('id') }}');"><i class="fas fa-trash-alt"></i></a>
+									<a href="javascript:void(0);" onclick="window.vue.deletePhoto({{ $photo->get('id') }}, {{ $plant->get('id') }}, 'photo-gallery-item-{{ $photo->get('id') }}');"><i class="fas fa-trash-alt"></i></a>
 								</div>
 							</div>
 

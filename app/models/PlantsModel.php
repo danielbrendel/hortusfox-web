@@ -546,7 +546,7 @@
                 }
 
                 static::raw('UPDATE `' . self::tableName() . '` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
-                    $user->get('id'), $plantId
+                    $user->get('id'), (int)$plantId
                 ]);
             } catch (\Exception $e) {
                 throw $e;

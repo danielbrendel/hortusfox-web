@@ -280,9 +280,10 @@ class PlantsController extends BaseController {
 	{
 		try {
 			$photo = $request->params()->query('photo', null);
+			$plant = $request->params()->query('plant', null);
 
 			PlantPhotoModel::removePhoto($photo);
-			//PlantsModel::setUpdated($plant);
+			PlantsModel::setUpdated($plant);
 
 			return json([
 				'code' => 200
