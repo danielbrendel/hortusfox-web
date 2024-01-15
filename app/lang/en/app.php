@@ -237,5 +237,8 @@ return [
 	'share_photo_hint' => 'This will share your photo on {url}. You will get a confirmation e-mail once sharing succeeded.',
 	'share' => 'Share',
 	'copy_to_clipboard' => 'Copy',
-	'copied_to_clipboard' => 'Content has been copied to clipboard.'
+	'copied_to_clipboard' => 'Content has been copied to clipboard.',
+	'mail_share_photo' => 'Notes on your shared photo',
+	'mail_share_photo_title' => 'Your photo was shared',
+	'mail_share_photo_hint' => 'Your photo has been successfully shared!<br/><br/>Link to photo: {url_photo}<br/>Removal link: {url_removal}'
 ];

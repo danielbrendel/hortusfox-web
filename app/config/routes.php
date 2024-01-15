@@ -94,6 +94,7 @@ return [
 
     /** API Controller */
     array('/api/photo/share', 'POST', 'api@share_photo'),
+    array('/api/photo/remove', 'ANY', 'api@remove_photo'),
 
     /** Error Controller */
     array('$404', 'ANY', 'error404@index')
