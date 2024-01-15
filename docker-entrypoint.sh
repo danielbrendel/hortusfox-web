@@ -148,9 +148,15 @@ php asatru migrate:fresh
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing
 
+# Copy default images
+cp /tmp/img/* /var/www/html/public/img
+
 # Set permissions to folders for file upload
 chown -R www-data:www-data /var/www/html/public/img
 chmod -R 755 /var/www/html/public/img
+
+# Set permissions to folders for logs
+chown -R www-data:www-data /var/www/html/app/logs
 
 # Then exec the container's main process (CMD)
 exec "$@"

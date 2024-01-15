@@ -1,10 +1,13 @@
-version: '3.8'
+version: "3.8"
 
 services:
   app:
     image: danielbrendel/hortusfox-web:latest
     ports:
       - "8080:80"
+    volumes:
+      - app_images:/var/www/html/public/img
+      - app_logs:/var/www/html/app/logs
     environment:
       APP_DEBUG: "true"
       APP_LANG: "en"
@@ -40,3 +43,5 @@ services:
 
 volumes:
   db_data:
+  app_images:
+  app_logs:
