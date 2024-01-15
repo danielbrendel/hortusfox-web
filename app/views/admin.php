@@ -82,6 +82,12 @@
         </div>
 
         <div class="field">
+            <div class="control">
+                <input type="checkbox" class="checkbox" name="enablephotoshare" value="1" {{ (env('APP_ENABLE_PHOTO_SHARE')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_photo_share') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
             <label class="label">{{ __('app.cronpw') }}</label>
             <div class="control">
                 <input type="text" class="input" name="cronpw" value="{{ ((env('APP_CRONPW') !== null) ? env('APP_CRONPW') : '') }}">

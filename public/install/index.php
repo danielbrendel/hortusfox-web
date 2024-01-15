@@ -298,6 +298,7 @@
             $env .= 'APP_SERVICE_URL="https://www.hortusfox.com"' . PHP_EOL;
             $env .= 'APP_ENABLEHISTORY=true' . PHP_EOL;
             $env .= 'APP_HISTORY_NAME="History"' . PHP_EOL;
+            $env .= 'APP_ENABLE_PHOTO_SHARE=false' . PHP_EOL;
             $env .= '' . PHP_EOL;
             $env .= '# Session' . PHP_EOL;
             $env .= 'SESSION_ENABLE=true' . PHP_EOL;

@@ -240,5 +240,6 @@ return [
 	'copied_to_clipboard' => 'Der Inhalt wurde in die Zwischenablage kopiert.',
 	'mail_share_photo' => 'Informationen zu deinem geteilten Foto',
 	'mail_share_photo_title' => 'Dein Foto wurde geteilt',
-	'mail_share_photo_hint' => 'Dein Foto wurde erfolgreich geteilt!<br/><br/>Link zum Foto: {url_photo}<br/>Löschlink: {url_removal}'
+	'mail_share_photo_hint' => 'Dein Foto wurde erfolgreich geteilt!<br/><br/>Link zum Foto: {url_photo}<br/>Löschlink: {url_removal}',
+	'enable_photo_share' => 'Teilen von Fotos aktivieren'
 ];

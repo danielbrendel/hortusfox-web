@@ -72,9 +72,10 @@ class AdminController extends BaseController {
 			$chattypingindicator = (bool)$request->params()->query('chattypingindicator', 0);
 			$enablehistory = (bool)$request->params()->query('enablehistory', 0);
 			$history_name = $request->params()->query('history_name', env('APP_HISTORY_NAME'));
+			$enablephotoshare = (bool)$request->params()->query('enablephotoshare', 0);
 			$cronpw = $request->params()->query('cronpw', env('APP_CRONPW'));
 			
-			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $cronpw);
+			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $enablephotoshare, $cronpw);
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
