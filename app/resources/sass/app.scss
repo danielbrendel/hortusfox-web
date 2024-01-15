@@ -533,28 +533,23 @@ fieldset .field {
 
 .plant-photo-overlay {
     width: 100%;
-    height: 100%;
+    height: 45px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.plant-photo-overlay:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.plant-photo-overlay .plant-photo-edit {
-    visibility: hidden;
-}
-
-.plant-photo-overlay:hover .plant-photo-edit {
-    visibility: visible;
+.plant-photo-view {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .plant-photo-edit {
     position: absolute;
-    top: 43%;
-    left: 42%;
+    top: 10px;
+    left: 40px;
 }
 
-.plant-photo-edit i {
+.plant-photo-edit i, .plant-photo-view i {
     color: rgb(200, 200, 200);
 }
 

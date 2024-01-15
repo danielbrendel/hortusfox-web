@@ -36,6 +36,8 @@ window.vue = new Vue({
         bShowCreateNewUser: false,
         bShowCreateNewLocation: false,
         bShowRemoveLocation: false,
+        bShowPreviewImageModal: false,
+        clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
         comboLightLevel: [],
@@ -572,6 +574,22 @@ window.vue = new Vue({
                 if (selTab) {
                     selTab.classList.add('is-active');
                 }
+            }
+        },
+
+        showImagePreview: function(asset, aspect = 'is-3by5') {
+            let img = document.getElementById('preview-image-modal-img');
+            if (img) {
+                img.src = asset;
+
+                if (window.vue.clsLastImagePreviewAspect.length > 0) {
+                    img.parentNode.classList.remove(window.vue.clsLastImagePreviewAspect);
+                }
+
+                window.vue.clsLastImagePreviewAspect = aspect;
+                img.parentNode.classList.add(window.vue.clsLastImagePreviewAspect);
+
+                window.vue.bShowPreviewImageModal = true;
             }
         },
     }

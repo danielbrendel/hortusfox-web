@@ -125,13 +125,12 @@
 	</div>
 
 	<div class="column is-half">
-		<a href="javascript:void(0);" onclick="window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo');">
-			<div class="plant-photo" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
-				<div class="plant-photo-overlay">
-					<div class="plant-photo-edit"><i class="fas fa-upload fa-4x"></i></div>
-				</div>
+		<div class="plant-photo" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
+			<div class="plant-photo-overlay">
+				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', asset('img/' . $plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
+				<div class="plant-photo-edit is-pointer" onclick="window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo');"><i class="fas fa-upload fa-lg"></i></div>
 			</div>
-		</a>
+		</div>
 	</div>
 </div>
 

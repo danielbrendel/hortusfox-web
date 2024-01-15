@@ -786,6 +786,18 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowPreviewImageModal}">
+				<div class="modal-background"></div>
+
+				<div class="modal-content">
+					<p class="image">
+						<img id="preview-image-modal-img" alt="image">
+					</p>
+				</div>
+
+				<button class="modal-close is-large" aria-label="close" onclick="window.vue.bShowPreviewImageModal = false;"></button>
+			</div>
+
 			@include('scroller.php')
 		</div>
 
