@@ -148,7 +148,7 @@ php asatru migrate:fresh
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing
 
-# copy default images
+# Copy default images
 cp /tmp/img/* /var/www/html/public/img
 
 # Set permissions to folders for file upload

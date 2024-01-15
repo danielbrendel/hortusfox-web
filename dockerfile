@@ -25,10 +25,10 @@ COPY . /var/www/html
 # copy default files in /public/img so they can be copied if needed in entrypoint
 RUN mkdir /tmp/img
 RUN cp /var/www/html/public/img/* /tmp/img
-VOLUME /var/www/html/public/img
+VOLUME ["/var/www/html/public/img"]
 
 # Create volume for logs
-VOLUME /var/www/html/app/logs
+VOLUME ["/var/www/html/app/logs"]
 
 # Copy the PHP overrides
 COPY ./99-php.ini /usr/local/etc/php/conf.d/
