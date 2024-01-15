@@ -32,6 +32,10 @@ class ApiController extends BaseController {
             $type = $request->params()->query('type', null);
             
             $result = ApiModule::sharePhoto($asset, $title, $type);
+            
+            if ($result->code != 200) {
+                throw new \Exception($result->msg);
+            }
 
             return json([
                 'code' => 200,
