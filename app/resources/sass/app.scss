@@ -777,11 +777,19 @@ fieldset .field {
     float: right;
 }
 
-.plant-gallery-item-header-action i {
+.plant-gallery-item-header-action i.is-action-share {
+    color: rgb(200, 200, 200);
+}
+
+.plant-gallery-item-header-action i.is-action-share:hover {
+    color: rgb(220, 220, 220);
+}
+
+.plant-gallery-item-header-action i.is-action-delete {
     color: rgb(173, 86, 86);
 }
 
-.plant-gallery-item-header-action i:hover {
+.plant-gallery-item-header-action i.is-action-delete:hover {
     color: rgb(173, 90, 90);
 }
 
