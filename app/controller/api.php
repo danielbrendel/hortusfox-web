@@ -37,9 +37,48 @@ class ApiController extends BaseController {
                 throw new \Exception($result->msg);
             }
 
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
+            $mailobj = new Asatru\SMTPMailer\SMTPMailer();
+            $mailobj->setRecipient($user->get('email'));
+            $mailobj->setSubject(__('app.mail_share_photo_title'));
+            $mailobj->setView('mail/share_photo', [], ['url_photo' => $result->data->url, 'url_removal' => url('/api/photo/remove?ident=' . $result->data->ident)]);
+            $mailobj->send();
+
             return json([
                 'code' => 200,
                 'data' => $result->data
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/photo/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function remove_photo($request)
+    {
+        try {
+            $ident = $request->params()->query('ident', null);
+
+            $result = ApiModule::removePhoto($ident);
+            
+            if ($result->code != 200) {
+                throw new \Exception($result->msg);
+            }
+
+            return json([
+                'code' => 200
             ]);
         } catch (\Exception $e) {
             return json([

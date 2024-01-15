@@ -237,5 +237,8 @@ return [
 	'share_photo_hint' => 'Hier kannst du dein Foto auf {url} hochladen, um es zu teilen. Bei erfolgreichem Upload, bekommst du eine Bestätigungsnachricht an dein E-Mail Postfach.',
 	'share' => 'Teilen',
 	'copy_to_clipboard' => 'Kopieren',
-	'copied_to_clipboard' => 'Der Inhalt wurde in die Zwischenablage kopiert.'
+	'copied_to_clipboard' => 'Der Inhalt wurde in die Zwischenablage kopiert.',
+	'mail_share_photo' => 'Informationen zu deinem geteilten Foto',
+	'mail_share_photo_title' => 'Dein Foto wurde geteilt',
+	'mail_share_photo_hint' => 'Dein Foto wurde erfolgreich geteilt!<br/><br/>Link zum Foto: {url_photo}<br/>Löschlink: {url_removal}'
 ];
