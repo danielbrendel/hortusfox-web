@@ -111,6 +111,20 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getItem($id)
+    {
+        try {
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

@@ -129,6 +129,10 @@
 			<div class="plant-photo-overlay">
 				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', asset('img/' . $plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
 				<div class="plant-photo-edit is-pointer" onclick="window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo');"><i class="fas fa-upload fa-lg"></i></div>
+			
+				@if (env('APP_ENABLE_PHOTO_SHARE'))
+					<div class="plant-photo-share is-pointer" onclick="window.vue.showSharePhoto({{ $plant->get('id') }}, '{{ $plant->get('name') }}', 'preview');"><i class="fas fa-share fa-lg"></i></div>
+				@endif
 			</div>
 		</div>
 	</div>

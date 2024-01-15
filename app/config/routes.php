@@ -92,6 +92,9 @@ return [
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),
     array('/cronjob/tasks/tomorrow', 'GET', 'cronjobs@tomorrow_tasks'),
 
+    /** API Controller */
+    array('/api/photo/share', 'POST', 'api@share_photo'),
+
     /** Error Controller */
     array('$404', 'ANY', 'error404@index')
 ];

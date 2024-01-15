@@ -798,6 +798,47 @@
 				<button class="modal-close is-large" aria-label="close" onclick="window.vue.bShowPreviewImageModal = false;"></button>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowSharePhoto}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.share_photo') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowSharePhoto = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<div class="field">
+							<p>{{ __('app.share_photo_hint', ['url' => env('APP_SERVICE_URL')]) }}</p>
+						</div>
+
+						<div class="field">
+							<label class="label">{{ __('app.share_photo_title') }}</label>
+							<div class="control">
+								<input type="text" class="input" id="share-photo-title">
+							</div>
+						</div>
+
+						<div class="field">
+							<p class="is-color-error is-hidden" id="share-photo-error"></p>
+						</div>
+
+						<input type="hidden" class="input" id="share-photo-id">
+						<input type="hidden" class="input" id="share-photo-type">
+
+						<div class="field has-addons is-stretched is-hidden" id="share-photo-result">
+							<div class="control is-stretched">
+								<input class="input" type="text" id="share-photo-link">
+							</div>
+							<div class="control">
+								<a class="button is-info" href="javascript:void(0);" onclick="window.vue.copyToClipboard(document.getElementById('share-photo-link').value, document.getElementById('share-photo-type').value);">{{ __('app.copy_to_clipboard') }}</a>
+							</div>
+						</div>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button id="share-photo-submit-action" class="button is-success" onclick="window.vue.performPhotoShare(document.getElementById('share-photo-id').value, document.getElementById('share-photo-title').value, document.getElementById('share-photo-type').value, document.getElementById('share-photo-link'), this, document.getElementById('share-photo-error'));">{{ __('app.share') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 		</div>
 
@@ -829,6 +870,8 @@
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
+				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';
+				window.vue.copiedToClipboard = '{{ __('app.copied_to_clipboard') }}';
 
 				window.vue.chatTypingEnable = {{ (env('APP_SHOWCHATTYPINGINDICATOR', false)) ? 'true' : 'false' }};
 

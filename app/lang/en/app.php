@@ -230,5 +230,12 @@ return [
 	'smtp_password' => 'SMTP Password',
 	'smtp_encryption' => 'SMTP Encryption',
 	'personal_notes' => 'Personal notes',
-	'personal_notes_saved_successfully' => 'Your personal notes were successfully updated'
+	'personal_notes_saved_successfully' => 'Your personal notes were successfully updated',
+	'share_photo' => 'Share Photo',
+	'share_photo_input' => 'Photo to share',
+	'share_photo_title' => 'Title',
+	'share_photo_hint' => 'This will share your photo on {url}. You will get a confirmation e-mail once sharing succeeded.',
+	'share' => 'Share',
+	'copy_to_clipboard' => 'Copy',
+	'copied_to_clipboard' => 'Content has been copied to clipboard.'
 ];

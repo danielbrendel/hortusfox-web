@@ -37,6 +37,7 @@ window.vue = new Vue({
         bShowCreateNewLocation: false,
         bShowRemoveLocation: false,
         bShowPreviewImageModal: false,
+        bShowSharePhoto: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -50,6 +51,8 @@ window.vue = new Vue({
         confirmPlantRemoveHistory: 'Please confirm if you want to do this action.',
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
+        loadingPleaseWait: 'Please wait...',
+        copiedToClipboard: 'Content has been copied to clipboard.',
         chatTypingEnable: false,
         chatTypingTimer: null,
         chatTypingHide: null,
@@ -591,6 +594,47 @@ window.vue = new Vue({
 
                 window.vue.bShowPreviewImageModal = true;
             }
+        },
+
+        showSharePhoto: function(asset, title, type) {
+            document.getElementById('share-photo-title').value = title;
+            document.getElementById('share-photo-id').value = asset;
+            document.getElementById('share-photo-type').value = type;
+
+            document.getElementById('share-photo-result').classList.add('is-hidden');
+            document.getElementById('share-photo-error').classList.add('is-hidden');
+            document.getElementById('share-photo-submit-action').classList.remove('is-hidden');
+
+            window.vue.bShowSharePhoto = true;
+        },
+
+        performPhotoShare: function(asset, title, type, result, button, error) {
+            let origButtonHtml = button.innerHTML;
+            button.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;' + window.vue.loadingPleaseWait;
+
+            window.vue.ajaxRequest('post', window.location.origin + '/api/photo/share', { asset: asset, title: title, type: type }, function(response) {
+                button.innerHTML = origButtonHtml;
+
+                if (response.code == 200) {
+                    result.value = response.data.url;
+                    result.parentNode.parentNode.classList.remove('is-hidden');
+                    button.classList.add('is-hidden');
+                    error.classList.add('is-hidden');
+                } else {
+                    error.innerHTML = response.msg;
+                    error.classList.remove('is-hidden');
+                }
+            });
+        },
+
+        copyToClipboard: function(text) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert(window.vue.copiedToClipboard);
         },
     }
 });
