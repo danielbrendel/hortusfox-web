@@ -45,7 +45,7 @@ class ApiController extends BaseController {
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($user->get('email'));
             $mailobj->setSubject(__('app.mail_share_photo_title'));
-            $mailobj->setView('mail/share_photo', [], ['url_photo' => $result->data->url, 'url_removal' => url('/api/photo/remove?ident=' . $result->data->ident)]);
+            $mailobj->setView('mail/share_photo', [], ['url_photo' => $result->data->url, 'url_removal' => env('APP_SERVICE_URL') . '/api/photo/remove?ident=' . $result->data->ident . '&ret=home']);
             $mailobj->send();
 
             return json([

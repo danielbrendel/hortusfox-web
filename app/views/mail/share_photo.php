@@ -14,6 +14,10 @@
         </p>
 
         <p>
+            <img src="{{ $url_photo }}" alt="shared photo"/>
+        </p>
+
+        <p>
             <small>Powered by {{ env('APP_NAME') }}</small>
         </p>
     </body>
