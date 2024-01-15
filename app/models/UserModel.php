@@ -206,6 +206,27 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $notes
+     * @return void
+     * @throws \Exception
+     */
+    public static function saveNotes($notes)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET notes = ? WHERE id = ?', [
+                trim($notes), $user->get('id')
+            ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $id
      * @return string
      * @throws \Exception

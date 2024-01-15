@@ -228,5 +228,7 @@ return [
 	'smtp_port' => 'SMTP Port',
 	'smtp_username' => 'SMTP Username',
 	'smtp_password' => 'SMTP Password',
-	'smtp_encryption' => 'SMTP Encryption'
+	'smtp_encryption' => 'SMTP Encryption',
+	'personal_notes' => 'Personal notes',
+	'personal_notes_saved_successfully' => 'Your personal notes were successfully updated'
 ];

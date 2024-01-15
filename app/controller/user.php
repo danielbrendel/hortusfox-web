@@ -90,4 +90,25 @@ class UserController extends BaseController {
 
 		return redirect('/profile');
 	}
+
+	/**
+	 * Handles URL: /profile/notes/save
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function save_notes($request)
+	{
+		try {
+			$notes = $request->params()->query('notes', null);
+
+			UserModel::saveNotes($notes);
+
+			FlashMessage::setMsg('success', __('app.personal_notes_saved_successfully'));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+		}
+
+		return redirect('/profile');
+	}
 }

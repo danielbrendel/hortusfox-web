@@ -43,6 +43,7 @@ return [
     /** User controller Controller */
     array('/profile', 'GET', 'user@view_profile'),
     array('/profile/preferences', 'POST', 'user@edit_preferences'),
+    array('/profile/notes/save', 'POST', 'user@save_notes'),
 
     /** Search controller Controller */
     array('/search', 'GET', 'search@view_search'),

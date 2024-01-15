@@ -8,6 +8,26 @@
 	<a class="button is-link" href="javascript:void(0);" onclick="window.vue.bShowEditPreferences = true;">{{ __('app.preferences') }}</a>
 </div>
 
+<div class="margin-vertical">
+	<h2 class="smaller-headline">{{ __('app.personal_notes') }}</h2>
+
+	<form method="POST" action="{{ url('/profile/notes/save') }}">
+		@csrf
+
+		<div class="field">
+			<div class="control">
+				<textarea class="textarea is-input-dark" name="notes">{{ $user->get('notes') ?? 'N/A' }}</textarea>
+			</div>
+		</div>
+
+		<div class="field">
+			<div class="control">
+				<input type="submit" class="button is-info" value="{{ __('app.save') }}">
+			</div>
+		</div>
+	</form>
+</div>
+
 <div class="plants">
 	<h2 class="smaller-headline">{{ __('app.last_authored_plants') }}</h2>
 
