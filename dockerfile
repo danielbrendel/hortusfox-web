@@ -19,23 +19,6 @@ FROM php:8.2.0-apache
 # Set the working directory
 WORKDIR /var/www/html
 
-# Copy the application source
-COPY . /var/www/html
-
-# copy default files in /public/img so they can be copied if needed in entrypoint
-RUN mkdir /tmp/img
-RUN cp /var/www/html/public/img/* /tmp/img
-VOLUME ["/var/www/html/public/img"]
-
-# Create volume for logs
-VOLUME ["/var/www/html/app/logs"]
-
-# Copy the PHP overrides
-COPY ./99-php.ini /usr/local/etc/php/conf.d/
-
-# Copy the Composer dependencies from the first stage
-COPY --from=composer /app/vendor/ /var/www/html/vendor/
-
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -61,6 +44,23 @@ RUN a2enmod rewrite
 
 # Expose port 80
 EXPOSE 80
+
+# Copy the application source
+COPY . /var/www/html
+
+# copy default files in /public/img so they can be copied if needed in entrypoint
+RUN mkdir /tmp/img
+RUN cp /var/www/html/public/img/* /tmp/img
+VOLUME ["/var/www/html/public/img"]
+
+# Create volume for logs
+VOLUME ["/var/www/html/app/logs"]
+
+# Copy the PHP overrides
+COPY ./99-php.ini /usr/local/etc/php/conf.d/
+
+# Copy the Composer dependencies from the first stage
+COPY --from=composer /app/vendor/ /var/www/html/vendor/
 
 # Copy docker-entrypoint.sh into the container
 COPY docker-entrypoint.sh /usr/local/bin/
