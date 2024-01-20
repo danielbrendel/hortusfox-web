@@ -20,24 +20,28 @@ FROM php:8.2.0-apache
 WORKDIR /var/www/html
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    git \
-    default-mysql-client && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update \
+ && apt-get install -y \
+        libpng-dev \
+        libjpeg-dev \
+        libonig-dev \
+        libxml2-dev \
+        zip \
+        unzip \
+        git \
+        default-mysql-client \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* \
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath
-
+ && docker-php-ext-install \
+        pdo_mysql \
+        mbstring \
+        exif \
+        pcntl \
+        bcmath \
 # Configure and install GD
-RUN docker-php-ext-configure gd --with-jpeg
-RUN docker-php-ext-install gd
+ && docker-php-ext-configure gd --with-jpeg \
+ && docker-php-ext-install gd
 
 # Enable Apache mod_rewrite for .htaccess support
 RUN a2enmod rewrite
@@ -49,8 +53,8 @@ EXPOSE 80
 COPY . /var/www/html
 
 # Copy default files in /public/img so they can be copied if needed in entrypoint
-RUN mkdir /tmp/img
-RUN cp /var/www/html/public/img/* /tmp/img
+RUN mkdir /tmp/img \
+ && cp /var/www/html/public/img/* /tmp/img
 VOLUME ["/var/www/html/public/img"]
 
 # Create volume for logs
@@ -63,8 +67,7 @@ COPY ./99-php.ini /usr/local/etc/php/conf.d/
 COPY --from=composer /app/vendor/ /var/www/html/vendor/
 
 # Copy docker-entrypoint.sh into the container
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+COPY --chmod=555 docker-entrypoint.sh /usr/local/bin/
 
 # Set the script as the entrypoint
 ENTRYPOINT ["docker-entrypoint.sh"]
