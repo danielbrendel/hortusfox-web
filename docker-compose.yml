@@ -5,13 +5,30 @@ services:
     image: danielbrendel/hortusfox-web:latest
     ports:
       - "8080:80"
-    volumes:
-      - app_images:/var/www/html/public/img
-      - app_logs:/var/www/html/app/logs
     environment:
+      APP_ADMIN_EMAIL: "admin@admin.com"
+      APP_ADMIN_PASSWORD: "mypasswordhere"
+      APP_BASE_DIR: ""
       APP_DEBUG: "true"
       APP_LANG: "en"
       APP_WORKSPACE: "My plant home"
+      APP_ENABLE_SCROLLER: "true"
+      APP_OVERLAY_ALPHA: "null"
+      APP_ENABLE_CHAT: "true"
+      APP_ONLINE_MINUTE_LIMIT: 5
+      APP_SHOW_CHAT_ONLINE_USERS: "false"
+      APP_SHOW_CHAT_TYPING_INDICATOR: "false"
+      APP_OVERDUE_TASK_HOURS: 10
+      APP_CRON_PW: "someStrongPassword"
+      APP_CRON_MAIL_LIMIT: 5
+      APP_ENABLE_HISTORY: "true"
+      APP_HISTORY_NAME: "History"
+      PHOTO_RESIZE_FACTOR_DEFAULT: 1.0
+      PHOTO_RESIZE_FACTOR_1: 0.5
+      PHOTO_RESIZE_FACTOR_2: 0.4
+      PHOTO_RESIZE_FACTOR_3: 0.4
+      PHOTO_RESIZE_FACTOR_4: 0.3
+      PHOTO_RESIZE_FACTOR_5: 0.2
       DB_HOST: db
       DB_PORT: 3306
       DB_DATABASE: hortusfox
@@ -25,6 +42,8 @@ services:
       SMTP_PORT: 587
       SMTP_USERNAME: ""
       SMTP_PASSWORD: ""
+      SMTP_ENCRYPTION: tls
+      LOG_ENABLE: "true"
     depends_on:
       - db
 
@@ -43,5 +62,3 @@ services:
 
 volumes:
   db_data:
-  app_images:
-  app_logs:
