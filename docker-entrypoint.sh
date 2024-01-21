@@ -145,8 +145,14 @@ set_apache_server_name
 wait_for_db
 
 # Run database migrations
-echo "Running database migrations..."
-php asatru migrate:fresh
+if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$DB_DATABASE' AND TABLE_NAME = 'plants';") -eq 1 ]
+then
+    echo "Running unapplied database migrations..."
+    php asatru migrate:list
+else
+    echo "Running full database migrations..."
+    php asatru migrate:fresh
+fi
 
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing
