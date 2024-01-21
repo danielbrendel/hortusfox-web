@@ -1,4 +1,5 @@
 /app/logs
+/app/migrations/migrations.list
 /vendor
 /node_modules
 /.idea
