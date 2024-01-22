@@ -48,7 +48,7 @@ EXPOSE 80
 # Copy the application source
 COPY . /var/www/html
 
-# copy default files in /public/img so they can be copied if needed in entrypoint
+# Copy default files in /public/img so they can be copied if needed in entrypoint
 RUN mkdir /tmp/img
 RUN cp /var/www/html/public/img/* /tmp/img
 VOLUME ["/var/www/html/public/img"]
