@@ -22,7 +22,7 @@ services:
       APP_SHOW_CHAT_ONLINE_USERS: "false"
       APP_SHOW_CHAT_TYPING_INDICATOR: "false"
       APP_OVERDUE_TASK_HOURS: 10
-      APP_CRON_PW: "someStrongPassword"
+      APP_CRON_PW: "test"
       APP_CRON_MAIL_LIMIT: 5
       APP_ENABLE_HISTORY: "true"
       APP_HISTORY_NAME: "History"
