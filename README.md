@@ -19,6 +19,19 @@
     <img src="https://img.shields.io/badge/maintained-yes-green" alt="maintained-yes"/>
 </p>
 
+## Table of Contents
+
+- [Description](#description)
+- [Features](#features)
+- [Resources](#resources)
+- [Installation](#installation)
+  - [Docker](#docker)
+  - [Installer](#installer)
+  - [Manual](#manual)
+- [Cronjobs](#cronjobs)
+- [System requirements](#system-requirements)
+- [Contributing](#contributing)
+
 ## Description
 
 HortusFox is a self-hosted collaborative plant management system which you can use in your own environment to manage all your plants.
@@ -45,20 +58,7 @@ users have taken. The system features collaborative management, so you can manag
 - [Official Homepage](https://www.hortusfox.com/)
 - [Documentation](https://hortusfox.github.io/)
 
-## Table of Contents
-
-- [Description](#description)
-- [Features](#features)
-- [Resources](#resources)
-- [Installation](#installation)
-  - [Docker and Docker Compose](#docker-and-docker-compose)
-  - [Installer](#installer)
-  - [Manual Installation](#manual-installation)
-- [Cronjobs](#cronjobs)
-- [System requirements](#system-requirements)
-- [Contributing](#contributing)
-
-### Docker and Docker Compose
+### Docker
 
 Using Docker and Docker Compose simplifies the setup process and ensures consistency across different environments.
 
@@ -148,9 +148,9 @@ on your system. Altough the system tries to create the database for you, sometim
 database before running the installation. However all table migrations will then be created by the system. The system can then be managed
 via the admin section (e.g. environment settings, users, locations).
 
-### Manual Installation
+### Manual
 
-In order to install HortusFox you need to first setup a PHP environment along with a MySQL database
+In order to manually install HortusFox you need to first setup a PHP environment along with a MySQL database
 and also Composer. Afterwards you can clone or download the repository. Then go to the root directory
 of the project and let Composer install the required dependencies. Note: It is recommended to setup the
 actual production environment on, e.g., a home server. There are various solutions available for this.
