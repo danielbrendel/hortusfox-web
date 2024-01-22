@@ -314,6 +314,7 @@ GET /cronjob/tasks/tomorrow?cronpw={your-auth-token}
 - PHP ^8.2
 - MySQL (10.4.27-MariaDB or similar)
 - SMTP server for e-mailing
+- Docker with Docker-Compose for containerization
 
 ## Contributing
 
