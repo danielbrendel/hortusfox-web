@@ -5,8 +5,8 @@ DEFAULT_ADMIN_EMAIL="admin@example.com"
 DEFAULT_ADMIN_PASSWORD=$(openssl rand -base64 12)  # Generate a random password
 
 # Use environment variables if provided, otherwise use defaults
-ADMIN_EMAIL="${HORTUSFOX_ADMIN:-$DEFAULT_ADMIN_EMAIL}"
-ADMIN_PASSWORD="${HORTUSFOX_PASSWORD:-$DEFAULT_ADMIN_PASSWORD}"
+ADMIN_EMAIL="${APP_ADMIN_EMAIL:-$DEFAULT_ADMIN_EMAIL}"
+ADMIN_PASSWORD="${APP_ADMIN_PASSWORD:-$DEFAULT_ADMIN_PASSWORD}"
 
 # Function to set PHP error reporting based on APP_DEBUG
 configure_php_error_reporting() {
@@ -23,63 +23,65 @@ configure_php_error_reporting() {
 
 # Function to create the .env file
 create_environment_file() {
-    # Remove if already exists
     rm -f "/var/www/html/.env"
 
+    cat <<-EOF >> /var/www/html/.env
+
     # App settings
-    echo "APP_NAME=\"HortusFox\"" >> /var/www/html/.env
-    echo "APP_DEBUG=$APP_DEBUG" >> /var/www/html/.env
-    echo "APP_BASEDIR=\"\"" >> /var/www/html/.env
-    echo "APP_LANG=\"en\"" >> /var/www/html/.env
-    echo "APP_WORKSPACE=\"$APP_WORKSPACE\"" >> /var/www/html/.env
-    echo "APP_ENABLESCROLLER=true" >> /var/www/html/.env
-    echo "APP_OVERLAYALPHA=null" >> /var/www/html/.env
-    echo "APP_ENABLECHAT=true" >> /var/www/html/.env
-    echo "APP_ONLINEMINUTELIMIT=5" >> /var/www/html/.env
-    echo "APP_SHOWCHATONLINEUSERS=false" >> /var/www/html/.env
-    echo "APP_SHOWCHATTYPINGINDICATOR=false" >> /var/www/html/.env
-    echo "APP_OVERDUETASK_HOURS=10" >> /var/www/html/.env
-    echo "APP_CRONPW=null" >> /var/www/html/.env
-    echo "APP_CRONJOB_MAILLIMIT=5" >> /var/www/html/.env
-    echo "APP_GITHUB_URL=\"https://github.com/danielbrendel/hortusfox-web\"" >> /var/www/html/.env
-    echo "APP_SERVICE_URL=\"https://www.hortusfox.com\"" >> /var/www/html/.env
-    echo "APP_ENABLEHISTORY=true" >> /var/www/html/.env
-    echo "APP_HISTORY_NAME=\"History\"" >> /var/www/html/.env
+    APP_NAME="HortusFox"
+    APP_DEBUG=$APP_DEBUG
+    APP_BASEDIR="$APP_BASE_DIR"
+    APP_LANG="$APP_LANG"
+    APP_WORKSPACE="$APP_WORKSPACE"
+    APP_ENABLESCROLLER="$APP_ENABLE_SCROLLER"
+    APP_OVERLAYALPHA="$APP_OVERLAY_ALPHA"
+    APP_ENABLECHAT="$APP_ENABLE_CHAT"
+    APP_ONLINEMINUTELIMIT="$APP_ONLINE_MINUTE_LIMIT"
+    APP_SHOWCHATONLINEUSERS="$APP_SHOW_CHAT_ONLINE_USERS"
+    APP_SHOWCHATTYPINGINDICATOR="$APP_SHOW_CHAT_TYPING_INDICATOR"
+    APP_OVERDUETASK_HOURS=$APP_OVERDUE_TASK_HOURS
+    APP_CRONPW="$APP_CRON_PW"
+    APP_CRONJOB_MAILLIMIT=$APP_CRON_MAIL_LIMIT
+    APP_GITHUB_URL="https://github.com/danielbrendel/hortusfox-web"
+    APP_SERVICE_URL="https://www.hortusfox.com"
+    APP_ENABLEHISTORY=$APP_ENABLE_HISTORY
+    APP_HISTORY_NAME="$APP_HISTORY_NAME"
 
     # Session
-    echo "SESSION_ENABLE=true" >> /var/www/html/.env
-    echo "SESSION_DURATION=31536000" >> /var/www/html/.env
-    echo "SESSION_NAME=null" >> /var/www/html/.env
+    SESSION_ENABLE=true
+    SESSION_DURATION=31536000
+    SESSION_NAME=null
 
     # Photo resize factors
-    echo "PHOTO_RESIZE_FACTOR_DEFAULT=1.0" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_1=0.5" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_2=0.4" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_3=0.4" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_4=0.3" >> /var/www/html/.env
-    echo "PHOTO_RESIZE_FACTOR_5=0.2" >> /var/www/html/.env
+    PHOTO_RESIZE_FACTOR_DEFAULT=$PHOTO_RESIZE_FACTOR_DEFAULT
+    PHOTO_RESIZE_FACTOR_1=$PHOTO_RESIZE_FACTOR_1
+    PHOTO_RESIZE_FACTOR_2=$PHOTO_RESIZE_FACTOR_2
+    PHOTO_RESIZE_FACTOR_3=$PHOTO_RESIZE_FACTOR_3
+    PHOTO_RESIZE_FACTOR_4=$PHOTO_RESIZE_FACTOR_4
+    PHOTO_RESIZE_FACTOR_5=$PHOTO_RESIZE_FACTOR_5
 
     # Database settings
-    echo "DB_ENABLE=true" >> /var/www/html/.env
-    echo "DB_HOST=$DB_HOST" >> /var/www/html/.env
-    echo "DB_USER=$DB_USERNAME" >> /var/www/html/.env
-    echo "DB_PASSWORD=\"$DB_PASSWORD\"" >> /var/www/html/.env
-    echo "DB_PORT=3306" >> /var/www/html/.env
-    echo "DB_DATABASE=$DB_DATABASE" >> /var/www/html/.env
-    echo "DB_DRIVER=mysql" >> /var/www/html/.env
-    echo "DB_CHARSET=\"$DB_CHARSET\"" >> /var/www/html/.env
-
-    # SMTP settings
-    echo "SMTP_FROMNAME=\"$SMTP_FROMNAME\"" >> /var/www/html/.env
-    echo "SMTP_FROMADDRESS=\"$SMTP_FROMADDRESS\"" >> /var/www/html/.env
-    echo "SMTP_HOST=\"$SMTP_HOST\"" >> /var/www/html/.env
-    echo "SMTP_PORT=$SMTP_PORT" >> /var/www/html/.env
-    echo "SMTP_USERNAME=\"$SMTP_USERNAME\"" >> /var/www/html/.env
-    echo "SMTP_PASSWORD=\"$SMTP_PASSWORD\"" >> /var/www/html/.env
-    echo "SMTP_ENCRYPTION=tls" >> /var/www/html/.env
+    DB_ENABLE=true
+    DB_HOST=$DB_HOST
+    DB_USER=$DB_USERNAME
+    DB_PASSWORD="$DB_PASSWORD"
+    DB_PORT=$DB_PORT
+    DB_DATABASE=$DB_DATABASE
+    DB_DRIVER=mysql
+    DB_CHARSET="$DB_CHARSET"
+    
+    # SMTP Settings
+    SMTP_FROMNAME="$SMTP_FROMNAME"
+    SMTP_FROMADDRESS="$SMTP_FROMADDRESS"
+    SMTP_HOST=$SMTP_HOST
+    SMTP_PORT=$SMTP_PORT
+    SMTP_USERNAME="$SMTP_USERNAME"
+    SMTP_PASSWORD="$SMTP_PASSWORD"
+    SMTP_ENCRYPTION="$SMTP_ENCRYPTION"
 
     # Logging
-    echo "LOG_ENABLE=false" >> /var/www/html/.env
+    LOG_ENABLE=$LOG_ENABLE
+EOF
 }
 
 # Function to check if the admin user exists
