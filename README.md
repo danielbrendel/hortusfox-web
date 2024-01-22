@@ -58,6 +58,8 @@ users have taken. The system features collaborative management, so you can manag
 - [Official Homepage](https://www.hortusfox.com/)
 - [Documentation](https://hortusfox.github.io/)
 
+## Installation
+
 ### Docker
 
 Using Docker and Docker Compose simplifies the setup process and ensures consistency across different environments.
