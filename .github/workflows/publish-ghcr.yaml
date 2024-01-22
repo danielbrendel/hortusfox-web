@@ -1,0 +1,16 @@
+name: Docker Image CI for GHCR
+
+on:
+  push:
+    branches: ['release']
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and push the image
+        run: |
+          docker login --username danielbrendel --password ${{ secrets.GH_CONTAINER_REGISTRY }} ghcr.io
+          docker build . --tag ghcr.io/danielbrendel/hortusfox-web:latest
+          docker push ghcr.io/danielbrendel/hortusfox-web:latest
