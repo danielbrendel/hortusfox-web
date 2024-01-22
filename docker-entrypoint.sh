@@ -23,7 +23,6 @@ configure_php_error_reporting() {
 
 # Function to create the .env file
 create_environment_file() {
-    # Remove if already exists
     rm -f "/var/www/html/.env"
 
     cat <<-EOF >> /var/www/html/.env

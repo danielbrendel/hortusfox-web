@@ -10,7 +10,7 @@ services:
       - app_logs:/var/www/html/app/logs
     environment:
       APP_ADMIN_EMAIL: "admin@admin.com"
-      APP_ADMIN_PASSWORD: "mypasswordhere"
+      APP_ADMIN_PASSWORD: "password"
       APP_BASE_DIR: ""
       APP_DEBUG: "true"
       APP_LANG: "en"
