@@ -80,10 +80,10 @@ Set these in your docker-compose.yml file:
 | HORTUSFOX_ADMIN    | Default admin email    | admin@example.com |    No    |
 | HORTUSFOX_PASSWORD | Default admin password | Auto-generated    |    No    |
 
-3. Make the image and run the application using Docker Compose:
+3. Pull the image and run the application:
 
 ```shell
-docker build ./ -t danielbrendel/hortusfox-web:latest
+docker-compose pull
 docker-compose up -d
 ```
 

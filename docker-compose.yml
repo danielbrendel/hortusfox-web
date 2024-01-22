@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   app:
-    image: danielbrendel/hortusfox-web:latest
+    image: ghcr.io/danielbrendel/hortusfox-web:latest
     ports:
       - "8080:80"
     volumes:
