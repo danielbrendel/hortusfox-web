@@ -369,7 +369,7 @@
         $dbuser = (isset($_POST['dbuser'])) ? $_POST['dbuser'] : null;
         $dbpassword = (isset($_POST['dbpassword'])) ? $_POST['dbpassword'] : '';
         $smtphost = (isset($_POST['smtphost'])) ? $_POST['smtphost'] : '';
-        $smtpport = (isset($_POST['smtpport'])) ? $_POST['smtpport'] : '';
+        $smtpport = (isset($_POST['smtpport'])) ? $_POST['smtpport'] : 587;
         $smtpaddr = (isset($_POST['smtpaddr'])) ? $_POST['smtpaddr'] : '';
         $smtpuser = (isset($_POST['smtpuser'])) ? $_POST['smtpuser'] : '';
         $smtppw = (isset($_POST['smtppw'])) ? $_POST['smtppw'] : '';

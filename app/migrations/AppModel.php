@@ -43,7 +43,7 @@ class AppModel_Migration {
         $this->database->add('smtp_fromname VARCHAR(512) NULL');
         $this->database->add('smtp_fromaddress VARCHAR(512) NULL');
         $this->database->add('smtp_host VARCHAR(512) NULL');
-        $this->database->add('smtp_port VARCHAR(512) NOT NULL DEFAULT 587');
+        $this->database->add('smtp_port INT NOT NULL DEFAULT 587');
         $this->database->add('smtp_username VARCHAR(512) NULL');
         $this->database->add('smtp_password VARCHAR(512) NULL');
         $this->database->add('smtp_encryption VARCHAR(512) NOT NULL DEFAULT \'tls\'');
