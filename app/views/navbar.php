@@ -4,6 +4,10 @@
             <img src="{{ asset('logo.png') }}"/>&nbsp;{{ app('workspace') }}
         </a>
 
+        <a class="navbar-item navbar-item-brand-mobile-right" href="{{ url('/profile') }}">
+            <i class="fas fa-user" title="{{ __('app.profile') }}"></i>
+        </a>
+
         <a id="burger-button" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
