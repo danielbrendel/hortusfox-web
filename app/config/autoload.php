@@ -15,5 +15,6 @@
 */
 
 return [
-    '/helper/SafeConfig.php'
+    '/helper/SafeConfig.php',
+    '/helper/AppHelper.php'
 ];

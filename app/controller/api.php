@@ -11,7 +11,7 @@ class ApiController extends BaseController {
 	 */
 	public function __construct()
 	{
-        if (!env('APP_ENABLE_PHOTO_SHARE', false)) {
+        if (!app('enable_media_share', false)) {
             http_response_code(403);
             header('Content-Type: application/json');
             exit(json_encode(array('code' => 403, 'msg' => 'Photo sharing is currently deactivated')));

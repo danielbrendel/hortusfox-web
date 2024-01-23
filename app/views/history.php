@@ -1,4 +1,4 @@
-<h1>{{ env('APP_HISTORY_NAME') }}</h1>
+<h1>{{ app('history_name') }}</h1>
 
 <div class="margin-vertical">
 	<div class="is-inline-block is-action-button-margin"><a class="is-default-link is-fixed-button-link" href="{{ url('/') }}">{{ __('app.back_to_dashboard') }}</a></div>

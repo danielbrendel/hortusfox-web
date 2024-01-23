@@ -19,7 +19,7 @@
     </form>
 </div>
 
-@if (env('APP_SHOWCHATONLINEUSERS', false))
+@if (app('chat_showusers', false))
     <div class="chat-user-list" id="chat-user-list"></div>
 @endif
 

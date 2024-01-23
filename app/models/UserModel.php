@@ -104,7 +104,7 @@ class UserModel extends \Asatru\Database\Model {
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($email);
             $mailobj->setSubject(__('app.reset_password'));
-            $mailobj->setView('mail/mailreset', [], ['workspace' => env('APP_WORKSPACE'), 'token' => $reset_token]);
+            $mailobj->setView('mail/mailreset', [], ['workspace' => app('workspace'), 'token' => $reset_token]);
             $mailobj->send();
         } catch (\Exception $e) {
             throw $e;
@@ -386,7 +386,7 @@ class UserModel extends \Asatru\Database\Model {
                 return false;
             }
 
-            return Carbon::parse($row->get('last_action'))->diffInMinutes() <= env('APP_ONLINEMINUTELIMIT', 15);
+            return Carbon::parse($row->get('last_action'))->diffInMinutes() <= app('chat_timelimit', 15);
         } catch (\Exception $e) {
             return false;
         }
@@ -444,7 +444,7 @@ class UserModel extends \Asatru\Database\Model {
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($email);
             $mailobj->setSubject(__('app.account_created'));
-            $mailobj->setView('mail/mailacccreated', [], ['workspace' => env('APP_WORKSPACE'), 'password' => $password]);
+            $mailobj->setView('mail/mailacccreated', [], ['workspace' => app('workspace'), 'password' => $password]);
             $mailobj->send();
         } catch (\Exception $e) {
             throw $e;

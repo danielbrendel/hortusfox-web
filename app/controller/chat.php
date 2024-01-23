@@ -24,7 +24,7 @@ class ChatController extends BaseController {
 	 */
 	public function view_chat($request)
 	{
-		if (!env('APP_ENABLECHAT')) {
+		if (!app('chat_enable')) {
 			return redirect('/');
 		}
 

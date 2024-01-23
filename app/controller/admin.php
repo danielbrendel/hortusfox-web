@@ -63,20 +63,34 @@ class AdminController extends BaseController {
 	public function save_environment($request)
 	{
 		try {
-			$workspace = $request->params()->query('workspace', env('APP_WORKSPACE'));
-			$lang = $request->params()->query('lang', env('APP_LANG'));
+			$workspace = $request->params()->query('workspace', app('workspace'));
+			$lang = $request->params()->query('lang', app('language'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
 			$enablechat = (bool)$request->params()->query('enablechat', 0);
-			$onlinetimelimit = (int)$request->params()->query('onlinetimelimit', env('APP_ONLINEMINUTELIMIT'));
+			$onlinetimelimit = (int)$request->params()->query('onlinetimelimit', app('chat_timelimit'));
 			$chatonlineusers = (bool)$request->params()->query('chatonlineusers', 0);
 			$chattypingindicator = (bool)$request->params()->query('chattypingindicator', 0);
 			$enablehistory = (bool)$request->params()->query('enablehistory', 0);
-			$history_name = $request->params()->query('history_name', env('APP_HISTORY_NAME'));
+			$history_name = $request->params()->query('history_name', app('history_name'));
 			$enablephotoshare = (bool)$request->params()->query('enablephotoshare', 0);
-			$cronpw = $request->params()->query('cronpw', env('APP_CRONPW'));
-			
-			UtilsModule::saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $enablephotoshare, $cronpw);
+			$cronpw = $request->params()->query('cronpw', app('cronjob_pw'));
 
+			$set = [
+				'workspace' => $workspace,
+				'language' => $lang,
+				'scroller' => $scroller,
+				'chat_enable' => $enablechat,
+				'chat_timelimit' => $onlinetimelimit,
+				'chat_showusers' => $chatonlineusers,
+				'chat_indicator' => $chattypingindicator,
+				'history_enable' => $enablehistory,
+				'history_name' => $history_name,
+				'enable_media_share' => $enablephotoshare,
+				'cronjob_pw' => $cronpw
+			];
+
+			AppModel::updateSet($set);
+			
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
 			return redirect('/admin?tab=environment');
@@ -284,9 +298,9 @@ class AdminController extends BaseController {
 	public function save_overlay_alpha($request)
 	{
 		try {
-			$overlayalpha = $request->params()->query('overlayalpha', env('APP_OVERLAYALPHA'));
+			$overlayalpha = $request->params()->query('overlayalpha', app('overlay_alpha'));
 			
-			UtilsModule::saveOverlayAlphaValue($overlayalpha);
+			AppModel::updateSingle('overlay_alpha', $overlayalpha);
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
@@ -306,15 +320,25 @@ class AdminController extends BaseController {
 	public function save_mail_settings($request)
 	{
 		try {
-			$smtp_fromname = $request->params()->query('smtp_fromname', env('SMTP_FROMNAME'));
-			$smtp_fromaddress = $request->params()->query('smtp_fromaddress', env('SMTP_FROMADDRESS'));
-			$smtp_host = $request->params()->query('smtp_host', env('SMTP_HOST'));
-			$smtp_port = $request->params()->query('smtp_port', env('SMTP_PORT'));
-			$smtp_username = $request->params()->query('smtp_username', env('SMTP_USERNAME'));
-			$smtp_password = $request->params()->query('smtp_password', env('SMTP_PASSWORD'));
-			$smtp_encryption = $request->params()->query('smtp_encryption', env('SMTP_ENCRYPTION'));
+			$smtp_fromname = $request->params()->query('smtp_fromname', app('smtp_fromname'));
+			$smtp_fromaddress = $request->params()->query('smtp_fromaddress', app('smtp_fromaddress'));
+			$smtp_host = $request->params()->query('smtp_host', app('smtp_host'));
+			$smtp_port = $request->params()->query('smtp_port', app('smtp_port'));
+			$smtp_username = $request->params()->query('smtp_username', app('smtp_username'));
+			$smtp_password = $request->params()->query('smtp_password', app('smtp_password'));
+			$smtp_encryption = $request->params()->query('smtp_encryption', app('smtp_encryption'));
 			
-			UtilsModule::saveMailSettings($smtp_fromname, $smtp_fromaddress, $smtp_host, $smtp_port, $smtp_username, $smtp_password, $smtp_encryption);
+			$set = [
+				'smtp_fromname' => $smtp_fromname,
+				'smtp_fromaddress' => $smtp_fromaddress,
+				'smtp_host' => $smtp_host,
+				'smtp_port' => $smtp_port,
+				'smtp_username' => $smtp_username,
+				'smtp_password' => $smtp_password,
+				'smtp_encryption' => $smtp_encryption,
+			];
+
+			AppModel::updateSet($set);
 
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<title>{{ env('APP_WORKSPACE') }}</title>
+		<title>{{ app('workspace') }}</title>
 
 		<link rel="icon" type="image/png" href="{{ asset('logo.png') }}"/>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
@@ -26,7 +26,7 @@
 					<div class="column is-2"></div>
 
 					<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/background.jpg') }}');">
-						<div class="column-overlay" {!! ((env('APP_OVERLAYALPHA')) ? 'style="background-color: rgba(0, 0, 0, ' . env('APP_OVERLAYALPHA') . ');"': '') !!}>
+						<div class="column-overlay" {!! ((app('overlay_alpha')) ? 'style="background-color: rgba(0, 0, 0, ' . app('overlay_alpha') . ');"': '') !!}>
 							{%content%}
 						</div>
 					</div>
@@ -636,7 +636,7 @@
 								</div>
 							</div>
 
-							<div class="field {{ ((!env('APP_ENABLECHAT')) ? 'is-hidden': '') }}">
+							<div class="field {{ ((!app('chat_enable')) ? 'is-hidden': '') }}">
 								<label class="label">{{ __('app.chatcolor') }}</label>
 								<div class="control">
 									<input type="color" class="input" name="chatcolor" value="{{ UserModel::getChatColorForUser($user->get('id')) }}">
@@ -873,7 +873,7 @@
 				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';
 				window.vue.copiedToClipboard = '{{ __('app.copied_to_clipboard') }}';
 
-				window.vue.chatTypingEnable = {{ (env('APP_SHOWCHATTYPINGINDICATOR', false)) ? 'true' : 'false' }};
+				window.vue.chatTypingEnable = {{ (app('chat_indicator', false)) ? 'true' : 'false' }};
 
 				window.vue.initNavBar();
 
@@ -891,11 +891,11 @@
 				@if ((isset($_refresh_chat)) && ($_refresh_chat === true))
 					window.vue.refreshChat({{ $user->get('id') }});
 					
-					@if (env('APP_SHOWCHATONLINEUSERS', false))
+					@if (app('chat_showusers', false))
 						window.vue.refreshUserList();
 					@endif
 
-					@if (env('APP_SHOWCHATTYPINGINDICATOR', false))
+					@if (app('chat_indicator', false))
 						window.vue.handleTypingIndicator();
 						window.vue.animateChatTypingIndicator();
 					@endif

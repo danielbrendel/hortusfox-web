@@ -311,6 +311,7 @@ class UtilsModule {
      * @param $enablephotoshare
      * @param $cronpw
      * @return void
+     * @deprecated
      */
     public static function saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $enablephotoshare, $cronpw)
     {
@@ -334,6 +335,7 @@ class UtilsModule {
     /**
      * @param $overlayalpha
      * @return void
+     * @deprecated
      */
     public static function saveOverlayAlphaValue($overlayalpha)
     {
@@ -357,6 +359,7 @@ class UtilsModule {
      * @param $smtp_password
      * @param $smtp_encryption
      * @return void
+     * @deprecated
      */
     public static function saveMailSettings($smtp_fromname, $smtp_fromaddress, $smtp_host, $smtp_port, $smtp_username, $smtp_password, $smtp_encryption)
     {

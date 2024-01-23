@@ -5,7 +5,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<title>{{ env('APP_WORKSPACE') }}</title>
+		<title>{{ app('workspace') }}</title>
 
 		<link rel="icon" type="image/png" href="{{ asset('logo.png') }}"/>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
@@ -25,7 +25,7 @@
                     <div class="auth-header">
                         <img src="{{ asset('logo.png') }}" alt="Logo"/>
 
-                        <h1>{{ env('APP_WORKSPACE') }}</h1>
+                        <h1>{{ app('workspace') }}</h1>
                     </div>
 
                     @if (FlashMessage::hasMsg('error'))

@@ -130,7 +130,7 @@
 				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', asset('img/' . $plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
 				<div class="plant-photo-edit is-pointer" onclick="window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo');"><i class="fas fa-upload fa-lg"></i></div>
 			
-				@if (env('APP_ENABLE_PHOTO_SHARE'))
+				@if (app('enable_media_share', false))
 					<div class="plant-photo-share is-pointer" onclick="window.vue.showSharePhoto({{ $plant->get('id') }}, '{{ $plant->get('name') }}', 'preview');"><i class="fas fa-share fa-lg"></i></div>
 				@endif
 			</div>
@@ -205,7 +205,7 @@
 								<div class="plant-gallery-item-header-label">{{ $photo->get('label') }}</div>
 
 								<div class="plant-gallery-item-header-action">
-									@if (env('APP_ENABLE_PHOTO_SHARE'))
+									@if (app('enable_media_share', false))
 										<a href="javascript:void(0);" onclick="window.vue.showSharePhoto({{ $photo->get('id') }}, '{{ $photo->get('label') }}', 'gallery');"><i class="fas fa-share is-action-share"></i></a>&nbsp;
 									@endif
 
@@ -236,9 +236,9 @@
 
 <div class="columns plant-column">
 	<div class="column is-full">
-		@if (env('APP_ENABLEHISTORY'))
+		@if (app('history_enable'))
 		<span>
-			<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ env('APP_HISTORY_NAME') }}</a>&nbsp;
+			<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ app('history_name') }}</a>&nbsp;
 		</span>
 		@endif
 

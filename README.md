@@ -103,6 +103,7 @@ Set these in your docker-compose.yml file:
 | APP_CRON_MAIL_LIMIT            |                                                        | 5                    |   Yes    |
 | APP_ENABLE_HISTORY             | Enable the history section of the application          | "true"               |   Yes    |
 | APP_HISTORY_NAME               | Name for the history section                           | "History"            |   Yes    |
+| APP_ENABLE_PHOTO_SHARE         | Whether photo sharing shall be activated               | "false"              |   Yes    |
 | PHOTO_RESIZE_FACTOR_DEFAULT    |                                                        | 1.0                  |   Yes    |
 | PHOTO_RESIZE_FACTOR_1          |                                                        | 0.5                  |   Yes    |
 | PHOTO_RESIZE_FACTOR_2          |                                                        | 0.4                  |   Yes    |
@@ -234,6 +235,33 @@ After saving the file you can now let the product create all neccessary tables v
 php asatru migrate:fresh
 ```
 
+Now you need to insert your initial app settings profile into the database. These settings can be later adjusted in the admin dashboard.
+```sql
+INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, created_at) VALUES (
+    NULL, 
+    'My workspace name', 
+    'en', 
+    1, 
+    1, 
+    5, 
+    1, 
+    0, 
+    1, 
+    'History', 
+    0, 
+    'a-secret-pw', 
+    null, 
+    '', 
+    '', 
+    '', 
+    587, 
+    '', 
+    '', 
+    'tls', 
+    CURRENT_TIMESTAMP
+)
+```
+
 You might now want to start your web server to host the application. If you want to quickly use the inbuilt webserver
 you can start it via:
 
@@ -301,7 +329,7 @@ Additionally you might want to build the <a href="https://github.com/danielbrend
 
 ## Cronjobs
 
-Cronjobs are used to regularly execute a specific task. For each cronjob you need to set the cronjob parameter with your token set via APP_CRONPW. The following cronjobs are available:
+Cronjobs are used to regularly execute a specific task. For each cronjob you need to set the cronjob parameter with your token set via `AppModel.cronjob_pw`. The following cronjobs are available:
 
 ```sh
 # Used to inform users about overdue tasks. Should be called multiple times per day.
