@@ -103,6 +103,7 @@ Set these in your docker-compose.yml file:
 | APP_CRON_MAIL_LIMIT            |                                                        | 5                    |   Yes    |
 | APP_ENABLE_HISTORY             | Enable the history section of the application          | "true"               |   Yes    |
 | APP_HISTORY_NAME               | Name for the history section                           | "History"            |   Yes    |
+| APP_ENABLE_PHOTO_SHARE         | Whether photo sharing shall be activated               | "false"              |   Yes    |
 | PHOTO_RESIZE_FACTOR_DEFAULT    |                                                        | 1.0                  |   Yes    |
 | PHOTO_RESIZE_FACTOR_1          |                                                        | 0.5                  |   Yes    |
 | PHOTO_RESIZE_FACTOR_2          |                                                        | 0.4                  |   Yes    |
