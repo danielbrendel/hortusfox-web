@@ -1,7 +1,7 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item navbar-item-brand is-font-title" href="{{ url('/') }}">
-            <img src="{{ asset('logo.png') }}"/>&nbsp;{{ env('APP_WORKSPACE') }}
+            <img src="{{ asset('logo.png') }}"/>&nbsp;{{ app('workspace') }}
         </a>
 
         <a id="burger-button" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -39,7 +39,7 @@
                 </a>
             </div>
 
-            @if (env('APP_ENABLECHAT'))
+            @if (app('chat_enable'))
             <div class="navbar-item">
                 <a href="{{ url('/chat') }}" class="notification-badge">
                     <i class="fas fa-comments" title="{{ __('app.chat') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.chat') }}</span>
@@ -55,10 +55,10 @@
             </div>
             @endif
             
-            @if (env('APP_ENABLEHISTORY'))
+            @if (app('history_enable'))
             <div class="navbar-item">
                 <a href="{{ url('/plants/history') }}">
-                    <i class="fas fa-history" title="{{ env('APP_HISTORY_NAME') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ env('APP_HISTORY_NAME') }}</span>
+                    <i class="fas fa-history" title="{{ app('history_name') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ app('history_name') }}</span>
                 </a>
             </div>
             @endif

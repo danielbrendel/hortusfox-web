@@ -23,6 +23,8 @@ class BaseController extends Asatru\Controller\Controller {
 			$this->layout = $layout;
 		}
 
+		app_mail_config();
+
 		$auth_user = UserModel::getAuthUser();
 		if (!$auth_user) {
 			$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -46,7 +48,7 @@ class BaseController extends Asatru\Controller\Controller {
 			if ((is_string($auth_user->get('lang'))) && (strlen($auth_user->get('lang')) > 0)) {
 				UtilsModule::setLanguage($auth_user->get('lang'));
 			} else {
-				$lang = env('APP_LANG', 'en');
+				$lang = app('language', env('APP_LANG', 'en'));
 				if (($lang !== null) && (is_string($lang))) {
 					UtilsModule::setLanguage($lang);
 				}

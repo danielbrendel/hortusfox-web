@@ -22,7 +22,7 @@
         <div class="field">
             <label class="label">{{ __('app.workspace') }}</label>
             <div class="control">
-                <input type="text" class="input" name="workspace" value="{{ env('APP_WORKSPACE') }}">
+                <input type="text" class="input" name="workspace" value="{{ app('workspace') }}">
             </div>
         </div>
 
@@ -31,7 +31,7 @@
             <div class="control">
                 <select class="input" name="lang">
                     @foreach (UtilsModule::getLanguageList() as $lang)
-                        <option value="{{ $lang['ident'] }}" {{ (env('APP_LANG') === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
+                        <option value="{{ $lang['ident'] }}" {{ (app('language') === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
                     @endforeach
                 </select>
             </div>
@@ -39,58 +39,58 @@
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" class="checkbox" name="scroller" value="1" {{ (env('APP_ENABLESCROLLER')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_scroller') }}</span>
+                <input type="checkbox" class="checkbox" name="scroller" value="1" {{ (app('scroller')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_scroller') }}</span>
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" class="checkbox" name="enablechat" value="1" {{ (env('APP_ENABLECHAT')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_chat') }}</span>
+                <input type="checkbox" class="checkbox" name="enablechat" value="1" {{ (app('chat_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_chat') }}</span>
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.online_time_limit') }}</label>
             <div class="control">
-                <input type="number" class="input" name="onlinetimelimit" value="{{ env('APP_ONLINEMINUTELIMIT') }}" required>
+                <input type="number" class="input" name="onlinetimelimit" value="{{ app('chat_timelimit') }}" required>
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" class="checkbox" name="chatonlineusers" value="1" {{ (env('APP_SHOWCHATONLINEUSERS')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.show_chat_onlineusers') }}</span>
+                <input type="checkbox" class="checkbox" name="chatonlineusers" value="1" {{ (app('chat_showusers')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.show_chat_onlineusers') }}</span>
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" class="checkbox" name="chattypingindicator" value="1" {{ (env('APP_SHOWCHATTYPINGINDICATOR')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.show_chat_typingindicator') }}</span>
+                <input type="checkbox" class="checkbox" name="chattypingindicator" value="1" {{ (app('chat_indicator')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.show_chat_typingindicator') }}</span>
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" class="checkbox" name="enablehistory" value="1" {{ (env('APP_ENABLEHISTORY')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_history') }}</span>
+                <input type="checkbox" class="checkbox" name="enablehistory" value="1" {{ (app('history_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_history') }}</span>
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.history_name') }}</label>
             <div class="control">
-                <input type="text" class="input" name="history_name" value="{{ env('APP_HISTORY_NAME') }}">
+                <input type="text" class="input" name="history_name" value="{{ app('history_name') }}">
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" class="checkbox" name="enablephotoshare" value="1" {{ (env('APP_ENABLE_PHOTO_SHARE')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_photo_share') }}</span>
+                <input type="checkbox" class="checkbox" name="enablephotoshare" value="1" {{ (app('enable_media_share')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_photo_share') }}</span>
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.cronpw') }}</label>
             <div class="control">
-                <input type="text" class="input" name="cronpw" value="{{ ((env('APP_CRONPW') !== null) ? env('APP_CRONPW') : '') }}">
+                <input type="text" class="input" name="cronpw" value="{{ ((app('cronjob_pw') !== null) ? app('cronjob_pw') : '') }}">
             </div>
         </div>
 
@@ -145,7 +145,7 @@
         <div class="field">
             <label class="label">{{ __('app.background_overlay_alpha') }}</label>
             <div class="control">
-                <input type="text" class="input" name="overlayalpha" value="{{ ((env('APP_OVERLAYALPHA')) ? env('APP_OVERLAYALPHA') : '0.5') }}" required>
+                <input type="text" class="input" name="overlayalpha" value="{{ ((app('overlay_alpha')) ? app('overlay_alpha') : '0.5') }}" required>
             </div>
         </div>
 
@@ -240,49 +240,49 @@
         <div class="field">
             <label class="label">{{ __('app.smtp_fromname') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_fromname" value="{{ env('SMTP_FROMNAME') }}">
+                <input type="text" class="input" name="smtp_fromname" value="{{ app('smtp_fromname') }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_fromaddress') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_fromaddress" value="{{ env('SMTP_FROMADDRESS') }}">
+                <input type="text" class="input" name="smtp_fromaddress" value="{{ app('smtp_fromaddress') }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_host') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_host" value="{{ env('SMTP_HOST') }}">
+                <input type="text" class="input" name="smtp_host" value="{{ app('smtp_host') }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_port') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_port" value="{{ env('SMTP_PORT') }}">
+                <input type="text" class="input" name="smtp_port" value="{{ app('smtp_port') }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_username') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_username" value="{{ env('SMTP_USERNAME') }}">
+                <input type="text" class="input" name="smtp_username" value="{{ app('smtp_username') }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_password') }}</label>
             <div class="control">
-                <input type="password" class="input" name="smtp_password" value="{{ env('SMTP_PASSWORD') }}">
+                <input type="password" class="input" name="smtp_password" value="{{ app('smtp_password') }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_encryption') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_encryption" value="{{ env('SMTP_ENCRYPTION') }}">
+                <input type="text" class="input" name="smtp_encryption" value="{{ app('smtp_encryption') }}">
             </div>
         </div>
 

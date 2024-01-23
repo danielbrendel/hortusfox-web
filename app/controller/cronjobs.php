@@ -11,12 +11,12 @@ class CronjobsController extends BaseController {
 	 */
     public function __construct()
     {
-        if (env('APP_CRONPW') === null) {
+        if (app('cronjob_pw') === null) {
             http_response_code(500);
-            exit('Please set APP_CRONPW to a proper authentication token');
+            exit('Please set cronjob_pw to a proper authentication token');
         }
 
-        if ((!isset($_GET['cronpw'])) || ($_GET['cronpw'] !== env('APP_CRONPW'))) {
+        if ((!isset($_GET['cronpw'])) || ($_GET['cronpw'] !== app('cronjob_pw'))) {
             http_response_code(403);
             exit();
         }

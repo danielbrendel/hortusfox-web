@@ -329,7 +329,7 @@ class PlantsController extends BaseController {
 	 */
 	public function view_history($request)
 	{
-		if (!env('APP_ENABLEHISTORY')) {
+		if (!app('history_enable')) {
 			return redirect('/');
 		}
 
