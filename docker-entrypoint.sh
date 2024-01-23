@@ -84,7 +84,25 @@ create_environment_file() {
 EOF
 }
 
-# Function to check if the admin user exists
+# Function to check if initial settings were created and add if not
+add_initial_settings_if_missing() {
+    local settings_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM AppModel WHERE id=1;")
+    if [[ $settings_count -gt 0 ]]; then
+        echo "App settings profile already exists. Skipping creation."
+    else
+        echo "App settings profile does not exist. Creating..."
+        create_app_settings
+    fi
+}
+
+# Function to create initial settings
+create_app_settings() {
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', $APP_ENABLE_SCROLLER, $APP_ENABLE_CHAT, $APP_ONLINE_MINUTE_LIMIT, $APP_SHOW_CHAT_ONLINE_USERS, $APP_SHOW_CHAT_TYPING_INDICATOR, $APP_ENABLE_HISTORY, '$APP_HISTORY_NAME', $APP_ENABLE_PHOTO_SHARE, '$APP_CRON_PW', $APP_OVERLAY_ALPHA, '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', CURRENT_TIMESTAMP);"
+
+    echo "App settings profile created."
+}
+
+# Function to check if the admin user exists and add if not
 add_admin_user_if_missing() {
     local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM users WHERE email='$ADMIN_EMAIL';")
     if [[ $user_count -gt 0 ]]; then
@@ -152,6 +170,9 @@ else
     echo "Running full database migrations..."
     php asatru migrate:fresh
 fi
+
+# Check if app settings profile exists and create it if not.
+add_initial_settings_if_missing
 
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing
