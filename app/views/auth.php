@@ -81,7 +81,7 @@
 
                             <div class="field">
                                 <div class="control">
-                                    <input type="email" class="input" name="email" required>
+                                    <input type="email" class="input" name="email" placeholder="{{ __('app.restore_password_email_placeholder') }}" required>
                                 </div>
                             </div>
                         </form>

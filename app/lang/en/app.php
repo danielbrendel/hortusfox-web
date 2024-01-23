@@ -241,5 +241,6 @@ return [
 	'mail_share_photo' => 'Notes on your shared photo',
 	'mail_share_photo_title' => 'Your photo was shared',
 	'mail_share_photo_hint' => 'Your photo has been successfully shared!<br/><br/>Link to photo: {url_photo}<br/>Removal link: {url_removal}',
-	'enable_photo_share' => 'Enable photo sharing'
+	'enable_photo_share' => 'Enable photo sharing',
+	'restore_password_email_placeholder' => 'Enter your E-Mail address'
 ];
