@@ -37,9 +37,8 @@ services:
       DB_PORT: 3306
       DB_DATABASE: hortusfox
       DB_USERNAME: root
-      DB_CHARSET: "utf8mb4"
-      DB_USER: root
       DB_PASSWORD: my-secret-pw
+      DB_CHARSET: "utf8mb4"
       SMTP_FROMNAME: "Test"
       SMTP_FROMADDRESS: "test@domain.tld"
       SMTP_HOST: ""
