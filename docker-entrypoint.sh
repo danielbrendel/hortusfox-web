@@ -182,7 +182,7 @@ cp /tmp/img/* /var/www/html/public/img
 
 # Set permissions to folders for file upload
 chown -R www-data:www-data /var/www/html/public/img
-chmod -R 755 /var/www/html/public/img
+chmod 755 /var/www/html/public/img
 
 # Set permissions to folders for logs
 chown -R www-data:www-data /var/www/html/app/logs
