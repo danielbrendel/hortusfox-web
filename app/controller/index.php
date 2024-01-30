@@ -37,6 +37,8 @@ class IndexController extends BaseController {
 		$log = LogModel::getHistory();
 		$stats = UtilsModule::getStats();
 
+		$upcoming_tasks_overview = TasksModel::getTasks(false, 4);
+
 		if ($user->get('show_plants_aoru')) {
 			$last_plants_list = PlantsModel::getLastAddedPlants();
 		} else {
@@ -50,6 +52,7 @@ class IndexController extends BaseController {
 			'locations' => $locs,
 			'log' => $log,
 			'stats' => $stats,
+			'upcoming_tasks_overview' => $upcoming_tasks_overview,
 			'last_plants_list' => $last_plants_list
 		]);
 	}

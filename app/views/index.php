@@ -68,6 +68,45 @@
 	@endforeach
 </div>
 
+@if (count($upcoming_tasks_overview) > 0)
+<div class="upcoming-tasks-overview">
+	<h3>{{ __('app.upcoming_tasks_overview') }}</h3>
+
+	<div class="upcoming-tasks-overview-items">
+		@foreach ($upcoming_tasks_overview as $task)
+			<div class="task" id="task-item-{{ $task->get('id') }}">
+				<a name="task-anchor-{{ $task->get('id') }}"></a>
+
+				<div class="task-header">
+					<div class="task-header-title" id="task-item-title-{{ $task->get('id') }}">{{ $task->get('title') }}</div>
+					<div class="task-header-action"><a href="javascript:void(0);" onclick="window.vue.editTask({{ $task->get('id') }});"><i class="fas fa-edit"></i></a></div>
+				</div>
+
+				<div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{{ ($task->get('description')) ?? 'N/A' }}</pre></div>
+				
+				<div class="task-footer">
+					<div class="task-footer-date">{{ (new Carbon($task->get('created_at')))->diffForHumans() }}</div>
+
+					<div class="task-footer-due" id="task-item-due-{{ $task->get('id') }}">
+						@if ($task->get('due_date') !== null)
+							<span class="{{ ((new DateTime($task->get('due_date'))) < (new DateTime())) ? 'is-task-overdue' : '' }}">{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</span>
+						@endif
+					</div>
+					
+					<div class="task-footer-action">
+						<input type="radio" onclick="window.vue.toggleTaskStatus({{ $task->get('id') }});" {{ ($task->get('done')) ? 'checked' : '' }} /><a href="javascript:void(0);" onclick="window.vue.toggleTaskStatus({{ $task->get('id') }});">&nbsp;{{ __('app.done') }}</a>
+					</div>
+				</div>
+			</div>
+		@endforeach
+	</div>
+
+	<div class="upcoming-tasks-overview-action">
+		<a class="button is-link" href="{{ url('/tasks') }}">{{ __('app.view_more') }}</a>
+	</div>
+</div>
+@endif
+
 <div class="last-added-or-authored-plants">
 	<h3>
 		@if ($user->get('show_plants_aoru'))

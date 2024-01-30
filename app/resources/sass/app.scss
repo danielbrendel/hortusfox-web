@@ -293,6 +293,22 @@ fieldset .field {
     }
 }
 
+.upcoming-tasks-overview {
+    position: relative;
+    text-align: center;
+    margin-bottom: 63px;
+}
+
+.upcoming-tasks-overview h3 {
+    padding-top: 25px;
+    font-size: 2.0em;
+    color: rgb(150, 150, 150);
+}
+
+.upcoming-tasks-overview-items {
+    margin-top: 25px;
+}
+
 .last-added-or-authored-plants {
     margin-top: 20px;
     margin-bottom: 40px;
