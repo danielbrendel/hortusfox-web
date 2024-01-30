@@ -242,5 +242,6 @@ return [
 	'mail_share_photo_title' => 'Your photo was shared',
 	'mail_share_photo_hint' => 'Your photo has been successfully shared!<br/><br/>Link to photo: {url_photo}<br/>Removal link: {url_removal}',
 	'enable_photo_share' => 'Enable photo sharing',
-	'restore_password_email_placeholder' => 'Enter your E-Mail address'
+	'restore_password_email_placeholder' => 'Enter your E-Mail address',
+	'search_for_location_icons' => 'Search for icons <a href="{url}" target="_blank">here</a>.'
 ];

@@ -740,10 +740,18 @@
 
 							<div class="field">
 								<label class="label">{{ __('app.icon') }}</label>
-								<div class="control">
-									<input type="text" class="input" name="icon" required>
+								<div class="control has-icons-right">
+									<input type="text" class="input" name="icon" value="fas fa-leaf" oninput="document.getElementById('create-new-location-icon-preview').className = this.value;" required>
+
+									<span class="icon is-small is-right">
+										<i class="fas fa-leaf" id="create-new-location-icon-preview"></i>
+									</span>
 								</div>
 							</div>
+
+							<p class="form-paragraph-modal">
+								{!! __('app.search_for_location_icons', ['url' => 'https://fontawesome.com/v5/search?m=free']) !!}
+							</p>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
