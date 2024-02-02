@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielbrendel/dnyAsatruPHP-Framework.git",
-                "reference": "3ae233f152bd97e0ef4e1437b9bd66c7c11da71e"
+                "reference": "3022cf1093389843be6dae595968dbe2ea207952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielbrendel/dnyAsatruPHP-Framework/zipball/3ae233f152bd97e0ef4e1437b9bd66c7c11da71e",
-                "reference": "3ae233f152bd97e0ef4e1437b9bd66c7c11da71e",
+                "url": "https://api.github.com/repos/danielbrendel/dnyAsatruPHP-Framework/zipball/3022cf1093389843be6dae595968dbe2ea207952",
+                "reference": "3022cf1093389843be6dae595968dbe2ea207952",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "issues": "https://github.com/danielbrendel/dnyAsatruPHP-Framework/issues",
                 "source": "https://github.com/danielbrendel/dnyAsatruPHP-Framework/tree/v1.0"
             },
-            "time": "2024-01-22T23:20:23+00:00"
+            "time": "2024-02-01T14:31:41+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -249,16 +249,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.72.1",
+            "version": "2.72.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "2b3b3db0a2d0556a177392ff1a3bf5608fa09f78"
+                "reference": "0c6fd108360c562f6e4fd1dedb8233b423e91c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/2b3b3db0a2d0556a177392ff1a3bf5608fa09f78",
-                "reference": "2b3b3db0a2d0556a177392ff1a3bf5608fa09f78",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/0c6fd108360c562f6e4fd1dedb8233b423e91c83",
+                "reference": "0c6fd108360c562f6e4fd1dedb8233b423e91c83",
                 "shasum": ""
             },
             "require": {
@@ -352,7 +352,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-08T23:47:49+00:00"
+            "time": "2024-01-25T10:35:09+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -1953,16 +1953,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v6.4.2",
+            "version": "v6.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "a2ab2ec1a462e53016de8e8d5e8912bfd62ea681"
+                "reference": "637c51191b6b184184bbf98937702bcf554f7d04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/a2ab2ec1a462e53016de8e8d5e8912bfd62ea681",
-                "reference": "a2ab2ec1a462e53016de8e8d5e8912bfd62ea681",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/637c51191b6b184184bbf98937702bcf554f7d04",
+                "reference": "637c51191b6b184184bbf98937702bcf554f7d04",
                 "shasum": ""
             },
             "require": {
@@ -1985,7 +1985,7 @@
                 "symfony/translation-implementation": "2.3|3.0"
             },
             "require-dev": {
-                "nikic/php-parser": "^4.13",
+                "nikic/php-parser": "^4.18|^5.0",
                 "psr/log": "^1|^2|^3",
                 "symfony/config": "^5.4|^6.0|^7.0",
                 "symfony/console": "^5.4|^6.0|^7.0",
@@ -2028,7 +2028,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v6.4.2"
+                "source": "https://github.com/symfony/translation/tree/v6.4.3"
             },
             "funding": [
                 {
@@ -2044,7 +2044,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-18T09:25:29+00:00"
+            "time": "2024-01-29T13:11:52+00:00"
         },
         {
             "name": "symfony/translation-contracts",
