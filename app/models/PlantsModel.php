@@ -9,6 +9,7 @@
      */ 
     class PlantsModel extends \Asatru\Database\Model {
         const PLANT_STATE_GOOD = 'in_good_standing';
+        const PLANT_LONG_TEXT_THRESHOLD = 22;
 
         static $sorting_list = [
             'name',

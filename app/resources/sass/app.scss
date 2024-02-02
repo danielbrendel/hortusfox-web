@@ -455,6 +455,17 @@ fieldset .field {
     padding-top: 7px;
 }
 
+.plant-card-title-longtext {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    @media screen and (max-width: 552px) {
+        padding-top: 12px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
 .plant-card-title-first {
 }
 
