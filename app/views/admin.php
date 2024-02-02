@@ -89,9 +89,19 @@
 
         <div class="field">
             <label class="label">{{ __('app.cronpw') }}</label>
-            <div class="control">
-                <input type="text" class="input" name="cronpw" value="{{ ((app('cronjob_pw') !== null) ? app('cronjob_pw') : '') }}">
+        </div>
+
+        <div class="field has-addons">
+            <div class="control is-stretched">
+                <input type="text" class="input" name="cronpw" id="cronpw" value="{{ ((app('cronjob_pw') !== null) ? app('cronjob_pw') : '') }}">
             </div>
+            <div class="control">
+                <a class="button is-info" href="javascript:void(0);" onclick="window.vue.generateNewToken(document.getElementById('cronpw'), this);">{{ __('app.generate') }}</a>
+            </div>
+        </div>
+
+        <div class="field belongs-to-previous-field">
+            <small>{{ __('app.generate_cronpw_hint') }}</small>
         </div>
 
         <div class="field">

@@ -55,4 +55,21 @@ class AppModel extends \Asatru\Database\Model {
             throw $e;
         }
     }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public static function generateCronjobToken()
+    {
+        try {
+            $token = md5(random_bytes(55) . date('Y-m-d H:i:s'));
+
+            static::updateSingle('cronjob_pw', $token);
+
+            return $token;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }

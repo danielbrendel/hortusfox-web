@@ -627,6 +627,21 @@ window.vue = new Vue({
             });
         },
 
+        generateNewToken: function(target, button) {
+            let oldTxt = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+            window.vue.ajaxRequest('post', window.location.origin + '/admin/cronjob/token', {}, function(response) {
+                button.innerHTML = oldTxt;
+
+                if (response.code == 200) {
+                    target.value = response.token;
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

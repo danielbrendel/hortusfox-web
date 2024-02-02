@@ -245,5 +245,7 @@ return [
 	'restore_password_email_placeholder' => 'Enter your E-Mail address',
 	'search_for_location_icons' => 'Search for icons <a href="{url}" target="_blank">here</a>.',
 	'upcoming_tasks_overview' => 'Upcoming tasks',
-	'view_more' => 'View more'
+	'view_more' => 'View more',
+	'generate' => 'Generate',
+	'generate_cronpw_hint' => 'Note: Generating a new token will invalidate the current one'
 ];

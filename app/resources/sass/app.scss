@@ -108,6 +108,16 @@ h2 {
     float: right;
 }
 
+.belongs-to-previous-field {
+    position: relative;
+    top: -5px;
+    margin-bottom: 20px !important;
+}
+
+.field small {
+    color: rgb(120, 120, 120);
+}
+
 .form-paragraph-modal a {
     color: rgb(5, 67, 183);
 }

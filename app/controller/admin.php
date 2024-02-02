@@ -348,4 +348,27 @@ class AdminController extends BaseController {
 			return back();
 		}
 	}
+
+	/**
+	 * Handles URL: /admin/cronjob/token
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function generate_cronjob_token($request)
+	{
+		try {
+			$token = AppModel::generateCronjobToken();
+
+			return json([
+				'code' => 200,
+				'token' => $token
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

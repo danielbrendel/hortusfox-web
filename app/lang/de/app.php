@@ -245,5 +245,7 @@ return [
 	'restore_password_email_placeholder' => 'Gib Deine E-Mail Adresse ein',
 	'search_for_location_icons' => 'Suche <a href="{url}" target="_blank">hier</a> nach Symbolen.',
 	'upcoming_tasks_overview' => 'Anstehende Aufgaben',
-	'view_more' => 'Mehr ansehen'
+	'view_more' => 'Mehr ansehen',
+	'generate' => 'Erzeugen',
+	'generate_cronpw_hint' => 'Hinweis: Das Erzeugen eines neuen Tokens macht das aktuelle Token ungültig'
 ];

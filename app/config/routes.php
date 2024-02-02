@@ -87,6 +87,7 @@ return [
     array('/admin/media/background', 'POST', 'admin@upload_media_background'),
     array('/admin/media/overlay/alpha', 'POST', 'admin@save_overlay_alpha'),
     array('/admin/mail/save', 'POST', 'admin@save_mail_settings'),
+    array('/admin/cronjob/token', 'POST', 'admin@generate_cronjob_token'),
 
     /** Cronjob Controller */
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),
