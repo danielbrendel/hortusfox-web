@@ -20,6 +20,8 @@ class CronjobsController extends BaseController {
             http_response_code(403);
             exit();
         }
+
+        app_mail_config();
     }
 
     /**

@@ -52,6 +52,7 @@ class TaskInformerModel extends \Asatru\Database\Model {
                         $mailobj->setRecipient($user->get('email'));
                         $mailobj->setSubject(__('app.mail_info_task_' . $what));
                         $mailobj->setView('mail/task_' . $what, [], ['task' => $task, 'user' => $user]);
+                        $mailobj->setProperties(mail_properties());
                         $mailobj->send();
 
                         static::raw('INSERT INTO `' . self::tableName() . '` (user, task, what) VALUES(?, ?, ?)', [$user->get('id'), $task->get('id'), $what]);

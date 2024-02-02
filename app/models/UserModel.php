@@ -105,6 +105,7 @@ class UserModel extends \Asatru\Database\Model {
             $mailobj->setRecipient($email);
             $mailobj->setSubject(__('app.reset_password'));
             $mailobj->setView('mail/mailreset', [], ['workspace' => app('workspace'), 'token' => $reset_token]);
+            $mailobj->setProperties(mail_properties());
             $mailobj->send();
         } catch (\Exception $e) {
             throw $e;
@@ -445,6 +446,7 @@ class UserModel extends \Asatru\Database\Model {
             $mailobj->setRecipient($email);
             $mailobj->setSubject(__('app.account_created'));
             $mailobj->setView('mail/mailacccreated', [], ['workspace' => app('workspace'), 'password' => $password]);
+            $mailobj->setProperties(mail_properties());
             $mailobj->send();
         } catch (\Exception $e) {
             throw $e;

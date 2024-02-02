@@ -46,6 +46,7 @@ class ApiController extends BaseController {
             $mailobj->setRecipient($user->get('email'));
             $mailobj->setSubject(__('app.mail_share_photo_title'));
             $mailobj->setView('mail/share_photo', [], ['url_photo' => $result->data->url, 'url_removal' => env('APP_SERVICE_URL') . '/api/photo/remove?ident=' . $result->data->ident . '&ret=home']);
+            $mailobj->setProperties(mail_properties());
             $mailobj->send();
 
             return json([

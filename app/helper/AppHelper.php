@@ -22,3 +22,22 @@ function app_mail_config()
     $_ENV['SMTP_PASSWORD'] = app('smtp_password');
     $_ENV['SMTP_ENCRYPTION'] = app('smtp_encryption');
 }
+
+/**
+ * @return array
+ */
+function mail_properties()
+{
+    $result = [];
+
+    if ($_ENV['SMTP_ENCRYPTION'] === 'none') {
+        $_ENV['SMTP_ENCRYPTION'] = 'tls';
+
+        $result = [
+            'SMTPSecure' => false,
+            'SMTPAutoTLS' => false
+        ];
+    }
+
+    return $result;
+}

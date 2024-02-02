@@ -292,7 +292,11 @@
         <div class="field">
             <label class="label">{{ __('app.smtp_encryption') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_encryption" value="{{ app('smtp_encryption') }}">
+                <select class="input" name="smtp_encryption">
+                    @foreach ($mail_encryption_types as $mail_encryption_type)
+                        <option value="{{ $mail_encryption_type }}" {{ (($mail_encryption_type === app('smtp_encryption')) ? 'selected' : '') }}>{{ $mail_encryption_type }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
 

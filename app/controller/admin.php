@@ -30,6 +30,7 @@ class AdminController extends BaseController {
 		$user = UserModel::getAuthUser();
 		$locs = LocationsModel::getAll(false);
         $user_accounts = UserModel::getAll();
+		$mail_encryption_types = AppModel::getMailEncryptionTypes();
 
 		$new_version = null;
 		$current_version = null;
@@ -49,6 +50,7 @@ class AdminController extends BaseController {
 			'user' => $user,
 			'locations' => $locs,
 			'user_accounts' => $user_accounts,
+			'mail_encryption_types' => $mail_encryption_types,
 			'new_version' => $new_version,
 			'current_version' => $current_version
 		]);
