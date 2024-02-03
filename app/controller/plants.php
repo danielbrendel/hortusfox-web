@@ -72,6 +72,30 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/location/{id}/repot
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function set_plants_repotted($request)
+	{
+		try {
+			$user = UserModel::getAuthUser();
+
+			$location = $request->arg('id');
+
+			PlantsModel::updateLastRepotted($location);
+
+			FlashMessage::setMsg('success', __('app.all_plants_repotted'));
+
+			return redirect('/plants/location/' . $location);
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/details/{id}
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

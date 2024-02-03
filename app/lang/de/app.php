@@ -247,5 +247,8 @@ return [
 	'upcoming_tasks_overview' => 'Anstehende Aufgaben',
 	'view_more' => 'Mehr ansehen',
 	'generate' => 'Erzeugen',
-	'generate_cronpw_hint' => 'Hinweis: Das Erzeugen eines neuen Tokens macht das aktuelle Token ungültig'
+	'generate_cronpw_hint' => 'Hinweis: Das Erzeugen eines neuen Tokens macht das aktuelle Token ungültig',
+	'confirmSetAllRepotted' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Umgetopft-Datum auf heute setzen?',
+	'all_plants_repotted' => 'Der Umgetopft-Status der Pflanzen wurde aktualisiert',
+	'set_repotted' => 'Alle auf umgetopft setzen'
 ];

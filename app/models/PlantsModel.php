@@ -442,6 +442,20 @@
         }
 
         /**
+         * @param $location
+         * @return void
+         * @throws \Exception
+         */
+        public static function updateLastRepotted($location)
+        {
+            try {
+                static::raw('UPDATE `' . self::tableName() . '` SET last_repotted = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * @param $plantId
          * @return void
          * @throws \Exception

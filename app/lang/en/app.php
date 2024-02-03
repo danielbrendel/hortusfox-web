@@ -247,5 +247,8 @@ return [
 	'upcoming_tasks_overview' => 'Upcoming tasks',
 	'view_more' => 'View more',
 	'generate' => 'Generate',
-	'generate_cronpw_hint' => 'Note: Generating a new token will invalidate the current one'
+	'generate_cronpw_hint' => 'Note: Generating a new token will invalidate the current one',
+	'confirmSetAllRepotted' => 'Are you sure you want to update the last repotted date of all these plants?',
+	'all_plants_repotted' => 'Last repotted status has been updated for these plants',
+	'set_repotted' => 'Set all repotted'
 ];
