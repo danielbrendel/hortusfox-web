@@ -11,17 +11,18 @@ class LogModel extends \Asatru\Database\Model {
      * @param $target
      * @param $property
      * @param $value
+     * @param $link
      * @return void
      * @throws \Exception
      */
-    public static function addLog($user, $target, $property, $value)
+    public static function addLog($user, $target, $property, $value, $link = null)
     {
         try {
             if ((is_string($value)) && (strlen($value) >= self::LOG_MAX_STRING_LENGTH)) {
                 $value = substr($value, 0, self::LOG_MAX_STRING_LENGTH - 4) . '...';
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (user, target, property, value) VALUES(?, ?, ?, ?)', [$user, $target, $property, $value]);
+            static::raw('INSERT INTO `' . self::tableName() . '` (user, target, property, value, link) VALUES(?, ?, ?, ?, ?)', [$user, $target, $property, $value, $link]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -53,6 +54,7 @@ class LogModel extends \Asatru\Database\Model {
                     'target' => $entry->get('target'),
                     'property' => $entry->get('property'),
                     'value' => $entry->get('value'),
+                    'link' => $entry->get('link'),
                     'date' => $entry->get('created_at')
                 ];
             }

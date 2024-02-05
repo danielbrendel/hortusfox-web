@@ -32,6 +32,7 @@ class LogModel_Migration {
         $this->database->add('target VARCHAR(512) NOT NULL');
         $this->database->add('property VARCHAR(512) NOT NULL');
         $this->database->add('value VARCHAR(1024) NOT NULL');
+        $this->database->add('link VARCHAR(512) NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }

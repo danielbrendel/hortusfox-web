@@ -156,7 +156,13 @@
 
 			<div class="log-content">
 				@foreach ($log as $entry)
-					<div class="log-item">[{{ $entry['date'] }}] ({{ $entry['user'] }}) {{ $entry['property'] }} =&gt; {{ $entry['value'] }} @ {{ $entry['target'] }}</div>
+					<div class="log-item">
+						@if ($entry['link'])
+							<a href="{{ $entry['link'] }}">[{{ $entry['date'] }}] ({{ $entry['user'] }}) {{ $entry['property'] }} =&gt; {{ $entry['value'] }} @ {{ $entry['target'] }}</a>
+						@else
+							[{{ $entry['date'] }}] ({{ $entry['user'] }}) {{ $entry['property'] }} =&gt; {{ $entry['value'] }} @ {{ $entry['target'] }}
+						@endif
+					</div>
 				@endforeach
 			</div>
 		</div>
