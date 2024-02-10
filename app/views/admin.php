@@ -9,7 +9,15 @@
         <li class="admin-tab-users {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'users')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('users');">{{ __('app.users') }}</a></li>
         <li class="admin-tab-locations {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'locations')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('locations');">{{ __('app.locations') }}</a></li>
         <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('mail');">{{ __('app.mail') }}</a></li>
-        <li class="admin-tab-info {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'info')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('info');">{{ __('app.info') }}</a></li>
+        <li class="admin-tab-info {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'info')) ? 'is-active' : ''}}">
+            <a href="javascript:void(0);" onclick="window.vue.selectAdminTab('info');">
+                {{ __('app.info') }}
+                
+                @if (VersionModule::getCachedVersion() > safe_config('version'))
+                    <i class="is-indicator-tab"></i>
+                @endif
+            </a>
+        </li>
     </ul>
 </div>
 

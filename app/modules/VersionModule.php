@@ -4,6 +4,8 @@
  * This class represents your module
  */
 class VersionModule {
+    const CACHED_VERSION_TIME = 86400;
+
     /**
      * @return string
      * @throws \Exception
@@ -36,6 +38,21 @@ class VersionModule {
             }
 
             return $json->version;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public static function getCachedVersion()
+    {
+        try {
+            return CacheModel::remember('software_version', self::CACHED_VERSION_TIME, function() {
+                return VersionModule::getVersion();
+            });
         } catch (\Exception $e) {
             throw $e;
         }

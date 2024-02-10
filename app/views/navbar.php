@@ -78,6 +78,9 @@
                 <a href="{{ url('/admin') }}">
                     <i class="fas fa-cog" title="{{ __('app.admin_area') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.admin_area') }}</span>
                 </a>
+                @if (VersionModule::getCachedVersion() > safe_config('version'))
+                    <span class="is-indicator"></span>
+                @endif
             </div>
             @endif
 

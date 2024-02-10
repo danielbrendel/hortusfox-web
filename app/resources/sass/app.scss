@@ -104,6 +104,32 @@ h2 {
     cursor: pointer;
 }
 
+.is-indicator {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 17px;
+    left: 20px;
+    @media screen and (max-width: 1087px) {
+        top: 10px;
+        left: 22px;
+    }
+    background-color: rgb(223, 50, 50);
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.is-indicator-tab {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    top: -4px;
+    left: -3px;
+    background-color: rgb(223, 50, 50);
+    border-radius: 50%;
+    z-index: 5;
+}
+
 .float-right {
     float: right;
 }
