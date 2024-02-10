@@ -49,7 +49,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 ]);
             }
 
-            LogModel::addLog($user->get('id'), 'inventory', 'add_inventory_item', $name);
+            LogModel::addLog($user->get('id'), 'inventory', 'add_inventory_item', $name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
 
             return $row->get('id');
         } catch (\Exception $e) {
@@ -110,7 +110,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 $user->get('id'), $row->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'edit_inventory_item', $name);
+            LogModel::addLog($user->get('id'), 'inventory', 'edit_inventory_item', $name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -140,7 +140,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 $amount, $user->get('id'), $row->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'increment_inventory_item', $row->get('name'));
+            LogModel::addLog($user->get('id'), 'inventory', 'increment_inventory_item', $row->get('name'), url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
 
             return $amount;
         } catch (\Exception $e) {
@@ -175,7 +175,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 $amount, $user->get('id'), $row->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'decrement_inventory_item', $row->get('name'));
+            LogModel::addLog($user->get('id'), 'inventory', 'decrement_inventory_item', $row->get('name'), url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
 
             return $amount;
         } catch (\Exception $e) {
@@ -220,7 +220,7 @@ class InventoryModel extends \Asatru\Database\Model {
 
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$row->get('id')]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'remove_inventory_item', $row->get('name'));
+            LogModel::addLog($user->get('id'), 'inventory', 'remove_inventory_item', $row->get('name'), url('/inventory'));
         } catch (\Exception $e) {
             throw $e;
         }

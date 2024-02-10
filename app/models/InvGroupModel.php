@@ -71,7 +71,7 @@ class InvGroupModel extends \Asatru\Database\Model {
                 $token, $label
             ]);
 
-            LogModel::addLog($user->get('id'), 'inventory_groups', 'add_group_item', $token . '|' . $label);
+            LogModel::addLog($user->get('id'), 'inventory_groups', 'add_group_item', $token . '|' . $label, url('/inventory'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -109,7 +109,7 @@ class InvGroupModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid column specifier: ' . $what);
             }
 
-            LogModel::addLog($user->get('id'), 'inventory_groups', 'edit_group_item', $id . ':' . $what . '|' . $value);
+            LogModel::addLog($user->get('id'), 'inventory_groups', 'edit_group_item', $id . ':' . $what . '|' . $value, url('/inventory'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -139,7 +139,7 @@ class InvGroupModel extends \Asatru\Database\Model {
 
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$id]);
 
-            LogModel::addLog($user->get('id'), 'inventory_groups', 'remove_group_item', $id);
+            LogModel::addLog($user->get('id'), 'inventory_groups', 'remove_group_item', $id, url('/inventory'));
         } catch (\Exception $e) {
             throw $e;
         }
