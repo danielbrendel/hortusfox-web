@@ -40,7 +40,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 $plantId, $user->get('id'), $file_name . '_thumb.' . $file_ext, $file_name . '.' . $file_ext, $label
             ]);
 
-            LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label);
+            LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label, url('/plants/details/' . $plantId . '#plant-gallery-photo-anchor'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -79,7 +79,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
 
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$photo]);
 
-            LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_gallery_photo', $photo_data->get('label'));
+            LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_gallery_photo', $photo_data->get('label'), url('/plants/details/' . $plant->get('id') . '#plant-gallery-photo-anchor'));
         } catch (\Exception $e) {
             throw $e;
         }

@@ -236,7 +236,7 @@
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
 
-                LogModel::addLog($user->get('id'), $location, 'add_plant', $name);
+                LogModel::addLog($user->get('id'), $location, 'add_plant', $name, url('/plants/details/' . $query->get('id')));
 
                 return $query->get('id');
             } catch (\Exception $e) {
@@ -261,7 +261,7 @@
                 
                 static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [($value !== '#null') ? $value : null, $user->get('id'), $plantId]);
             
-                LogModel::addLog($user->get('id'), $plantId, $attribute, $value);
+                LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -290,7 +290,7 @@
                 
                 static::raw('UPDATE `' . self::tableName() . '` SET scientific_name = ?, knowledge_link = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$text, $link, $user->get('id'), $plantId]);
             
-                LogModel::addLog($user->get('id'), $plantId, 'scientific_name|knowledge_link', $text . '|' . ((strlen($link) > 0) ? $link : 'null'));
+                LogModel::addLog($user->get('id'), $plantId, 'scientific_name|knowledge_link', $text . '|' . ((strlen($link) > 0) ? $link : 'null'), url('/plants/details/' . $plantId));
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -331,7 +331,7 @@
 
                 static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name . '_thumb.' . $file_ext, $user->get('id'), $plantId]);
             
-                LogModel::addLog($user->get('id'), $plantId, $attribute, $value);
+                LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -472,7 +472,7 @@
 
                 static::raw('UPDATE `' . self::tableName() . '` SET history = 1, history_date = CURRENT_TIMESTAMP WHERE id = ?', [$plantId]);
 
-                LogModel::addLog($user->get('id'), $plant->get('name'), 'mark_historical', '');
+                LogModel::addLog($user->get('id'), $plant->get('name'), 'mark_historical', '', url('/plants/history'));
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -495,7 +495,7 @@
 
                 static::raw('UPDATE `' . self::tableName() . '` SET history = 0, history_date = NULL WHERE id = ?', [$plantId]);
 
-                LogModel::addLog($user->get('id'), $plant->get('name'), 'historical_restore', '');
+                LogModel::addLog($user->get('id'), $plant->get('name'), 'historical_restore', '', url('/plants/details/' . $plantId));
             } catch (\Exception $e) {
                 throw $e;
             }
