@@ -21,7 +21,7 @@ class TasksModel extends \Asatru\Database\Model {
             
             static::raw('INSERT INTO `' . self::tableName() . '` (title, description, due_date) VALUES(?, ?, ?)', [$title, $description, $due_date]);
 
-            LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title);
+            LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title, url('/tasks'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -45,7 +45,7 @@ class TasksModel extends \Asatru\Database\Model {
 
             static::raw('UPDATE `' . self::tableName() . '` SET title = ?, description = ?, due_date = ? WHERE id = ?', [$title, $description, $due_date, $taskId]);
 
-            LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title);
+            LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title, url('/tasks#task-anchor-' . $taskId));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -66,7 +66,7 @@ class TasksModel extends \Asatru\Database\Model {
 
             static::raw('UPDATE `' . self::tableName() . '` SET done = 1 WHERE id = ?', [$taskId]);
 
-            LogModel::addLog($user->get('id'), 'tasks', 'set_done', $taskId);
+            LogModel::addLog($user->get('id'), 'tasks', 'set_done', $taskId, url('/tasks'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -87,7 +87,7 @@ class TasksModel extends \Asatru\Database\Model {
 
             static::raw('UPDATE `' . self::tableName() . '` SET done = NOT done WHERE id = ?', [$taskId]);
 
-            LogModel::addLog($user->get('id'), 'tasks', 'toggle_status', $taskId);
+            LogModel::addLog($user->get('id'), 'tasks', 'toggle_status', $taskId, url('/tasks'));
         } catch (\Exception $e) {
             throw $e;
         }
