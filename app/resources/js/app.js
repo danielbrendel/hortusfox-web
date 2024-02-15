@@ -652,6 +652,30 @@ window.vue = new Vue({
             });
         },
 
+        startBackup: function(button, plants, gallery, tasks, inventory) {
+            let oldText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
+
+            window.vue.ajaxRequest('get', window.location.origin + '/export/start', {
+                plants: plants,
+                gallery: gallery,
+                tasks: tasks,
+                inventory: inventory
+            }, function(response) {
+                button.innerHTML = oldText;
+
+                if (response.code == 200) {
+                    let export_result = document.getElementById('export-result');
+                    if (export_result) {
+                        export_result.classList.remove('is-hidden');
+
+                        export_result.children[1].href = response.file;
+                        export_result.children[1].innerHTML = response.file;
+                    }
+                }
+            });
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

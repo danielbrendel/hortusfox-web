@@ -4,8 +4,6 @@
  * This class represents your controller
  */
 class BackupController extends BaseController {
-    const INDEX_LAYOUT = 'layout';
-
     /**
 	 * Perform base initialization
 	 * 
@@ -13,7 +11,12 @@ class BackupController extends BaseController {
 	 */
 	public function __construct()
 	{
-        parent::__construct(self::INDEX_LAYOUT);
+        parent::__construct();
+
+        if (!UserModel::isCurrentlyAdmin()) {
+            header('Location: /');
+            exit();
+        }
 	}
 
     /**
@@ -34,7 +37,7 @@ class BackupController extends BaseController {
 
             return json([
                 'code' => 200,
-                'file' => asset('/backup/' . $file_name)
+                'file' => asset('backup/' . $file_name)
             ]);
         } catch (\Exception $e) {
             return json([

@@ -320,6 +320,37 @@
 <div class="admin-backup {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'backup')) ? 'is-hidden' : ''}}">
     <h2>{{ __('app.backup') }}</h2>
 
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="plants" value="1" checked/>&nbsp;<span>{{ __('app.plants') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="gallery" value="1" checked/>&nbsp;<span>{{ __('app.gallery') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="tasks" value="1" checked/>&nbsp;<span>{{ __('app.tasks') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="inventory" value="1" checked/>&nbsp;<span>{{ __('app.inventory') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button type="button" class="button is-link" onclick="window.vue.startBackup(this, document.getElementById('plants').checked, document.getElementById('gallery').checked, document.getElementById('tasks').checked, document.getElementById('inventory').checked);">{{ __('app.export') }}</button>
+        </div>
+    </div>
+
+    <div class="admin-backup-export-result is-hidden" id="export-result"><i class="fas fa-download"></i>&nbsp;<a href="{{ url('/') }}"></a></div>
 </div>
 
 <div class="admin-info {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'info')) ? 'is-hidden' : ''}}">

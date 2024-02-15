@@ -1654,6 +1654,30 @@ fieldset .field {
     background-color: rgb(50, 50, 50);
 }
 
+.admin-backup label, .admin-backup span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-backup-export-result {
+    position: relative;
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(185, 255, 164);
+}
+
+.admin-backup-export-result i {
+    color: rgb(50, 50, 50);
+}
+
+.admin-backup-export-result a {
+    color: rgb(15, 150, 43);
+}
+
+.admin-backup-export-result a:hover {
+    color: rgb(15, 150, 43);
+    text-decoration: underline;
+}
+
 .admin-info {
     position: relative;
 }

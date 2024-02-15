@@ -251,5 +251,7 @@ return [
 	'confirmSetAllRepotted' => 'Are you sure you want to update the last repotted date of all these plants?',
 	'all_plants_repotted' => 'Last repotted status has been updated for these plants',
 	'set_repotted' => 'Set all repotted',
-	'backup' => 'Backup'
+	'backup' => 'Backup',
+	'gallery' => 'Gallery',
+	'export' => 'Export'
 ];
