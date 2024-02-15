@@ -565,7 +565,7 @@ window.vue = new Vue({
         },
 
         selectAdminTab: function(tab) {
-            const tabs = ['environment', 'media', 'users', 'locations', 'mail', 'info'];
+            const tabs = ['environment', 'media', 'users', 'locations', 'mail', 'backup', 'info'];
 
             let selEl = document.querySelector('.admin-' + tab);
             if (selEl) {

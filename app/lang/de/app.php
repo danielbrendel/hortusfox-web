@@ -250,5 +250,6 @@ return [
 	'generate_cronpw_hint' => 'Hinweis: Das Erzeugen eines neuen Tokens macht das aktuelle Token ungültig',
 	'confirmSetAllRepotted' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Umgetopft-Datum auf heute setzen?',
 	'all_plants_repotted' => 'Der Umgetopft-Status der Pflanzen wurde aktualisiert',
-	'set_repotted' => 'Alle auf umgetopft setzen'
+	'set_repotted' => 'Alle auf umgetopft setzen',
+	'backup' => 'Backup'
 ];

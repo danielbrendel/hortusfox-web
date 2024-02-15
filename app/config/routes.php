@@ -98,6 +98,9 @@ return [
     array('/api/photo/share', 'POST', 'api@share_photo'),
     array('/api/photo/remove', 'ANY', 'api@remove_photo'),
 
+    /** Backup Controller */
+    array('/export/start', 'GET', 'backup@start'),
+
     /** Error Controller */
     array('$404', 'ANY', 'error404@index')
 ];
