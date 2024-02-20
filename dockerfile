@@ -63,7 +63,7 @@ VOLUME ["/var/www/html/public/img"]
 VOLUME ["/var/www/html/app/logs"]
 
 # Create volume for backups
-VOLUME ["/var/www/html/app/backup"]
+VOLUME ["/var/www/html/public/backup"]
 
 # Copy the PHP overrides
 COPY ./99-php.ini /usr/local/etc/php/conf.d/
