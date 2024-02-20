@@ -8,6 +8,7 @@ services:
     volumes:
       - app_images:/var/www/html/public/img
       - app_logs:/var/www/html/app/logs
+      - app_backup:/var/www/html/public/backup
     environment:
       APP_ADMIN_EMAIL: "admin@example.com"
       APP_ADMIN_PASSWORD: "password"
@@ -67,3 +68,4 @@ volumes:
   db_data:
   app_images:
   app_logs:
+  app_backup:

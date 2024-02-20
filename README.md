@@ -52,7 +52,7 @@ users have taken. The system features collaborative management, so you can manag
 - ⚙️ Profile management
 - 🔑 Admin dashboard
 - 📢 Reminders
-- 💾 Import/Export
+- 💾 Backups
 
 ## Resources
 

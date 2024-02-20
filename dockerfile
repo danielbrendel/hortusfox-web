@@ -26,6 +26,7 @@ RUN apt-get update \
         libjpeg-dev \
         libonig-dev \
         libxml2-dev \
+        libzip-dev \
         zip \
         unzip \
         git \
@@ -39,6 +40,7 @@ RUN apt-get update \
         exif \
         pcntl \
         bcmath \
+        zip \
 # Configure and install GD
  && docker-php-ext-configure gd --with-jpeg \
  && docker-php-ext-install gd
@@ -59,6 +61,9 @@ VOLUME ["/var/www/html/public/img"]
 
 # Create volume for logs
 VOLUME ["/var/www/html/app/logs"]
+
+# Create volume for backups
+VOLUME ["/var/www/html/app/backup"]
 
 # Copy the PHP overrides
 COPY ./99-php.ini /usr/local/etc/php/conf.d/
