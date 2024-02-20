@@ -656,7 +656,7 @@ window.vue = new Vue({
             let oldText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
 
-            window.vue.ajaxRequest('get', window.location.origin + '/export/start', {
+            window.vue.ajaxRequest('post', window.location.origin + '/export/start', {
                 plants: plants,
                 gallery: gallery,
                 tasks: tasks,

@@ -29,10 +29,10 @@ class BackupController extends BaseController {
     {
         try {
             $file_name = BackupModule::start([
-                'plants' => true,
-                'gallery' => true,
-                'tasks' => true,
-                'inventory' => true
+                'plants' => (bool)$request->params()->query('plants', 1),
+                'gallery' => (bool)$request->params()->query('gallery', 1),
+                'tasks' => (bool)$request->params()->query('tasks', 1),
+                'inventory' => (bool)$request->params()->query('inventory', 1)
             ]);
 
             return json([
