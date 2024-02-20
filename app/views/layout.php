@@ -9,6 +9,8 @@
 		<link rel="icon" type="image/png" href="{{ asset('logo.png') }}"/>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
 
+		<link rel="manifest" href="{{ asset('manifest.json') }}"/>
+
 		@if (env('APP_DEBUG'))
 		<script src="{{ asset('js/vue.js') }}"></script>
 		@else
@@ -852,6 +854,20 @@
 
 		<script src="{{ asset('js/app.js', true) }}"></script>
 		<script>
+			@if (app('pwa_enable'))
+			window.onload = function() {
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('./serviceworker.js', { scope: '/' })
+                        .then(function(registration){
+                            window.serviceWorkerEnabled = true;
+                        }).catch(function(err){
+                            window.serviceWorkerEnabled = false;
+                            console.error(err);
+                        });
+                }
+            };
+			@endif
+
 			document.addEventListener('DOMContentLoaded', function(){
 				@foreach (LocationsModel::getAll() as $location)
 				window.vue.comboLocation.push({ ident: {{ $location->get('id') }}, label: '{{ $location->get('name') }}'});

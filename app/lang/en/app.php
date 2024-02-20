@@ -253,5 +253,6 @@ return [
 	'set_repotted' => 'Set all repotted',
 	'backup' => 'Backup',
 	'gallery' => 'Gallery',
-	'export' => 'Export'
+	'export' => 'Export',
+	'pwa_enable' => 'Enable PWA support'
 ];

@@ -74,6 +74,36 @@ class AppModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $workspace
+     * @return void
+     * @throws \Exception
+     */
+    public static function writeManifest($workspace)
+    {
+        try {
+            $manifest = [
+                'name' => $workspace,
+                'short_name' => $workspace,
+                'icons' => [
+                    [
+                        'src' => '/logo.png',
+                        'sizes' => '256x256',
+                        'type' => 'image/png'
+                    ]
+                ],
+                'start_url' => '/',
+                'display' => 'fullscreen',
+                'background_color' => 'white',
+                'theme_color' => 'white'
+            ];
+
+            file_put_contents(public_path() . '/manifest.json', json_encode($manifest));
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return array
      */
     public static function getMailEncryptionTypes()

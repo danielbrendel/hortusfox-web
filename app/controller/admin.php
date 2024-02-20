@@ -76,6 +76,7 @@ class AdminController extends BaseController {
 			$history_name = $request->params()->query('history_name', app('history_name'));
 			$enablephotoshare = (bool)$request->params()->query('enablephotoshare', 0);
 			$cronpw = $request->params()->query('cronpw', app('cronjob_pw'));
+			$enablepwa = (bool)$request->params()->query('enablepwa', 0);
 
 			$set = [
 				'workspace' => $workspace,
@@ -88,10 +89,15 @@ class AdminController extends BaseController {
 				'history_enable' => $enablehistory,
 				'history_name' => $history_name,
 				'enable_media_share' => $enablephotoshare,
-				'cronjob_pw' => $cronpw
+				'cronjob_pw' => $cronpw,
+				'pwa_enable' => $enablepwa
 			];
 
 			AppModel::updateSet($set);
+
+			if ($enablepwa) {
+				AppModel::writeManifest($workspace);
+			}
 			
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 

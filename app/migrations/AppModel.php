@@ -47,6 +47,7 @@ class AppModel_Migration {
         $this->database->add('smtp_username VARCHAR(512) NULL');
         $this->database->add('smtp_password VARCHAR(512) NULL');
         $this->database->add('smtp_encryption VARCHAR(512) NOT NULL DEFAULT \'tls\'');
+        $this->database->add('pwa_enable BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }

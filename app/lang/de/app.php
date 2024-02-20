@@ -253,5 +253,6 @@ return [
 	'set_repotted' => 'Alle auf umgetopft setzen',
 	'backup' => 'Backup',
 	'gallery' => 'Galerie',
-	'export' => 'Exportieren'
+	'export' => 'Exportieren',
+	'pwa_enable' => 'PWA Unterstützung aktivieren'
 ];

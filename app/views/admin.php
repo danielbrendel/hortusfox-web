@@ -54,6 +54,12 @@
 
         <div class="field">
             <div class="control">
+                <input type="checkbox" class="checkbox" name="enablepwa" value="1" {{ (app('pwa_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.pwa_enable') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
                 <input type="checkbox" class="checkbox" name="enablechat" value="1" {{ (app('chat_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_chat') }}</span>
             </div>
         </div>
