@@ -99,7 +99,8 @@ return [
     array('/api/photo/remove', 'ANY', 'api@remove_photo'),
 
     /** Backup Controller */
-    array('/export/start', 'GET', 'backup@start'),
+    array('/export/start', 'GET', 'backup@export'),
+    array('/import/start', 'POST', 'backup@import'),
 
     /** Error Controller */
     array('$404', 'ANY', 'error404@index')

@@ -1529,7 +1529,7 @@ fieldset .field {
     color: rgb(150, 150, 150);
 }
 
-.admin-media input {
+.admin-media input, .admin-backup input {
     color: rgb(150, 150, 150);
     background-color: rgb(50, 50, 50);
 }
@@ -1675,22 +1675,23 @@ fieldset .field {
     color: rgb(150, 150, 150);
 }
 
-.admin-backup-export-result {
+.admin-backup-result {
     position: relative;
     padding: 10px;
+    border-radius: 5px;
     border: 1px solid rgb(255, 255, 255);
     background-color: rgb(185, 255, 164);
 }
 
-.admin-backup-export-result i {
+.admin-backup-result i {
     color: rgb(50, 50, 50);
 }
 
-.admin-backup-export-result a {
+.admin-backup-result a {
     color: rgb(15, 150, 43);
 }
 
-.admin-backup-export-result a:hover {
+.admin-backup-result a:hover {
     color: rgb(15, 150, 43);
     text-decoration: underline;
 }

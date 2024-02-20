@@ -20,12 +20,12 @@ class BackupController extends BaseController {
 	}
 
     /**
-	 * Handles URL: /backup/start
+	 * Handles URL: /backup/export
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public function start($request)
+    public function export($request)
     {
         try {
             $file_name = BackupModule::start([
@@ -38,6 +38,33 @@ class BackupController extends BaseController {
             return json([
                 'code' => 200,
                 'file' => asset('backup/' . $file_name)
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /backup/import
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function import($request)
+    {
+        try {
+            $file_name = ImportModule::start([
+                'plants' => true,
+                'gallery' => true,
+                'tasks' => true,
+                'inventory' => true
+            ]);
+
+            return json([
+                'code' => 200
             ]);
         } catch (\Exception $e) {
             return json([

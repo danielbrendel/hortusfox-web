@@ -356,7 +356,49 @@
         </div>
     </div>
 
-    <div class="admin-backup-export-result is-hidden" id="export-result"><i class="fas fa-download"></i>&nbsp;<a href="{{ url('/') }}"></a></div>
+    <div class="admin-backup-result is-hidden" id="export-result"><i class="fas fa-download"></i>&nbsp;<a href="{{ url('/') }}"></a></div>
+
+    <hr/>
+
+    <h2>{{ __('app.import') }}</h2>
+
+    <div class="field">
+        <div class="control">
+            <input type="file" class="input" id="backup_file" accept=".zip"/>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="plantsi" value="1" checked/>&nbsp;<span>{{ __('app.plants') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="galleryi" value="1" checked/>&nbsp;<span>{{ __('app.gallery') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="tasksi" value="1" checked/>&nbsp;<span>{{ __('app.tasks') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="checkbox" id="inventoryi" value="1" checked/>&nbsp;<span>{{ __('app.inventory') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button type="button" class="button is-link" onclick="window.vue.startImport(this, document.getElementById('backup_file'), document.getElementById('plantsi').checked, document.getElementById('galleryi').checked, document.getElementById('tasksi').checked, document.getElementById('inventoryi').checked);">{{ __('app.import') }}</button>
+        </div>
+    </div>
+
+    <div class="admin-backup-result is-hidden" id="import-result">{{ __('app.import_successful') }}</div>
 </div>
 
 <div class="admin-info {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'info')) ? 'is-hidden' : ''}}">

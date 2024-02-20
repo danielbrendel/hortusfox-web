@@ -676,6 +676,29 @@ window.vue = new Vue({
             });
         },
 
+        startImport: function(button, file, plants, gallery, tasks, inventory) {
+            let oldText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
+
+            let formData = new FormData();
+            formData.append('import', file.files[0]);
+            formData.append('plants', plants);
+            formData.append('gallery', gallery);
+            formData.append('tasks', tasks);
+            formData.append('inventory', inventory);
+
+            window.vue.ajaxRequest('post', window.location.origin + '/import/start', formData, function(response) {
+                button.innerHTML = oldText;
+
+                if (response.code == 200) {
+                    let import_result = document.getElementById('import-result');
+                    if (import_result) {
+                        import_result.classList.remove('is-hidden');
+                    }
+                }
+            });
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

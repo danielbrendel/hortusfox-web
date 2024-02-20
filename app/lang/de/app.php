@@ -254,6 +254,8 @@ return [
 	'backup' => 'Backup',
 	'gallery' => 'Galerie',
 	'export' => 'Exportieren',
+	'import' => 'Importieren',
+	'import_successful' => 'Erfolgreich importiert!',
 	'pwa_enable' => 'PWA Unterstützung aktivieren',
 	'home' => 'Home'
 ];
