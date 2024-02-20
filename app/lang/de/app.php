@@ -30,6 +30,7 @@ return [
 	'select_location_to_proceed' => 'Wähle einen Raum aus, um dessen Pflanzen zu verwalten',
 	'plants' => 'Pflanzen',
 	'add_plant' => 'Pflanze hinzufügen',
+	'add_plant_short' => 'Hinzufügen',
 	'edit_plant' => 'Pflanze bearbeiten',
 	'attribute' => 'Eigenschaften',
 	'value' => 'Werte',

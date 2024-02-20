@@ -10,7 +10,7 @@
         <div class="bottomnav-item">
             <a href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = 0; window.vue.bShowAddPlant = true;">
                 <div><i class="fas fa-plus"></i></div>
-                <div>{{ __('app.add_plant') }}</div>
+                <div>{{ __('app.add_plant_short') }}</div>
             </a>
         </div>
 

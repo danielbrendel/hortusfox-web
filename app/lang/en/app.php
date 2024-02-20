@@ -30,6 +30,7 @@ return [
 	'select_location_to_proceed' => 'Select a location to view the associated plants',
 	'plants' => 'Plants',
 	'add_plant' => 'Add Plant',
+	'add_plant_short' => 'Add',
 	'edit_plant' => 'Edit Plant',
 	'attribute' => 'Attribute',
 	'value' => 'Value',
