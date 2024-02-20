@@ -864,6 +864,11 @@
                     navigator.serviceWorker.register('./serviceworker.js', { scope: '/' })
                         .then(function(registration){
                             window.serviceWorkerEnabled = true;
+
+							let scroller = document.querySelector('.scroll-to-top');
+							if (scroller) {
+								scroller.style.bottom = '83px';
+							}
                         }).catch(function(err){
                             window.serviceWorkerEnabled = false;
                             console.error(err);
