@@ -85,8 +85,8 @@ class ImportModule {
                         $plant->created_at
                     ]);
 
-                    if (!file_exists(public_path() . '/img/' . $plant->photo)) {
-                        copy($path . '/img/' . $value, public_path() . '/img/' . $plant->photo);
+                    if ((!file_exists(public_path() . '/img/' . $plant->photo)) && (file_exists($path . '/img/' . $plant->photo))) {
+                        copy($path . '/img/' . $plant->photo, public_path() . '/img/' . $plant->photo);
                     }
                 }
             }
@@ -103,7 +103,27 @@ class ImportModule {
     public static function importGallery($path)
     {
         try {
+            $gallery_items = json_decode(file_get_contents($path . '/data.json'));
+            if ($gallery_items) {
+                foreach ($gallery_items as $gallery_item) {
+                    PlantPhotoModel::raw('INSERT INTO `' . PlantPhotoModel::tableName() . '` (plant, author, thumb, original, label, created_at) VALUES(?, ?, ?, ?, ?, ?)', [
+                        $gallery_item->plant,
+                        $gallery_item->author,
+                        $gallery_item->thumb,
+                        $gallery_item->original,
+                        $gallery_item->label,
+                        $gallery_item->created_at
+                    ]);
 
+                    if ((!file_exists(public_path() . '/img/' . $gallery_item->thumb)) && (file_exists($path . '/img/' . $gallery_item->thumb))) {
+                        copy($path . '/img/' . $gallery_item->thumb, public_path() . '/img/' . $gallery_item->thumb);
+                    }
+
+                    if ((!file_exists(public_path() . '/img/' . $gallery_item->original)) && (file_exists($path . '/img/' . $gallery_item->original))) {
+                        copy($path . '/img/' . $gallery_item->original, public_path() . '/img/' . $gallery_item->original);
+                    }
+                }
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -117,7 +137,18 @@ class ImportModule {
     public static function importTasks($path)
     {
         try {
-
+            $tasks = json_decode(file_get_contents($path . '/data.json'));
+            if ($tasks) {
+                foreach ($tasks as $task) {
+                    TasksModel::raw('INSERT INTO `' . TasksModel::tableName() . '` (title, description, due_date, done, created_at) VALUES(?, ?, ?, ?, ?)', [
+                        $task->title,
+                        $task->description,
+                        $task->due_date,
+                        $task->done,
+                        $task->created_at
+                    ]);
+                }
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -131,7 +162,25 @@ class ImportModule {
     public static function importInventory($path)
     {
         try {
+            $inventory_items = json_decode(file_get_contents($path . '/data.json'));
+            if ($inventory_items) {
+                foreach ($inventory_items as $inventory_item) {
+                    InventoryModel::raw('INSERT INTO `' . InventoryModel::tableName() . '` (name, group_ident, description, photo, amount, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [
+                        $inventory_item->name,
+                        $inventory_item->group_ident,
+                        $inventory_item->description,
+                        $inventory_item->photo,
+                        $inventory_item->amount,
+                        $inventory_item->last_edited_user,
+                        $inventory_item->last_edited_date,
+                        $inventory_item->created_at
+                    ]);
 
+                    if ((!file_exists(public_path() . '/img/' . $inventory_item->photo)) && (file_exists($path . '/img/' . $inventory_item->photo))) {
+                        copy($path . '/img/' . $inventory_item->photo, public_path() . '/img/' . $inventory_item->photo);
+                    }
+                }
+            }
         } catch (\Exception $e) {
             throw $e;
         }
