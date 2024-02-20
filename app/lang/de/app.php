@@ -254,5 +254,6 @@ return [
 	'backup' => 'Backup',
 	'gallery' => 'Galerie',
 	'export' => 'Exportieren',
-	'pwa_enable' => 'PWA Unterstützung aktivieren'
+	'pwa_enable' => 'PWA Unterstützung aktivieren',
+	'home' => 'Home'
 ];

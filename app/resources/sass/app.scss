@@ -228,6 +228,23 @@ a.navbar-burger:hover {
     }
 }
 
+.navbar.is-fixed-top-pwa {
+    @media screen and (max-width: 1087px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 30;
+    }
+}
+
+.app-padding-pwa {
+    @media screen and (max-width: 1087px) {
+        padding-top: 65px;
+        padding-bottom: 87px;
+    }
+}
+
 fieldset legend {
     margin-bottom: 5px !important;
 }
@@ -1715,4 +1732,49 @@ fieldset .field {
 .version-info a:hover {
     color: rgb(132, 255, 123);
     text-decoration: underline;
+}
+
+.bottomnav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 100;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgb(50, 50, 50);
+    @media screen and (min-width: 1087px) {
+        display: none;
+    }
+}
+
+.bottomnav-items {
+    position: relative;
+    display: block;
+    top: 10px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.bottomnav-item {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 50px;
+    margin-top: 6px;
+    color: rgb(150, 150, 150);
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.bottomnav-item a {
+    color: rgb(150, 150, 150);
+}
+
+.bottomnav-item a:hover {
+    color: rgb(200, 200, 200);
+    text-decoration: none;
 }

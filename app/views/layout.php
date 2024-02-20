@@ -20,7 +20,7 @@
 	</head>
 	
 	<body>
-		<div id="app">
+		<div id="app" class="{{ ((app('pwa_enable')) ? 'app-padding-pwa' : '') }}">
 			@include('navbar.php')
 
 			<div class="container">
@@ -850,6 +850,10 @@
 			</div>
 
 			@include('scroller.php')
+
+			@if (app('pwa_enable'))
+				@include('bottomnav.php')
+			@endif
 		</div>
 
 		<script src="{{ asset('js/app.js', true) }}"></script>
