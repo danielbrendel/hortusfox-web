@@ -679,13 +679,13 @@ window.vue = new Vue({
         startImport: function(button, file, plants, gallery, tasks, inventory) {
             let oldText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
-
+            
             let formData = new FormData();
             formData.append('import', file.files[0]);
-            formData.append('plants', plants);
-            formData.append('gallery', gallery);
-            formData.append('tasks', tasks);
-            formData.append('inventory', inventory);
+            formData.append('plants', ((plants) ? 1 : 0));
+            formData.append('gallery', ((gallery) ? 1 : 0));
+            formData.append('tasks', ((tasks) ? 1 : 0));
+            formData.append('inventory', ((inventory) ? 1 : 0));
 
             window.vue.ajaxRequest('post', window.location.origin + '/import/start', formData, function(response) {
                 button.innerHTML = oldText;

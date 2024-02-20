@@ -56,11 +56,11 @@ class BackupController extends BaseController {
     public function import($request)
     {
         try {
-            $file_name = ImportModule::start([
-                'plants' => true,
-                'gallery' => true,
-                'tasks' => true,
-                'inventory' => true
+            ImportModule::start([
+                'plants' => (bool)$request->params()->query('plants', 0),
+                'gallery' => (bool)$request->params()->query('gallery', 0),
+                'tasks' => (bool)$request->params()->query('tasks', 0),
+                'inventory' => (bool)$request->params()->query('inventory', 0)
             ]);
 
             return json([
