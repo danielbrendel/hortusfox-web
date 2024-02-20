@@ -40,7 +40,7 @@ class AdminController extends BaseController {
 		try {
 			if ($check_version) {
 				$new_version = VersionModule::getVersion();
-				$current_version = safe_config('version', '1');
+				$current_version = config('version') ?? '1';
 			}
 		} catch (\Exception $e) {
 			addLog(ASATRU_LOG_ERROR, $e->getMessage());

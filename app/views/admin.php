@@ -14,7 +14,7 @@
             <a href="javascript:void(0);" onclick="window.vue.selectAdminTab('info');">
                 {{ __('app.info') }}
                 
-                @if (VersionModule::getCachedVersion() > safe_config('version'))
+                @if (VersionModule::getCachedVersion() > config('version'))
                     <i class="is-indicator-tab"></i>
                 @endif
             </a>
