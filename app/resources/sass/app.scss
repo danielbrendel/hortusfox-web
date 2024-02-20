@@ -238,9 +238,17 @@ a.navbar-burger:hover {
     }
 }
 
+.modal {
+    z-index: 105;
+}
+
 .app-padding-pwa {
     @media screen and (max-width: 1087px) {
         padding-top: 65px;
+        padding-bottom: 87px;
+    }
+    @media screen and (max-width: 768px) {
+        padding-top: 41px;
         padding-bottom: 87px;
     }
 }

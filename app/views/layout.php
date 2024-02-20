@@ -21,6 +21,8 @@
 	
 	<body>
 		<div id="app" class="{{ ((app('pwa_enable')) ? 'app-padding-pwa' : '') }}">
+			<div id="scroller-top"></div>
+
 			@include('navbar.php')
 
 			<div class="container">
@@ -864,11 +866,6 @@
                     navigator.serviceWorker.register('./serviceworker.js', { scope: '/' })
                         .then(function(registration){
                             window.serviceWorkerEnabled = true;
-
-							let scroller = document.querySelector('.scroll-to-top');
-							if (scroller) {
-								scroller.style.bottom = '83px';
-							}
                         }).catch(function(err){
                             window.serviceWorkerEnabled = false;
                             console.error(err);
@@ -910,6 +907,13 @@
 				window.vue.chatTypingEnable = {{ (app('chat_indicator', false)) ? 'true' : 'false' }};
 
 				window.vue.initNavBar();
+
+				@if (app('pwa_enable'))
+					let scroller = document.querySelector('.scroll-to-top');
+					if (scroller) {
+						scroller.style.bottom = '83px';
+					}
+				@endif
 
 				window.currentLocale = '{{ UtilsModule::getLanguage() }}';
 				window.currentOpenTaskCount = {{ TasksModel::getOpenTaskCount() }};
