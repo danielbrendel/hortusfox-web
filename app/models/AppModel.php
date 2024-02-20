@@ -79,9 +79,9 @@ class AppModel extends \Asatru\Database\Model {
     public static function getMailEncryptionTypes()
     {
         return [
-            'none',
-            PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS,
-            PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS
+            'none' => 'none',
+            'TLS' => 'tls',
+            'SSL' => 'smtps'
         ];
     }
 }
