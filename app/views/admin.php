@@ -324,7 +324,7 @@
 </div>
 
 <div class="admin-backup {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'backup')) ? 'is-hidden' : ''}}">
-    <h2>{{ __('app.backup') }}</h2>
+    <h2>{{ __('app.export') }}</h2>
 
     <div class="field">
         <div class="control">
