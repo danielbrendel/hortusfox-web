@@ -12,5 +12,5 @@ jobs:
       - name: Build and push the image
         run: |
           docker login --username danielbrendel --password ${{ secrets.GH_CONTAINER_REGISTRY }} ghcr.io
-          docker build . --tag ghcr.io/danielbrendel/hortusfox-web:latest
-          docker push ghcr.io/danielbrendel/hortusfox-web:latest
+          docker build . --tag ghcr.io/danielbrendel/hortusfox-web:latest --tag ghcr.io/danielbrendel/hortusfox-web:${{ github.ref_name }}
+          docker push --all-tags ghcr.io/danielbrendel/hortusfox-web
