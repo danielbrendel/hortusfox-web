@@ -16,6 +16,8 @@ class ApiController extends BaseController {
             header('Content-Type: application/json');
             exit(json_encode(array('code' => 403, 'msg' => 'Photo sharing is currently deactivated')));
         }
+
+        parent::__construct();
 	}
 
     /**
