@@ -54,7 +54,7 @@ EXPOSE 80
 # Copy the application source
 COPY . /var/www/html
 
-# Copy default files in /public/img so they can be copied if needed in entrypoint
+# Copy default files in /public/img so they can be copied if needed in entrypoint, also create volume
 RUN mkdir /tmp/img \
  && cp /var/www/html/public/img/* /tmp/img
 VOLUME ["/var/www/html/public/img"]
@@ -64,6 +64,11 @@ VOLUME ["/var/www/html/app/logs"]
 
 # Create volume for backups
 VOLUME ["/var/www/html/public/backup"]
+
+# Copy migration list and create volume for migrations
+RUN mkdir /tmp/migrations \
+ && cp /var/www/html/app/migrations/* /tmp/migrations
+VOLUME ["/var/www/html/app/migrations"]
 
 # Copy the PHP overrides
 COPY ./99-php.ini /usr/local/etc/php/conf.d/

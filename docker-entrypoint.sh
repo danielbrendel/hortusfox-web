@@ -161,6 +161,12 @@ set_apache_server_name
 # Call the wait_for_db function
 wait_for_db
 
+# Copy migration content
+cp /tmp/migrations/* /var/www/html/app/migrations
+
+# Set permissions to folder for migrations
+chown -R www-data:www-data /var/www/html/app/migrations
+
 # Run database migrations
 if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$DB_DATABASE' AND TABLE_NAME = 'plants';") -eq 1 ]
 then
@@ -184,10 +190,10 @@ cp /tmp/img/* /var/www/html/public/img
 chown -R www-data:www-data /var/www/html/public/img
 chmod 755 /var/www/html/public/img
 
-# Set permissions to folders for logs
+# Set permissions to folder for logs
 chown -R www-data:www-data /var/www/html/app/logs
 
-# Set permissions to folders for backups
+# Set permissions to folder for backups
 chown -R www-data:www-data /var/www/html/public/backup
 chmod 755 /var/www/html/public/backup
 
