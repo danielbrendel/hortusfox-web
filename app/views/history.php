@@ -30,7 +30,7 @@
 
 <div class="history-years">
 	@foreach ($years as $year)
-		<div class="history-year"><a href="{{ url('/plants/history?year=' . $year->get('history_year')) }}">{{ $year->get('history_year') }}</a></div>
+		<div class="history-year {{ (((isset($_GET['year'])) && ($_GET['year'] == $year->get('history_year'))) ? 'history-year-selected' : '') }}"><a href="{{ url('/plants/history?year=' . $year->get('history_year')) }}">{{ $year->get('history_year') }}</a></div>
 	@endforeach
 </div>
 
