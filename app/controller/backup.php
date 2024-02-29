@@ -29,6 +29,7 @@ class BackupController extends BaseController {
     {
         try {
             $file_name = BackupModule::start([
+                'locations' => (bool)$request->params()->query('locations', 1),
                 'plants' => (bool)$request->params()->query('plants', 1),
                 'gallery' => (bool)$request->params()->query('gallery', 1),
                 'tasks' => (bool)$request->params()->query('tasks', 1),
@@ -57,6 +58,7 @@ class BackupController extends BaseController {
     {
         try {
             ImportModule::start([
+                'locations' => (bool)$request->params()->query('locations', 0),
                 'plants' => (bool)$request->params()->query('plants', 0),
                 'gallery' => (bool)$request->params()->query('gallery', 0),
                 'tasks' => (bool)$request->params()->query('tasks', 0),

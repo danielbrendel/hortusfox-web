@@ -676,12 +676,13 @@ window.vue = new Vue({
             });
         },
 
-        startImport: function(button, file, plants, gallery, tasks, inventory) {
+        startImport: function(button, file, locations, plants, gallery, tasks, inventory) {
             let oldText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
             
             let formData = new FormData();
             formData.append('import', file.files[0]);
+            formData.append('locations', ((locations) ? 1 : 0));
             formData.append('plants', ((plants) ? 1 : 0));
             formData.append('gallery', ((gallery) ? 1 : 0));
             formData.append('tasks', ((tasks) ? 1 : 0));

@@ -26,6 +26,10 @@ class ImportModule {
                 $zip->extractTo(public_path() . '/backup/' . $import_file);
                 $zip->close();
 
+                if ((isset($options['locations'])) && ($options['locations'])) {
+                    static::importLocations(public_path() . '/backup/' . $import_file . '/locations');
+                }
+
                 if ((isset($options['plants'])) && ($options['plants'])) {
                     static::importPlants(public_path() . '/backup/' . $import_file . '/plants');
                 }
@@ -46,6 +50,30 @@ class ImportModule {
             }
 
             unlink(public_path() . '/backup/' . $import_file . '.zip');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importLocations($path)
+    {
+        try {
+            $locations = json_decode(file_get_contents($path . '/data.json'));
+            if ($locations) {
+                foreach ($locations as $location) {
+                    LocationsModel::raw('INSERT INTO `' . LocationsModel::tableName() . '` (name, icon, active, created_at) VALUES(?, ?, ?, ?)', [
+                        $location->name,
+                        $location->icon,
+                        $location->active,
+                        $location->created_at
+                    ]);
+                }
+            }
         } catch (\Exception $e) {
             throw $e;
         }
