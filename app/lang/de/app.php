@@ -235,7 +235,7 @@ return [
 	'share_photo' => 'Foto teilen',
 	'share_photo_input' => 'Zu teilendes Foto',
 	'share_photo_title' => 'Bezeichnung',
-	'share_photo_hint' => 'Hier kannst du dein Foto auf {url} hochladen, um es zu teilen. Bei erfolgreichem Upload, bekommst du eine Bestätigungsnachricht an dein E-Mail Postfach.',
+	'share_photo_hint' => 'Hier kannst du dein Foto auf {url} hochladen, um es mit anderen zu teilen. Bei erfolgreichem Upload, bekommst du eine Bestätigung an dein E-Mail Postfach zugeschickt.',
 	'share' => 'Teilen',
 	'copy_to_clipboard' => 'Kopieren',
 	'copied_to_clipboard' => 'Der Inhalt wurde in die Zwischenablage kopiert.',

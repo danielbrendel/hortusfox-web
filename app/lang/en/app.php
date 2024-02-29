@@ -235,7 +235,7 @@ return [
 	'share_photo' => 'Share Photo',
 	'share_photo_input' => 'Photo to share',
 	'share_photo_title' => 'Title',
-	'share_photo_hint' => 'This will share your photo on {url}. You will get a confirmation e-mail once sharing succeeded.',
+	'share_photo_hint' => 'This will submit your photo on {url}, so you can share it with others. You will get a confirmation e-mail once sharing succeeded.',
 	'share' => 'Share',
 	'copy_to_clipboard' => 'Copy',
 	'copied_to_clipboard' => 'Content has been copied to clipboard.',
