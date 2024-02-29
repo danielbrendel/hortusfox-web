@@ -838,7 +838,7 @@
 
 						<div class="field has-addons is-stretched is-hidden" id="share-photo-result">
 							<div class="control is-stretched">
-								<input class="input" type="text" id="share-photo-link">
+								<input class="input is-background-success-light" type="text" id="share-photo-link">
 							</div>
 							<div class="control">
 								<a class="button is-info" href="javascript:void(0);" onclick="window.vue.copyToClipboard(document.getElementById('share-photo-link').value, document.getElementById('share-photo-type').value);">{{ __('app.copy_to_clipboard') }}</a>
