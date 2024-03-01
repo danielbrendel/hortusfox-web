@@ -144,6 +144,17 @@ h2 {
     margin-bottom: 20px !important;
 }
 
+.is-next-to-elem {
+    position: relative;
+    top: 5px;
+    margin-left: 10px;
+    @media screen and (max-width: 453px) {
+        top: -3px;
+        margin-bottom: 20px !important;
+        margin-left: unset;
+    }
+}
+
 .field small {
     color: rgb(120, 120, 120);
 }

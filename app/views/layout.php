@@ -945,6 +945,13 @@
 						window.vue.textFilterElements(this.value);
 					});
 				}
+
+				let inventoryFilterSearchInput = document.getElementById('inventory-filter');
+				if (inventoryFilterSearchInput) {
+					inventoryFilterSearchInput.addEventListener('input', function() {
+						window.vue.filterInventory(this.value);
+					});
+				}
 			});
 		</script>
 	</body>

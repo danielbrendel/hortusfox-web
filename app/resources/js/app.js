@@ -556,6 +556,20 @@ window.vue = new Vue({
             }
         },
 
+        filterInventory: function(token) {
+            let elems = document.getElementsByClassName('inventory-item');
+            for (let i = 0; i < elems.length; i++) {
+                let elemName = elems[i].children[1].children[0];
+                let elemDescription = elems[i].children[2].children[0];
+
+                if ((elemName.innerText.toLowerCase().includes(token.toLowerCase())) || (elemDescription.innerText.toLowerCase().includes(token.toLowerCase()))) {
+                    elems[i].classList.remove('is-hidden'); 
+                } else {
+                    elems[i].classList.add('is-hidden'); 
+                }
+            }
+        },
+
         toggleDropdown: function(elem) {
             if (elem.classList.contains('is-active')) {
                 elem.classList.remove('is-active');
