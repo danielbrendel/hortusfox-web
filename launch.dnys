@@ -1,0 +1,61 @@
+# HortusFox launcher
+
+require "auto";
+require "fileio";
+require "textinput";
+require "miscutils";
+
+const SERVER_PORT int <= 8000;
+
+global project_path string;
+getscriptpath project_path;
+
+global server_url string;
+set server_url <= "http://localhost";
+
+if (%SERVER_PORT, -nt, 80) {
+	set server_url <= "%server_url:%SERVER_PORT";
+};
+
+global flag bool;
+
+function create_path_file void()
+{
+	local apache_path string;
+	local mysql_path string;
+	local timestamp string;
+	
+	input apache_path "Please enter path to your httpd.exe: ";
+	input mysql_path "Please enter path to your mysqld.exe: ";
+	
+	fmtdatetime "%c" timestamp;
+	
+	fopen(fh, "%project_path\paths.dnys", false) {
+		fwriteline %fh "# Auto-generated at %timestamp";
+		fwriteline %fh "";
+		fwriteline %fh { const APACHE_PATH string <= "D:\Programme\xampp\apache\bin"; };
+		fwriteline %fh { const MYSQL_PATH string <= "D:\Programme\xampp\mysql\bin"; };
+	};
+};
+
+fexists "%project_path\paths.dnys" flag;
+if (%flag, -eq, false) {
+	call create_path_file() => void;
+};
+
+exec "%project_path\paths.dnys";
+
+aut_run "%APACHE_PATH\httpd.exe" "" "%APACHE_PATH" void;
+aut_run "%MYSQL_PATH\mysqld" "--defaults-file=%MYSQL_PATH\my.ini --standalone" "%MYSQL_PATH" void;
+
+aut_run "php" "asatru serve %SERVER_PORT" "%project_path" void;
+aut_run "%server_url" "" "" void;
+
+print "Running HortusFox...";
+print "Press any key to shutdown this service";
+
+pause;
+
+sys { taskkill /F /IM php.exe };
+sys { taskkill /F /IM mysqld.exe };
+sys { taskkill /F /IM httpd.exe };
