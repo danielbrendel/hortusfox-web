@@ -946,6 +946,13 @@
 					});
 				}
 
+				let tasksFilterSearchInput = document.getElementById('tasks-filter');
+				if (tasksFilterSearchInput) {
+					tasksFilterSearchInput.addEventListener('input', function() {
+						window.vue.filterTasks(this.value);
+					});
+				}
+
 				let inventoryFilterSearchInput = document.getElementById('inventory-filter');
 				if (inventoryFilterSearchInput) {
 					inventoryFilterSearchInput.addEventListener('input', function() {

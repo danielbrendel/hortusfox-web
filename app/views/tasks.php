@@ -12,6 +12,10 @@
     <a class="is-default-link {{ ((!isset($_GET['done'])) || ($_GET['done'] == false)) ? 'is-underlined' : '' }}" href="{{ url('/tasks') }}">{{ __('app.tasks_todo') }}</a>&nbsp;|&nbsp;<a class="is-default-link {{ ((isset($_GET['done'])) && ($_GET['done'] == true)) ? 'is-underlined' : '' }}" href="{{ url('/tasks?done=1') }}">{{ __('app.tasks_done') }}</a>
 </div>
 
+<div class="sorting-control is-rounded is-small is-margin-bottom-20">
+    <input type="text" id="tasks-filter" placeholder="{{ __('app.filter_by_text') }}">
+</div>
+
 @if (isset($tasks))
     <div class="tasks">
         @if (count($tasks) > 0)

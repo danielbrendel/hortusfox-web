@@ -556,6 +556,20 @@ window.vue = new Vue({
             }
         },
 
+        filterTasks: function(token) {
+            let elems = document.getElementsByClassName('task');
+            for (let i = 0; i < elems.length; i++) {
+                let elemTitle = elems[i].children[1].children[0];
+                let elemDescription = elems[i].children[2].children[0];
+
+                if ((elemTitle.innerText.toLowerCase().includes(token.toLowerCase())) || (elemDescription.innerText.toLowerCase().includes(token.toLowerCase()))) {
+                    elems[i].classList.remove('is-hidden'); 
+                } else {
+                    elems[i].classList.add('is-hidden'); 
+                }
+            }
+        },
+
         filterInventory: function(token) {
             let elems = document.getElementsByClassName('inventory-item');
             for (let i = 0; i < elems.length; i++) {
