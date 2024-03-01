@@ -34,7 +34,7 @@ function create_path_file void()
 	input apache_path "Please enter path to your httpd.exe: ";
 	input mysql_path "Please enter path to your mysqld.exe: ";
 	
-	fmtdatetime "%c" timestamp;
+	fmtdatetime "%F %T" timestamp;
 	
 	fopen(fh, "%project_path\paths.dnys", false) {
 		fwriteline %fh "# Auto-generated at %timestamp";
