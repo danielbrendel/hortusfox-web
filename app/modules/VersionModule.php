@@ -8,7 +8,6 @@ class VersionModule {
 
     /**
      * @return string
-     * @throws \Exception
      */
     public static function getVersion()
     {
@@ -39,7 +38,7 @@ class VersionModule {
 
             return $json->version;
         } catch (\Exception $e) {
-            throw $e;
+            return '';
         }
     }
 
