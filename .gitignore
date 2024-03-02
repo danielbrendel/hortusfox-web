@@ -6,3 +6,4 @@
 .env
 .phpunit.result.cache
 paths.dnys
+do_install
