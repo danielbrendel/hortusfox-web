@@ -74,6 +74,24 @@ body {
     }
 }
 
+.install-content a {
+    color: rgb(105, 165, 220);
+}
+
+.install-content a:hover {
+    color: rgb(135, 190, 235);
+}
+
+.install-sponsoring {
+    position: relative;
+    padding-top: 15px;
+}
+
+.install-sponsoring small {
+    position: relative;
+    top: -10px;
+}
+
 .install-action {
     position: absolute;
     bottom: 140px;

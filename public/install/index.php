@@ -2,6 +2,10 @@
     if (!file_exists(__DIR__ . '/../../do_install')) {
         exit('Install indicator file not found');
     }
+
+    const APP_GITHUB_URL = 'https://github.com/danielbrendel/hortusfox-web';
+    const APP_SERVICE_URL = 'https://www.hortusfox.com';
+    const APP_SPONSOR_BUTTON = true;
 ?>
 
 <?php if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
@@ -35,8 +39,24 @@
                         </p>
 
                         <p>
+                            If you need any further help or resources, be sure to check out the <a href="<?= APP_SERVICE_URL ?>">official HortusFox homepage</a>.
+                        </p>
+
+                        <p>
                             <a class="button is-link button-stretched" href="javascript:void(0);" onclick="window.gotoSection('deps');">Proceed with Installation</a>
                         </p>
+
+                        <?php if (APP_SPONSOR_BUTTON) { ?>
+                            <div class="install-sponsoring">
+                                <div>
+                                    <small>Consider a small donation if you like HortusFox</small>
+                                </div>
+
+                                <div>
+                                    <a href='https://ko-fi.com/C0C7V2ESD' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 <?php } else if ($_GET['section'] === 'deps') { ?>
                     <div class="install-content">
@@ -224,7 +244,7 @@
                     </div>
 
                     <div class="footer-social">
-                        <a href="https://github.com/danielbrendel/hortusfox-web" target="_blank">Visit on GitHub</a>
+                        <a href="<?= APP_GITHUB_URL ?>" target="_blank">Visit on GitHub</a>
                     </div>
                 </div>
             </div>
@@ -309,8 +329,8 @@
             $env .= 'APP_OVERDUETASK_HOURS=10' . PHP_EOL;
             $env .= 'APP_CRONPW=null' . PHP_EOL;
             $env .= 'APP_CRONJOB_MAILLIMIT=5' . PHP_EOL;
-            $env .= 'APP_GITHUB_URL="https://github.com/danielbrendel/hortusfox-web"' . PHP_EOL;
-            $env .= 'APP_SERVICE_URL="https://www.hortusfox.com"' . PHP_EOL;
+            $env .= 'APP_GITHUB_URL="' . APP_GITHUB_URL . '"' . PHP_EOL;
+            $env .= 'APP_SERVICE_URL="' . APP_SERVICE_URL . '"' . PHP_EOL;
             $env .= 'APP_ENABLEHISTORY=true' . PHP_EOL;
             $env .= 'APP_HISTORY_NAME="History"' . PHP_EOL;
             $env .= 'APP_ENABLE_PHOTO_SHARE=false' . PHP_EOL;
