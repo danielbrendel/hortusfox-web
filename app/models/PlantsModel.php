@@ -236,6 +236,7 @@
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
 
+                TextBlockModule::newPlant($name, url('/plants/details/' . $query->get('id')));
                 LogModel::addLog($user->get('id'), $location, 'add_plant', $name, url('/plants/details/' . $query->get('id')));
 
                 return $query->get('id');

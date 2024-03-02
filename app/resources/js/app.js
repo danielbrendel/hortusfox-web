@@ -413,22 +413,40 @@ window.vue = new Vue({
                 chatmsgright = 'chat-message-right';
             }
 
-            let html = `
-                <div class="chat-message ` + chatmsgright + `">
-                    <div class="chat-message-user">
-                        <div class="is-inline-block" style="color: ` + elem.chatcolor + `;">` + elem.userName + `</div>
-                        <div class="chat-message-new">` + window.vue.newChatMessage + `</div>
+            let html = '';
+
+            if (!elem.system) {
+                html = `
+                    <div class="chat-message ` + chatmsgright + `">
+                        <div class="chat-message-user">
+                            <div class="is-inline-block" style="color: ` + elem.chatcolor + `;">` + elem.userName + `</div>
+                            <div class="chat-message-new">` + window.vue.newChatMessage + `</div>
+                        </div>
+
+                        <div class="chat-message-content">
+                            <pre>` + elem.message + `</pre>
+                        </div>
+
+                        <div class="chat-message-info">
+                            ` + elem.diffForHumans + `
+                        </div>
+                    </div>
+                `;
+            } else {
+                html = `
+                <div class="system-message">
+                    <div class="system-message-left system-message-left-new">
+                        <div class="system-message-context">` + elem.userName + ` @ ` + elem.created_at + `</div>
+                        
+                        <div class="system-message-content">` + elem.message + `</div>
                     </div>
 
-                    <div class="chat-message-content">
-                        <pre>` + elem.message + `</pre>
-                    </div>
-
-                    <div class="chat-message-info">
-                        ` + elem.diffForHumans + `
+                    <div class="system-message-right">
+                        <div class="system-message-new chat-message-new">` + window.vue.newChatMessage + `</div>
                     </div>
                 </div>
-            `;
+                `;
+            }
 
             return html;
         },

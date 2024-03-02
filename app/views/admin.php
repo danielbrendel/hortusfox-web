@@ -65,6 +65,12 @@
         </div>
 
         <div class="field">
+            <div class="control">
+                <input type="checkbox" class="checkbox" name="enablesysmsgs" value="1" {{ (app('chat_system')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.chat_system') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
             <label class="label">{{ __('app.online_time_limit') }}</label>
             <div class="control">
                 <input type="number" class="input" name="onlinetimelimit" value="{{ app('chat_timelimit') }}" required>

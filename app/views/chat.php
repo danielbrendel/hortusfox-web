@@ -34,22 +34,40 @@
 
     @if (isset($messages))
         @foreach ($messages as $message)
-            <div class="chat-message {{ ($message->get('userId') == $user->get('id')) ? 'chat-message-right' : '' }}">
-                <div class="chat-message-user">
-                    <div class="is-inline-block" style="color: {{ UserModel::getChatColorForUser($message->get('userId')) }};">{{ UserModel::getNameById($message->get('userId')) }}</div>
-                    @if (ChatViewModel::handleNewMessage($user->get('id'), $message->get('id')))
-                        <div class="chat-message-new">{{ __('app.new') }}</div>
+            @if (!$message->get('system'))
+                <div class="chat-message {{ ($message->get('userId') == $user->get('id')) ? 'chat-message-right' : '' }}">
+                    <div class="chat-message-user">
+                        <div class="is-inline-block" style="color: {{ UserModel::getChatColorForUser($message->get('userId')) }};">{{ UserModel::getNameById($message->get('userId')) }}</div>
+                        @if (ChatViewModel::handleNewMessage($user->get('id'), $message->get('id')))
+                            <div class="chat-message-new">{{ __('app.new') }}</div>
+                        @endif
+                    </div>
+
+                    <div class="chat-message-content">
+                        <pre>{{ $message->get('message') }}</pre>
+                    </div>
+
+                    <div class="chat-message-info">
+                        {{ (new Carbon($message->get('created_at')))->diffForHumans() }}
+                    </div>
+                </div>
+            @else
+                <?php $isNewMessage = ChatViewModel::handleNewMessage($user->get('id'), $message->get('id')); ?>
+
+                <div class="system-message">
+                    <div class="system-message-left {{ ($isNewMessage) ? 'system-message-left-new' : '' }}">
+                        <div class="system-message-context">{{ UserModel::getNameById($message->get('userId')) . ' @ ' . date('Y-m-d H:s', strtotime($message->get('created_at'))) }}</div>
+                        
+                        <div class="system-message-content">{!! $message->get('message') !!}</div>
+                    </div>
+
+                    @if ($isNewMessage)
+                        <div class="system-message-right">
+                            <div class="system-message-new chat-message-new">{{ __('app.new') }}</div>
+                        </div>
                     @endif
                 </div>
-
-                <div class="chat-message-content">
-                    <pre>{{ $message->get('message') }}</pre>
-                </div>
-
-                <div class="chat-message-info">
-                    {{ (new Carbon($message->get('created_at')))->diffForHumans() }}
-                </div>
-            </div>
+            @endif
         @endforeach
     @endif
 </div>

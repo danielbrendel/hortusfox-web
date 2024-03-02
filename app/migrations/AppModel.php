@@ -35,6 +35,7 @@ class AppModel_Migration {
         $this->database->add('chat_timelimit INT NOT NULL DEFAULT 5');
         $this->database->add('chat_showusers BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('chat_indicator BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('chat_system BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('history_enable BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('history_name VARCHAR(512) NULL DEFAULT \'History\'');
         $this->database->add('enable_media_share BOOLEAN NOT NULL DEFAULT 0');

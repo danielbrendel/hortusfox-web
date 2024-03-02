@@ -88,8 +88,9 @@ class ChatController extends BaseController {
 					'userId' => $message->get('userId'),
 					'userName' => UserModel::getNameById($message->get('userId')),
 					'message' => $message->get('message'),
+					'system' => $message->get('system'),
 					'chatcolor' => UserModel::getChatColorForUser($message->get('userId')),
-					'created_at' => $message->get('created_at'),
+					'created_at' => date('Y-m-h H:i', strtotime($message->get('created_at'))),
 					'diffForHumans' => (new Carbon($message->get('created_at')))->diffForHumans(),
 				];
 			}

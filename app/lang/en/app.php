@@ -258,5 +258,6 @@ return [
 	'import' => 'Import',
 	'import_successful' => 'Import succeeded!',
 	'pwa_enable' => 'Enable PWA support',
-	'home' => 'Home'
+	'home' => 'Home',
+	'chat_system' => 'Enable system messages'
 ];

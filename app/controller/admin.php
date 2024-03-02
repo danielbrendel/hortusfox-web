@@ -69,6 +69,7 @@ class AdminController extends BaseController {
 			$lang = $request->params()->query('lang', app('language'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
 			$enablechat = (bool)$request->params()->query('enablechat', 0);
+			$enablesysmsgs = (bool)$request->params()->query('enablesysmsgs', 0);
 			$onlinetimelimit = (int)$request->params()->query('onlinetimelimit', app('chat_timelimit'));
 			$chatonlineusers = (bool)$request->params()->query('chatonlineusers', 0);
 			$chattypingindicator = (bool)$request->params()->query('chattypingindicator', 0);
@@ -83,6 +84,7 @@ class AdminController extends BaseController {
 				'language' => $lang,
 				'scroller' => $scroller,
 				'chat_enable' => $enablechat,
+				'chat_system' => $enablesysmsgs,
 				'chat_timelimit' => $onlinetimelimit,
 				'chat_showusers' => $chatonlineusers,
 				'chat_indicator' => $chattypingindicator,

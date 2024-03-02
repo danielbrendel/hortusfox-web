@@ -1362,6 +1362,62 @@ fieldset .field {
     color: rgb(92, 255, 0);
 }
 
+.system-message {
+    position: relative;
+    background-color: rgb(205, 202, 165);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.system-message-left {
+    position: relative;
+    display: inline-block;
+    width: 93%;
+    @media screen and (max-width: 1000px) {
+        width: 80%;
+    }
+}
+
+.system-message-left-new {
+    top: -3px;
+}
+
+.system-message-right {
+    position: relative;
+    display: inline-block;
+    top: 3px;
+}
+
+.system-message-context {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.system-message-content {
+    position: relative;
+    display: inline-block;
+    @media screen and (max-width: 768px) {
+        margin-top: 10px;
+    }
+}
+
+.system-message-content a {
+    color: rgb(135, 75, 5);
+}
+
+.system-message-content a:hover {
+    color: rgb(135, 75, 5);
+    text-decoration: underline;
+}
+
+.system-message-new {
+    @media screen and (max-width: 768px) {
+        top: -58px;
+    }
+}
+
 .scroll-to-top {
     position: fixed;
     z-index: 102;

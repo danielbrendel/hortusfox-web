@@ -258,5 +258,6 @@ return [
 	'import' => 'Importieren',
 	'import_successful' => 'Erfolgreich importiert!',
 	'pwa_enable' => 'PWA Unterstützung aktivieren',
-	'home' => 'Home'
+	'home' => 'Home',
+	'chat_system' => 'Systemmeldungen im Chat aktivieren'
 ];

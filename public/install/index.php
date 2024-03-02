@@ -370,7 +370,7 @@
             $env .= 'DB_PORT=' . $dbport . PHP_EOL;
             $env .= 'DB_DATABASE="' . $dbdatabase . '"' . PHP_EOL;
             $env .= 'DB_DRIVER=mysql' . PHP_EOL;
-            $env .= 'DB_CHARSET="utf8"' . PHP_EOL;
+            $env .= 'DB_CHARSET="utf8mb4"' . PHP_EOL;
             $env .= '' . PHP_EOL;
             $env .= '# SMTP settings' . PHP_EOL;
             $env .= 'SMTP_FROMNAME="' . $smtpaddr . '"' . PHP_EOL;
