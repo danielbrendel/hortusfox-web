@@ -60,11 +60,6 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Extension: gd</td>
-                                    <td class="is-right"><?= ((extension_loaded('gd')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
-                                </tr>
-
-                                <tr>
                                     <td>Extension: pdo_mysql</td>
                                     <td class="is-right"><?= ((extension_loaded('pdo_mysql')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
                                 </tr>
@@ -75,6 +70,11 @@
                                 </tr>
 
                                 <tr>
+                                    <td>Extension: zip</td>
+                                    <td class="is-right"><?= ((extension_loaded('zip')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
+                                </tr>
+
+                                <tr>
                                     <td>Extension: curl</td>
                                     <td class="is-right"><?= ((extension_loaded('curl')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
                                 </tr>
@@ -82,6 +82,21 @@
                                 <tr>
                                     <td>Extension: intl</td>
                                     <td class="is-right"><?= ((extension_loaded('intl')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Extension: bcmath</td>
+                                    <td class="is-right"><?= ((extension_loaded('bcmath')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Extension: exif</td>
+                                    <td class="is-right"><?= ((extension_loaded('exif')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Extension: gd</td>
+                                    <td class="is-right"><?= ((extension_loaded('gd')) ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">Insufficient</span>') ?></td>
                                 </tr>
                             </tbody>
                         </table>
