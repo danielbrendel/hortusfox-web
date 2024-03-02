@@ -206,7 +206,7 @@ php asatru migrate:fresh
 
 Now you need to insert your initial app settings profile into the database. These settings can be later adjusted in the admin dashboard.
 ```sql
-INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, created_at) VALUES (
+INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, chat_system, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, created_at) VALUES (
     NULL, 
     'My workspace name', 
     'en', 
@@ -214,7 +214,8 @@ INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_tim
     1, 
     5, 
     1, 
-    0, 
+    0,
+    1, 
     1, 
     'History', 
     0, 
