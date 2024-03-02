@@ -16,15 +16,11 @@ body {
 
 #app {
     position: relative;
-    width: 90%;
-    height: 85%;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 73px;
+    width: 100%;
+    height: 100%;
     padding: 20px;
     color: rgb(200, 200, 200);
     background-color: rgb(50, 50, 50);
-    border-radius: 10px;
     overflow-y: hidden;
     text-align: center;
     font-size: 1.2em;
@@ -48,6 +44,12 @@ body {
     font-size: 2.5em;
 }
 
+@media screen and (max-width: 653px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+}
+
 .install-content {
     position: absolute;
     width: 98%;
@@ -58,6 +60,18 @@ body {
     margin-right: auto;
     text-align: center;
     overflow-y: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .install-content {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1020px) {
+    .install-content {
+        max-height: 50%;
+    }
 }
 
 .install-action {
@@ -74,9 +88,21 @@ body {
 
 .install-content table {
     display: block;
-    width: 25%;
+    width: 22%;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (max-width: 810px) {
+    .install-content table {
+        width: 51%;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .install-content table {
+        width: 76%;
+    }
 }
 
 .install-content thead {
@@ -124,6 +150,12 @@ body {
     margin-right: auto;
 }
 
+@media screen and (max-width: 768px) {
+    .install-content form {
+        width: 80%;
+    }
+}
+
 .install-content label {
     color: rgb(150, 150, 150);
 }
@@ -154,6 +186,18 @@ body {
     border: 1px solid rgb(145, 43, 39);
     color: rgb(200, 200, 200);
     border-radius: 10px;
+}
+
+@media screen and (max-width: 810px) {
+    .install-error {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .install-error {
+        width: 76%;
+    }
 }
 
 .footer {
