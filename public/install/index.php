@@ -6,6 +6,14 @@
     const APP_GITHUB_URL = 'https://github.com/danielbrendel/hortusfox-web';
     const APP_SERVICE_URL = 'https://www.hortusfox.com';
     const APP_SPONSOR_BUTTON = true;
+
+    const QUOTE_LIST = [
+        'Be-Leaf in yourself!',
+        'Yes, I really do need all these plants!',
+        'Plants are like sunshine to your soul',
+        'Bloom with grace',
+        'You can never have too many plants'
+    ];
 ?>
 
 <?php if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
@@ -30,6 +38,12 @@
                     <img src="/../logo.png" alt="logo"/>
 
                     <h1>HortusFox - Installation</h2>
+                </div>
+
+                <div class="quotes">
+                    <blockquote>
+                        « <?= QUOTE_LIST[rand(0, count(QUOTE_LIST) - 1)] ?> »
+                    </blockquote>
                 </div>
 
                 <?php if ((!isset($_GET['section'])) || (strlen($_GET['section']) === 0)) { ?>

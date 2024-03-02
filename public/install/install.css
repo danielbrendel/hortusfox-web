@@ -41,12 +41,28 @@ body {
 }
 
 .header h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
 }
 
 @media screen and (max-width: 653px) {
     .header h1 {
         font-size: 1.5em;
+    }
+}
+
+.quotes {
+    position: relative;
+}
+
+.quotes blockquote {
+    font-size: 0.9em;
+    font-style: italic;
+    color: rgb(150, 150, 150);
+}
+
+@media screen and (max-width: 653px) {
+    .quotes blockquote {
+        font-size: 0.72em;
     }
 }
 
@@ -70,7 +86,7 @@ body {
 
 @media screen and (min-width: 1020px) {
     .install-content {
-        max-height: 50%;
+        max-height: 45%;
     }
 }
 
