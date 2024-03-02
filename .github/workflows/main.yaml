@@ -1,0 +1,23 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - ".github/**"
+      - ".makefiles/**"
+
+concurrency:
+  group: ci-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  docker-build:
+    name: Docker build
+    uses: ./.github/workflows/docker-build.yaml
+    secrets: inherit
+    with:
+      folder: .
+      image_name: hortusfox-web
+      push: true

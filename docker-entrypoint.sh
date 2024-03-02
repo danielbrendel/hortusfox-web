@@ -69,7 +69,7 @@ create_environment_file() {
     DB_DATABASE="$DB_DATABASE"
     DB_DRIVER=mysql
     DB_CHARSET="$DB_CHARSET"
-    
+
     # SMTP Settings
     SMTP_FROMNAME="$SMTP_FROMNAME"
     SMTP_FROMADDRESS="$SMTP_FROMADDRESS"
@@ -132,7 +132,7 @@ set_apache_server_name() {
 
 # Function to check DB connection
 check_db() {
-    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT 1;" > /dev/null 2>&1
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT 1;"
 }
 
 # Function to wait for the database
