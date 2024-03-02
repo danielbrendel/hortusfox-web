@@ -557,6 +557,49 @@ window.vue = new Vue({
             }
         },
 
+        fetchNewSystemMessage: function(target) {
+            window.vue.ajaxRequest('get', window.location.origin + '/chat/system/message/latest', {}, function(response) {
+                if (response.code == 200) {
+                    if (response.message) {
+                        window.vue.fadeSystemMessage(target, window.vue.renderNewSystemMessage(response.message), response.message.id);
+                    
+                        let audio = new Audio(window.location.origin + '/snd/new_message.wav');
+                        audio.onloadeddata = function() {
+                            audio.play();
+                        };
+                    }
+                }
+            });
+
+            setTimeout(window.vue.fetchNewSystemMessage.bind(null, target), window.constChatMessageQueryRefreshRate);
+        },
+
+        renderNewSystemMessage: function(elem) {
+            let html = `
+                <div class="system-message-small fade fade-out" id="system-message-small-` + elem.id + `">
+                    <div class="system-message-small-context">` + elem.userName + ` @ ` + elem.created_at + `</div>
+
+                    <div class="system-message-small-content">` + elem.message + `</div>
+                </div>
+            `;
+
+            return html;
+        },
+
+        fadeSystemMessage: function(target, code, id) {
+            target.innerHTML = code + target.innerHTML;
+
+            let fadeElem = document.getElementById('system-message-small-' + id);
+
+            setTimeout(function() {
+                fadeElem.classList.replace('fade-out', 'fade-in');
+            }, 250);
+            
+            setTimeout(function() {
+                fadeElem.classList.replace('fade-in', 'fade-out');
+            }, 5000);
+        },
+
         textFilterElements: function(token) {
             let elems = document.getElementsByClassName('plant-card-title');
             for (let i = 0; i < elems.length; i++) {

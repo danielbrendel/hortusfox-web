@@ -108,6 +108,40 @@ class ChatController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /chat/system/message/latest
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function get_latest_system_message($request)
+	{
+		try {
+			$message = ChatMsgModel::getLatestSystemMessage();
+
+			if ($message) {
+				$message = [
+					'id' => $message->get('id'),
+					'userId' => $message->get('userId'),
+					'userName' => UserModel::getNameById($message->get('userId')),
+					'message' => $message->get('message'),
+					'created_at' => date('Y-m-h H:i', strtotime($message->get('created_at'))),
+					'diffForHumans' => (new Carbon($message->get('created_at')))->diffForHumans(),
+				];
+			}
+
+			return json([
+				'code' => 200,
+				'message' => $message
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /chat/typing/update
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

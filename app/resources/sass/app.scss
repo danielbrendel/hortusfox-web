@@ -261,6 +261,18 @@ a.navbar-burger:hover {
     z-index: 105;
 }
 
+.fade {
+    transition: opacity 0.65s linear;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
 .app-padding-pwa {
     @media screen and (max-width: 1087px) {
         padding-top: 65px;
@@ -1416,6 +1428,45 @@ fieldset .field {
     @media screen and (max-width: 768px) {
         top: -58px;
     }
+}
+
+#small-system-messages {
+    position: fixed;
+    z-index: 3;
+    @media screen and (max-width: 512px) {
+        width: 100%;
+    }
+}
+
+.system-message-small {
+    position: relative;
+    top: 12px;
+    left: 12px;
+    @media screen and (max-width: 512px) {
+        width: 100%;
+        left: 0;
+    }
+    background-color: rgb(205, 202, 165);
+    border-radius: 10px;
+    border: 1px solid rgb(250, 250, 250);
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.system-message-small-context {
+    font-weight: bold;
+}
+
+.system-message-small-content {
+}
+
+.system-message-small-content a {
+    color: rgb(135, 75, 5);
+}
+
+.system-message-small-content a:hover {
+    color: rgb(135, 75, 5);
+    text-decoration: underline;
 }
 
 .scroll-to-top {

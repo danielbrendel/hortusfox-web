@@ -25,6 +25,8 @@
 
 			@include('navbar.php')
 
+			<div id="small-system-messages"></div>
+
 			<div class="container">
 				<div class="columns">
 					<div class="column is-2"></div>
@@ -959,6 +961,10 @@
 						window.vue.filterInventory(this.value);
 					});
 				}
+
+				@if (app('chat_system'))
+					window.vue.fetchNewSystemMessage(document.getElementById('small-system-messages'));
+				@endif
 			});
 		</script>
 	</body>

@@ -66,7 +66,7 @@
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" class="checkbox" name="enablesysmsgs" value="1" {{ (app('chat_system')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.chat_system') }}</span>
+                <input type="checkbox" class="checkbox" name="enablesysmsgs" value="1" {{ (app('chat_system')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_system_messages') }}</span>
             </div>
         </div>
 

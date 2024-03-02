@@ -74,6 +74,7 @@ return [
     array('/chat/typing', 'ANY', 'chat@get_chat_typing_status'),
     array('/chat/typing/update', 'ANY', 'chat@update_chat_typing'),
     array('/chat/user/online', 'ANY', 'chat@get_online_users'),
+    array('/chat/system/message/latest', 'ANY', 'chat@get_latest_system_message'),
 
     /** Admin Controller */
     array('/admin', 'GET', 'admin@index'),

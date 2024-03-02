@@ -259,5 +259,5 @@ return [
 	'import_successful' => 'Erfolgreich importiert!',
 	'pwa_enable' => 'PWA Unterstützung aktivieren',
 	'home' => 'Home',
-	'chat_system' => 'Systemmeldungen im Chat aktivieren'
+	'enable_system_messages' => 'Systemmeldungen aktivieren'
 ];

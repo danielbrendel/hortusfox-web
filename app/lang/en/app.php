@@ -259,5 +259,5 @@ return [
 	'import_successful' => 'Import succeeded!',
 	'pwa_enable' => 'Enable PWA support',
 	'home' => 'Home',
-	'chat_system' => 'Enable system messages'
+	'enable_system_messages' => 'Enable system messages'
 ];

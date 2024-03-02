@@ -44,6 +44,7 @@ class UserModel_Migration {
         $this->database->add('notify_tasks_tomorrow BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('last_seen_msg INT NULL');
         $this->database->add('last_typing TIMESTAMP NULL');
+        $this->database->add('last_seen_sysmsg INT NULL');
         $this->database->add('last_action TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();

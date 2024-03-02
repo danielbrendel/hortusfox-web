@@ -315,6 +315,25 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateLastSeenSysMsg($id)
+    {
+        try {
+            $user = static::getAuthUser();
+            if (!$user) {
+                throw new \Exception('User not authenticated');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET last_seen_sysmsg = ? WHERE id = ?', [$id, $user->get('id')]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return void
      * @throws \Exception
      */

@@ -72,6 +72,33 @@ class ChatMsgModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getLatestSystemMessage()
+    {
+        try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
+            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id > ? ORDER BY created_at DESC', [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
+            if (($result) && (count($result) > 0)) {
+                $msg = $result->get(count($result) - 1);
+
+                UserModel::updateLastSeenSysMsg($msg->get('id'));
+                
+                return $msg;
+            }
+
+            return null;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return int
      * @throws \Exception
      */
