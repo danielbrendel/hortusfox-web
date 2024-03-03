@@ -474,6 +474,7 @@
                 static::raw('UPDATE `' . self::tableName() . '` SET history = 1, history_date = CURRENT_TIMESTAMP WHERE id = ?', [$plantId]);
 
                 LogModel::addLog($user->get('id'), $plant->get('name'), 'mark_historical', '', url('/plants/history'));
+                TextBlockModule::plantToHistory($plant->get('name'), url('/plants/history'));
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -497,6 +498,7 @@
                 static::raw('UPDATE `' . self::tableName() . '` SET history = 0, history_date = NULL WHERE id = ?', [$plantId]);
 
                 LogModel::addLog($user->get('id'), $plant->get('name'), 'historical_restore', '', url('/plants/details/' . $plantId));
+                TextBlockModule::plantFromHistory($plant->get('name'), url('/plants/details/' . $plantId));
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -526,6 +528,7 @@
                 static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$plantId]);
 
                 LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_plant', '');
+                TextBlockModule::deletePlant($plant->get('name'));
             } catch (\Exception $e) {
                 throw $e;
             }

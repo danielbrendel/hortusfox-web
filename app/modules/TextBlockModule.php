@@ -22,6 +22,56 @@ class TextBlockModule {
     }
 
     /**
+     * @param $name
+     * @param $url
+     * @return void
+     * @throws \Exception
+     */
+    public static function plantToHistory($name, $url)
+    {
+        try {
+            $text = __('tb.moved_plant_to_history', ['name' => $name, 'url' => $url, 'history' => app('history_name')]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $name
+     * @param $url
+     * @return void
+     * @throws \Exception
+     */
+    public static function plantFromHistory($name, $url)
+    {
+        try {
+            $text = __('tb.restored_plant_from_history', ['name' => $name, 'url' => $url, 'history' => app('history_name')]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $name
+     * @return void
+     * @throws \Exception
+     */
+    public static function deletePlant($name)
+    {
+        try {
+            $text = __('tb.deleted_plant', ['name' => $name]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $message
      * @param $icon
      * @return void
