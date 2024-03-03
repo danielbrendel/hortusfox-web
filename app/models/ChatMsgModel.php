@@ -39,6 +39,11 @@ class ChatMsgModel extends \Asatru\Database\Model {
 
             if (count($result) > 0) {
                 UserModel::updateLastSeenMsg($result->get(0)->get('id'));
+
+                $lastsysmsg = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE system = 1 ORDER BY created_at DESC')->first();
+                if ($lastsysmsg) {
+                    UserModel::updateLastSeenSysMsg($lastsysmsg->get('id'));
+                }
             }
 
             return $result;
