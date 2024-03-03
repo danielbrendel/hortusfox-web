@@ -72,6 +72,57 @@ class TextBlockModule {
     }
 
     /**
+     * @param $name
+     * @param $url
+     * @return void
+     * @throws \Exception
+     */
+    public static function createdTask($name, $url)
+    {
+        try {
+            $text = __('tb.created_task', ['name' => $name, 'url' => $url]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $name
+     * @param $url
+     * @return void
+     * @throws \Exception
+     */
+    public static function completedTask($name, $url)
+    {
+        try {
+            $text = __('tb.completed_task', ['name' => $name, 'url' => $url]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $name
+     * @param $url
+     * @return void
+     * @throws \Exception
+     */
+    public static function reactivatedTask($name, $url)
+    {
+        try {
+            $text = __('tb.reactivated_task', ['name' => $name, 'url' => $url]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $message
      * @param $icon
      * @return void

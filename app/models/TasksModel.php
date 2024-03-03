@@ -22,6 +22,7 @@ class TasksModel extends \Asatru\Database\Model {
             static::raw('INSERT INTO `' . self::tableName() . '` (title, description, due_date) VALUES(?, ?, ?)', [$title, $description, $due_date]);
 
             LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title, url('/tasks'));
+            TextBlockModule::createdTask($title, url('/tasks'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -66,7 +67,10 @@ class TasksModel extends \Asatru\Database\Model {
 
             static::raw('UPDATE `' . self::tableName() . '` SET done = 1 WHERE id = ?', [$taskId]);
 
+            $task = static::getTask($taskId);
+
             LogModel::addLog($user->get('id'), 'tasks', 'set_done', $taskId, url('/tasks'));
+            TextBlockModule::completedTask($task->get('title'), url('/tasks'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -87,7 +91,15 @@ class TasksModel extends \Asatru\Database\Model {
 
             static::raw('UPDATE `' . self::tableName() . '` SET done = NOT done WHERE id = ?', [$taskId]);
 
+            $task = static::getTask($taskId);
+            
             LogModel::addLog($user->get('id'), 'tasks', 'toggle_status', $taskId, url('/tasks'));
+
+            if ($task->get('done')) {
+                TextBlockModule::completedTask($task->get('title'), url('/tasks'));
+            } else {
+                TextBlockModule::reactivatedTask($task->get('title'), url('/tasks'));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -160,7 +172,7 @@ class TasksModel extends \Asatru\Database\Model {
     public static function getTask($id)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?')->first();
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
         } catch (\Exception $e) {
             throw $e;
         }
