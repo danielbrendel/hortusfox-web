@@ -123,6 +123,39 @@ class TextBlockModule {
     }
 
     /**
+     * @param $name
+     * @param $url
+     * @return void
+     * @throws \Exception
+     */
+    public static function createdInventoryItem($name, $url)
+    {
+        try {
+            $text = __('tb.created_inventory_item', ['name' => $name, 'url' => $url]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $name
+     * @return void
+     * @throws \Exception
+     */
+    public static function removedInventoryItem($name)
+    {
+        try {
+            $text = __('tb.removed_inventory_item', ['name' => $name]);
+
+            static::addToChat($text, 'x1fab4');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $message
      * @param $icon
      * @return void
