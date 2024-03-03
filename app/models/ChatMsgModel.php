@@ -88,7 +88,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id > ? ORDER BY created_at DESC', [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
+            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE system = 1 AND id > ? ORDER BY created_at DESC', [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
             if (($result) && (count($result) > 0)) {
                 $msg = $result->get(count($result) - 1);
 

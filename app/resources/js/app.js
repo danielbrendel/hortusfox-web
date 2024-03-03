@@ -557,6 +557,21 @@ window.vue = new Vue({
             }
         },
 
+        fetchUnreadMessageCount: function(target) {
+            window.vue.ajaxRequest('get', window.location.origin + '/chat/messages/count', {}, function(response) {
+                if (response.code == 200) {
+                    if (response.count > 0) {
+                        target.classList.remove('is-hidden');
+                        target.children[0].innerText = response.count;
+                    } else {
+                        target.classList.add('is-hidde');
+                    }
+                }
+            });
+
+            setTimeout(window.vue.fetchUnreadMessageCount.bind(null, target), window.constChatMessageQueryRefreshRate);
+        },
+
         fetchNewSystemMessage: function(target) {
             window.vue.ajaxRequest('get', window.location.origin + '/chat/system/message/latest', {}, function(response) {
                 if (response.code == 200) {

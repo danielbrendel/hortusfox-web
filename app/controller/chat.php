@@ -217,4 +217,27 @@ class ChatController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /chat/messages/count
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function get_message_count($request)
+	{
+		try {
+			$count = ChatMsgModel::getUnreadCount();
+
+			return json([
+				'code' => 200,
+				'count' => $count
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

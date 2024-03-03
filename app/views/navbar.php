@@ -48,13 +48,9 @@
                 <a href="{{ url('/chat') }}" class="notification-badge">
                     <i class="fas fa-comments" title="{{ __('app.chat') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.chat') }}</span>
                     
-                    @if (ChatMsgModel::getUnreadCount() > 0)
-                        <span class="notify-badge">
-                            <span class="notify-badge-count">
-                                {{ ChatMsgModel::getUnreadCount() }}
-                            </span>
-                        </span>
-                    @endif
+                    <span class="notify-badge is-hidden" id="unread-message-count">
+                        <span class="notify-badge-count"></span>
+                    </span>
                 </a>
             </div>
             @endif

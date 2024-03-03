@@ -928,6 +928,10 @@
 					window.vue.expandInventoryItem('inventory-item-body-{{ $_expand_inventory_item }}');
 				@endif
 
+				@if (app('chat_enable'))
+					window.vue.fetchUnreadMessageCount(document.getElementById('unread-message-count'));
+				@endif
+
 				@if ((isset($_refresh_chat)) && ($_refresh_chat === true))
 					window.vue.refreshChat({{ $user->get('id') }});
 					
