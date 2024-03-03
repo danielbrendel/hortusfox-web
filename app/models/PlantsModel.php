@@ -10,6 +10,7 @@
     class PlantsModel extends \Asatru\Database\Model {
         const PLANT_STATE_GOOD = 'in_good_standing';
         const PLANT_LONG_TEXT_THRESHOLD = 22;
+        const PLANT_PLACEHOLDER_FILE = 'placeholder.jpg';
 
         static $sorting_list = [
             'name',
@@ -227,7 +228,7 @@
 
                     $fullFileName = $file_name . '_thumb.' . $file_ext;
                 } else {
-                    $fullFileName = 'placeholder.jpg';
+                    $fullFileName = self::PLANT_PLACEHOLDER_FILE;
                 }
 
                 static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
@@ -519,8 +520,10 @@
 
                 $plant = PlantsModel::getDetails($plantId);
 
-                if (file_exists(public_path('/img/' . $plant->get('photo')))) {
-                    unlink(public_path('/img/' . $plant->get('photo')));
+                if ($plant->get('photo') !== self::PLANT_PLACEHOLDER_FILE) {
+                    if (file_exists(public_path('/img/' . $plant->get('photo')))) {
+                        unlink(public_path('/img/' . $plant->get('photo')));
+                    }
                 }
 
                 PlantPhotoModel::clearForPlant($plantId);
