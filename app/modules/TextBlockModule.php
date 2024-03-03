@@ -32,7 +32,7 @@ class TextBlockModule {
         try {
             $text = __('tb.moved_plant_to_history', ['name' => $name, 'url' => $url, 'history' => app('history_name')]);
 
-            static::addToChat($text, 'x1fab4');
+            static::addToChat($text, 'x1f570');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -49,7 +49,7 @@ class TextBlockModule {
         try {
             $text = __('tb.restored_plant_from_history', ['name' => $name, 'url' => $url, 'history' => app('history_name')]);
 
-            static::addToChat($text, 'x1fab4');
+            static::addToChat($text, 'x1f570');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -82,7 +82,7 @@ class TextBlockModule {
         try {
             $text = __('tb.created_task', ['name' => $name, 'url' => $url]);
 
-            static::addToChat($text, 'x1fab4');
+            static::addToChat($text, 'x1f4dc');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -99,7 +99,7 @@ class TextBlockModule {
         try {
             $text = __('tb.completed_task', ['name' => $name, 'url' => $url]);
 
-            static::addToChat($text, 'x1fab4');
+            static::addToChat($text, 'x1f4dc');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -116,7 +116,7 @@ class TextBlockModule {
         try {
             $text = __('tb.reactivated_task', ['name' => $name, 'url' => $url]);
 
-            static::addToChat($text, 'x1fab4');
+            static::addToChat($text, 'x1f4dc');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -133,7 +133,7 @@ class TextBlockModule {
         try {
             $text = __('tb.created_inventory_item', ['name' => $name, 'url' => $url]);
 
-            static::addToChat($text, 'x1fab4');
+            static::addToChat($text, 'x1f4d6');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -149,7 +149,7 @@ class TextBlockModule {
         try {
             $text = __('tb.removed_inventory_item', ['name' => $name]);
 
-            static::addToChat($text, 'x1fab4');
+            static::addToChat($text, 'x1f4d6');
         } catch (\Exception $e) {
             throw $e;
         }
