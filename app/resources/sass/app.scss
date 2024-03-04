@@ -366,7 +366,7 @@ fieldset .field {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 23px;
-    background-color: rgb(55, 59, 59);
+    background-color: rgb(55, 59, 62);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -428,7 +428,7 @@ fieldset .field {
     margin-left: -20px;
     margin-right: -20px;
     padding-bottom: 5px;
-    background-color: rgb(55, 59, 59);
+    background-color: rgb(55, 59, 62);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
 }
@@ -506,12 +506,12 @@ fieldset .field {
 .plant-card {
     position: relative;
     display: inline-block;
-    width: 265px;
+    width: 245px;
     @media screen and (max-width: 552px) {
-        width: 145px;
-        height: 257px;
+        width: 141px;
+        height: 222px;
     }
-    height: 398px;
+    height: 375px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -777,7 +777,7 @@ fieldset .field {
         padding-left: 15px;
         margin-left: unset;
     }
-    background-color: rgb(55, 59, 59);
+    background-color: rgb(55, 59, 62);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
@@ -885,7 +885,7 @@ fieldset .field {
         padding-left: 15px;
         padding-right: 2px;
     }
-    background-color: rgb(55, 59, 59);
+    background-color: rgb(55, 59, 62);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
@@ -1058,7 +1058,7 @@ fieldset .field {
     display: inline-block;
     width: 243.9px;
     @media screen and (max-width: 512px) {
-        width: 149px;
+        width: 135px;
     }
     height: 135px;
     margin-left: 12px;
@@ -1143,7 +1143,7 @@ fieldset .field {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 29px;
-    background-color: rgba(50, 50, 50, 0.76);
+    background-color: rgb(55, 59, 62);
     border: 1px solid rgb(80, 80, 80);
     border-radius: 4px;
 }
@@ -1492,6 +1492,7 @@ fieldset .field {
 #small-system-messages {
     position: fixed;
     z-index: 3;
+    top: 55px;
     @media screen and (max-width: 512px) {
         width: 100%;
     }
