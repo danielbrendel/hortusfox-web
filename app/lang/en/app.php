@@ -200,6 +200,7 @@ return [
 	'no_new_version_available' => 'You are using the latest version.',
 	'admin_media' => 'Media',
 	'media_logo' => 'Workspace logo (.png image)',
+	'media_banner' => 'Workspace banner image (.jpg)',
 	'media_background' => 'Workspace background image (.jpg)',
 	'media_saved' => 'Media was saved successfully',
 	'enable_history' => 'Enable history',

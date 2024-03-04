@@ -153,6 +153,23 @@
         </div>
     </form>
 
+    <form method="POST" action="{{ url('/admin/media/banner') }}" enctype="multipart/form-data">
+        @csrf
+
+        <div class="field">
+            <label class="label">{{ __('app.media_banner') }}</label>
+            <div class="control">
+                <input type="file" class="input" name="asset" accept=".jpg,.jpeg" required>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
+            </div>
+        </div>
+    </form>
+
     <form method="POST" action="{{ url('/admin/media/background') }}" enctype="multipart/form-data">
         @csrf
 
