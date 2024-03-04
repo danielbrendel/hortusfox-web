@@ -576,6 +576,36 @@
         }
 
         /**
+         * @param $id
+         * @return int
+         * @throws \Exception
+         */
+        public static function getPlantCount($id)
+        {
+            try {
+                return static::raw('SELECT COUNT(*) AS count FROM `' . self::tableName() . '` WHERE location = ? AND history = 0', [$id])->first()->get('count');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $id
+         * @return int
+         * @throws \Exception
+         */
+        public static function getDangerCount($id)
+        {
+            try {
+                return static::raw('SELECT COUNT(*) AS count FROM `' . self::tableName() . '` WHERE location = ? AND health_state <> ? AND history = 0', [
+                    $id, 'in_good_standing'
+                ])->first()->get('count');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * Return the associated table name of the migration
          * 
          * @return string

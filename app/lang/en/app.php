@@ -260,5 +260,8 @@ return [
 	'import_successful' => 'Import succeeded!',
 	'pwa_enable' => 'Enable PWA support',
 	'home' => 'Home',
-	'enable_system_messages' => 'Enable system messages'
+	'enable_system_messages' => 'Enable system messages',
+	'plant_count' => '{count} plants',
+	'danger_count' => '{count} in danger',
+	'all_in_good_standing' => 'All fine'
 ];

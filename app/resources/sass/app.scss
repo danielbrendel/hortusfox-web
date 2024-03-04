@@ -369,14 +369,14 @@ fieldset .field {
     position: relative;
     display: inline-block;
     width: 245px;
-    height: 230px;
+    height: 250px;
     @media screen and (max-width: 830px) {
         width: 134px;
-        height: 108px;
+        height: 137px;
     }
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 23px;
+    margin-bottom: 30px;
     background-color: rgb(55, 59, 62);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -395,7 +395,7 @@ fieldset .field {
         padding-bottom: 5px;
     }
     @media screen and (min-width: 831px) {
-        padding-bottom: 10px;
+        padding-bottom: 15px;
     }
     margin-bottom: 20px;
     background-color: rgba(115, 143, 100, 0.9);
@@ -414,6 +414,36 @@ fieldset .field {
     }
     @media screen and (min-width: 831px) {
         margin-top: 25px;
+    }
+}
+
+.location-footer {
+    position: relative;
+    bottom: -30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-size: 0.9em;
+    text-align: left;
+    background-color: rgb(50, 54, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: 830px) {
+        font-size: 0.75em;
+        bottom: -15px;
+    }
+}
+
+.location-footer-count-desktop {
+    display: none;
+    @media screen and (min-width: 850px) {
+        display: inherit;
+    }
+}
+
+.location-footer-count-mobile {
+    display: none;
+    @media screen and (max-width: 850px) {
+        display: inherit;
     }
 }
 
@@ -659,11 +689,11 @@ fieldset .field {
     float: right;
 }
 
-.is-color-yes {
+.is-color-yes, .is-color-ok {
     color: rgb(115, 214, 103);
 }
 
-.is-color-no {
+.is-color-no, .is-color-danger {
     color: rgb(212, 67, 67)
 }
 

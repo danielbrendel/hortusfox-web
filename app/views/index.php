@@ -65,6 +65,34 @@
 				<div class="location-icon">
 					<i class="{{ $location->get('icon') }}"></i>
 				</div>
+
+				<div class="location-footer">
+					<div class="is-inline-block">
+						<?php $plant_count = PlantsModel::getPlantCount($location->get('id')); ?>
+						<span class="location-footer-count-desktop"><i class="fas fa-seedling is-color-ok"></i>&nbsp;{{ __('app.plant_count', ['count' => $plant_count]) }} &nbsp;</span>
+						<span class="location-footer-count-mobile"><i class="fas fa-seedling is-color-ok"></i>&nbsp;{{ $plant_count }} &nbsp;</span>
+					</div>
+
+					<div class="is-inline-block">
+						<?php $danger_count = PlantsModel::getDangerCount($location->get('id')); ?>
+
+						<span class="location-footer-count-desktop">
+							@if ($danger_count > 0)
+								<i class="fas fa-biohazard is-color-danger"></i>&nbsp;{{ __('app.danger_count', ['count' => $danger_count]) }}
+							@else
+								<i class="far fa-check-circle is-color-ok"></i>&nbsp;{{ __('app.all_in_good_standing') }}
+							@endif
+						</span>
+
+						<span class="location-footer-count-mobile">
+							@if ($danger_count > 0)
+								<i class="fas fa-biohazard is-color-danger"></i>&nbsp;{{ $danger_count }}
+							@else
+								<i class="far fa-check-circle is-color-ok"></i>&nbsp;{{ __('app.all_in_good_standing') }}
+							@endif
+						</span>
+					</div>
+				</div>
 			</div>
 		</a>
 	@endforeach
