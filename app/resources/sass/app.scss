@@ -609,6 +609,7 @@ fieldset .field {
         display: inline-block;
         padding-left: unset;
         padding-right: unset;
+        width: 107% !important;
     }
 }
 
@@ -669,6 +670,7 @@ fieldset .field {
     padding: 10px;
     color: rgb(200, 200, 200);
     background-color: rgba(90, 90, 90, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     font-size: 1.0em;
     border: 1px solid rgb(100, 100, 100);
     border-left: 3px solid rgb(163, 122, 61);
@@ -690,7 +692,7 @@ fieldset .field {
 .plant-photo {
     position: relative;
     width: 345px;
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 512px) {
         width: 100%;
     }
     height: 543px;
@@ -979,7 +981,8 @@ fieldset .field {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 30px;
-    background-color: rgba(50, 50, 50, 0.8);
+    background-color: rgba(73, 79, 83);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
@@ -989,7 +992,7 @@ fieldset .field {
 
 .plant-gallery-item-header-label {
     display: inline-block;
-    color: rgb(200, 200, 200);
+    color: rgb(230, 230, 230);
 }
 
 .plant-gallery-item-header-action {
@@ -1021,7 +1024,7 @@ fieldset .field {
     position: absolute;
     z-index: 2;
     width: 100%;
-    height: 98%;
+    height: 97%;
 }
 
 .plant-gallery-item-photo-overlay:hover {
@@ -1043,7 +1046,7 @@ fieldset .field {
     position: relative;
     top: -3px;
     padding: 10px;
-    color: rgb(100, 100, 100);
+    color: rgb(135, 135, 135);
 }
 
 .stats {
@@ -1102,7 +1105,7 @@ fieldset .field {
 .plant-tags-item {
     position: relative;
     display: inline-block;
-    min-width: 90px;
+    min-width: 125px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -1111,13 +1114,13 @@ fieldset .field {
     margin-right: 5px;
     margin-bottom: 16px;
     text-align: center;
-    background-color: rgba(200, 200, 200, 0.3);
-    border: 1px solid rgb(150, 150, 150);
+    background-color: rgba(123, 123, 123, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
 .plant-tags-item:hover {
-    background-color: rgba(200, 200, 200, 0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
 
 .plant-tags-item a {
@@ -1537,7 +1540,7 @@ fieldset .field {
 }
 
 .scroll-to-top-inner {
-    background-color: rgb(52, 70, 56);
+    background-color: rgb(80, 80, 80);
     border-radius: 50%;
     padding: 12px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -1687,6 +1690,14 @@ fieldset .field {
 
 .reset-form input[type=submit] {
     width: 100%;
+}
+
+.preferences-header {
+    position: relative;
+}
+
+.preferences-header i {
+    color: rgb(150, 150, 150);
 }
 
 .admin-tabs {

@@ -19,7 +19,7 @@
 @endif
 
 <div class="columns plant-column">
-	<div class="column is-half">
+	<div class="column is-two-third">
 		<table>
 			<thead>
 				<tr>
@@ -124,7 +124,7 @@
 		</table>
 	</div>
 
-	<div class="column is-half">
+	<div class="column is-one-third">
 		<div class="plant-photo" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
 			<div class="plant-photo-overlay">
 				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', asset('img/' . $plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
