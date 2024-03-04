@@ -4,4 +4,10 @@
             <img src="{{ asset('img/banner-icon.png') }}" alt="banner-icon"/>
         </div>
     @endif
+
+    @if (file_exists(public_path() . '/img/banner-accessory.png'))
+        <div class="banner-accessory">
+            <img src="{{ asset('img/banner-accessory.png') }}" alt="banner-accessory"/>
+        </div>
+    @endif
 </div>

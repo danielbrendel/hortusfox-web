@@ -182,6 +182,7 @@ class UserModel extends \Asatru\Database\Model {
      * @param $name
      * @param $email
      * @param $lang
+     * @param $theme
      * @param $chatcolor
      * @param $show_log
      * @param $notify_tasks_overdue
@@ -190,7 +191,7 @@ class UserModel extends \Asatru\Database\Model {
      * @return void
      * @throws \Exception
      */
-    public static function editPreferences($name, $email, $lang, $chatcolor, $show_log, $notify_tasks_overdue, $notify_tasks_tomorrow, $show_plants_aoru)
+    public static function editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $notify_tasks_overdue, $notify_tasks_tomorrow, $show_plants_aoru)
     {
         try {
             $user = static::getAuthUser();
@@ -198,8 +199,8 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, lang = ?, chatcolor = ?, show_log = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, show_plants_aoru = ? WHERE id = ?', [
-                trim($name), trim($email), $lang, $chatcolor, $show_log, $notify_tasks_overdue, $notify_tasks_tomorrow, (int)$show_plants_aoru, $user->get('id')
+            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, lang = ?, theme = ?, chatcolor = ?, show_log = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, show_plants_aoru = ? WHERE id = ?', [
+                trim($name), trim($email), $lang, $theme, $chatcolor, $show_log, $notify_tasks_overdue, $notify_tasks_tomorrow, (int)$show_plants_aoru, $user->get('id')
             ]);
         } catch (\Exception $e) {
             throw $e;

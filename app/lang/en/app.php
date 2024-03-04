@@ -263,5 +263,7 @@ return [
 	'enable_system_messages' => 'Enable system messages',
 	'plant_count' => '{count} plants',
 	'danger_count' => '{count} in danger',
-	'all_in_good_standing' => 'All fine'
+	'all_in_good_standing' => 'All fine',
+	'theme' => 'Theme',
+	'themes' => 'Themes'
 ];

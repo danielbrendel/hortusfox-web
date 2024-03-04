@@ -24,7 +24,12 @@
 			<div id="scroller-top"></div>
 
 			@include('navbar.php')
-			@include('banner.php')
+
+			@if (ThemeModule::ready())
+				@include('theme.php')
+			@else
+				@include('banner.php')
+			@endif
 
 			<div id="small-system-messages"></div>
 
@@ -638,6 +643,17 @@
 									<select class="input" name="lang" id="selEditCombo">
 										@foreach (UtilsModule::getLanguageList() as $lang)
 											<option value="{{ $lang['ident'] }}" {{ ($user->get('lang') === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.theme') }}</label>
+								<div class="control">
+									<select class="input" name="theme" id="selEditCombo">
+										@foreach (ThemeModule::list() as $theme)
+											<option value="{{ $theme }}" {{ ($user->get('theme') === $theme) ? 'selected' : ''}}>{{ $theme }}</option>
 										@endforeach
 									</select>
 								</div>

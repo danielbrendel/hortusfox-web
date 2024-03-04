@@ -1,0 +1,29 @@
+{
+	"name": "default",
+	"banner": "banner.jpg",
+	"rules": {
+		"height": "250px"
+	},
+	"icon": {
+		"asset": "banner-icon.png",
+		"base": {
+			"top": "210px",
+			"left": "195px"
+		},
+		"img": {
+			"width": "72px",
+			"height": "72px"
+		}
+	},
+	"accessory": {
+		"asset": "banner-accessory.png",
+		"base": {
+			"top": "172px",
+			"right": "-83%"
+		},
+		"img": {
+			"width": "256px",
+			"height": "256px"
+		}
+	}
+}

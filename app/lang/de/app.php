@@ -260,5 +260,7 @@ return [
 	'import_successful' => 'Erfolgreich importiert!',
 	'pwa_enable' => 'PWA Unterstützung aktivieren',
 	'home' => 'Home',
-	'enable_system_messages' => 'Systemmeldungen aktivieren'
+	'enable_system_messages' => 'Systemmeldungen aktivieren',
+	'theme' => 'Theme',
+	'themes' => 'Themes'
 ];
