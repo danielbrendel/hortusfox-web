@@ -24,33 +24,35 @@
 	</div>
 </div>
 
-@if (count($warning_plants) > 0)
-	<div class="warning-plants has-warnings">
-		<div class="warning-plants-title">{{ __('app.warning_plants_title') }}</div>
+<div class="line-up-frames">
+	@if (count($warning_plants) > 0)
+		<div class="warning-plants has-warnings">
+			<div class="warning-plants-title has-warnings">{{ __('app.warning_plants_title') }}</div>
 
-		<div class="warning-plants-content">
-			@foreach ($warning_plants as $plant)
-				<div class="warning-plants-item">{{ $plant->get('name') }} | <strong class="plant-state-{{ $plant->get('health_state') }}">{{ __('app.' . $plant->get('health_state')) }}</strong> | {{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }} | <a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ __('app.view_plant_details') }}</a></div>
-			@endforeach
+			<div class="warning-plants-content">
+				@foreach ($warning_plants as $plant)
+					<div class="warning-plants-item">{{ $plant->get('name') }} | <strong class="plant-state-{{ $plant->get('health_state') }}">{{ __('app.' . $plant->get('health_state')) }}</strong> | {{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }} | <a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ __('app.view_plant_details') }}</a></div>
+				@endforeach
+			</div>
 		</div>
-	</div>
-@else
-	<div class="warning-plants is-all-ok">
-		<div class="warning-plants-title warning-plants-title-margin-top-25 warning-plants-title-centered"><i class="far fa-check-circle is-color-yes"></i>&nbsp;{{ __('app.warning_plants_all_ok') }}</div>
-	</div>
-@endif
+	@else
+		<div class="warning-plants is-all-ok">
+			<div class="warning-plants-title warning-plants-title-margin-top-25 warning-plants-title-centered"><i class="far fa-check-circle is-color-yes"></i>&nbsp;{{ __('app.warning_plants_all_ok') }}</div>
+		</div>
+	@endif
 
-@if (count($overdue_tasks) > 0)
-<div class="overdue-tasks">
-	<div class="overdue-tasks-title">{{ __('app.overdue_tasks') }}</div>
+	@if (count($overdue_tasks) > 0)
+		<div class="overdue-tasks">
+			<div class="overdue-tasks-title">{{ __('app.overdue_tasks') }}</div>
 
-	<div class="overdue-tasks-content">
-		@foreach ($overdue_tasks as $overdue_task)
-			<div class="overdue-tasks-item">{{ $overdue_task->get('title') }} | {{ date('Y-m-d', strtotime($overdue_task->get('due_date'))) }} | <a class="is-yellow-link" href="{{ url('/tasks#task-anchor-' . $overdue_task->get('id')) }}">{{ __('app.view_task_details') }}</a></div>
-		@endforeach
-	</div>
+			<div class="overdue-tasks-content">
+				@foreach ($overdue_tasks as $overdue_task)
+					<div class="overdue-tasks-item">{{ $overdue_task->get('title') }} | {{ date('Y-m-d', strtotime($overdue_task->get('due_date'))) }} | <a class="is-yellow-link" href="{{ url('/tasks#task-anchor-' . $overdue_task->get('id')) }}">{{ __('app.view_task_details') }}</a></div>
+				@endforeach
+			</div>
+		</div>
+	@endif
 </div>
-@endif
 
 <div class="locations">
 	@foreach ($locations as $location)

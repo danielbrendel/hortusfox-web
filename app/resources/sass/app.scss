@@ -7,7 +7,7 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(48, 52, 55);
 }
 
 body {
@@ -257,6 +257,27 @@ a.navbar-burger:hover {
     }
 }
 
+.column h1 {
+    @media screen and (min-width: 768px) {
+        margin-top: 20px;
+    }
+}
+
+.banner {
+    width: 100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.content-inner {
+    position: relative;
+    padding: 15px;
+}
+
 .modal {
     z-index: 105;
 }
@@ -336,7 +357,7 @@ fieldset .field {
 .location {
     position: relative;
     display: inline-block;
-    width: 250px;
+    width: 245px;
     height: 230px;
     @media screen and (max-width: 830px) {
         width: 134px;
@@ -345,12 +366,12 @@ fieldset .field {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 23px;
-    background-color: rgba(159, 172, 132, 0.2);
-    border: 1px solid rgb(80, 80, 80);
+    background-color: rgb(55, 59, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .location:hover {
-    background-color: rgba(159, 172, 132, 0.35);
+    box-shadow: 0 0 20px 0 rgba(105, 165, 85, 0.95);
 }
 
 .location-title {
@@ -407,7 +428,8 @@ fieldset .field {
     margin-left: -20px;
     margin-right: -20px;
     padding-bottom: 5px;
-    background-color: rgba(150, 150, 150, 0.3);
+    background-color: rgb(55, 59, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
@@ -730,26 +752,46 @@ fieldset .field {
     color: rgb(212, 50, 50);
 }
 
+.line-up-frames {
+    @media screen and (min-width: 795px) {
+        display: flex;
+    }
+}
+
 .warning-plants {
     position: relative;
-    width: 100%;
-    margin-top: 20px;
+    flex: 1;
+    width: 45%;
+    @media screen and (max-width: 796px) {
+        flex: unset;
+        display: inline-block;
+        width: 100%;
+    }
+    margin-top: -10px;
     margin-bottom: 45px;
-    padding: 0 15px 15px 15px;
-    border: 1px solid rgb(100, 100, 100);
+    margin-right: 5px;
+    margin-left: 10px;
+    padding: 15px 15px 15px 15px;
+    padding-left: 25px;
+    @media screen and (max-width: 512px) {
+        padding-left: 15px;
+        margin-left: unset;
+    }
+    background-color: rgb(55, 59, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
 .has-warnings {
-    background-color: rgba(123, 50, 50, 0.5);
+    color: rgb(200, 105, 105) !important;
 }
 
 .is-all-ok {
-    background-color: rgba(50, 123, 56, 0.5);
+    //color: rgb(115, 215, 125)
 }
 
 .warning-plants-title {
-    margin-top: 20px;
+    margin-top: 10px !important;
     margin-bottom: 10px;
     font-size: 1.3em;
     color: rgb(200, 200, 200);
@@ -768,7 +810,7 @@ fieldset .field {
 }
 
 .warning-plants-content {
-
+    padding-left: 15px;
 }
 
 .warning-plants-item {
@@ -823,12 +865,28 @@ fieldset .field {
 
 .overdue-tasks {
     position: relative;
-    width: 100%;
+    flex: 1;
+    width: 45%;
     margin-top: -10px;
     margin-bottom: 45px;
-    padding: 0 15px 15px 15px;
-    background-color: rgba(123, 50, 50, 0.5);
-    border: 1px solid rgb(100, 100, 100);
+    margin-left: 5px;
+    margin-right: 10px;
+    padding-top: 2px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    @media screen and (max-width: 796px) {
+        flex: unset;
+        display: inline-block;
+        width: 100%;
+        margin-left: unset;
+    }
+    @media screen and (max-width: 512px) {
+        padding-left: 15px;
+        padding-right: 2px;
+    }
+    background-color: rgb(55, 59, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
@@ -836,11 +894,11 @@ fieldset .field {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 1.3em;
-    color: rgb(200, 200, 200);
+    color: rgb(200, 105, 105);
 }
 
 .overdue-tasks-content {
-
+    padding: 10px;
 }
 
 .overdue-tasks-item {
@@ -855,7 +913,8 @@ fieldset .field {
     margin-bottom: 45px;
     padding: 0 15px 15px 15px;
     border: 1px solid rgb(43, 43, 43);
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(50, 54, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
@@ -997,19 +1056,19 @@ fieldset .field {
 .stats-item {
     position: relative;
     display: inline-block;
-    width: 194px;
+    width: 243.9px;
     @media screen and (max-width: 512px) {
         width: 149px;
     }
     height: 135px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
     margin-bottom: 20px;
     padding: 20px;
-    background-color: rgba(150, 150, 150, 0.3);
-    border: 1px solid rgb(200, 200, 200);
+    background-color: rgb(55, 59, 62);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    border-left: 3px solid rgb(159, 165, 45);
+    border-left: 2px solid rgb(159, 165, 45);
 }
 
 .stats-item-count {

@@ -24,20 +24,21 @@
 			<div id="scroller-top"></div>
 
 			@include('navbar.php')
+			@include('banner.php')
 
 			<div id="small-system-messages"></div>
 
 			<div class="container">
 				<div class="columns">
-					<div class="column is-2"></div>
+					<div class="column is-1"></div>
 
-					<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/background.jpg') }}');">
-						<div class="column-overlay" {!! ((app('overlay_alpha')) ? 'style="background-color: rgba(0, 0, 0, ' . app('overlay_alpha') . ');"': '') !!}>
+					<div class="column is-10">
+						<div class="content-inner">
 							{%content%}
 						</div>
 					</div>
 
-					<div class="column is-2"></div>
+					<div class="column is-1"></div>
 				</div>
 			</div>
 
