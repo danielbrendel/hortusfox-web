@@ -267,7 +267,7 @@ a.navbar-burger:hover {
     width: 100%;
     height: 250px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     @media screen and (max-width: 768px) {
         display: none;
     }
