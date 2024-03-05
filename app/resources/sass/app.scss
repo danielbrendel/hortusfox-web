@@ -476,6 +476,7 @@ fieldset .field {
     padding-bottom: 10px;
     font-size: 0.9em;
     text-align: left;
+    color: rgb(150, 150, 150);
     background-color: rgb(50, 54, 59);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     @media screen and (max-width: 830px) {
@@ -1457,7 +1458,7 @@ fieldset .field {
 
 .inventory-item-description {
     position: relative;
-    color: rgb(100, 100, 100);
+    color: rgb(130, 130, 130);
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -1475,7 +1476,7 @@ fieldset .field {
 
 .inventory-item-author {
     position: relative;
-    color: rgb(100, 100, 100);
+    color: rgb(120, 120, 120);
     margin-top: 10px;
 }
 
