@@ -7,7 +7,7 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(48, 52, 55);
 }
 
 body {
@@ -164,11 +164,11 @@ h2 {
 }
 
 .form-paragraph-modal a {
-    color: rgb(5, 67, 183);
+    color: rgb(52, 105, 215);
 }
 
 .form-paragraph-modal a:hover {
-    color: rgb(5, 67, 183);
+    color: rgb(52, 105, 215);
     text-decoration: underline;
 }
 
@@ -257,8 +257,91 @@ a.navbar-burger:hover {
     }
 }
 
+.column h1 {
+    @media screen and (min-width: 768px) {
+        margin-top: 20px;
+    }
+}
+
+.banner {
+    width: 100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.banner-icon {
+    position: relative;
+    top: 210px;
+    left: 195px;
+}
+
+.banner-icon img {
+    width: 72px;
+    height: 72px;
+}
+
+.banner-accessory {
+    position: relative;
+    top: 172px;
+    right: -83%;
+}
+
+.banner-accessory img {
+    width: 256px;
+    height: 256px;
+}
+
+.content-inner {
+    position: relative;
+    padding: 15px;
+}
+
 .modal {
     z-index: 105;
+}
+
+.modal-card {
+    color: rgb(150, 150, 150);
+}
+
+.modal-card-head {
+    background-color: rgb(55, 59, 62);
+    border-bottom: 1px solid rgb(59, 59, 59);
+}
+
+.modal-card-title {
+    color: rgb(190, 190, 190);
+}
+
+.modal-card-body {
+    background-color: rgb(48, 52, 55);
+}
+
+.modal-card-body label {
+    color: rgb(150, 150, 150);
+}
+
+.modal-card-body input, .modal-card-body select, .modal-card-body textarea, .modal-card-body table {
+    background-color: rgb(57, 59, 63);
+    color: rgb(150, 150, 150);
+    border: 1px solid rgb(100, 100, 100);
+}
+
+.modal-card-body input::placeholder, .modal-card-body select::placeholder, .modal-card-body textarea::placeholder {
+    color: rgb(250, 250, 250);
+}
+
+.modal-card-body hr {
+    background-color: rgb(100, 100, 100);
+}
+
+.modal-card-foot {
+    background-color: rgb(50, 50, 50);
+    border-top: 1px solid rgb(59, 59, 59);
 }
 
 .fade {
@@ -336,21 +419,21 @@ fieldset .field {
 .location {
     position: relative;
     display: inline-block;
-    width: 250px;
-    height: 230px;
+    width: 245px;
+    height: 250px;
     @media screen and (max-width: 830px) {
         width: 134px;
-        height: 108px;
+        height: 137px;
     }
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 23px;
-    background-color: rgba(159, 172, 132, 0.2);
-    border: 1px solid rgb(80, 80, 80);
+    margin-bottom: 30px;
+    background-color: rgb(55, 59, 62);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .location:hover {
-    background-color: rgba(159, 172, 132, 0.35);
+    box-shadow: 0 0 20px 0 rgba(105, 165, 85, 0.95);
 }
 
 .location-title {
@@ -363,7 +446,7 @@ fieldset .field {
         padding-bottom: 5px;
     }
     @media screen and (min-width: 831px) {
-        padding-bottom: 10px;
+        padding-bottom: 7px;
     }
     margin-bottom: 20px;
     background-color: rgba(115, 143, 100, 0.9);
@@ -382,6 +465,36 @@ fieldset .field {
     }
     @media screen and (min-width: 831px) {
         margin-top: 25px;
+    }
+}
+
+.location-footer {
+    position: relative;
+    bottom: -30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-size: 0.9em;
+    text-align: left;
+    background-color: rgb(50, 54, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: 830px) {
+        font-size: 0.75em;
+        bottom: -15px;
+    }
+}
+
+.location-footer-count-desktop {
+    display: none;
+    @media screen and (min-width: 850px) {
+        display: inherit;
+    }
+}
+
+.location-footer-count-mobile {
+    display: none;
+    @media screen and (max-width: 850px) {
+        display: inherit;
     }
 }
 
@@ -407,7 +520,8 @@ fieldset .field {
     margin-left: -20px;
     margin-right: -20px;
     padding-bottom: 5px;
-    background-color: rgba(150, 150, 150, 0.3);
+    background-color: rgb(55, 59, 62);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
@@ -484,12 +598,12 @@ fieldset .field {
 .plant-card {
     position: relative;
     display: inline-block;
-    width: 265px;
+    width: 245px;
     @media screen and (max-width: 552px) {
-        width: 145px;
-        height: 257px;
+        width: 141px;
+        height: 222px;
     }
-    height: 398px;
+    height: 375px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -587,6 +701,7 @@ fieldset .field {
         display: inline-block;
         padding-left: unset;
         padding-right: unset;
+        width: 107% !important;
     }
 }
 
@@ -625,11 +740,11 @@ fieldset .field {
     float: right;
 }
 
-.is-color-yes {
+.is-color-yes, .is-color-ok {
     color: rgb(115, 214, 103);
 }
 
-.is-color-no {
+.is-color-no, .is-color-danger {
     color: rgb(212, 67, 67)
 }
 
@@ -647,6 +762,7 @@ fieldset .field {
     padding: 10px;
     color: rgb(200, 200, 200);
     background-color: rgba(90, 90, 90, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     font-size: 1.0em;
     border: 1px solid rgb(100, 100, 100);
     border-left: 3px solid rgb(163, 122, 61);
@@ -668,7 +784,7 @@ fieldset .field {
 .plant-photo {
     position: relative;
     width: 345px;
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 512px) {
         width: 100%;
     }
     height: 543px;
@@ -730,27 +846,52 @@ fieldset .field {
     color: rgb(212, 50, 50);
 }
 
+.line-up-frames {
+    @media screen and (min-width: 795px) {
+        display: flex;
+    }
+}
+
 .warning-plants {
     position: relative;
-    width: 100%;
-    margin-top: 20px;
+    flex: 1;
+    width: 45%;
+    @media screen and (max-width: 796px) {
+        flex: unset;
+        display: inline-block;
+        width: 100%;
+    }
+    margin-top: -10px;
     margin-bottom: 45px;
-    padding: 0 15px 15px 15px;
-    border: 1px solid rgb(100, 100, 100);
+    margin-right: 5px;
+    margin-left: 10px;
+    padding: 15px 15px 15px 15px;
+    padding-left: 25px;
+    padding-bottom: 20px;
+    @media screen and (max-width: 512px) {
+        padding-left: 15px;
+        margin-left: unset;
+    }
+    background-color: rgb(55, 59, 62);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
 .has-warnings {
-    background-color: rgba(123, 50, 50, 0.5);
+    color: rgb(200, 105, 105) !important;
 }
 
 .is-all-ok {
-    background-color: rgba(50, 123, 56, 0.5);
+    //color: rgb(115, 215, 125)
+}
+
+.table-bright-color {
+    background-color: rgb(63, 70, 75);
 }
 
 .warning-plants-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: -2px !important;
+    margin-bottom: 20px;
     font-size: 1.3em;
     color: rgb(200, 200, 200);
 }
@@ -768,16 +909,24 @@ fieldset .field {
 }
 
 .warning-plants-content {
-
+    position: relative;
 }
 
-.warning-plants-item {
+.warning-plants-content table {
+    width: 100%;
+}
+
+.warning-plants-content thead {
+    display: none;
+}
+
+.warning-plants-content td {
     color: rgb(150, 150, 150);
-    margin-bottom: 10px;
-}
-
-.warning-plants-item strong {
-    
+    border: 1px solid rgb(100, 100, 100);
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 .history-years {
@@ -823,24 +972,57 @@ fieldset .field {
 
 .overdue-tasks {
     position: relative;
-    width: 100%;
+    flex: 1;
+    width: 45%;
     margin-top: -10px;
     margin-bottom: 45px;
-    padding: 0 15px 15px 15px;
-    background-color: rgba(123, 50, 50, 0.5);
-    border: 1px solid rgb(100, 100, 100);
+    margin-left: 5px;
+    margin-right: 10px;
+    padding-top: 2px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    @media screen and (max-width: 796px) {
+        flex: unset;
+        display: inline-block;
+        width: 100%;
+        margin-left: unset;
+    }
+    @media screen and (max-width: 512px) {
+        padding-left: 15px;
+        padding-right: 2px;
+    }
+    background-color: rgb(55, 59, 62);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
 .overdue-tasks-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-size: 1.3em;
-    color: rgb(200, 200, 200);
+    color: rgb(200, 105, 105);
 }
 
 .overdue-tasks-content {
+    position: relative;
+}
 
+.overdue-tasks-content table {
+    width: 100%;
+}
+
+.overdue-tasks-content thead {
+    display: none;
+}
+
+.overdue-tasks-content td {
+    color: rgb(150, 150, 150);
+    border: 1px solid rgb(100, 100, 100);
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 .overdue-tasks-item {
@@ -855,7 +1037,8 @@ fieldset .field {
     margin-bottom: 45px;
     padding: 0 15px 15px 15px;
     border: 1px solid rgb(43, 43, 43);
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(50, 54, 59);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
@@ -863,7 +1046,7 @@ fieldset .field {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 1.3em;
-    color: rgb(0, 215, 63);
+    color: rgb(0, 145, 215);
 }
 
 .log-content {
@@ -920,7 +1103,8 @@ fieldset .field {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 30px;
-    background-color: rgba(50, 50, 50, 0.8);
+    background-color: rgba(73, 79, 83);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 
@@ -930,7 +1114,7 @@ fieldset .field {
 
 .plant-gallery-item-header-label {
     display: inline-block;
-    color: rgb(200, 200, 200);
+    color: rgb(230, 230, 230);
 }
 
 .plant-gallery-item-header-action {
@@ -962,7 +1146,7 @@ fieldset .field {
     position: absolute;
     z-index: 2;
     width: 100%;
-    height: 98%;
+    height: 97%;
 }
 
 .plant-gallery-item-photo-overlay:hover {
@@ -984,7 +1168,7 @@ fieldset .field {
     position: relative;
     top: -3px;
     padding: 10px;
-    color: rgb(100, 100, 100);
+    color: rgb(135, 135, 135);
 }
 
 .stats {
@@ -997,19 +1181,19 @@ fieldset .field {
 .stats-item {
     position: relative;
     display: inline-block;
-    width: 194px;
+    width: 243.9px;
     @media screen and (max-width: 512px) {
-        width: 149px;
+        width: 135px;
     }
-    height: 135px;
-    margin-left: 10px;
-    margin-right: 10px;
+    height: 130px;
+    margin-left: 12px;
+    margin-right: 12px;
     margin-bottom: 20px;
     padding: 20px;
-    background-color: rgba(150, 150, 150, 0.3);
-    border: 1px solid rgb(200, 200, 200);
+    background-color: rgb(55, 59, 62);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    border-left: 3px solid rgb(159, 165, 45);
+    border-left: 2px solid rgb(159, 165, 45);
 }
 
 .stats-item-count {
@@ -1043,7 +1227,7 @@ fieldset .field {
 .plant-tags-item {
     position: relative;
     display: inline-block;
-    min-width: 90px;
+    min-width: 125px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -1052,13 +1236,13 @@ fieldset .field {
     margin-right: 5px;
     margin-bottom: 16px;
     text-align: center;
-    background-color: rgba(200, 200, 200, 0.3);
-    border: 1px solid rgb(150, 150, 150);
+    background-color: rgba(123, 123, 123, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
 .plant-tags-item:hover {
-    background-color: rgba(200, 200, 200, 0.5);
+    background-color: rgba(150, 150, 150, 0.5);
 }
 
 .plant-tags-item a {
@@ -1084,7 +1268,7 @@ fieldset .field {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 29px;
-    background-color: rgba(50, 50, 50, 0.76);
+    background-color: rgb(55, 59, 62);
     border: 1px solid rgb(80, 80, 80);
     border-radius: 4px;
 }
@@ -1299,12 +1483,20 @@ fieldset .field {
     width: 100%;
 }
 
+.inventory-groups thead td {
+    color: rgb(150, 150, 150);
+}
+
+.inventory-groups.table td {
+    border: 1px solid rgb(100, 100, 100);
+}
+
 .inventory-groups a {
-    color: rgb(50, 50, 50);
+    color: rgb(150, 150, 150);
 }
 
 .inventory-groups a:hover {
-    color: rgb(50, 50, 50);
+    color: rgb(150, 150, 150);
     text-decoration: underline;
 }
 
@@ -1433,6 +1625,7 @@ fieldset .field {
 #small-system-messages {
     position: fixed;
     z-index: 3;
+    top: 55px;
     @media screen and (max-width: 512px) {
         width: 100%;
     }
@@ -1477,7 +1670,7 @@ fieldset .field {
 }
 
 .scroll-to-top-inner {
-    background-color: rgb(52, 70, 56);
+    background-color: rgb(80, 80, 80);
     border-radius: 50%;
     padding: 12px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -1627,6 +1820,14 @@ fieldset .field {
 
 .reset-form input[type=submit] {
     width: 100%;
+}
+
+.preferences-header {
+    position: relative;
+}
+
+.preferences-header i {
+    color: rgb(150, 150, 150);
 }
 
 .admin-tabs {
@@ -1888,7 +2089,7 @@ fieldset .field {
     z-index: 100;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: rgb(50, 50, 50);
+    background-color: rgb(30, 30, 30);
     @media screen and (min-width: 1087px) {
         display: none;
     }

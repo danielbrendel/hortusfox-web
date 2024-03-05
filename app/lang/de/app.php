@@ -200,7 +200,8 @@ return [
 	'no_new_version_available' => 'Es wird bereits die neuste Version genutzt.',
 	'admin_media' => 'Medien',
 	'media_logo' => 'Arbeitsraum Logo (.png image)',
-	'media_background' => 'Arbeitsraum Hintergrundbild (.jpg)',
+	'media_banner' => 'Arbeitsraum Banner (.jpg)',
+	'media_background' => 'Arbeitsraum Hintergrund (.jpg)',
 	'media_saved' => 'Das Asset wurde erfolgreich gespeichert',
 	'enable_history' => 'Historie aktivieren',
 	'history_name' => 'Name der Historie',
@@ -259,5 +260,10 @@ return [
 	'import_successful' => 'Erfolgreich importiert!',
 	'pwa_enable' => 'PWA Unterstützung aktivieren',
 	'home' => 'Home',
-	'enable_system_messages' => 'Systemmeldungen aktivieren'
+	'enable_system_messages' => 'Systemmeldungen aktivieren',
+	'plant_count' => '{count} Pflanzen',
+	'danger_count' => '{count} gefährdet',
+	'all_in_good_standing' => 'Alles Ok',
+	'theme' => 'Theme',
+	'themes' => 'Themes'
 ];

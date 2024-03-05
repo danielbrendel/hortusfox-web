@@ -24,33 +24,69 @@
 	</div>
 </div>
 
-@if (count($warning_plants) > 0)
-	<div class="warning-plants has-warnings">
-		<div class="warning-plants-title">{{ __('app.warning_plants_title') }}</div>
+<div class="line-up-frames">
+	@if (count($warning_plants) > 0)
+		<div class="warning-plants has-warnings">
+			<div class="warning-plants-title has-warnings">{{ __('app.warning_plants_title') }}</div>
 
-		<div class="warning-plants-content">
-			@foreach ($warning_plants as $plant)
-				<div class="warning-plants-item">{{ $plant->get('name') }} | <strong class="plant-state-{{ $plant->get('health_state') }}">{{ __('app.' . $plant->get('health_state')) }}</strong> | {{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }} | <a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ __('app.view_plant_details') }}</a></div>
-			@endforeach
+			<div class="warning-plants-content">
+				<table>
+					<thead>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $table_counter = 0; ?>
+						@foreach ($warning_plants as $plant)
+							<tr class="{{ ($table_counter % 2 === 0) ? 'table-bright-color' : '' }}">
+								<td><a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ (strlen($plant->get('name')) > 20) ? substr($plant->get('name'), 0, 20) . '...' : $plant->get('name') }}</a></td>
+								<td><strong class="plant-state-{{ $plant->get('health_state') }}">{{ __('app.' . $plant->get('health_state')) }}</strong></td>
+								<td>{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</td>
+							</tr>
+
+							<?php $table_counter++; ?>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
-@else
-	<div class="warning-plants is-all-ok">
-		<div class="warning-plants-title warning-plants-title-margin-top-25 warning-plants-title-centered"><i class="far fa-check-circle is-color-yes"></i>&nbsp;{{ __('app.warning_plants_all_ok') }}</div>
-	</div>
-@endif
+	@else
+		<div class="warning-plants is-all-ok">
+			<div class="warning-plants-title warning-plants-title-margin-top-25 warning-plants-title-centered"><i class="far fa-check-circle is-color-yes"></i>&nbsp;{{ __('app.warning_plants_all_ok') }}</div>
+		</div>
+	@endif
 
-@if (count($overdue_tasks) > 0)
-<div class="overdue-tasks">
-	<div class="overdue-tasks-title">{{ __('app.overdue_tasks') }}</div>
+	@if (count($overdue_tasks) > 0)
+		<div class="overdue-tasks">
+			<div class="overdue-tasks-title">{{ __('app.overdue_tasks') }}</div>
 
-	<div class="overdue-tasks-content">
-		@foreach ($overdue_tasks as $overdue_task)
-			<div class="overdue-tasks-item">{{ $overdue_task->get('title') }} | {{ date('Y-m-d', strtotime($overdue_task->get('due_date'))) }} | <a class="is-yellow-link" href="{{ url('/tasks#task-anchor-' . $overdue_task->get('id')) }}">{{ __('app.view_task_details') }}</a></div>
-		@endforeach
-	</div>
+			<div class="overdue-tasks-content">
+				<table>
+					<thead>
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $table_counter = 0; ?>
+						@foreach ($overdue_tasks as $overdue_task)
+							<tr class="{{ ($table_counter % 2 === 0) ? 'table-bright-color' : '' }}">
+								<td><a class="is-yellow-link" href="{{ url('/tasks#task-anchor-' . $overdue_task->get('id')) }}">{{ $overdue_task->get('title') }}</a></td>
+								<td>{{ date('Y-m-d', strtotime($overdue_task->get('due_date'))) }}</td>
+							</tr>
+
+							<?php $table_counter++; ?>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+		</div>
+	@endif
 </div>
-@endif
 
 <div class="locations">
 	@foreach ($locations as $location)
@@ -62,6 +98,34 @@
 
 				<div class="location-icon">
 					<i class="{{ $location->get('icon') }}"></i>
+				</div>
+
+				<div class="location-footer">
+					<div class="is-inline-block">
+						<?php $plant_count = PlantsModel::getPlantCount($location->get('id')); ?>
+						<span class="location-footer-count-desktop"><i class="fas fa-seedling is-color-ok"></i>&nbsp;{{ __('app.plant_count', ['count' => $plant_count]) }} &nbsp;</span>
+						<span class="location-footer-count-mobile"><i class="fas fa-seedling is-color-ok"></i>&nbsp;{{ $plant_count }} &nbsp;</span>
+					</div>
+
+					<div class="is-inline-block">
+						<?php $danger_count = PlantsModel::getDangerCount($location->get('id')); ?>
+
+						<span class="location-footer-count-desktop">
+							@if ($danger_count > 0)
+								<i class="fas fa-biohazard is-color-danger"></i>&nbsp;{{ __('app.danger_count', ['count' => $danger_count]) }}
+							@else
+								<i class="far fa-check-circle is-color-ok"></i>&nbsp;{{ __('app.all_in_good_standing') }}
+							@endif
+						</span>
+
+						<span class="location-footer-count-mobile">
+							@if ($danger_count > 0)
+								<i class="fas fa-biohazard is-color-danger"></i>&nbsp;{{ $danger_count }}
+							@else
+								<i class="far fa-check-circle is-color-ok"></i>&nbsp;{{ __('app.all_in_good_standing') }}
+							@endif
+						</span>
+					</div>
 				</div>
 			</div>
 		</a>

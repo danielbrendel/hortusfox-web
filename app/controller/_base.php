@@ -53,6 +53,12 @@ class BaseController extends Asatru\Controller\Controller {
 					UtilsModule::setLanguage($lang);
 				}
 			}
+
+			$theme = $auth_user->get('theme');
+
+			if (($theme) && (is_dir(public_path() . '/themes/' . $theme))) {
+				ThemeModule::load(public_path() . '/themes/' . $theme);
+			}
 		}
 	}
 

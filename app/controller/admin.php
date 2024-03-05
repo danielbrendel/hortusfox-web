@@ -276,6 +276,30 @@ class AdminController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /admin/media/banner
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function upload_media_banner($request)
+	{
+		try {
+			if ((!isset($_FILES['asset'])) || ($_FILES['asset']['error'] !== UPLOAD_ERR_OK) || ($_FILES['asset']['type'] !== 'image/jpeg')) {
+				throw new \Exception('Failed to upload file or invalid file uploaded');
+			}
+
+			move_uploaded_file($_FILES['asset']['tmp_name'], public_path() . '/img/banner.jpg');
+
+			FlashMessage::setMsg('success', __('app.media_saved'));
+
+			return redirect('/admin?tab=media');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
 	 * Handles URL: /admin/media/background
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

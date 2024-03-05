@@ -55,6 +55,7 @@ users have taken. The system features collaborative management, so you can manag
 - 🕰️ History feature
 - 💬 Group chat
 - ⚙️ Profile management
+- 🦋 Themes
 - 🔑 Admin dashboard
 - 📢 Reminders
 - 💾 Backups

@@ -87,6 +87,7 @@ return [
     array('/admin/location/update', 'POST', 'admin@update_location'),
     array('/admin/location/remove', 'ANY', 'admin@remove_location'),
     array('/admin/media/logo', 'POST', 'admin@upload_media_logo'),
+    array('/admin/media/banner', 'POST', 'admin@upload_media_banner'),
     array('/admin/media/background', 'POST', 'admin@upload_media_background'),
     array('/admin/media/overlay/alpha', 'POST', 'admin@save_overlay_alpha'),
     array('/admin/mail/save', 'POST', 'admin@save_mail_settings'),

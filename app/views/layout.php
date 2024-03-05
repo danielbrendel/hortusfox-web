@@ -25,19 +25,25 @@
 
 			@include('navbar.php')
 
+			@if (ThemeModule::ready())
+				@include('theme.php')
+			@else
+				@include('banner.php')
+			@endif
+
 			<div id="small-system-messages"></div>
 
 			<div class="container">
 				<div class="columns">
-					<div class="column is-2"></div>
+					<div class="column is-1"></div>
 
-					<div class="column is-8 is-image-container" style="background-image: url('{{ asset('img/background.jpg') }}');">
-						<div class="column-overlay" {!! ((app('overlay_alpha')) ? 'style="background-color: rgba(0, 0, 0, ' . app('overlay_alpha') . ');"': '') !!}>
+					<div class="column is-10">
+						<div class="content-inner">
 							{%content%}
 						</div>
 					</div>
 
-					<div class="column is-2"></div>
+					<div class="column is-1"></div>
 				</div>
 			</div>
 
@@ -637,6 +643,17 @@
 									<select class="input" name="lang" id="selEditCombo">
 										@foreach (UtilsModule::getLanguageList() as $lang)
 											<option value="{{ $lang['ident'] }}" {{ ($user->get('lang') === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.theme') }}</label>
+								<div class="control">
+									<select class="input" name="theme" id="selEditCombo">
+										@foreach (ThemeModule::list() as $theme)
+											<option value="{{ $theme }}" {{ ($user->get('theme') === $theme) ? 'selected' : ''}}>{{ $theme }}</option>
 										@endforeach
 									</select>
 								</div>

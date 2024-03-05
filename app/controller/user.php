@@ -65,13 +65,14 @@ class UserController extends BaseController {
 			$name = $request->params()->query('name', null);
 			$email = $request->params()->query('email', null);
 			$lang = $request->params()->query('lang', 'en');
+			$theme = $request->params()->query('theme', 'default');
 			$chatcolor = $request->params()->query('chatcolor', null);
 			$show_log = $request->params()->query('show_log', false);
 			$notify_tasks_overdue = $request->params()->query('notify_tasks_overdue', false);
 			$notify_tasks_tomorrow = $request->params()->query('notify_tasks_tomorrow', false);
 			$show_plants_aoru = $request->params()->query('show_plants_aoru', 'added');
 
-			UserModel::editPreferences($name, $email, $lang, $chatcolor, $show_log, $notify_tasks_overdue, $notify_tasks_tomorrow, $show_plants_aoru);
+			UserModel::editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $notify_tasks_overdue, $notify_tasks_tomorrow, $show_plants_aoru);
 
 			$password = $request->params()->query('password', null);
 			if ($password) {

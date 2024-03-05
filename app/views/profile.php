@@ -1,12 +1,16 @@
-<h1>{{ __('app.profile') }}</h1>
+<div class="preferences-header">
+	<div class="is-inline-block">
+		<h1>{{ __('app.profile') }}</h1>
+	</div>
+
+	<div class="is-inline-block" title="{{ __('app.preferences') }}">
+		<a href="javascript:void(0);" onclick="window.vue.bShowEditPreferences = true;">&nbsp;&nbsp;<i class="fas fa-cog fa-2x"></i></a>
+	</div>
+</div>
 
 <div class="margin-vertical is-default-text-color">{{ __('app.profile_hint', ['name' => $user->get('name'), 'email' => $user->get('email')]) }}</div>
 
 @include('flashmsg.php')
-
-<div class="margin-vertical">
-	<a class="button is-link" href="javascript:void(0);" onclick="window.vue.bShowEditPreferences = true;">{{ __('app.preferences') }}</a>
-</div>
 
 <div class="margin-vertical">
 	<h2 class="smaller-headline">{{ __('app.personal_notes') }}</h2>
