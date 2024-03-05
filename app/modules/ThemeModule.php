@@ -119,4 +119,54 @@ class ThemeModule {
             throw $e;
         }
     }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function startImport()
+    {
+        try {
+            if ((!isset($_FILES['theme'])) || ($_FILES['theme']['error'] !== UPLOAD_ERR_OK) || (strpos($_FILES['theme']['type'], 'zip') === false)) {
+                throw new \Exception('Failed to upload file or invalid file uploaded');
+            }
+
+            $result = [];
+
+            $import_file = 'theme_import_' . date('Y-m-d_H-i-s');
+
+            move_uploaded_file($_FILES['theme']['tmp_name'], public_path() . '/themes/' . $import_file . '.zip');
+
+            $zip = new ZipArchive();
+
+            if ($zip->open(public_path() . '/themes/' . $import_file . '.zip')) {
+                $zip->extractTo(public_path() . '/themes/' . $import_file);
+                $zip->close();
+
+                $folders = scandir(public_path() . '/themes/' . $import_file);
+                foreach ($folders as $folder) {
+                    if (substr($folder, 0, 1) !== '.') {
+                        if (!is_dir(public_path() . '/themes/' . $folder)) {
+                            rename(public_path() . '/themes/' . $import_file . '/' . $folder, public_path() . '/themes/' . $folder);
+
+                            static::load(public_path() . '/themes/' . $folder);
+                            if (!static::ready()) {
+                                throw new \Exception('Failed to load theme: ' . $folder);
+                            }
+
+                            $result[] = $folder;
+                        }
+                    }
+                }
+
+                UtilsModule::clearFolder(public_path() . '/themes/' . $import_file);
+            }
+
+            unlink(public_path() . '/themes/' . $import_file . '.zip');
+
+            return $result;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }

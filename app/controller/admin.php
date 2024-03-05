@@ -405,4 +405,27 @@ class AdminController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /admin/themes/import
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function import_theme($request)
+    {
+        try {
+            $themes = ThemeModule::startImport();
+
+            return json([
+                'code' => 200,
+				'themes' => $themes
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }

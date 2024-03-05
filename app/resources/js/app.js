@@ -669,7 +669,7 @@ window.vue = new Vue({
         },
 
         selectAdminTab: function(tab) {
-            const tabs = ['environment', 'media', 'users', 'locations', 'mail', 'backup', 'info'];
+            const tabs = ['environment', 'media', 'users', 'locations', 'mail', 'themes', 'backup', 'info'];
 
             let selEl = document.querySelector('.admin-' + tab);
             if (selEl) {
@@ -798,6 +798,26 @@ window.vue = new Vue({
                 if (response.code == 200) {
                     let import_result = document.getElementById('import-result');
                     if (import_result) {
+                        import_result.classList.remove('is-hidden');
+                    }
+                }
+            });
+        },
+
+        startThemeImport: function(file, button) {
+            let oldText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
+            
+            let formData = new FormData();
+            formData.append('theme', file.files[0]);
+
+            window.vue.ajaxRequest('post', window.location.origin + '/admin/themes/import', formData, function(response) {
+                button.innerHTML = oldText;
+                
+                if (response.code == 200) {
+                    let import_result = document.getElementById('themes-import-result');
+                    if (import_result) {
+                        import_result.innerText = import_result.innerText.replace('{count}', response.themes.length);
                         import_result.classList.remove('is-hidden');
                     }
                 }

@@ -266,5 +266,7 @@ return [
 	'all_in_good_standing' => 'Alles Ok',
 	'theme' => 'Theme',
 	'themes' => 'Themes',
-	'confirm_generate_new_token' => 'Soll ein neues Token erstellt werden? Das vorherige Token wird dadurch ungültig.'
+	'confirm_generate_new_token' => 'Soll ein neues Token erstellt werden? Das vorherige Token wird dadurch ungültig.',
+	'themes_hint' => 'Hier können neue Themes importiert werden. Wähle das ZIP-Archiv mit deinem Theme aus und sobald der Import erfolgreich war, ist das Theme dann für alle im Arbeitsraum verfügbar. Hinweis: Falls das ZIP-Archiv mehrere Themes enthält, wird das System versuchen, alle zu importieren.',
+	'theme_import_successful' => 'Der Import war erfolgreich. Importierte Themes: {count}'
 ];

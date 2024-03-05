@@ -2027,6 +2027,29 @@ fieldset .field {
     background-color: rgb(50, 50, 50);
 }
 
+.admin-themes p {
+    color: rgb(150, 150, 150);
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.admin-themes input, .admin-themes select {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-themes-result {
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(185, 255, 164);
+}
+
+.admin-themes-result i {
+    color: rgb(50, 50, 50);
+}
+
 .admin-backup label, .admin-backup span {
     color: rgb(150, 150, 150);
 }
