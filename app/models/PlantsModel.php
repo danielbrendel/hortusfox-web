@@ -11,6 +11,7 @@
         const PLANT_STATE_GOOD = 'in_good_standing';
         const PLANT_LONG_TEXT_THRESHOLD = 22;
         const PLANT_PLACEHOLDER_FILE = 'placeholder.jpg';
+        const PLANT_LAST_UPDATED_AUTHORED_COUNT = 8;
 
         static $sorting_list = [
             'name',
@@ -98,7 +99,7 @@
         public static function getLastAddedPlants()
         {
             try {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 ORDER BY id DESC LIMIT 6');
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 ORDER BY id DESC LIMIT ' . strval(self::PLANT_LAST_UPDATED_AUTHORED_COUNT));
             } catch (\Exception $e) {
                 throw $e;
             }
@@ -111,7 +112,7 @@
         public static function getLastAuthoredPlants()
         {
             try {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 AND last_edited_user IS NOT NULL ORDER BY last_edited_date DESC LIMIT 6');
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 AND last_edited_user IS NOT NULL ORDER BY last_edited_date DESC LIMIT ' . strval(self::PLANT_LAST_UPDATED_AUTHORED_COUNT));
             } catch (\Exception $e) {
                 throw $e;
             }
