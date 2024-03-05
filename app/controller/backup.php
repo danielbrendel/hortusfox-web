@@ -20,7 +20,7 @@ class BackupController extends BaseController {
 	}
 
     /**
-	 * Handles URL: /backup/export
+	 * Handles URL: /export/start
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
@@ -49,7 +49,7 @@ class BackupController extends BaseController {
     }
 
     /**
-	 * Handles URL: /backup/import
+	 * Handles URL: /import/start
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
