@@ -66,6 +66,12 @@ h2 {
     top: 5px;
 }
 
+.is-fixed-margin-left-mobile {
+    @media screen and (max-width: 512px) {
+        margin-left: 2px;
+    }
+}
+
 .is-default-text-color {
     color: rgb(150, 150, 150);
 }
