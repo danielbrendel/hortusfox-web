@@ -54,7 +54,7 @@
 			</div>
 		</div>
 	@else
-		<div class="warning-plants is-all-ok">
+		<div class="warning-plants">
 			<div class="warning-plants-title warning-plants-title-margin-top-25 warning-plants-title-centered"><i class="far fa-check-circle is-color-yes"></i>&nbsp;{{ __('app.warning_plants_all_ok') }}</div>
 		</div>
 	@endif

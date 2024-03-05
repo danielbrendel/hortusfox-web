@@ -883,7 +883,7 @@ fieldset .field {
 }
 
 .is-all-ok {
-    //color: rgb(115, 215, 125)
+    padding-top: 41px;
 }
 
 .table-bright-color {
@@ -891,7 +891,7 @@ fieldset .field {
 }
 
 .warning-plants-title {
-    margin-top: -2px !important;
+    margin-top: -2px;
     margin-bottom: 20px;
     font-size: 1.3em;
     color: rgb(200, 200, 200);
@@ -902,7 +902,10 @@ fieldset .field {
 }
 
 .warning-plants-title-margin-top-25 {
-    margin-top: 25px;
+    margin-top: 25px !important;
+    @media screen and (min-width: 1024px) {
+        margin-top: 67px !important;
+    }
 }
 
 .warning-plants-title-centered {
