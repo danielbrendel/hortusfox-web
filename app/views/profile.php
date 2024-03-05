@@ -49,7 +49,7 @@
 						@endif
 					</div>
 
-					<div class="plant-card-title">{{ $plant->get('name') }}</div>
+					<div class="plant-card-title {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">{{ $plant->get('name') }}</div>
 				</div>
 			</div>
 		</a>
