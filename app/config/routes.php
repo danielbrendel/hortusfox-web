@@ -92,6 +92,7 @@ return [
     array('/admin/media/overlay/alpha', 'POST', 'admin@save_overlay_alpha'),
     array('/admin/mail/save', 'POST', 'admin@save_mail_settings'),
     array('/admin/themes/import', 'POST', 'admin@import_theme'),
+    array('/admin/themes/remove', 'POST', 'admin@remove_theme'),
     array('/admin/cronjob/token', 'POST', 'admin@generate_cronjob_token'),
 
     /** Cronjob Controller */

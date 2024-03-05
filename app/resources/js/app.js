@@ -820,6 +820,21 @@ window.vue = new Vue({
                         import_result.innerText = import_result.innerText.replace('{count}', response.themes.length);
                         import_result.classList.remove('is-hidden');
                     }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        removeTheme: function(theme) {
+            window.vue.ajaxRequest('post', window.location.origin + '/admin/themes/remove', { theme: theme }, function(response) {
+                if (response.code == 200) {
+                    let tableElem = document.getElementById('admin-themes-list-item-' + theme);
+                    if (tableElem) {
+                        tableElem.remove();
+                    }
+                } else {
+                    alert(response.msg);
                 }
             });
         },

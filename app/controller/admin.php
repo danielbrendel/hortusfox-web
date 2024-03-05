@@ -31,6 +31,7 @@ class AdminController extends BaseController {
 		$locs = LocationsModel::getAll(false);
         $user_accounts = UserModel::getAll();
 		$mail_encryption_types = AppModel::getMailEncryptionTypes();
+		$themes = ThemeModule::getList();
 
 		$new_version = null;
 		$current_version = null;
@@ -51,6 +52,7 @@ class AdminController extends BaseController {
 			'locations' => $locs,
 			'user_accounts' => $user_accounts,
 			'mail_encryption_types' => $mail_encryption_types,
+			'themes' => $themes,
 			'new_version' => $new_version,
 			'current_version' => $current_version
 		]);
@@ -428,4 +430,28 @@ class AdminController extends BaseController {
             ]);
         }
     }
+
+	/**
+	 * Handles URL: /admin/themes/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_theme($request)
+	{
+		try {
+			$theme = $request->params()->query('theme', null);
+
+            ThemeModule::removeTheme($theme);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+	}
 }

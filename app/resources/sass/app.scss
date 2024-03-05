@@ -2050,6 +2050,37 @@ fieldset .field {
     color: rgb(50, 50, 50);
 }
 
+.admin-themes-list {
+    position: relative;
+}
+
+.admin-themes-list table {
+    width: 100%;
+}
+
+.admin-themes-list thead {
+    display: none;
+}
+
+.admin-themes-list td {
+    padding: 10px;
+    color: rgb(150, 150, 150);
+    border: 1px solid rgb(100, 100, 100);
+}
+
+.admin-themes-list td:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-themes-list td i {
+    color: rgb(0, 145, 215);
+}
+
+.admin-theme-list-right {
+    width: 5%;
+    text-align: center;
+}
+
 .admin-backup label, .admin-backup span {
     color: rgb(150, 150, 150);
 }

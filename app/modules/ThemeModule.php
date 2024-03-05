@@ -17,6 +17,10 @@ class ThemeModule {
         try {
             self::$theme_data = null;
 
+            if (!file_exists($path . '/layout.json')) {
+                throw new \Exception('Layout file not found: ' . $path . '/layout.json');
+            }
+
             self::$theme_data = json_decode(file_get_contents($path . '/layout.json'));
             if (!is_object(self::$theme_data)) {
                 throw new \Exception('Invalid data @ ' . $path . '/layout.json: ' . print_r(self::$theme_data, true));
@@ -165,6 +169,48 @@ class ThemeModule {
             unlink(public_path() . '/themes/' . $import_file . '.zip');
 
             return $result;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function getList()
+    {
+        try {
+            $result = [];
+
+            $folders = scandir(public_path() . '/themes');
+            foreach ($folders as $folder) {
+                if (substr($folder, 0, 1) !== '.') {
+                    if (is_dir(public_path() . '/themes/' . $folder)) {
+                        $result[] = $folder;
+                    }
+                }
+            }
+
+            return $result;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $theme
+     * @return void
+     * @throws \Exception
+     */
+    public static function removeTheme($theme)
+    {
+        try {
+            if (!is_dir(public_path() . '/themes/' . $theme)) {
+                throw new \Exception('Invalid theme directory: ' . $theme);
+            }
+
+            UtilsModule::clearFolder(public_path() . '/themes/' . $theme);
         } catch (\Exception $e) {
             throw $e;
         }

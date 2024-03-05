@@ -365,6 +365,29 @@
     </div>
 
     <div class="admin-themes-result is-hidden" id="themes-import-result">{{ __('app.theme_import_successful') }}</div>
+
+    <hr/>
+
+    <div class="admin-themes-list">
+        <h2>{{ __('app.theme_list') }}</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($themes as $theme)
+                    <tr id="admin-themes-list-item-{{ $theme }}">
+                        <td>{{ $theme }}</td>
+                        <td class="admin-theme-list-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_theme_removal') }}')) { window.vue.removeTheme('{{ $theme }}'); }"><i class="fas fa-trash-alt"></i></a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="admin-backup {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'backup')) ? 'is-hidden' : ''}}">
