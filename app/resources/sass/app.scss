@@ -867,6 +867,7 @@ fieldset .field {
     margin-left: 10px;
     padding: 15px 15px 15px 15px;
     padding-left: 25px;
+    padding-bottom: 20px;
     @media screen and (max-width: 512px) {
         padding-left: 15px;
         margin-left: unset;
@@ -884,9 +885,13 @@ fieldset .field {
     //color: rgb(115, 215, 125)
 }
 
+.table-bright-color {
+    background-color: rgb(63, 70, 75);
+}
+
 .warning-plants-title {
-    margin-top: 10px !important;
-    margin-bottom: 10px;
+    margin-top: -2px !important;
+    margin-bottom: 20px;
     font-size: 1.3em;
     color: rgb(200, 200, 200);
 }
@@ -904,16 +909,24 @@ fieldset .field {
 }
 
 .warning-plants-content {
-    padding-left: 15px;
+    position: relative;
 }
 
-.warning-plants-item {
+.warning-plants-content table {
+    width: 100%;
+}
+
+.warning-plants-content thead {
+    display: none;
+}
+
+.warning-plants-content td {
     color: rgb(150, 150, 150);
-    margin-bottom: 10px;
-}
-
-.warning-plants-item strong {
-    
+    border: 1px solid rgb(100, 100, 100);
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 .history-years {
@@ -968,7 +981,7 @@ fieldset .field {
     padding-top: 2px;
     padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     @media screen and (max-width: 796px) {
         flex: unset;
         display: inline-block;
@@ -985,14 +998,31 @@ fieldset .field {
 }
 
 .overdue-tasks-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-size: 1.3em;
     color: rgb(200, 105, 105);
 }
 
 .overdue-tasks-content {
-    padding: 10px;
+    position: relative;
+}
+
+.overdue-tasks-content table {
+    width: 100%;
+}
+
+.overdue-tasks-content thead {
+    display: none;
+}
+
+.overdue-tasks-content td {
+    color: rgb(150, 150, 150);
+    border: 1px solid rgb(100, 100, 100);
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
 .overdue-tasks-item {

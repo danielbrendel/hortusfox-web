@@ -30,9 +30,27 @@
 			<div class="warning-plants-title has-warnings">{{ __('app.warning_plants_title') }}</div>
 
 			<div class="warning-plants-content">
-				@foreach ($warning_plants as $plant)
-					<div class="warning-plants-item">{{ $plant->get('name') }} | <strong class="plant-state-{{ $plant->get('health_state') }}">{{ __('app.' . $plant->get('health_state')) }}</strong> | {{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }} | <a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ __('app.view_plant_details') }}</a></div>
-				@endforeach
+				<table>
+					<thead>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $table_counter = 0; ?>
+						@foreach ($warning_plants as $plant)
+							<tr class="{{ ($table_counter % 2 === 0) ? 'table-bright-color' : '' }}">
+								<td><a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ (strlen($plant->get('name')) > 30) ? substr($plant->get('name'), 0, 30) . '...' : $plant->get('name') }}</a></td>
+								<td><strong class="plant-state-{{ $plant->get('health_state') }}">{{ __('app.' . $plant->get('health_state')) }}</strong></td>
+								<td>{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</td>
+							</tr>
+
+							<?php $table_counter++; ?>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 	@else
@@ -46,9 +64,25 @@
 			<div class="overdue-tasks-title">{{ __('app.overdue_tasks') }}</div>
 
 			<div class="overdue-tasks-content">
-				@foreach ($overdue_tasks as $overdue_task)
-					<div class="overdue-tasks-item">{{ $overdue_task->get('title') }} | {{ date('Y-m-d', strtotime($overdue_task->get('due_date'))) }} | <a class="is-yellow-link" href="{{ url('/tasks#task-anchor-' . $overdue_task->get('id')) }}">{{ __('app.view_task_details') }}</a></div>
-				@endforeach
+				<table>
+					<thead>
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $table_counter = 0; ?>
+						@foreach ($overdue_tasks as $overdue_task)
+							<tr class="{{ ($table_counter % 2 === 0) ? 'table-bright-color' : '' }}">
+								<td><a class="is-yellow-link" href="{{ url('/tasks#task-anchor-' . $overdue_task->get('id')) }}">{{ $overdue_task->get('title') }}</a></td>
+								<td>{{ date('Y-m-d', strtotime($overdue_task->get('due_date'))) }}</td>
+							</tr>
+
+							<?php $table_counter++; ?>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 	@endif
