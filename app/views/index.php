@@ -42,7 +42,7 @@
 						<?php $table_counter = 0; ?>
 						@foreach ($warning_plants as $plant)
 							<tr class="{{ ($table_counter % 2 === 0) ? 'table-bright-color' : '' }}">
-								<td><a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ (strlen($plant->get('name')) > 30) ? substr($plant->get('name'), 0, 30) . '...' : $plant->get('name') }}</a></td>
+								<td><a class="is-yellow-link" href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ (strlen($plant->get('name')) > 20) ? substr($plant->get('name'), 0, 20) . '...' : $plant->get('name') }}</a></td>
 								<td><strong class="plant-state-{{ $plant->get('health_state') }}">{{ __('app.' . $plant->get('health_state')) }}</strong></td>
 								<td>{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</td>
 							</tr>

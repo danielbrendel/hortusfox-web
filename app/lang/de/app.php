@@ -261,6 +261,9 @@ return [
 	'pwa_enable' => 'PWA Unterstützung aktivieren',
 	'home' => 'Home',
 	'enable_system_messages' => 'Systemmeldungen aktivieren',
+	'plant_count' => '{count} Pflanzen',
+	'danger_count' => '{count} gefährdet',
+	'all_in_good_standing' => 'Alles Ok',
 	'theme' => 'Theme',
 	'themes' => 'Themes'
 ];
