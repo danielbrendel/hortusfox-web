@@ -164,11 +164,11 @@ h2 {
 }
 
 .form-paragraph-modal a {
-    color: rgb(5, 67, 183);
+    color: rgb(52, 105, 215);
 }
 
 .form-paragraph-modal a:hover {
-    color: rgb(5, 67, 183);
+    color: rgb(52, 105, 215);
     text-decoration: underline;
 }
 
@@ -302,6 +302,46 @@ a.navbar-burger:hover {
 
 .modal {
     z-index: 105;
+}
+
+.modal-card {
+    color: rgb(150, 150, 150);
+}
+
+.modal-card-head {
+    background-color: rgb(55, 59, 62);
+    border-bottom: 1px solid rgb(59, 59, 59);
+}
+
+.modal-card-title {
+    color: rgb(190, 190, 190);
+}
+
+.modal-card-body {
+    background-color: rgb(48, 52, 55);
+}
+
+.modal-card-body label {
+    color: rgb(150, 150, 150);
+}
+
+.modal-card-body input, .modal-card-body select, .modal-card-body textarea, .modal-card-body table {
+    background-color: rgb(57, 59, 63);
+    color: rgb(150, 150, 150);
+    border: 1px solid rgb(100, 100, 100);
+}
+
+.modal-card-body input::placeholder, .modal-card-body select::placeholder, .modal-card-body textarea::placeholder {
+    color: rgb(250, 250, 250);
+}
+
+.modal-card-body hr {
+    background-color: rgb(100, 100, 100);
+}
+
+.modal-card-foot {
+    background-color: rgb(50, 50, 50);
+    border-top: 1px solid rgb(59, 59, 59);
 }
 
 .fade {
@@ -1413,12 +1453,20 @@ fieldset .field {
     width: 100%;
 }
 
+.inventory-groups thead td {
+    color: rgb(150, 150, 150);
+}
+
+.inventory-groups.table td {
+    border: 1px solid rgb(100, 100, 100);
+}
+
 .inventory-groups a {
-    color: rgb(50, 50, 50);
+    color: rgb(150, 150, 150);
 }
 
 .inventory-groups a:hover {
-    color: rgb(50, 50, 50);
+    color: rgb(150, 150, 150);
     text-decoration: underline;
 }
 
