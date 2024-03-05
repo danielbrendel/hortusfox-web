@@ -117,7 +117,7 @@
                 <input type="text" class="input" name="cronpw" id="cronpw" value="{{ ((app('cronjob_pw') !== null) ? app('cronjob_pw') : '') }}">
             </div>
             <div class="control">
-                <a class="button is-info" href="javascript:void(0);" onclick="window.vue.generateNewToken(document.getElementById('cronpw'), this);">{{ __('app.generate') }}</a>
+                <a class="button is-info" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_generate_new_token') }}')) { window.vue.generateNewToken(document.getElementById('cronpw'), this); }">{{ __('app.generate') }}</a>
             </div>
         </div>
 

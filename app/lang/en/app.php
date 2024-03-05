@@ -265,5 +265,6 @@ return [
 	'danger_count' => '{count} in danger',
 	'all_in_good_standing' => 'All fine',
 	'theme' => 'Theme',
-	'themes' => 'Themes'
+	'themes' => 'Themes',
+	'confirm_generate_new_token' => 'Generating a new token will invalidate the previous one. Do you want to proceed?'
 ];
