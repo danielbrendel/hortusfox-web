@@ -907,15 +907,17 @@ fieldset .field {
     margin-bottom: unset;
 }
 
-.warning-plants-title-margin-top-25 {
-    margin-top: 25px !important;
-    @media screen and (min-width: 1024px) {
-        margin-top: 67px !important;
-    }
-}
-
 .warning-plants-title-centered {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: center;
+    margin-top: 2px;
+    @media screen and (max-width: 753px) {
+        margin-top: 23px;
+        top: unset;
+        transform: unset;
+    }
 }
 
 .warning-plants-content {
