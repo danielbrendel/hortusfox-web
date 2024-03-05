@@ -246,26 +246,12 @@ At this point you need to create your first user. Go to your database control pa
 Add the user account that should get access to the application with admin privileges. The following is an example:
 
 ```sql
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `password_reset`, `session`, `status`, `admin`, `lang`, `chatcolor`, `show_log`, `show_plants_aoru`, `notify_tasks_overdue`, `notify_tasks_tomorrow`, `last_seen_msg`, `last_typing`, `last_action`, `created_at`) VALUES
+INSERT INTO `users` (`name`, `email`, `password`, `admin`) VALUES
 (
-    NULL,
     'Username',
     'name@example.com',
     'your_password_token_here',
-    NULL,
-    NULL,
-    0,
-    1,
-    NULL,
-    NULL,
-    1,
-    1,
-    1,
-    1,
-    NULL,
-    NULL,
-    CURRENT_TIMESTAMP,
-    CURRENT_TIMESTAMP
+    1
 );
 ```
 
