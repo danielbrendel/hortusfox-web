@@ -9,6 +9,7 @@ services:
       - app_images:/var/www/html/public/img
       - app_logs:/var/www/html/app/logs
       - app_backup:/var/www/html/public/backup
+      - app_themes:/var/www/html/public/themes
       - app_migrate:/var/www/html/app/migrations
     environment:
       APP_ADMIN_EMAIL: "admin@example.com"
@@ -71,4 +72,5 @@ volumes:
   app_images:
   app_logs:
   app_backup:
+  app_themes:
   app_migrate:

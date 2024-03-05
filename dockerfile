@@ -65,6 +65,11 @@ VOLUME ["/var/www/html/app/logs"]
 # Create volume for backups
 VOLUME ["/var/www/html/public/backup"]
 
+# Copy themes and create volume for themes
+RUN mkdir /tmp/themes \
+ && cp -r /var/www/html/public/themes/* /tmp/themes
+VOLUME ["/var/www/html/public/themes"]
+
 # Copy migration list and create volume for migrations
 RUN mkdir /tmp/migrations \
  && cp /var/www/html/app/migrations/* /tmp/migrations

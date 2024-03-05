@@ -197,5 +197,11 @@ chown -R www-data:www-data /var/www/html/app/logs
 chown -R www-data:www-data /var/www/html/public/backup
 chmod 755 /var/www/html/public/backup
 
+# Copy themes content
+cp -r /tmp/themes/* /var/www/html/public/themes
+
+# Set permissions to folder for themes
+chown -R www-data:www-data /var/www/html/public/themes
+
 # Then exec the container's main process (CMD)
 exec "$@"
