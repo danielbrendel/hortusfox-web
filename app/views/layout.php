@@ -880,6 +880,24 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowAddFirstLocation}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_location') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowAddFirstLocation = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<p class="form-paragraph-modal">
+							{!! __('app.create_your_first_location', ['url' => url('/admin?tab=locations')]) !!}
+						</p>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button" onclick="window.vue.bShowAddFirstLocation = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))

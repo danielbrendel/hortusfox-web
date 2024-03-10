@@ -20,9 +20,15 @@
 
         <div class="navbar-end">
             <div class="navbar-item">
+                @if (LocationsModel::getCount() > 0)
                 <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = 0; window.vue.bShowAddPlant = true;">
                     {{ __('app.add_plant') }}
                 </a>
+                @else
+                <a class="button is-success" href="javascript:void(0);" onclick="window.vue.bShowAddFirstLocation = true;">
+                    {{ __('app.add_plant') }}
+                </a>
+                @endif
             </div>
 
             <div class="navbar-item">

@@ -38,6 +38,7 @@ window.vue = new Vue({
         bShowRemoveLocation: false,
         bShowPreviewImageModal: false,
         bShowSharePhoto: false,
+        bShowAddFirstLocation: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],

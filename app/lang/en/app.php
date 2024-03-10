@@ -271,5 +271,6 @@ return [
 	'theme_import_successful' => 'The import was successful. Imported themes: {count}',
 	'theme_list' => 'List of installed themes',
 	'confirm_theme_removal' => 'Are you sure that you want to remove this theme?',
-	'send_confirmation_email' => 'Send confirmation E-Mail'
+	'send_confirmation_email' => 'Send confirmation E-Mail',
+	'create_your_first_location' => 'There are no locations added yet. Please <a href="{url}">create your first location</a> in order to add plants.'
 ];
