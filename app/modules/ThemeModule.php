@@ -29,6 +29,12 @@ class ThemeModule {
             if (!file_exists($path . '/' . self::$theme_data->banner)) {
                 throw new \Exception('Banner asset not found');
             }
+            
+            if ((isset(self::$theme_data->include)) && (file_exists(public_path() . '/themes/' . self::$theme_data->name . '/' . self::$theme_data->include))) {
+                self::$theme_data->include = asset('themes/' . self::$theme_data->name . '/' . self::$theme_data->include);
+            } else {
+                self::$theme_data->include = null;
+            }
 
             self::$theme_data->banner_url = asset('themes/' . self::$theme_data->name . '/' . self::$theme_data->banner);
 

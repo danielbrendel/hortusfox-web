@@ -9,6 +9,10 @@
 		<link rel="icon" type="image/png" href="{{ asset('logo.png') }}"/>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}"/>
 
+		@if ((ThemeModule::ready()) && (ThemeModule::data()->include))
+		<link rel="stylesheet" type="text/css" href="{{ ThemeModule::data()->include }}"/>
+		@endif
+
 		<link rel="manifest" href="{{ asset('manifest.json') }}"/>
 
 		@if (env('APP_DEBUG'))
