@@ -94,6 +94,10 @@ class LocationsModel extends \Asatru\Database\Model {
     public static function removeLocation($id, $target)
     {
         try {
+            if (static::getCount() <= 1) {
+                throw new \Exception(__('app.create_another_location_for_plant_migration'));
+            }
+
             PlantsModel::migratePlants($id, $target);
 
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$id]);

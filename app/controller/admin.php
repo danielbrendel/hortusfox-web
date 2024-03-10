@@ -250,7 +250,7 @@ class AdminController extends BaseController {
 			return redirect('/admin?tab=locations');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
-			return back();
+			return redirect('/admin?tab=locations');
 		}
 	}
 

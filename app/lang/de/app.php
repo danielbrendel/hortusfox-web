@@ -272,5 +272,6 @@ return [
 	'theme_list' => 'Liste an installierten Themes',
 	'confirm_theme_removal' => 'Soll dieses Theme wirklich gelöscht werden?',
 	'send_confirmation_email' => 'Bestätigung per E-Mail senden',
-	'create_your_first_location' => 'There are no locations added yet. Please <a href="{url}">create your first location</a> in order to add plants.'
+	'create_your_first_location' => 'There are no locations added yet. Please <a href="{url}">create your first location</a> in order to add plants.',
+	'create_another_location_for_plant_migration' => 'Please create another location first, so that the plants can be safely moved.'
 ];
