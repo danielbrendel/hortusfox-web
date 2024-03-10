@@ -2141,6 +2141,49 @@ fieldset .field {
     font-size: 0.76em;
 }
 
+.admin-info-extensions {
+    position: relative;
+}
+
+.admin-info-extensions h3 {
+    color: rgb(200, 200, 200);
+    font-size: 1.4em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-info-extensions a {
+    color: rgb(0, 145, 215);
+}
+
+.admin-info-extensions a:hover {
+    color: rgb(0, 145, 215);
+    text-decoration: underline;
+}
+
+.admin-info-extensions table {
+    width: 100%;
+    margin-top: 15px;
+    color: rgb(200, 200, 200);
+}
+
+.admin-info-extensions table strong {
+    color: rgb(200, 200, 200);
+}
+
+.admin-info-extensions thead {
+    background-color: rgba(104, 145, 194, 0.5);
+}
+
+.admin-info-extensions table td {
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+.admin-info-extensions table td:first-child {
+    width: 10%;
+}
+
 .version-check {
     position: relative;
     margin-top: 30px;

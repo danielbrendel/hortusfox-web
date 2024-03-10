@@ -485,8 +485,38 @@
         <div class="margin-bottom">{{ __('app.hortusfox_version', ['version' => config('version')]) }}</div>
         <div class="admin-info-version-smaller">{{ __('app.php_version', ['version' => phpversion()]) }}</div>
         <div class="admin-info-version-smaller">{{ __('app.mysql_version', ['version' => VersionModel::getSqlVersion()]) }}</div>
-        <div class="admin-info-version-smaller">{{ __('app.server_time', ['time' => date('Y-m-d H:i') . ' (' . date_default_timezone_get() . ')']) }}</div>
+        <div class="admin-info-version-smaller">{{ __('app.server_system_info', ['osn' => php_uname('s'), 'osv' => php_uname('v'), 'mt' => php_uname('m')]) }}</div>
+        <div class="admin-info-version-smaller">{{ __('app.server_timezone', ['time' => date('Y-m-d H:i') . ' (' . date_default_timezone_get() . ')']) }}</div>
         <div class="admin-info-version-smaller">{{ __('app.render_time', ['time' => round(microtime(true) - ASATRU_START, 4)]) }}</div>
+    </div>
+
+    <div class="admin-info-extensions">
+        <h3>{{ __('app.extensions') }}</h3>
+
+        <div>
+            <a href="javascript:void(0);" onclick="document.getElementById('extenions-table').classList.toggle('is-hidden'); if (document.getElementById('extenions-table').classList.contains('is-hidden')) { this.innerHTML = `<i class='fas fa-plus'></i>&nbsp;{{ __('app.expand') }}`; } else { this.innerHTML = `<i class='fas fa-minus'></i>&nbsp;{{ __('app.collapse') }}`; }">
+                <i class="fas fa-plus"></i>&nbsp;{{ __('app.expand') }}
+            </a>
+        </div>
+
+        <div id="extenions-table" class="is-hidden">
+            <table>
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>{{ __('app.name') }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (get_loaded_extensions() as $key => $php_extension)
+                    <tr>
+                        <td>#{{ $key }}</td>
+                        <td>{{ $php_extension }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <?php if ((!empty($new_version)) && (!empty($current_version))) { ?>

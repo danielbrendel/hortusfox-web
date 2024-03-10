@@ -216,7 +216,8 @@ return [
 	'hortusfox_version' => 'HortusFox v{version}',
 	'php_version' => 'PHP Version: {version}',
 	'mysql_version' => 'MySQL Version: {version}',
-	'server_time' => 'Server time: {time}',
+	'server_system_info' => 'Server: {osn} {osv} on {mt}',
+	'server_timezone' => 'Timezone: {time}',
 	'render_time' => 'Render time: {time}s',
 	'background_overlay_alpha' => 'Overlay alpha value',
 	'all_tasks_done' => 'There are currently no open tasks',
@@ -273,5 +274,8 @@ return [
 	'confirm_theme_removal' => 'Are you sure that you want to remove this theme?',
 	'send_confirmation_email' => 'Send confirmation E-Mail',
 	'create_your_first_location' => 'There are no locations added yet. Please <a href="{url}">create your first location</a> in order to add plants.',
-	'error_room_not_empty' => 'The location is not empty. You must either create another location to migrate the plants to, or delete all plants in the location before you can delete this location.'
+	'error_room_not_empty' => 'The location is not empty. You must either create another location to migrate the plants to, or delete all plants in the location before you can delete this location.',
+	'extensions' => 'Extensions',
+	'expand' => 'Expand',
+	'collapse' => 'Collapse'
 ];

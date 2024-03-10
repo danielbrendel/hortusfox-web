@@ -216,8 +216,9 @@ return [
 	'hortusfox_version' => 'HortusFox v{version}',
 	'php_version' => 'PHP Version: {version}',
 	'mysql_version' => 'MySQL Version: {version}',
-	'server_time' => 'Server time: {time}',
-	'render_time' => 'Render time: {time}s',
+	'server_system_info' => 'Server: {osn} {osv} auf {mt}',
+	'server_timezone' => 'Zeitzone: {time}',
+	'render_time' => 'Render Zeit: {time}s',
 	'background_overlay_alpha' => 'Alpha-Wert des Overlays',
 	'all_tasks_done' => 'Gegenwärtig gibt es keine offenen Aufgaben',
 	'last_added_or_updated_plants_hint' => 'Welche letzten Pflanzen sollen im Dashboard angezeigt werden?',
@@ -273,5 +274,8 @@ return [
 	'confirm_theme_removal' => 'Soll dieses Theme wirklich gelöscht werden?',
 	'send_confirmation_email' => 'Bestätigung per E-Mail senden',
 	'create_your_first_location' => 'Es wurden noch keine Räume hinzugefügt. Bitte <a href="{url}">erstelle deinen ersten Raum</a>, damit dort Pflanzen hinzugefügt werden können.',
-	'error_room_not_empty' => 'Der Raum ist nicht leer. Du musst entweder einen zweiten Raum erstellen, um die Pflanzen dorthin zu verschieben oder alle Pflanzen des Raumes löschen, um diesen Raum entfernen zu können.'
+	'error_room_not_empty' => 'Der Raum ist nicht leer. Du musst entweder einen zweiten Raum erstellen, um die Pflanzen dorthin zu verschieben oder alle Pflanzen des Raumes löschen, um diesen Raum entfernen zu können.',
+	'extensions' => 'Erweiterungen',
+	'expand' => 'Ausklappen',
+	'collapse' => 'Einklappen'
 ];
