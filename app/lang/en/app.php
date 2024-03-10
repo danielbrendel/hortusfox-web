@@ -273,5 +273,5 @@ return [
 	'confirm_theme_removal' => 'Are you sure that you want to remove this theme?',
 	'send_confirmation_email' => 'Send confirmation E-Mail',
 	'create_your_first_location' => 'There are no locations added yet. Please <a href="{url}">create your first location</a> in order to add plants.',
-	'create_another_location_for_plant_migration' => 'Please create another location first, so that the plants can be safely moved.'
+	'error_room_not_empty' => 'The location is not empty. You must either create another location to migrate the plants to, or delete all plants in the location before you can delete this location.'
 ];

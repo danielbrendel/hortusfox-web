@@ -94,8 +94,8 @@ class LocationsModel extends \Asatru\Database\Model {
     public static function removeLocation($id, $target)
     {
         try {
-            if (static::getCount() <= 1) {
-                throw new \Exception(__('app.create_another_location_for_plant_migration'));
+            if ((static::getCount() <= 1) && (PlantsModel::getPlantCount($id))) {
+                throw new \Exception(__('app.error_room_not_empty'));
             }
 
             PlantsModel::migratePlants($id, $target);

@@ -272,6 +272,6 @@ return [
 	'theme_list' => 'Liste an installierten Themes',
 	'confirm_theme_removal' => 'Soll dieses Theme wirklich gelöscht werden?',
 	'send_confirmation_email' => 'Bestätigung per E-Mail senden',
-	'create_your_first_location' => 'There are no locations added yet. Please <a href="{url}">create your first location</a> in order to add plants.',
-	'create_another_location_for_plant_migration' => 'Please create another location first, so that the plants can be safely moved.'
+	'create_your_first_location' => 'Es wurden noch keine Räume hinzugefügt. Bitte <a href="{url}">erstelle deinen ersten Raum</a>, damit dort Pflanzen hinzugefügt werden können.',
+	'error_room_not_empty' => 'Der Raum ist nicht leer. Du musst entweder einen zweiten Raum erstellen, um die Pflanzen dorthin zu verschieben oder alle Pflanzen des Raumes löschen, um diesen Raum entfernen zu können.'
 ];
