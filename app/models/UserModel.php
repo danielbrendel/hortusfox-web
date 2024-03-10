@@ -10,7 +10,12 @@ class UserModel extends \Asatru\Database\Model {
     public static function getAuthUser()
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE session = ? AND status = 1', [session_id()])->first();
+            $session = SessionModel::findSession(session_id());
+            if (!$session) {
+                return null;
+            }
+
+            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$session->get('userId')])->first();
             if (!$data) {
                 return null;
             }
@@ -39,7 +44,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception(__('app.password_mismatch'));
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET status = 1, session = ? WHERE id = ?', [session_id(), $data->get('id')]);
+            SessionModel::loginSession($data->get('id'), session_id());
         } catch (\Exception $e) {
             throw $e;
         }
@@ -52,12 +57,7 @@ class UserModel extends \Asatru\Database\Model {
     public static function logout()
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE session = ? AND status = 1', [session_id()])->first();
-            if (!$data) {
-                throw new \Exception('No authenticated session.');
-            }
-
-            static::raw('UPDATE `' . self::tableName() . '` SET status = 0, session = NULL WHERE id = ?', [$data->get('id')]);
+            SessionModel::logoutSession(session_id());
         } catch (\Exception $e) {
             throw $e;
         }

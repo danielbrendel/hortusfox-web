@@ -32,8 +32,6 @@ class UserModel_Migration {
         $this->database->add('email VARCHAR(512) NOT NULL');
         $this->database->add('password VARCHAR(1024) NOT NULL');
         $this->database->add('password_reset VARCHAR(1024) NULL');
-        $this->database->add('session VARCHAR(1024) NULL');
-        $this->database->add('status BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('admin BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('lang VARCHAR(512) NULL');
         $this->database->add('chatcolor VARCHAR(512) NULL');
