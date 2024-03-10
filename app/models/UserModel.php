@@ -450,10 +450,11 @@ class UserModel extends \Asatru\Database\Model {
     /**
      * @param $name
      * @param $email
+     * @param $sendmail
      * @return void
      * @throws \Exception
      */
-    public static function createUser($name, $email)
+    public static function createUser($name, $email, $sendmail)
     {
         try {
             $password = substr(md5(random_bytes(55) . date('Y-m-d H:i:s')), 0, 10);
@@ -462,12 +463,14 @@ class UserModel extends \Asatru\Database\Model {
                 $name, $email, password_hash($password, PASSWORD_BCRYPT)
             ]);
 
-            $mailobj = new Asatru\SMTPMailer\SMTPMailer();
-            $mailobj->setRecipient($email);
-            $mailobj->setSubject(__('app.account_created'));
-            $mailobj->setView('mail/mailacccreated', [], ['workspace' => app('workspace'), 'password' => $password]);
-            $mailobj->setProperties(mail_properties());
-            $mailobj->send();
+            if ($sendmail) {
+                $mailobj = new Asatru\SMTPMailer\SMTPMailer();
+                $mailobj->setRecipient($email);
+                $mailobj->setSubject(__('app.account_created'));
+                $mailobj->setView('mail/mailacccreated', [], ['workspace' => app('workspace'), 'password' => $password]);
+                $mailobj->setProperties(mail_properties());
+                $mailobj->send();
+            }
         } catch (\Exception $e) {
             throw $e;
         }

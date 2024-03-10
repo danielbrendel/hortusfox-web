@@ -123,8 +123,9 @@ class AdminController extends BaseController {
 		try {
 			$name = $request->params()->query('name', null);
 			$email = $request->params()->query('email', null);
+			$sendmail = $request->params()->query('sendmail', 0);
 			
-			UserModel::createUser($name, $email);
+			UserModel::createUser($name, $email, (int)$sendmail);
 
 			FlashMessage::setMsg('success', __('app.user_created_successfully'));
 

@@ -270,5 +270,6 @@ return [
 	'themes_hint' => 'Here you can import themes. Select a zip-file of your theme you want to import and once import succeeded, the theme will be available to all users. Note: If the zip-archive contains multiple themes, then the system will try to import all of them.',
 	'theme_import_successful' => 'The import was successful. Imported themes: {count}',
 	'theme_list' => 'List of installed themes',
-	'confirm_theme_removal' => 'Are you sure that you want to remove this theme?'
+	'confirm_theme_removal' => 'Are you sure that you want to remove this theme?',
+	'send_confirmation_email' => 'Send confirmation E-Mail'
 ];

@@ -738,6 +738,12 @@
 									<input type="email" class="input" name="email" required>
 								</div>
 							</div>
+
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" name="sendmail" value="1" checked>&nbsp;{{ __('app.send_confirmation_email') }}
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">

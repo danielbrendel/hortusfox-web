@@ -270,5 +270,6 @@ return [
 	'themes_hint' => 'Hier können neue Themes importiert werden. Wähle das ZIP-Archiv mit deinem Theme aus und sobald der Import erfolgreich war, ist das Theme dann für alle im Arbeitsraum verfügbar. Hinweis: Falls das ZIP-Archiv mehrere Themes enthält, wird das System versuchen, alle zu importieren.',
 	'theme_import_successful' => 'Der Import war erfolgreich. Importierte Themes: {count}',
 	'theme_list' => 'Liste an installierten Themes',
-	'confirm_theme_removal' => 'Soll dieses Theme wirklich gelöscht werden?'
+	'confirm_theme_removal' => 'Soll dieses Theme wirklich gelöscht werden?',
+	'send_confirmation_email' => 'Bestätigung per E-Mail senden'
 ];
