@@ -269,6 +269,10 @@ a.navbar-burger:hover {
     }
 }
 
+#frmEditMultilineText textarea {
+    min-height: 200px;
+}
+
 .banner {
     width: 100%;
     height: 250px;
@@ -780,6 +784,21 @@ fieldset .field {
     position: relative;
     display: inline-block;
     width: 90%;
+}
+
+.plant-notes-content pre {
+    background-color: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.plant-notes-content a {
+    color: rgb(111, 185, 235);
+}
+
+.plant-notes-content a:hover {
+    text-decoration: underline;
 }
 
 .plant-notes-edit {

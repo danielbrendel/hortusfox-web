@@ -406,4 +406,18 @@ class UtilsModule {
             throw $e;
         }
     }
+
+    /**
+     * @param $text
+     * @return string
+     * @throws \Exception
+     */
+    public static function translateURLs($text)
+    {
+        try {
+            return preg_replace('"\b(https?://\S+)"', '<a href="$1">$1</a>', $text);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }

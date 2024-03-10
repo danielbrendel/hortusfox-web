@@ -19,6 +19,7 @@ window.vue = new Vue({
     data: {
         bShowAddPlant: false,
         bShowEditText: false,
+        bShowEditMultilineText: false,
         bShowEditBoolean: false,
         bShowEditInteger: false,
         bShowEditDate: false,
@@ -110,6 +111,15 @@ window.vue = new Vue({
             document.getElementById('inpEditTextValue').value = defval;
             document.getElementById('inpEditTextAnchor').value = anchor;
             window.vue.bShowEditText = true;
+        },
+
+        showEditMultilineText: function(plant, property, defval, anchor = '')
+        {
+            document.getElementById('inpEditMultilineTextPlantId').value = plant;
+            document.getElementById('inpEditMultilineTextAttribute').value = property;
+            document.getElementById('inpEditMultilineTextValue').value = defval;
+            document.getElementById('inpEditMultilineTextAnchor').value = anchor;
+            window.vue.bShowEditMultilineText = true;
         },
 
         showEditBoolean: function(plant, property, hint, defval)
