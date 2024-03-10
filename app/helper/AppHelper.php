@@ -2,11 +2,17 @@
 
 /**
  * @param $name
+ * @param $fallback
  * @return mixed
  */
-function app($name)
+function app($name, $fallback = null)
 {
-    return AppModel::query($name);
+    $result = AppModel::query($name);
+    if ($result === null) {
+        return $fallback;
+    }
+
+    return $result;
 }
 
 /**

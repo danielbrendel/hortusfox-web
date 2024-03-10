@@ -646,7 +646,7 @@
 								<div class="control">
 									<select class="input" name="lang" id="selEditCombo">
 										@foreach (UtilsModule::getLanguageList() as $lang)
-											<option value="{{ $lang['ident'] }}" {{ ($user->get('lang') === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
+											<option value="{{ $lang['ident'] }}" {{ (UtilsModule::getLanguage() === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
 										@endforeach
 									</select>
 								</div>
