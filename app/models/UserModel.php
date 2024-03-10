@@ -459,6 +459,10 @@ class UserModel extends \Asatru\Database\Model {
         try {
             $password = substr(md5(random_bytes(55) . date('Y-m-d H:i:s')), 0, 10);
             
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new \Exception('Invalid E-Mail given: ' . $email);
+            }
+
             static::raw('INSERT INTO `' . self::tableName() . '` (name, email, password) VALUES(?, ?, ?)', [
                 $name, $email, password_hash($password, PASSWORD_BCRYPT)
             ]);
@@ -487,6 +491,10 @@ class UserModel extends \Asatru\Database\Model {
     public static function updateUser($id, $name, $email, $admin)
     {
         try {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new \Exception('Invalid E-Mail given: ' . $email);
+            }
+            
             static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, admin = ? WHERE id = ?', [
                 $name, $email, $admin, $id
             ]);
