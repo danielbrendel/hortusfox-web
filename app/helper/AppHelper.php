@@ -41,3 +41,8 @@ function mail_properties()
 
     return $result;
 }
+
+function auth()
+{
+    return UserModel::getAuthUser();
+}

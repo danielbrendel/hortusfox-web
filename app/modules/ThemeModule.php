@@ -26,6 +26,10 @@ class ThemeModule {
                 throw new \Exception('Invalid data @ ' . $path . '/layout.json: ' . print_r(self::$theme_data, true));
             }
 
+            if ((!isset(self::$theme_data->author)) || (!isset(self::$theme_data->contact)) || (!isset(self::$theme_data->version))) {
+                throw new \Exception('Missing author, contact or version data');
+            }
+            
             if (!file_exists($path . '/' . self::$theme_data->banner)) {
                 throw new \Exception('Banner asset not found');
             }
@@ -163,6 +167,8 @@ class ThemeModule {
                             if (!static::ready()) {
                                 throw new \Exception('Failed to load theme: ' . $folder);
                             }
+
+                            LogModel::addLog(auth()->get('id'), 'themes', 'import_theme', self::$theme_data->name);
 
                             $result[] = $folder;
                         }
