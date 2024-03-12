@@ -131,8 +131,7 @@ via the admin section (e.g. environment settings, users, locations).
 
 In order to manually install HortusFox you need to first setup a PHP environment along with a MySQL database
 and also Composer. Afterwards you can clone or download the repository. Then go to the root directory
-of the project and let Composer install the required dependencies. Note: It is recommended to setup the
-actual production environment on, e.g., a home server. There are various solutions available for this.
+of the project and let Composer install the required dependencies.
 
 ```shell
 composer install
@@ -141,27 +140,6 @@ composer install
 Now we need to configure the project. Create a .env file from the .env.example, open it and manage the following variables:
 
 ```sh
-# Here you can set your default language. However users have the opportunity to set their personal language
-APP_LANG="en"
-
-# This is the name of the workspace, e.g. your home
-APP_WORKSPACE="My home"
-
-# This determines if the scroller shall be shown. It is useful to quickly (but smoothly) scroll to top
-APP_ENABLESCROLLER=true
-
-# Determines the amount of minutes that is used within the calculation of a users online status. You can leave it as is
-APP_ONLINEMINUTELIMIT=5
-
-# Use this setting if you want to show or hide the current online user list in the chat
-APP_SHOWCHATONLINEUSERS=false
-
-# Use this setting if you want to show or hide an indiactor if someone types a chat message
-APP_SHOWCHATTYPINGINDICATOR=false
-
-# The authentication token to be used to request cronjobs. Set this to a token of your choice
-APP_CRONPW="your-auth-token"
-
 # This must be set to true for the product to work in order to enable database connection
 DB_ENABLE=true
 
@@ -271,7 +249,7 @@ php -r "echo password_hash('test', PASSWORD_BCRYPT);"
 You may now login with your initial admin user account using your e-mail address and the password of which you have stored the hash in the table.
 After logging in, you should then be redirected to the dashboard. Further users can now be created via the admin area. Users can change their
 passwords in their profile preferences. They can also reset their password. Therefore an e-mail will be sent to them with restoration instructions.
-Each new created user will get a confirmation e-mail with an automatically generated password in order to log in. It is recommended that users change
+Each new created user can get a confirmation e-mail with an automatically generated password in order to log in. It is recommended that users change
 their passwords after their first login.
 Last but not least you need to add all your locations of your local environment to the database. You can do that either via the admin section or
 manually by inserting entries into the locations table.
