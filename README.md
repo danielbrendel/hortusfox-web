@@ -140,6 +140,12 @@ composer install
 Now we need to configure the project. Create a .env file from the .env.example, open it and manage the following variables:
 
 ```sh
+# URL to the official service backend. Used for e.g. version comparision
+APP_SERVICE_URL="https://www.hortusfox.com"
+
+# URL to the repository of the project
+APP_GITHUB_URL="https://github.com/danielbrendel/hortusfox-web"
+
 # This must be set to true for the product to work in order to enable database connection
 DB_ENABLE=true
 
