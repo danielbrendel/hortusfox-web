@@ -87,31 +87,6 @@
 								</div>
 							</div>
 
-							<div class="field">
-								<div class="control">
-									<input type="checkbox" name="perennial" value="1">&nbsp;{{ __('app.perennial') }}
-								</div>
-							</div>
-
-							<div class="field">
-								<label class="label">{{ __('app.humidity') }}</label>
-								<div class="control">
-									<input type="number" min="0" max="100" class="input" name="humidity" required>
-								</div>
-							</div>
-
-							<div class="field">
-								<label class="label">{{ __('app.light_level') }}</label>
-								<div class="control">
-									<select name="light_level" class="input" required>
-										<option value="">{{ __('app.select_light_level') }}</option>
-										<option value="light_level_sunny">{{ __('app.light_level_sunny') }}</option>
-										<option value="light_level_half_shade">{{ __('app.light_level_half_shade') }}</option>
-										<option value="light_level_full_shade">{{ __('app.light_level_full_shade') }}</option>
-									</select>
-								</div>
-							</div>
-
 							<input type="submit" class="is-hidden" id="submit-add-plant">
 						</form>
 					</section>

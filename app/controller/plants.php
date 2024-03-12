@@ -150,9 +150,7 @@ class PlantsController extends BaseController {
 	{
 		$validator = new Asatru\Controller\PostValidator([
 			'name' => 'required',
-			'location' => 'required',
-			'humidity' => 'required',
-			'light_level' => 'required'
+			'location' => 'required'
 		]);
 
 		if (!$validator->isValid()) {
@@ -163,16 +161,13 @@ class PlantsController extends BaseController {
 
 			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
 			
-			return back();
+			return redirect('/');
 		}
 
 		$name = $request->params()->query('name', null);
 		$location = $request->params()->query('location', null);
-		$perennial = $request->params()->query('perennial', false);
-		$humidity = $request->params()->query('humidity', 0);
-		$light_level = $request->params()->query('light_level', '');
 
-		$plant_id = PlantsModel::addPlant($name, $location, $perennial, $humidity, $light_level);
+		$plant_id = PlantsModel::addPlant($name, $location);
 
 		return redirect('/plants/details/' . $plant_id);
 	}

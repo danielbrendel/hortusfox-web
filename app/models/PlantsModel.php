@@ -198,13 +198,10 @@
         /**
          * @param $name
          * @param $location
-         * @param $perennial
-         * @param $humidity
-         * @param $light_level
          * @return int
          * @throws \Exception
          */
-        public static function addPlant($name, $location, $perennial, $humidity, $light_level)
+        public static function addPlant($name, $location)
         {
             try {
                 $user = UserModel::getAuthUser();
@@ -232,8 +229,8 @@
                     $fullFileName = self::PLANT_PLACEHOLDER_FILE;
                 }
 
-                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, perennial, humidity, light_level, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                    $name, $location, $fullFileName, $perennial, $humidity, $light_level, $user->get('id')
+                static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+                    $name, $location, $fullFileName, $user->get('id')
                 ]);
 
                 $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();

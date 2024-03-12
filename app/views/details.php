@@ -85,7 +85,15 @@
 
 				<tr>
 					<td><strong>{{ __('app.perennial') }}</strong></td>
-					<td>{!! ($plant->get('perennial')) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'perennial', '{{ __('app.perennial') }}', {{ ($plant->get('perennial')) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+					<td>
+						@if (!is_null($plant->get('perennial')))
+							{!! ($plant->get('perennial')) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!}
+						@else
+							<span class="is-not-available">N/A</span>
+						@endif
+
+						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'perennial', '{{ __('app.perennial') }}', {{ ($plant->get('perennial')) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span>
+					</td>
 				</tr>
 
 				<tr>
@@ -108,12 +116,28 @@
 
 				<tr>
 					<td><strong>{{ __('app.humidity') }}</strong></td>
-					<td>{{ $plant->get('humidity') . '%' }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditInteger({{ $plant->get('id') }}, 'humidity', '{{ $plant->get('humidity') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+					<td>
+						@if ($plant->get('humidity'))
+							{{ $plant->get('humidity') . '%' }}
+						@else
+							<span class="is-not-available">N/A</span>
+						@endif
+
+						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditInteger({{ $plant->get('id') }}, 'humidity', '{{ ($plant->get('humidity') ?? '0') }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+					</td>
 				</tr>
 
 				<tr>
 					<td><strong>{{ __('app.light_level') }}</strong></td>
-					<td>{{ __('app.' . $plant->get('light_level')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'light_level', window.vue.comboLightLevel, '{{ $plant->get('light_level') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+					<td>
+						@if ($plant->get('light_level'))
+							{{ __('app.' . $plant->get('light_level')) }}
+						@else
+							<span class="is-not-available">N/A</span>
+						@endif
+
+						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'light_level', window.vue.comboLightLevel, '{{ ($plant->get('light_level') ?? 'N/A') }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+					</td>
 				</tr>
 
 				<tr>
