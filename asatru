@@ -14,6 +14,11 @@
 //Set application root directory path
 define('ASATRU_APP_ROOT', __DIR__);
 
+//If composer is installed then utilize its autoloader
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+
 //Require constants
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/constants.php';
 
@@ -24,6 +29,18 @@ require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/dotenv.ph
 if (file_exists('.env')) {
     env_parse('.env');
 }
+
+//Require logging
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/logger.php';
+
+//Require autoload component
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/autoload.php';
+
+//Require config component
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/config.php';
+
+//Require helpers
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/helper.php';
 
 //Include CLI handler
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/console.php';
