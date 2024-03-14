@@ -17,13 +17,13 @@ class ThemeModule {
         try {
             self::$theme_data = null;
 
-            if (!file_exists($path . '/layout.json')) {
-                throw new \Exception('Layout file not found: ' . $path . '/layout.json');
+            if (!file_exists($path . '/theme.json')) {
+                throw new \Exception('Theme definition file not found: ' . $path . '/theme.json');
             }
 
-            self::$theme_data = json_decode(file_get_contents($path . '/layout.json'));
+            self::$theme_data = json_decode(file_get_contents($path . '/theme.json'));
             if (!is_object(self::$theme_data)) {
-                throw new \Exception('Invalid data @ ' . $path . '/layout.json: ' . print_r(self::$theme_data, true));
+                throw new \Exception('Invalid data @ ' . $path . '/theme.json: ' . print_r(self::$theme_data, true));
             }
 
             if ((!isset(self::$theme_data->author)) || (!isset(self::$theme_data->contact)) || (!isset(self::$theme_data->version))) {
@@ -195,14 +195,20 @@ class ThemeModule {
         try {
             $result = [];
 
+            $orig = self::$theme_data;
+
             $folders = scandir(public_path() . '/themes');
             foreach ($folders as $folder) {
                 if (substr($folder, 0, 1) !== '.') {
                     if (is_dir(public_path() . '/themes/' . $folder)) {
-                        $result[] = $folder;
+                        self::load(public_path() . '/themes/' . $folder);
+
+                        $result[] = self::data();
                     }
                 }
             }
+
+            self::$theme_data = $orig;
 
             return $result;
         } catch (\Exception $e) {

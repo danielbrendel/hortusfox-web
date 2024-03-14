@@ -374,15 +374,21 @@
         <table>
             <thead>
                 <tr>
-                    <td></td>
+                    <td>{{ __('app.theme_name') }}</td>
+                    <td>{{ __('app.theme_version') }}</td>
+                    <td>{{ __('app.theme_author') }}</td>
+                    <td>{{ __('app.theme_contact') }}</td>
                     <td></td>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($themes as $theme)
-                    <tr id="admin-themes-list-item-{{ $theme }}">
-                        <td>{{ $theme }}</td>
-                        <td class="admin-theme-list-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_theme_removal') }}')) { window.vue.removeTheme('{{ $theme }}'); }"><i class="fas fa-trash-alt"></i></a></td>
+                    <tr id="admin-themes-list-item-{{ $theme->name }}">
+                        <td>{{ $theme->name }}</td>
+                        <td>{{ $theme->version }}</td>
+                        <td>{{ $theme->author }}</td>
+                        <td>{{ $theme->contact }}</td>
+                        <td class="admin-theme-list-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_theme_removal') }}')) { window.vue.removeTheme('{{ $theme->name }}'); }"><i class="fas fa-trash-alt"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>

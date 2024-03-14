@@ -32,7 +32,7 @@ class AdminController extends BaseController {
         $user_accounts = UserModel::getAll();
 		$mail_encryption_types = AppModel::getMailEncryptionTypes();
 		$themes = ThemeModule::getList();
-
+		
 		$new_version = null;
 		$current_version = null;
 

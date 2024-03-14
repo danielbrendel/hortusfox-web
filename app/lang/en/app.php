@@ -277,5 +277,9 @@ return [
 	'error_room_not_empty' => 'The location is not empty. You must either create another location to migrate the plants to, or delete all plants in the location before you can delete this location.',
 	'extensions' => 'Extensions',
 	'expand' => 'Expand',
-	'collapse' => 'Collapse'
+	'collapse' => 'Collapse',
+	'theme_name' => 'Name',
+	'theme_version' => 'Version',
+	'theme_author' => 'Author',
+	'theme_contact' => 'Contact'
 ];

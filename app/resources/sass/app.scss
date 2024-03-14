@@ -2080,17 +2080,17 @@ fieldset .field {
 }
 
 .admin-themes-list thead {
-    display: none;
+    background-color: rgba(104, 145, 194, 0.5);
+}
+
+.admin-themes-list thead:hover {
+    background-color: rgba(104, 145, 194, 0.5);
 }
 
 .admin-themes-list td {
     padding: 10px;
     color: rgb(150, 150, 150);
-    border: 1px solid rgb(100, 100, 100);
-}
-
-.admin-themes-list td:hover {
-    background-color: rgb(50, 50, 50);
+    border: 1px solid rgb(200, 200, 200);
 }
 
 .admin-themes-list td i {

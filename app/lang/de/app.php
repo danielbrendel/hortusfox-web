@@ -277,5 +277,9 @@ return [
 	'error_room_not_empty' => 'Der Raum ist nicht leer. Du musst entweder einen zweiten Raum erstellen, um die Pflanzen dorthin zu verschieben oder alle Pflanzen des Raumes löschen, um diesen Raum entfernen zu können.',
 	'extensions' => 'Erweiterungen',
 	'expand' => 'Ausklappen',
-	'collapse' => 'Einklappen'
+	'collapse' => 'Einklappen',
+	'theme_name' => 'Name',
+	'theme_version' => 'Version',
+	'theme_author' => 'Autor',
+	'theme_contact' => 'Kontakt'
 ];
