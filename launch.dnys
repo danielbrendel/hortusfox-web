@@ -40,8 +40,8 @@ function create_path_file void()
 	fopen(fh, "%project_path\paths.dnys", false) {
 		fwriteline %fh "# Auto-generated at %timestamp";
 		fwriteline %fh "";
-		fwriteline %fh { const APACHE_PATH string <= "D:\Programme\xampp\apache\bin"; };
-		fwriteline %fh { const MYSQL_PATH string <= "D:\Programme\xampp\mysql\bin"; };
+		fwriteline %fh { const APACHE_PATH string <= "%apache_path"; };
+		fwriteline %fh { const MYSQL_PATH string <= "%mysql_path"; };
 	};
 };
 
