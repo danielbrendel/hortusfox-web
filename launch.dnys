@@ -8,6 +8,7 @@
 
 require "auto";
 require "fileio";
+require "datetime";
 require "textinput";
 require "miscutils";
 
