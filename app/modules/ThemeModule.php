@@ -197,15 +197,19 @@ class ThemeModule {
 
             $orig = self::$theme_data;
 
-            $folders = scandir(public_path() . '/themes');
-            foreach ($folders as $folder) {
-                if (substr($folder, 0, 1) !== '.') {
-                    if (is_dir(public_path() . '/themes/' . $folder)) {
-                        self::load(public_path() . '/themes/' . $folder);
+            try {
+                $folders = scandir(public_path() . '/themes');
+                foreach ($folders as $folder) {
+                    if (substr($folder, 0, 1) !== '.') {
+                        if (is_dir(public_path() . '/themes/' . $folder)) {
+                            self::load(public_path() . '/themes/' . $folder);
 
-                        $result[] = self::data();
+                            $result[] = self::data();
+                        }
                     }
                 }
+            } catch (\Exception $e) {
+                self::$theme_data = $orig;
             }
 
             self::$theme_data = $orig;
