@@ -86,7 +86,7 @@ EOF
 
 # Function to check if initial settings were created and add if not
 add_initial_settings_if_missing() {
-    local settings_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM AppModel WHERE id=1;")
+    local settings_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM AppModel WHERE id=1;")
     if [[ $settings_count -gt 0 ]]; then
         echo "App settings profile already exists. Skipping creation."
     else
@@ -97,14 +97,14 @@ add_initial_settings_if_missing() {
 
 # Function to create initial settings
 create_app_settings() {
-    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, chat_system, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', $APP_ENABLE_SCROLLER, $APP_ENABLE_CHAT, $APP_ONLINE_MINUTE_LIMIT, $APP_SHOW_CHAT_ONLINE_USERS, $APP_SHOW_CHAT_TYPING_INDICATOR, $APP_ENABLE_SYSTEM_MESSAGES, $APP_ENABLE_HISTORY, '$APP_HISTORY_NAME', $APP_ENABLE_PHOTO_SHARE, '$APP_CRON_PW', $APP_OVERLAY_ALPHA, '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', 0, CURRENT_TIMESTAMP);"
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, chat_system, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', $APP_ENABLE_SCROLLER, $APP_ENABLE_CHAT, $APP_ONLINE_MINUTE_LIMIT, $APP_SHOW_CHAT_ONLINE_USERS, $APP_SHOW_CHAT_TYPING_INDICATOR, $APP_ENABLE_SYSTEM_MESSAGES, $APP_ENABLE_HISTORY, '$APP_HISTORY_NAME', $APP_ENABLE_PHOTO_SHARE, '$APP_CRON_PW', $APP_OVERLAY_ALPHA, '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', 0, CURRENT_TIMESTAMP);"
 
     echo "App settings profile created."
 }
 
 # Function to check if the admin user exists and add if not
 add_admin_user_if_missing() {
-    local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM users WHERE email='$ADMIN_EMAIL';")
+    local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM users WHERE email='$ADMIN_EMAIL';")
     if [[ $user_count -gt 0 ]]; then
         echo "Admin user ($ADMIN_EMAIL) already exists. Skipping user creation."
     else
@@ -119,7 +119,7 @@ create_admin_user() {
     local hashed_password=$(php -r "echo password_hash('$ADMIN_PASSWORD', PASSWORD_BCRYPT);")
 
     # Insert the new admin user into the database
-    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -e "INSERT INTO users (id, name, email, password, password_reset, admin, lang, chatcolor, show_log, show_plants_aoru, notify_tasks_overdue, notify_tasks_tomorrow, last_seen_msg, last_typing, last_action, created_at) VALUES (NULL, 'Admin', '$ADMIN_EMAIL', '$hashed_password', NULL, 1, NULL, NULL, 1, 1, 1, 1, NULL, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);"
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "INSERT INTO users (id, name, email, password, password_reset, admin, lang, chatcolor, show_log, show_plants_aoru, notify_tasks_overdue, notify_tasks_tomorrow, last_seen_msg, last_typing, last_action, created_at) VALUES (NULL, 'Admin', '$ADMIN_EMAIL', '$hashed_password', NULL, 1, NULL, NULL, 1, 1, 1, 1, NULL, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);"
 
     echo "Admin user created. Username: $ADMIN_EMAIL. Password: **HIDDEN**"
 }
@@ -132,7 +132,7 @@ set_apache_server_name() {
 
 # Function to check DB connection
 check_db() {
-    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT 1;" > /dev/null 2>&1
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT 1;" > /dev/null 2>&1
 }
 
 # Function to wait for the database
@@ -168,7 +168,7 @@ cp /tmp/migrations/* /var/www/html/app/migrations
 chown -R www-data:www-data /var/www/html/app/migrations
 
 # Run database migrations
-if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$DB_DATABASE' AND TABLE_NAME = 'plants';") -eq 1 ]
+if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$DB_DATABASE' AND TABLE_NAME = 'plants';") -eq 1 ]
 then
     echo "Running unapplied database migrations..."
     php asatru migrate:list
