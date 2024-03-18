@@ -14,4 +14,5 @@
 */
 
 return [
+    ['migrate:upgrade', 'Perform version specific migration upgrades', 'MigrationUpgrade']
 ];
