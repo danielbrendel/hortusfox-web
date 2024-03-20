@@ -281,5 +281,6 @@ return [
 	'theme_name' => 'Name',
 	'theme_version' => 'Version',
 	'theme_author' => 'Autor',
-	'theme_contact' => 'Kontakt'
+	'theme_contact' => 'Kontakt',
+	'all' => 'Alle'
 ];

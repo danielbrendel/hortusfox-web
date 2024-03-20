@@ -29,6 +29,8 @@
 </div>
 
 <div class="history-years">
+	<div class="history-year {{ ((!isset($_GET['year'])) ? 'history-year-selected' : '') }}"><a href="{{ url('/plants/history') }}">{{ __('app.all') }}</a></div>
+
 	@foreach ($years as $year)
 		<div class="history-year {{ (((isset($_GET['year'])) && ($_GET['year'] == $year->get('history_year'))) ? 'history-year-selected' : '') }}"><a href="{{ url('/plants/history?year=' . $year->get('history_year')) }}">{{ $year->get('history_year') }}</a></div>
 	@endforeach
