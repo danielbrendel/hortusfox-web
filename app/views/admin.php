@@ -238,6 +238,10 @@
         @endforeach
     </div>
 
+    @if ((isset($_GET['user_password'])))
+        <div class="admin-users-created-password">{!! __('app.user_created_password', ['pw' => $_GET['user_password']]) !!}</div>
+    @endif
+
     <div class="admin-users-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewUser = true;">{{ __('app.create') }}</a></span>
     </div>

@@ -282,5 +282,6 @@ return [
 	'theme_version' => 'Version',
 	'theme_author' => 'Autor',
 	'theme_contact' => 'Kontakt',
-	'all' => 'Alle'
+	'all' => 'Alle',
+	'user_created_password' => 'Account Passwort: <strong>{pw}</strong>. Dieses Passwort mit der Bitte mitteilen, dieses nach dem Anmelden zu ändern.'
 ];

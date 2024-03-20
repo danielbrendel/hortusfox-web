@@ -1968,6 +1968,19 @@ fieldset .field {
     position: relative;
 }
 
+.admin-users-created-password {
+    position: relative;
+    color: rgb(220, 220, 220);
+    background-color: rgb(180, 103, 0);
+    border: 1px solid rgb(245, 185, 105);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.admin-users-created-password strong {
+    color: rgb(250, 250, 250);
+}
+
 .admin-users-actions {
     position: relative;
     margin-top: 20px;

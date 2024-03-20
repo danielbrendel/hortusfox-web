@@ -282,5 +282,6 @@ return [
 	'theme_version' => 'Version',
 	'theme_author' => 'Author',
 	'theme_contact' => 'Contact',
-	'all' => 'All'
+	'all' => 'All',
+	'user_created_password' => 'User password: <strong>{pw}</strong>. Please forward this password to the user and inform them to change it after logging in.'
 ];

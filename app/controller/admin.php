@@ -123,13 +123,13 @@ class AdminController extends BaseController {
 		try {
 			$name = $request->params()->query('name', null);
 			$email = $request->params()->query('email', null);
-			$sendmail = $request->params()->query('sendmail', 0);
+			$sendmail = (int)$request->params()->query('sendmail', 0);
 			
-			UserModel::createUser($name, $email, (int)$sendmail);
+			$password = UserModel::createUser($name, $email, $sendmail);
 
 			FlashMessage::setMsg('success', __('app.user_created_successfully'));
 
-			return redirect('/admin?tab=users');
+			return redirect('/admin?tab=users' . (($password) ? '&user_password=' . $password : ''));
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return redirect('/admin?tab=users');

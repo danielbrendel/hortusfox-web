@@ -451,7 +451,7 @@ class UserModel extends \Asatru\Database\Model {
      * @param $name
      * @param $email
      * @param $sendmail
-     * @return void
+     * @return mixed
      * @throws \Exception
      */
     public static function createUser($name, $email, $sendmail)
@@ -474,6 +474,14 @@ class UserModel extends \Asatru\Database\Model {
                 $mailobj->setView('mail/mailacccreated', [], ['workspace' => app('workspace'), 'password' => $password]);
                 $mailobj->setProperties(mail_properties());
                 $mailobj->send();
+
+                return null;
+            } else {
+                $user_password = substr(md5(random_bytes(55) . $email . date('Y-m-d H:i:s')), 0, 10);
+
+                static::raw('UPDATE `' . self::tableName() . '` SET password = ? WHERE email = ?', [password_hash($user_password, PASSWORD_BCRYPT), $email]);
+
+                return $user_password;
             }
         } catch (\Exception $e) {
             throw $e;
