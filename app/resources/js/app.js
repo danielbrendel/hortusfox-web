@@ -705,6 +705,10 @@ window.vue = new Vue({
             }
         },
 
+        switchAdminTab: function(tab) {
+            location.href = window.location.origin + '/admin?tab=' + tab;
+        },
+
         showImagePreview: function(asset, aspect = 'is-3by5') {
             let img = document.getElementById('preview-image-modal-img');
             if (img) {

@@ -4,15 +4,15 @@
 
 <div class="tabs admin-tabs">
     <ul>
-        <li class="admin-tab-environment {{ ((!isset($_GET['tab'])) || ((isset($_GET['tab'])) && ($_GET['tab'] === 'environment'))) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('environment');">{{ __('app.environment') }}</a></li>
-        <li class="admin-tab-media {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'media')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('media');">{{ __('app.admin_media') }}</a></li>
-        <li class="admin-tab-users {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'users')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('users');">{{ __('app.users') }}</a></li>
-        <li class="admin-tab-locations {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'locations')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('locations');">{{ __('app.locations') }}</a></li>
-        <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('mail');">{{ __('app.mail') }}</a></li>
-        <li class="admin-tab-themes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'themes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('themes');">{{ __('app.themes') }}</a></li>
-        <li class="admin-tab-backup {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'backup')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.selectAdminTab('backup');">{{ __('app.backup') }}</a></li>
+        <li class="admin-tab-environment {{ ((!isset($_GET['tab'])) || ((isset($_GET['tab'])) && ($_GET['tab'] === 'environment'))) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('environment');">{{ __('app.environment') }}</a></li>
+        <li class="admin-tab-media {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'media')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('media');">{{ __('app.admin_media') }}</a></li>
+        <li class="admin-tab-users {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'users')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('users');">{{ __('app.users') }}</a></li>
+        <li class="admin-tab-locations {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'locations')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('locations');">{{ __('app.locations') }}</a></li>
+        <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('mail');">{{ __('app.mail') }}</a></li>
+        <li class="admin-tab-themes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'themes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('themes');">{{ __('app.themes') }}</a></li>
+        <li class="admin-tab-backup {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'backup')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('backup');">{{ __('app.backup') }}</a></li>
         <li class="admin-tab-info {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'info')) ? 'is-active' : ''}}">
-            <a href="javascript:void(0);" onclick="window.vue.selectAdminTab('info');">
+            <a href="javascript:void(0);" onclick="window.vue.switchAdminTab('info');">
                 {{ __('app.info') }}
                 
                 @if (VersionModule::getCachedVersion() > config('version'))
