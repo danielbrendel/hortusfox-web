@@ -476,13 +476,9 @@ class UserModel extends \Asatru\Database\Model {
                 $mailobj->send();
 
                 return null;
-            } else {
-                $user_password = substr(md5(random_bytes(55) . $email . date('Y-m-d H:i:s')), 0, 10);
-
-                static::raw('UPDATE `' . self::tableName() . '` SET password = ? WHERE email = ?', [password_hash($user_password, PASSWORD_BCRYPT), $email]);
-
-                return $user_password;
             }
+            
+            return $password;
         } catch (\Exception $e) {
             throw $e;
         }
@@ -519,6 +515,8 @@ class UserModel extends \Asatru\Database\Model {
     public static function removeUser($id)
     {
         try {
+            SessionModel::clearForUser($id);
+
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [
                 $id
             ]);

@@ -71,4 +71,20 @@ class SessionModel extends \Asatru\Database\Model {
             throw $e;
         }
     }
+
+    /**
+     * @param $userId
+     * @return void
+     * @throws \Exception
+     */
+    public static function clearForUser($userId)
+    {
+        try {
+            static::raw('DELETE FROM `@THIS` WHERE userId = ?', [
+                $userId
+            ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
