@@ -35,6 +35,7 @@ class CalendarModel_Migration {
         $this->database->add('name VARCHAR(512) NOT NULL');
         $this->database->add('date_from DATETIME NOT NULL');
         $this->database->add('date_till DATETIME NOT NULL');
+        $this->database->add('class_name VARCHAR(512) NOT NULL');
         $this->database->add('color_background VARCHAR(512) NOT NULL');
         $this->database->add('color_border VARCHAR(512) NOT NULL');
         $this->database->add('last_edited_user INT NULL');

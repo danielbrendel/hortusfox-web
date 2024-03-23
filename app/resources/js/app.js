@@ -871,10 +871,10 @@ window.vue = new Vue({
 
                         const labels = data.map(x => {
                             return [x.name];
-                        })
+                        });
 
                         const newData = data.map(x => {
-                            return [x.date_from.split(' ')[0], x.date_till.split(' ')[0]]
+                            return [x.date_from.split(' ')[0], x.date_till.split(' ')[0], x.class_name]
                         });
                         
                         let colorsBackground = [];
@@ -919,9 +919,20 @@ window.vue = new Vue({
                                 },
                                 plugins: {
                                     legend: {
-                                        display: false
+                                        display: false,
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                return context.dataset.data[context.dataIndex][2];
+                                            },
+                                            afterBody: function(context) {
+                                                return context[0].raw[0] + ' - ' + context[0].raw[1];
+                                            }
+                                        }
                                     }
-                                }
+                                },
+
                             }
                         };
 
