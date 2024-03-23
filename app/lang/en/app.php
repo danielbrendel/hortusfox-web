@@ -293,5 +293,11 @@ return [
 	'date_from' => 'Date from',
 	'date_till' => 'Date till',
 	'calendar_item_added' => 'Item was added successfully',
-	'calendar_class' => 'Class'
+	'calendar_class' => 'Class',
+	'calendar_class_water' => 'Watering',
+	'calendar_class_repot' => 'Repotting',
+	'calendar_class_fertilise' => 'Fertilising',
+	'calendar_class_purchase' => 'Purchase',
+	'calendar_class_cut' => 'Cutting',
+	'calendar_class_treat' => 'Treatment'
 ];
