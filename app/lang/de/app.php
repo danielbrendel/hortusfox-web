@@ -284,5 +284,20 @@ return [
 	'theme_author' => 'Autor',
 	'theme_contact' => 'Kontakt',
 	'all' => 'Alle',
-	'user_created_password' => 'Account Passwort: <strong>{pw}</strong>. Dieses Passwort mit der Bitte mitteilen, dieses nach dem Anmelden zu ändern.'
+	'user_created_password' => 'Account Passwort: <strong>{pw}</strong>. Dieses Passwort mit der Bitte mitteilen, dieses nach dem Anmelden zu ändern.',
+	'calendar' => 'Kalender',
+	'calendar_hint' => 'Hier können wichtige Termine verwaltet werden',
+	'range' => 'Bereich',
+	'go' => 'Los',
+	'add_calendar_item' => 'Eintrag hinzufügen',
+	'date_from' => 'Datum von',
+	'date_till' => 'Datum bis',
+	'calendar_item_added' => 'Der Eintrag wurde erfolgreich hinzugefügt',
+	'calendar_class' => 'Typ',
+	'calendar_class_water' => 'Bewässerung',
+	'calendar_class_repot' => 'Umtopfen',
+	'calendar_class_fertilise' => 'Düngen',
+	'calendar_class_purchase' => 'Einkauf',
+	'calendar_class_cut' => 'Schneiden',
+	'calendar_class_treat' => 'Behandlung'
 ];
