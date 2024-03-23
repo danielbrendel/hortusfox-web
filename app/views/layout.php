@@ -923,7 +923,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.date_from') }}</label>
 								<div class="control">
-									<input type="date" class="input" name="date_from" required>
+									<input type="date" class="input" name="date_from" onchange="document.getElementById('date-till').value = this.value;" required>
 								</div>
 							</div>
 
