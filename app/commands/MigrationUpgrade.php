@@ -13,6 +13,7 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo2dot5()
     {
+        PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN last_fertilised DATETIME NULL');
     }
 
     /**

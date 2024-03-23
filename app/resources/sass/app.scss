@@ -717,7 +717,10 @@ fieldset .field {
 }
 
 .plant-column table {
-    width: 100%;
+    width: 90%;
+    @media screen and (max-width: 786px) {
+        width: 100%;
+    }
     color: rgb(200, 200, 200);
 }
 
@@ -809,11 +812,12 @@ fieldset .field {
 
 .plant-photo {
     position: relative;
-    width: 345px;
+    width: 385px;
     @media screen and (max-width: 512px) {
         width: 100%;
+        height: 493px;
     }
-    height: 543px;
+    height: 587px;
     background-repeat: no-repeat;
     background-size: cover;
     float: right;

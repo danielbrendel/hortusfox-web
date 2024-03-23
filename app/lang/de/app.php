@@ -37,6 +37,7 @@ return [
 	'location' => 'Ort',
 	'last_watered' => 'Zuletzt gewässert',
 	'last_repotted' => 'Zuletzt umgetopft',
+	'last_fertilised' => 'Zuletzt gedüngt',
 	'perennial' => 'Winterhart',
 	'cutting_month' => 'Schneidemonat',
 	'date_of_purchase' => 'Kaufdatum',

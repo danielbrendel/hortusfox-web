@@ -84,6 +84,20 @@
 				</tr>
 
 				<tr>
+					<td><strong>{{ __('app.last_fertilised') }}</strong></td>
+					<td>
+						@if ($plant->get('last_fertilised'))
+							{{ date('Y-m-d', strtotime($plant->get('last_fertilised'))) }}
+						@else
+							<span class="is-not-available">N/A</span>
+						@endif
+
+						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'last_fertilised', '{{ ($plant->get('last_fertilised')) ? date('Y-m-d', strtotime($plant->get('last_fertilised'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+					</td>
+					</td>
+				</tr>
+
+				<tr>
 					<td><strong>{{ __('app.perennial') }}</strong></td>
 					<td>
 						@if (!is_null($plant->get('perennial')))

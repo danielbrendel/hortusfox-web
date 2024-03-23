@@ -36,6 +36,7 @@ class PlantsModel_Migration {
         $this->database->add('photo VARCHAR(512) NOT NULL');
         $this->database->add('last_watered DATETIME NULL');
         $this->database->add('last_repotted DATETIME NULL');
+        $this->database->add('last_fertilised DATETIME NULL');
         $this->database->add('perennial BOOLEAN NULL');
         $this->database->add('cutting_month INT NULL');
         $this->database->add('date_of_purchase DATETIME NULL');

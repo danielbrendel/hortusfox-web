@@ -37,6 +37,7 @@ return [
 	'location' => 'Location',
 	'last_watered' => 'Last watered',
 	'last_repotted' => 'Last repotted',
+	'last_fertilised' => 'Last fertilised',
 	'perennial' => 'Perennial',
 	'cutting_month' => 'Cutting month',
 	'date_of_purchase' => 'Date of purchase',
