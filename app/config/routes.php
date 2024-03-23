@@ -67,6 +67,11 @@ return [
     array('/inventory/group/edit', 'POST', 'inventory@edit_inventory_group_item'),
     array('/inventory/group/remove', 'ANY', 'inventory@remove_inventory_group_item'),
 
+    /** Calendar Controller */
+    array('/calendar', 'GET', 'calendar@view_calendar'),
+    array('/calendar/query', 'POST', 'calendar@query_items'),
+    array('/calendar/add', 'POST', 'calendar@add_item'),
+
     /** Chat Controller */
     array('/chat', 'GET', 'chat@view_chat'),
     array('/chat/add', 'POST', 'chat@add_chat_message'),

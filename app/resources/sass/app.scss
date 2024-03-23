@@ -1535,6 +1535,35 @@ fieldset .field {
     text-decoration: underline;
 }
 
+.calendar-add {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.calendar-add a {
+    width: 200px;
+}
+
+.calendar-menu {
+    position: relative;
+}
+
+.calendar-menu span {
+    color: rgb(150, 150, 150);
+}
+
+.calendar-input {
+    padding: 8px;
+    color: rgb(250, 250, 250);
+    background-color: rgb(50, 50, 50);
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 5px;
+}
+
+.calendar-content {
+    position: relative;
+}
+
 .chat-message {
     position: relative;
     width: 90%;

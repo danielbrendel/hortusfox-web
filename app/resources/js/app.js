@@ -9,6 +9,9 @@ import './../sass/app.scss';
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import Chart from 'chart.js/auto';
+import 'chartjs-adapter-date-fns';
+
 window.constChatMessageQueryRefreshRate = 1000 * 15;
 window.constChatUserListRefreshRate = 1000 * 15;
 window.constChatTypingRefreshRate = 2000;
@@ -40,6 +43,7 @@ window.vue = new Vue({
         bShowPreviewImageModal: false,
         bShowSharePhoto: false,
         bShowAddFirstLocation: false,
+        bShowAddCalendarItem: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -847,6 +851,88 @@ window.vue = new Vue({
                     let tableElem = document.getElementById('admin-themes-list-item-' + theme);
                     if (tableElem) {
                         tableElem.remove();
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        renderCalendar: function(elem, date_from, date_till = null) {
+            window.vue.ajaxRequest('post', window.location.origin + '/calendar/query', { date_from: date_from, date_till: date_till }, function(response){
+                if (response.code == 200) {
+                    let content = document.getElementById(elem);
+                    if (content) {
+                        let data = response.data;
+
+                        data.sort(function (a, b) {
+                            return new Date(a.date_from) - new Date(b.date_from);
+                        });
+
+                        const labels = data.map(x => {
+                            return [x.name];
+                        })
+
+                        const newData = data.map(x => {
+                            return [x.date_from.split(' ')[0], x.date_till.split(' ')[0]]
+                        });
+                        
+                        let colorsBackground = [];
+                        data.forEach(function(elem, index) {
+                            colorsBackground.push(elem.color_background);
+                        });
+                        
+                        let colorsBorder = [];
+                        data.forEach(function(elem, index) {
+                            colorsBorder.push(elem.color_border);
+                        });
+
+                        const config = {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [
+                                    {
+                                        data: newData,
+                                        backgroundColor: colorsBackground,
+                                        borderColor: colorsBorder,
+                                        borderWidth: 1,
+                                        fill: false,
+                                        barPercentage: 0.3
+                                    }
+                                ]
+                            },
+                            options: {
+                                indexAxis: 'y',
+                                responsive: true,
+                                scales: {
+                                    x: {
+                                        min: (typeof newData[0] !== 'undefined') ? newData[0][0] : null,
+                                        type: 'time',
+                                        time: {
+                                            unit: 'day'
+                                        }
+                                    },
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        };
+
+                        if (window.calendarChart !== null) {
+                            window.calendarChart.destroy();
+                        }
+                        
+                        window.calendarChart = new Chart(
+                            content,
+                            config
+                        );
                     }
                 } else {
                     alert(response.msg);

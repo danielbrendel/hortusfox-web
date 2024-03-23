@@ -902,6 +902,59 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowAddCalendarItem}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_calendar_item') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowAddCalendarItem = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmAddCalendarItem" method="POST" action="{{ url('/calendar/add') }}">
+							@csrf
+
+							<div class="field">
+								<label class="label">{{ __('app.name') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="name" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.date_from') }}</label>
+								<div class="control">
+									<input type="date" class="input" name="date_from" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.date_till') }}</label>
+								<div class="control">
+									<input type="date" class="input" name="date_till" id="date-till" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.calendar_class') }}</label>
+								<div class="control">
+									<select name="class" class="input">
+										@foreach (CalendarModel::getClasses() as $class_key => $class_item)
+											<option value="{{ $class_key }}">{{ __($class_item['name']) }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<input type="submit" class="is-hidden" id="submit-add-calendar-item">
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" id="button-add-calendar-item" onclick="document.getElementById('frmAddCalendarItem').addEventListener('submit', function() { document.getElementById('button-add-calendar-item').innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; return true; }); document.getElementById('submit-add-calendar-item').click();">{{ __('app.add') }}</button>
+						<button class="button" onclick="window.vue.bShowAddCalendarItem = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))
@@ -976,6 +1029,12 @@
 				@if (isset($_expand_inventory_item))
 					window.vue.expandInventoryItem('inventory-item-body-{{ $_expand_inventory_item }}');
 				@endif
+
+				window.calendarChart = null;
+				let elCalendar = document.getElementById('calendar');
+				if (elCalendar) {
+					window.vue.renderCalendar(elCalendar.id, null, null);
+				}
 
 				@if (app('chat_enable'))
 					window.vue.fetchUnreadMessageCount(document.getElementById('unread-message-count'));

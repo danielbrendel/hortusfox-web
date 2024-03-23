@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * This class extends the base model class and represents your associated table
+ */ 
+class CalendarModel extends \Asatru\Database\Model {
+    private static $class_table = [
+        'water' => [
+            'name' => 'app.calendar_class_water',
+            'color_background' => 'rgb(150, 150, 150)',
+            'color_border' => 'rgb(200, 200, 200)'
+        ],
+        'repot' => [
+            'name' => 'app.calendar_class_repot',
+            'color_background' => 'rgb(150, 150, 150)',
+            'color_border' => 'rgb(200, 200, 200)'
+        ],
+        'fertilise' => [
+            'name' => 'app.calendar_class_fertilise',
+            'color_background' => 'rgb(150, 150, 150)',
+            'color_border' => 'rgb(200, 200, 200)'
+        ],
+        'purchase' => [
+            'name' => 'app.calendar_class_purchase',
+            'color_background' => 'rgb(150, 150, 150)',
+            'color_border' => 'rgb(200, 200, 200)'
+        ],
+        'cut' => [
+            'name' => 'app.calendar_class_cut',
+            'color_background' => 'rgb(150, 150, 150)',
+            'color_border' => 'rgb(200, 200, 200)'
+        ],
+        'treat' => [
+            'name' => 'app.calendar_class_treat',
+            'color_background' => 'rgb(150, 150, 150)',
+            'color_border' => 'rgb(200, 200, 200)'
+        ]
+    ];
+
+    /**
+     * @param $date_from
+     * @param $date_till
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getItems($date_from = null, $date_till = null)
+    {
+        try {
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE DATE(date_from) >= ? AND DATE(date_till) <= ?', [$date_from, $date_till]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $name
+     * @param $date_from
+     * @param $date_till
+     * @param $class
+     * @return void
+     * @throws \Exception
+     */
+    public static function addItem($name, $date_from = null, $date_till = null, $class = null)
+    {
+        try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
+            static::raw('INSERT INTO `' . self::tableName() . '` (name, date_from, date_till, color_background, color_border, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?)', [
+                $name, $date_from, $date_till, self::$class_table[$class]['color_background'], self::$class_table[$class]['color_border'], $user->get('id'), date('Y-m-d H:i:s')
+            ]);
+
+            LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'add_calendar', $name, url('/calendar'));
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function getClasses()
+    {
+        try {
+            return self::$class_table;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * Return the associated table name of the migration
+     * 
+     * @return string
+     */
+    public static function tableName()
+    {
+        return 'calendar';
+    }
+}

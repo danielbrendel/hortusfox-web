@@ -284,5 +284,14 @@ return [
 	'theme_author' => 'Author',
 	'theme_contact' => 'Contact',
 	'all' => 'All',
-	'user_created_password' => 'User password: <strong>{pw}</strong>. Please forward this password to the user and inform them to change it after logging in.'
+	'user_created_password' => 'User password: <strong>{pw}</strong>. Please forward this password to the user and inform them to change it after logging in.',
+	'calendar' => 'Calendar',
+	'calendar_hint' => 'Here you can manage important dates',
+	'range' => 'Range',
+	'go' => 'Go',
+	'add_calendar_item' => 'Add item',
+	'date_from' => 'Date from',
+	'date_till' => 'Date till',
+	'calendar_item_added' => 'Item was added successfully',
+	'calendar_class' => 'Class'
 ];

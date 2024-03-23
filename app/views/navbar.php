@@ -49,6 +49,12 @@
                 </a>
             </div>
 
+            <div class="navbar-item">
+                <a href="{{ url('/calendar') }}">
+                    <i class="far fa-calendar-alt" title="{{ __('app.calendar') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.calendar') }}</span>
+                </a>
+            </div>
+
             @if (app('chat_enable'))
             <div class="navbar-item">
                 <a href="{{ url('/chat') }}" class="notification-badge">
