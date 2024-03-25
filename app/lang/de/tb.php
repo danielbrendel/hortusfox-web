@@ -10,5 +10,6 @@ return [
     'reactivated_task' => 'Ich habe eine Aufgabe reaktiviert: <a href="{url}">{name}</a>',
     'created_inventory_item' => 'Ich habe einen neuen Eintrag im Inventar erstellt: <a href="{url}">{name}</a>',
     'removed_inventory_item' => 'Ich habe den Eintrag <strong>{name}</strong> aus dem Inventar entfernt',
-    'added_calendar_item' => 'Ich habe einen Eintrag zum Kalender hinzugefügt: <a href="{url}">{name}</a>'
+    'added_calendar_item' => 'Ich habe einen Eintrag zum Kalender hinzugefügt: <a href="{url}">{name}</a>',
+    'edited_calendar_item' => 'Ich habe einen Kalendereintrag bearbeitet: <a href="{url}">{name}</a>'
 ];

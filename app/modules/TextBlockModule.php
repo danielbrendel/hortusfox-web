@@ -173,6 +173,23 @@ class TextBlockModule {
     }
 
     /**
+     * @param $name
+     * @param $url
+     * @return void
+     * @throws \Exception
+     */
+    public static function editedCalendarItem($name, $url)
+    {
+        try {
+            $text = __('tb.edited_calendar_item', ['name' => $name, 'url' => $url]);
+
+            static::addToChat($text, 'x1f4c5');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $message
      * @param $icon
      * @return void

@@ -100,6 +100,7 @@ class CalendarModel extends \Asatru\Database\Model {
                 $name, $date_from, $date_till, $class, self::$class_table[$class]['color_background'], self::$class_table[$class]['color_border'], $user->get('id'), date('Y-m-d H:i:s'), $ident
             ]);
 
+            TextBlockModule::editedCalendarItem($name, url('/calendar'));
             LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'edit_calendar', $name, url('/calendar'));
         } catch (\Exception $e) {
             throw $e;
