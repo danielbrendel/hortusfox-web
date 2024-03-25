@@ -908,7 +908,8 @@ window.vue = new Vue({
                                 responsive: true,
                                 scales: {
                                     x: {
-                                        min: (typeof newData[0] !== 'undefined') ? newData[0][0] : null,
+                                        min: response.date_from,
+                                        max: response.date_till,
                                         type: 'time',
                                         time: {
                                             unit: 'day'
