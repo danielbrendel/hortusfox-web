@@ -71,6 +71,7 @@ return [
     array('/calendar', 'GET', 'calendar@view_calendar'),
     array('/calendar/query', 'POST', 'calendar@query_items'),
     array('/calendar/add', 'POST', 'calendar@add_item'),
+    array('/calendar/edit', 'POST', 'calendar@edit_item'),
 
     /** Chat Controller */
     array('/chat', 'GET', 'chat@view_chat'),

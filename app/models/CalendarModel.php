@@ -4,7 +4,7 @@
  * This class extends the base model class and represents your associated table
  */ 
 class CalendarModel extends \Asatru\Database\Model {
-    private static $class_table = [
+    public static $class_table = [
         'water' => [
             'name' => 'app.calendar_class_water',
             'color_background' => 'rgb(76, 135, 195)',
@@ -69,10 +69,37 @@ class CalendarModel extends \Asatru\Database\Model {
             }
 
             static::raw('INSERT INTO `' . self::tableName() . '` (name, date_from, date_till, class_name, color_background, color_border, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [
-                $name, $date_from, $date_till, __(self::$class_table[$class]['name']), self::$class_table[$class]['color_background'], self::$class_table[$class]['color_border'], $user->get('id'), date('Y-m-d H:i:s')
+                $name, $date_from, $date_till, $class, self::$class_table[$class]['color_background'], self::$class_table[$class]['color_border'], $user->get('id'), date('Y-m-d H:i:s')
             ]);
 
             LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'add_calendar', $name, url('/calendar'));
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $ident
+     * @param $name
+     * @param $date_from
+     * @param $date_till
+     * @param $class
+     * @return void
+     * @throws \Exception
+     */
+    public static function editItem($ident, $name, $date_from = null, $date_till = null, $class = null)
+    {
+        try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, date_from = ?, date_till = ?, class_name = ?, color_background = ?, color_border = ?, last_edited_user = ?, last_edited_date = ? WHERE id = ?', [
+                $name, $date_from, $date_till, $class, self::$class_table[$class]['color_background'], self::$class_table[$class]['color_border'], $user->get('id'), date('Y-m-d H:i:s'), $ident
+            ]);
+
+            LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'edit_calendar', $name, url('/calendar'));
         } catch (\Exception $e) {
             throw $e;
         }

@@ -53,6 +53,13 @@ class CalendarController extends BaseController {
 
             $items = CalendarModel::getItems($date_from, $date_till)->asArray();
 
+            foreach ($items as $key => &$value) {
+                if (isset($value['class_name'])) {
+                    $value['class_descriptor'] = $value['class_name'];
+                    $value['class_name'] = __(CalendarModel::$class_table[$value['class_name']]['name']);
+                }
+            }
+
             return json([
                 'code' => 200,
                 'data' => $items,
@@ -109,6 +116,41 @@ class CalendarController extends BaseController {
             CalendarModel::addItem($name, $date_from, $date_till, $class);
     
             FlashMessage::setMsg('success', __('app.calendar_item_added'));
+    
+            return redirect('/calendar');
+        } catch (\Exception $e) {
+            FlashMessage::setMsg('error', $e->getMessage());
+    
+            return redirect('/calendar');
+        }
+    }
+
+    /**
+	 * Handles URL: /calendar/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+    public function edit_item($request)
+    {
+        try {    
+            $ident = $request->params()->query('ident', null);
+            $name = $request->params()->query('name', null);
+            $date_from = $request->params()->query('date_from', null);
+            $date_till = $request->params()->query('date_till', null);
+            $class = $request->params()->query('class', null);
+
+            if ($date_till === null) {
+                $date_till = date('Y-m-d', strtotime('+1 day', strtotime($date_from)));
+            }
+
+            if ($date_from === $date_till) {
+                $date_till = date('Y-m-d', strtotime('+1 day', strtotime($date_from)));
+            }
+            
+            CalendarModel::editItem($ident, $name, $date_from, $date_till, $class);
+    
+            FlashMessage::setMsg('success', __('app.calendar_item_edited'));
     
             return redirect('/calendar');
         } catch (\Exception $e) {

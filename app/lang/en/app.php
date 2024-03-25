@@ -292,12 +292,14 @@ return [
 	'add_calendar_item' => 'Add item',
 	'date_from' => 'Date from',
 	'date_till' => 'Date till',
-	'calendar_item_added' => 'Item was added successfully',
+	'calendar_item_added' => 'The item was added successfully',
 	'calendar_class' => 'Class',
 	'calendar_class_water' => 'Watering',
 	'calendar_class_repot' => 'Repotting',
 	'calendar_class_fertilise' => 'Fertilising',
 	'calendar_class_purchase' => 'Purchase',
 	'calendar_class_cut' => 'Cutting',
-	'calendar_class_treat' => 'Treatment'
+	'calendar_class_treat' => 'Treatment',
+	'edit_calendar_item' => 'Edit item',
+	'calendar_item_edited' => 'The item was edited successfully'
 ];

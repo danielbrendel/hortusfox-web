@@ -955,6 +955,61 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowEditCalendarItem}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_calendar_item') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditCalendarItem = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditCalendarItem" method="POST" action="{{ url('/calendar/edit') }}">
+							@csrf
+
+							<input type="hidden" name="ident" id="inpEditCalendarItemId"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.name') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="name" id="inpEditCalendarItemName" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.date_from') }}</label>
+								<div class="control">
+									<input type="date" class="input" name="date_from" id="inpEditCalendarItemDateFrom" onchange="document.getElementById('date-till').value = this.value;" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.date_till') }}</label>
+								<div class="control">
+									<input type="date" class="input" name="date_till" id="inpEditCalendarItemDateTill" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.calendar_class') }}</label>
+								<div class="control">
+									<select name="class" id="inpEditCalendarItemClass" class="input">
+										@foreach (CalendarModel::getClasses() as $class_key => $class_item)
+											<option value="{{ $class_key }}">{{ __($class_item['name']) }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<input type="submit" class="is-hidden" id="submit-edit-calendar-item">
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" id="button-edit-calendar-item" onclick="document.getElementById('frmEditCalendarItem').addEventListener('submit', function() { document.getElementById('button-edit-calendar-item').innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; return true; }); document.getElementById('submit-edit-calendar-item').click();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditCalendarItem = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))

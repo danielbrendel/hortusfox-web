@@ -299,5 +299,7 @@ return [
 	'calendar_class_fertilise' => 'Düngen',
 	'calendar_class_purchase' => 'Einkauf',
 	'calendar_class_cut' => 'Schneiden',
-	'calendar_class_treat' => 'Behandlung'
+	'calendar_class_treat' => 'Behandlung',
+	'edit_calendar_item' => 'Eintrag bearbeiten',
+	'calendar_item_edited' => 'Der Eintrag wurde erfolgreich bearbeitet'
 ];

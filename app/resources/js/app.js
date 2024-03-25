@@ -44,6 +44,7 @@ window.vue = new Vue({
         bShowSharePhoto: false,
         bShowAddFirstLocation: false,
         bShowAddCalendarItem: false,
+        bShowEditCalendarItem: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -874,7 +875,7 @@ window.vue = new Vue({
                         });
 
                         const newData = data.map(x => {
-                            return [x.date_from.split(' ')[0], x.date_till.split(' ')[0], x.class_name]
+                            return [x.date_from.split(' ')[0], x.date_till.split(' ')[0], x.class_name, x.id, x.class_descriptor]
                         });
                         
                         let colorsBackground = [];
@@ -944,6 +945,24 @@ window.vue = new Vue({
                             content,
                             config
                         );
+
+                        content.onclick = function(event) {
+                            let points = window.calendarChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, true);
+                            if (points.length) {
+                                const firstPoint = points[0];
+                                const label = window.calendarChart.data.labels[firstPoint.index];
+                                const value = window.calendarChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
+                                console.log(value);
+                                if (value.length) {
+                                    document.getElementById('inpEditCalendarItemId').value = value[3];
+                                    document.getElementById('inpEditCalendarItemName').value = label;
+                                    document.getElementById('inpEditCalendarItemDateFrom').value = value[0];
+                                    document.getElementById('inpEditCalendarItemDateTill').value = value[1];
+                                    document.getElementById('inpEditCalendarItemClass').value = value[4];
+                                    window.vue.bShowEditCalendarItem = true;
+                                }
+                            }
+                        };
                     }
                 } else {
                     alert(response.msg);
