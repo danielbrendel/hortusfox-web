@@ -1001,6 +1001,12 @@
 							</div>
 
 							<input type="submit" class="is-hidden" id="submit-edit-calendar-item">
+
+							<div class="field">
+								<div class="control">
+									<a class="calendar-link-removal" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_calendar_item') }}')) { window.vue.removeCalendarItem(document.getElementById('inpEditCalendarItemId').value); }">{{ __('app.remove_calendar_item') }}</a>
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">

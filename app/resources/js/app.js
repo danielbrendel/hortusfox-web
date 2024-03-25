@@ -971,6 +971,16 @@ window.vue = new Vue({
             });
         },
 
+        removeCalendarItem: function(ident) {
+            window.vue.ajaxRequest('post', window.location.origin + '/calendar/remove', { ident: ident }, function(response) {
+                if (response.code == 200) {
+                    location.reload();
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

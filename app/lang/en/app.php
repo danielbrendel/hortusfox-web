@@ -307,5 +307,7 @@ return [
 	'timespan_two_weeks' => 'Two Weeks',
 	'timespan_one_month' => 'One Month',
 	'timespan_three_months' => 'Three Months',
-	'timespan_half_a_year' => 'Half a year'
+	'timespan_half_a_year' => 'Half a year',
+	'remove_calendar_item' => 'Remove item',
+	'confirm_remove_calendar_item' => 'Are you sure that you want to remove this item?'
 ];

@@ -106,6 +106,20 @@ class CalendarModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $ident
+     * @return void
+     * @throws \Exception
+     */
+    public static function removeItem($ident)
+    {
+        try {
+            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$ident]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return array
      * @throws \Exception
      */

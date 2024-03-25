@@ -159,4 +159,28 @@ class CalendarController extends BaseController {
             return redirect('/calendar');
         }
     }
+
+    /**
+	 * Handles URL: /calendar/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function remove_item($request)
+    {
+        try {
+            $ident = $request->params()->query('ident', null);
+
+            CalendarModel::removeItem($ident);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }
