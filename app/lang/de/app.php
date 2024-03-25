@@ -301,5 +301,11 @@ return [
 	'calendar_class_cut' => 'Schneiden',
 	'calendar_class_treat' => 'Behandlung',
 	'edit_calendar_item' => 'Eintrag bearbeiten',
-	'calendar_item_edited' => 'Der Eintrag wurde erfolgreich bearbeitet'
+	'calendar_item_edited' => 'Der Eintrag wurde erfolgreich bearbeitet',
+	'timespan_select' => '- Zeiträume -',
+	'timespan_one_week' => 'Eine Woche',
+	'timespan_two_weeks' => 'Zwei Wochen',
+	'timespan_one_month' => 'Ein Monat',
+	'timespan_three_months' => 'Drei Monate',
+	'timespan_half_a_year' => 'Halbes Jahr'
 ];
