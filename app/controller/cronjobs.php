@@ -63,4 +63,24 @@ class CronjobsController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /cronjob/calendar/reminder
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function calendar_reminder($request)
+    {
+        try {
+            CalendarModel::cronjobReminder();
+
+            return json(['code' => 200]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }

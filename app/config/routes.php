@@ -105,6 +105,7 @@ return [
     /** Cronjob Controller */
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),
     array('/cronjob/tasks/tomorrow', 'GET', 'cronjobs@tomorrow_tasks'),
+    array('/cronjob/calendar/reminder', 'GET', 'cronjobs@calendar_reminder'),
 
     /** API Controller */
     array('/api/photo/share', 'POST', 'api@share_photo'),

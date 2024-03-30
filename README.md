@@ -290,6 +290,9 @@ GET /cronjob/tasks/overdue?cronpw={your-auth-token}
 
 # Used to inform users about tasks that are due tomorrow. Should be called multiple times per day.
 GET /cronjob/tasks/tomorrow?cronpw={your-auth-token}
+
+# Used to inform users about due calendar dates
+GET /cronjob/calendar/reminder?cronpw={your-auth-token}
 ```
 
 ## System requirements

@@ -135,6 +135,36 @@ class CalendarModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getTomorrowItems()
+    {
+        try {
+            $tomorrow = date('Y-m-d', strtotime('+1 day'));
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE DATE(date_from) = ? ORDER BY date_from ASC', [$tomorrow]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function cronjobReminder()
+    {
+        try {
+            $items = static::getTomorrowItems();
+            foreach ($items as $item) {
+                CalendarInformerModel::inform($item, env('APP_CRONJOB_MAILLIMIT', 5));
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string
