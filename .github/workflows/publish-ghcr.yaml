@@ -2,7 +2,7 @@ name: Docker Image CI for GHCR
 
 on:
   push:
-    tags: ['v[0-9]+.[0-9]+']
+    tags: ['v[0-9]+.[0-9]+', 'beta']
 
 jobs:
   build_and_publish:
