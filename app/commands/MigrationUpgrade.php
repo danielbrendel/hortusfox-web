@@ -13,9 +13,9 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo2dot5()
     {
-        PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN last_fertilised DATETIME NULL');
+        PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS last_fertilised DATETIME NULL');
 
-        UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` ADD COLUMN notify_calendar BOOLEAN NOT NULL DEFAULT 1');
+        UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` ADD COLUMN IF NOT EXISTS notify_calendar_reminder BOOLEAN NOT NULL DEFAULT 1');
     }
 
     /**
@@ -23,8 +23,8 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo2dot4()
     {
-        UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` DROP COLUMN session');
-        UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` DROP COLUMN status');
+        UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` DROP COLUMN IF EXISTS session');
+        UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` DROP COLUMN IF EXISTS status');
 
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` MODIFY COLUMN perennial BOOLEAN NULL');
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` MODIFY COLUMN humidity INT NULL');

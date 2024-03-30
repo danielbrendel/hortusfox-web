@@ -172,6 +172,7 @@ if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "
 then
     echo "Running unapplied database migrations..."
     php asatru migrate:list
+    php asatru migrate:upgrade
 else
     echo "Running full database migrations..."
     php asatru migrate:fresh
