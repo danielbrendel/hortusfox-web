@@ -14,5 +14,6 @@
 */
 
 return [
-    ['migrate:upgrade', 'Perform version specific migration upgrades', 'MigrationUpgrade']
+    ['migrate:upgrade', 'Perform version specific migration upgrades', 'MigrationUpgrade'],
+    ['product:version', 'Show current product version', 'VersionCommand']
 ];

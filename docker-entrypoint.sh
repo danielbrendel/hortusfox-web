@@ -187,6 +187,9 @@ cp /tmp/migrations/* /var/www/html/app/migrations
 # Set permissions to folder for migrations
 chown -R www-data:www-data /var/www/html/app/migrations
 
+# Show product version
+php asatru product:version
+
 # Run database migrations
 if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$DB_DATABASE' AND TABLE_NAME = 'plants';") -eq 1 ]
 then
