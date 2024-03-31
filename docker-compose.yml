@@ -20,13 +20,6 @@ services:
       DB_USERNAME: user
       DB_PASSWORD: password
       DB_CHARSET: "utf8mb4"
-      SMTP_FROMNAME: "Test"
-      SMTP_FROMADDRESS: "test@domain.tld"
-      SMTP_HOST: ""
-      SMTP_PORT: 587
-      SMTP_USERNAME: ""
-      SMTP_PASSWORD: ""
-      SMTP_ENCRYPTION: tls
     depends_on:
       - db
 
