@@ -88,11 +88,13 @@
 	@endif
 </div>
 
+@if ($user->get('show_calendar_view'))
 <div class="calendar-view">
 	<h3>{{ __('app.calendar_overview') }}</h3>
 
 	<canvas id="calendar-small-view"></canvas>
 </div>
+@endif
 
 <div class="locations">
 	@foreach ($locations as $location)

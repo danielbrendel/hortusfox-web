@@ -682,6 +682,12 @@
 
 							<div class="field">
 								<div class="control">
+									<input type="checkbox" name="show_calendar_view" value="1" {{ ($user->get('show_calendar_view')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_calendar_view') }}
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
 									<input type="checkbox" name="notify_tasks_overdue" value="1" {{ ($user->get('notify_tasks_overdue')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_tasks_overdue') }}
 								</div>
 							</div>
@@ -1103,7 +1109,7 @@
 					window.vue.renderCalendar(elCalendar.id, null, null);
 				}
 
-				@if ((isset($calendar_sv_date_from)) && (isset($calendar_sv_date_till)))
+				@if ((isset($user)) && ($user->get('show_calendar_view')) && (isset($calendar_sv_date_from)) && (isset($calendar_sv_date_till)))
 				let elCalendarSmallView = document.getElementById('calendar-small-view');
 				if (elCalendarSmallView) {
 					window.vue.renderCalendar(elCalendarSmallView.id, '{{ $calendar_sv_date_from }}', '{{ $calendar_sv_date_till }}');

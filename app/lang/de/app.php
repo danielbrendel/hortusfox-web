@@ -313,5 +313,6 @@ return [
 	'timespan_half_a_year' => 'Halbes Jahr',
 	'remove_calendar_item' => 'Eintrag entfernen',
 	'confirm_remove_calendar_item' => 'Soll der Eintrag wirklich entfernt werden?',
-	'calendar_overview' => 'Wochentermine'
+	'calendar_overview' => 'Wochentermine',
+	'show_calendar_view' => 'Wochentermine im Dashboard anzeigen'
 ];

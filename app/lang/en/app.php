@@ -313,5 +313,6 @@ return [
 	'timespan_half_a_year' => 'Half a year',
 	'remove_calendar_item' => 'Remove item',
 	'confirm_remove_calendar_item' => 'Are you sure that you want to remove this item?',
-	'calendar_overview' => 'Dates of next week'
+	'calendar_overview' => 'Dates of next week',
+	'show_calendar_view' => 'Show calendar view in dashboard'
 ];
