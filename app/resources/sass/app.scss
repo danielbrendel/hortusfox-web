@@ -1578,6 +1578,18 @@ fieldset .field {
     text-decoration: underline;
 }
 
+.calendar-view {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 59px;
+}
+
+.calendar-view h3 {
+    color: rgb(150, 150, 150);
+    font-size: 2.0em;
+    padding-bottom: 10px;
+}
+
 .chat-message {
     position: relative;
     width: 90%;

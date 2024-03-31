@@ -1103,6 +1103,13 @@
 					window.vue.renderCalendar(elCalendar.id, null, null);
 				}
 
+				@if ((isset($calendar_sv_date_from)) && (isset($calendar_sv_date_till)))
+				let elCalendarSmallView = document.getElementById('calendar-small-view');
+				if (elCalendarSmallView) {
+					window.vue.renderCalendar(elCalendarSmallView.id, '{{ $calendar_sv_date_from }}', '{{ $calendar_sv_date_till }}');
+				}
+				@endif
+
 				@if (app('chat_enable'))
 					window.vue.fetchUnreadMessageCount(document.getElementById('unread-message-count'));
 				@endif

@@ -312,5 +312,6 @@ return [
 	'timespan_three_months' => 'Three Months',
 	'timespan_half_a_year' => 'Half a year',
 	'remove_calendar_item' => 'Remove item',
-	'confirm_remove_calendar_item' => 'Are you sure that you want to remove this item?'
+	'confirm_remove_calendar_item' => 'Are you sure that you want to remove this item?',
+	'calendar_overview' => 'Dates of next week'
 ];

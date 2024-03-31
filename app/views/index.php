@@ -88,6 +88,12 @@
 	@endif
 </div>
 
+<div class="calendar-view">
+	<h3>{{ __('app.calendar_overview') }}</h3>
+
+	<canvas id="calendar-small-view"></canvas>
+</div>
+
 <div class="locations">
 	@foreach ($locations as $location)
 		<a href="{{ url('/plants/location/' . $location->get('id')) }}">

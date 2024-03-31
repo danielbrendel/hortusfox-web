@@ -53,7 +53,9 @@ class IndexController extends BaseController {
 			'log' => $log,
 			'stats' => $stats,
 			'upcoming_tasks_overview' => $upcoming_tasks_overview,
-			'last_plants_list' => $last_plants_list
+			'last_plants_list' => $last_plants_list,
+			'calendar_sv_date_from' => date('Y-m-d'),
+			'calendar_sv_date_till' => date('Y-m-d', strtotime('+1 week'))
 		]);
 	}
 

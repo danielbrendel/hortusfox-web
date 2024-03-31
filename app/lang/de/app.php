@@ -312,5 +312,6 @@ return [
 	'timespan_three_months' => 'Drei Monate',
 	'timespan_half_a_year' => 'Halbes Jahr',
 	'remove_calendar_item' => 'Eintrag entfernen',
-	'confirm_remove_calendar_item' => 'Soll der Eintrag wirklich entfernt werden?'
+	'confirm_remove_calendar_item' => 'Soll der Eintrag wirklich entfernt werden?',
+	'calendar_overview' => 'Wochentermine'
 ];
