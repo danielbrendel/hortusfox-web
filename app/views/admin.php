@@ -489,7 +489,13 @@
 
     <div class="field">
         <div class="control">
-            <button type="button" class="button is-link" onclick="window.vue.startImport(this, document.getElementById('backup_file'), document.getElementById('locationsi').checked, document.getElementById('plantsi').checked, document.getElementById('galleryi').checked, document.getElementById('tasksi').checked, document.getElementById('inventoryi').checked);">{{ __('app.import') }}</button>
+            <input type="checkbox" id="calendari" value="1" checked/>&nbsp;<span>{{ __('app.calendar') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button type="button" class="button is-link" onclick="window.vue.startImport(this, document.getElementById('backup_file'), document.getElementById('locationsi').checked, document.getElementById('plantsi').checked, document.getElementById('galleryi').checked, document.getElementById('tasksi').checked, document.getElementById('inventoryi').checked, document.getElementById('calendari').checked);">{{ __('app.import') }}</button>
         </div>
     </div>
 

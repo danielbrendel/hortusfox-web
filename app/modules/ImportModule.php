@@ -46,6 +46,10 @@ class ImportModule {
                     static::importInventory(public_path() . '/backup/' . $import_file . '/inventory');
                 }
 
+                if ((isset($options['calendar'])) && ($options['calendar'])) {
+                    static::importCalendar(public_path() . '/backup/' . $import_file . '/calendar');
+                }
+
                 UtilsModule::clearFolder(public_path() . '/backup/' . $import_file);
             }
 
@@ -207,6 +211,35 @@ class ImportModule {
                     if ((!file_exists(public_path() . '/img/' . $inventory_item->photo)) && (file_exists($path . '/img/' . $inventory_item->photo))) {
                         copy($path . '/img/' . $inventory_item->photo, public_path() . '/img/' . $inventory_item->photo);
                     }
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importCalendar($path)
+    {
+        try {
+            $calendar_items = json_decode(file_get_contents($path . '/data.json'));
+            if ($calendar_items) {
+                foreach ($calendar_items as $calendar_item) {
+                    CalendarModel::raw('INSERT INTO `' . CalendarModel::tableName() . '` (name, date_from, date_till, class_name, color_background, color_border, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                        $calendar_item->name,
+                        $calendar_item->date_from,
+                        $calendar_item->date_till,
+                        $calendar_item->class_name,
+                        $calendar_item->color_background,
+                        $calendar_item->color_border,
+                        $calendar_item->last_edited_user,
+                        $calendar_item->last_edited_date,
+                        $calendar_item->created_at
+                    ]);
                 }
             }
         } catch (\Exception $e) {

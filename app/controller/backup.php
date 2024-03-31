@@ -63,7 +63,8 @@ class BackupController extends BaseController {
                 'plants' => (bool)$request->params()->query('plants', 0),
                 'gallery' => (bool)$request->params()->query('gallery', 0),
                 'tasks' => (bool)$request->params()->query('tasks', 0),
-                'inventory' => (bool)$request->params()->query('inventory', 0)
+                'inventory' => (bool)$request->params()->query('inventory', 0),
+                'calendar' => (bool)$request->params()->query('calendar', 0),
             ]);
 
             return json([

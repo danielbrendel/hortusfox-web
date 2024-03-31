@@ -801,7 +801,7 @@ window.vue = new Vue({
             });
         },
 
-        startImport: function(button, file, locations, plants, gallery, tasks, inventory) {
+        startImport: function(button, file, locations, plants, gallery, tasks, inventory, calendar) {
             let oldText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
             
@@ -812,6 +812,7 @@ window.vue = new Vue({
             formData.append('gallery', ((gallery) ? 1 : 0));
             formData.append('tasks', ((tasks) ? 1 : 0));
             formData.append('inventory', ((inventory) ? 1 : 0));
+            formData.append('calendar', ((calendar) ? 1 : 0));
 
             window.vue.ajaxRequest('post', window.location.origin + '/import/start', formData, function(response) {
                 button.innerHTML = oldText;
