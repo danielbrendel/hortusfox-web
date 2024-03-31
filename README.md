@@ -96,10 +96,33 @@ git clone https://github.com/danielbrendel/hortusfox-web.git
 cd hortusfox-web
 ```
 
-2. Set your admin account in the `docker-compose.yml`.
+2. Set environment variables in the `docker-compose.yml`.
+
+Set your admin user e-mail and password in order to login
 ```yaml
+# Admin login credentials
+# services.app.environment
 APP_ADMIN_EMAIL: "admin@example.com"
 APP_ADMIN_PASSWORD: "password"
+```
+
+Set database settings if required. It is encouraged to set custom passwords due to security reasons. All other settings can be left unaltered.
+```yaml
+# Settings used to establish connections to the database
+# services.app.environment
+DB_HOST: db
+DB_PORT: 3306
+DB_DATABASE: hortusfox
+DB_USERNAME: user
+DB_PASSWORD: password
+DB_CHARSET: "utf8mb4"
+
+# Settings of the database container
+# services.db.environment
+MYSQL_ROOT_PASSWORD: my-secret-pw
+MYSQL_DATABASE: hortusfox
+MYSQL_USER: user
+MYSQL_PASSWORD: password
 ```
 
 3. Pull the image and run the application:
