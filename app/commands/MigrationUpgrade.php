@@ -16,6 +16,7 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS last_fertilised DATETIME NULL');
 
         UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` ADD COLUMN IF NOT EXISTS notify_calendar_reminder BOOLEAN NOT NULL DEFAULT 1');
+        UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` ADD COLUMN IF NOT EXISTS show_calendar_view BOOLEAN NOT NULL DEFAULT 1');
     }
 
     /**
