@@ -4,9 +4,29 @@
 DEFAULT_ADMIN_EMAIL="admin@example.com"
 DEFAULT_ADMIN_PASSWORD=$(openssl rand -base64 12)  # Generate a random password
 
+# Default values for environment variables
+DEFAULT_APP_BASE_DIR=""
+DEFAULT_APP_DEBUG=true
+DEFAULT_APP_LANG="en"
+DEFAULT_APP_WORKSPACE="My plant home"
+DEFAULT_APP_ONLINE_MINUTE_LIMIT=5
+DEFAULT_APP_OVERDUE_TASK_HOURS=10
+DEFAULT_APP_CRON_PW=$(openssl rand -base64 12)
+DEFAULT_APP_CRON_MAIL_LIMIT=5
+DEFAULT_LOG_ENABLE=true
+
 # Use environment variables if provided, otherwise use defaults
 ADMIN_EMAIL="${APP_ADMIN_EMAIL:-$DEFAULT_ADMIN_EMAIL}"
 ADMIN_PASSWORD="${APP_ADMIN_PASSWORD:-$DEFAULT_ADMIN_PASSWORD}"
+APP_BASE_DIR="${APP_BASE_DIR:-$DEFAULT_APP_BASE_DIR}"
+APP_DEBUG=${APP_DEBUG:-$DEFAULT_APP_DEBUG}
+APP_LANG="${APP_LANG:-$DEFAULT_APP_LANG}"
+APP_WORKSPACE="${APP_WORKSPACE:-$DEFAULT_APP_WORKSPACE}"
+APP_ONLINE_MINUTE_LIMIT=${APP_ONLINE_MINUTE_LIMIT:-$DEFAULT_APP_ONLINE_MINUTE_LIMIT}
+APP_OVERDUE_TASK_HOURS=${APP_OVERDUE_TASK_HOURS:-$DEFAULT_APP_OVERDUE_TASK_HOURS}
+APP_CRON_PW="${APP_CRON_PW:-$DEFAULT_APP_CRON_PW}"
+APP_CRON_MAIL_LIMIT=${APP_CRON_MAIL_LIMIT:-$DEFAULT_APP_CRON_MAIL_LIMIT}
+LOG_ENABLE={$LOG_ENABLE:-$DEFAULT_LOG_ENABLE}
 
 # Function to set PHP error reporting based on APP_DEBUG
 configure_php_error_reporting() {
@@ -97,7 +117,7 @@ add_initial_settings_if_missing() {
 
 # Function to create initial settings
 create_app_settings() {
-    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, chat_system, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', $APP_ENABLE_SCROLLER, $APP_ENABLE_CHAT, $APP_ONLINE_MINUTE_LIMIT, $APP_SHOW_CHAT_ONLINE_USERS, $APP_SHOW_CHAT_TYPING_INDICATOR, $APP_ENABLE_SYSTEM_MESSAGES, $APP_ENABLE_HISTORY, '$APP_HISTORY_NAME', $APP_ENABLE_PHOTO_SHARE, '$APP_CRON_PW', $APP_OVERLAY_ALPHA, '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', 0, CURRENT_TIMESTAMP);"
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, cronjob_pw, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', '$APP_CRON_PW', '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', CURRENT_TIMESTAMP);"
 
     echo "App settings profile created."
 }
