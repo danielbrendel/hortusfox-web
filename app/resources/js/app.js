@@ -776,7 +776,7 @@ window.vue = new Vue({
             });
         },
 
-        startBackup: function(button, plants, gallery, tasks, inventory) {
+        startBackup: function(button, plants, gallery, tasks, inventory, calendar) {
             let oldText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
 
@@ -784,7 +784,8 @@ window.vue = new Vue({
                 plants: plants,
                 gallery: gallery,
                 tasks: tasks,
-                inventory: inventory
+                inventory: inventory,
+                calendar: calendar
             }, function(response) {
                 button.innerHTML = oldText;
 

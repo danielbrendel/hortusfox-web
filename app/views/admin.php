@@ -435,7 +435,13 @@
 
     <div class="field">
         <div class="control">
-            <button type="button" class="button is-link" onclick="window.vue.startBackup(this, document.getElementById('plants').checked, document.getElementById('gallery').checked, document.getElementById('tasks').checked, document.getElementById('inventory').checked);">{{ __('app.export') }}</button>
+            <input type="checkbox" id="calendar" value="1" checked/>&nbsp;<span>{{ __('app.calendar') }}</span>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button type="button" class="button is-link" onclick="window.vue.startBackup(this, document.getElementById('plants').checked, document.getElementById('gallery').checked, document.getElementById('tasks').checked, document.getElementById('inventory').checked, document.getElementById('calendar').checked);">{{ __('app.export') }}</button>
         </div>
     </div>
 

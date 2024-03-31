@@ -39,6 +39,10 @@ class BackupModule {
                     $cleanup_files[] = static::backupInventory($zip);
                 }
 
+                if ((isset($options['calendar'])) && ($options['calendar'])) {
+                    $cleanup_files[] = static::backupCalendar($zip);
+                }
+
                 $zip->close();
 
                 foreach ($cleanup_files as $cleanup_file) {
@@ -181,6 +185,27 @@ class BackupModule {
             $zip->addFile(public_path() . '/backup/_inventory.json', 'inventory/data.json');
 
             return public_path() . '/backup/_inventory.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    public static function backupCalendar(ZipArchive $zip)
+    {
+        try {
+            $calendar_items = CalendarModel::raw('SELECT * FROM `calendar`');
+
+            $zip->addEmptyDir('calendar');
+
+            file_put_contents(public_path() . '/backup/_calendar.json', json_encode($calendar_items->asArray()));
+            $zip->addFile(public_path() . '/backup/_calendar.json', 'calendar/data.json');
+
+            return public_path() . '/backup/_calendar.json';
         } catch (\Exception $e) {
             throw $e;
         }
