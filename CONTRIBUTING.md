@@ -1,5 +1,11 @@
 # Contribution Guidelines
 
+## Table of Contents
+- [Overview](#overview)
+- [Localization](#localization)
+
+## Overview
+
 These guidelines provide information on the best practices on how to contribute to this repository.
 Following this guidelines will fasten the review of pull requests.
 
@@ -17,3 +23,28 @@ Contributions must comply with OpenSource definitions and need to be compatible 
 Also some principles of selfhosted must be respected. These include (but are not limited to) data privacy.
 
 If you have any questions before submitting a PR, you can first create an issue to get answers.
+
+## Localization
+
+Submitting new localizations helps to bring the project to a broader audience. Language files are located in the `/app/lang` directory.
+
+Steps to create a new language
+
+1. Create a new folder with your language and add the following files (copy them from `/app/en`). As an example we use `de` as german language.
+
+```
+/app/lang/de/app.php
+/app/lang/de/errors.php
+/app/lang/de/tb.php
+```
+
+2. Set the `_language_ident` token in your `app.php` file
+
+```php
+return [
+    '_language_ident' => 'German',
+    //...
+];
+```
+
+Users can now select the new language via their preferences. But you can also set the language as default in the admin dashboard.
