@@ -394,6 +394,7 @@
             chdir(__DIR__ . '/../../');
 
             system('php asatru migrate:fresh');
+            system('php asatru calendar:classes');
 
             dbquery($pdo, 'INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, chat_system, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, created_at) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
                 $workspace, 'en', true, true, 5, true, false, true, true, 'History', false, md5(random_bytes(55) . date('Y-m-d H:i:s')), null, $smtpaddr, $smtpaddr, $smtphost, $smtpport, $smtpuser, $smtppw, 'tls', 0
