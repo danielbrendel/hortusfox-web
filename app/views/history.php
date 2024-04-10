@@ -61,7 +61,7 @@
 					</div>
 
 					<div class="plant-card-title plant-card-title-with-hint">
-						<div class="plant-card-title-first">{{ $plant->get('name') }}</div>
+						<div class="plant-card-title-first">{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</div>
 						<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
 					</div>
 				</div>

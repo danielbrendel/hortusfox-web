@@ -54,7 +54,7 @@
 						</div>
 
 						<div class="plant-card-title {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
-							{{ $plant->get('name') }}
+							{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}
 						</div>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 <div class="plant-details-title">
-	<h1>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '')}}</h1>
+	<h1>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</h1>
 
 	<h2>{{ $plant_ident }}</h2>
 </div>
