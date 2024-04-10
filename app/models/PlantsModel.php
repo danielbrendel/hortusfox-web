@@ -17,6 +17,7 @@
             'name',
             'last_watered',
             'last_repotted',
+            'last_fertilised',
             'health_state',
             'perennial',
             'light_level',

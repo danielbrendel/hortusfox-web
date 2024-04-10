@@ -173,6 +173,7 @@ return [
 	'sorting_type_name' => 'Alphabetisch',
 	'sorting_type_last_watered' => 'Zuletzt gewässert',
 	'sorting_type_last_repotted' => 'Zuletzt umgetopft',
+	'sorting_type_last_fertilised' => 'Zuletzt gedüngt',
 	'sorting_type_health_state' => 'Gesundheitsstatus',
 	'sorting_type_perennial' => 'Winterhart',
 	'sorting_type_light_level' => 'Lichtempfindlichkeit',

@@ -173,6 +173,7 @@ return [
 	'sorting_type_name' => 'Alphabetically',
 	'sorting_type_last_watered' => 'Last time watered',
 	'sorting_type_last_repotted' => 'Last time repotted',
+	'sorting_type_last_fertilised' => 'Last time fertilised',
 	'sorting_type_health_state' => 'Health state',
 	'sorting_type_perennial' => 'Perennial',
 	'sorting_type_light_level' => 'Light Level',
