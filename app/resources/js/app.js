@@ -997,6 +997,16 @@ window.vue = new Vue({
             });
         },
 
+        clonePlant: function(id) {
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/clone', { id: id }, function(response) {
+                if (response.code == 200) {
+                    location.href = window.location.origin + '/plants/details/' + response.clone_id;
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

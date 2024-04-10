@@ -40,6 +40,7 @@ return [
     array('/plants/history', 'GET', 'plants@view_history'),
     array('/plants/history/add', 'ANY', 'plants@add_to_history'),
     array('/plants/history/remove', 'ANY', 'plants@remove_from_history'),
+    array('/plants/clone', 'POST', 'plants@clone_plant'),
 
     /** User controller Controller */
     array('/profile', 'GET', 'user@view_profile'),

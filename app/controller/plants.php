@@ -410,4 +410,29 @@ class PlantsController extends BaseController {
 			return back();
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/clone
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function clone_plant($request)
+	{
+		try {
+			$id = $request->params()->query('id', null);
+
+			$clone_id = PlantsModel::clonePlant($id);
+
+			return json([
+				'code' => 200,
+				'clone_id' => $clone_id
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

@@ -283,5 +283,9 @@
 		<span>	
 			<a class="button is-danger" href="javascript:void(0);" onclick="window.vue.deletePlant({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ __('app.remove_plant') }}</a>&nbsp;
 		</span>
+
+		<span>	
+			<a class="button is-info" href="javascript:void(0);" onclick="window.vue.clonePlant({{ $plant->get('id') }});">{{ __('app.clone_plant') }}</a>&nbsp;
+		</span>
 	</div>
 </div>

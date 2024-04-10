@@ -605,6 +605,61 @@
         }
 
         /**
+         * @param $id
+         * @return int
+         * @throws \Exception
+         */
+        public static function clonePlant($id)
+        {
+            try {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+
+                $source = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+                if (!$source) {
+                    throw new \Exception('Plant with ID not found: ' . $id);
+                }
+
+                $updated_tags = $source->get('tags');
+
+                if (strpos($source->get('tags'), strtolower($source->get('name'))) === false) {
+                    $updated_tags = $source->get('tags') . ' ' . strtolower($source->get('name'));
+
+                    static::raw('UPDATE `' . self::tableName() . '` SET tags = ?, clone_num = ? WHERE id = ?', [
+                        $updated_tags, 0, $source->get('id')
+                    ]);
+                }
+
+                static::raw('INSERT INTO `' . self::tableName() . '` (name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, last_fertilised, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, last_edited_user, last_edited_date, clone_num) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                    $source->get('name'), $source->get('scientific_name'), $source->get('knowledge_link'), $updated_tags, $source->get('location'), $source->get('photo'), $source->get('last_watered'), $source->get('last_repotted'), $source->get('last_fertilised'), $source->get('perennial'), $source->get('cutting_month'), $source->get('date_of_purchase'), $source->get('humidity'), $source->get('light_level'), $source->get('health_state'), $source->get('notes'), $user->get('id'), date('Y-m-d H:i:s'), static::getNameCount($source->get('name'))
+                ]);
+
+                $clone = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+
+                return $clone->get('id');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
+         * @param $name
+         * @return int
+         * @throws \Exception
+         */
+        public static function getNameCount($name)
+        {
+            try {
+                $result = static::raw('SELECT COUNT(name) AS `count` FROM `' . self::tableName() . '` WHERE name = ?', [$name])->first();
+                return $result->get('count');
+            } catch (\Exception $e) {
+                throw $e;
+            }
+        }
+
+        /**
          * Return the associated table name of the migration
          * 
          * @return string

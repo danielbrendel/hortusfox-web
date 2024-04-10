@@ -326,5 +326,6 @@ return [
 	'calendar_class_color_border' => 'Border-Farbe',
 	'calendar_class_added_successfully' => 'Der Kalender-Typ wurde erfolgreich hinzugefügt',
 	'calendar_class_edited_successfully' => 'Der Kalender-Typ wurde erfolgreich aktualisiert',
-	'confirm_remove_calendar_class' => 'Soll dieser Kalender-Typ wirklich gelöscht werden?'
+	'confirm_remove_calendar_class' => 'Soll dieser Kalender-Typ wirklich gelöscht werden?',
+	'clone_plant' => 'Pflanze klonen'
 ];

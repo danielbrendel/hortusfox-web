@@ -326,5 +326,6 @@ return [
 	'calendar_class_color_border' => 'Border color',
 	'calendar_class_added_successfully' => 'Calendar class was successfully added',
 	'calendar_class_edited_successfully' => 'Calendar class was successfully edited',
-	'confirm_remove_calendar_class' => 'Are you sure you want to remove this calendar class?'
+	'confirm_remove_calendar_class' => 'Are you sure you want to remove this calendar class?',
+	'clone_plant' => 'Clone plant'
 ];
