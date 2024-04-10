@@ -950,8 +950,8 @@
 								<label class="label">{{ __('app.calendar_class') }}</label>
 								<div class="control">
 									<select name="class" class="input">
-										@foreach (CalendarModel::getClasses() as $class_key => $class_item)
-											<option value="{{ $class_key }}">{{ __($class_item['name']) }}</option>
+										@foreach (CalendarClassModel::getAll() as $class_item)
+											<option value="{{ $class_item->get('ident') }}">{{ __($class_item->get('name')) }}</option>
 										@endforeach
 									</select>
 								</div>
@@ -1005,8 +1005,8 @@
 								<label class="label">{{ __('app.calendar_class') }}</label>
 								<div class="control">
 									<select name="class" id="inpEditCalendarItemClass" class="input">
-										@foreach (CalendarModel::getClasses() as $class_key => $class_item)
-											<option value="{{ $class_key }}">{{ __($class_item['name']) }}</option>
+										@foreach (CalendarClassModel::getAll() as $class_item)
+											<option value="{{ $class_item->get('ident') }}">{{ __($class_item->get('name')) }}</option>
 										@endforeach
 									</select>
 								</div>

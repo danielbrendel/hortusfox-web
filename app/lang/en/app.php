@@ -315,5 +315,6 @@ return [
 	'remove_calendar_item' => 'Remove item',
 	'confirm_remove_calendar_item' => 'Are you sure that you want to remove this item?',
 	'calendar_overview' => 'Dates of next week',
-	'show_calendar_view' => 'Show calendar view in dashboard'
+	'show_calendar_view' => 'Show calendar view in dashboard',
+	'unknown_calendar_class' => 'Unknown'
 ];

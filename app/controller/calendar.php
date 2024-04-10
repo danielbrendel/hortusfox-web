@@ -56,7 +56,13 @@ class CalendarController extends BaseController {
             foreach ($items as $key => &$value) {
                 if (isset($value['class_name'])) {
                     $value['class_descriptor'] = $value['class_name'];
-                    $value['class_name'] = __(CalendarModel::$class_table[$value['class_name']]['name']);
+
+                    $calendar_class_item = CalendarClassModel::findClass($value['class_name']);
+                    if ($calendar_class_item) {
+                        $value['class_name'] = __($calendar_class_item->get('name'));
+                    } else {
+                        $value['class_name'] = __('app.unknown_calendar_class');
+                    }
                 }
             }
 
