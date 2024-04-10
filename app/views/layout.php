@@ -72,7 +72,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.location') }}</label>
 								<div class="control">
-									<select name="location" class="input" id="inpLocationId">
+									<select name="location" class="input" id="inpLocationId" required>
 										@foreach (LocationsModel::getAll() as $location)
 											<option value="{{ $location->get('id') }}">{{ $location->get('name') }}</option>
 										@endforeach
