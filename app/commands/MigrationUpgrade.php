@@ -11,6 +11,13 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo3dot0()
+    {
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo2dot5()
     {
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS last_fertilised DATETIME NULL');
