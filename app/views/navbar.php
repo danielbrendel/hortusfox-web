@@ -21,7 +21,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 @if (LocationsModel::getCount() > 0)
-                <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = 0; window.vue.bShowAddPlant = true;">
+                <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = {{ ((isset($location)) && (is_numeric($location)) ? $location : '0') }}; window.vue.bShowAddPlant = true;">
                     {{ __('app.add_plant') }}
                 </a>
                 @else
