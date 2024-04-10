@@ -455,4 +455,45 @@ class UtilsModule {
             throw $e;
         }
     }
+
+    /**
+     * @param $content
+     * @param $type
+     * @return string
+     * @throws \Exception
+     */
+    public static function readablePlantAttribute($content, $type)
+    {
+        try {
+            if ((!$content) && ($type !== 'perennial')) {
+                return 'N/A';
+            }
+
+            if ($type === 'name') {
+                return $content;
+            } else if ($type === 'last_watered') {
+                return date('Y-m-d', strtotime($content));
+            } else if ($type === 'last_repotted') {
+                return date('Y-m-d', strtotime($content));
+            } else if ($type === 'last_fertilised') {
+                return date('Y-m-d', strtotime($content));
+            } else if ($type === 'health_state') {
+                return __('app.' . $content);
+            } else if ($type === 'perennial') {
+                if (is_null($content)) {
+                    return 'N/A';
+                } else {
+                    return ($content) ? __('app.yes') : __('app.no');
+                }
+            } else if ($type === 'light_level') {
+                return __('app.' . $content);
+            } else if ($type === 'humidity') {
+                return $content . '%';
+            } else {
+                return $content;
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
