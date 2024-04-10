@@ -31,8 +31,8 @@ class CalendarClsCommand implements Asatru\Commands\Command {
         ],
         'cut' => [
             'name' => 'app.calendar_class_cut',
-            'color_background' => 'rgb(150, 150, 150)',
-            'color_border' => 'rgb(200, 200, 200)'
+            'color_background' => 'rgb(235, 163, 67)',
+            'color_border' => 'rgb(230, 125, 50)'
         ],
         'treat' => [
             'name' => 'app.calendar_class_treat',
@@ -41,13 +41,13 @@ class CalendarClsCommand implements Asatru\Commands\Command {
         ],
         'harvest' => [
             'name' => 'app.calendar_class_harvest',
-            'color_background' => 'rgb(200, 111, 111)',
-            'color_border' => 'rgb(255, 150, 150)'
+            'color_background' => 'rgb(72, 243, 65)',
+            'color_border' => 'rgb(180, 250, 155)'
         ],
         'other' => [
             'name' => 'app.calendar_class_other',
-            'color_background' => 'rgb(200, 111, 111)',
-            'color_border' => 'rgb(255, 150, 150)'
+            'color_background' => 'rgb(150, 150, 150)',
+            'color_border' => 'rgb(200, 200, 200)'
         ]
     ];
 

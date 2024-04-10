@@ -45,6 +45,7 @@ window.vue = new Vue({
         bShowAddFirstLocation: false,
         bShowAddCalendarItem: false,
         bShowEditCalendarItem: false,
+        bShowCreateNewCalendarClass: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -685,7 +686,7 @@ window.vue = new Vue({
         },
 
         selectAdminTab: function(tab) {
-            const tabs = ['environment', 'media', 'users', 'locations', 'mail', 'themes', 'backup', 'info'];
+            const tabs = ['environment', 'media', 'users', 'locations', 'calendar', 'mail', 'themes', 'backup', 'info'];
 
             let selEl = document.querySelector('.admin-' + tab);
             if (selEl) {
@@ -977,6 +978,19 @@ window.vue = new Vue({
             window.vue.ajaxRequest('post', window.location.origin + '/calendar/remove', { ident: ident }, function(response) {
                 if (response.code == 200) {
                     location.reload();
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        removeCalendarClass: function(id) {
+            window.vue.ajaxRequest('post', window.location.origin + '/admin/calendar/class/remove', { id: id }, function(response) {
+                if (response.code == 200) {
+                    let elItem = document.getElementById('admin-calendar-class-item-' + id);
+                    if (elItem) {
+                        elItem.remove();
+                    }
                 } else {
                     alert(response.msg);
                 }

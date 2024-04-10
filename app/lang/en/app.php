@@ -304,6 +304,8 @@ return [
 	'calendar_class_purchase' => 'Purchase',
 	'calendar_class_cut' => 'Cutting',
 	'calendar_class_treat' => 'Treatment',
+	'calendar_class_harvest' => 'Harvest',
+	'calendar_class_other' => 'Other',
 	'edit_calendar_item' => 'Edit item',
 	'calendar_item_edited' => 'The item was edited successfully',
 	'timespan_select' => '- Select Range -',
@@ -316,5 +318,13 @@ return [
 	'confirm_remove_calendar_item' => 'Are you sure that you want to remove this item?',
 	'calendar_overview' => 'Dates of next week',
 	'show_calendar_view' => 'Show calendar view in dashboard',
-	'unknown_calendar_class' => 'Unknown'
+	'unknown_calendar_class' => 'Unknown',
+	'add_calendar_class' => 'Add calendar class',
+	'calendar_class_ident' => 'Ident',
+	'calendar_class_name' => 'Name',
+	'calendar_class_color_background' => 'Background color',
+	'calendar_class_color_border' => 'Border color',
+	'calendar_class_added_successfully' => 'Calendar class was successfully added',
+	'calendar_class_edited_successfully' => 'Calendar class was successfully edited',
+	'confirm_remove_calendar_class' => 'Are you sure you want to remove this calendar class?'
 ];

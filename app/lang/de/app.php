@@ -304,6 +304,8 @@ return [
 	'calendar_class_purchase' => 'Einkauf',
 	'calendar_class_cut' => 'Schneiden',
 	'calendar_class_treat' => 'Behandlung',
+	'calendar_class_harvest' => 'Ernten',
+	'calendar_class_other' => 'Andere',
 	'edit_calendar_item' => 'Eintrag bearbeiten',
 	'calendar_item_edited' => 'Der Eintrag wurde erfolgreich bearbeitet',
 	'timespan_select' => '- Zeiträume -',
@@ -316,5 +318,13 @@ return [
 	'confirm_remove_calendar_item' => 'Soll der Eintrag wirklich entfernt werden?',
 	'calendar_overview' => 'Wochentermine',
 	'show_calendar_view' => 'Wochentermine im Dashboard anzeigen',
-	'unknown_calendar_class' => 'Unbekannt'
+	'unknown_calendar_class' => 'Unbekannt',
+	'add_calendar_class' => 'Kalender-Typ hinzufügen',
+	'calendar_class_ident' => 'Ident',
+	'calendar_class_name' => 'Name',
+	'calendar_class_color_background' => 'Hintergrundfarbe',
+	'calendar_class_color_border' => 'Border-Farbe',
+	'calendar_class_added_successfully' => 'Der Kalender-Typ wurde erfolgreich hinzugefügt',
+	'calendar_class_edited_successfully' => 'Der Kalender-Typ wurde erfolgreich aktualisiert',
+	'confirm_remove_calendar_class' => 'Soll dieser Kalender-Typ wirklich gelöscht werden?'
 ];

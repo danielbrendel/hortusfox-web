@@ -1028,6 +1028,55 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowCreateNewCalendarClass}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_calendar_class') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowCreateNewCalendarClass = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmAddCalendarClass" method="POST" action="{{ url('/admin/calendar/class/add') }}">
+							@csrf
+
+							<div class="field">
+								<label class="label">{{ __('app.calendar_class_ident') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="ident" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.calendar_class_name') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="name" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.calendar_class_color_background') }}</label>
+								<div class="control">
+									<input type="color" class="input" name="color_background" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.calendar_class_color_border') }}</label>
+								<div class="control">
+									<input type="color" class="input" name="color_border" required>
+								</div>
+							</div>
+
+							<input type="submit" class="is-hidden" id="submit-add-calendar-class">
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" id="button-add-calendar-class" onclick="document.getElementById('frmAddCalendarClass').addEventListener('submit', function() { document.getElementById('button-add-calendar-class').innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; return true; }); document.getElementById('submit-add-calendar-class').click();">{{ __('app.add') }}</button>
+						<button class="button" onclick="window.vue.bShowCreateNewCalendarClass = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))

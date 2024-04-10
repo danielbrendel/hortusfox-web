@@ -2102,6 +2102,63 @@ fieldset .field {
     margin-top: 20px;
 }
 
+.admin-calendar-classes {
+    position: relative;
+    width: 100%;
+}
+
+.admin-calendar-classes h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-calendar-classes-list {
+    position: relative;
+}
+
+.admin-calendar-class {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.admin-calendar-class label, .admin-calendar-class span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-calendar-class input {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-calendar-class-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.admin-calendar-class-item-input {
+    width: 30%;
+}
+
+.admin-calendar-class-actions {
+    position: relative;
+    display: inline-block;
+}
+
+.admin-calendar-class-item-centered {
+    text-align: center;
+}
+
+.admin-calendar-class-action-item {
+    position: relative;
+}
+
+.admin-calendar-classes-actions {
+    position: relative;
+    margin-top: 20px;
+}
+
 .admin-mail {
     position: relative;
 }

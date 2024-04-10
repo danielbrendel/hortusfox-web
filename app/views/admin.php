@@ -8,6 +8,7 @@
         <li class="admin-tab-media {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'media')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('media');">{{ __('app.admin_media') }}</a></li>
         <li class="admin-tab-users {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'users')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('users');">{{ __('app.users') }}</a></li>
         <li class="admin-tab-locations {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'locations')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('locations');">{{ __('app.locations') }}</a></li>
+        <li class="admin-tab-calendar {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'calendar')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('calendar');">{{ __('app.calendar') }}</a></li>
         <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('mail');">{{ __('app.mail') }}</a></li>
         <li class="admin-tab-themes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'themes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('themes');">{{ __('app.themes') }}</a></li>
         <li class="admin-tab-backup {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'backup')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('backup');">{{ __('app.backup') }}</a></li>
@@ -272,7 +273,7 @@
 
                     <div class="admin-location-actions">
                         <span class="admin-location-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
-                        <span class="admin-user-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="document.getElementById('remove-location-id').value = {{ $location->get('id') }}; document.querySelectorAll('.remove-location-item-option').forEach((el) => { el.classList.remove('is-hidden') }); document.querySelector('#remove-location-item-{{ $location->get('id') }}').classList.add('is-hidden'); window.vue.bShowRemoveLocation = true;">{{ __('app.remove') }}</a></span> 
+                        <span class="admin-location-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="document.getElementById('remove-location-id').value = {{ $location->get('id') }}; document.querySelectorAll('.remove-location-item-option').forEach((el) => { el.classList.remove('is-hidden') }); document.querySelector('#remove-location-item-{{ $location->get('id') }}').classList.add('is-hidden'); window.vue.bShowRemoveLocation = true;">{{ __('app.remove') }}</a></span> 
                     </div>
                 </form>
             </div>
@@ -281,6 +282,47 @@
 
     <div class="admin-locations-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewLocation = true;">{{ __('app.add_location') }}</a></span>
+    </div>
+</div>
+
+<div class="admin-calendar {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'calendar')) ? 'is-hidden' : ''}}">
+    <h2>{{ __('app.calendar') }}</h2>
+
+    <div class="admin-calendar-classes-list">
+        @foreach ($calendar_classes as $calendar_class)
+            <div class="admin-calendar-class" id="admin-calendar-class-item-{{ $calendar_class->get('id') }}">
+                <form method="POST" action="{{ url('/admin/calendar/class/edit') }}">
+                    @csrf
+
+                    <input type="hidden" name="id" value="{{ $calendar_class->get('id') }}"/>
+
+                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
+                        <input type="text" class="input" name="ident" value="{{ $calendar_class->get('ident') }}"/>
+                    </div>
+
+                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
+                        <input type="text" class="input" name="name" value="{{ $calendar_class->get('name') }}"/>
+                    </div>
+
+                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
+                        <input type="color" class="input" name="color_background" value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_background')) }}"/>
+                    </div>
+
+                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
+                        <input type="color" class="input" name="color_border" value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_border')) }}"/>
+                    </div>
+
+                    <div class="admin-calendar-class-actions">
+                        <span class="admin-calendar-class-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
+                        <span class="admin-calendar-class-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_calendar_class') }}')) { window.vue.removeCalendarClass('{{ $calendar_class->get('id') }}'); }">{{ __('app.remove') }}</a></span> 
+                    </div>
+                </form>
+            </div>
+        @endforeach
+    </div>
+
+    <div class="admin-calendar-classes-actions">
+        <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewCalendarClass = true;">{{ __('app.add_calendar_class') }}</a></span>
     </div>
 </div>
 

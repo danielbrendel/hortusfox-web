@@ -30,6 +30,7 @@ class AdminController extends BaseController {
 		$user = UserModel::getAuthUser();
 		$locs = LocationsModel::getAll(false);
         $user_accounts = UserModel::getAll();
+		$calendar_classes = CalendarClassModel::getAll();
 		$mail_encryption_types = AppModel::getMailEncryptionTypes();
 		$themes = ThemeModule::getList();
 		
@@ -51,6 +52,7 @@ class AdminController extends BaseController {
 			'user' => $user,
 			'locations' => $locs,
 			'user_accounts' => $user_accounts,
+			'calendar_classes' => $calendar_classes,
 			'mail_encryption_types' => $mail_encryption_types,
 			'themes' => $themes,
 			'new_version' => $new_version,
@@ -251,6 +253,81 @@ class AdminController extends BaseController {
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return redirect('/admin?tab=locations');
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/calendar/class/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_calendar_class($request)
+	{
+		try {
+			$ident = $request->params()->query('ident', null);
+			$name = $request->params()->query('name', null);
+			$color_background = $request->params()->query('color_background', null);
+			$color_border = $request->params()->query('color_border', null);
+			
+			CalendarClassModel::addClass($ident, $name, $color_background, $color_border);
+
+			FlashMessage::setMsg('success', __('app.calendar_class_added_successfully'));
+
+			return redirect('/admin?tab=calendar');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/calendar/class/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_calendar_class($request)
+	{
+		try {
+			$id = $request->params()->query('id', null);
+			$ident = $request->params()->query('ident', null);
+			$name = $request->params()->query('name', null);
+			$color_background = $request->params()->query('color_background', null);
+			$color_border = $request->params()->query('color_border', null);
+			
+			CalendarClassModel::editClass($id, $ident, $name, $color_background, $color_border);
+
+			FlashMessage::setMsg('success', __('app.calendar_class_edited_successfully'));
+
+			return redirect('/admin?tab=calendar');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/calendar/class/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_calendar_class($request)
+	{
+		try {
+			$id = $request->params()->query('id', null);
+			
+			CalendarClassModel::removeClass($id);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 

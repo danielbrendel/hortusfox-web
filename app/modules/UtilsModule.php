@@ -420,4 +420,39 @@ class UtilsModule {
             throw $e;
         }
     }
+
+    /**
+     * @param $code
+     * @return string
+     * @throws \Exception
+     */
+    public static function convertRgbToHex($code)
+    {
+        try {
+            if (strpos($code, 'rgb(') === false) {
+                return $code;
+            }
+
+            $start = strpos($code, '(');
+            $end = strpos($code, ')');
+
+            if (($start !== false) && ($end !== false)) {
+                $expr = str_replace(' ', '', substr($code, $start + 1, $end - 1));
+
+                $tokens = explode(',', $expr);
+
+                $result = '#';
+
+                foreach ($tokens as $token) {
+                    $result .= dechex(intval($token));
+                }
+
+                return $result;
+            }
+
+            return $code;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
