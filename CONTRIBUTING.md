@@ -52,4 +52,15 @@ return [
 ];
 ```
 
-Users can now select the new language via their preferences. But you can also set the language as default in the admin dashboard.
+3. Translate the original phrases into your desired language. Note that expressions in moustache-brackets are placeholders for variables.
+
+```php
+return [
+    //...
+    'some_expression' => 'Here comes the translated phrase',
+    'another_expression' => 'The following expression is a variable placeholder: {var}.'
+    //...
+];
+```
+
+Users can now select the new language via their preferences and you can also set the language as default in the admin dashboard.
