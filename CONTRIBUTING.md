@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Overview](#overview)
+- [Framework](#framework)
 - [Localization](#localization)
 
 ## Overview
@@ -23,6 +24,10 @@ Contributions must comply with OpenSource definitions and need to be compatible 
 Also some principles of selfhosted must be respected. These include (but are not limited to) data privacy.
 
 If you have any questions before submitting a PR, you can first create an issue to get answers.
+
+## Framework
+
+HortusFox is built with the [Asatru PHP Framework](https://github.com/danielbrendel/dnyAsatruPHP-App). The documentation is located in the `/doc` directory. 
 
 ## Localization
 
