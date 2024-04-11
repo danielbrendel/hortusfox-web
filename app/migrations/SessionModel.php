@@ -1,9 +1,5 @@
 <?php
 
-/*
-    Asatru PHP - Migration for SessionModel
-*/
-
 /**
  * This class specifies a migration
  */

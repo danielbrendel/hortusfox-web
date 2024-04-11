@@ -1,9 +1,5 @@
 <?php
 
-/*
-    Asatru PHP - Migration for CalendarInformerModel
-*/
-
 /**
  * This class specifies a migration
  */
