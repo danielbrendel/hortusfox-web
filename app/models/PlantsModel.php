@@ -519,6 +519,12 @@ class PlantsModel extends \Asatru\Database\Model {
                 if (file_exists(public_path('/img/' . $plant->get('photo')))) {
                     unlink(public_path('/img/' . $plant->get('photo')));
                 }
+
+                $original_photo = str_replace('_thumb', '', $plant->get('photo'));
+
+                if (file_exists(public_path('/img/' . $original_photo))) {
+                    unlink(public_path('/img/' . $original_photo));
+                }
             }
 
             PlantPhotoModel::clearForPlant($plantId);
