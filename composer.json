@@ -21,7 +21,8 @@
         "php": "^8.0",
 		"danielbrendel/asatru-php-framework": "^1.0",
         "phpmailer/phpmailer": "^6.1",
-        "nesbot/carbon": "^2.0"
+        "nesbot/carbon": "^2.0",
+        "chillerlan/php-qrcode": "^5.0"
     },
 	"scripts": {
 		"post-root-package-install": [

@@ -46,6 +46,7 @@ window.vue = new Vue({
         bShowAddCalendarItem: false,
         bShowEditCalendarItem: false,
         bShowCreateNewCalendarClass: false,
+        bShowPlantQRCode: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -1005,6 +1006,33 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
+        },
+
+        generateAndShowQRCode: function(plant) {
+            window.vue.ajaxRequest('get', window.location.origin + '/plants/qrcode?plant=' + plant, {}, function(response) {
+                if (response.code == 200) {
+                    let elTarget = document.getElementById('image-plant-qr-code');
+                    if (elTarget) {
+                        elTarget.src = response.qrcode;
+                        window.vue.bShowPlantQRCode = true;
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        printQRCode: function(content) {
+            let elPlantTitle = document.getElementById('title-plant-qr-code');
+
+            let wnd = window.open('', elPlantTitle.value, 'height=auto, width=auto');
+
+            wnd.document.write('<html><head><title>' + elPlantTitle.value + '</title></head><body>');
+            wnd.document.write('<img src="' + content + '"/>');
+            wnd.document.write('</body></html>');
+
+            wnd.print();
+            wnd.close();
         },
 
         copyToClipboard: function(text) {

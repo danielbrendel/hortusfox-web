@@ -327,5 +327,8 @@ return [
 	'calendar_class_added_successfully' => 'Der Kalender-Typ wurde erfolgreich hinzugefügt',
 	'calendar_class_edited_successfully' => 'Der Kalender-Typ wurde erfolgreich aktualisiert',
 	'confirm_remove_calendar_class' => 'Soll dieser Kalender-Typ wirklich gelöscht werden?',
-	'clone_plant' => 'Pflanze klonen'
+	'clone_plant' => 'Pflanze klonen',
+	'show_qr_code' => 'QR-Code anzeigen',
+	'qr_code' => 'QR-Code',
+	'print' => 'Drucken'
 ];

@@ -273,7 +273,7 @@
 </div>
 
 <div class="columns plant-column">
-	<div class="column is-full">
+	<div class="column is-full plant-button-group">
 		@if (app('history_enable'))
 		<span>
 			<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ app('history_name') }}</a>&nbsp;
@@ -286,6 +286,10 @@
 
 		<span>	
 			<a class="button is-info" href="javascript:void(0);" onclick="window.vue.clonePlant({{ $plant->get('id') }});">{{ __('app.clone_plant') }}</a>&nbsp;
+		</span>
+
+		<span>
+			<a class="button" href="javascript:void(0);" onclick="document.getElementById('title-plant-qr-code').value = '{{ '#' . $plant->get('id') . ' ' . $plant->get('name') }}'; window.vue.generateAndShowQRCode({{ $plant->get('id') }});">{{ __('app.show_qr_code') }}</a>
 		</span>
 	</div>
 </div>

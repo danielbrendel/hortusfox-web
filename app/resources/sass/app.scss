@@ -110,6 +110,10 @@ h2 {
     cursor: pointer;
 }
 
+.is-centered {
+    text-align: center !important;
+}
+
 .is-indicator {
     position: absolute;
     width: 10px;
@@ -880,6 +884,11 @@ fieldset .field {
 
 .plant-state-infected {
     color: rgb(173, 86, 86);
+}
+
+.plant-button-group a {
+    position: relative;
+    margin-bottom: 10px;
 }
 
 .plant-warning {

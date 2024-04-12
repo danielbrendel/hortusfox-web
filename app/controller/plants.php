@@ -435,4 +435,29 @@ class PlantsController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/qrcode
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function generate_qr_code($request)
+	{
+		try {
+			$plant = $request->params()->query('plant', null);
+
+			$qrcode = PlantsModel::generateQRCode($plant);
+
+			return json([
+				'code' => 200,
+				'qrcode' => $qrcode
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

@@ -41,6 +41,7 @@ return [
     array('/plants/history/add', 'ANY', 'plants@add_to_history'),
     array('/plants/history/remove', 'ANY', 'plants@remove_from_history'),
     array('/plants/clone', 'POST', 'plants@clone_plant'),
+    array('/plants/qrcode', 'ANY', 'plants@generate_qr_code'),
 
     /** User controller Controller */
     array('/profile', 'GET', 'user@view_profile'),

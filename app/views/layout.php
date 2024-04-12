@@ -1077,6 +1077,29 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowPlantQRCode}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.qr_code') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowPlantQRCode = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<input type="hidden" id="title-plant-qr-code"/>
+
+						<div class="field">
+							<div class="control is-centered">
+								<img src="" id="image-plant-qr-code" alt="QR Code"/>
+							</div>
+						</div>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="window.vue.printQRCode(document.getElementById('image-plant-qr-code').src);">{{ __('app.print') }}</button>
+						<button class="button" onclick="window.vue.bShowPlantQRCode = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))

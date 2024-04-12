@@ -1,5 +1,7 @@
 <?php
 
+use chillerlan\QRCode\{QRCode, QROptions};
+
 /**
  * This class extends the base model class and represents your associated table
  */ 
@@ -662,6 +664,29 @@ class PlantsModel extends \Asatru\Database\Model {
         try {
             $result = static::raw('SELECT COUNT(name) AS `count` FROM `' . self::tableName() . '` WHERE name = ?', [$name])->first();
             return $result->get('count');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function generateQRCode($id)
+    {
+        try {
+            $plant = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            if (!$plant) {
+                throw new \Exception('Plant not found: ' . $id);
+            }
+
+            $options = new QROptions();
+            $options->invertMatrix = true;
+
+            $oqr = new QRCode($options);
+			return $oqr->render(url('/plants/details/' . $plant->get('id')));
         } catch (\Exception $e) {
             throw $e;
         }
