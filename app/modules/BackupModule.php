@@ -41,6 +41,7 @@ class BackupModule {
 
                 if ((isset($options['calendar'])) && ($options['calendar'])) {
                     $cleanup_files[] = static::backupCalendar($zip);
+                    $cleanup_files[] = static::backupCalClasses($zip);
                 }
 
                 $zip->close();
@@ -206,6 +207,27 @@ class BackupModule {
             $zip->addFile(public_path() . '/backup/_calendar.json', 'calendar/data.json');
 
             return public_path() . '/backup/_calendar.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    public static function backupCalClasses(ZipArchive $zip)
+    {
+        try {
+            $calendar_class_items = CalendarClassModel::raw('SELECT * FROM `calendarclasses`');
+
+            $zip->addEmptyDir('calcls');
+
+            file_put_contents(public_path() . '/backup/_calcls.json', json_encode($calendar_class_items->asArray()));
+            $zip->addFile(public_path() . '/backup/_calcls.json', 'calcls/data.json');
+
+            return public_path() . '/backup/_calcls.json';
         } catch (\Exception $e) {
             throw $e;
         }
