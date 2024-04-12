@@ -48,6 +48,7 @@ class ImportModule {
 
                 if ((isset($options['calendar'])) && ($options['calendar'])) {
                     static::importCalendar(public_path() . '/backup/' . $import_file . '/calendar');
+                    static::importCalClasses(public_path() . '/backup/' . $import_file . '/calcls');
                 }
 
                 UtilsModule::clearFolder(public_path() . '/backup/' . $import_file);
@@ -239,6 +240,31 @@ class ImportModule {
                         $calendar_item->last_edited_user,
                         $calendar_item->last_edited_date,
                         $calendar_item->created_at
+                    ]);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importCalClasses($path)
+    {
+        try {
+            $calendar_class_items = json_decode(file_get_contents($path . '/data.json'));
+            if ($calendar_class_items) {
+                foreach ($calendar_class_items as $calendar_class_item) {
+                    CalendarModel::raw('INSERT INTO `' . CalendarClassModel::tableName() . '` (ident, name, color_background, color_border, created_at) VALUES(?, ?, ?, ?, ?)', [
+                        $calendar_class_item->ident,
+                        $calendar_class_item->name,
+                        $calendar_class_item->color_background,
+                        $calendar_class_item->color_border,
+                        $calendar_class_item->created_at
                     ]);
                 }
             }
