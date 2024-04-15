@@ -1730,11 +1730,18 @@ fieldset .field {
     position: relative;
     display: inline-block;
     top: 3px;
+    @media screen and (max-width: 520px) {
+        top: 55px;
+        vertical-align: top;
+        right: -25px;
+    }
 }
 
 .system-message-context {
     position: relative;
     display: inline-block;
+    top: -1px;
+    font-size: 0.9em;
     font-weight: bold;
 }
 
