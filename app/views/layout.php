@@ -483,6 +483,13 @@
 							</div>
 
 							<div class="field">
+								<label class="label">{{ __('app.location') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="location" required>
+								</div>
+							</div>
+
+							<div class="field">
 								<label class="label">{{ __('app.description') }}</label>
 								<div class="control">
 									<textarea class="textarea" name="description"></textarea>

@@ -14,6 +14,8 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     public function upgradeTo3dot0()
     {
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS clone_num INT NULL');
+
+        InventoryModel::raw('ALTER TABLE `' . InventoryModel::tableName() . '` ADD COLUMN IF NOT EXISTS location VARCHAR(512) NULL');
     }
 
     /**

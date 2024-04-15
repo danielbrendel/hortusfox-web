@@ -339,5 +339,6 @@ return [
 	'set_fertilised' => 'Alle auf gedüngt setzen',
 	'confirmSetAllFertilised' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gedüngt-Datum auf heute setzen?',
 	'all_plants_fertilised' => 'Der Gedüngt-Status der Pflanzen wurde aktualisiert.',
-	'media_sound_message' => 'Neue-Nachricht Sound'
+	'media_sound_message' => 'Neue-Nachricht Sound',
+	'location_fmt' => 'Ort: {loc}'
 ];

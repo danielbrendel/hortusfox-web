@@ -1540,12 +1540,24 @@ fieldset .field {
 .inventory-item-photo {
     position: relative;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.inventory-item-footer {
+    position: relative;
+    color: rgb(120, 120, 120);
+    margin-top: 10px;
+}
+
+.inventory-item-location {
+    position: relative;
+    display: inline-block;
 }
 
 .inventory-item-author {
     position: relative;
-    color: rgb(120, 120, 120);
-    margin-top: 10px;
+    display: inline-block;
+    float: right;
 }
 
 .inventory-groups {

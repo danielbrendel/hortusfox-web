@@ -65,8 +65,14 @@
                         @endif
                     </div>
 
-                    <div class="inventory-item-author">
-                        {{ __('app.last_edited_by', ['name' => UserModel::getNameById($inventory->get($i)->get('last_edited_user')), 'when' => (new Carbon($inventory->get($i)->get('last_edited_date')))->diffForHumans()]) }}
+                    <div class="inventory-item-footer">
+                        <div class="inventory-item-location">
+                            {{ __('app.location_fmt', ['loc' => ($inventory->get($i)->get('location')) ?? 'N/A']) }}
+                        </div>
+
+                        <div class="inventory-item-author">
+                            {{ __('app.last_edited_by', ['name' => UserModel::getNameById($inventory->get($i)->get('last_edited_user')), 'when' => (new Carbon($inventory->get($i)->get('last_edited_date')))->diffForHumans()]) }}
+                        </div>
                     </div>
                 </div>
             </div>
