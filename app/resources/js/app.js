@@ -595,7 +595,7 @@ window.vue = new Vue({
                         target.classList.remove('is-hidden');
                         target.children[0].innerText = response.count;
                     } else {
-                        target.classList.add('is-hidde');
+                        target.classList.add('is-hidden');
                     }
                 }
             });
