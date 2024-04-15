@@ -460,4 +460,39 @@ class PlantsController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/qrcode/bulk
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function get_bulk_qr_codes($request)
+	{
+		try {
+			$result = [];
+
+			$plants = json_decode($request->params()->query('list', null));
+			foreach ($plants as $plant) {
+				$code = PlantsModel::generateQRCode($plant[0]);
+				if ($code) {
+					$result[] = [
+						'plantid' => $plant[0],
+						'plantname' => $plant[1],
+						'qrcode' => $code
+					];
+				}
+			}
+
+			return json([
+				'code' => 200,
+				'list' => $result
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

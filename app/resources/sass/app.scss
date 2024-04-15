@@ -173,11 +173,11 @@ h2 {
     color: rgb(120, 120, 120);
 }
 
-.form-paragraph-modal a {
+.form-paragraph-modal a, .modal-anchors a {
     color: rgb(52, 105, 215);
 }
 
-.form-paragraph-modal a:hover {
+.form-paragraph-modal a:hover, .modal-anchors a:hover {
     color: rgb(52, 105, 215);
     text-decoration: underline;
 }

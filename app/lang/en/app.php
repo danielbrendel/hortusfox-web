@@ -330,5 +330,10 @@ return [
 	'clone_plant' => 'Clone plant',
 	'show_qr_code' => 'Show QR-Code',
 	'qr_code' => 'QR-Code',
-	'print' => 'Print'
+	'print' => 'Print',
+	'bulk_print_qr_codes' => 'Print QR Codes',
+	'bulk_qrcodes' => 'Bulk QR-Code printing',
+	'select_all' => 'Select all',
+	'unselect_all' => 'Unselect all',
+	'noListItemsSelected' => 'No items selected'
 ];

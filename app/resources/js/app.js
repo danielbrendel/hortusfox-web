@@ -47,6 +47,7 @@ window.vue = new Vue({
         bShowEditCalendarItem: false,
         bShowCreateNewCalendarClass: false,
         bShowPlantQRCode: false,
+        bShowPlantBulkPrint: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -62,6 +63,7 @@ window.vue = new Vue({
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
         loadingPleaseWait: 'Please wait...',
+        noListItemsSelected: 'No items selected',
         copiedToClipboard: 'Content has been copied to clipboard.',
         chatTypingEnable: false,
         chatTypingTimer: null,
@@ -1033,6 +1035,52 @@ window.vue = new Vue({
 
             wnd.print();
             wnd.close();
+        },
+
+        bulkChecked: function(target, flag) {
+            let elems = document.getElementsByClassName(target);
+            
+            if (elems) {
+                Array.prototype.forEach.call(elems, function(elem){ 
+                    elem.checked = flag; 
+                });
+            }
+        },
+
+        bulkPrintQRCodes: function(target, location) {
+            let plantIds = [];
+
+            let elems = document.getElementsByClassName(target);
+            if (elems) {
+                Array.prototype.forEach.call(elems, function(elem) {
+                    if (elem.checked) {
+                        plantIds.push([elem.dataset.plantid, elem.dataset.plantname]);
+                    }
+                });
+
+                if (plantIds.length >= 0) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/qrcode/bulk', { list: JSON.stringify(plantIds) }, function(response) {
+                        if (response.code == 200) {
+                            let wnd = window.open('', location, 'height=auto, width=auto');
+
+                            wnd.document.write('<html><head><title>' + location + '</title></head><body>');
+
+                            response.list.forEach(function(elem, index) {
+                                wnd.document.write('<div style="position: relative; display: inline-block; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">#' + elem.plantid + ' ' + elem.plantname + '<br/><img src="' + elem.qrcode + '" width="152" height="152"/></div>');
+                            });
+
+                            wnd.document.write('</body></html>');
+
+                            wnd.print();
+                            wnd.close();
+                        } else {
+                            alert(response.msg);
+                        }
+                    });
+                } else {
+                   alert(window.vue.noListItemsSelected); 
+                }
+            }
         },
 
         copyToClipboard: function(text) {

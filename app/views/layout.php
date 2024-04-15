@@ -1100,6 +1100,37 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowPlantBulkPrint}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.bulk_qrcodes') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowPlantBulkPrint = false;"></button>
+					</header>
+					<section class="modal-card-body modal-anchors is-stretched">
+						<div class="field">
+							<div class="control">
+								<a href="javascript:void(0);" onclick="window.vue.bulkChecked('plant-bulk-print-qrcode', true);">{{ __('app.select_all') }}</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="window.vue.bulkChecked('plant-bulk-print-qrcode', false);">{{ __('app.unselect_all') }}</a>
+							</div>
+						</div>
+
+						@if ((isset($plants)) && (is_countable($plants)) && (count($plants) > 0))
+							@foreach ($plants as $plant_item)
+								<div class="field">
+									<div class="control">
+										<input type="checkbox" class="plant-bulk-print-qrcode" data-plantid="{{ $plant_item->get('id') }}" data-plantname="{{ $plant_item->get('name') }}" value="1"/>&nbsp;{{ $plant_item->get('name') }}
+									</div>
+								</div>
+							@endforeach
+						@endif
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="window.vue.bulkPrintQRCodes('plant-bulk-print-qrcode', '{{ ((isset($location_name)) ? $location_name : '') }}');">{{ __('app.print') }}</button>
+						<button class="button" onclick="window.vue.bShowPlantBulkPrint = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))
@@ -1151,6 +1182,7 @@
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';
+				window.vue.noListItemsSelected = '{{ __('app.noListItemsSelected') }}';
 				window.vue.copiedToClipboard = '{{ __('app.copied_to_clipboard') }}';
 
 				window.vue.chatTypingEnable = {{ (app('chat_indicator', false)) ? 'true' : 'false' }};
