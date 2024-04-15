@@ -467,7 +467,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.group') }}</label>
 								<div class="control">
-									<select name="group" class="input">
+									<select name="group" class="input" required>
 										@foreach (InvGroupModel::getAll() as $group_item)
 											<option value="{{ $group_item->get('token') }}">{{ $group_item->get('label') }}</option>
 										@endforeach
@@ -478,14 +478,14 @@
 							<div class="field">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
-									<input type="file" class="input" name="photo" required>
+									<input type="file" class="input" name="photo">
 								</div>
 							</div>
 
 							<div class="field">
 								<label class="label">{{ __('app.location') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="location" required>
+									<input type="text" class="input" name="location">
 								</div>
 							</div>
 
@@ -495,10 +495,12 @@
 									<textarea class="textarea" name="description"></textarea>
 								</div>
 							</div>
+
+							<input type="submit" class="is-hidden" id="submit-add-inventory"/>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddInventoryItem').submit();">{{ __('app.add') }}</button>
+						<button class="button is-success" id="button-add-inventory-item" onclick="document.getElementById('frmAddInventoryItem').addEventListener('submit', function() { document.getElementById('button-add-inventory-item').innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; return true; }); document.getElementById('submit-add-inventory').click();">{{ __('app.add') }}</button>
 						<button class="button" onclick="window.vue.bShowAddInventoryItem = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
