@@ -455,6 +455,20 @@ class PlantsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $location
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateLastFertilised($location)
+    {
+        try {
+            static::raw('UPDATE `' . self::tableName() . '` SET last_fertilised = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $plantId
      * @return void
      * @throws \Exception

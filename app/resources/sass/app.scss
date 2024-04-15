@@ -144,6 +144,16 @@ h2 {
     background-color: rgb(215, 253, 200);
 }
 
+.is-chocolate {
+    background-color: rgb(179, 105, 62);
+    border-color: transparent;
+}
+
+.is-chocolate:hover {
+    background-color: rgb(167, 95, 55);
+    border-color: transparent;
+}
+
 .float-right {
     float: right;
 }

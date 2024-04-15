@@ -335,5 +335,8 @@ return [
 	'bulk_qrcodes' => 'Bulk QR-Code printing',
 	'select_all' => 'Select all',
 	'unselect_all' => 'Unselect all',
-	'noListItemsSelected' => 'No items selected'
+	'noListItemsSelected' => 'No items selected',
+	'set_fertilised' => 'Set all fertilised',
+	'confirmSetAllFertilised' => 'Are you sure you want to update the last fertilised date of all these plants?',
+	'all_plants_fertilised' => 'Last fertilised status has been updated for these plants'
 ];

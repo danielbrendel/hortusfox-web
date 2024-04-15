@@ -1178,6 +1178,7 @@
 				window.vue.confirmPlantRemoveHistory = '{{ __('app.confirmPlantRemoveHistory') }}';
 				window.vue.confirmSetAllWatered = '{{ __('app.confirmSetAllWatered') }}';
 				window.vue.confirmSetAllRepotted = '{{ __('app.confirmSetAllRepotted') }}';
+				window.vue.confirmSetAllFertilised = '{{ __('app.confirmSetAllFertilised') }}';
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';

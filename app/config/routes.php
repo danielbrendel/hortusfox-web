@@ -29,6 +29,7 @@ return [
     array('/plants/location/{id}', 'GET', 'plants@plants_from_location'),
     array('/plants/location/{id}/water', 'ANY', 'plants@set_plants_watered'),
     array('/plants/location/{id}/repot', 'ANY', 'plants@set_plants_repotted'),
+    array('/plants/location/{id}/fertilise', 'ANY', 'plants@set_plants_fertilised'),
     array('/plants/details/{id}', 'GET', 'plants@view_plant_details'),
     array('/plants/add', 'POST', 'plants@add_plant'),
     array('/plants/details/edit', 'POST', 'plants@edit_plant_details'),

@@ -96,6 +96,30 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/location/{id}/fertilise
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function set_plants_fertilised($request)
+	{
+		try {
+			$user = UserModel::getAuthUser();
+
+			$location = $request->arg('id');
+
+			PlantsModel::updateLastFertilised($location);
+
+			FlashMessage::setMsg('success', __('app.all_plants_fertilised'));
+
+			return redirect('/plants/location/' . $location);
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/details/{id}
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
