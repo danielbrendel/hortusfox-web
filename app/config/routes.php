@@ -104,6 +104,7 @@ return [
     array('/admin/media/banner', 'POST', 'admin@upload_media_banner'),
     array('/admin/media/background', 'POST', 'admin@upload_media_background'),
     array('/admin/media/overlay/alpha', 'POST', 'admin@save_overlay_alpha'),
+    array('/admin/media/sound/message', 'POST', 'admin@upload_media_sound_message'),
     array('/admin/mail/save', 'POST', 'admin@save_mail_settings'),
     array('/admin/themes/import', 'POST', 'admin@import_theme'),
     array('/admin/themes/remove', 'POST', 'admin@remove_theme'),

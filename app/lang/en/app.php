@@ -338,5 +338,6 @@ return [
 	'noListItemsSelected' => 'No items selected',
 	'set_fertilised' => 'Set all fertilised',
 	'confirmSetAllFertilised' => 'Are you sure you want to update the last fertilised date of all these plants?',
-	'all_plants_fertilised' => 'Last fertilised status has been updated for these plants'
+	'all_plants_fertilised' => 'Last fertilised status has been updated for these plants',
+	'media_sound_message' => 'New-Message sound'
 ];

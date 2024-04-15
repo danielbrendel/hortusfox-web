@@ -205,6 +205,23 @@
             </div>
         </div>
     </form>
+
+    <form method="POST" action="{{ url('/admin/media/sound/message') }}" enctype="multipart/form-data">
+        @csrf
+
+        <div class="field">
+            <label class="label">{{ __('app.media_sound_message') }}</label>
+            <div class="control">
+                <input type="file" class="input" name="asset" accept=".wav" required>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div class="admin-users {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'users')) ? 'is-hidden' : ''}}">
