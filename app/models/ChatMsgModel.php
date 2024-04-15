@@ -77,10 +77,11 @@ class ChatMsgModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $limit
      * @return mixed
      * @throws \Exception
      */
-    public static function getLatestSystemMessage()
+    public static function getLatestSystemMessage($limit = 0)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -88,7 +89,12 @@ class ChatMsgModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE system = 1 AND id > ? ORDER BY created_at DESC', [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
+            $limit_token = '';
+            if ($limit > 0) {
+                $limit_token = 'LIMIT ' . strval($limit);
+            }
+
+            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE system = 1 AND id > ? ORDER BY created_at DESC ' . $limit_token, [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
             if (($result) && (count($result) > 0)) {
                 $msg = $result->get(count($result) - 1);
 

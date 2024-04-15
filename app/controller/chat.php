@@ -116,7 +116,7 @@ class ChatController extends BaseController {
 	public function get_latest_system_message($request)
 	{
 		try {
-			$message = ChatMsgModel::getLatestSystemMessage();
+			$message = ChatMsgModel::getLatestSystemMessage(5);
 
 			if ($message) {
 				$message = [
