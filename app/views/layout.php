@@ -395,10 +395,12 @@
 									<input type="date" class="input" name="due_date">
 								</div>
 							</div>
+
+							<input type="submit" id="submit-create-task" class="is-hidden"/>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmCreateTask').submit();">{{ __('app.create_task') }}</button>
+						<button class="button is-success" id="button-create-task-item" onclick="document.getElementById('frmCreateTask').addEventListener('submit', function() { document.getElementById('button-create-task-item').innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; return true; });  document.getElementById('submit-create-task').click();">{{ __('app.create_task') }}</button>
 						<button class="button" onclick="window.vue.bShowCreateTask = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
