@@ -335,5 +335,8 @@ return [
 	'bulk_qrcodes' => 'Mehrere QR-Codes drucken',
 	'select_all' => 'Alle auswählen',
 	'unselect_all' => 'Keine auswählen',
-	'noListItemsSelected' => 'Nichts ausgewählt'
+	'noListItemsSelected' => 'Nichts ausgewählt',
+	'set_fertilised' => 'Alle auf gedüngt setzen',
+	'confirmSetAllFertilised' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gedüngt-Datum auf heute setzen?',
+	'all_plants_fertilised' => 'Der Gedüngt-Status der Pflanzen wurde aktualisiert.'
 ];
