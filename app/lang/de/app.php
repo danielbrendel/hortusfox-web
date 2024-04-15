@@ -330,5 +330,10 @@ return [
 	'clone_plant' => 'Pflanze klonen',
 	'show_qr_code' => 'QR-Code anzeigen',
 	'qr_code' => 'QR-Code',
-	'print' => 'Drucken'
+	'print' => 'Drucken',
+	'bulk_print_qr_codes' => 'QR-Codes drucken',
+	'bulk_qrcodes' => 'Mehrere QR-Codes drucken',
+	'select_all' => 'Alle auswählen',
+	'unselect_all' => 'Keine auswählen',
+	'noListItemsSelected' => 'Nichts ausgewählt'
 ];
