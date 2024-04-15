@@ -349,11 +349,12 @@ window.vue = new Vue({
             });
         },
 
-        editInventoryItem: function(id, name, group, description)
+        editInventoryItem: function(id, name, group, location, description)
         {
             document.getElementById('inpInventoryItemId').value = id;
             document.getElementById('inpInventoryItemName').value = name;
             document.getElementById('inpInventoryItemGroup').value = group;
+            document.getElementById('inpInventoryItemLocation').value = location;
             document.getElementById('inpInventoryItemDescription').value = document.getElementById(description).innerText;
 
             window.vue.bShowEditInventoryItem = true;
