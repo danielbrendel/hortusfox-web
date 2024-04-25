@@ -65,6 +65,7 @@ window.vue = new Vue({
         currentlyOnline: 'Currently online: ',
         loadingPleaseWait: 'Please wait...',
         noListItemsSelected: 'No items selected',
+        editProperty: 'Edit property',
         copiedToClipboard: 'Content has been copied to clipboard.',
         chatTypingEnable: false,
         chatTypingTimer: null,
@@ -1091,6 +1092,19 @@ window.vue = new Vue({
                 } else {
                    alert(window.vue.noListItemsSelected); 
                 }
+            }
+        },
+
+        editGalleryPhotoLabel: function(id, plant, old) {
+            let newLabel = prompt(window.vue.editProperty, old);
+            if (newLabel.length) {
+                window.vue.ajaxRequest('post', window.location.origin + '/plants/details/gallery/photo/label/edit', { id: id, label: newLabel, plant: plant }, function(response) {
+                    if (response.code == 200) {
+                        document.getElementById('photo-gallery-item-' + id).children[0].children[0].innerHTML = newLabel;
+                    } else {
+                        alert(response.msg);
+                    }
+                });
             }
         },
 

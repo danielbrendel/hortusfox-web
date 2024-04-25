@@ -37,6 +37,7 @@ return [
     array('/plants/details/edit/photo', 'POST', 'plants@edit_plant_details_photo'),
     array('/plants/details/gallery/add', 'POST', 'plants@add_plant_gallery_photo'),
     array('/plants/details/gallery/photo/remove', 'POST', 'plants@remove_gallery_photo'),
+    array('/plants/details/gallery/photo/label/edit', 'POST', 'plants@edit_gallery_photo_label'),
     array('/plants/remove', 'ANY', 'plants@remove_plant'),
     array('/plants/history', 'GET', 'plants@view_history'),
     array('/plants/history/add', 'ANY', 'plants@add_to_history'),

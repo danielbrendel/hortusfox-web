@@ -243,6 +243,8 @@
 								<div class="plant-gallery-item-header-label">{{ $photo->get('label') }}</div>
 
 								<div class="plant-gallery-item-header-action">
+									<a href="javascript:void(0);" onclick="window.vue.editGalleryPhotoLabel({{ $photo->get('id') }}, {{ $plant->get('id') }}, '{{ $photo->get('label') }}');"><i class="fas fa-edit is-action-edit"></i></a>
+
 									@if (app('enable_media_share', false))
 										<a href="javascript:void(0);" onclick="window.vue.showSharePhoto({{ $photo->get('id') }}, '{{ $photo->get('label') }}', 'gallery');"><i class="fas fa-share is-action-share"></i></a>&nbsp;
 									@endif

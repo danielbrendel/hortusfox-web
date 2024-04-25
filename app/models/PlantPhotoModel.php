@@ -125,6 +125,21 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @param $label
+     * @return void
+     * @throws \Exception
+     */
+    public static function editLabel($id, $label)
+    {
+        try {
+            static::raw('UPDATE `' . self::tableName() . '` SET label = ? WHERE id = ?', [$label, $id]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

@@ -1194,11 +1194,11 @@ fieldset .field {
     float: right;
 }
 
-.plant-gallery-item-header-action i.is-action-share {
+.plant-gallery-item-header-action i.is-action-share, .is-action-edit {
     color: rgb(200, 200, 200);
 }
 
-.plant-gallery-item-header-action i.is-action-share:hover {
+.plant-gallery-item-header-action i.is-action-share:hover, i.is-action-edit:hover {
     color: rgb(220, 220, 220);
 }
 

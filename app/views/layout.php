@@ -1202,6 +1202,7 @@
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';
 				window.vue.noListItemsSelected = '{{ __('app.noListItemsSelected') }}';
+				window.vue.editProperty = '{{ __('app.edit_property') }}';
 				window.vue.copiedToClipboard = '{{ __('app.copied_to_clipboard') }}';
 
 				window.vue.chatTypingEnable = {{ (app('chat_indicator', false)) ? 'true' : 'false' }};

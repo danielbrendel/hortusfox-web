@@ -340,6 +340,33 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/details/gallery/photo/label/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function edit_gallery_photo_label($request)
+	{
+		try {
+			$photo = $request->params()->query('id', null);
+			$label = $request->params()->query('label', null);
+			$plant = $request->params()->query('plant', null);
+
+			PlantPhotoModel::editLabel($photo, $label);
+			PlantsModel::setUpdated($plant);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
