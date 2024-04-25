@@ -451,11 +451,11 @@ fieldset .field {
     }
 }
 
-.dashboard-weather-top {
+.dashboard-weather-content {
     position: relative;
     margin-top: 10px;
     @media screen and (max-width: 525px) {
-        left: -25px;
+        left: -10px;
     }
 }
 
