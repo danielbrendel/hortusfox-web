@@ -38,6 +38,12 @@ class IndexController extends BaseController {
 		} else {
 			$last_plants_list = PlantsModel::getLastAuthoredPlants();
 		}
+
+		if (app('owm_enable')) {
+			$weather = WeatherModule::cachedToday();
+		} else {
+			$weather = null;
+		}
 		
 		return parent::view(['content', 'index'], [
 			'user' => $user,
@@ -49,7 +55,8 @@ class IndexController extends BaseController {
 			'upcoming_tasks_overview' => $upcoming_tasks_overview,
 			'last_plants_list' => $last_plants_list,
 			'calendar_sv_date_from' => date('Y-m-d'),
-			'calendar_sv_date_till' => date('Y-m-d', strtotime('+1 week'))
+			'calendar_sv_date_till' => date('Y-m-d', strtotime('+1 week')),
+			'weather' => $weather
 		]);
 	}
 

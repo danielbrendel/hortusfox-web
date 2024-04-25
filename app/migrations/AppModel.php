@@ -49,6 +49,10 @@ class AppModel_Migration {
         $this->database->add('smtp_password VARCHAR(512) NULL');
         $this->database->add('smtp_encryption VARCHAR(512) NOT NULL DEFAULT \'tls\'');
         $this->database->add('pwa_enable BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('owm_enable BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('owm_api_key VARCHAR(512) NULL');
+        $this->database->add('owm_latitude DECIMAL(10, 8) NULL');
+        $this->database->add('owm_longitude DECIMAL(10, 8) NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }

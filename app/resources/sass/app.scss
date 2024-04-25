@@ -431,6 +431,57 @@ fieldset .field {
     top: -1px;
 }
 
+.dashboard-header {
+    position: relative;
+}
+
+.dashboard-welcome {
+    display: inline-block;
+}
+
+.dashboard-weather {
+    display: inline-block;
+    position: relative;
+    top: 20px;
+    float: right;
+    color: rgb(200, 200, 200);
+    @media screen and (max-width: 525px) {
+        top: -20px;
+        float: unset;
+    }
+}
+
+.dashboard-weather-top {
+    position: relative;
+    margin-top: 10px;
+    @media screen and (max-width: 525px) {
+        left: -25px;
+    }
+}
+
+.dashboard-weather-left {
+    position: relative;
+    display: inline-block;
+    left: 10px;
+    @media screen and (max-width: 525px) {
+        left: unset;
+    }
+}
+
+.dashboard-weather-right {
+    display: inline-block;
+    position: relative;
+    top: -32px;
+    @media screen and (max-width: 525px) {
+        left: -10px;
+        float: unset;
+    }
+}
+
+.dashboard-weather-bottom {
+
+}
+
 .locations {
     text-align: center;
 }
@@ -2310,6 +2361,15 @@ fieldset .field {
 .admin-backup-result a:hover {
     color: rgb(15, 150, 43);
     text-decoration: underline;
+}
+
+.admin-weather label, .admin-weather span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-weather input, .admin-weather select {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
 }
 
 .admin-info {

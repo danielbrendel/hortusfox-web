@@ -556,4 +556,36 @@ class AdminController extends BaseController {
             ]);
         }
 	}
+
+	/**
+	 * Handles URL: /admin/weather/save
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function save_weather_data($request)
+	{
+		try {
+			$enable = (bool)$request->params()->query('owm_enable', 0);
+			$apikey = $request->params()->query('owm_apikey', app('owm_api_key'));
+			$latitude = $request->params()->query('owm_latitude', app('owm_latitude'));
+			$longitude = $request->params()->query('owm_longitude', app('owm_longitude'));
+			
+			$set = [
+				'owm_enable' => $enable,
+				'owm_api_key' => $apikey,
+				'owm_latitude' => $latitude,
+				'owm_longitude' => $longitude
+			];
+
+			AppModel::updateSet($set);
+
+			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
+
+			return redirect('/admin?tab=weather');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
 }

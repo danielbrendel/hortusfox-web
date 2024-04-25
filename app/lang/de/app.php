@@ -340,5 +340,11 @@ return [
 	'confirmSetAllFertilised' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gedüngt-Datum auf heute setzen?',
 	'all_plants_fertilised' => 'Der Gedüngt-Status der Pflanzen wurde aktualisiert.',
 	'media_sound_message' => 'Neue-Nachricht Sound',
-	'location_fmt' => 'Ort: {loc}'
+	'location_fmt' => 'Ort: {loc}',
+	'weather' => 'Wetter',
+	'enable_weather' => 'OpenWeatherMap aktivieren',
+	'weather_api_key' => 'API Key',
+	'weather_latitude' => 'Latitude',
+	'weather_longitude' => 'Longitude',
+	'weather_autodetect_latlong' => 'Orten'
 ];

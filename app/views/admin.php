@@ -12,6 +12,7 @@
         <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('mail');">{{ __('app.mail') }}</a></li>
         <li class="admin-tab-themes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'themes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('themes');">{{ __('app.themes') }}</a></li>
         <li class="admin-tab-backup {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'backup')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('backup');">{{ __('app.backup') }}</a></li>
+        <li class="admin-tab-weather {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'weather')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('weather');">{{ __('app.weather') }}</a></li>
         <li class="admin-tab-info {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'info')) ? 'is-active' : ''}}">
             <a href="javascript:void(0);" onclick="window.vue.switchAdminTab('info');">
                 {{ __('app.info') }}
@@ -559,6 +560,47 @@
     </div>
 
     <div class="admin-backup-result is-hidden" id="import-result">{{ __('app.import_successful') }}</div>
+</div>
+
+<div class="admin-weather {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'weather')) ? 'is-hidden' : ''}}">
+    <h2>{{ __('app.weather') }}</h2>
+
+    <form method="POST" action="{{ url('/admin/weather/save') }}">
+        @csrf
+
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" name="owm_enable" value="1" {{ ((app('owm_enable')) ? 'checked': '') }}/>&nbsp;<span>{{ __('app.enable_weather') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.weather_api_key') }}</label>
+            <div class="control">
+                <input class="input" type="text" name="owm_apikey" value="{{ (app('owm_api_key') ?? '') }}"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.weather_latitude') }}</label>
+            <div class="control">
+                <input class="input" type="text" id="geo-latitude" name="owm_latitude" value="{{ (app('owm_latitude') ?? '') }}"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.weather_longitude') }}</label>
+            <div class="control">
+                <input class="input" type="text" id="geo-longitude" name="owm_longitude" value="{{ (app('owm_longitude') ?? '') }}"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>&nbsp;<a class="button is-link" href="javascript:void(0);" onclick="window.vue.acquireGeoPosition(document.getElementById('geo-latitude'), document.getElementById('geo-longitude'));">{{ __('app.weather_autodetect_latlong') }}</a>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div class="admin-info {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'info')) ? 'is-hidden' : ''}}">

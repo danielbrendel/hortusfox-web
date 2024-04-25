@@ -340,5 +340,11 @@ return [
 	'confirmSetAllFertilised' => '¿Seguro que quieres actualizar la última fecha de abono de todas estas plantas?',
 	'all_plants_fertilised' => 'El último estado de abonado ha sido actualizado para estas plantas',
 	'media_sound_message' => 'Sonido de nuevo mensaje',
-	'location_fmt' => 'Ubicación: {loc}'
+	'location_fmt' => 'Ubicación: {loc}',
+	'weather' => 'Clima',
+	'enable_weather' => 'Habilitar OpenWeatherMap',
+	'weather_api_key' => 'API Key',
+	'weather_latitude' => 'Latitude',
+	'weather_longitude' => 'Longitude',
+	'weather_autodetect_latlong' => 'Detectar'
 ];

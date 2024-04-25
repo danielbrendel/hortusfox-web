@@ -110,6 +110,7 @@ return [
     array('/admin/themes/import', 'POST', 'admin@import_theme'),
     array('/admin/themes/remove', 'POST', 'admin@remove_theme'),
     array('/admin/cronjob/token', 'POST', 'admin@generate_cronjob_token'),
+    array('/admin/weather/save', 'POST', 'admin@save_weather_data'),
 
     /** Cronjob Controller */
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),

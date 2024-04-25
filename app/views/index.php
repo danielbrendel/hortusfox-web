@@ -1,6 +1,29 @@
-<h1>{{ __('app.dashboard') }}</h1>
+<div class="dashboard-header">
+	<div class="dashboard-welcome">
+		<h1>{{ __('app.dashboard') }}</h1>
 
-<h2>{{ __('app.welcome_message', ['name' => $user->get('name')]) }}</h2>
+		<h2>{{ __('app.welcome_message', ['name' => $user->get('name')]) }}</h2>
+	</div>
+
+	@if (($weather) && (is_object($weather)))
+	<div class="dashboard-weather">
+		<div class="dashboard-weather-top">
+			<div class="dashboard-weather-left">
+				<img src="{{ WeatherModule::WEATHER_ICON_ENDPOINT }}/wn/{{ $weather->weather[0]->icon }}@2x.png" alt="icon"/>
+			</div>
+
+			<div class="dashboard-weather-right">
+				<div>{{ $weather->name }}</div>
+				<div><i class="fas fa-thermometer-half"></i> {{ round($weather->main->temp) }}°C &bull; <i class="fas fa-tint"></i> {{ $weather->main->humidity . '%' }} &bull; <i class="fas fa-wind"></i> {{ round($weather->wind->speed) . 'm/s' }}</div>
+			</div>
+		</div>
+
+		<div class="dashboard-weather-bottom">
+
+		</div>
+	</div>
+	@endif
+</div>
 
 <div class="stats">
 	<div class="stats-item">

@@ -701,7 +701,7 @@ window.vue = new Vue({
         },
 
         selectAdminTab: function(tab) {
-            const tabs = ['environment', 'media', 'users', 'locations', 'calendar', 'mail', 'themes', 'backup', 'info'];
+            const tabs = ['environment', 'media', 'users', 'locations', 'calendar', 'mail', 'themes', 'backup', 'weather', 'info'];
 
             let selEl = document.querySelector('.admin-' + tab);
             if (selEl) {
@@ -1105,6 +1105,17 @@ window.vue = new Vue({
                         alert(response.msg);
                     }
                 });
+            }
+        },
+
+        acquireGeoPosition: function(destLatitude, destLongitude) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    destLatitude.value = position.coords.latitude;
+                    destLongitude.value = position.coords.longitude;
+                });
+            } else {
+                alert('Geolocation is not available');
             }
         },
 

@@ -16,6 +16,11 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS clone_num INT NULL');
 
         InventoryModel::raw('ALTER TABLE `' . InventoryModel::tableName() . '` ADD COLUMN IF NOT EXISTS location VARCHAR(512) NULL');
+
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_enable BOOLEAN NOT NULL DEFAULT 0');
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_api_key VARCHAR(512) NULL');
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_latitude DECIMAL(10, 8) NULL');
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_longitude DECIMAL(10, 8) NULL');
     }
 
     /**
