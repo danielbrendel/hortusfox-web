@@ -1,6 +1,6 @@
 <h1>{{ __('app.weather') }}</h1>
 
-<h2 class="smaller-headline">{{ __('app.weather_hint') }}</h2>
+<h2 class="smaller-headline">{{ __('app.weather_hint', ['region' => $forecast->city->name]) }}</h2>
 
 @include('flashmsg.php')
 
@@ -31,7 +31,7 @@
             <div class="weather-day-data">
                 <div class="weather-day-data-title">{{ date('H:i', $forecast_item->dt) }}</div>
                 <div class="weather-day-data-icon"><img src="{{ WeatherModule::WEATHER_ICON_ENDPOINT }}/wn/{{ $forecast_item->weather[0]->icon }}@2x.png" alt="icon"/></div>
-                <div class="weather-day-data-attribute"><i class="fas fa-thermometer-half"></i> {{ round($forecast_item->main->temp) }}°C</div>
+                <div class="weather-day-data-attribute"><i class="fas fa-thermometer-half"></i> {{ round($forecast_item->main->temp) . '°' . WeatherModule::getUnitChar(app('owm_unittype')) }}</div>
                 <div class="weather-day-data-attribute"><i class="fas fa-tint"></i> {{ $forecast_item->main->humidity . '%' }}</div>
                 <div class="weather-day-data-attribute"><i class="fas fa-wind"></i> {{ round($forecast_item->wind->speed) . 'm/s' }}</div>
                 <div><hr/></div>

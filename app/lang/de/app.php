@@ -347,5 +347,7 @@ return [
 	'weather_latitude' => 'Latitude',
 	'weather_longitude' => 'Longitude',
 	'weather_autodetect_latlong' => 'Orten',
-	'weather_hint' => 'Hier kann die Wettervorhersage der nächsten Tage angesehen werden'
+	'weather_hint' => 'Wettervorhersage für {region}',
+	'weather_unittype' => 'Maßeinheit',
+	'weather_cache' => 'Cache-Zeit (Sekunden)'
 ];

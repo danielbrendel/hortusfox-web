@@ -347,5 +347,7 @@ return [
 	'weather_latitude' => 'Latitude',
 	'weather_longitude' => 'Longitude',
 	'weather_autodetect_latlong' => 'Detectar',
-	'weather_hint' => 'Ver el pronóstico del tiempo actual'
+	'weather_hint' => 'Vea el pronóstico del tiempo actual para {region}',
+	'weather_unittype' => 'Unidad de medida',
+	'weather_cache' => 'Cache duración (segundos)'
 ];

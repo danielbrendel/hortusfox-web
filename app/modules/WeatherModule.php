@@ -9,13 +9,39 @@ class WeatherModule {
     const WEATHER_CACHE_TIME = 300;
 
     /**
+     * @return array
+     */
+    public static function getUnitTypes()
+    {
+        return [
+            'default' => 'Kelvin',
+            'imperial' => 'Fahrenheit',
+            'metric' => 'Celsius'
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public static function getUnitChar($unit)
+    {
+        foreach (static::getUnitTypes() as $type => $value) {
+            if ($type === $unit) {
+                return strtoupper(substr($value, 0, 1));
+            }
+        }
+
+        return '';
+    }
+
+    /**
      * @return mixed
      * @throws \Exception
      */
     public static function today()
     {
         try {
-            return static::request('/data/2.5/weather?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=metric');
+            return static::request('/data/2.5/weather?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -28,7 +54,7 @@ class WeatherModule {
     public static function cachedToday()
     {
         try {
-            return json_decode(CacheModel::remember('weather_today', self::WEATHER_CACHE_TIME, function() { 
+            return json_decode(CacheModel::remember('weather_today', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
                 return WeatherModule::today();
             }));
         } catch (\Exception $e) {
@@ -43,7 +69,7 @@ class WeatherModule {
     public static function forecast()
     {
         try {
-        return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=metric');
+        return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -56,7 +82,7 @@ class WeatherModule {
     public static function cachedForecast()
     {
         try {
-            return json_decode(CacheModel::remember('weather_forecast', self::WEATHER_CACHE_TIME, function() { 
+            return json_decode(CacheModel::remember('weather_forecast', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
                 return WeatherModule::forecast();
             }));
         } catch (\Exception $e) {

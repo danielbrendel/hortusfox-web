@@ -570,12 +570,16 @@ class AdminController extends BaseController {
 			$apikey = $request->params()->query('owm_apikey', app('owm_api_key'));
 			$latitude = $request->params()->query('owm_latitude', app('owm_latitude'));
 			$longitude = $request->params()->query('owm_longitude', app('owm_longitude'));
+			$unittype = $request->params()->query('owm_unittype', app('owm_unittype'));
+			$cache = $request->params()->query('owm_cache', app('owm_cache'));
 			
 			$set = [
 				'owm_enable' => $enable,
 				'owm_api_key' => $apikey,
 				'owm_latitude' => $latitude,
-				'owm_longitude' => $longitude
+				'owm_longitude' => $longitude,
+				'owm_unittype' => $unittype,
+				'owm_cache' => $cache
 			];
 
 			AppModel::updateSet($set);

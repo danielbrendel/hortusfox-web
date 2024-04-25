@@ -347,5 +347,7 @@ return [
 	'weather_latitude' => 'Latitude',
 	'weather_longitude' => 'Longitude',
 	'weather_autodetect_latlong' => 'Detect Geolocation',
-	'weather_hint' => 'View the current weather forecast'
+	'weather_hint' => 'View the current weather forecast for {region}',
+	'weather_unittype' => 'Unit type',
+	'weather_cache' => 'Cache duration (seconds)'
 ];

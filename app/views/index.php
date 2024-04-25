@@ -14,7 +14,7 @@
 
 			<div class="dashboard-weather-right">
 				<div>{{ $weather->name }}</div>
-				<div><i class="fas fa-thermometer-half"></i> {{ round($weather->main->temp) }}°C &bull; <i class="fas fa-tint"></i> {{ $weather->main->humidity . '%' }} &bull; <i class="fas fa-wind"></i> {{ round($weather->wind->speed) . 'm/s' }}</div>
+				<div><i class="fas fa-thermometer-half"></i> {{ round($weather->main->temp) . '°' . WeatherModule::getUnitChar(app('owm_unittype')) }} &bull; <i class="fas fa-tint"></i> {{ $weather->main->humidity . '%' }} &bull; <i class="fas fa-wind"></i> {{ round($weather->wind->speed) . 'm/s' }}</div>
 			</div>
 		</div>
 	</div>

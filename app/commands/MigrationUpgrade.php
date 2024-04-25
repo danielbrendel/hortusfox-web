@@ -21,6 +21,8 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_api_key VARCHAR(512) NULL');
         AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_latitude DECIMAL(10, 8) NULL');
         AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_longitude DECIMAL(11, 8) NULL');
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_unittype VARCHAR(512) NOT NULL DEFAULT \'default\'');
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS owm_cache INT NOT NULL DEFAULT 300');
     }
 
     /**

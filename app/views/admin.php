@@ -596,6 +596,24 @@
         </div>
 
         <div class="field">
+            <label class="label">{{ __('app.weather_unittype') }}</label>
+            <div class="control">
+                <select class="input" name="owm_unittype">
+                    @foreach (WeatherModule::getUnitTypes() as $unit_type => $unit_name)
+                        <option value="{{ $unit_type }}" {{ (($unit_type === app('owm_unittype')) ? 'selected' : '') }}>{{ $unit_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.weather_cache') }}</label>
+            <div class="control">
+                <input class="input" type="text" name="owm_cache" value="{{ (app('owm_cache') ?? '300') }}"/>
+            </div>
+        </div>
+
+        <div class="field">
             <div class="control">
                 <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>&nbsp;<a class="button is-link" href="javascript:void(0);" onclick="window.vue.acquireGeoPosition(document.getElementById('geo-latitude'), document.getElementById('geo-longitude'));">{{ __('app.weather_autodetect_latlong') }}</a>
             </div>
