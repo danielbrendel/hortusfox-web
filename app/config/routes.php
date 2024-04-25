@@ -79,6 +79,9 @@ return [
     array('/calendar/edit', 'POST', 'calendar@edit_item'),
     array('/calendar/remove', 'ANY', 'calendar@remove_item'),
 
+    /** Weather controller */
+    array('/weather', 'GET', 'weather@view_forecast'),
+
     /** Chat Controller */
     array('/chat', 'GET', 'chat@view_chat'),
     array('/chat/add', 'POST', 'chat@add_chat_message'),

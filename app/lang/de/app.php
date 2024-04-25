@@ -346,5 +346,6 @@ return [
 	'weather_api_key' => 'API Key',
 	'weather_latitude' => 'Latitude',
 	'weather_longitude' => 'Longitude',
-	'weather_autodetect_latlong' => 'Orten'
+	'weather_autodetect_latlong' => 'Orten',
+	'weather_hint' => 'Hier kann die Wettervorhersage der nächsten Tage angesehen werden'
 ];

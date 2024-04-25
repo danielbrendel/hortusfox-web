@@ -6,7 +6,7 @@
 class WeatherModule {
     const WEATHER_API_ENDPOINT = 'http://api.openweathermap.org';
     const WEATHER_ICON_ENDPOINT = 'https://openweathermap.org/img/';
-    const WEATHER_CACHE_TIME = 1000;
+    const WEATHER_CACHE_TIME = 300;
 
     /**
      * @return mixed
@@ -40,10 +40,39 @@ class WeatherModule {
      * @return mixed
      * @throws \Exception
      */
+    public static function forecast()
+    {
+        try {
+        return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=metric');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function cachedForecast()
+    {
+        try {
+            return json_decode(CacheModel::remember('weather_forecast', self::WEATHER_CACHE_TIME, function() { 
+                return WeatherModule::forecast();
+            }));
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public static function clearCache()
     {
         try {
             CacheModel::reset('weather_today');
+            CacheModel::reset('weather_forecast');
         } catch (\Exception $e) {
             throw $e;
         }

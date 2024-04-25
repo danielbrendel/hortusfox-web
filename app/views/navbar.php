@@ -55,6 +55,14 @@
                 </a>
             </div>
 
+            @if (app('owm_enable'))
+            <div class="navbar-item">
+                <a href="{{ url('/weather') }}">
+                    <i class="fas fa-cloud-sun-rain" title="{{ __('app.weather') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.weather') }}</span>
+                </a>
+            </div>
+            @endif
+
             @if (app('chat_enable'))
             <div class="navbar-item">
                 <a href="{{ url('/chat') }}" class="notification-badge">

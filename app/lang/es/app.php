@@ -346,5 +346,6 @@ return [
 	'weather_api_key' => 'API Key',
 	'weather_latitude' => 'Latitude',
 	'weather_longitude' => 'Longitude',
-	'weather_autodetect_latlong' => 'Detectar'
+	'weather_autodetect_latlong' => 'Detectar',
+	'weather_hint' => 'Ver el pronóstico del tiempo actual'
 ];

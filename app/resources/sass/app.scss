@@ -1690,6 +1690,70 @@ fieldset .field {
     padding-bottom: 10px;
 }
 
+.weather-forecast {
+    position: relative;
+    margin-top: 40px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+}
+
+.weather-header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.weather-header-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    color: rgb(150, 150, 150);
+    text-align: center;
+    background-color: rgb(100, 100, 100);
+    border-radius: 5px;
+}
+
+.weather-header-item strong {
+    color: rgb(200, 200, 200);
+}
+
+.weather-day {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.weather-day-data {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.weather-day-data-title {
+    position: relative;
+    color: rgb(200, 200, 200);
+    font-weight: bold;
+}
+
+.weather-day-data-icon {
+    position: relative;
+}
+
+.weather-day-data-attribute {
+    position: relative;
+    color: rgb(150, 150, 150);
+}
+
 .chat-message {
     position: relative;
     width: 90%;
