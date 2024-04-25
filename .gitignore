@@ -7,4 +7,4 @@
 .phpunit.result.cache
 paths.dnys
 do_install
-~/.DS_Store
+**/.DS_Store
