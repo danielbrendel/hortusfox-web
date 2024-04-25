@@ -580,6 +580,8 @@ class AdminController extends BaseController {
 
 			AppModel::updateSet($set);
 
+			WeatherModule::clearCache();
+
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
 			return redirect('/admin?tab=weather');

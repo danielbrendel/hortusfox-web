@@ -97,6 +97,24 @@ class CacheModel extends \Asatru\Database\Model {
 		
 		return null;
 	}
+
+	/**
+	 * Reset cache of item
+	 * 
+	 * @param string $ident The item identifier
+	 * @return bool
+	 */
+	public static function reset($ident)
+	{
+		$item = CacheModel::find($ident, 'ident');
+		if ($item->count() > 0) {
+			CacheModel::update('updated_at', date('1970-01-01 00:00:00'))->where('ident', '=', $ident)->go();
+
+			return true;
+		}
+		
+		return false;
+	}
 	
 	/**
 	 * Forget CacheModel item

@@ -37,6 +37,19 @@ class WeatherModule {
     }
 
     /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function clearCache()
+    {
+        try {
+            CacheModel::reset('weather_today');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $resource
      * @return mixed
      * @throws \Exception
