@@ -1,11 +1,5 @@
 <?php
 
-/*
-    Asatru PHP - Example controller
-
-    Add here all your needed routes implementations related to 'index'.
-*/
-
 /**
  * Index controller
  */
