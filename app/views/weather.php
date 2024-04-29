@@ -10,7 +10,7 @@
     <div class="weather-header">
         @foreach ($weekdays as $weekday)
             <div class="weather-header-item">
-                <div><strong>{{ $weekday['day'] }}</strong></div>
+                <div><strong>{{ __('app.' . strtolower($weekday['day'])) }}</strong></div>
                 <div>{{ $weekday['date'] }}</div>
             </div>
         @endforeach
@@ -28,6 +28,7 @@
                 }
             ?>
 
+            @if (!isset($forecast_item->filled))
             <div class="weather-day-data">
                 <div class="weather-day-data-title">{{ date('H:i', $forecast_item->dt) }}</div>
                 <div class="weather-day-data-icon"><img src="{{ WeatherModule::WEATHER_ICON_ENDPOINT }}/wn/{{ $forecast_item->weather[0]->icon }}@2x.png" alt="icon"/></div>
@@ -36,6 +37,16 @@
                 <div class="weather-day-data-attribute"><i class="fas fa-wind"></i> {{ round($forecast_item->wind->speed) . 'm/s' }}</div>
                 <div><hr/></div>
             </div>
+            @else
+            <div class="weather-day-data">
+                <div class="weather-day-data-title">{{ date('H:i', $forecast_item->dt) }}</div>
+                <div class="weather-day-data-icon"><img src="{{ WeatherModule::WEATHER_ICON_ENDPOINT }}/wn/01n@2x.png" alt="icon"/></div>
+                <div class="weather-day-data-attribute">&nbsp;</div>
+                <div class="weather-day-data-attribute">&nbsp;</div>
+                <div class="weather-day-data-attribute">&nbsp;</div>
+                <div><hr/></div>
+            </div>
+            @endif
         @endforeach
     </div>
 </div>

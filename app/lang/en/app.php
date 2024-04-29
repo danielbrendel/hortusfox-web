@@ -349,5 +349,12 @@ return [
 	'weather_autodetect_latlong' => 'Detect Geolocation',
 	'weather_hint' => 'View the current weather forecast for {region}',
 	'weather_unittype' => 'Unit type',
-	'weather_cache' => 'Cache duration (seconds)'
+	'weather_cache' => 'Cache duration (seconds)',
+	'monday' => 'Monday',
+	'tuesday' => 'Tuesday',
+	'wednesday' => 'Wednesday',
+	'thursday' => 'Thursday',
+	'friday' => 'Friday',
+	'saturday' => 'Saturday',
+	'sunday' => 'Sunday'
 ];

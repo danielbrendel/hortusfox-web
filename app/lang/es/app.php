@@ -349,5 +349,12 @@ return [
 	'weather_autodetect_latlong' => 'Detectar',
 	'weather_hint' => 'Vea el pronóstico del tiempo actual para {region}',
 	'weather_unittype' => 'Unidad de medida',
-	'weather_cache' => 'Cache duración (segundos)'
+	'weather_cache' => 'Cache duración (segundos)',
+	'monday' => 'Lunes',
+	'tuesday' => 'Martes',
+	'wednesday' => 'Miércoles',
+	'thursday' => 'Jueves',
+	'friday' => 'Viernes',
+	'saturday' => 'Sábado',
+	'sunday' => 'Domingo'
 ];

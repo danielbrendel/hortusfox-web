@@ -349,5 +349,12 @@ return [
 	'weather_autodetect_latlong' => 'Orten',
 	'weather_hint' => 'Wettervorhersage für {region}',
 	'weather_unittype' => 'Maßeinheit',
-	'weather_cache' => 'Cache-Zeit (Sekunden)'
+	'weather_cache' => 'Cache-Zeit (Sekunden)',
+	'monday' => 'Montag',
+	'tuesday' => 'Dienstag',
+	'wednesday' => 'Mittwoch',
+	'thursday' => 'Donnerstag',
+	'friday' => 'Freitag',
+	'saturday' => 'Samstag',
+	'sunday' => 'Sonntag'
 ];

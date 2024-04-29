@@ -69,7 +69,7 @@ class WeatherModule {
     public static function forecast()
     {
         try {
-        return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
+            return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -82,9 +82,49 @@ class WeatherModule {
     public static function cachedForecast()
     {
         try {
-            return json_decode(CacheModel::remember('weather_forecast', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
+            $forecast = json_decode(CacheModel::remember('weather_forecast', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
                 return WeatherModule::forecast();
             }));
+
+            if ((!isset($forecast->cod)) && (!$forecast->cod != 200)) {
+                throw new \Exception('Forecast query failed.');
+            }
+
+            $forecast->is_filled = false;
+
+            $time = date('H:00', $forecast->list[0]->dt);
+            if ($time !== '02:00') {
+                $forecast->is_filled = true;
+            }
+
+            $first_date = date('H:i', $forecast->list[0]->dt);
+            
+            $fills = [];
+            $count = 2;
+            $sc = 0;
+
+            foreach ($forecast->list as $key => $item) {
+                $timeStr = (($count < 10) ? '0' : '') . strval($count) . ':00';
+                if (date('H:i', $item->dt) !== $first_date) {
+                    $obj = new stdClass();
+                    $obj->filled = true;
+                    $obj->timeStr = $timeStr;
+                    $obj->dt = strtotime(date('Y-m-d ' . $timeStr));
+
+                    $count += 3;
+                    $sc++;
+
+                    $fills[] = $obj;
+                } else {
+                    break;
+                }
+            }
+
+            if ($forecast->is_filled) {
+                $forecast->list = $fills + $forecast->list;
+            }
+
+            return $forecast;
         } catch (\Exception $e) {
             throw $e;
         }
