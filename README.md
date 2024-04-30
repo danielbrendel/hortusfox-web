@@ -46,6 +46,7 @@
 - [Cronjobs](#cronjobs)
 - [System requirements](#system-requirements)
 - [Contributing](#contributing)
+- [Security](#security)
 
 ## Description
 
@@ -340,3 +341,7 @@ GET /cronjob/calendar/reminder?cronpw={your-auth-token}
 ## Contributing
 
 Please view the [contribution guidelines](CONTRIBUTING.md) if you intend to contribute to our repository.
+
+## Security
+
+If you discover any security vulnerability, please refer to our [security guidelines](SECURITY.md) on how to proceed.
