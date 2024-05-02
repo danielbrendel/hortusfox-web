@@ -33,7 +33,7 @@ class WeatherController extends BaseController {
 
         $weekdays = [];
         for ($i = 0; $i < 5; $i++) {
-            $curtime = strtotime('+' . strval($i + 1) . ' days');
+            $curtime = strtotime('+' . strval($i) . ' days');
 
             $weekdays[] = [
                 'date' => date('Y-m-d', $curtime),
