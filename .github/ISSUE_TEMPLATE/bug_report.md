@@ -23,6 +23,13 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
+**Software:**
+- HortusFox version
+- PHP Version
+- MySQL version (if related to the problem)
+- Docker version if used in a docker environment
+- Changes to your docker-compose file if altered
+
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
