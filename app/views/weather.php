@@ -17,7 +17,11 @@
     </div>
 
     <div class="weather-day">
-        @foreach ($forecast->list as $forecast_item)
+        @foreach ($forecast->list as $forecast_count => $forecast_item)
+            @if ($forecast_count >= $forecast->cnt)
+                @break
+            @endif
+
             <?php
                 if ($lastDate !== date('Y-m-d', $forecast_item->dt)) {
                     if ($lastDate !== '') {
@@ -39,7 +43,7 @@
             </div>
             @else
             <div class="weather-day-data">
-                <div class="weather-day-data-title">{{ date('H:i', $forecast_item->dt) }}</div>
+                <div class="weather-day-data-title is-weather-fill-data">{{ date('H:i', $forecast_item->dt) }}</div>
                 <div class="weather-day-data-icon"><img src="{{ WeatherModule::WEATHER_ICON_ENDPOINT }}/wn/01n@2x.png" alt="icon"/></div>
                 <div class="weather-day-data-attribute">&nbsp;</div>
                 <div class="weather-day-data-attribute">&nbsp;</div>

@@ -41,21 +41,8 @@ class WeatherModule {
     public static function today()
     {
         try {
-            return static::request('/data/2.5/weather?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
-
-    /**
-     * @return mixed
-     * @throws \Exception
-     */
-    public static function cachedToday()
-    {
-        try {
             return json_decode(CacheModel::remember('weather_today', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
-                return WeatherModule::today();
+                return static::request('/data/2.5/weather?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
             }));
         } catch (\Exception $e) {
             throw $e;
@@ -69,21 +56,8 @@ class WeatherModule {
     public static function forecast()
     {
         try {
-            return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
-
-    /**
-     * @return mixed
-     * @throws \Exception
-     */
-    public static function cachedForecast()
-    {
-        try {
             $forecast = json_decode(CacheModel::remember('weather_forecast', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
-                return WeatherModule::forecast();
+                return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
             }));
 
             if ((!isset($forecast->cod)) && (!$forecast->cod != 200)) {
@@ -96,7 +70,7 @@ class WeatherModule {
             if ($time !== '02:00') {
                 $forecast->is_filled = true;
             }
-
+            
             $first_date = date('H:i', $forecast->list[0]->dt);
             
             $fills = [];
@@ -105,7 +79,7 @@ class WeatherModule {
 
             foreach ($forecast->list as $key => $item) {
                 $timeStr = (($count < 10) ? '0' : '') . strval($count) . ':00';
-                if (date('H:i', $item->dt) !== $first_date) {
+                if ($timeStr !== $first_date) {
                     $obj = new stdClass();
                     $obj->filled = true;
                     $obj->timeStr = $timeStr;
@@ -121,9 +95,11 @@ class WeatherModule {
             }
 
             if ($forecast->is_filled) {
-                $forecast->list = $fills + $forecast->list;
+                for ($i = count($fills) - 1; $i >= 0; $i--) {
+                    array_unshift($forecast->list, $fills[$i]);
+                }
             }
-
+            
             return $forecast;
         } catch (\Exception $e) {
             throw $e;

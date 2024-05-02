@@ -40,7 +40,7 @@ class IndexController extends BaseController {
 		}
 
 		if (app('owm_enable')) {
-			$weather = WeatherModule::cachedToday();
+			$weather = WeatherModule::today();
 		} else {
 			$weather = null;
 		}

@@ -29,7 +29,7 @@ class WeatherController extends BaseController {
 	public function view_forecast($request)
 	{
 		$user = UserModel::getAuthUser();
-        $forecast = WeatherModule::cachedForecast();
+        $forecast = WeatherModule::forecast();
 
         $weekdays = [];
         for ($i = 0; $i < 5; $i++) {
