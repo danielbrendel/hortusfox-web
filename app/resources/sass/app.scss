@@ -800,7 +800,7 @@ fieldset .field {
 }
 
 .plant-column table {
-    width: 85%;
+    width: 80%;
     @media screen and (max-width: 786px) {
         width: 100%;
     }
@@ -850,6 +850,10 @@ fieldset .field {
     font-style: italic;
 }
 
+.is-half-percent {
+    width: 50%;
+}
+
 .plant-notes {
     position: relative;
     width: 100%;
@@ -895,12 +899,12 @@ fieldset .field {
 
 .plant-photo {
     position: relative;
-    width: 430px;
+    width: 473px;
     @media screen and (max-width: 512px) {
         width: 100%;
         height: 439px;
     }
-    height: 587px;
+    height: 631px;
     background-repeat: no-repeat;
     background-size: cover;
     float: right;

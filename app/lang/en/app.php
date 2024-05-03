@@ -39,6 +39,7 @@ return [
 	'last_repotted' => 'Last repotted',
 	'last_fertilised' => 'Last fertilised',
 	'perennial' => 'Perennial',
+	'annual' => 'Annual',
 	'cutting_month' => 'Cutting month',
 	'date_of_purchase' => 'Date of purchase',
 	'humidity' => 'Humidity',

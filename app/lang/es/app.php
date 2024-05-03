@@ -39,6 +39,7 @@ return [
 	'last_repotted' => 'Replantado por última vez',
 	'last_fertilised' => 'Abonado por última vez',
 	'perennial' => 'Perenne',
+	'annual' => 'Anual',
 	'cutting_month' => 'Mes de poda',
 	'date_of_purchase' => 'Fecha de compra',
 	'humidity' => 'Humedad',

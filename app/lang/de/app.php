@@ -39,6 +39,7 @@ return [
 	'last_repotted' => 'Zuletzt umgetopft',
 	'last_fertilised' => 'Zuletzt gedüngt',
 	'perennial' => 'Winterhart',
+	'annual' => 'Einjährig',
 	'cutting_month' => 'Schneidemonat',
 	'date_of_purchase' => 'Kaufdatum',
 	'humidity' => 'Luftfeuchtigkeit',
