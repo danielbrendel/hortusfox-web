@@ -177,6 +177,7 @@ return [
 	'sorting_type_last_fertilised' => 'Abonado/a por últimna vez',
 	'sorting_type_health_state' => 'Estado de salud',
 	'sorting_type_perennial' => 'Perenne',
+	'sorting_type_annual' => 'Anual',
 	'sorting_type_light_level' => 'Nivel de luz',
 	'sorting_type_humidity' => 'Humedad',
 	'sorting_dir_asc' => 'Ascendente',

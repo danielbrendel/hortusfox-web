@@ -177,6 +177,7 @@ return [
 	'sorting_type_last_fertilised' => 'Zuletzt gedüngt',
 	'sorting_type_health_state' => 'Gesundheitsstatus',
 	'sorting_type_perennial' => 'Winterhart',
+	'sorting_type_annual' => 'Einjährig',
 	'sorting_type_light_level' => 'Lichtempfindlichkeit',
 	'sorting_type_humidity' => 'Luftfeuchtigkeit',
 	'sorting_dir_asc' => 'Aufsteigend',

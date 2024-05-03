@@ -479,7 +479,7 @@ class UtilsModule {
                 return date('Y-m-d', strtotime($content));
             } else if ($type === 'health_state') {
                 return __('app.' . $content);
-            } else if ($type === 'perennial') {
+            } else if (($type === 'perennial') || ($type === 'annual')) {
                 if (is_null($content)) {
                     return 'N/A';
                 } else {
