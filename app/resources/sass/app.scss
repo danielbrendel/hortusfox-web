@@ -951,7 +951,27 @@ fieldset .field {
 }
 
 .plant-state-infected {
-    color: rgb(173, 86, 86);
+    color: rgb(173, 83, 83);
+}
+
+.plant-state-transplant_shock {
+    color: rgb(143, 215, 195);
+}
+
+.plant-state-nutritional_deficiency {
+    color: rgb(175, 125, 155);
+}
+
+.plant-state-sunburn {
+    color: rgb(222, 220, 80);
+}
+
+.plant-state-frostbite {
+    color: rgb(255, 255, 255);
+}
+
+.plant-state-root_rot {
+    color: rgb(123, 130, 102);
 }
 
 .plant-button-group a {

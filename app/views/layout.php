@@ -1189,6 +1189,11 @@
 				window.vue.comboHealthState.push({ ident: 'overwatered', label: '{{ __(PlantsModel::$plant_health_states['overwatered']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'withering', label: '{{ __(PlantsModel::$plant_health_states['withering']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __(PlantsModel::$plant_health_states['infected']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'transplant_shock', label: '{{ __(PlantsModel::$plant_health_states['transplant_shock']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'nutritional_deficiency', label: '{{ __(PlantsModel::$plant_health_states['nutritional_deficiency']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'sunburn', label: '{{ __(PlantsModel::$plant_health_states['sunburn']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'frostbite', label: '{{ __(PlantsModel::$plant_health_states['frostbite']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'root_rot', label: '{{ __(PlantsModel::$plant_health_states['root_rot']['localization']) }}'});
 
 				window.vue.confirmPhotoRemoval = '{{ __('app.confirmPhotoRemoval') }}';
 				window.vue.confirmPlantRemoval = '{{ __('app.confirmPlantRemoval') }}';

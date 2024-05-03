@@ -49,6 +49,31 @@ class PlantsModel extends \Asatru\Database\Model {
             'localization' => 'app.infected',
             'icon' => 'fas fa-biohazard'
         ],
+
+        'transplant_shock' => [
+            'localization' => 'app.transplant_shock',
+            'icon' => 'fas fa-trailer'
+        ],
+
+        'nutritional_deficiency' => [
+            'localization' => 'app.nutritional_deficiency',
+            'icon' => 'fas fa-cookie'
+        ],
+
+        'sunburn' => [
+            'localization' => 'app.sunburn',
+            'icon' => 'fas fa-sun'
+        ],
+
+        'frostbite' => [
+            'localization' => 'app.frostbite',
+            'icon' => 'fas fa-snowflake'
+        ],
+
+        'root_rot' => [
+            'localization' => 'app.root_rot',
+            'icon' => 'fas fa-skull'
+        ],
     ];
 
     /**
