@@ -22,22 +22,22 @@
 </div>
 
 <div class="stats">
-	<div class="stats-item">
+	<div class="stats-item is-pointer" onclick="location.href = '{{ url('/#last-added-or-authored-plants') }}';">
 		<div class="stats-item-count">{{ $stats['plants'] }}</div>
 		<div class="stats-item-label">{{ __('app.plants') }}</div>
 	</div>
 
-	<div class="stats-item">
+	<div class="stats-item is-pointer" onclick="location.href = '{{ url('/#locations') }}';">
 		<div class="stats-item-count">{{ $stats['locations'] }}</div>
 		<div class="stats-item-label">{{ __('app.locations') }}</div>
 	</div>
 
-	<div class="stats-item">
+	<div class="stats-item is-pointer" onclick="location.href = '{{ url('/tasks') }}';">
 		<div class="stats-item-count">{{ $stats['tasks'] }}</div>
 		<div class="stats-item-label">{{ __('app.tasks') }}</div>
 	</div>
 
-	<div class="stats-item">
+	<div class="stats-item is-pointer" onclick="location.href = '{{ (($user->get('admin')) ? url('/admin?tab=users') : url('/profile')) }}';">
 		<div class="stats-item-count">{{ $stats['users'] }}</div>
 		<div class="stats-item-label">{{ __('app.users') }}</div>
 	</div>
@@ -116,6 +116,8 @@
 @endif
 
 <div class="locations">
+	<a name="locations"></a>
+
 	@foreach ($locations as $location)
 		<a href="{{ url('/plants/location/' . $location->get('id')) }}">
 			<div class="location">
@@ -199,6 +201,8 @@
 @endif
 
 <div class="last-added-or-authored-plants">
+	<a name="last-added-or-authored-plants"></a>
+
 	<h3>
 		@if ($user->get('show_plants_aoru'))
 			{{ __('app.last_added_plants') }}
