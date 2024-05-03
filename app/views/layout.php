@@ -83,7 +83,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
-									<input type="file" class="input" name="photo">
+									<input type="file" class="input" name="photo" accept="image/*">
 								</div>
 							</div>
 
@@ -318,7 +318,7 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="file" class="input" name="value" required>
+									<input type="file" class="input" name="value" accept="image/*" required>
 								</div>
 							</div>
 						</form>
@@ -345,7 +345,7 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="file" class="input" name="photo" required>
+									<input type="file" class="input" name="photo" accept="image/*" required>
 								</div>
 							</div>
 
@@ -480,7 +480,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
-									<input type="file" class="input" name="photo">
+									<input type="file" class="input" name="photo" accept="image/*">
 								</div>
 							</div>
 
@@ -542,7 +542,7 @@
 							<div class="field">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
-									<input type="file" class="input" name="photo" required>
+									<input type="file" class="input" name="photo" accept="image/*" required>
 								</div>
 							</div>
 
