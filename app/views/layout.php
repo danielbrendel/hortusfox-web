@@ -1185,10 +1185,10 @@
 				window.vue.comboLightLevel.push({ ident: 'light_level_sunny', label: '{{ __('app.light_level_sunny') }}'});
 				window.vue.comboLightLevel.push({ ident: 'light_level_half_shade', label: '{{ __('app.light_level_half_shade') }}'});
 				window.vue.comboLightLevel.push({ ident: 'light_level_full_shade', label: '{{ __('app.light_level_full_shade') }}'});
-				window.vue.comboHealthState.push({ ident: 'in_good_standing', label: '{{ __('app.in_good_standing') }}'});
-				window.vue.comboHealthState.push({ ident: 'overwatered', label: '{{ __('app.overwatered') }}'});
-				window.vue.comboHealthState.push({ ident: 'withering', label: '{{ __('app.withering') }}'});
-				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __('app.infected') }}'});
+				window.vue.comboHealthState.push({ ident: 'in_good_standing', label: '{{ __(PlantsModel::$plant_health_states['in_good_standing']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'overwatered', label: '{{ __(PlantsModel::$plant_health_states['overwatered']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'withering', label: '{{ __(PlantsModel::$plant_health_states['withering']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __(PlantsModel::$plant_health_states['infected']['localization']) }}'});
 
 				window.vue.confirmPhotoRemoval = '{{ __('app.confirmPhotoRemoval') }}';
 				window.vue.confirmPlantRemoval = '{{ __('app.confirmPlantRemoval') }}';

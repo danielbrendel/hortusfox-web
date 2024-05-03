@@ -29,6 +29,28 @@ class PlantsModel extends \Asatru\Database\Model {
         'desc'
     ];
 
+    static $plant_health_states = [
+        'in_good_standing' => [
+            'localization' => 'app.in_good_standing',
+            'icon' => null
+        ],
+
+        'overwatered' => [
+            'localization' => 'app.overwatered',
+            'icon' => 'fas fa-water'
+        ],
+
+        'withering' => [
+            'localization' => 'app.withering',
+            'icon' => 'fab fa-pagelines'
+        ],
+
+        'infected' => [
+            'localization' => 'app.infected',
+            'icon' => 'fas fa-biohazard'
+        ],
+    ];
+
     /**
      * @param $type
      * @throws \Exception
