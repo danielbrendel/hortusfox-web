@@ -278,6 +278,8 @@
 
                     <input type="hidden" name="id" value="{{ $location->get('id') }}"/>
 
+                    <div class="admin-location-item">#{{ $location->get('id') }}</div>
+
                     <div class="admin-location-item admin-location-item-input">
                         <input type="text" class="input" name="name" value="{{ $location->get('name') }}"/>
                     </div>
