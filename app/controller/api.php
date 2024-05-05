@@ -27,10 +27,7 @@ class ApiController extends BaseController {
     public function get_plant($request)
     {
         try {
-            $token = $request->params()->query('token', null);
             $plantId = $request->params()->query('plant', null);
-
-            ApiModel::validateKey($token);
 
             $plant = PlantsModel::getDetails($plantId);
 
