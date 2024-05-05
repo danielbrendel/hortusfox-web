@@ -762,6 +762,37 @@ class PlantsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $location
+     * @param $limit
+     * @param $from
+     * @param $sort
+     */
+    public static function getPlantList($location, $limit = null, $from = null, $sort = null)
+    {
+        try {
+            if (($limit !== null) && (is_numeric($limit))) {
+                $limit = ' LIMIT ' . $limit;
+            }
+
+            if ($sort !== null) {
+                if ($sort === 'asc') {
+                    $sort = ' ORDER BY id ASC ';
+                } else if ($sort === 'desc') {
+                    $sort = ' ORDER BY id DESC ';
+                }
+            }
+
+            if (($from !== null) && (is_numeric($from))) {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? AND id > ?' . $sort . $limit, [$location, $from]);
+            } else {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ?' . $sort . $limit, [$location]);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

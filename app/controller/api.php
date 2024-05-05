@@ -95,4 +95,32 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/plants/list
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function get_plant_list($request)
+    {
+        try {
+            $location = $request->params()->query('location', null);
+            $limit = $request->params()->query('limit', null);
+            $from = $request->params()->query('from', null);
+            $sort = $request->params()->query('sort', null);
+
+            $list = PlantsModel::getPlantList($location, $limit, $from, $sort);
+
+            return json([
+                'code' => 200,
+                'list' => $list?->asArray()
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }
