@@ -83,7 +83,14 @@ class ApiController extends BaseController {
     public function remove_plant($request)
     {
         try {
+            $plantId = $request->params()->query('plant', null);
 
+            PlantsModel::removePlant($plantId);
+
+            return json([
+                'code' => 200,
+                'plant' => $plantId
+            ]);
         } catch (\Exception $e) {
             return json([
                 'code' => 500,
