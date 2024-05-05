@@ -1,9 +1,5 @@
 <?php
 
-/*
-    Asatru PHP - Migration for ApiModel
-*/
-
 /**
  * This class specifies a migration
  */
