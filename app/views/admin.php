@@ -13,6 +13,7 @@
         <li class="admin-tab-themes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'themes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('themes');">{{ __('app.themes') }}</a></li>
         <li class="admin-tab-backup {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'backup')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('backup');">{{ __('app.backup') }}</a></li>
         <li class="admin-tab-weather {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'weather')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('weather');">{{ __('app.weather') }}</a></li>
+        <li class="admin-tab-api {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'api')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('api');">{{ __('app.api') }}</a></li>
         <li class="admin-tab-info {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'info')) ? 'is-active' : ''}}">
             <a href="javascript:void(0);" onclick="window.vue.switchAdminTab('info');">
                 {{ __('app.info') }}
@@ -619,6 +620,33 @@
             </div>
         </div>
     </form>
+</div>
+
+<div class="admin-api {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'api')) ? 'is-hidden' : ''}}">
+    <h2>{{ __('app.api') }}</h2>
+
+    <a class="button is-link" href="{{ url('/admin/api/add') }}">{{ __('app.add') }}</a>
+
+    <div>
+        @if ((is_countable($api_keys)) && (count($api_keys) > 0))
+        <table>
+            <thead>
+                <tr>
+                    <td>{{ __('app.token') }}</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($api_keys as $api_key)
+                <tr>
+                    <td>{{ $api_key->get('token') }}</td>
+                    <td><a href="{{ url('/admin/api/' . $api_key->get('token') . '/remove') }}"><i class="fas fa-times"></i></a></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @endif
+    </div>
 </div>
 
 <div class="admin-info {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'info')) ? 'is-hidden' : ''}}">

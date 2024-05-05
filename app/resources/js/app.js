@@ -701,7 +701,7 @@ window.vue = new Vue({
         },
 
         selectAdminTab: function(tab) {
-            const tabs = ['environment', 'media', 'users', 'locations', 'calendar', 'mail', 'themes', 'backup', 'weather', 'info'];
+            const tabs = ['environment', 'media', 'users', 'locations', 'calendar', 'mail', 'themes', 'backup', 'weather', 'api', 'info'];
 
             let selEl = document.querySelector('.admin-' + tab);
             if (selEl) {
@@ -762,7 +762,7 @@ window.vue = new Vue({
             let origButtonHtml = button.innerHTML;
             button.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;' + window.vue.loadingPleaseWait;
 
-            window.vue.ajaxRequest('post', window.location.origin + '/api/photo/share', { asset: asset, title: title, type: type }, function(response) {
+            window.vue.ajaxRequest('post', window.location.origin + '/share/photo/post', { asset: asset, title: title, type: type }, function(response) {
                 button.innerHTML = origButtonHtml;
 
                 if (response.code == 200) {

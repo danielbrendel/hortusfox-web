@@ -4,84 +4,39 @@
  * This class represents your controller
  */
 class ApiController extends BaseController {
-    /**
-	 * Perform base initialization
-	 * 
-	 * @return void
-	 */
-	public function __construct()
-	{
-        if (!app('enable_media_share', false)) {
-            http_response_code(403);
-            header('Content-Type: application/json');
-            exit(json_encode(array('code' => 403, 'msg' => 'Photo sharing is currently deactivated')));
-        }
-
-        parent::__construct();
-	}
-
-    /**
-	 * Handles URL: /api/photo/share
-	 * 
-	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\JsonHandler
-	 */
-    public function share_photo($request)
+    public function __construct()
     {
-        try {
-            $asset = $request->params()->query('asset', null);
-            $title = $request->params()->query('title', null);
-            $type = $request->params()->query('type', null);
-            
-            $result = ApiModule::sharePhoto($asset, $title, $type);
-            
-            if ($result->code != 200) {
-                throw new \Exception($result->msg);
-            }
+        parent::__construct();
 
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
-            }
-
-            $mailobj = new Asatru\SMTPMailer\SMTPMailer();
-            $mailobj->setRecipient($user->get('email'));
-            $mailobj->setSubject(__('app.mail_share_photo_title'));
-            $mailobj->setView('mail/share_photo', [], ['url_photo' => $result->data->url, 'url_removal' => env('APP_SERVICE_URL') . '/api/photo/remove?ident=' . $result->data->ident . '&ret=home']);
-            $mailobj->setProperties(mail_properties());
-            $mailobj->send();
-
-            return json([
-                'code' => 200,
-                'data' => $result->data
-            ]);
-        } catch (\Exception $e) {
-            return json([
-                'code' => 500,
-                'msg' => $e->getMessage()
-            ]);
+        $token = null;
+        if (isset($_GET['token'])) {
+            $token = $_GET['token'];
+        } else if ((isset($_POST)) && (isset($_POST['token']))) {
+            $token = $_POST['token'];
         }
+
+        ApiModel::validateKey($token);
     }
 
     /**
-	 * Handles URL: /api/photo/remove
+	 * Handles URL: /api/plants/get
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public function remove_photo($request)
+    public function get_plant($request)
     {
         try {
-            $ident = $request->params()->query('ident', null);
+            $token = $request->params()->query('token', null);
+            $plantId = $request->params()->query('plant', null);
 
-            $result = ApiModule::removePhoto($ident);
-            
-            if ($result->code != 200) {
-                throw new \Exception($result->msg);
-            }
+            ApiModel::validateKey($token);
+
+            $plant = PlantsModel::getDetails($plantId);
 
             return json([
-                'code' => 200
+                'code' => 200,
+                'data' => $plant?->asArray()
             ]);
         } catch (\Exception $e) {
             return json([

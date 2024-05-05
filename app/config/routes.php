@@ -114,15 +114,20 @@ return [
     array('/admin/themes/remove', 'POST', 'admin@remove_theme'),
     array('/admin/cronjob/token', 'POST', 'admin@generate_cronjob_token'),
     array('/admin/weather/save', 'POST', 'admin@save_weather_data'),
+    array('/admin/api/add', 'ANY', 'admin@add_api_key'),
+    array('/admin/api/{token}/remove', 'ANY', 'admin@remove_api_key'),
 
     /** Cronjob Controller */
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),
     array('/cronjob/tasks/tomorrow', 'GET', 'cronjobs@tomorrow_tasks'),
     array('/cronjob/calendar/reminder', 'GET', 'cronjobs@calendar_reminder'),
 
+    /** Share Controller */
+    array('/share/photo/post', 'POST', 'share@share_photo'),
+    array('/share/photo/remove', 'ANY', 'share@remove_photo'),
+
     /** API Controller */
-    array('/api/photo/share', 'POST', 'api@share_photo'),
-    array('/api/photo/remove', 'ANY', 'api@remove_photo'),
+    array('/api/plants/get', 'ANY', 'api@get_plant'),
 
     /** Backup Controller */
     array('/export/start', 'POST', 'backup@export'),

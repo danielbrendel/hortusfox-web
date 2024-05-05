@@ -33,6 +33,7 @@ class AdminController extends BaseController {
 		$calendar_classes = CalendarClassModel::getAll();
 		$mail_encryption_types = AppModel::getMailEncryptionTypes();
 		$themes = ThemeModule::getList();
+		$api_keys = ApiModel::getKeys();
 		
 		$new_version = null;
 		$current_version = null;
@@ -55,6 +56,7 @@ class AdminController extends BaseController {
 			'calendar_classes' => $calendar_classes,
 			'mail_encryption_types' => $mail_encryption_types,
 			'themes' => $themes,
+			'api_keys' => $api_keys,
 			'new_version' => $new_version,
 			'current_version' => $current_version
 		]);
@@ -589,6 +591,48 @@ class AdminController extends BaseController {
 			FlashMessage::setMsg('success', __('app.environment_settings_saved'));
 
 			return redirect('/admin?tab=weather');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/api/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_api_key($request)
+	{
+		try {
+			ApiModel::addKey();
+
+			FlashMessage::setMsg('success', __('app.api_key_added'));
+
+			return redirect('/admin?tab=api');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/api/{token}/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function remove_api_key($request)
+	{
+		try {
+			$token = $request->arg('token');
+
+			ApiModel::removeKey($token);
+
+			FlashMessage::setMsg('success', __('app.api_key_removed'));
+
+			return redirect('/admin?tab=api');
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();

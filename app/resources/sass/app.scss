@@ -2465,6 +2465,38 @@ fieldset .field {
     background-color: rgb(50, 50, 50);
 }
 
+.admin-api table {
+    width: 100%;
+    margin-top: 15px;
+    color: rgb(200, 200, 200);
+}
+
+.admin-api table strong {
+    color: rgb(200, 200, 200);
+}
+
+.admin-api thead {
+    background-color: rgba(104, 145, 194, 0.5);
+}
+
+.admin-api table td {
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+.admin-api table td a {
+    color: rgb(150, 150, 150);
+}
+
+.admin-api table td a:hover {
+    color: rgb(200, 200, 200);
+}
+
+.admin-api table td:last-child {
+    width: 5%;
+    text-align: center;
+}
+
 .admin-info {
     position: relative;
 }

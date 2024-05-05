@@ -72,6 +72,7 @@ what actions users have taken. The system features collaborative management, so 
 - 🔑 Admin dashboard
 - 📢 Reminders
 - 💾 Backups
+- 💻 REST API
 
 ## Resources
 

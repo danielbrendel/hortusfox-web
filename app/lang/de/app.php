@@ -363,5 +363,8 @@ return [
 	'thursday' => 'Donnerstag',
 	'friday' => 'Freitag',
 	'saturday' => 'Samstag',
-	'sunday' => 'Sonntag'
+	'sunday' => 'Sonntag',
+	'api' => 'API',
+	'api_key_added' => 'New API key was successfully added',
+	'api_key_removed' => 'API key was successfully removed',
 ];
