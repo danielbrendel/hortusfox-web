@@ -766,6 +766,8 @@ class PlantsModel extends \Asatru\Database\Model {
      * @param $limit
      * @param $from
      * @param $sort
+     * @return mixed
+     * @throws \Exception
      */
     public static function getPlantList($location, $limit = null, $from = null, $sort = null)
     {

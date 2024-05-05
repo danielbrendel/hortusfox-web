@@ -123,4 +123,30 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/plants/search
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function search_plants($request)
+    {
+        try {
+            $expression = $request->params()->query('expression', null);
+            $limit = $request->params()->query('limit', null);
+
+            $list = PlantsModel::performSearch($expression, true, true, true, true);
+
+            return json([
+                'code' => 200,
+                'list' => $list?->asArray()
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }
