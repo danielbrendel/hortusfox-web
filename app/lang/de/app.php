@@ -367,4 +367,6 @@ return [
 	'api' => 'API',
 	'api_key_added' => 'New API key was successfully added',
 	'api_key_removed' => 'API key was successfully removed',
+	'toggle' => 'Toggle',
+	'confirm_remove_api_key' => 'Do you really want to remove this API key?'
 ];

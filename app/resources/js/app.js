@@ -1119,6 +1119,16 @@ window.vue = new Vue({
             }
         },
 
+        toggleApiKey: function(id) {
+            window.vue.ajaxRequest('get', window.location.origin + '/admin/api/' + id + '/toggle', {}, function(response) {
+                if (response.code == 200) {
+                    document.getElementById('api-key-checkbox-' + id).checked = response.active;
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

@@ -633,6 +633,7 @@
             <thead>
                 <tr>
                     <td>{{ __('app.token') }}</td>
+                    <td>{{ __('app.toggle') }}</td>
                     <td></td>
                 </tr>
             </thead>
@@ -640,7 +641,8 @@
                 @foreach ($api_keys as $api_key)
                 <tr>
                     <td>{{ $api_key->get('token') }}</td>
-                    <td><a href="{{ url('/admin/api/' . $api_key->get('token') . '/remove') }}"><i class="fas fa-times"></i></a></td>
+                    <td><input type="checkbox" id="api-key-checkbox-{{ $api_key->get('id') }}" value="1" onclick="window.vue.toggleApiKey({{ $api_key->get('id') }}); return false;" {{ (($api_key->get('active')) ? 'checked': '') }}/>&nbsp;{{ __('app.active') }}</td>
+                    <td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_api_key') }}')) { location.href = '{{ url('/admin/api/' . $api_key->get('token') . '/remove') }}'; }"><i class="fas fa-times"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -116,6 +116,7 @@ return [
     array('/admin/weather/save', 'POST', 'admin@save_weather_data'),
     array('/admin/api/add', 'ANY', 'admin@add_api_key'),
     array('/admin/api/{token}/remove', 'ANY', 'admin@remove_api_key'),
+    array('/admin/api/{id}/toggle', 'ANY', 'admin@toggle_api_key'),
 
     /** Cronjob Controller */
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),

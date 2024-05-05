@@ -638,4 +638,29 @@ class AdminController extends BaseController {
 			return back();
 		}
 	}
+
+	/**
+	 * Handles URL: /admin/api/{id}/toggle
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function toggle_api_key($request)
+	{
+		try {
+			$id = $request->arg('id');
+
+            $active = ApiModel::toggleApiKey((int)$id);
+
+            return json([
+                'code' => 200,
+				'active' => $active
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+	}
 }

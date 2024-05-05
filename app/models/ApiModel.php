@@ -11,7 +11,7 @@ class ApiModel extends \Asatru\Database\Model {
     public static function getKeys()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE active = 1');
+            return static::raw('SELECT * FROM `' . self::tableName() . '`');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -63,6 +63,27 @@ class ApiModel extends \Asatru\Database\Model {
             if ((!$result) || ($result->get('token') !== $token)) {
                 throw new \Exception('Invalid token: ' . $token);
             }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     * @throws \Exception
+     */
+    public static function toggleApiKey($id)
+    {
+        try {
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            if (!$item) {
+                throw new \Exception('No item with id ' . $id . ' exists.');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET active = NOT active WHERE id = ?', [$id]);
+
+            return !(bool)$item->get('active');
         } catch (\Exception $e) {
             throw $e;
         }
