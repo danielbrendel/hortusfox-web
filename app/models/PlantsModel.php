@@ -295,20 +295,27 @@ class PlantsModel extends \Asatru\Database\Model {
      * @param $plantId
      * @param $attribute
      * @param $value
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editPlantAttribute($plantId, $attribute, $value)
+    public static function editPlantAttribute($plantId, $attribute, $value, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            $user = null;
+            
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
             
-            static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [($value !== '#null') ? $value : null, $user->get('id'), $plantId]);
+            static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [($value !== '#null') ? $value : null, $user?->get('id'), $plantId]);
         
-            LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+            }
         } catch (\Exception $e) {
             throw $e;
         }

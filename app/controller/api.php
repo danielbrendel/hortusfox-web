@@ -45,4 +45,50 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/plants/update
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function update_plant($request)
+    {
+        try {
+            $plantId = $request->params()->query('plant', null);
+            $attribute = $request->params()->query('attribute', null);
+            $value = $request->params()->query('value', null);
+
+            PlantsModel::editPlantAttribute((int)$plantId, $attribute, $value, true);
+
+            return json([
+                'code' => 200,
+                'attribute' => $attribute,
+                'value' => $value
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/plants/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function remove_plant($request)
+    {
+        try {
+
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }
