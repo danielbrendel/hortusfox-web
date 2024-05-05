@@ -365,8 +365,8 @@ return [
 	'saturday' => 'Sábado',
 	'sunday' => 'Domingo',
 	'api' => 'API',
-	'api_key_added' => 'New API key was successfully added',
-	'api_key_removed' => 'API key was successfully removed',
-	'toggle' => 'Toggle',
-	'confirm_remove_api_key' => 'Do you really want to remove this API key?'
+	'api_key_added' => 'La nueva clave API se agregó correctamente',
+	'api_key_removed' => 'La clave API se eliminó correctamente',
+	'toggle' => 'Palanca',
+	'confirm_remove_api_key' => '¿Realmente desea eliminar esta clave API?'
 ];
