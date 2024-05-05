@@ -1189,6 +1189,7 @@
 				window.vue.comboHealthState.push({ ident: 'overwatered', label: '{{ __(PlantsModel::$plant_health_states['overwatered']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'withering', label: '{{ __(PlantsModel::$plant_health_states['withering']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'infected', label: '{{ __(PlantsModel::$plant_health_states['infected']['localization']) }}'});
+				window.vue.comboHealthState.push({ ident: 'pest_infestation', label: '{{ __(PlantsModel::$plant_health_states['pest_infestation']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'transplant_shock', label: '{{ __(PlantsModel::$plant_health_states['transplant_shock']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'nutritional_deficiency', label: '{{ __(PlantsModel::$plant_health_states['nutritional_deficiency']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'sunburn', label: '{{ __(PlantsModel::$plant_health_states['sunburn']['localization']) }}'});

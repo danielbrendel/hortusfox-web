@@ -50,6 +50,11 @@ class PlantsModel extends \Asatru\Database\Model {
             'icon' => 'fas fa-biohazard'
         ],
 
+        'pest_infestation' => [
+            'localization' => 'app.pest_infestation',
+            'icon' => 'fas fa-bug'
+        ],
+
         'transplant_shock' => [
             'localization' => 'app.transplant_shock',
             'icon' => 'fas fa-trailer'

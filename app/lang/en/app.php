@@ -49,6 +49,7 @@ return [
 	'overwatered' => 'Overwatered',
 	'withering' => 'Withering',
 	'infected' => 'Infected',
+	'pest_infestation' => 'Pest Infestation',
 	'transplant_shock' => 'Transplant Shock',
 	'nutritional_deficiency' => 'Nutritional Deficiency',
 	'sunburn' => 'Sunburn',

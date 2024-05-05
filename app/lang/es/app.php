@@ -49,6 +49,7 @@ return [
 	'overwatered' => 'Regado en exceso',
 	'withering' => 'Marchitamiento',
 	'infected' => 'Infectado',
+	'pest_infestation' => 'Infestación de plagas',
 	'transplant_shock' => 'Shock de trasplante',
 	'nutritional_deficiency' => 'Deficiencia nutricional',
 	'sunburn' => 'Bronceado',
