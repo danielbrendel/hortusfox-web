@@ -68,6 +68,12 @@
 			</div>
 		@endforeach
 	@else
-		<span class="plants-empty">{{ __('app.content_empty') }}</span>
+		<div class="plants-empty">
+			<div class="plants-empty-image">
+				<img src="{{ asset('img/plantsempty.png') }}" alt="image"/>
+			</div>
+
+			<div class="plants-empty-text">{{ __('app.content_empty') }}</div>
+		</div>
 	@endif
 </div>
