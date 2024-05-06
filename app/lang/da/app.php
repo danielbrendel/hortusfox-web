@@ -204,7 +204,7 @@ return [
 	'icon' => 'Ikon',
 	'active' => 'Aktiv',
 	'location_added_successfully' => 'Lokation blev tilføjet succesfuldt',
-	'location_updated_successfully' => 'Location blev opdateret succesfuldt',
+	'location_updated_successfully' => 'Lokation blev opdateret succesfuldt',
 	'location_migration' => 'Lokation at flytte planter til',
 	'remove_location' => 'Fjern lokation',
 	'location_removed_successfully' => 'Lokation blev succesfuldt fjernet',
