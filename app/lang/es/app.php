@@ -326,6 +326,7 @@ return [
 	'confirm_remove_calendar_item' => '¿Seguro que quieres eliminar este ítem?',
 	'calendar_overview' => 'Fechas de la semana que viene',
 	'show_calendar_view' => 'Mostrar vista del calendario en el panel',
+	'show_plant_id' => 'Mostrar ID de plantas en listas',
 	'unknown_calendar_class' => 'Desconocido',
 	'add_calendar_class' => 'Añadir clase de calendario',
 	'calendar_class_ident' => 'Ident',

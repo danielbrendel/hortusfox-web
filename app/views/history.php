@@ -61,7 +61,14 @@
 					</div>
 
 					<div class="plant-card-title plant-card-title-with-hint">
-						<div class="plant-card-title-first">{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</div>
+						<div class="plant-card-title-first">
+							@if ($user->get('show_plant_id'))
+								<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
+							@endif
+							
+							<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
+						</div>
+
 						<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
 					</div>
 				</div>

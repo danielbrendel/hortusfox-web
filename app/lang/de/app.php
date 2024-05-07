@@ -326,6 +326,7 @@ return [
 	'confirm_remove_calendar_item' => 'Soll der Eintrag wirklich entfernt werden?',
 	'calendar_overview' => 'Wochentermine',
 	'show_calendar_view' => 'Wochentermine im Dashboard anzeigen',
+	'show_plant_id' => 'Pflanzen-IDs in Listen anzeigen',
 	'unknown_calendar_class' => 'Unbekannt',
 	'add_calendar_class' => 'Kalender-Typ hinzufügen',
 	'calendar_class_ident' => 'Ident',
