@@ -749,6 +749,19 @@ fieldset .field {
     font-size: 0.8em;
 }
 
+.plant-card-title-plant-id {
+    position: relative;
+    top: -1px;
+    background-color: rgb(232, 215, 87);
+    color: rgb(10, 10, 10);
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    font-size: 0.67em;
+}
+
 .plant-card-sorting {
     position: absolute;
     top: 7px;

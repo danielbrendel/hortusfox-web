@@ -186,6 +186,7 @@ class UserModel extends \Asatru\Database\Model {
      * @param $chatcolor
      * @param $show_log
      * @param $show_calendar_view
+     * @param $show_plant_id
      * @param $notify_tasks_overdue
      * @param $notify_tasks_tomorrow
      * @param $notify_calendar_reminder
@@ -193,7 +194,7 @@ class UserModel extends \Asatru\Database\Model {
      * @return void
      * @throws \Exception
      */
-    public static function editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_calendar_reminder, $show_plants_aoru)
+    public static function editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_calendar_reminder, $show_plants_aoru)
     {
         try {
             $user = static::getAuthUser();
@@ -201,8 +202,8 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, lang = ?, theme = ?, chatcolor = ?, show_log = ?, show_calendar_view = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, notify_calendar_reminder = ?, show_plants_aoru = ? WHERE id = ?', [
-                trim($name), trim($email), $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_calendar_reminder, (int)$show_plants_aoru, $user->get('id')
+            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, lang = ?, theme = ?, chatcolor = ?, show_log = ?, show_calendar_view = ?, show_plant_id = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, notify_calendar_reminder = ?, show_plants_aoru = ? WHERE id = ?', [
+                trim($name), trim($email), $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_calendar_reminder, (int)$show_plants_aoru, $user->get('id')
             ]);
         } catch (\Exception $e) {
             throw $e;

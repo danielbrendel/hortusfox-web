@@ -706,6 +706,12 @@
 
 							<div class="field">
 								<div class="control">
+									<input type="checkbox" name="show_plant_id" value="1" {{ ($user->get('show_plant_id')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_plant_id') }}
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
 									<input type="checkbox" name="notify_tasks_overdue" value="1" {{ ($user->get('notify_tasks_overdue')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_tasks_overdue') }}
 								</div>
 							</div>

@@ -40,6 +40,7 @@ class UserModel_Migration {
         $this->database->add('show_log BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('show_calendar_view BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('show_plants_aoru BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('show_plant_id BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('notify_tasks_overdue BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('notify_tasks_tomorrow BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('notify_calendar_reminder BOOLEAN NOT NULL DEFAULT 1');

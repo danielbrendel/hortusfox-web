@@ -326,6 +326,7 @@ return [
 	'confirm_remove_calendar_item' => 'Are you sure that you want to remove this item?',
 	'calendar_overview' => 'Dates of next week',
 	'show_calendar_view' => 'Show calendar view in dashboard',
+	'show_plant_id' => 'Show plant IDs in lists',
 	'unknown_calendar_class' => 'Unknown',
 	'add_calendar_class' => 'Add calendar class',
 	'calendar_class_ident' => 'Ident',
