@@ -833,6 +833,31 @@ fieldset .field {
     padding: 10px;
 }
 
+.plant-custom-attribute {
+    position: relative;
+    margin-top: 10px;
+}
+
+.plant-custom-attribute a {
+    color: rgb(0, 145, 215);
+}
+
+.plant-custom-attribute a:hover {
+    color: rgb(0, 145, 215);
+}
+
+.plant-custom-attribute-removal {
+    position: relative;
+    top: 10px;
+    float: right;
+    color: rgb(200, 105, 105) !important;
+}
+
+.plant-custom-attribute-removal:hover {
+    color: rgb(200, 105, 105) !important;
+    text-decoration: underline;
+}
+
 .plant-details-title {
     position: relative;
 }

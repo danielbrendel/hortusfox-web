@@ -171,8 +171,31 @@
 					<td><strong>{{ __('app.health_state') }}</strong></td>
 					<td><span class="plant-state-{{ $plant->get('health_state') }}">{!! ($plant->get('health_state') === 'in_good_standing') ? '<i class="far fa-check-circle is-color-yes"></i>&nbsp;' : '' !!}{{ __('app.' . $plant->get('health_state')) }}</span> <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'health_state', window.vue.comboHealthState, '{{ $plant->get('health_state') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 				</tr>
+
+				@foreach ($custom_attributes as $custom_attribute)
+					<tr id="table-custom-attribute-{{ $custom_attribute->id }}">
+						<td><strong>{{ $custom_attribute->label }}</strong></td>
+						<td>
+							@if (!is_null($custom_attribute->content))
+								@if (is_bool($custom_attribute->content))
+									{!! ($custom_attribute->content) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!}
+								@else
+									{{ $custom_attribute->content }}
+								@endif
+							@else
+								<span class="is-not-available">N/A</span>
+							@endif
+
+							<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCustomPlantAttribute({{ $custom_attribute->id }}, {{ $custom_attribute->plant }}, '{{ $custom_attribute->label }}', '{{ $custom_attribute->datatype }}', '{{ $custom_attribute->content }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+						</td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
+
+		<div class="plant-custom-attribute">
+			<a href="javascript:void(0);" onclick="document.getElementById('custom-plant-attribute-plant-id').value = {{ $plant->get('id') }}; window.vue.bShowAddCustomPlantAttribute = true;">{{ __('app.add_custom_attribute') }}</a>
+		</div>
 	</div>
 
 	<div class="column is-one-third">

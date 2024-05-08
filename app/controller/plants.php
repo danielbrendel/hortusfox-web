@@ -152,6 +152,8 @@ class PlantsController extends BaseController {
 		$tags = explode(' ', $tagstr);
 
 		$photos = PlantPhotoModel::getPlantGallery($plant_id);
+
+		$custom_attributes = CustPlantAttrModel::getForPlant($plant_id);
 		
 		return parent::view(['content', 'details'], [
 			'user' => $user,
@@ -159,6 +161,7 @@ class PlantsController extends BaseController {
 			'plant_ident' => $plant_ident,
 			'photos' => $photos,
 			'tags' => $tags,
+			'custom_attributes' => $custom_attributes,
 			'edit_user_name' => $edit_user_name,
 			'edit_user_when' => $edit_user_when
 		]);
@@ -355,6 +358,102 @@ class PlantsController extends BaseController {
 			PlantPhotoModel::editLabel($photo, $label);
 			PlantsModel::setUpdated($plant);
 
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/attributes/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_custom_attribute($request)
+	{
+		try {
+			$validator = new Asatru\Controller\PostValidator([
+				'plant' => 'required',
+				'label' => 'required',
+				'datatype' => 'required'
+			]);
+	
+			if (!$validator->isValid()) {
+				FlashMessage::setMsg('error', 'Invalid data given');
+				return back();
+			}
+	
+			$plant = $request->params()->query('plant', null);
+			$label = $request->params()->query('label', null);
+			$datatype = $request->params()->query('datatype', null);
+			$content = $request->params()->query('content', null);
+			$anchor = $request->params()->query('anchor', '');
+			
+			CustPlantAttrModel::addAttribute($plant, $label, $datatype, $content);
+	
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/attributes/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_custom_attribute($request)
+	{
+		try {
+			$validator = new Asatru\Controller\PostValidator([
+				'id' => 'required',
+				'plant' => 'required',
+				'label' => 'required',
+				'datatype' => 'required'
+			]);
+	
+			if (!$validator->isValid()) {
+				FlashMessage::setMsg('error', 'Invalid data given');
+				return back();
+			}
+	
+			$id = $request->params()->query('id', null);
+			$plant = $request->params()->query('plant', null);
+			$label = $request->params()->query('label', null);
+			$datatype = $request->params()->query('datatype', null);
+			$content = $request->params()->query('content', null);
+			$anchor = $request->params()->query('anchor', '');
+			
+			CustPlantAttrModel::editAttribute($id, $plant, $label, $datatype, $content);
+	
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/attributes/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_custom_attribute($request)
+	{
+		try {
+			$id = $request->params()->query('id', null);
+	
+			CustPlantAttrModel::removeAttribute($id);
+	
 			return json([
 				'code' => 200
 			]);

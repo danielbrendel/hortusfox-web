@@ -1155,6 +1155,105 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowAddCustomPlantAttribute}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_custom_attribute') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowAddCustomPlantAttribute = false;"></button>
+					</header>
+					<section class="modal-card-body modal-anchors is-stretched">
+					<form id="frmAddCustomPlantAttribute" method="POST" action="{{ url('/plants/attributes/add') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="custom-plant-attribute-plant-id"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.label') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="label" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.datatype') }}</label>
+								<div class="control">
+									<select class="input" name="datatype" required>
+										@foreach (CustPlantAttrModel::$data_types as $datatype)
+											<option value="{{ $datatype }}">{{ $datatype }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.content') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="content" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddCustomPlantAttribute').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowAddCustomPlantAttribute = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditCustomPlantAttribute}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_custom_attribute') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditCustomPlantAttribute = false;"></button>
+					</header>
+					<section class="modal-card-body modal-anchors is-stretched">
+					<form id="frmEditCustomPlantAttribute" method="POST" action="{{ url('/plants/attributes/edit') }}">
+							@csrf
+
+							<input type="hidden" name="id" id="edit-plant-attribute-attr"/>
+							<input type="hidden" name="plant" id="edit-plant-attribute-plant"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.label') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="label" id="edit-plant-attribute-label" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.datatype') }}</label>
+								<div class="control">
+									<select class="input" name="datatype" id="edit-plant-attribute-datatype" required>
+										@foreach (CustPlantAttrModel::$data_types as $datatype)
+											<option value="{{ $datatype }}">{{ $datatype }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.content') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="content" id="edit-plant-attribute-content" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
+									<a class="plant-custom-attribute-removal" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_custom_attribute') }}')) { window.vue.removeCustomPlantAttribute(document.getElementById('edit-plant-attribute-attr').value, 'table-custom-attribute-' + document.getElementById('edit-plant-attribute-attr').value); }">{{ __('app.remove_custom_attribute') }}</a>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditCustomPlantAttribute').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditCustomPlantAttribute = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))

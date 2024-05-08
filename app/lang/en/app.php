@@ -370,5 +370,11 @@ return [
 	'api_key_added' => 'New API key was successfully added',
 	'api_key_removed' => 'API key was successfully removed',
 	'toggle' => 'Toggle',
-	'confirm_remove_api_key' => 'Do you really want to remove this API key?'
+	'confirm_remove_api_key' => 'Do you really want to remove this API key?',
+	'add_custom_attribute' => 'Add custom attribute',
+	'datatype' => 'Datatype',
+	'content' => 'Content',
+	'edit_custom_attribute' => 'Edit custom attribute',
+	'remove_custom_attribute' => 'Remove attribute',
+	'confirm_remove_custom_attribute' => 'Do you really want to remove this attribute?'
 ];

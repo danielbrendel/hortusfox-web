@@ -48,6 +48,8 @@ window.vue = new Vue({
         bShowCreateNewCalendarClass: false,
         bShowPlantQRCode: false,
         bShowPlantBulkPrint: false,
+        bShowAddCustomPlantAttribute: false,
+        bShowEditCustomPlantAttribute: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -193,6 +195,31 @@ window.vue = new Vue({
             document.getElementById('inpEditLinkTextValue').value = text;
             document.getElementById('inpEditLinkTextLink').value = link;
             window.vue.bShowEditLinkText = true;
+        },
+
+        showEditCustomPlantAttribute: function(id, plant, label, datatype, content, anchor = '')
+        {
+            document.getElementById('edit-plant-attribute-attr').value = id;
+            document.getElementById('edit-plant-attribute-plant').value = plant;
+            document.getElementById('edit-plant-attribute-label').value = label;
+            document.getElementById('edit-plant-attribute-datatype').value = datatype;
+            document.getElementById('edit-plant-attribute-content').value = content;
+            window.vue.bShowEditCustomPlantAttribute = true;
+        },
+
+        removeCustomPlantAttribute: function(id, target)
+        {
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/attributes/remove?id=' + id, {}, function(response){
+                if (response.code == 200) {
+                    let elem = document.getElementById(target);
+                    if (elem) {
+                        elem.remove();
+                    }
+                    window.vue.bShowEditCustomPlantAttribute = false;
+                } else {
+                    alert(response.msg);
+                }
+            });
         },
 
         showEditPhoto: function(plant, property)
