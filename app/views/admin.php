@@ -51,6 +51,17 @@
         </div>
 
         <div class="field">
+            <label class="label">{{ __('app.timezone') }}</label>
+            <div class="control">
+                <select class="input" name="timezone">
+                    @foreach ($timezone_identifiers as $timezone_identifier)
+                        <option value="{{ $timezone_identifier }}" {{ (($timezone_identifier === app('timezone')) ? 'selected' : '') }}>{{ $timezone_identifier }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="field">
             <div class="control">
                 <input type="checkbox" class="checkbox" name="scroller" value="1" {{ (app('scroller')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_scroller') }}</span>
             </div>

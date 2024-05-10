@@ -49,6 +49,8 @@ class AdminController extends BaseController {
 			addLog(ASATRU_LOG_ERROR, $e->getMessage());
 		}
 
+		$timezone_identifiers = timezone_identifiers_list();
+		
 		return parent::view(['content', 'admin'], [
 			'user' => $user,
 			'locations' => $locs,
@@ -57,6 +59,7 @@ class AdminController extends BaseController {
 			'mail_encryption_types' => $mail_encryption_types,
 			'themes' => $themes,
 			'api_keys' => $api_keys,
+			'timezone_identifiers' => $timezone_identifiers,
 			'new_version' => $new_version,
 			'current_version' => $current_version
 		]);
@@ -73,6 +76,7 @@ class AdminController extends BaseController {
 		try {
 			$workspace = $request->params()->query('workspace', app('workspace'));
 			$lang = $request->params()->query('lang', app('language'));
+			$timezone = $request->params()->query('timezone', app('timezone'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
 			$enablechat = (bool)$request->params()->query('enablechat', 0);
 			$enablesysmsgs = (bool)$request->params()->query('enablesysmsgs', 0);
@@ -88,6 +92,7 @@ class AdminController extends BaseController {
 			$set = [
 				'workspace' => $workspace,
 				'language' => $lang,
+				'timezone' => $timezone,
 				'scroller' => $scroller,
 				'chat_enable' => $enablechat,
 				'chat_system' => $enablesysmsgs,

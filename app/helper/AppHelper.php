@@ -48,7 +48,21 @@ function mail_properties()
     return $result;
 }
 
+/**
+ * @return mixed
+ */
 function auth()
 {
     return UserModel::getAuthUser();
+}
+
+/**
+ * @return void
+ */
+function app_set_timezone()
+{
+    $timezone = app('timezone');
+    if ((is_string($timezone)) && (strlen($timezone) > 0)) {
+        date_default_timezone_set($timezone);
+    }
 }

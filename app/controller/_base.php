@@ -24,6 +24,7 @@ class BaseController extends Asatru\Controller\Controller {
 		}
 
 		app_mail_config();
+		app_set_timezone();
 
 		$auth_user = UserModel::getAuthUser();
 		if (!$auth_user) {

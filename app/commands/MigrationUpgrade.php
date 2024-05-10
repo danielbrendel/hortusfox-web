@@ -13,6 +13,8 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo3dot1()
     {
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS timezone VARCHAR(512) NULL');
+
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS annual BOOLEAN NULL');
 
         UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` ADD COLUMN IF NOT EXISTS show_plant_id BOOLEAN NOT NULL DEFAULT 0');
