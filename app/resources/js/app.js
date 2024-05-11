@@ -197,13 +197,56 @@ window.vue = new Vue({
             window.vue.bShowEditLinkText = true;
         },
 
+        selectDataTypeInputField: function(elem, field) {
+            field.classList.remove('is-hidden');
+
+            if (!field.children[1].children[0].classList.contains('is-hidden')) {
+                field.children[1].children[0].classList.add('is-hidden');
+            }
+
+            if (!field.children[1].children[1].classList.contains('is-hidden')) {
+                field.children[1].children[1].classList.add('is-hidden');
+            }
+
+            if (!field.children[1].children[2].classList.contains('is-hidden')) {
+                field.children[1].children[2].classList.add('is-hidden');
+            }
+
+            field.children[1].children[0].disabled = true;
+            field.children[1].children[1].disabled = true;
+            field.children[1].children[2].disabled = true;
+
+            if (elem.value === 'bool') {
+                field.children[1].children[0].classList.remove('is-hidden');
+                field.children[1].children[0].disabled = false;
+            } else if (elem.value === 'datetime') {
+                field.children[1].children[2].classList.remove('is-hidden');
+                field.children[1].children[2].disabled = false;
+            } else {
+                field.children[1].children[1].classList.remove('is-hidden');
+                field.children[1].children[1].disabled = false;
+            }
+        },
+
         showEditCustomPlantAttribute: function(id, plant, label, datatype, content, anchor = '')
         {
             document.getElementById('edit-plant-attribute-attr').value = id;
             document.getElementById('edit-plant-attribute-plant').value = plant;
             document.getElementById('edit-plant-attribute-label').value = label;
             document.getElementById('edit-plant-attribute-datatype').value = datatype;
-            document.getElementById('edit-plant-attribute-content').value = content;
+
+            let elFieldTarget = document.getElementById('field-custom-edit-attribute-content');
+
+            if (datatype === 'bool') {
+                elFieldTarget.children[1].children[0].children[0].checked = content == 1;
+            } else if (datatype === 'datetime') {
+                elFieldTarget.children[1].children[2].value = content;
+            } else {
+                elFieldTarget.children[1].children[1].value = content;
+            }
+
+            window.vue.selectDataTypeInputField(document.querySelector('#edit-plant-attribute-datatype'), elFieldTarget);
+
             window.vue.bShowEditCustomPlantAttribute = true;
         },
 
@@ -1154,39 +1197,6 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
-        },
-
-        selectDataTypeInputField: function(elem, field) {
-            if (elem.selectedIndex) {
-                field.classList.remove('is-hidden');
-
-                if (!field.children[1].children[0].classList.contains('is-hidden')) {
-                    field.children[1].children[0].classList.add('is-hidden');
-                }
-
-                if (!field.children[1].children[1].classList.contains('is-hidden')) {
-                    field.children[1].children[1].classList.add('is-hidden');
-                }
-
-                if (!field.children[1].children[2].classList.contains('is-hidden')) {
-                    field.children[1].children[2].classList.add('is-hidden');
-                }
-
-                field.children[1].children[0].disabled = true;
-                field.children[1].children[1].disabled = true;
-                field.children[1].children[2].disabled = true;
-
-                if (elem.value === 'bool') {
-                    field.children[1].children[0].classList.remove('is-hidden');
-                    field.children[1].children[0].disabled = false;
-                } else if (elem.value === 'datetime') {
-                    field.children[1].children[2].classList.remove('is-hidden');
-                    field.children[1].children[2].disabled = false;
-                } else {
-                    field.children[1].children[1].classList.remove('is-hidden');
-                    field.children[1].children[1].disabled = false;
-                }
-            }
         },
 
         copyToClipboard: function(text) {
