@@ -8,6 +8,7 @@
         <li class="admin-tab-media {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'media')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('media');">{{ __('app.admin_media') }}</a></li>
         <li class="admin-tab-users {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'users')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('users');">{{ __('app.users') }}</a></li>
         <li class="admin-tab-locations {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'locations')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('locations');">{{ __('app.locations') }}</a></li>
+        <li class="admin-tab-attributes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'attributes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('attributes');">{{ __('app.attributes') }}</a></li>
         <li class="admin-tab-calendar {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'calendar')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('calendar');">{{ __('app.calendar') }}</a></li>
         <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('mail');">{{ __('app.mail') }}</a></li>
         <li class="admin-tab-themes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'themes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('themes');">{{ __('app.themes') }}</a></li>
@@ -314,6 +315,22 @@
 
     <div class="admin-locations-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewLocation = true;">{{ __('app.add_location') }}</a></span>
+    </div>
+</div>
+
+<div class="admin-attributes {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'attributes')) ? 'is-hidden' : ''}}">
+    <h2>{{ __('app.attributes') }}</h2>
+
+    <p>{{ __('app.attributes_hint') }}</p>
+
+    <div>
+        @foreach ($plant_attributes as $plant_attribute)
+        <div class="field">
+            <div class="control">
+                <span><input type="checkbox" class="checkbox" value="1" id="admin-attributes-checkbox-{{ $plant_attribute->get('name') }}" onclick="window.vue.toggleAdminPlantAttribute('{{ $plant_attribute->get('name') }}'); return false;" {{ (($plant_attribute->get('active')) ? 'checked': '') }}>&nbsp;{{ __('app.' . $plant_attribute->get('name')) }}</span>
+            </div>
+        </div>
+        @endforeach
     </div>
 </div>
 

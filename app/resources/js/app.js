@@ -771,7 +771,7 @@ window.vue = new Vue({
         },
 
         selectAdminTab: function(tab) {
-            const tabs = ['environment', 'media', 'users', 'locations', 'calendar', 'mail', 'themes', 'backup', 'weather', 'api', 'info'];
+            const tabs = ['environment', 'media', 'users', 'locations', 'attributes', 'calendar', 'mail', 'themes', 'backup', 'weather', 'api', 'info'];
 
             let selEl = document.querySelector('.admin-' + tab);
             if (selEl) {
@@ -1193,6 +1193,16 @@ window.vue = new Vue({
             window.vue.ajaxRequest('get', window.location.origin + '/admin/api/' + id + '/toggle', {}, function(response) {
                 if (response.code == 200) {
                     document.getElementById('api-key-checkbox-' + id).checked = response.active;
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        toggleAdminPlantAttribute: function(name) {
+            window.vue.ajaxRequest('get', window.location.origin + '/admin/attribute/update?name=' + name, {}, function(response) {
+                if (response.code == 200) {
+                    document.getElementById('admin-attributes-checkbox-' + name).checked = response.active;
                 } else {
                     alert(response.msg);
                 }

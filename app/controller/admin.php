@@ -50,6 +50,7 @@ class AdminController extends BaseController {
 		}
 
 		$timezone_identifiers = timezone_identifiers_list();
+		$plant_attributes = PlantDefAttrModel::getAll();
 		
 		return parent::view(['content', 'admin'], [
 			'user' => $user,
@@ -60,6 +61,7 @@ class AdminController extends BaseController {
 			'themes' => $themes,
 			'api_keys' => $api_keys,
 			'timezone_identifiers' => $timezone_identifiers,
+			'plant_attributes' => $plant_attributes,
 			'new_version' => $new_version,
 			'current_version' => $current_version
 		]);
@@ -260,6 +262,31 @@ class AdminController extends BaseController {
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return redirect('/admin?tab=locations');
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/attribute/update
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function update_attribute($request)
+	{
+		try {
+			$name = $request->params()->query('name');
+
+			$newValue = PlantDefAttrModel::toggle($name);
+
+			return json([
+				'code' => 200,
+				'active' => $newValue
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 

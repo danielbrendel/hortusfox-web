@@ -66,3 +66,15 @@ function app_set_timezone()
         date_default_timezone_set($timezone);
     }
 }
+
+/**
+ * @return bool
+ */
+function plant_attr($name)
+{
+    try {
+        return PlantDefAttrModel::isActive($name);
+    } catch (\Exception $e) {
+        return false;
+    }
+}

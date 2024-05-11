@@ -104,6 +104,7 @@ return [
     array('/admin/location/add', 'POST', 'admin@add_location'),
     array('/admin/location/update', 'POST', 'admin@update_location'),
     array('/admin/location/remove', 'ANY', 'admin@remove_location'),
+    array('/admin/attribute/update', 'ANY', 'admin@update_attribute'),
     array('/admin/calendar/class/add', 'POST', 'admin@add_calendar_class'),
     array('/admin/calendar/class/edit', 'POST', 'admin@edit_calendar_class'),
     array('/admin/calendar/class/remove', 'POST', 'admin@remove_calendar_class'),

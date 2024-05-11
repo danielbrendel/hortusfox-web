@@ -378,5 +378,7 @@ return [
 	'remove_custom_attribute' => 'Remove attribute',
 	'confirm_remove_custom_attribute' => 'Do you really want to remove this attribute?',
 	'timezone' => 'Timezone',
-	'enable' => 'Enable'
+	'enable' => 'Enable',
+	'attributes' => 'Attributes',
+	'attributes_hint' => 'Here you can choose which default plant attributes shall be available.'
 ];

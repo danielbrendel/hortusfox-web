@@ -56,6 +56,7 @@
 					<td>{{ LocationsModel::getNameById($plant->get('location')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'location', window.vue.comboLocation, {{ $plant->get('location') }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 				</tr>
 
+				@if (plant_attr('last_watered'))
 				<tr>
 					<td><strong>{{ __('app.last_watered') }}</strong></td>
 					<td>
@@ -68,7 +69,9 @@
 						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'last_watered', '{{ ($plant->get('last_watered')) ? date('Y-m-d', strtotime($plant->get('last_watered'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('last_repotted'))
 				<tr>
 					<td><strong>{{ __('app.last_repotted') }}</strong></td>
 					<td>
@@ -82,7 +85,9 @@
 					</td>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('last_fertilised'))
 				<tr>
 					<td><strong>{{ __('app.last_fertilised') }}</strong></td>
 					<td>
@@ -96,7 +101,9 @@
 					</td>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('perennial'))
 				<tr>
 					<td><strong>{{ __('app.perennial') }}</strong></td>
 					<td>
@@ -109,7 +116,9 @@
 						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'perennial', '{{ __('app.perennial') }}', {{ ($plant->get('perennial')) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('annual'))
 				<tr>
 					<td><strong>{{ __('app.annual') }}</strong></td>
 					<td>
@@ -122,12 +131,16 @@
 						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'annual', '{{ __('app.annual') }}', {{ ($plant->get('annual')) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('cutting_month'))
 				<tr>
 					<td><strong>{{ __('app.cutting_month') }}</strong></td>
 					<td>{!! ($plant->get('cutting_month')) ? UtilsModule::getMonthList()[$plant->get('cutting_month')] : '<span class="is-not-available">N/A</span>' !!} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'cutting_month', window.vue.comboCuttingMonth, {{ ($plant->get('cutting_month')) ?? '0' }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 				</tr>
+				@endif
 
+				@if (plant_attr('date_of_purchase'))
 				<tr>
 					<td><strong>{{ __('app.date_of_purchase') }}</strong></td>
 					<td>
@@ -140,7 +153,9 @@
 						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditDate({{ $plant->get('id') }}, 'date_of_purchase', '{{ ($plant->get('date_of_purchase')) ? date('Y-m-d', strtotime($plant->get('date_of_purchase'))) : '' }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('humidity'))
 				<tr>
 					<td><strong>{{ __('app.humidity') }}</strong></td>
 					<td>
@@ -153,7 +168,9 @@
 						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditInteger({{ $plant->get('id') }}, 'humidity', '{{ ($plant->get('humidity') ?? '0') }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('light_level'))
 				<tr>
 					<td><strong>{{ __('app.light_level') }}</strong></td>
 					<td>
@@ -166,11 +183,14 @@
 						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'light_level', window.vue.comboLightLevel, '{{ ($plant->get('light_level') ?? 'N/A') }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
 					</td>
 				</tr>
+				@endif
 
+				@if (plant_attr('health_state'))
 				<tr>
 					<td><strong>{{ __('app.health_state') }}</strong></td>
 					<td><span class="plant-state-{{ $plant->get('health_state') }}">{!! ($plant->get('health_state') === 'in_good_standing') ? '<i class="far fa-check-circle is-color-yes"></i>&nbsp;' : '' !!}{{ __('app.' . $plant->get('health_state')) }}</span> <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'health_state', window.vue.comboHealthState, '{{ $plant->get('health_state') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 				</tr>
+				@endif
 
 				@foreach ($custom_attributes as $custom_attribute)
 					<tr id="table-custom-attribute-{{ $custom_attribute->id }}">
