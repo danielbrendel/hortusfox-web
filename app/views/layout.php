@@ -1178,7 +1178,8 @@
 							<div class="field">
 								<label class="label">{{ __('app.datatype') }}</label>
 								<div class="control">
-									<select class="input" name="datatype" required>
+									<select class="input" name="datatype" onchange="window.vue.selectDataTypeInputField(this, document.querySelector('#field-custom-add-attribute-content'));" onfocus="this.selectedIndex = -1;" required>
+										<option value=""></option>
 										@foreach (CustPlantAttrModel::$data_types as $datatype)
 											<option value="{{ $datatype }}">{{ $datatype }}</option>
 										@endforeach
@@ -1186,10 +1187,12 @@
 								</div>
 							</div>
 
-							<div class="field">
+							<div class="field is-hidden" id="field-custom-add-attribute-content">
 								<label class="label">{{ __('app.content') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="content" required>
+									<span class="is-hidden"><input type="checkbox" class="checkbox" name="content" value="1">&nbsp;{{ __('app.enable') }}</span>
+									<input type="text" class="input is-hidden" name="content">
+									<input type="date" class="input is-hidden" name="content">
 								</div>
 							</div>
 						</form>

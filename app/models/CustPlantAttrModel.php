@@ -54,15 +54,7 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
             }
 
             if ($datatype === 'bool') {
-                if (is_numeric($content)) {
-                    return (bool)$content;
-                } else {
-                    if ($content === 'true') {
-                        return true;
-                    } else if ($content === 'false') {
-                        return false;
-                    }
-                }
+                return (bool)$content;
             } else if ($datatype === 'int') {
                 return (int)$content;
             } else if ($datatype === 'double') {

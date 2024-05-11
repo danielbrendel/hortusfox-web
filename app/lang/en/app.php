@@ -377,5 +377,6 @@ return [
 	'edit_custom_attribute' => 'Edit custom attribute',
 	'remove_custom_attribute' => 'Remove attribute',
 	'confirm_remove_custom_attribute' => 'Do you really want to remove this attribute?',
-	'timezone' => 'Timezone'
+	'timezone' => 'Timezone',
+	'enable' => 'Enable'
 ];
