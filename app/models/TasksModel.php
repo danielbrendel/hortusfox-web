@@ -217,6 +217,20 @@ class TasksModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $taskId
+     * @return void
+     * @throws \Exception
+     */
+    public static function removeTask($taskId)
+    {
+        try {
+            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$taskId]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

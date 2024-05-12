@@ -63,6 +63,7 @@ return [
     array('/tasks/create', 'POST', 'tasks@create_task'),
     array('/tasks/edit', 'POST', 'tasks@edit_task'),
     array('/tasks/toggle', 'POST', 'tasks@toggle_task'),
+    array('/tasks/remove', 'ANY', 'tasks@remove_task'),
 
     /** Inventory Controller */
     array('/inventory', 'GET', 'inventory@view_inventory'),

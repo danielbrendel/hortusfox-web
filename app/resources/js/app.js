@@ -357,6 +357,20 @@ window.vue = new Vue({
             window.vue.bShowEditTask = true;
         },
 
+        removeTask: function(id)
+        {
+            window.vue.ajaxRequest('post', window.location.origin + '/tasks/remove', { task: id }, function(response){
+                if (response.code == 200) {
+                    let elem = document.getElementById('task-item-' + id);
+                    if (elem) {
+                        elem.remove();
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         updateLastWatered: function(id)
         {
             if (!confirm(window.vue.confirmSetAllWatered)) {

@@ -139,4 +139,28 @@ class TasksController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /tasks/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_task($request)
+	{
+		try {
+			$task = $request->params()->query('task', null);
+
+			TasksModel::removeTask($task);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }
