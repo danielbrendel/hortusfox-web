@@ -59,9 +59,14 @@ class CalendarClsCommand implements Asatru\Commands\Command {
      */
     public function handle($args)
     {
+        if ($args->get(0)?->getValue(0) === '--force') {
+            echo "Dropping previous calendar classes.\n";
+
+            CalendarClassModel::raw('DELETE FROM `' . CalendarClassModel::tableName() . '`');
+        }
+
         $entry_count = CalendarClassModel::raw('SELECT COUNT(*) AS `count` FROM `' . CalendarClassModel::tableName() . '`')->first()->get('count');
         if ($entry_count > 0) {
-            echo "Table not empty, aborting.\n";
             return;
         }
 
