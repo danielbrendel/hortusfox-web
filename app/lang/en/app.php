@@ -379,5 +379,6 @@ return [
 	'confirm_remove_custom_attribute' => 'Do you really want to remove this attribute?',
 	'timezone' => 'Timezone',
 	'attributes' => 'Attributes',
-	'attributes_hint' => 'Here you can choose which default plant attributes shall be available.'
+	'attributes_hint' => 'Here you can choose which default plant attributes shall be available.',
+	'confirm_remove_task' => 'Do you really want to remove this task?'
 ];

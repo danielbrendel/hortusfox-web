@@ -379,5 +379,6 @@ return [
 	'remove_custom_attribute' => 'Attribut löschen',
 	'confirm_remove_custom_attribute' => 'Soll dieses Attribut wirklich gelöscht werden?',
 	'attributes' => 'Attribute',
-	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.'
+	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.',
+	'confirm_remove_task' => 'Soll diese Aufgabe wirklich gelöscht werden?'
 ];

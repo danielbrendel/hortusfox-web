@@ -378,5 +378,6 @@ return [
 	'confirm_remove_custom_attribute' => 'Vil du virkelig fjerne denne attribut?',
 	'timezone' => 'Tidszone',
 	'attributes' => 'Egenskaber',
-	'attributes_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.'
+	'attributes_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.',
+	'confirm_remove_task' => 'Vil du virkelig fjerne denne opgave?'
 ];

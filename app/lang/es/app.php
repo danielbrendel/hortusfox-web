@@ -379,5 +379,6 @@ return [
 	'confirm_remove_custom_attribute' => '¿Realmente deseas eliminar este atributo?',
 	'timezone' => 'Zona horaria',
 	'attributes' => 'Atributos',
-	'attributes_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.'
+	'attributes_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.',
+	'confirm_remove_task' => '¿Realmente quieres eliminar esta tarea?'
 ];
