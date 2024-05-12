@@ -169,11 +169,23 @@
 							<input type="hidden" name="plant" id="inpEditBooleanPlantId"/>
 							<input type="hidden" name="attribute" id="inpEditBooleanAttribute"/>
 
-							<div class="field">
-								<div class="control">
-									<input type="checkbox" name="value" id="inpEditBooleanValue" value="1">&nbsp;<span id="property-hint"></span>
+							<fieldset>
+								<legend id="property-hint" class="legend-title"></legend>
+
+								<div class="field">
+									<div class="control">
+										<input type="radio" name="value" id="inpEditBooleanValue_yes" value="1">
+										<label for="inpEditBooleanValue_yes">{{ __('app.yes') }}</label>
+									</div>
 								</div>
-							</div>
+
+								<div class="field">
+									<div class="control">
+										<input type="radio" name="value" id="inpEditBooleanValue_no" value="0">
+										<label for="inpEditBooleanValue_no">{{ __('app.no') }}</label>
+									</div>
+								</div>
+							</fieldset>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">

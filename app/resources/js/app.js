@@ -140,7 +140,13 @@ window.vue = new Vue({
             document.getElementById('inpEditBooleanPlantId').value = plant;
             document.getElementById('inpEditBooleanAttribute').value = property;
             document.getElementById('property-hint').innerHTML = hint;
-            document.getElementById('inpEditBooleanValue').checked = defval;
+
+            if (defval) {
+                document.getElementById('inpEditBooleanValue_yes').checked = true;
+            } else {
+                document.getElementById('inpEditBooleanValue_no').checked = true;
+            }
+            
             window.vue.bShowEditBoolean = true;
         },
 
