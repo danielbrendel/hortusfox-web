@@ -16,5 +16,6 @@
 return [
     ['product:version', 'Show current product version', 'VersionCommand'],
     ['migrate:upgrade', 'Perform version specific migration upgrades', 'MigrationUpgrade'],
-    ['calendar:classes', 'Add default calendar classes', 'CalendarClsCommand']
+    ['calendar:classes', 'Add default calendar classes', 'CalendarClsCommand'],
+    ['plants:attributes', 'Add default plant attributes', 'AttributesCommand']
 ];

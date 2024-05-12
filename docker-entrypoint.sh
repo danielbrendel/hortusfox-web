@@ -224,6 +224,9 @@ add_admin_user_if_missing
 # Add default calendar classes if missing
 php asatru calendar:classes
 
+# Add default plant attributes if missing
+php asatru plants:attributes
+
 # Copy default images
 cp /tmp/img/* /var/www/html/public/img
 

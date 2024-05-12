@@ -18,23 +18,6 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS annual BOOLEAN NULL');
 
         UserModel::raw('ALTER TABLE `' . UserModel::tableName() . '` ADD COLUMN IF NOT EXISTS show_plant_id BOOLEAN NOT NULL DEFAULT 0');
-
-        $default_plant_attributes = [
-            'last_watered',
-            'last_repotted',
-            'last_fertilised',
-            'perennial',
-            'annual',
-            'cutting_month',
-            'date_of_purchase',
-            'humidity',
-            'light_level',
-            'health_state'
-        ];
-
-        foreach ($default_plant_attributes as $def_attribute) {
-            PlantDefAttrModel::raw('INSERT INTO `' . PlantDefAttrModel::tableName() . '` (name, active) VALUES(?, 1)', [$def_attribute]);
-        }
     }
 
     /**
