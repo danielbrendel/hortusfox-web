@@ -1178,13 +1178,20 @@ window.vue = new Vue({
             }
         },
 
-        acquireGeoPosition: function(destLatitude, destLongitude) {
+        acquireGeoPosition: function(destLatitude, destLongitude, button) {
+            let oldText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + button.innerHTML;
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     destLatitude.value = position.coords.latitude;
                     destLongitude.value = position.coords.longitude;
+
+                    button.innerHTML = oldText;
                 });
             } else {
+                button.innerHTML = oldText;
+                
                 alert('Geolocation is not available');
             }
         },

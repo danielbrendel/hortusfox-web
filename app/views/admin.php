@@ -646,7 +646,7 @@
 
         <div class="field">
             <div class="control">
-                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>&nbsp;<a class="button is-link" href="javascript:void(0);" onclick="window.vue.acquireGeoPosition(document.getElementById('geo-latitude'), document.getElementById('geo-longitude'));">{{ __('app.weather_autodetect_latlong') }}</a>
+                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>&nbsp;<a class="button is-link" href="javascript:void(0);" onclick="window.vue.acquireGeoPosition(document.getElementById('geo-latitude'), document.getElementById('geo-longitude'), this);">{{ __('app.weather_autodetect_latlong') }}</a>
             </div>
         </div>
     </form>
