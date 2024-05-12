@@ -1202,7 +1202,26 @@
 							<div class="field is-hidden" id="field-custom-add-attribute-content">
 								<label class="label">{{ __('app.content') }}</label>
 								<div class="control">
-									<span class="is-hidden"><input type="checkbox" class="checkbox" name="content" value="1">&nbsp;{{ __('app.enable') }}</span>
+									<div class="is-hidden">
+										<fieldset>
+											<legend id="property-hint" class="legend-title"></legend>
+
+											<div class="field">
+												<div class="control">
+													<input type="radio" name="content" id="field-custom-add-attribute-radiobutton-yes" value="1">
+													<label for="field-custom-add-attribute-radiobutton-yes">{{ __('app.yes') }}</label>
+												</div>
+											</div>
+
+											<div class="field">
+												<div class="control">
+													<input type="radio" name="content" id="field-custom-add-attribute-radiobutton-no" value="0">
+													<label for="field-custom-add-attribute-radiobutton-no">{{ __('app.no') }}</label>
+												</div>
+											</div>
+										</fieldset>
+									</div>
+
 									<input type="text" class="input is-hidden" name="content">
 									<input type="date" class="input is-hidden" name="content">
 								</div>

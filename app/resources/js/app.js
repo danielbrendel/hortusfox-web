@@ -218,13 +218,15 @@ window.vue = new Vue({
                 field.children[1].children[2].classList.add('is-hidden');
             }
 
-            field.children[1].children[0].disabled = true;
+            field.children[1].children[0].children[0].children[1].children[0].children[0].disabled = true;
+            field.children[1].children[0].children[0].children[2].children[0].children[0].disabled = true;
             field.children[1].children[1].disabled = true;
             field.children[1].children[2].disabled = true;
 
             if (elem.value === 'bool') {
                 field.children[1].children[0].classList.remove('is-hidden');
-                field.children[1].children[0].disabled = false;
+                field.children[1].children[0].children[0].children[1].children[0].children[0].disabled = false;
+                field.children[1].children[0].children[0].children[2].children[0].children[0].disabled = false;
             } else if (elem.value === 'datetime') {
                 field.children[1].children[2].classList.remove('is-hidden');
                 field.children[1].children[2].disabled = false;
