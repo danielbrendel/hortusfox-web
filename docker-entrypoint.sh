@@ -244,5 +244,8 @@ cp -r /tmp/themes/* /var/www/html/public/themes
 # Set permissions to folder for themes
 chown -R www-data:www-data /var/www/html/public/themes
 
+# Print informational message
+echo -e "\033[32mThe system is now ready for operation.\033[39m"
+
 # Then exec the container's main process (CMD)
 exec "$@"
