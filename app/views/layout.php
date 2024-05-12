@@ -1204,7 +1204,7 @@
 								<div class="control">
 									<div class="is-hidden">
 										<fieldset>
-											<legend id="property-hint" class="legend-title"></legend>
+											<legend class="legend-title"></legend>
 
 											<div class="field">
 												<div class="control">
@@ -1270,7 +1270,26 @@
 							<div class="field is-hidden" id="field-custom-edit-attribute-content">
 								<label class="label">{{ __('app.content') }}</label>
 								<div class="control">
-									<span class="is-hidden"><input type="checkbox" class="checkbox" name="content" value="1">&nbsp;{{ __('app.enable') }}</span>
+									<div class="is-hidden">
+										<fieldset>
+											<legend class="legend-title"></legend>
+
+											<div class="field">
+												<div class="control">
+													<input type="radio" name="content" id="field-custom-edit-attribute-radiobutton-yes" value="1">
+													<label for="field-custom-edit-attribute-radiobutton-yes">{{ __('app.yes') }}</label>
+												</div>
+											</div>
+
+											<div class="field">
+												<div class="control">
+													<input type="radio" name="content" id="field-custom-edit-attribute-radiobutton-no" value="0">
+													<label for="field-custom-edit-attribute-radiobutton-no">{{ __('app.no') }}</label>
+												</div>
+											</div>
+										</fieldset>
+									</div>	
+
 									<input type="text" class="input is-hidden" name="content">
 									<input type="date" class="input is-hidden" name="content">
 								</div>

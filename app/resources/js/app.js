@@ -246,7 +246,11 @@ window.vue = new Vue({
             let elFieldTarget = document.getElementById('field-custom-edit-attribute-content');
 
             if (datatype === 'bool') {
-                elFieldTarget.children[1].children[0].children[0].checked = content == 1;
+                if (content == 1) {
+                    elFieldTarget.children[1].children[0].children[0].children[1].children[0].children[0].checked = true;
+                } else {
+                    elFieldTarget.children[1].children[0].children[0].children[2].children[0].children[0].checked = true;
+                }
             } else if (datatype === 'datetime') {
                 elFieldTarget.children[1].children[2].value = content;
             } else {
