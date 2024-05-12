@@ -370,5 +370,15 @@ return [
 	'api_key_added' => 'La nueva clave API se agregó correctamente',
 	'api_key_removed' => 'La clave API se eliminó correctamente',
 	'toggle' => 'Palanca',
-	'confirm_remove_api_key' => '¿Realmente desea eliminar esta clave API?'
+	'confirm_remove_api_key' => '¿Realmente desea eliminar esta clave API?',
+	'add_custom_attribute' => 'Agregar atributo personalizado',
+	'datatype' => 'Tipo de datos',
+	'content' => 'Contenido',
+	'edit_custom_attribute' => 'Editar atributo personalizado',
+	'remove_custom_attribute' => 'Eliminar atributo',
+	'confirm_remove_custom_attribute' => '¿Realmente deseas eliminar este atributo?',
+	'timezone' => 'Zona horaria',
+	'enable' => 'Permitir',
+	'attributes' => 'Atributos',
+	'attributes_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.'
 ];

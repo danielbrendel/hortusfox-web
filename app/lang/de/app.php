@@ -371,5 +371,14 @@ return [
 	'api_key_removed' => 'Der API Key wurde erfolgreich entfernt',
 	'toggle' => 'Umschalten',
 	'confirm_remove_api_key' => 'Soll der API Key wirklich entfernt werden?',
-	'timezone' => 'Zeitzone'
+	'timezone' => 'Zeitzone',
+	'add_custom_attribute' => 'Attribut hinzufügen',
+	'datatype' => 'Datentyp',
+	'content' => 'Inhalt',
+	'edit_custom_attribute' => 'Attribut bearbeiten',
+	'remove_custom_attribute' => 'Attribut löschen',
+	'confirm_remove_custom_attribute' => 'Soll dieses Attribut wirklich gelöscht werden?',
+	'enable' => 'Aktivieren',
+	'attributes' => 'Attribute',
+	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.'
 ];

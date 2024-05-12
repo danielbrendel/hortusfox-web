@@ -369,5 +369,15 @@ return [
 	'api_key_added' => 'Ny API nøgle blev succesfuldt tilføjet',
 	'api_key_removed' => 'API key blev succesfuldt fjernet',
 	'toggle' => 'Slå til/fra',
-	'confirm_remove_api_key' => 'Vil du virkelig fjerne denne API nøgle?'
+	'confirm_remove_api_key' => 'Vil du virkelig fjerne denne API nøgle?',
+	'add_custom_attribute' => 'Tilføj tilpasset attribut',
+	'datatype' => 'Datatype',
+	'content' => 'Indhold',
+	'edit_custom_attribute' => 'Rediger tilpasset attribut',
+	'remove_custom_attribute' => 'Fjern attribut',
+	'confirm_remove_custom_attribute' => 'Vil du virkelig fjerne denne attribut?',
+	'timezone' => 'Tidszone',
+	'enable' => 'Aktiver',
+	'attributes' => 'Egenskaber',
+	'attributes_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.'
 ];
