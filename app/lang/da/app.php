@@ -377,7 +377,6 @@ return [
 	'remove_custom_attribute' => 'Fjern attribut',
 	'confirm_remove_custom_attribute' => 'Vil du virkelig fjerne denne attribut?',
 	'timezone' => 'Tidszone',
-	'enable' => 'Aktiver',
 	'attributes' => 'Egenskaber',
 	'attributes_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.'
 ];

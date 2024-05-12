@@ -378,7 +378,6 @@ return [
 	'edit_custom_attribute' => 'Attribut bearbeiten',
 	'remove_custom_attribute' => 'Attribut löschen',
 	'confirm_remove_custom_attribute' => 'Soll dieses Attribut wirklich gelöscht werden?',
-	'enable' => 'Aktivieren',
 	'attributes' => 'Attribute',
 	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.'
 ];

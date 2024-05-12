@@ -378,7 +378,6 @@ return [
 	'remove_custom_attribute' => 'Eliminar atributo',
 	'confirm_remove_custom_attribute' => '¿Realmente deseas eliminar este atributo?',
 	'timezone' => 'Zona horaria',
-	'enable' => 'Permitir',
 	'attributes' => 'Atributos',
 	'attributes_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.'
 ];
