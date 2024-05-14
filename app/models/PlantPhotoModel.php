@@ -77,6 +77,14 @@ class PlantPhotoModel extends \Asatru\Database\Model {
 
             $plant = PlantsModel::getDetails($photo_data->get('plant'));
 
+            if (file_exists(public_path('/img/' . $photo_data->get('original')))) {
+                unlink(public_path('/img/' . $photo_data->get('original')));
+            }
+
+            if (file_exists(public_path('/img/' . $photo_data->get('thumb')))) {
+                unlink(public_path('/img/' . $photo_data->get('thumb')));
+            }
+
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$photo]);
 
             LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_gallery_photo', $photo_data->get('label'), url('/plants/details/' . $plant->get('id') . '#plant-gallery-photo-anchor'));
