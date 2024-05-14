@@ -379,5 +379,6 @@ return [
 	'timezone' => 'Tidszone',
 	'attributes' => 'Egenskaber',
 	'attributes_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.',
-	'confirm_remove_task' => 'Vil du virkelig fjerne denne opgave?'
+	'confirm_remove_task' => 'Vil du virkelig fjerne denne opgave?',
+	'plant_photo_orientation_hint' => 'Brug venligst portrætretning til hovedbilledet.'
 ];

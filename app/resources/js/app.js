@@ -277,10 +277,15 @@ window.vue = new Vue({
             });
         },
 
-        showEditPhoto: function(plant, property)
+        showEditPhoto: function(plant, property, hint = '')
         {
             document.getElementById('inpEditPhotoPlantId').value = plant;
             document.getElementById('inpEditPhotoAttribute').value = property;
+
+            if (hint.length > 0) {
+                document.getElementById('inpEditPhotoHint').innerHTML = hint;
+            }
+
             window.vue.bShowEditPhoto = true;
         },
 

@@ -380,5 +380,6 @@ return [
 	'confirm_remove_custom_attribute' => 'Soll dieses Attribut wirklich gelöscht werden?',
 	'attributes' => 'Attribute',
 	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.',
-	'confirm_remove_task' => 'Soll diese Aufgabe wirklich gelöscht werden?'
+	'confirm_remove_task' => 'Soll diese Aufgabe wirklich gelöscht werden?',
+	'plant_photo_orientation_hint' => 'Für das Hauptfoto wird das Hochformat empfohlen.'
 ];

@@ -85,6 +85,7 @@
 								<div class="control">
 									<input type="file" class="input" name="photo" accept="image/*">
 								</div>
+								<p class="help">{{ __('app.plant_photo_orientation_hint') }}</p>
 							</div>
 
 							<input type="submit" class="is-hidden" id="submit-add-plant">
@@ -332,6 +333,7 @@
 								<div class="control">
 									<input type="file" class="input" name="value" accept="image/*" required>
 								</div>
+								<p class="help" id="inpEditPhotoHint"></p>
 							</div>
 						</form>
 					</section>

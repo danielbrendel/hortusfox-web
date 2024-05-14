@@ -380,5 +380,6 @@ return [
 	'timezone' => 'Timezone',
 	'attributes' => 'Attributes',
 	'attributes_hint' => 'Here you can choose which default plant attributes shall be available.',
-	'confirm_remove_task' => 'Do you really want to remove this task?'
+	'confirm_remove_task' => 'Do you really want to remove this task?',
+	'plant_photo_orientation_hint' => 'Please use portrait orientation for the main photo.'
 ];
