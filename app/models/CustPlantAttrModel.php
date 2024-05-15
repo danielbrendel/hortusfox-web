@@ -82,9 +82,16 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
     public static function addAttribute($plant, $label, $datatype, $content)
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
             static::raw('INSERT INTO `' . self::tableName() . '` (plant, label, datatype, content) VALUES(?, ?, ?, ?)', [
                 $plant, $label, $datatype, static::interpretContent($content, $datatype)
             ]);
+
+            LogModel::addLog($user->get('id'), $plant, $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -102,9 +109,16 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
     public static function editAttribute($id, $plant, $label, $datatype, $content)
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+            
             static::raw('UPDATE `' . self::tableName() . '` SET label = ?, datatype = ?, content = ? WHERE id = ?', [
                 $label, $datatype, static::interpretContent($content, $datatype), $id
             ]);
+
+            LogModel::addLog($user->get('id'), $plant, $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
         } catch (\Exception $e) {
             throw $e;
         }
