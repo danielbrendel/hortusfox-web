@@ -204,6 +204,10 @@ window.vue = new Vue({
         },
 
         selectDataTypeInputField: function(elem, field) {
+            if (elem.selectedIndex <= 0) {
+                return;
+            }
+            
             field.classList.remove('is-hidden');
 
             if (!field.children[1].children[0].classList.contains('is-hidden')) {

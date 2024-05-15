@@ -381,5 +381,6 @@ return [
 	'attributes' => 'Atributos',
 	'attributes_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.',
 	'confirm_remove_task' => '¿Realmente quieres eliminar esta tarea?',
-	'plant_photo_orientation_hint' => 'Utilice la orientación vertical para la foto principal.'
+	'plant_photo_orientation_hint' => 'Utilice la orientación vertical para la foto principal.',
+	'select' => 'Seleccionar'
 ];

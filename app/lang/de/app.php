@@ -381,5 +381,6 @@ return [
 	'attributes' => 'Attribute',
 	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.',
 	'confirm_remove_task' => 'Soll diese Aufgabe wirklich gelöscht werden?',
-	'plant_photo_orientation_hint' => 'Für das Hauptfoto wird das Hochformat empfohlen.'
+	'plant_photo_orientation_hint' => 'Für das Hauptfoto wird das Hochformat empfohlen.',
+	'select' => 'Auswählen'
 ];
