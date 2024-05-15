@@ -382,5 +382,10 @@ return [
 	'attributes_hint' => 'Here you can choose which default plant attributes shall be available.',
 	'confirm_remove_task' => 'Do you really want to remove this task?',
 	'plant_photo_orientation_hint' => 'Please use portrait orientation for the main photo.',
-	'select' => 'Select'
+	'select' => 'Select',
+	'custom_attribute_datatype_bool' => 'Yes/No Value',
+	'custom_attribute_datatype_int' => 'Integer',
+	'custom_attribute_datatype_double' => 'Floating-Point Number',
+	'custom_attribute_datatype_string' => 'Text',
+	'custom_attribute_datatype_datetime' => 'Date',
 ];

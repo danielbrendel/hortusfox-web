@@ -382,5 +382,10 @@ return [
 	'attributes_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.',
 	'confirm_remove_task' => '¿Realmente quieres eliminar esta tarea?',
 	'plant_photo_orientation_hint' => 'Utilice la orientación vertical para la foto principal.',
-	'select' => 'Seleccionar'
+	'select' => 'Seleccionar',
+	'custom_attribute_datatype_bool' => 'Sí/No valor',
+	'custom_attribute_datatype_int' => 'Entero',
+	'custom_attribute_datatype_double' => 'Número de punto flotante',
+	'custom_attribute_datatype_string' => 'Texto',
+	'custom_attribute_datatype_datetime' => 'Fecha',
 ];

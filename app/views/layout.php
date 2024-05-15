@@ -1195,7 +1195,7 @@
 									<select class="input" name="datatype" onchange="window.vue.selectDataTypeInputField(this, document.querySelector('#field-custom-add-attribute-content'));" onfocus="this.selectedIndex = -1;" required>
 										<option value="" selected disabled>- {{ __('app.select') }} -</option>
 										@foreach (CustPlantAttrModel::$data_types as $datatype)
-											<option value="{{ $datatype }}">{{ $datatype }}</option>
+											<option value="{{ $datatype }}">{{ __('app.custom_attribute_datatype_' . $datatype) }}</option>
 										@endforeach
 									</select>
 								</div>
@@ -1263,7 +1263,7 @@
 								<div class="control">
 									<select class="input" name="datatype" id="edit-plant-attribute-datatype" onchange="window.vue.selectDataTypeInputField(this, document.querySelector('#field-custom-edit-attribute-content'));" required>
 										@foreach (CustPlantAttrModel::$data_types as $datatype)
-											<option value="{{ $datatype }}">{{ $datatype }}</option>
+											<option value="{{ $datatype }}">{{ __('app.custom_attribute_datatype_' . $datatype) }}</option>
 										@endforeach
 									</select>
 								</div>

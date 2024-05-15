@@ -381,5 +381,10 @@ return [
 	'attributes_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.',
 	'confirm_remove_task' => 'Vil du virkelig fjerne denne opgave?',
 	'plant_photo_orientation_hint' => 'Brug venligst portrætretning til hovedbilledet.',
-	'select' => 'Vælg'
+	'select' => 'Vælg',
+	'custom_attribute_datatype_bool' => 'Sand/falsk værdi',
+	'custom_attribute_datatype_int' => 'Heltal',
+	'custom_attribute_datatype_double' => 'Flydende kommanummer',
+	'custom_attribute_datatype_string' => 'Tekst',
+	'custom_attribute_datatype_datetime' => 'Dato',
 ];

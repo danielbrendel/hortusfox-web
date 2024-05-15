@@ -382,5 +382,10 @@ return [
 	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.',
 	'confirm_remove_task' => 'Soll diese Aufgabe wirklich gelöscht werden?',
 	'plant_photo_orientation_hint' => 'Für das Hauptfoto wird das Hochformat empfohlen.',
-	'select' => 'Auswählen'
+	'select' => 'Auswählen',
+	'custom_attribute_datatype_bool' => 'Wahr/Falsch Wert',
+	'custom_attribute_datatype_int' => 'Ganzzahl',
+	'custom_attribute_datatype_double' => 'Gleitkommazahl',
+	'custom_attribute_datatype_string' => 'Text',
+	'custom_attribute_datatype_datetime' => 'Datum',
 ];
