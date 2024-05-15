@@ -6,7 +6,7 @@
 class ApiController extends BaseController {
     public function __construct()
     {
-        parent::__construct();
+        //parent::__construct();
 
         $token = null;
         if (isset($_GET['token'])) {
@@ -30,10 +30,16 @@ class ApiController extends BaseController {
             $plantId = $request->params()->query('plant', null);
 
             $plant = PlantsModel::getDetails($plantId);
+            $cust_attr = CustPlantAttrModel::getForPlant($plantId);
+
+            $data = [
+                'default' => $plant?->asArray(),
+                'custom' => $cust_attr
+            ];
 
             return json([
                 'code' => 200,
-                'data' => $plant?->asArray()
+                'data' => $data
             ]);
         } catch (\Exception $e) {
             return json([
@@ -141,6 +147,84 @@ class ApiController extends BaseController {
             return json([
                 'code' => 200,
                 'list' => $list?->asArray()
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/plants/attributes/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function add_attribute($request)
+    {
+        try {
+            $plant = $request->params()->query('plant', null);
+            $label = $request->params()->query('label', null);
+            $datatype = $request->params()->query('datatype', null);
+            $content = $request->params()->query('content', null);
+            
+            CustPlantAttrModel::addAttribute($plant, $label, $datatype, $content, true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/plants/attributes/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function edit_attribute($request)
+    {
+        try {
+            $attribute = $request->params()->query('attribute', null);
+            $label = $request->params()->query('label', null);
+            $datatype = $request->params()->query('datatype', null);
+            $content = $request->params()->query('content', null);
+            
+            CustPlantAttrModel::editAttribute($attribute, null, $label, $datatype, $content, true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/plants/attributes/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function remove_attribute($request)
+    {
+        try {
+            $attribute = $request->params()->query('attribute', null);
+            
+            CustPlantAttrModel::removeAttribute($attribute, true);
+
+            return json([
+                'code' => 200
             ]);
         } catch (\Exception $e) {
             return json([

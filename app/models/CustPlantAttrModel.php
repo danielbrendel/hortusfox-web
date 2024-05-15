@@ -76,22 +76,27 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
      * @param $label
      * @param $datatype
      * @param $content
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function addAttribute($plant, $label, $datatype, $content)
+    public static function addAttribute($plant, $label, $datatype, $content, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
             static::raw('INSERT INTO `' . self::tableName() . '` (plant, label, datatype, content) VALUES(?, ?, ?, ?)', [
                 $plant, $label, $datatype, static::interpretContent($content, $datatype)
             ]);
 
-            LogModel::addLog($user->get('id'), $plant, $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plant, '[add] ' . $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -103,22 +108,27 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
      * @param $label
      * @param $datatype
      * @param $content
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editAttribute($id, $plant, $label, $datatype, $content)
+    public static function editAttribute($id, $plant, $label, $datatype, $content, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
             
             static::raw('UPDATE `' . self::tableName() . '` SET label = ?, datatype = ?, content = ? WHERE id = ?', [
                 $label, $datatype, static::interpretContent($content, $datatype), $id
             ]);
 
-            LogModel::addLog($user->get('id'), $plant, $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plant, '[edit] ' . $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -126,13 +136,30 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function removeAttribute($id)
+    public static function removeAttribute($id, $api = false)
     {
         try {
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
+            }
+
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            if (!$item) {
+                throw new \Exception('Custom plant attribute not found: ' . $id);
+            }
+
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$id]);
+
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $item->get('plant'), '[remove] ' . $item->get('label') . ' (' . $item->get('datatype') . ')', $item->get('content'), url('/plants/details/' . $item->get('plant')));
+            }
         } catch (\Exception $e) {
             throw $e;
         }

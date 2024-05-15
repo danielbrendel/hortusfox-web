@@ -138,6 +138,9 @@ return [
     array('/api/plants/remove', 'ANY', 'api@remove_plant'),
     array('/api/plants/list', 'ANY', 'api@get_plant_list'),
     array('/api/plants/search', 'ANY', 'api@search_plants'),
+    array('/api/plants/attributes/add', 'ANY', 'api@add_attribute'),
+    array('/api/plants/attributes/edit', 'ANY', 'api@edit_attribute'),
+    array('/api/plants/attributes/remove', 'ANY', 'api@remove_attribute'),
 
     /** Backup Controller */
     array('/export/start', 'POST', 'backup@export'),
