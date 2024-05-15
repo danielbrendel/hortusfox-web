@@ -56,7 +56,7 @@
             <div class="control">
                 <select class="input" name="timezone">
                     @foreach ($timezone_identifiers as $timezone_identifier)
-                        <option value="{{ $timezone_identifier }}" {{ (($timezone_identifier === app('timezone')) ? 'selected' : '') }}>{{ $timezone_identifier }}</option>
+                        <option value="{{ $timezone_identifier }}" {{ (($timezone_identifier === $current_timezone) ? 'selected' : '') }}>{{ $timezone_identifier }}</option>
                     @endforeach
                 </select>
             </div>

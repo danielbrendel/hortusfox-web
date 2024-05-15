@@ -50,6 +50,8 @@ class AdminController extends BaseController {
 		}
 
 		$timezone_identifiers = timezone_identifiers_list();
+		$current_timezone = app('timezone', date_default_timezone_get());
+
 		$plant_attributes = PlantDefAttrModel::getAll();
 		
 		return parent::view(['content', 'admin'], [
@@ -61,6 +63,7 @@ class AdminController extends BaseController {
 			'themes' => $themes,
 			'api_keys' => $api_keys,
 			'timezone_identifiers' => $timezone_identifiers,
+			'current_timezone' => $current_timezone,
 			'plant_attributes' => $plant_attributes,
 			'new_version' => $new_version,
 			'current_version' => $current_version
