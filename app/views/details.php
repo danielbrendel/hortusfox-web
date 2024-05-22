@@ -31,7 +31,7 @@
 			<tbody>
 				<tr>
 					<td><strong>{{ __('app.name') }}</strong></td>
-					<td>{{ $plant->get('name') }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'name', '{{ $plant->get('name') }}');"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+					<td><span id="plant-details-plant-name-{{ $plant->get('id') }}">{{ $plant->get('name') }}</span> <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'name', document.getElementById('plant-details-plant-name-{{ $plant->get('id') }}').innerText);"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 				</tr>
 
 				<tr>
