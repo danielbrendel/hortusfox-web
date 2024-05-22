@@ -191,7 +191,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getWarningPlants()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE health_state <> \'in_good_standing\' ORDER BY last_edited_date DESC');
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE health_state <> \'in_good_standing\' AND history = 0 ORDER BY last_edited_date DESC');
         } catch (\Exception $e) {
             throw $e;
         }
