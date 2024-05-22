@@ -15,25 +15,25 @@
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" name="search_name" value="1" checked>&nbsp;<span class="is-default-text-color">{{ __('app.search_name') }}</span>
+                <input type="checkbox" name="search_name" value="1" {{ (((isset($search_name)) && ($search_name == true)) ? 'checked' : '') }}>&nbsp;<span class="is-default-text-color">{{ __('app.search_name') }}</span>
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" name="search_scientific_name" value="1" checked>&nbsp;<span class="is-default-text-color">{{ __('app.search_scientific_name') }}</span>
+                <input type="checkbox" name="search_scientific_name" value="1" {{ (((isset($search_scientific_name)) && ($search_scientific_name == true)) ? 'checked' : '') }}>&nbsp;<span class="is-default-text-color">{{ __('app.search_scientific_name') }}</span>
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" name="search_tags" value="1" checked>&nbsp;<span class="is-default-text-color">{{ __('app.search_tags') }}</span>
+                <input type="checkbox" name="search_tags" value="1" {{ (((isset($search_tags)) && ($search_tags == true)) ? 'checked' : '') }}>&nbsp;<span class="is-default-text-color">{{ __('app.search_tags') }}</span>
             </div>
         </div>
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" name="search_notes" value="1" checked>&nbsp;<span class="is-default-text-color">{{ __('app.search_notes') }}</span>
+                <input type="checkbox" name="search_notes" value="1" {{ (((isset($search_notes)) && ($search_notes == true)) ? 'checked' : '') }}>&nbsp;<span class="is-default-text-color">{{ __('app.search_notes') }}</span>
             </div>
         </div>
 

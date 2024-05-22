@@ -31,7 +31,11 @@ class SearchController extends BaseController {
 		return parent::view(['content', 'search'], [
 			'user' => $user,
 			'query' => $query,
-			'_action_query' => 'action-search'
+			'_action_query' => 'action-search',
+			'search_name' => true,
+			'search_scientific_name' => true,
+			'search_tags' => true,
+			'search_notes' => true
 		]);
 	}
 
@@ -47,17 +51,21 @@ class SearchController extends BaseController {
 			$user = UserModel::getAuthUser();
 
 			$text = $request->params()->query('text', '');
-			$search_name = $request->params()->query('search_name', true);
-			$search_scientific_name = $request->params()->query('search_scientific_name', true);
-			$search_tags = $request->params()->query('search_tags', false);
-			$search_notes = $request->params()->query('search_notes', false);
+			$search_name = (bool)$request->params()->query('search_name', 0);
+			$search_scientific_name = (bool)$request->params()->query('search_scientific_name', 0);
+			$search_tags = (bool)$request->params()->query('search_tags', 0);
+			$search_notes = (bool)$request->params()->query('search_notes', 0);
 			
 			$search_result = PlantsModel::performSearch($text, $search_name, $search_scientific_name, $search_tags, $search_notes);
 
 			return parent::view(['content', 'search'], [
 				'user' => $user,
 				'query' => $text,
-				'plants' => $search_result
+				'plants' => $search_result,
+				'search_name' => $search_name,
+				'search_scientific_name' => $search_scientific_name,
+				'search_tags' => $search_tags,
+				'search_notes' => $search_notes
 			]);
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
