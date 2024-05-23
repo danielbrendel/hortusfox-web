@@ -379,7 +379,7 @@ return [
 	'confirm_remove_custom_attribute' => 'Do you really want to remove this attribute?',
 	'timezone' => 'Timezone',
 	'attributes' => 'Attributes',
-	'attributes_hint' => 'Here you can choose which default plant attributes shall be available.',
+	'attributes_visibility_hint' => 'Here you can choose which default plant attributes shall be available.',
 	'confirm_remove_task' => 'Do you really want to remove this task?',
 	'plant_photo_orientation_hint' => 'Please use portrait orientation for the main photo.',
 	'select' => 'Select',
@@ -388,4 +388,10 @@ return [
 	'custom_attribute_datatype_double' => 'Floating-Point Number',
 	'custom_attribute_datatype_string' => 'Text',
 	'custom_attribute_datatype_datetime' => 'Date',
+	'attributes_schema_hint' => 'Here you can manage plant attributes that are globally available to all plants',
+	'attribute_schema_added_successfully' => 'Global plant attribute was added successfully',
+	'attribute_schema_edited_successfully' => 'Global plant attribute was updated successfully',
+	'attribute_schema_removed_successfully' => 'Global plant attribute was removed successfully',
+	'confirm_remove_attribute_schema' => 'Do you really want to remove this item?',
+	'allow_custom_attributes' => 'Allow users to manage custom plant specific attributes'
 ];

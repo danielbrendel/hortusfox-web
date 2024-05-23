@@ -50,6 +50,7 @@ window.vue = new Vue({
         bShowPlantBulkPrint: false,
         bShowAddCustomPlantAttribute: false,
         bShowEditCustomPlantAttribute: false,
+        bShowCreateNewAttributeSchema: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -240,7 +241,7 @@ window.vue = new Vue({
             }
         },
 
-        showEditCustomPlantAttribute: function(id, plant, label, datatype, content, anchor = '')
+        showEditCustomPlantAttribute: function(id, plant, label, datatype, content, is_global = false)
         {
             document.getElementById('edit-plant-attribute-attr').value = id;
             document.getElementById('edit-plant-attribute-plant').value = plant;
@@ -262,6 +263,14 @@ window.vue = new Vue({
             }
 
             window.vue.selectDataTypeInputField(document.querySelector('#edit-plant-attribute-datatype'), elFieldTarget);
+
+            if (is_global) {
+                document.getElementById('field-custom-edit-attribute-datatype').style.display = 'none';
+                document.getElementById('plant-custom-attribute-removal-field').style.display = 'none';
+            } else {
+                document.getElementById('field-custom-edit-attribute-datatype').style.display = 'inherit';
+                document.getElementById('plant-custom-attribute-removal-field').style.display = 'inherit';
+            }
 
             window.vue.bShowEditCustomPlantAttribute = true;
         },
@@ -1245,6 +1254,16 @@ window.vue = new Vue({
             window.vue.ajaxRequest('get', window.location.origin + '/admin/attribute/update?name=' + name, {}, function(response) {
                 if (response.code == 200) {
                     document.getElementById('admin-attributes-checkbox-' + name).checked = response.active;
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        toggleAdminBoolSetting: function(name) {
+            window.vue.ajaxRequest('get', window.location.origin + '/admin/environment/boolean/toggle?name=' + name, {}, function(response) {
+                if (response.code == 200) {
+                    document.getElementById('admin-attributes-checkbox-allow-custom-attributes').checked = response.value;
                 } else {
                     alert(response.msg);
                 }

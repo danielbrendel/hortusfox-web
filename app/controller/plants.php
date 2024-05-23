@@ -388,6 +388,10 @@ class PlantsController extends BaseController {
 				FlashMessage::setMsg('error', 'Invalid data given');
 				return back();
 			}
+
+			if (!app('allow_custom_attributes')) {
+				throw new \Exception('Access denied.');
+			}
 	
 			$plant = $request->params()->query('plant', null);
 			$label = $request->params()->query('label', null);

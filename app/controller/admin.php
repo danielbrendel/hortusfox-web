@@ -52,6 +52,7 @@ class AdminController extends BaseController {
 		$timezone_identifiers = timezone_identifiers_list();
 		$current_timezone = app('timezone', date_default_timezone_get());
 
+		$global_attributes = CustAttrSchemaModel::getAll(false);
 		$plant_attributes = PlantDefAttrModel::getAll();
 		
 		return parent::view(['content', 'admin'], [
@@ -64,6 +65,7 @@ class AdminController extends BaseController {
 			'api_keys' => $api_keys,
 			'timezone_identifiers' => $timezone_identifiers,
 			'current_timezone' => $current_timezone,
+			'global_attributes' => $global_attributes,
 			'plant_attributes' => $plant_attributes,
 			'new_version' => $new_version,
 			'current_version' => $current_version
@@ -123,6 +125,34 @@ class AdminController extends BaseController {
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/environment/boolean/toggle
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function toggle_boolean_value($request)
+	{
+		try {
+			$name = $request->params()->query('name');
+
+			$value = (bool)app($name, 0);
+			$value = !$value;
+
+			AppModel::updateSingle($name, $value);
+
+			return json([
+				'code' => 200,
+				'value' => $value
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 
@@ -265,6 +295,76 @@ class AdminController extends BaseController {
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return redirect('/admin?tab=locations');
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/attribute/schema/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_attribute_schema($request)
+	{
+		try {
+			$label = $request->params()->query('label');
+			$datatype = $request->params()->query('datatype');
+			
+			CustAttrSchemaModel::addSchema($label, $datatype);
+
+			FlashMessage::setMsg('success', __('app.attribute_schema_added_successfully'));
+
+			return redirect('/admin?tab=attributes');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/admin?tab=attributes');
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/attribute/schema/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_attribute_schema($request)
+	{
+		try {
+			$id = $request->params()->query('id');
+			$label = $request->params()->query('label');
+			$datatype = $request->params()->query('datatype');
+			$active = (bool)$request->params()->query('active', 0);
+			
+			CustAttrSchemaModel::editSchema($id, $label, $datatype, $active);
+
+			FlashMessage::setMsg('success', __('app.attribute_schema_edited_successfully'));
+
+			return redirect('/admin?tab=attributes');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/admin?tab=attributes');
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/attribute/schema/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function remove_attribute_schema($request)
+	{
+		try {
+			$id = $request->params()->query('id');
+			
+			CustAttrSchemaModel::removeSchema($id);
+
+			FlashMessage::setMsg('success', __('app.attribute_schema_removed_successfully'));
+
+			return redirect('/admin?tab=attributes');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/admin?tab=attributes');
 		}
 	}
 

@@ -208,16 +208,18 @@
 								<span class="is-not-available">N/A</span>
 							@endif
 
-							<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCustomPlantAttribute({{ $custom_attribute->id }}, {{ $custom_attribute->plant }}, '{{ $custom_attribute->label }}', '{{ $custom_attribute->datatype }}', '{{ $custom_attribute->content }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+							<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCustomPlantAttribute({{ $custom_attribute->id }}, {{ $custom_attribute->plant }}, '{{ $custom_attribute->label }}', '{{ $custom_attribute->datatype }}', '{{ $custom_attribute->content ?? '' }}', {{ ($custom_attribute->global) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span>
 						</td>
 					</tr>
 				@endforeach
 			</tbody>
 		</table>
 
+		@if (app('allow_custom_attributes'))
 		<div class="plant-custom-attribute">
 			<a href="javascript:void(0);" onclick="document.getElementById('custom-plant-attribute-plant-id').value = {{ $plant->get('id') }}; window.vue.bShowAddCustomPlantAttribute = true;">{{ __('app.add_custom_attribute') }}</a>
 		</div>
+		@endif
 	</div>
 
 	<div class="column is-one-third">

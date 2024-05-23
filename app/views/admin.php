@@ -321,7 +321,60 @@
 <div class="admin-attributes {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'attributes')) ? 'is-hidden' : ''}}">
     <h2>{{ __('app.attributes') }}</h2>
 
-    <p>{{ __('app.attributes_hint') }}</p>
+    <div>
+        <div class="field">
+            <div class="control">
+                <span><input type="checkbox" class="checkbox" value="1" id="admin-attributes-checkbox-allow-custom-attributes" onclick="window.vue.toggleAdminBoolSetting('allow_custom_attributes'); return false;" {{ ((app('allow_custom_attributes')) ? 'checked': '') }}>&nbsp;{{ __('app.allow_custom_attributes') }}</span><br/>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <p>{{ __('app.attributes_schema_hint') }}</p>
+
+    <div class="admin-attribute-schema-list">
+        @foreach ($global_attributes as $global_attribute)
+            <div class="admin-attribute-schema">
+                <form method="POST" action="{{ url('/admin/attribute/schema/edit') }}">
+                    @csrf
+
+                    <input type="hidden" name="id" value="{{ $global_attribute->get('id') }}"/>
+
+                    <div class="admin-attribute-schema-item">#{{ $global_attribute->get('id') }}</div>
+
+                    <div class="admin-attribute-schema-item admin-attribute-schema-item-input">
+                        <input type="text" class="input" name="label" value="{{ $global_attribute->get('label') }}"/>
+                    </div>
+
+                    <div class="admin-attribute-schema-item admin-attribute-schema-item-input">
+                        <select class="input" name="datatype" id="edit-plant-attribute-datatype" onchange="window.vue.selectDataTypeInputField(this, document.querySelector('#field-custom-edit-attribute-content'));" required>
+                            @foreach (CustPlantAttrModel::$data_types as $datatype)
+                                <option value="{{ $datatype }}" {{ ($global_attribute->get('datatype') === $datatype) ? 'selected' : '' }}>{{ __('app.custom_attribute_datatype_' . $datatype) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="admin-attribute-schema-item admin-attribute-schema-item-centered">
+                        <input type="checkbox" name="active" value="1" {{ ($global_attribute->get('active')) ? 'checked' : '' }}/>&nbsp;<span>{{ __('app.active') }}</span>
+                    </div>
+
+                    <div class="admin-attribute-schema-actions">
+                        <span class="admin-attribute-schema-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
+                        <span class="admin-attribute-schema-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_attribute_schema') }}')) { location.href = '{{ url('/admin/attribute/schema/remove?id=' . $global_attribute->get('id')) }}'; }">{{ __('app.remove') }}</a></span> 
+                    </div>
+                </form>
+            </div>
+        @endforeach
+    </div>
+
+    <div class="admin-locations-actions">
+        <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewAttributeSchema = true;">{{ __('app.add_custom_attribute') }}</a></span>
+    </div>
+
+    <hr/>
+
+    <p>{{ __('app.attributes_visibility_hint') }}</p>
 
     <div>
         @foreach ($plant_attributes as $plant_attribute)

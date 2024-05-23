@@ -379,7 +379,7 @@ return [
 	'confirm_remove_custom_attribute' => '¿Realmente deseas eliminar este atributo?',
 	'timezone' => 'Zona horaria',
 	'attributes' => 'Atributos',
-	'attributes_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.',
+	'attributes_visibility_hint' => 'Aquí puede elegir qué atributos de planta predeterminados estarán disponibles.',
 	'confirm_remove_task' => '¿Realmente quieres eliminar esta tarea?',
 	'plant_photo_orientation_hint' => 'Utilice la orientación vertical para la foto principal.',
 	'select' => 'Seleccionar',
@@ -388,4 +388,10 @@ return [
 	'custom_attribute_datatype_double' => 'Número de punto flotante',
 	'custom_attribute_datatype_string' => 'Texto',
 	'custom_attribute_datatype_datetime' => 'Fecha',
+	'attributes_schema_hint' => 'Aquí puede administrar los atributos de la planta que están disponibles globalmente para todas las plantas.',
+	'attribute_schema_added_successfully' => 'El atributo global de planta se agregó exitosamente',
+	'attribute_schema_edited_successfully' => 'El atributo global de la planta se actualizó exitosamente',
+	'attribute_schema_removed_successfully' => 'El atributo global de la planta se eliminó con éxito',
+	'confirm_remove_attribute_schema' => '¿Realmente deseas eliminar este elemento?',
+	'allow_custom_attributes' => 'Permitir a los usuarios administrar atributos personalizados específicos de la planta'
 ];

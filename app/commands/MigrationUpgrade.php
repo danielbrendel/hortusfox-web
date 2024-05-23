@@ -11,6 +11,14 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo3dot2()
+    {
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS allow_custom_attributes BOOLEAN NOT NULL DEFAULT 0');
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo3dot1()
     {
         AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS timezone VARCHAR(512) NULL');

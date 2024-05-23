@@ -496,4 +496,33 @@ class UtilsModule {
             throw $e;
         }
     }
+
+    /**
+     * @param $needle
+     * @param $haystack
+     * @param $prop
+     * @param $tolower
+     * @return bool
+     */
+    public static function in_array_stdclass($needle, $haystack, $prop, $tolower = true)
+    {
+        foreach ($haystack as $item) {
+            if (!is_object($item)) {
+                $item = (object)$item;
+            }
+
+            if ($tolower) {
+                if (strtolower($item->$prop) === strtolower($needle)) {
+                    return true;
+                }
+            } else {
+                if ($item->$prop === $needle) {
+                    return true;
+                }
+            }
+            
+        }
+
+        return false;
+    }
 }

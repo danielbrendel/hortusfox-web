@@ -2350,6 +2350,54 @@ fieldset .field {
     margin-top: 20px;
 }
 
+.admin-attribute-schema-list {
+    position: relative;
+}
+
+.admin-attribute-schema {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.admin-attribute-schema label, .admin-attribute-schema span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-attribute-schema input, .admin-attribute-schema select {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-attribute-schema-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: rgb(150, 150, 150);
+}
+
+.admin-attribute-schema-item-input {
+    width: 30%;
+}
+
+.admin-attribute-schema-actions {
+    position: relative;
+    display: inline-block;
+}
+
+.admin-attribute-schema-item-centered {
+    text-align: center;
+}
+
+.admin-attribute-schema-action-item {
+    position: relative;
+}
+
+.admin-attribute-schema-actions {
+    position: relative;
+    margin-top: 20px;
+}
+
 .admin-attributes {
     color: rgb(150, 150, 150);
 }

@@ -379,7 +379,7 @@ return [
 	'remove_custom_attribute' => 'Attribut löschen',
 	'confirm_remove_custom_attribute' => 'Soll dieses Attribut wirklich gelöscht werden?',
 	'attributes' => 'Attribute',
-	'attributes_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.',
+	'attributes_visibility_hint' => 'Hier kann die Sichtbarkeit von Standard-Attributen eingestellt werden.',
 	'confirm_remove_task' => 'Soll diese Aufgabe wirklich gelöscht werden?',
 	'plant_photo_orientation_hint' => 'Für das Hauptfoto wird das Hochformat empfohlen.',
 	'select' => 'Auswählen',
@@ -388,4 +388,10 @@ return [
 	'custom_attribute_datatype_double' => 'Gleitkommazahl',
 	'custom_attribute_datatype_string' => 'Text',
 	'custom_attribute_datatype_datetime' => 'Datum',
+	'attributes_schema_hint' => 'Hier können Pflanzeneigenschaften verwaltet werden, die für alle Pflanzen zur Verfügung stehen sollen',
+	'attribute_schema_added_successfully' => 'Die globale Pflanzeneigenschaft wurde erfolgreich hinzugefügt',
+	'attribute_schema_edited_successfully' => 'Die globale Pflanzeneigenschaft wurde erfolgreich aktualisiert',
+	'attribute_schema_removed_successfully' => 'Die globale Pflanzeneigenschaft wurde erfolgreich entfernt',
+	'confirm_remove_attribute_schema' => 'Soll diese Pflanzeneigenschaft wirklich entfernt werden?',
+	'allow_custom_attributes' => 'Allen erlauben, spezifische Pflanzenattribute einer Pflanze zu verwalten'
 ];

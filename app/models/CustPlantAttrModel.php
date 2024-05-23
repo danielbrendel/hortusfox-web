@@ -22,6 +22,8 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
         try {
             $result = [];
 
+            $globals = CustAttrSchemaModel::getAll()?->asArray();
+
             $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ?', [$plantId]);
             foreach ($data as $item) {
                 $entry = new stdClass();
@@ -30,8 +32,25 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
                 $entry->label = $item->get('label');
                 $entry->datatype = $item->get('datatype');
                 $entry->content = static::interpretContent($item->get('content'), $item->get('datatype'));
+                $entry->global = UtilsModule::in_array_stdclass($item->get('label'), $globals, 'label');
 
                 $result[] = $entry;
+            }
+            
+            if (is_array($globals)) {
+                foreach ($globals as $global) {
+                    if (!UtilsModule::in_array_stdclass($global['label'], $result, 'label')) {
+                        $entry = new stdClass();
+                        $entry->id = 0;
+                        $entry->plant = $plantId;
+                        $entry->label = $global['label'];
+                        $entry->datatype = $global['datatype'];
+                        $entry->content = null;
+                        $entry->global = true;
+
+                        $result[] = $entry;
+                    }
+                }
             }
 
             return $result;
@@ -77,7 +96,7 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
      * @param $datatype
      * @param $content
      * @param $api
-     * @return void
+     * @return int
      * @throws \Exception
      */
     public static function addAttribute($plant, $label, $datatype, $content, $api = false)
@@ -97,6 +116,10 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
             if (!$api) {
                 LogModel::addLog($user->get('id'), $plant, '[add] ' . $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
             }
+
+            $new_entry = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            
+            return ($new_entry) ? $new_entry->get('id') : 0;
         } catch (\Exception $e) {
             throw $e;
         }
@@ -120,6 +143,11 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
                 if (!$user) {
                     throw new \Exception('Invalid user');
                 }
+            }
+
+            $exists = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            if (!$exists) {
+                $id = static::addAttribute($plant, $label, $datatype, $content);
             }
             
             static::raw('UPDATE `' . self::tableName() . '` SET label = ?, datatype = ?, content = ? WHERE id = ?', [

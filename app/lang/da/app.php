@@ -378,7 +378,7 @@ return [
 	'confirm_remove_custom_attribute' => 'Vil du virkelig fjerne denne attribut?',
 	'timezone' => 'Tidszone',
 	'attributes' => 'Egenskaber',
-	'attributes_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.',
+	'attributes_visibility_hint' => 'Her kan du vælge, hvilke standard anlægsattributter, der skal være tilgængelige.',
 	'confirm_remove_task' => 'Vil du virkelig fjerne denne opgave?',
 	'plant_photo_orientation_hint' => 'Brug venligst portrætretning til hovedbilledet.',
 	'select' => 'Vælg',
@@ -387,4 +387,10 @@ return [
 	'custom_attribute_datatype_double' => 'Flydende kommanummer',
 	'custom_attribute_datatype_string' => 'Tekst',
 	'custom_attribute_datatype_datetime' => 'Dato',
+	'attributes_schema_hint' => 'Her kan du administrere planteattributter, der er globalt tilgængelige for alle fabrikker',
+	'attribute_schema_added_successfully' => 'Global planteattribut blev tilføjet',
+	'attribute_schema_edited_successfully' => 'Global planteattribut blev opdateret',
+	'attribute_schema_removed_successfully' => 'Global planteattribut blev fjernet',
+	'confirm_remove_attribute_schema' => 'Vil du virkelig fjerne dette element?',
+	'allow_custom_attributes' => 'Tillad brugere at administrere tilpassede plantespecifikke attributter'
 ];
