@@ -393,5 +393,6 @@ return [
 	'attribute_schema_edited_successfully' => 'Die globale Pflanzeneigenschaft wurde erfolgreich aktualisiert',
 	'attribute_schema_removed_successfully' => 'Die globale Pflanzeneigenschaft wurde erfolgreich entfernt',
 	'confirm_remove_attribute_schema' => 'Soll diese Pflanzeneigenschaft wirklich entfernt werden?',
-	'allow_custom_attributes' => 'Allen erlauben, spezifische Pflanzenattribute einer Pflanze zu verwalten'
+	'allow_custom_attributes' => 'Allen erlauben, spezifische Pflanzenattribute einer Pflanze zu verwalten',
+	'admin_api_hint' => 'Hier können die API-Schlüssel des Arbeitsraumes verwaltet werden. API-Schlüssel sind zwingend notwendig, um REST API Anfragen auf den Arbeitsraum auszuführen.'
 ];

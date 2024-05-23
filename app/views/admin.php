@@ -708,6 +708,8 @@
 <div class="admin-api {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'api')) ? 'is-hidden' : ''}}">
     <h2>{{ __('app.api') }}</h2>
 
+    <p>{{ __('app.admin_api_hint') }}</p>
+
     <a class="button is-link" href="{{ url('/admin/api/add') }}">{{ __('app.add') }}</a>
 
     <div>
@@ -725,7 +727,7 @@
                 <tr>
                     <td>{{ $api_key->get('token') }}</td>
                     <td><input type="checkbox" id="api-key-checkbox-{{ $api_key->get('id') }}" value="1" onclick="window.vue.toggleApiKey({{ $api_key->get('id') }}); return false;" {{ (($api_key->get('active')) ? 'checked': '') }}/>&nbsp;{{ __('app.active') }}</td>
-                    <td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_api_key') }}')) { location.href = '{{ url('/admin/api/' . $api_key->get('token') . '/remove') }}'; }"><i class="fas fa-times"></i></a></td>
+                    <td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_api_key') }}')) { location.href = '{{ url('/admin/api/' . $api_key->get('token') . '/remove') }}'; }"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

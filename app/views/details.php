@@ -229,7 +229,7 @@
 				<div class="plant-photo-edit is-pointer" onclick="window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo', '{{ __('app.plant_photo_orientation_hint') }}');"><i class="fas fa-upload fa-lg"></i></div>
 			
 				@if (app('enable_media_share', false))
-					<div class="plant-photo-share is-pointer" onclick="window.vue.showSharePhoto({{ $plant->get('id') }}, '{{ $plant->get('name') }}', 'preview');"><i class="fas fa-share fa-lg"></i></div>
+					<div class="plant-photo-share is-pointer" onclick="window.vue.showSharePhoto({{ $plant->get('id') }}, document.getElementById('plant-details-plant-name-{{ $plant->get('id') }}').innerText, 'preview');"><i class="fas fa-share fa-lg"></i></div>
 				@endif
 			</div>
 		</div>
@@ -351,7 +351,7 @@
 		</span>
 
 		<span>
-			<a class="button" href="javascript:void(0);" onclick="document.getElementById('title-plant-qr-code').value = '{{ '#' . $plant->get('id') . ' ' . $plant->get('name') }}'; window.vue.generateAndShowQRCode({{ $plant->get('id') }});">{{ __('app.show_qr_code') }}</a>
+			<a class="button" href="javascript:void(0);" onclick="document.getElementById('title-plant-qr-code').value = '#{{ $plant->get('id') }} ' + document.getElementById('plant-details-plant-name-{{ $plant->get('id') }}').innerText; window.vue.generateAndShowQRCode({{ $plant->get('id') }});">{{ __('app.show_qr_code') }}</a>
 		</span>
 	</div>
 </div>

@@ -393,5 +393,6 @@ return [
 	'attribute_schema_edited_successfully' => 'El atributo global de la planta se actualizó exitosamente',
 	'attribute_schema_removed_successfully' => 'El atributo global de la planta se eliminó con éxito',
 	'confirm_remove_attribute_schema' => '¿Realmente deseas eliminar este elemento?',
-	'allow_custom_attributes' => 'Permitir a los usuarios administrar atributos personalizados específicos de la planta'
+	'allow_custom_attributes' => 'Permitir a los usuarios administrar atributos personalizados específicos de la planta',
+	'admin_api_hint' => 'Aquí puede administrar las claves API para su espacio de trabajo. Se requieren claves API para realizar solicitudes de API REST en su espacio de trabajo.'
 ];

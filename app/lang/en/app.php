@@ -393,5 +393,6 @@ return [
 	'attribute_schema_edited_successfully' => 'Global plant attribute was updated successfully',
 	'attribute_schema_removed_successfully' => 'Global plant attribute was removed successfully',
 	'confirm_remove_attribute_schema' => 'Do you really want to remove this item?',
-	'allow_custom_attributes' => 'Allow users to manage custom plant specific attributes'
+	'allow_custom_attributes' => 'Allow users to manage custom plant specific attributes',
+	'admin_api_hint' => 'Here you can manage API keys for your workspace. API keys are required to perform REST API requests on your workspace.'
 ];

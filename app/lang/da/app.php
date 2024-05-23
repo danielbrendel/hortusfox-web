@@ -392,5 +392,6 @@ return [
 	'attribute_schema_edited_successfully' => 'Global planteattribut blev opdateret',
 	'attribute_schema_removed_successfully' => 'Global planteattribut blev fjernet',
 	'confirm_remove_attribute_schema' => 'Vil du virkelig fjerne dette element?',
-	'allow_custom_attributes' => 'Tillad brugere at administrere tilpassede plantespecifikke attributter'
+	'allow_custom_attributes' => 'Tillad brugere at administrere tilpassede plantespecifikke attributter',
+	'admin_api_hint' => 'Her kan du administrere API-nøgler til dit arbejdsområde. API-nøgler er nødvendige for at udføre REST API-anmodninger på dit arbejdsområde.'
 ];
