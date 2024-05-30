@@ -247,6 +247,10 @@ cp -r /tmp/themes/* /var/www/html/public/themes
 # Set permissions to folder for themes
 chown -R www-data:www-data /var/www/html/public/themes
 
+# Set permissions to public folder
+chown -R www-data:www-data /var/www/html/public
+chmod 755 /var/www/html/public
+
 # Print informational message
 echo -e "\033[32mThe system is now ready for operation.\033[39m"
 
