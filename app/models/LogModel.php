@@ -49,14 +49,16 @@ class LogModel extends \Asatru\Database\Model {
             foreach ($history as $entry) {
                 $log_user = UserModel::getUserById($entry->get('user'));
 
-                $result[] = [
-                    'user' => $log_user->get('name'),
-                    'target' => $entry->get('target'),
-                    'property' => $entry->get('property'),
-                    'value' => $entry->get('value'),
-                    'link' => $entry->get('link'),
-                    'date' => $entry->get('created_at')
-                ];
+                if ($log_user) {
+                    $result[] = [
+                        'user' => $log_user->get('name'),
+                        'target' => $entry->get('target'),
+                        'property' => $entry->get('property'),
+                        'value' => $entry->get('value'),
+                        'link' => $entry->get('link'),
+                        'date' => $entry->get('created_at')
+                    ];
+                }
             }
 
             return $result;
