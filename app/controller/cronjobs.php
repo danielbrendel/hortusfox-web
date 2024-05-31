@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Cronjobs controller
+ * Class CronjobsController
+ * 
+ * Gateway to all cronjobs
  */
 class CronjobsController extends BaseController {
     /**

@@ -1,9 +1,9 @@
 <?php 
 
 /**
- * Base controller class
+ * Class BaseController
  * 
- * Extend or modify to fit your project needs
+ * Perform base operations that are the same for various child controllers
  */
 class BaseController extends Asatru\Controller\Controller {
 	/**

@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Search controller
+ * Class SearchController
+ * 
+ * Gateway to the search feature
  */
 class SearchController extends BaseController {
     const INDEX_LAYOUT = 'layout';

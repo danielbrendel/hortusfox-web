@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Index controller
+ * Class IndexController
+ * 
+ * Gateway to all main actions
  */
 class IndexController extends BaseController {
 	const INDEX_LAYOUT = 'layout';

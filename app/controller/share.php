@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your controller
+ * Class ShareController
+ * 
+ * Gateway to media sharing
  */
 class ShareController extends BaseController {
     /**

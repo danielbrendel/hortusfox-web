@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your controller
+ * Class WeatherController
+ * 
+ * Gateway to weather forecast actions
  */
 class WeatherController extends BaseController {
     const INDEX_LAYOUT = 'layout';

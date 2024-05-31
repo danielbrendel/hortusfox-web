@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your controller
+ * Class CalendarController
+ * 
+ * Gateway to the workspace calendar
  */
 class CalendarController extends BaseController {
     const INDEX_LAYOUT = 'layout';

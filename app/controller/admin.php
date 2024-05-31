@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Admin controller
+ * Class AdminController
+ * 
+ * Gateway to administrative operations
  */
 class AdminController extends BaseController {
     /**

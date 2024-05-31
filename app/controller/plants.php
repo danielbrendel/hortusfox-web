@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Plants controller
+ * Class PlantsController
+ * 
+ * Gateway to plant related actions
  */
 class PlantsController extends BaseController {
     const INDEX_LAYOUT = 'layout';

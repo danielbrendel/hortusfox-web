@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Inventory controller
+ * Class InventoryController
+ * 
+ * Gateway to the inventory
  */
 class InventoryController extends BaseController {
     const INDEX_LAYOUT = 'layout';

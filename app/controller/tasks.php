@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Tasks controller
+ * Class TasksController
+ * 
+ * Gateway to task actions
  */
 class TasksController extends BaseController {
     const INDEX_LAYOUT = 'layout';

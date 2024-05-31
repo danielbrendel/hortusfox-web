@@ -1,7 +1,9 @@
 <?php
 
 /**
- * User controller
+ * Class UserController
+ * 
+ * Gateway to user management
  */
 class UserController extends BaseController {
     const INDEX_LAYOUT = 'layout';

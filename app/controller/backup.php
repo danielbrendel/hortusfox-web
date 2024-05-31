@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your controller
+ * Class BackupController
+ * 
+ * Gateway to imports and exports of backups
  */
 class BackupController extends BaseController {
     /**

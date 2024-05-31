@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your controller
+ * Class ApiController
+ * 
+ * Gateway to the workspace REST API
  */
 class ApiController extends BaseController {
     public function __construct()

@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Chat controller
+ * Class ChatController
+ * 
+ * Gateway to the collaborative group chat
  */
 class ChatController extends BaseController {
     const INDEX_LAYOUT = 'layout';
