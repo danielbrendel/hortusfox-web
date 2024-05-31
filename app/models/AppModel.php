@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class AppModel
+ * 
+ * Management of app environment settings
  */ 
 class AppModel extends \Asatru\Database\Model {
     /**

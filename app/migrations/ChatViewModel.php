@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class specifies a migration
+ * Class ChatViewModel_Migration
  */
 class ChatViewModel_Migration {
     private $database = null;

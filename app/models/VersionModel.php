@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class VersionModel
+ * 
+ * Used to query MySQL version
  */ 
 class VersionModel extends \Asatru\Database\Model {
     /**

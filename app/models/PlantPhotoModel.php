@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class PlantPhotoModel
+ * 
+ * Manages the photo galleries of plants
  */ 
 class PlantPhotoModel extends \Asatru\Database\Model {
     /**

@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class ChatMsgModel
+ * 
+ * Manages chat messages
  */ 
 class ChatMsgModel extends \Asatru\Database\Model {
     /**

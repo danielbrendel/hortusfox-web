@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class specifies a migration
+ * Class InventoryModel_Migration
  */
 class InventoryModel_Migration {
     private $database = null;

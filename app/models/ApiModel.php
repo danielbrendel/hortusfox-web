@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class ApiModel
+ * 
+ * Manage API keys that are required to access the REST API of a workspace
  */ 
 class ApiModel extends \Asatru\Database\Model {
     /**

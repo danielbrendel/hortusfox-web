@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class UserModel
+ * 
+ * Manages user accounts
  */ 
 class UserModel extends \Asatru\Database\Model {
     /**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class specifies a migration
+ * Class CalendarClassModel_Migration
  */
 class CalendarClassModel_Migration {
     private $database = null;

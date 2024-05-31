@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class LocationsModel
+ * 
+ * Manages plant locations
  */ 
 class LocationsModel extends \Asatru\Database\Model {
     /**

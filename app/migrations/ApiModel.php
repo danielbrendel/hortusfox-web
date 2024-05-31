@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class specifies a migration
+ * Class ApiModel_Migration
  */
 class ApiModel_Migration {
     private $database = null;

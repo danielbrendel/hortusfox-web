@@ -2,6 +2,8 @@
 
 /**
  * Class TaskInformerModel
+ * 
+ * Manages informing users of tasks having a due date
  */ 
 class TaskInformerModel extends \Asatru\Database\Model {
     /**

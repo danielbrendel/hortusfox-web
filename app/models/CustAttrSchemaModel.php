@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class CustAttrSchemaModel
+ * 
+ * Manages global custom plant attribute schemas
  */ 
 class CustAttrSchemaModel extends \Asatru\Database\Model {
     /**

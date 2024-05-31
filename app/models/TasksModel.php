@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class TasksModel
+ * 
+ * Manages tasks
  */ 
 class TasksModel extends \Asatru\Database\Model {
     /**

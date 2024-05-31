@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class InventoryModel
+ * 
+ * Manages inventory data
  */ 
 class InventoryModel extends \Asatru\Database\Model {
     /**

@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class InvGroupModel
+ * 
+ * Manages inventory group items
  */ 
 class InvGroupModel extends \Asatru\Database\Model {
     /**

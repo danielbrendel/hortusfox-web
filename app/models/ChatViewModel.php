@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class ChatViewModel
+ * 
+ * Handles the "seen" status of chat messages by users
  */ 
 class ChatViewModel extends \Asatru\Database\Model {
     /**

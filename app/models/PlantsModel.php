@@ -3,7 +3,9 @@
 use chillerlan\QRCode\{QRCode, QROptions};
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class PlantsModel
+ * 
+ * Extensive management of plants
  */ 
 class PlantsModel extends \Asatru\Database\Model {
     const PLANT_STATE_GOOD = 'in_good_standing';

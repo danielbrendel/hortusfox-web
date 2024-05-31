@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class PlantDefAttrModel
+ * 
+ * Manages visibility of default plant attributes
  */ 
 class PlantDefAttrModel extends \Asatru\Database\Model {
     /**

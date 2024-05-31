@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class specifies a migration
+ * Class LocationsModel_Migration
  */
 class LocationsModel_Migration {
     private $database = null;

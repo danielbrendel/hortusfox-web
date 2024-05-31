@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class LogModel
+ * 
+ * Manages the system log
  */ 
 class LogModel extends \Asatru\Database\Model {
     const LOG_MAX_STRING_LENGTH = 1024;

@@ -1,11 +1,7 @@
 <?php
 
-/*
-    Asatru PHP - Migration for CustAttrSchemaModel
-*/
-
 /**
- * This class specifies a migration
+ * Class CustAttrSchemaModel_Migration
  */
 class CustAttrSchemaModel_Migration {
     private $database = null;

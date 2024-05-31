@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class specifies a migration
+ * Class InvGroupModel_Migration
  */
 class InvGroupModel_Migration {
     private $database = null;

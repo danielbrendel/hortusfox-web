@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class CustPlantAttrModel
+ * 
+ * Manages custom plant specific attributes
  */ 
 class CustPlantAttrModel extends \Asatru\Database\Model {
     static $data_types = [

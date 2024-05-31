@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class SessionModel
+ * 
+ * Manages user login sessions
  */ 
 class SessionModel extends \Asatru\Database\Model {
     /**

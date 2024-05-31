@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class extends the base model class and represents your associated table
+ * Class CalendarModel
+ * 
+ * Manages calendar data
  */ 
 class CalendarModel extends \Asatru\Database\Model {
     public static $class_unknown = [
