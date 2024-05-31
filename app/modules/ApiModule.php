@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your module
+ * Class ApiModule
+ *
+ * Communicates with the API of the official HortusFox homepage 
  */
 class ApiModule {
     /**

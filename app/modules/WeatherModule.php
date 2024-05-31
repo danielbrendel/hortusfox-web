@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your module
+ * Class WeatherModule
+ * 
+ * Manages weather data from OpenWeatherMap
  */
 class WeatherModule {
     const WEATHER_API_ENDPOINT = 'http://api.openweathermap.org';

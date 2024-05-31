@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your module
+ * Class ThemeModule
+ * 
+ * Manages themes of the workspace
  */
 class ThemeModule {
     /** @var array $theme_data */

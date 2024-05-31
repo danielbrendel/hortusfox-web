@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your module
+ * Class TextBlockModule
+ * 
+ * Manages system chat messages
  */
 class TextBlockModule {
     /**

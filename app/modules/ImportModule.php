@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your module
+ * Class ImportModule
+ * 
+ * Performs imports of backups
  */
 class ImportModule {
     /**

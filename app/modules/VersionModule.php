@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your module
+ * Class VersionModule
+ * 
+ * Used to check for new versions via the official HortusFox website
  */
 class VersionModule {
     const CACHED_VERSION_TIME = 86400;

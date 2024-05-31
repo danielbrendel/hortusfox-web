@@ -1,7 +1,9 @@
 <?php
 
 /**
- * This class represents your module
+ * Class UtilsModule
+ * 
+ * A collection of various useful utility methods
  */
 class UtilsModule {
     const TYPING_SECONDS = 5;
