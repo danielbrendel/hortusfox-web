@@ -1,17 +1,5 @@
-<!-- Error 404 yield file -->
+<h1>Error 404</h1>
 
-<div class="outer">
-	<div class="inner">
-        <div class="title">
-            <h1>Error 404</h1>
-        </div>
+<h2 class="smaller-headline">The requested resource <b>{{ $_SERVER['REQUEST_URI'] }}</b> was not found on the server.</h2>
 
-        <div class="text">
-            <p>The requested resource {{ $_SERVER['REQUEST_URI'] }} was not found on the server.</p>
-        </div>
-
-        <div class="links">
-            <button type="button" class="button btn-col-contact" onclick="location.href = '{{ url('/') }}';">Go home</button>
-        </div>
-    </div>
-</div>
+<a class="button is-link" href="{{ url('/') }}">Go to dashboard</a>

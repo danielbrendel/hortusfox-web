@@ -3,7 +3,7 @@
 /**
  * Class Error404Controller
  * 
- * Serve error 404 information
+ * Serve error 404 page
  */
 class Error404Controller extends BaseController {
 	/**
@@ -14,14 +14,13 @@ class Error404Controller extends BaseController {
 	 */
 	public function index($request)
 	{
-		//Add a log line
-		addLog(ASATRU_LOG_INFO, "Error 404");
-
-		//Generate the 404 view
 		$v = new Asatru\View\ViewHandler();
-		$v->setLayout('layout') //The layout file. Will be \app\views\layout.php
-			->setYield('yield', 'error/404'); //The index yield. Will be \app\views\error\404.php
+		$v->setLayout('layout')
+			->setYield('content', 'error/404')
+			->setVars([
+				'user' => UserModel::getAuthUser()
+			]);
 		
-		return $v; //Pass the object to the engine
+		return $v;
 	}
 }
