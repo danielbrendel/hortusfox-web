@@ -43,6 +43,10 @@ class PlantPhotoModel extends \Asatru\Database\Model {
             ]);
 
             LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label, url('/plants/details/' . $plantId . '#plant-gallery-photo-anchor'));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] add_gallery_photo: ' . $label . ' = ' . $file_name . '.' . $file_ext);
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -90,6 +94,10 @@ class PlantPhotoModel extends \Asatru\Database\Model {
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$photo]);
 
             LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_gallery_photo', $photo_data->get('label'), url('/plants/details/' . $plant->get('id') . '#plant-gallery-photo-anchor'));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plant->get('id'), '[System] remove_gallery_photo: ' . $photo_data->get('label'));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -143,7 +151,14 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     public static function editLabel($id, $label)
     {
         try {
+            $photo_data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $plant = PlantsModel::getDetails($photo_data->get('plant'));
+
             static::raw('UPDATE `' . self::tableName() . '` SET label = ? WHERE id = ?', [$label, $id]);
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plant->get('id'), '[System] edit_gallery_photo: \'' . $photo_data->get('label') . '\' to \'' . $label . '\'');
+            }
         } catch (\Exception $e) {
             throw $e;
         }

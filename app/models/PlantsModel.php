@@ -323,6 +323,10 @@ class PlantsModel extends \Asatru\Database\Model {
             if (!$api) {
                 LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
             }
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $value);
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -352,6 +356,14 @@ class PlantsModel extends \Asatru\Database\Model {
             static::raw('UPDATE `' . self::tableName() . '` SET scientific_name = ?, knowledge_link = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$text, $link, $user->get('id'), $plantId]);
         
             LogModel::addLog($user->get('id'), $plantId, 'scientific_name|knowledge_link', $text . '|' . ((strlen($link) > 0) ? $link : 'null'), url('/plants/details/' . $plantId));
+        
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] scientific_name = ' . $text);
+
+                if (strlen($link) > 0) {
+                    PlantLogModel::addEntry($plantId, '[System] knowledge_link = ' . $link);
+                }
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -393,6 +405,10 @@ class PlantsModel extends \Asatru\Database\Model {
             static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name . '_thumb.' . $file_ext, $user->get('id'), $plantId]);
         
             LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $file_name . '.' . $file_ext);
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -549,6 +565,10 @@ class PlantsModel extends \Asatru\Database\Model {
 
             LogModel::addLog($user->get('id'), $plant->get('name'), 'mark_historical', '', url('/plants/history'));
             TextBlockModule::plantToHistory($plant->get('name'), url('/plants/history'));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] history = 1');
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -573,6 +593,10 @@ class PlantsModel extends \Asatru\Database\Model {
 
             LogModel::addLog($user->get('id'), $plant->get('name'), 'historical_restore', '', url('/plants/details/' . $plantId));
             TextBlockModule::plantFromHistory($plant->get('name'), url('/plants/details/' . $plantId));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] history = 0');
+            }
         } catch (\Exception $e) {
             throw $e;
         }

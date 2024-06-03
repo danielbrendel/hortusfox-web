@@ -87,6 +87,12 @@
         </div>
 
         <div class="field">
+            <div class="control">
+                <input type="checkbox" class="checkbox" name="system_message_plant_log" value="1" {{ (app('system_message_plant_log')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.system_message_plant_log') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
             <label class="label">{{ __('app.online_time_limit') }}</label>
             <div class="control">
                 <input type="number" class="input" name="onlinetimelimit" value="{{ app('chat_timelimit') }}" required>
