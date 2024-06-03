@@ -674,4 +674,27 @@ class PlantsController extends BaseController {
 			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/log/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_plant_log_entry($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			$plant = $request->params()->query('plant');
+			$content = $request->params()->query('content');
+			$anchor = $request->params()->query('anchor');
+			
+			PlantLogModel::editEntry($item, $content);
+
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		}
+	}
 }

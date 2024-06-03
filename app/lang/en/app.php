@@ -400,5 +400,6 @@ return [
 	'plant_log_date' => 'Created / Updated',
 	'plant_log_actions' => 'Actions',
 	'no_plant_log_entries_yet' => 'There are no plant log entries yet.',
-	'add_plant_log_entry' => 'Add entry'
+	'add_plant_log_entry' => 'Add entry',
+	'edit_plant_log_entry' => 'Edit entry'
 ];

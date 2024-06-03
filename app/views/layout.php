@@ -1352,9 +1352,6 @@
 				</div>
 			</div>
 
-
-
-
 			<div class="modal" :class="{'is-active': bShowAddPlantLogEntry}">
 				<div class="modal-background"></div>
 				<div class="modal-card">
@@ -1380,6 +1377,36 @@
 					<footer class="modal-card-foot is-stretched">
 						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddPlantLogEntry').submit();">{{ __('app.add') }}</button>
 						<button class="button" onclick="window.vue.bShowAddPlantLogEntry = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditPlantLogEntry}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_plant_log_entry') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditPlantLogEntry = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditPlantLogEntry" method="POST" action="{{ url('/plants/log/edit') }}">
+							@csrf
+
+							<input type="hidden" name="item" id="inpEditPlantLogEntryItemId"/>
+							<input type="hidden" name="plant" id="inpEditPlantLogEntryPlantId"/>
+							<input type="hidden" name="anchor" id="inpEditPlantLogEntryAnchor"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.plant_log_content') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="content" id="inpEditPlantLogEntryContent" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPlantLogEntry').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditPlantLogEntry = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
 			</div>
