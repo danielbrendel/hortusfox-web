@@ -353,12 +353,12 @@
 
 				<tbody>
 					@foreach ($plant_log_entries as $plant_log_entry)
-					<tr>
+					<tr id="plant-log-entry-table-row-{{ $plant_log_entry->get('id') }}">
 						<td id="plant-log-entry-item-{{ $plant_log_entry->get('id') }}">{{ $plant_log_entry->get('content') }}</td>
 						<td>{{ date('Y-m-d', strtotime($plant_log_entry->get('created_at'))) }} / {{ date('Y-m-d', strtotime($plant_log_entry->get('updated_at'))) }}</td>
 						<td>
 							<span class="float-right">
-								<span><a href="javascript:void(0);" onclick="window.vue.showEditPlantLogEntry('{{ $plant_log_entry->get('id') }}', '{{ $plant->get('id') }}', document.getElementById('plant-log-entry-item-{{ $plant_log_entry->get('id') }}').innerText, 'plant-log-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+								<span><a href="javascript:void(0);" onclick="window.vue.showEditPlantLogEntry('{{ $plant_log_entry->get('id') }}', '{{ $plant->get('id') }}', document.getElementById('plant-log-entry-item-{{ $plant_log_entry->get('id') }}').innerText, 'plant-log-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_plant_log_entry') }}')) { window.vue.removePlantLogEntry('{{ $plant_log_entry->get('id') }}', 'plant-log-entry-table-row-{{ $plant_log_entry->get('id') }}'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
 							</span>
 						</td>
 					</tr>

@@ -342,6 +342,16 @@ window.vue = new Vue({
             window.vue.bShowEditPlantLogEntry = true;
         },
 
+        removePlantLogEntry: function(id, table_entry) {
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/log/remove', { item: id }, function(response) {
+                if (response.code == 200) {
+                    document.getElementById(table_entry).remove();
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         markHistorical: function(plant) {
             if (!confirm(window.vue.confirmPlantAddHistory)) {
                 return;

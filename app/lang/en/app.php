@@ -401,5 +401,6 @@ return [
 	'plant_log_actions' => 'Actions',
 	'no_plant_log_entries_yet' => 'There are no plant log entries yet.',
 	'add_plant_log_entry' => 'Add entry',
-	'edit_plant_log_entry' => 'Edit entry'
+	'edit_plant_log_entry' => 'Edit entry',
+	'confirm_remove_plant_log_entry' => 'Do you really want to remove this entry?'
 ];

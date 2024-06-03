@@ -50,6 +50,7 @@ return [
     array('/plants/qrcode/bulk', 'POST', 'plants@get_bulk_qr_codes'),
     array('/plants/log/add', 'POST', 'plants@add_plant_log_entry'),
     array('/plants/log/edit', 'POST', 'plants@edit_plant_log_entry'),
+    array('/plants/log/remove', 'POST', 'plants@remove_plant_log_entry'),
 
     /** User controller Controller */
     array('/profile', 'GET', 'user@view_profile'),

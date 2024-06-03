@@ -697,4 +697,28 @@ class PlantsController extends BaseController {
 			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/log/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_plant_log_entry($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			
+			PlantLogModel::removeEntry($item);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }
