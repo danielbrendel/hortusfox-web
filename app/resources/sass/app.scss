@@ -1365,6 +1365,30 @@ fieldset .field {
     color: rgb(135, 135, 135);
 }
 
+.plant-log {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.plant-log-title {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: rgb(150, 150, 150);
+}
+
+.plant-log table {
+    width: 100%;
+}
+
+.plant-log strong {
+    color: rgb(100, 100, 100);
+}
+
+.plant-log-action {
+    margin-top: 20px;
+}
+
 .stats {
     position: relative;
     margin-top: 10px;

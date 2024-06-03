@@ -154,8 +154,8 @@ class PlantsController extends BaseController {
 		$tags = explode(' ', $tagstr);
 
 		$photos = PlantPhotoModel::getPlantGallery($plant_id);
-
 		$custom_attributes = CustPlantAttrModel::getForPlant($plant_id);
+		$plant_log_entries = PlantLogModel::getLogEntries($plant_id);
 		
 		return parent::view(['content', 'details'], [
 			'user' => $user,
@@ -164,6 +164,7 @@ class PlantsController extends BaseController {
 			'photos' => $photos,
 			'tags' => $tags,
 			'custom_attributes' => $custom_attributes,
+			'plant_log_entries' => $plant_log_entries,
 			'edit_user_name' => $edit_user_name,
 			'edit_user_when' => $edit_user_when
 		]);
@@ -649,6 +650,28 @@ class PlantsController extends BaseController {
 				'code' => 500,
 				'msg' => $e->getMessage()
 			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/log/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_plant_log_entry($request)
+	{
+		try {
+			$plant = $request->params()->query('plant');
+			$content = $request->params()->query('content');
+			$anchor = $request->params()->query('anchor');
+
+			PlantLogModel::addEntry($plant, $content);
+
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
 		}
 	}
 }

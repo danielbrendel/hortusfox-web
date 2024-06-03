@@ -335,6 +335,49 @@
 </div>
 
 <div class="columns plant-column">
+	<div class="column is-full">
+		<div class="plant-log">
+			<div class="plant-log-title">{{ __('app.plant_log') }}</div>
+
+			<a name="plant-log-anchor"></a>
+
+			@if ((is_countable($plant_log_entries)) && (count($plant_log_entries) > 0))
+			<table>
+				<thead>
+					<tr>
+						<td>{{ __('app.plant_log_content') }}</td>
+						<td>{{ __('app.plant_log_date') }}</td>
+						<td><span class="float-right">{{ __('app.plant_log_actions') }}</span></td>
+					</tr>
+				</thead>
+
+				<tbody>
+					@foreach ($plant_log_entries as $plant_log_entry)
+					<tr>
+						<td>{{ $plant_log_entry->get('content') }}</td>
+						<td>{{ date('Y-m-d', strtotime($plant_log_entry->get('created_at'))) }} / {{ date('Y-m-d', strtotime($plant_log_entry->get('updated_at'))) }}</td>
+						<td>
+							<span class="float-right">
+								<span><a href="javascript:void(0);"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+							</span>
+						</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+			@else
+				<strong>{{ __('app.no_plant_log_entries_yet') }}</strong>
+			@endif
+
+			<div class="plant-log-action">
+				<a class="button is-info" href="javascript:void(0);" onclick="window.vue.showAddPlantLogEntry('{{ $plant->get('id') }}', 'plant-log-anchor');">{{ __('app.add_plant_log_entry') }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="columns plant-column">
 	<div class="column is-full plant-button-group">
 		@if (app('history_enable'))
 		<span>

@@ -51,6 +51,7 @@ window.vue = new Vue({
         bShowAddCustomPlantAttribute: false,
         bShowEditCustomPlantAttribute: false,
         bShowCreateNewAttributeSchema: false,
+        bShowAddPlantLogEntry: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -324,6 +325,12 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
+        },
+
+        showAddPlantLogEntry: function(plant, anchor = '') {
+            document.getElementById('inpAddPlantLogEntryPlantId').value = plant;
+            document.getElementById('inpAddPlantLogEntryAnchor').value = anchor;
+            window.vue.bShowAddPlantLogEntry = true;
         },
 
         markHistorical: function(plant) {

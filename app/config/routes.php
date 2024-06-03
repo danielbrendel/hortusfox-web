@@ -48,6 +48,7 @@ return [
     array('/plants/clone', 'POST', 'plants@clone_plant'),
     array('/plants/qrcode', 'ANY', 'plants@generate_qr_code'),
     array('/plants/qrcode/bulk', 'POST', 'plants@get_bulk_qr_codes'),
+    array('/plants/log/add', 'POST', 'plants@add_plant_log_entry'),
 
     /** User controller Controller */
     array('/profile', 'GET', 'user@view_profile'),

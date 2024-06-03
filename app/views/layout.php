@@ -1352,6 +1352,38 @@
 				</div>
 			</div>
 
+
+
+
+			<div class="modal" :class="{'is-active': bShowAddPlantLogEntry}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_plant_log_entry') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowAddPlantLogEntry = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmAddPlantLogEntry" method="POST" action="{{ url('/plants/log/add') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpAddPlantLogEntryPlantId"/>
+							<input type="hidden" name="anchor" id="inpAddPlantLogEntryAnchor"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.plant_log_content') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="content" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddPlantLogEntry').submit();">{{ __('app.add') }}</button>
+						<button class="button" onclick="window.vue.bShowAddPlantLogEntry = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))
