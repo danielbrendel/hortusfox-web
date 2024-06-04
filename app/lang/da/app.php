@@ -393,5 +393,14 @@ return [
 	'attribute_schema_removed_successfully' => 'Global planteattribut blev fjernet',
 	'confirm_remove_attribute_schema' => 'Vil du virkelig fjerne dette element?',
 	'allow_custom_attributes' => 'Tillad brugere at administrere tilpassede plantespecifikke attributter',
-	'admin_api_hint' => 'Her kan du administrere API-nøgler til dit arbejdsområde. API-nøgler er nødvendige for at udføre REST API-anmodninger på dit arbejdsområde.'
+	'admin_api_hint' => 'Her kan du administrere API-nøgler til dit arbejdsområde. API-nøgler er nødvendige for at udføre REST API-anmodninger på dit arbejdsområde.',
+	'plant_log' => 'Plantelog',
+	'plant_log_content' => 'Indhold',
+	'plant_log_date' => 'Oprettet / Opdateret',
+	'plant_log_actions' => 'Handlinger',
+	'no_plant_log_entries_yet' => 'Der er endnu ingen plantelogposter.',
+	'add_plant_log_entry' => 'Tilføj post',
+	'edit_plant_log_entry' => 'Rediger post',
+	'confirm_remove_plant_log_entry' => 'Vil du virkelig fjerne denne post?',
+	'system_message_plant_log' => 'Tilføj systemmeddelelser fra planter til log'
 ];

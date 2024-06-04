@@ -394,5 +394,14 @@ return [
 	'attribute_schema_removed_successfully' => 'Die globale Pflanzeneigenschaft wurde erfolgreich entfernt',
 	'confirm_remove_attribute_schema' => 'Soll diese Pflanzeneigenschaft wirklich entfernt werden?',
 	'allow_custom_attributes' => 'Allen erlauben, spezifische Pflanzenattribute einer Pflanze zu verwalten',
-	'admin_api_hint' => 'Hier können die API-Schlüssel des Arbeitsraumes verwaltet werden. API-Schlüssel sind zwingend notwendig, um REST API Anfragen auf den Arbeitsraum auszuführen.'
+	'admin_api_hint' => 'Hier können die API-Schlüssel des Arbeitsraumes verwaltet werden. API-Schlüssel sind zwingend notwendig, um REST API Anfragen auf den Arbeitsraum auszuführen.',
+	'plant_log' => 'Pflanzen Log',
+	'plant_log_content' => 'Inhalt',
+	'plant_log_date' => 'Erstellt / Bearbeitet',
+	'plant_log_actions' => 'Aktionen',
+	'no_plant_log_entries_yet' => 'Es gibt bisher keine Einträge.',
+	'add_plant_log_entry' => 'Eintrag hinzufügen',
+	'edit_plant_log_entry' => 'Eintrag bearbeiten',
+	'confirm_remove_plant_log_entry' => 'Soll dieser Eintrag wirklich gelöscht werden?',
+	'system_message_plant_log' => 'Pflanzenspezifische Systemnachrichten zur Log hinzufügen'
 ];

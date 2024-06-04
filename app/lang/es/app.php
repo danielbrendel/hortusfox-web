@@ -394,5 +394,14 @@ return [
 	'attribute_schema_removed_successfully' => 'El atributo global de la planta se eliminó con éxito',
 	'confirm_remove_attribute_schema' => '¿Realmente deseas eliminar este elemento?',
 	'allow_custom_attributes' => 'Permitir a los usuarios administrar atributos personalizados específicos de la planta',
-	'admin_api_hint' => 'Aquí puede administrar las claves API para su espacio de trabajo. Se requieren claves API para realizar solicitudes de API REST en su espacio de trabajo.'
+	'admin_api_hint' => 'Aquí puede administrar las claves API para su espacio de trabajo. Se requieren claves API para realizar solicitudes de API REST en su espacio de trabajo.',
+	'plant_log' => 'Registro de planta',
+	'plant_log_content' => 'Contenido',
+	'plant_log_date' => 'Creado / Actualizado',
+	'plant_log_actions' => 'Acción',
+	'no_plant_log_entries_yet' => 'Aún no hay entradas en el registro de plantas.',
+	'add_plant_log_entry' => 'Añadir entrada',
+	'edit_plant_log_entry' => 'Editar entrada',
+	'confirm_remove_plant_log_entry' => '¿Realmente deseas eliminar esta entrada?',
+	'system_message_plant_log' => 'Agregar mensajes del sistema de plantas al registro'
 ];
