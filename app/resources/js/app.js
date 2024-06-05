@@ -66,11 +66,13 @@ window.vue = new Vue({
         confirmInventoryItemRemoval: 'Are you sure you want to remove this item?',
         confirmPlantAddHistory: 'Please confirm if you want to do this action.',
         confirmPlantRemoveHistory: 'Please confirm if you want to do this action.',
+        confirmRemovePlantLogEntry: 'Do you really want to remove this entry?',
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
         loadingPleaseWait: 'Please wait...',
         noListItemsSelected: 'No items selected',
         editProperty: 'Edit property',
+        loadMore: 'Load more',
         copiedToClipboard: 'Content has been copied to clipboard.',
         chatTypingEnable: false,
         chatTypingTimer: null,
@@ -346,6 +348,40 @@ window.vue = new Vue({
             window.vue.ajaxRequest('post', window.location.origin + '/plants/log/remove', { item: id }, function(response) {
                 if (response.code == 200) {
                     document.getElementById(table_entry).remove();
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        loadNextPlantLogEntries: function(obj, plant, table) {
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/log/fetch', { plant: plant, paginate: obj.dataset.paginate }, function(response) {
+                if (response.code == 200) {
+                    let tbody = table.getElementsByTagName('tbody')[0];
+
+                    response.data.forEach(function(elem, index) {
+                        let newRow = document.createElement('tr');
+                        newRow.id = 'plant-log-entry-table-row-' + elem.id;
+                        newRow.innerHTML = `
+                            <td id="plant-log-entry-item-` + elem.id + `">` + elem.content + `</td>
+                            <td>` + elem.created_at + ` / ` + elem.updated_at + `</td>
+                            <td>
+                                <span class="float-right">
+                                    <span><a href="javascript:void(0);" onclick="window.vue.showEditPlantLogEntry('` + elem.id + `', '` + plant + `', document.getElementById('plant-log-entry-item-` + elem.id + `').innerText, 'plant-log-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('` + window.vue.confirmRemovePlantLogEntry + `')) { window.vue.removePlantLogEntry('` + elem.id + `', 'plant-log-entry-table-row-` + elem.id + `'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+                                </span>
+                            </td>
+                        `;
+
+                        tbody.appendChild(newRow);
+                    });
+
+                    obj.parentNode.parentNode.remove();
+
+                    let actionRow = document.createElement('tr');
+                    actionRow.id = 'plant-log-load-more';
+                    actionRow.classList.add('plant-log-paginate');
+                    actionRow.innerHTML = `<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantLogEntries(this, '` + plant + `', document.getElementById('plant-log-table'));" data-paginate="` + response.data[response.data.length - 1].id + `">` + window.vue.loadMore + `</a></td>`;
+                    tbody.appendChild(actionRow);
                 } else {
                     alert(response.msg);
                 }

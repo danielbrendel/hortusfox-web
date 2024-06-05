@@ -94,7 +94,7 @@ class PlantLogModel extends \Asatru\Database\Model {
      * @return mixed
      * @throws \Exception
      */
-    public static function getLogEntries($plant, $paginate = null, $limit = 100)
+    public static function getLogEntries($plant, $paginate = null, $limit = 10)
     {
         try {
             if ($paginate) {

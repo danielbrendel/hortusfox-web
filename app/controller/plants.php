@@ -721,4 +721,36 @@ class PlantsController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/log/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function fetch_plant_log_entries($request)
+	{
+		try {
+			$plant = $request->params()->query('plant');
+			$paginate = $request->params()->query('paginate', null);
+			
+			$data = PlantLogModel::getLogEntries($plant, $paginate)?->asArray();
+			if (is_array($data)) {
+				foreach ($data as &$item) {
+					$item['updated_at'] = date('Y-m-d', strtotime($item['updated_at']));
+					$item['created_at'] = date('Y-m-d', strtotime($item['created_at']));
+				}
+			}
+
+			return json([
+				'code' => 200,
+				'data' => $data
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

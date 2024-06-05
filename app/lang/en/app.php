@@ -403,5 +403,6 @@ return [
 	'add_plant_log_entry' => 'Add entry',
 	'edit_plant_log_entry' => 'Edit entry',
 	'confirm_remove_plant_log_entry' => 'Do you really want to remove this entry?',
-	'system_message_plant_log' => 'Add system messages of plants to log'
+	'system_message_plant_log' => 'Add system messages of plants to log',
+	'load_more' => 'Load more'
 ];

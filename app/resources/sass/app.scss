@@ -1369,6 +1369,10 @@ fieldset .field {
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
+    @media screen and (max-width: 410px) {
+        width: 100%;
+        overflow-x: auto;
+    }
 }
 
 .plant-log-title {
@@ -1387,6 +1391,23 @@ fieldset .field {
 
 .plant-log-action {
     margin-top: 20px;
+}
+
+.plant-log-paginate {
+    position: relative;
+}
+
+.plant-log-paginate td {
+    text-align: center;
+}
+
+.plant-log-paginate a {
+    color: rgb(0, 145, 215);
+}
+
+.plant-log-paginate a:hover {
+    color: rgb(0, 145, 215);
+    text-decoration: underline;
 }
 
 .stats {

@@ -1466,11 +1466,13 @@
 				window.vue.confirmSetAllRepotted = '{{ __('app.confirmSetAllRepotted') }}';
 				window.vue.confirmSetAllFertilised = '{{ __('app.confirmSetAllFertilised') }}';
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
+				window.vue.confirmRemovePlantLogEntry = '{{ __('app.confirm_remove_plant_log_entry') }}';
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';
 				window.vue.noListItemsSelected = '{{ __('app.noListItemsSelected') }}';
 				window.vue.editProperty = '{{ __('app.edit_property') }}';
+				window.vue.loadMore = '{{ __('app.load_more') }}';
 				window.vue.copiedToClipboard = '{{ __('app.copied_to_clipboard') }}';
 
 				window.vue.chatTypingEnable = {{ (app('chat_indicator', false)) ? 'true' : 'false' }};

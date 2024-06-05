@@ -403,5 +403,6 @@ return [
 	'add_plant_log_entry' => 'Eintrag hinzufügen',
 	'edit_plant_log_entry' => 'Eintrag bearbeiten',
 	'confirm_remove_plant_log_entry' => 'Soll dieser Eintrag wirklich gelöscht werden?',
-	'system_message_plant_log' => 'Pflanzenspezifische Systemnachrichten zur Log hinzufügen'
+	'system_message_plant_log' => 'Pflanzenspezifische Systemnachrichten zur Log hinzufügen',
+	'load_more' => 'Mehr laden'
 ];

@@ -402,5 +402,6 @@ return [
 	'add_plant_log_entry' => 'Tilføj post',
 	'edit_plant_log_entry' => 'Rediger post',
 	'confirm_remove_plant_log_entry' => 'Vil du virkelig fjerne denne post?',
-	'system_message_plant_log' => 'Tilføj systemmeddelelser fra planter til log'
+	'system_message_plant_log' => 'Tilføj systemmeddelelser fra planter til log',
+	'load_more' => 'Læs mere'
 ];
