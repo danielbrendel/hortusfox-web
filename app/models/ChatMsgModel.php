@@ -42,7 +42,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
             if (count($result) > 0) {
                 UserModel::updateLastSeenMsg($result->get(0)->get('id'));
 
-                $lastsysmsg = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE system = 1 ORDER BY created_at DESC')->first();
+                $lastsysmsg = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE sysmsg = 1 ORDER BY created_at DESC')->first();
                 if ($lastsysmsg) {
                     UserModel::updateLastSeenSysMsg($lastsysmsg->get('id'));
                 }
@@ -96,7 +96,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
                 $limit_token = 'LIMIT ' . strval($limit);
             }
 
-            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE system = 1 AND id > ? ORDER BY created_at DESC ' . $limit_token, [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
+            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE sysmsg = 1 AND id > ? ORDER BY created_at DESC ' . $limit_token, [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
             if (($result) && (count($result) > 0)) {
                 $msg = $result->get(count($result) - 1);
 

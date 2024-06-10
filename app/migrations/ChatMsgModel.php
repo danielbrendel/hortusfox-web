@@ -30,7 +30,7 @@ class ChatMsgModel_Migration {
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('userId INT NOT NULL');
         $this->database->add('message TEXT NOT NULL');
-        $this->database->add('system BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('sysmsg BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }

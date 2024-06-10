@@ -38,7 +38,7 @@
 
             @if (isset($messages))
                 @foreach ($messages as $message)
-                    @if (!$message->get('system'))
+                    @if (!$message->get('sysmsg'))
                         <div class="chat-message {{ ($message->get('userId') == $user->get('id')) ? 'chat-message-right' : '' }}">
                             <div class="chat-message-user">
                                 <div class="is-inline-block" style="color: {{ UserModel::getChatColorForUser($message->get('userId')) }};">{{ UserModel::getNameById($message->get('userId')) }}</div>
