@@ -14,7 +14,7 @@
         </p>
 
         <p>
-            <img src="{{ $url_photo }}" alt="shared photo"/>
+            <img src="{{ $url_asset }}" alt="shared photo"/>
         </p>
 
         <p>
