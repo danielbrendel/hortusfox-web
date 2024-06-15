@@ -135,7 +135,8 @@ return [
 	'language' => 'Language',
 	'show_log' => 'Show log',
 	'preferences_saved_successfully' => 'Preferences were saved successfully',
-	'set_watered' => 'Set all to watered',
+	'set_watered' => 'Set watered',
+	'bulk_set_watered' => 'Set plants to watered',
 	'all_plants_watered' => 'Last watered status has been updated for these plants',
 	'confirmSetAllWatered' => 'Are you sure you want to update the last watered date of all these plants?',
 	'no_plants_found' => 'There were no plants found using your search query',
@@ -404,5 +405,6 @@ return [
 	'edit_plant_log_entry' => 'Edit entry',
 	'confirm_remove_plant_log_entry' => 'Do you really want to remove this entry?',
 	'system_message_plant_log' => 'Add system messages of plants to log',
-	'load_more' => 'Load more'
+	'load_more' => 'Load more',
+	'operationSucceeded' => 'Operation succeeded'
 ];

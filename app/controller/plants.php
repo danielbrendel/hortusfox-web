@@ -594,6 +594,36 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/operation/bulk
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function perform_bulk_operation($request)
+	{
+		try {
+			$result = [];
+
+			$operation = $request->params()->query('operation', null);
+			$plants = json_decode($request->params()->query('list', null));
+
+			foreach ($plants as $plant) {
+				PlantsModel::editPlantAttribute($plant[0], $operation, date('Y-m-d H:i:s'));
+			}
+
+			return json([
+				'code' => 200,
+				'list' => $result
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/qrcode
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

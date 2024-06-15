@@ -2,7 +2,7 @@
 
 <div class="margin-vertical">
 	<div class="is-inline-block is-action-button-margin"><a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = {{ $location }}; window.vue.bShowAddPlant = true;">{{ __('app.add_plant') }}</a></div>
-	<div class="is-inline-block is-action-button-margin"><a class="button is-info" href="javascript:void(0);" onclick="window.vue.updateLastWatered({{ $location }});">{{ __('app.set_watered') }}</a></div>
+	<div class="is-inline-block is-action-button-margin"><a class="button is-info" href="javascript:void(0);" onclick="window.vue.showPerformBulkOperation('last_watered', '{{ __('app.bulk_set_watered') }}', '{{ __('app.set_watered') }}');">{{ __('app.set_watered') }}</a></div>
 	<div class="is-inline-block is-action-button-margin"><a class="button is-warning" href="javascript:void(0);" onclick="window.vue.updateLastRepotted({{ $location }});">{{ __('app.set_repotted') }}</a></div>
 	<div class="is-inline-block is-action-button-margin"><a class="button is-chocolate" href="javascript:void(0);" onclick="window.vue.updateLastFertilised({{ $location }});">{{ __('app.set_fertilised') }}</a></div>
 	<div class="is-inline-block is-action-button-margin"><a class="button" href="javascript:void(0);" onclick="window.vue.bShowPlantBulkPrint = true;">{{ __('app.bulk_print_qr_codes') }}</a></div>

@@ -47,6 +47,7 @@ window.vue = new Vue({
         bShowEditCalendarItem: false,
         bShowCreateNewCalendarClass: false,
         bShowPlantQRCode: false,
+        bShowPlantBulkPerformOperation: false,
         bShowPlantBulkPrint: false,
         bShowAddCustomPlantAttribute: false,
         bShowEditCustomPlantAttribute: false,
@@ -73,6 +74,7 @@ window.vue = new Vue({
         noListItemsSelected: 'No items selected',
         editProperty: 'Edit property',
         loadMore: 'Load more',
+        operationSucceeded: 'Operation succeeded',
         copiedToClipboard: 'Content has been copied to clipboard.',
         chatTypingEnable: false,
         chatTypingTimer: null,
@@ -1196,6 +1198,40 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
+        },
+
+        showPerformBulkOperation: function(operation, title, button) {
+            document.getElementById('plant-bulk-perform-operation-operation').value = operation;
+            document.getElementById('plant-bulk-perform-operation-title').innerText = title;
+            document.getElementById('plant-bulk-perform-operation-button').innerText = button;
+
+            window.vue.bShowPlantBulkPerformOperation = true;
+        },
+
+        bulkPerformPlantOperation: function(target, location, operation) {
+            let plantIds = [];
+
+            let elems = document.getElementsByClassName(target);
+            if (elems) {
+                Array.prototype.forEach.call(elems, function(elem) {
+                    if (elem.checked) {
+                        plantIds.push([elem.dataset.plantid, elem.dataset.plantname]);
+                    }
+                });
+
+                if (plantIds.length >= 0) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/operation/bulk', { operation: operation, list: JSON.stringify(plantIds) }, function(response) {
+                        if (response.code == 200) {
+                            alert(window.vue.operationSucceeded);
+                            window.vue.bShowPlantBulkPerformOperation = false;
+                        } else {
+                            alert(response.msg);
+                        }
+                    });
+                } else {
+                   alert(window.vue.noListItemsSelected); 
+                }
+            }
         },
 
         generateAndShowQRCode: function(plant) {
