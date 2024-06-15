@@ -1220,8 +1220,8 @@ window.vue = new Vue({
                         plantIds.push([elem.dataset.plantid, elem.dataset.plantname]);
                     }
                 });
-
-                if (plantIds.length >= 0) {
+                
+                if (plantIds.length > 0) {
                     window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds) }, function(response) {
                         if (response.code == 200) {
                             alert(window.vue.operationSucceeded);
@@ -1284,7 +1284,7 @@ window.vue = new Vue({
                     }
                 });
 
-                if (plantIds.length >= 0) {
+                if (plantIds.length > 0) {
                     window.vue.ajaxRequest('post', window.location.origin + '/plants/qrcode/bulk', { list: JSON.stringify(plantIds) }, function(response) {
                         if (response.code == 200) {
                             let wnd = window.open('', location, 'height=auto, width=auto');
