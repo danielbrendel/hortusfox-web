@@ -46,7 +46,7 @@ return [
     array('/plants/history/add', 'ANY', 'plants@add_to_history'),
     array('/plants/history/remove', 'ANY', 'plants@remove_from_history'),
     array('/plants/clone', 'POST', 'plants@clone_plant'),
-    array('/plants/operation/bulk', 'POST', 'plants@perform_bulk_operation'),
+    array('/plants/update/bulk', 'POST', 'plants@perform_bulk_updates'),
     array('/plants/qrcode', 'ANY', 'plants@generate_qr_code'),
     array('/plants/qrcode/bulk', 'POST', 'plants@get_bulk_qr_codes'),
     array('/plants/log/add', 'POST', 'plants@add_plant_log_entry'),

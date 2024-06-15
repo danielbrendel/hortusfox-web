@@ -594,21 +594,21 @@ class PlantsController extends BaseController {
 	}
 
 	/**
-	 * Handles URL: /plants/operation/bulk
+	 * Handles URL: /plants/update/bulk
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-	public function perform_bulk_operation($request)
+	public function perform_bulk_updates($request)
 	{
 		try {
 			$result = [];
 
-			$operation = $request->params()->query('operation', null);
+			$attribute = $request->params()->query('attribute', null);
 			$plants = json_decode($request->params()->query('list', null));
 
 			foreach ($plants as $plant) {
-				PlantsModel::editPlantAttribute($plant[0], $operation, date('Y-m-d H:i:s'));
+				PlantsModel::editPlantAttribute($plant[0], $attribute, date('Y-m-d H:i:s'));
 			}
 
 			return json([

@@ -1138,12 +1138,12 @@
 				</div>
 			</div>
 
-			<div class="modal" :class="{'is-active': bShowPlantBulkPerformOperation}">
+			<div class="modal" :class="{'is-active': bShowPlantBulkPerformUpdate}">
 				<div class="modal-background"></div>
 				<div class="modal-card">
 					<header class="modal-card-head is-stretched">
 						<p class="modal-card-title" id="plant-bulk-perform-operation-title"></p>
-						<button class="delete" aria-label="close" onclick="window.vue.bShowPlantBulkPerformOperation = false;"></button>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowPlantBulkPerformUpdate = false;"></button>
 					</header>
 					<section class="modal-card-body modal-anchors is-stretched">
 						<input type="hidden" id="plant-bulk-perform-operation-operation" value=""/>
@@ -1165,8 +1165,8 @@
 						@endif
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantOperation('plant-bulk-perform-operation', '{{ ((isset($location_name)) ? $location_name : '') }}', document.getElementById('plant-bulk-perform-operation-operation').value);"></button>
-						<button class="button" onclick="window.vue.bShowPlantBulkPerformOperation = false;">{{ __('app.close') }}</button>
+						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantUpdate('plant-bulk-perform-operation', document.getElementById('plant-bulk-perform-operation-operation').value);"></button>
+						<button class="button" onclick="window.vue.bShowPlantBulkPerformUpdate = false;">{{ __('app.close') }}</button>
 					</footer>
 				</div>
 			</div>

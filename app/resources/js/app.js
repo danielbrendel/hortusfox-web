@@ -47,7 +47,7 @@ window.vue = new Vue({
         bShowEditCalendarItem: false,
         bShowCreateNewCalendarClass: false,
         bShowPlantQRCode: false,
-        bShowPlantBulkPerformOperation: false,
+        bShowPlantBulkPerformUpdate: false,
         bShowPlantBulkPrint: false,
         bShowAddCustomPlantAttribute: false,
         bShowEditCustomPlantAttribute: false,
@@ -1200,15 +1200,17 @@ window.vue = new Vue({
             });
         },
 
-        showPerformBulkOperation: function(operation, title, button) {
+        showPerformBulkUpdate: function(operation, title, button) {
             document.getElementById('plant-bulk-perform-operation-operation').value = operation;
             document.getElementById('plant-bulk-perform-operation-title').innerText = title;
             document.getElementById('plant-bulk-perform-operation-button').innerText = button;
 
-            window.vue.bShowPlantBulkPerformOperation = true;
+            window.vue.bulkChecked('plant-bulk-perform-operation', false);
+
+            window.vue.bShowPlantBulkPerformUpdate = true;
         },
 
-        bulkPerformPlantOperation: function(target, location, operation) {
+        bulkPerformPlantUpdate: function(target, attribute) {
             let plantIds = [];
 
             let elems = document.getElementsByClassName(target);
@@ -1220,10 +1222,10 @@ window.vue = new Vue({
                 });
 
                 if (plantIds.length >= 0) {
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/operation/bulk', { operation: operation, list: JSON.stringify(plantIds) }, function(response) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds) }, function(response) {
                         if (response.code == 200) {
                             alert(window.vue.operationSucceeded);
-                            window.vue.bShowPlantBulkPerformOperation = false;
+                            window.vue.bShowPlantBulkPerformUpdate = false;
                         } else {
                             alert(response.msg);
                         }
