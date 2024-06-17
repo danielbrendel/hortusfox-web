@@ -135,7 +135,8 @@ return [
 	'language' => 'Idioma',
 	'show_log' => 'Mostrar registro',
 	'preferences_saved_successfully' => 'Los ajustes se han guardado con éxito',
-	'set_watered' => 'Cambiar todo a regado',
+	'set_watered' => 'Conjunto regado',
+	'bulk_set_watered' => 'Establézcalo en regado',
 	'all_plants_watered' => 'El último estado de regado ha sido cambiado con éxito',
 	'confirmSetAllWatered' => '¿Seguro que quieres cambiar la última fecha de regado de todas las plantas?',
 	'no_plants_found' => 'No se han encontrado plantas que coincidan con los términos de búsqueda',
@@ -266,7 +267,8 @@ return [
 	'generate_cronpw_hint' => 'Nota: Generar un nuevo token invalidará el actual',
 	'confirmSetAllRepotted' => '¿Estás seguro/a de que quieres actualizar la última fecha de trasplante de todas estas plantas?',
 	'all_plants_repotted' => 'El último estado de trasplante ha sido actualizado para estas plantas',
-	'set_repotted' => 'Establecer todas como trasplantadas',
+	'set_repotted' => 'Conjunto trasplantado',
+	'bulk_set_repotted' => 'Coloque las plantas en el trasplante',
 	'backup' => 'Copia de seguridad',
 	'gallery' => 'Galeria',
 	'export' => 'Exportar',
@@ -345,7 +347,8 @@ return [
 	'select_all' => 'Seleccionar todo',
 	'unselect_all' => 'Deseleccionar todo',
 	'noListItemsSelected' => 'Ningún item seleccionado',
-	'set_fertilised' => 'Establecer todos como abonados',
+	'set_fertilised' => 'Conjunto fertilizado',
+	'bulk_set_fertilised' => 'Ponga las plantas a fertilizar',
 	'confirmSetAllFertilised' => '¿Seguro que quieres actualizar la última fecha de abono de todas estas plantas?',
 	'all_plants_fertilised' => 'El último estado de abonado ha sido actualizado para estas plantas',
 	'media_sound_message' => 'Sonido de nuevo mensaje',
@@ -404,5 +407,6 @@ return [
 	'edit_plant_log_entry' => 'Editar entrada',
 	'confirm_remove_plant_log_entry' => '¿Realmente deseas eliminar esta entrada?',
 	'system_message_plant_log' => 'Agregar mensajes del sistema de plantas al registro',
-	'load_more' => 'Carga más'
+	'load_more' => 'Carga más',
+	'operationSucceeded' => 'La operación se ha realizado con éxito'
 ];

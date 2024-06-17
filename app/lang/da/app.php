@@ -135,7 +135,8 @@ return [
 	'language' => 'Sprog',
 	'show_log' => 'Vis log',
 	'preferences_saved_successfully' => 'Præferencer blev gemt succesfuldt',
-	'set_watered' => 'Sæt alle til vandet',
+	'set_watered' => 'Vand planterne',
+	'bulk_set_watered' => 'Placer planter på vandet',
 	'all_plants_watered' => 'Sidst vandet status er blevet opdateret for disse planter',
 	'confirmSetAllWatered' => 'Er du sikker på at du vil opdatere sidst vandet datoen for alle disse planter?',
 	'no_plants_found' => 'Der blev ikke fundet nogle planter, ved din søgnings forespørgsel',
@@ -266,7 +267,8 @@ return [
 	'generate_cronpw_hint' => 'Noter: Generere en ny token vil invalidere den nuværende',
 	'confirmSetAllRepotted' => 'Er du sikker på at du vil opdatere den sidst ompottede dato for alle disse planter?',
 	'all_plants_repotted' => 'Sidst ompottet status blev opdateret for disse planter',
-	'set_repotted' => 'Sæt alle ompottet',
+	'set_repotted' => 'Ompotning af planter',
+	'bulk_set_repotted' => 'Ompotning af planterne',
 	'backup' => 'Backup',
 	'gallery' => 'Galleri',
 	'export' => 'Eksport',
@@ -344,7 +346,8 @@ return [
 	'select_all' => 'Vælg alle',
 	'unselect_all' => 'Fravælg alle',
 	'noListItemsSelected' => 'Ingen felter valgt',
-	'set_fertilised' => 'Sæt alle gødet',
+	'set_fertilised' => 'Indstil til gødning',
+	'bulk_set_fertilised' => 'Sæt planter på befrugtet',
 	'confirmSetAllFertilised' => 'Er du sikker på at du vil opdatere sidst gødet dato for alle disse planter?',
 	'all_plants_fertilised' => 'Sidst gødet status blev opdateret for disse planter',
 	'media_sound_message' => 'Ny-Besked lyd',
@@ -403,5 +406,6 @@ return [
 	'edit_plant_log_entry' => 'Rediger post',
 	'confirm_remove_plant_log_entry' => 'Vil du virkelig fjerne denne post?',
 	'system_message_plant_log' => 'Tilføj systemmeddelelser fra planter til log',
-	'load_more' => 'Læs mere'
+	'load_more' => 'Læs mere',
+	'operationSucceeded' => 'Operationen lykkedes'
 ];

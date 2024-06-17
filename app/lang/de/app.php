@@ -135,7 +135,8 @@ return [
 	'language' => 'Sprache',
 	'show_log' => 'Logbuch anzeigen',
 	'preferences_saved_successfully' => 'Die Einstellungen wurden erfolgreich gespeichert',
-	'set_watered' => 'Alle auf gewässert setzen',
+	'set_watered' => 'Auf gewässert setzen',
+	'bulk_set_watered' => 'Pflanzen auf gewässert setzen',
 	'all_plants_watered' => 'Der Gewässert-Status der Pflanzen wurde aktualisiert',
 	'confirmSetAllWatered' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gewässert-Datum auf heute setzen?',
 	'no_plants_found' => 'Es konnten keine Pflanzen anhand der Suchanfrage gefunden werden',
@@ -266,7 +267,8 @@ return [
 	'generate_cronpw_hint' => 'Hinweis: Das Erzeugen eines neuen Tokens macht das aktuelle Token ungültig',
 	'confirmSetAllRepotted' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Umgetopft-Datum auf heute setzen?',
 	'all_plants_repotted' => 'Der Umgetopft-Status der Pflanzen wurde aktualisiert',
-	'set_repotted' => 'Alle auf umgetopft setzen',
+	'set_repotted' => 'Auf umgetopft setzen',
+	'bulk_set_repotted' => 'Pflanzen auf umgetopft setzen',
 	'backup' => 'Backup',
 	'gallery' => 'Galerie',
 	'export' => 'Exportieren',
@@ -345,7 +347,8 @@ return [
 	'select_all' => 'Alle auswählen',
 	'unselect_all' => 'Keine auswählen',
 	'noListItemsSelected' => 'Nichts ausgewählt',
-	'set_fertilised' => 'Alle auf gedüngt setzen',
+	'set_fertilised' => 'Auf gedüngt setzen',
+	'bulk_set_fertilised' => 'Pflanzen auf gedüngt setzen',
 	'confirmSetAllFertilised' => 'Möchtest du wirklich bei allen Pflanzen an diesem Ort das Zuletzt-Gedüngt-Datum auf heute setzen?',
 	'all_plants_fertilised' => 'Der Gedüngt-Status der Pflanzen wurde aktualisiert.',
 	'media_sound_message' => 'Neue-Nachricht Sound',
@@ -404,5 +407,6 @@ return [
 	'edit_plant_log_entry' => 'Eintrag bearbeiten',
 	'confirm_remove_plant_log_entry' => 'Soll dieser Eintrag wirklich gelöscht werden?',
 	'system_message_plant_log' => 'Pflanzenspezifische Systemnachrichten zur Log hinzufügen',
-	'load_more' => 'Mehr laden'
+	'load_more' => 'Mehr laden',
+	'operationSucceeded' => 'Die Aktion wurde erfolgreich ausgeführt.'
 ];
