@@ -80,14 +80,6 @@
 								</div>
 							</div>
 
-							<div class="field">
-								<label class="label">{{ __('app.photo') }}</label>
-								<div class="control">
-									<input type="file" class="input" name="photo" accept="image/*">
-								</div>
-								<p class="help">{{ __('app.plant_photo_orientation_hint') }}</p>
-							</div>
-
 							<input type="submit" class="is-hidden" id="submit-add-plant">
 						</form>
 					</section>
