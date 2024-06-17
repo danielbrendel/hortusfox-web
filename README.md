@@ -226,11 +226,6 @@ After saving the file you can now let the product create all neccessary tables v
 php asatru migrate:fresh
 ```
 
-Next you should let the system add all default calendar classes
-```shell
-php asatru calendar:classes
-```
-
 Now you need to insert your initial app settings profile into the database. These settings can be later adjusted in the admin dashboard.
 ```sql
 INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, chat_system, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, owm_enable, owm_api_key, owm_latitude, owm_longitude, owm_unittype, owm_cache, created_at) VALUES (
@@ -263,7 +258,16 @@ INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_tim
     'default',
     300,
     CURRENT_TIMESTAMP
-)
+);
+```
+
+Next you should let the system perform some initial operations
+```shell
+# Add default plant attributes
+php asatru plants:attributes
+
+# Add default calendar classes
+php asatru calendar:classes
 ```
 
 You might now want to start your web server to host the application. If you want to quickly use the inbuilt webserver
