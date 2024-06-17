@@ -135,7 +135,8 @@ return [
 	'language' => 'Langue',
 	'show_log' => 'Afficher le journal',
 	'preferences_saved_successfully' => 'Les paramètres ont été sauvegardés avec succès',
-	'set_watered' => 'Tout arroser',
+	'set_watered' => 'Arroser',
+	'bulk_set_watered' => 'Tout arroser',
 	'all_plants_watered' => 'La date de dernier arrosage a été mise à jour pour ces plantes',
 	'confirmSetAllWatered' => 'Voulez-vous mettre à jour la date de dernier arrosage pour toutes ces plantes ?',
 	'no_plants_found' => 'Aucune plante n\'a été trouvée à partir de votre recherche',
@@ -266,7 +267,8 @@ return [
 	'generate_cronpw_hint' => 'Note : Générer un nouveau jeton rendra invalide le jeton actuel',
 	'confirmSetAllRepotted' => 'Mettre à jour la date de dernier rempotage de toutes ces plantes ?',
 	'all_plants_repotted' => 'La date de rempotage a été mise à jour pour toutes ces plantes',
-	'set_repotted' => 'Tout rempoter',
+	'set_repotted' => 'Rempoter',
+	'bulk_set_repotted' => 'Tout rempoter',
 	'backup' => 'Backup',
 	'gallery' => 'Galerie',
 	'export' => 'Export',
@@ -345,7 +347,8 @@ return [
 	'select_all' => 'Tout sélectionner',
 	'unselect_all' => 'Tout déselectionner',
 	'noListItemsSelected' => 'Aucun élément sélectionné',
-	'set_fertilised' => 'Tout fertiliser',
+	'set_fertilised' => 'Fertiliser',
+	'bulk_set_fertilised' => 'Tout fertiliser',
 	'confirmSetAllFertilised' => 'Mettre à jour la date de fertilisation de toutes ces plantes ?',
 	'all_plants_fertilised' => 'La date de dernière fertilisation a été mise à jour pour ces plantes',
 	'media_sound_message' => 'Son de nouveau message',
@@ -404,5 +407,6 @@ return [
 	'edit_plant_log_entry' => 'Modifier entrée',
 	'confirm_remove_plant_log_entry' => 'Confirmez-vous la suppression de cette entrée ?',
 	'system_message_plant_log' => 'Ajouter les messages systèmes de plantes dans le journal',
-	'load_more' => 'Voir plus'
+	'load_more' => 'Voir plus',
+	'operationSucceeded' => 'Opération réussie'
 ];
