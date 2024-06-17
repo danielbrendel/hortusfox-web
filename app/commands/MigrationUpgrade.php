@@ -16,6 +16,8 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS allow_custom_attributes BOOLEAN NOT NULL DEFAULT 0');
 
         AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS system_message_plant_log BOOLEAN NOT NULL DEFAULT 1');
+
+        ChatMsgModel::raw('ALTER TABLE `' . ChatMsgModel::tableName() . '` RENAME COLUMN IF EXISTS system TO sysmsg');
     }
 
     /**
