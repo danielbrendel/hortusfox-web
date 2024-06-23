@@ -95,8 +95,8 @@ class AppModel extends \Asatru\Database\Model {
                 ],
                 'start_url' => '/',
                 'display' => 'fullscreen',
-                'background_color' => 'white',
-                'theme_color' => 'white'
+                'background_color' => '#323232',
+                'theme_color' => '#323232'
             ];
 
             file_put_contents(public_path() . '/manifest.json', json_encode($manifest));

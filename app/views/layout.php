@@ -1506,10 +1506,12 @@
 				window.vue.initNavBar();
 
 				@if (app('pwa_enable'))
+				if (window.innerWidth <= 1089) {
 					let scroller = document.querySelector('.scroll-to-top');
 					if (scroller) {
 						scroller.style.bottom = '83px';
 					}
+				}
 				@endif
 
 				window.currentLocale = '{{ UtilsModule::getLanguage() }}';
