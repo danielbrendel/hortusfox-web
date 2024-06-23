@@ -225,7 +225,6 @@ return [
 	'restore_from_history' => 'Restaurar',
 	'content_empty' => 'Parece que no hay nada aquí...',
 	'last_added_plants' => 'Últimas plantas añadidas',
-	'last_authored_plants' => 'Últimas plantas creadas',
 	'info' => 'Información',
 	'hortusfox_version' => 'HortusFox v{version}',
 	'php_version' => 'PHP Version: {version}',

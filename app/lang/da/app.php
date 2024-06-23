@@ -225,7 +225,6 @@ return [
 	'restore_from_history' => 'Gendan',
 	'content_empty' => 'Det ser ret så tømt ud her...',
 	'last_added_plants' => 'Sidst tilføjede planter',
-	'last_authored_plants' => 'Sidst forfattede planter',
 	'info' => 'Info',
 	'hortusfox_version' => 'HortusFox v{version}',
 	'php_version' => 'PHP Version: {version}',
