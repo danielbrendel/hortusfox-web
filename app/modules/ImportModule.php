@@ -45,6 +45,7 @@ class ImportModule {
                 }
 
                 if ((isset($options['inventory'])) && ($options['inventory'])) {
+                    static::importInvGroups(public_path() . '/backup/' . $import_file . '/invgroups');
                     static::importInventory(public_path() . '/backup/' . $import_file . '/inventory');
                 }
 
@@ -181,6 +182,29 @@ class ImportModule {
                         $task->due_date,
                         $task->done,
                         $task->created_at
+                    ]);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importInvGroups($path)
+    {
+        try {
+            $invgroup_items = json_decode(file_get_contents($path . '/data.json'));
+            if ($invgroup_items) {
+                foreach ($invgroup_items as $invgroup_item) {
+                    InvGroupModel::raw('INSERT INTO `' . InvGroupModel::tableName() . '` (token, label, created_at) VALUES(?, ?, ?)', [
+                        $invgroup_item->token,
+                        $invgroup_item->label,
+                        $invgroup_item->created_at
                     ]);
                 }
             }

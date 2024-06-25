@@ -38,6 +38,7 @@ class BackupModule {
                 }
 
                 if ((isset($options['inventory'])) && ($options['inventory'])) {
+                    $cleanup_files[] = static::backupInvGroups($zip);
                     $cleanup_files[] = static::backupInventory($zip);
                 }
 
@@ -160,6 +161,27 @@ class BackupModule {
             $zip->addFile(public_path() . '/backup/_tasks.json', 'tasks/data.json');
 
             return public_path() . '/backup/_tasks.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    public static function backupInvGroups(ZipArchive $zip)
+    {
+        try {
+            $invgroups = InvgroupModel::raw('SELECT * FROM `invgroup`');
+
+            $zip->addEmptyDir('invgroups');
+
+            file_put_contents(public_path() . '/backup/_invgroups.json', json_encode($invgroups->asArray()));
+            $zip->addFile(public_path() . '/backup/_invgroups.json', 'invgroups/data.json');
+
+            return public_path() . '/backup/_invgroups.json';
         } catch (\Exception $e) {
             throw $e;
         }
