@@ -66,10 +66,14 @@ class IndexController extends BaseController {
 	 * Handles URL: /auth
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\ViewHandler
+	 * @return Asatru\View\ViewHandler|Asatru\View\RedirectHandler
 	 */
 	public function auth($request)
 	{
+		if (auth()) {
+			return redirect('/');
+		}
+
 		$view = new Asatru\View\ViewHandler();
 		$view->setLayout('auth');
 
