@@ -407,5 +407,6 @@ return [
 	'confirm_remove_plant_log_entry' => 'Do you really want to remove this entry?',
 	'system_message_plant_log' => 'Add system messages of plants to log',
 	'load_more' => 'Load more',
-	'operationSucceeded' => 'Operation succeeded'
+	'operationSucceeded' => 'Operation succeeded',
+	'admin_support' => 'Support'
 ];

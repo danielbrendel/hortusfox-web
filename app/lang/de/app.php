@@ -407,5 +407,6 @@ return [
 	'confirm_remove_plant_log_entry' => 'Soll dieser Eintrag wirklich gelöscht werden?',
 	'system_message_plant_log' => 'Pflanzenspezifische Systemnachrichten zur Log hinzufügen',
 	'load_more' => 'Mehr laden',
-	'operationSucceeded' => 'Die Aktion wurde erfolgreich ausgeführt.'
+	'operationSucceeded' => 'Die Aktion wurde erfolgreich ausgeführt.',
+	'admin_support' => 'Support'
 ];

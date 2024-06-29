@@ -406,5 +406,6 @@ return [
 	'confirm_remove_plant_log_entry' => 'Vil du virkelig fjerne denne post?',
 	'system_message_plant_log' => 'Tilføj systemmeddelelser fra planter til log',
 	'load_more' => 'Læs mere',
-	'operationSucceeded' => 'Operationen lykkedes'
+	'operationSucceeded' => 'Operationen lykkedes',
+	'admin_support' => 'Support'
 ];

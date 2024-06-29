@@ -2671,10 +2671,34 @@ fieldset .field {
     font-size: 0.76em;
 }
 
+.admin-info-support {
+    position: relative;
+    margin-top: 43px;
+}
+
+.admin-info-support a {
+    width: 465px;
+    @media screen and (max-width: 495px) {
+        width: 100%;
+        height: 50px;
+        font-size: 1.4em;
+    }
+}
+
+.admin-info-support a:hover {
+}
+
 .admin-info-social {
     position: relative;
-    margin-top: 30px;
+    margin-top: 15px;
     margin-bottom: 35px;
+}
+
+.admin-info-social img {
+    @media screen and (max-width: 495px) {
+        width: 49%;
+        height: 41px;
+    }
 }
 
 .admin-info-extensions {

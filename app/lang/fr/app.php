@@ -408,5 +408,6 @@ return [
 	'confirm_remove_plant_log_entry' => 'Confirmez-vous la suppression de cette entrée?',
 	'system_message_plant_log' => 'Ajouter les messages systèmes de plantes dans le journal',
 	'load_more' => 'Voir plus',
-	'operationSucceeded' => 'Opération réussie'
+	'operationSucceeded' => 'Opération réussie',
+	'admin_support' => 'Support'
 ];
