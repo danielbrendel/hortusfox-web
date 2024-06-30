@@ -84,8 +84,8 @@
 
                             <tbody>
                                 <tr>
-                                    <td>PHP 8.2</td>
-                                    <td class="is-right"><?= ((phpversion() >= '8.2') ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">8.2 required, yours: ' . phpversion() . '</span>') ?></td>
+                                    <td>PHP 8.3</td>
+                                    <td class="is-right"><?= ((phpversion() >= '8.3') ? '<span class="is-successful"><i class="fas fa-check-circle"></i></span>': '<span class="is-insufficient">8.3 required, yours: ' . phpversion() . '</span>') ?></td>
                                 </tr>
 
                                 <tr>

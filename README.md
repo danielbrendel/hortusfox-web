@@ -338,7 +338,7 @@ GET /cronjob/calendar/reminder?cronpw={your-auth-token}
 
 ## System requirements
 
-- PHP ^8.2
+- PHP ^8.3
 - MySQL (10.4.27-MariaDB or similar)
 - SMTP server for e-mailing
 - Docker with Docker-Compose for containerization
