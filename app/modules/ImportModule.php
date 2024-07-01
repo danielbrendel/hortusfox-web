@@ -34,6 +34,7 @@ class ImportModule {
 
                 if ((isset($options['plants'])) && ($options['plants'])) {
                     static::importPlants(public_path() . '/backup/' . $import_file . '/plants');
+                    static::importPlantLog(public_path() . '/backup/' . $import_file . '/plantlog');
                 }
 
                 if ((isset($options['gallery'])) && ($options['gallery'])) {
@@ -74,7 +75,8 @@ class ImportModule {
             $locations = json_decode(file_get_contents($path . '/data.json'));
             if ($locations) {
                 foreach ($locations as $location) {
-                    LocationsModel::raw('INSERT INTO `' . LocationsModel::tableName() . '` (name, icon, active, created_at) VALUES(?, ?, ?, ?)', [
+                    LocationsModel::raw('INSERT INTO `' . LocationsModel::tableName() . '` (id, name, icon, active, created_at) VALUES(?, ?, ?, ?, ?)', [
+                        $location->id,
                         $location->name,
                         $location->icon,
                         $location->active,
@@ -98,7 +100,8 @@ class ImportModule {
             $plants = json_decode(file_get_contents($path . '/data.json'));
             if ($plants) {
                 foreach ($plants as $plant) {
-                    PlantsModel::raw('INSERT INTO `' . PlantsModel::tableName() . '` (name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, history, history_date, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                    PlantsModel::raw('INSERT INTO `' . PlantsModel::tableName() . '` (id, name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, history, history_date, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                        $plant->id,
                         $plant->name,
                         $plant->scientific_name,
                         $plant->knowledge_link,
@@ -124,6 +127,30 @@ class ImportModule {
                     if ((!file_exists(public_path() . '/img/' . $plant->photo)) && (file_exists($path . '/img/' . $plant->photo))) {
                         copy($path . '/img/' . $plant->photo, public_path() . '/img/' . $plant->photo);
                     }
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importPlantLog($path)
+    {
+        try {
+            $plantlog_entries = json_decode(file_get_contents($path . '/data.json'));
+            if ($plantlog_entries) {
+                foreach ($plantlog_entries as $plantlog_entry) {
+                    PlantLogModel::raw('INSERT INTO `' . PlantLogModel::tableName() . '` (plant, content, updated_at, created_at) VALUES(?, ?, ?, ?)', [
+                        $plantlog_entry->plant,
+                        $plantlog_entry->content,
+                        $plantlog_entry->updated_at,
+                        $plantlog_entry->created_at
+                    ]);
                 }
             }
         } catch (\Exception $e) {
@@ -201,7 +228,8 @@ class ImportModule {
             $invgroup_items = json_decode(file_get_contents($path . '/data.json'));
             if ($invgroup_items) {
                 foreach ($invgroup_items as $invgroup_item) {
-                    InvGroupModel::raw('INSERT INTO `' . InvGroupModel::tableName() . '` (token, label, created_at) VALUES(?, ?, ?)', [
+                    InvGroupModel::raw('INSERT INTO `' . InvGroupModel::tableName() . '` (id, token, label, created_at) VALUES(?, ?, ?, ?)', [
+                        $invgroup_item->id,
                         $invgroup_item->token,
                         $invgroup_item->label,
                         $invgroup_item->created_at

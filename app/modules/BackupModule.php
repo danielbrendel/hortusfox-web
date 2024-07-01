@@ -27,6 +27,7 @@ class BackupModule {
 
                 if ((isset($options['plants'])) && ($options['plants'])) {
                     $cleanup_files[] = static::backupPlants($zip);
+                    $cleanup_files[] = static::backupPlantLog($zip);
                 }
 
                 if ((isset($options['gallery'])) && ($options['gallery'])) {
@@ -108,6 +109,27 @@ class BackupModule {
             $zip->addFile(public_path() . '/backup/_plants.json', 'plants/data.json');
 
             return public_path() . '/backup/_plants.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    private static function backupPlantLog(ZipArchive $zip)
+    {
+        try {
+            $plantlog = PlantLogModel::raw('SELECT * FROM `plantlog`');
+
+            $zip->addEmptyDir('plantlog');
+
+            file_put_contents(public_path() . '/backup/_plantlog.json', json_encode($plantlog->asArray()));
+            $zip->addFile(public_path() . '/backup/_plantlog.json', 'plantlog/data.json');
+
+            return public_path() . '/backup/_plantlog.json';
         } catch (\Exception $e) {
             throw $e;
         }
