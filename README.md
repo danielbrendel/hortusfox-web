@@ -160,7 +160,7 @@ via the admin section (e.g. environment settings, users, locations).
 
 ### Manual
 
-In order to manually install HortusFox you need to first setup a PHP environment along with a MySQL database
+In order to manually install HortusFox you need to first setup a PHP environment along with a MariaDB database
 and also Composer. Afterwards you can clone or download the repository. Then go to the root directory
 of the project and let Composer install the required dependencies.
 
@@ -180,7 +180,7 @@ APP_GITHUB_URL="https://github.com/danielbrendel/hortusfox-web"
 # This must be set to true for the product to work in order to enable database connection
 DB_ENABLE=true
 
-# Enter your hostname or IP address of your MySQL database server
+# Enter your hostname or IP address of your MariaDB database server
 DB_HOST=localhost
 
 # Enter the database username
@@ -192,7 +192,7 @@ DB_PASSWORD=""
 # Database connection port. Normally this doesn't need to be changed
 DB_PORT=3306
 
-# The actual database of your MySQL server to be used
+# The actual database of your MariaDB server to be used
 DB_DATABASE=hortusfox
 
 # Database driver. This needs to be unaltered for now
@@ -339,7 +339,7 @@ GET /cronjob/calendar/reminder?cronpw={your-auth-token}
 ## System requirements
 
 - PHP ^8.3
-- MySQL (10.4.27-MariaDB or similar)
+- MariaDB ^11.4
 - SMTP server for e-mailing
 - Docker with Docker-Compose for containerization
 

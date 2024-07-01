@@ -243,7 +243,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getHistoryYears()
     {
         try {
-            return static::raw('SELECT DISTINCT YEAR(history_date) AS history_year FROM `' . self::tableName() . '` WHERE history = 1 AND history_date IS NOT NULL ORDER BY history_date DESC');
+            return static::raw('SELECT DISTINCT YEAR(history_date) AS history_year FROM `' . self::tableName() . '` WHERE history = 1 AND history_date IS NOT NULL ORDER BY YEAR(history_date) DESC');
         } catch (\Exception $e) {
             throw $e;
         }
