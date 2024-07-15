@@ -219,7 +219,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid item: ' . $id);
             }
 
-            if (file_exists(public_path('/img/' . $row->get('photo')))) {
+            if ((is_string($row->get('photo'))) && (strlen($row->get('photo')) > 0) && (file_exists(public_path('/img/' . $row->get('photo'))))) {
                 unlink(public_path('/img/' . $row->get('photo')));
             }
 
