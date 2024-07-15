@@ -493,7 +493,12 @@
 							<div class="field">
 								<label class="label">{{ __('app.location') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="location">
+									<input type="text" class="input" name="location" list="invlocations">
+									<datalist id="invlocations">
+										@foreach (LocationsModel::getAll() as $invloc)
+											<option value="{{ $invloc->get('name') }}"></option>
+										@endforeach
+									</datalist>
 								</div>
 							</div>
 
