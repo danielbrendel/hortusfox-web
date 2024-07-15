@@ -494,6 +494,13 @@
         </div>
 
         <div class="field">
+            <label class="label">{{ __('app.mail_rp_address') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="mail_rp_address" value="{{ app('mail_rp_address') }}">
+            </div>
+        </div>
+
+        <div class="field">
             <div class="control">
                 <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
             </div>

@@ -408,5 +408,6 @@ return [
 	'system_message_plant_log' => 'Add system messages of plants to log',
 	'load_more' => 'Load more',
 	'operationSucceeded' => 'Operation succeeded',
-	'admin_support' => 'Support'
+	'admin_support' => 'Support',
+	'mail_rp_address' => 'Reverse proxy address (leave blank if unused)'
 ];

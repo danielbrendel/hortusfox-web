@@ -78,3 +78,17 @@ function plant_attr($name)
         return false;
     }
 }
+
+/**
+ * @param $path
+ * @return string
+ */
+function workspace_url($path)
+{
+    $rp = app('mail_rp_address', null);
+    if ((is_string($rp)) && (strlen($rp) > 0)) {
+        return $rp . $path;
+    }
+
+    return url($path);
+}

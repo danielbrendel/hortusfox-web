@@ -606,6 +606,11 @@ class AdminController extends BaseController {
 			$smtp_username = $request->params()->query('smtp_username', app('smtp_username'));
 			$smtp_password = $request->params()->query('smtp_password', app('smtp_password'));
 			$smtp_encryption = $request->params()->query('smtp_encryption', app('smtp_encryption'));
+			$mail_rp_address = $request->params()->query('mail_rp_address', app('mail_rp_address'));
+
+			if (substr($mail_rp_address, strlen($mail_rp_address) - 1) === '/') {
+				$mail_rp_address = substr($mail_rp_address, 0, strlen($$mail_rp_address) - 1);
+			}
 			
 			$set = [
 				'smtp_fromname' => $smtp_fromname,
@@ -615,6 +620,7 @@ class AdminController extends BaseController {
 				'smtp_username' => $smtp_username,
 				'smtp_password' => $smtp_password,
 				'smtp_encryption' => $smtp_encryption,
+				'mail_rp_address' => $mail_rp_address
 			];
 
 			AppModel::updateSet($set);
