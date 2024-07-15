@@ -409,5 +409,5 @@ return [
 	'load_more' => 'Load more',
 	'operationSucceeded' => 'Operation succeeded',
 	'admin_support' => 'Support',
-	'mail_rp_address' => 'Reverse proxy address (leave blank if unused)'
+	'mail_rp_address' => 'Reverse Proxy'
 ];

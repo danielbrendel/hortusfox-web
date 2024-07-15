@@ -408,5 +408,6 @@ return [
 	'system_message_plant_log' => 'Agregar mensajes del sistema de plantas al registro',
 	'load_more' => 'Cargar más',
 	'operationSucceeded' => 'La operación se ha realizado con éxito',
-	'admin_support' => 'Soporte'
+	'admin_support' => 'Soporte',
+	'mail_rp_address' => 'Reverse Proxy'
 ];

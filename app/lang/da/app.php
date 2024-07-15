@@ -407,5 +407,6 @@ return [
 	'system_message_plant_log' => 'Tilføj systemmeddelelser fra planter til log',
 	'load_more' => 'Læs mere',
 	'operationSucceeded' => 'Operationen lykkedes',
-	'admin_support' => 'Support'
+	'admin_support' => 'Support',
+	'mail_rp_address' => 'Reverse Proxy'
 ];

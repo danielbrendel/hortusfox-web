@@ -409,5 +409,6 @@ return [
 	'system_message_plant_log' => 'Ajouter les messages systèmes de plantes dans le journal',
 	'load_more' => 'Voir plus',
 	'operationSucceeded' => 'Opération réussie',
-	'admin_support' => 'Support'
+	'admin_support' => 'Support',
+	'mail_rp_address' => 'Reverse Proxy'
 ];
