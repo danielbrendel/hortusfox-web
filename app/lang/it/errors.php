@@ -9,12 +9,12 @@
 */
 
 return [
-    'csrf_token_invalid' => 'CSRF token is missing or invalid',
-    'item_required' => 'Item {key} is required.',
-    'item_email' => 'Item {key} must be a valid E-Mail address',
-    'item_too_short' => 'Item length of {key} must be greater than {min}',
-    'item_too_large' => 'Item length of {key} must be less than {max}',
-    'item_datetime' => 'Item {key} is not a valid datetime object',
-    'item_number' => 'Item {key} is not a valid number',
-	'item_regex' => 'Item {key} does not fit pattern {pattern}'
+    'csrf_token_invalid' => 'il gettone (token) CSFR è mancante o non valido',
+    'item_required' => 'L\'elemento {key} è richiesto.',
+    'item_email' => 'L\'elemento {key} deve essere un indirizzo E-Mail valido',
+    'item_too_short' => 'La lunghezza dell\'elemento {key} deve essere maggiore di {min}',
+    'item_too_large' => 'La lunghezza dell\'elemento {key} deve essere minore di {max}',
+    'item_datetime' => 'L\'elemento {key} non è un valido datetime valido',
+    'item_number' => 'L\'elemento {key} non è un numero valido',
+	'item_regex' => 'L\'elemento {key} non segue lo schema {pattern}'
 ];
