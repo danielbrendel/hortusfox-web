@@ -31,6 +31,7 @@ window.vue = new Vue({
         bShowEPUrl: false,
         bShowEditLinkText: false,
         bShowUploadPhoto: false,
+        bShowSetPhotoURL: false,
         bShowCreateTask: false,
         bShowEditTask: false,
         bShowEditPreferences: false,

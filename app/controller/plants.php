@@ -348,6 +348,43 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/details/gallery/add/url
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_plant_gallery_photo_url($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'label' => 'required',
+			'value' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			$errorstr = '';
+			foreach ($validator->errorMsgs() as $err) {
+				$errorstr .= $err . '<br/>';
+			}
+
+			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
+			
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$label = $request->params()->query('label', '');
+		$value = $request->params()->query('value', null);
+
+		PlantPhotoModel::addPhotoURL($plant, $label, $value);
+		PlantsModel::setUpdated($plant);
+
+		FlashMessage::setMsg('success', __('app.photo_uploaded_successfully'));
+
+		return redirect('/plants/details/' . $plant . '#plant-gallery-photo-anchor');
+	}
+
+	/**
 	 * Handles URL: /plants/details/gallery/photo/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

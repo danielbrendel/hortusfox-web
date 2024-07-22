@@ -314,10 +314,10 @@
 							</div>
 
 							<div class="plant-gallery-item-photo">
-								<a href="{{ asset('img/' . $photo->get('original')) }}" target="_blank">
+								<a href="{{ abs_photo($photo->get('original')) }}" target="_blank">
 									<div class="plant-gallery-item-photo-overlay"></div>
 
-									<img class="plant-gallery-item-photo-image" src="{{ asset('img/' . $photo->get('thumb')) }}" alt="photo"/>
+									<img class="plant-gallery-item-photo-image" src="{{ abs_photo($photo->get('thumb')) }}" alt="photo"/>
 								</a>
 							</div>
 
