@@ -358,7 +358,7 @@
 
 							<div class="field">
 								<div class="control has-icons-left">
-									<input type="text" class="input" name="value" accept="image/*" placeholder="{{ __('app.photo_edit_url_placeholder') }}" required>
+									<input type="text" class="input" name="value" placeholder="{{ __('app.photo_edit_url_placeholder') }}" required>
 									<span class="icon is-small is-left">
 										<i class="fas fa-globe"></i>
 									</span>
@@ -428,7 +428,7 @@
 
 							<div class="field">
 								<div class="control has-icons-left">
-									<input type="text" class="input" name="value" accept="image/*" placeholder="{{ __('app.photo_edit_url_placeholder') }}" required>
+									<input type="text" class="input" name="value" placeholder="{{ __('app.photo_edit_url_placeholder') }}" required>
 									<span class="icon is-small is-left">
 										<i class="fas fa-globe"></i>
 									</span>
@@ -563,10 +563,32 @@
 								</div>
 							</div>
 
-							<div class="field">
+							<div class="field" id="inventory-add-photo-file">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
 									<input type="file" class="input" name="photo" accept="image/*">
+								</div>
+							</div>
+
+							<div class="field" id="inventory-add-photo-url-action">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inventory-add-photo-file').classList.add('is-hidden'); document.getElementById('inventory-add-photo-url').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-file-action').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-url-action').classList.add('is-hidden');">{{ __('app.photo_edit_specify_url') }}</a>
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="inventory-add-photo-url">
+								<label class="label">{{ __('app.photo') }}</label>
+								<div class="control has-icons-left">
+									<input type="text" class="input" name="photo" placeholder="{{ __('app.photo_edit_url_placeholder') }}">
+									<span class="icon is-small is-left">
+										<i class="fas fa-globe"></i>
+									</span>
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="inventory-add-photo-file-action">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inventory-add-photo-file').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-url').classList.add('is-hidden'); document.getElementById('inventory-add-photo-url-action').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-file-action').classList.add('is-hidden');">{{ __('app.photo_edit_specify_file') }}</a>
 								</div>
 							</div>
 

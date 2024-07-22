@@ -58,8 +58,12 @@
                     </div>
 
                     <div class="inventory-item-photo">
-                        @if (($inventory->get($i)->get('photo')) && (file_exists(public_path('/img/' . $inventory->get($i)->get('photo')))))
-                            <img src="{{ asset('/img/' . $inventory->get($i)->get('photo')) }}" alt="photo"/>
+                        @if ($inventory->get($i)->get('photo'))
+                            @if (file_exists(public_path('/img/' . $inventory->get($i)->get('photo'))))
+                                <img src="{{ asset('/img/' . $inventory->get($i)->get('photo')) }}" alt="photo"/>
+                            @else
+                                <img src="{{ $inventory->get($i)->get('photo') }}" alt="photo"/>
+                            @endif
                         @else
                             <p>{{ __('app.no_photo_available') }}</p>
                         @endif
