@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="inventory-item-actions">
-                        <a href="javascript:void(0);" onclick="window.vue.editInventoryItem({{ $inventory->get($i)->get('id') }}, '{{ $inventory->get($i)->get('name') }}', '{{ $inventory->get($i)->get('group_ident') }}', '{{ ($inventory->get($i)->get('location') ?? 'N/A') }}', 'inventory-item-description-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-edit"></i></a>
+                        <a href="javascript:void(0);" onclick="window.vue.editInventoryItem({{ $inventory->get($i)->get('id') }}, `{{ $inventory->get($i)->get('name') }}`, `{{ $inventory->get($i)->get('group_ident') }}`, `{{ ($inventory->get($i)->get('location') ?? 'N/A') }}`, 'inventory-item-description-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-edit"></i></a>
                         <a href="javascript:void(0);" onclick="window.vue.deleteInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-times"></i></a>
                     </div>
                 </div>
