@@ -595,8 +595,8 @@
 							<div class="field">
 								<label class="label">{{ __('app.location') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="location" list="invlocations">
-									<datalist id="invlocations">
+									<input type="text" class="input" name="location" list="addinvlocations">
+									<datalist id="addinvlocations">
 										@foreach (LocationsModel::getAll() as $invloc)
 											<option value="{{ $invloc->get('name') }}"></option>
 										@endforeach
@@ -684,7 +684,12 @@
 							<div class="field">
 								<label class="label">{{ __('app.location') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="location" id="inpInventoryItemLocation" required>
+									<input type="text" class="input" name="location" id="inpInventoryItemLocation" list="edinvlocations" required>
+									<datalist id="edinvlocations">
+										@foreach (LocationsModel::getAll() as $invloc)
+											<option value="{{ $invloc->get('name') }}"></option>
+										@endforeach
+									</datalist>
 								</div>
 							</div>
 
