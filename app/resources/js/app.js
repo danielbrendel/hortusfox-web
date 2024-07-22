@@ -28,6 +28,7 @@ window.vue = new Vue({
         bShowEditDate: false,
         bShowEditCombo: false,
         bShowEditPhoto: false,
+        bShowEPUrl: false,
         bShowEditLinkText: false,
         bShowUploadPhoto: false,
         bShowCreateTask: false,

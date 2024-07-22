@@ -527,4 +527,17 @@ class UtilsModule {
 
         return false;
     }
+
+    /**
+     * @param $asset
+     * @return string
+     */
+    public static function absolutePhoto($asset)
+    {
+        if ((strpos($asset, 'http://') === 0) || (strpos($asset, 'https://') === 0)) {
+            return $asset;
+        }
+
+        return asset('img/' . $asset);
+    }
 }

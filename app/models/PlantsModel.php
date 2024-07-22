@@ -415,6 +415,33 @@ class PlantsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $plantId
+     * @param $attribute
+     * @param $value
+     * @return void
+     * @throws \Exception
+     */
+    public static function editPlantPhotoURL($plantId, $attribute, $value)
+    {
+        try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
+        
+            LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $value);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return int
      * @throws \Exception
      */

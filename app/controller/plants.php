@@ -285,6 +285,34 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/details/edit/photo/url
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_plant_details_photo_url($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'attribute' => 'required',
+			'value' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			FlashMessage::setMsg('error', 'Invalid data given');
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$attribute = $request->params()->query('attribute', null);
+		$value = $request->params()->query('value', null);
+		
+		PlantsModel::editPlantPhotoURL($plant, $attribute, $value);
+
+		return redirect('/plants/details/' . $plant);
+	}
+
+	/**
 	 * Handles URL: /plants/details/gallery/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

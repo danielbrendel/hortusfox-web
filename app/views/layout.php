@@ -327,11 +327,48 @@
 								</div>
 								<p class="help" id="inpEditPhotoHint"></p>
 							</div>
+
+							<div class="field">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inpEditPhotoPlantIdURL').value = document.getElementById('inpEditPhotoPlantId').value; document.getElementById('inpEditPhotoAttributeURL').value = document.getElementById('inpEditPhotoAttribute').value; window.vue.bShowEPUrl = true; window.vue.bShowEditPhoto = false;">{{ __('app.photo_edit_specify_url') }}</a>
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
 						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPhoto').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditPhoto = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEPUrl}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEPUrl = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditPhotoURL" method="POST" action="{{ url('/plants/details/edit/photo/url') }}" enctype="multipart/form-data">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditPhotoPlantIdURL"/>
+							<input type="hidden" name="attribute" id="inpEditPhotoAttributeURL"/>
+
+							<div class="field">
+								<div class="control has-icons-left">
+									<input type="text" class="input" name="value" accept="image/*" placeholder="{{ __('app.photo_edit_url_placeholder') }}" required>
+									<span class="icon is-small is-left">
+										<i class="fas fa-globe"></i>
+									</span>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPhotoURL').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEPUrl = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
 			</div>
