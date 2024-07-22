@@ -410,5 +410,7 @@ return [
 	'load_more' => 'Voir plus',
 	'operationSucceeded' => 'Opération réussie',
 	'admin_support' => 'Support',
-	'mail_rp_address' => 'Reverse Proxy'
+	'mail_rp_address' => 'Reverse Proxy',
+	'photo_edit_specify_url' => 'Spécifier l\'URL de la ressource externe',
+	'photo_edit_url_placeholder' => 'Entrer l\'URL...'
 ];

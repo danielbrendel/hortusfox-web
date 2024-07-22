@@ -408,5 +408,7 @@ return [
 	'load_more' => 'Læs mere',
 	'operationSucceeded' => 'Operationen lykkedes',
 	'admin_support' => 'Support',
-	'mail_rp_address' => 'Reverse Proxy'
+	'mail_rp_address' => 'Reverse Proxy',
+	'photo_edit_specify_url' => 'Angiv URL til ekstern ressource',
+	'photo_edit_url_placeholder' => 'Indtast URL...'
 ];
