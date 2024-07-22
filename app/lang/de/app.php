@@ -409,5 +409,7 @@ return [
 	'load_more' => 'Mehr laden',
 	'operationSucceeded' => 'Die Aktion wurde erfolgreich ausgeführt.',
 	'admin_support' => 'Support',
-	'mail_rp_address' => 'Reverse Proxy'
+	'mail_rp_address' => 'Reverse Proxy',
+	'photo_edit_specify_url' => 'URL zu einem externen Photo angeben',
+	'photo_edit_url_placeholder' => 'URL hier eingeben...'
 ];
