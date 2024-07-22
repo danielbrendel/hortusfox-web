@@ -759,15 +759,40 @@
         <div class="admin-info-version-smaller">{{ __('app.render_time', ['time' => round(microtime(true) - ASATRU_START, 4)]) }}</div>
     </div>
 
+    @if (env('APP_SERVICE_URL'))
     <div class="admin-info-support">
-        <a class="button is-success" href="https://www.hortusfox.com/support" target="_blank"><i class="fas fa-headset"></i>&nbsp;{{ __('app.admin_support') }}</a>
+        <a class="button is-success" href="{{ env('APP_SERVICE_URL') }}/support" target="_blank"><i class="fas fa-headset"></i>&nbsp;{{ __('app.admin_support') }}</a>
     </div>
+    @endif
+
+    @if (env('APP_GITHUB_SPONSOR'))
+    <div class="admin-info-sponsor">
+        <a class="button is-info" href="{{ env('APP_GITHUB_SPONSOR') }}"><i class="far fa-heart"></i>&nbsp;{{ __('app.donation_sponsoring') }}</a>
+    </div>
+    @endif
+
+    @if (env('APP_DONATION_KOFI'))
+    <div class="admin-info-donation">
+        <a class="button is-info" href="{{ env('APP_DONATION_KOFI') }}"><i class="fas fa-coffee"></i>&nbsp;{{ __('app.donation_kofi') }}</a>
+    </div>
+    @endif
 
     <div class="admin-info-social">
-        <a href="https://discord.gg/kc6xGmjzVS" target="_blank"><img src="https://img.shields.io/badge/discord-5715BA?style=for-the-badge&logo=discord&logoColor=white" alt="social-discord"></a>
-        <a href="https://mastodon.social/@hortusfox" target="_blank"><img src="https://img.shields.io/badge/mastodon-D1550A?style=for-the-badge&logo=mastodon&logoColor=white" alt="social-mastodon"></a>
-        <a href="https://www.youtube.com/@HortusFox" target="_blank"><img src="https://img.shields.io/badge/youtube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="social-youtube"></a>
-        <a href="https://www.instagram.com/hortusfox/" target="_blank"><img src="https://img.shields.io/badge/instagram-blue?style=for-the-badge&logo=instagram&logoColor=white" alt="social-instagram"></a>
+        @if (env('APP_SOCIAL_DISCORD'))
+        <a href="{{ env('APP_SOCIAL_DISCORD') }}" target="_blank"><img src="https://img.shields.io/badge/discord-5715BA?style=for-the-badge&logo=discord&logoColor=white" alt="social-discord"></a>
+        @endif
+        
+        @if (env('APP_SOCIAL_MASTODON'))
+        <a href="{{ env('APP_SOCIAL_MASTODON') }}" target="_blank"><img src="https://img.shields.io/badge/mastodon-D1550A?style=for-the-badge&logo=mastodon&logoColor=white" alt="social-mastodon"></a>
+        @endif
+
+        @if (env('APP_SOCIAL_YOUTUBE'))
+        <a href="{{ env('APP_SOCIAL_YOUTUBE') }}" target="_blank"><img src="https://img.shields.io/badge/youtube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="social-youtube"></a>
+        @endif
+
+        @if (env('APP_SOCIAL_INSTAGRAM'))
+        <a href="{{ env('APP_SOCIAL_INSTAGRAM') }}" target="_blank"><img src="https://img.shields.io/badge/instagram-blue?style=for-the-badge&logo=instagram&logoColor=white" alt="social-instagram"></a>
+        @endif
     </div>
 
     <div class="admin-info-extensions">

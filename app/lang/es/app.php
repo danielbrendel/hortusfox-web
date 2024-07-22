@@ -412,5 +412,7 @@ return [
 	'mail_rp_address' => 'Reverse Proxy',
 	'photo_edit_specify_url' => 'Especificar URL al recurso externo',
 	'photo_edit_specify_file' => 'Seleccione un archivo para cargar',
-	'photo_edit_url_placeholder' => 'Introducir URL...'
+	'photo_edit_url_placeholder' => 'Introducir URL...',
+	'donation_sponsoring' => 'GitHub Sponsoring',
+	'donation_kofi' => 'Buy Me a Coffee'
 ];
