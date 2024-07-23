@@ -44,6 +44,7 @@
   - [Installer](#installer)
   - [Manual](#manual)
 - [Cronjobs](#cronjobs)
+- [Application testing](#application-testing)
 - [System requirements](#system-requirements)
 - [Contributing](#contributing)
 - [Security](#security)
@@ -372,6 +373,10 @@ In order to run the Unit suite, please issue the following command:
 ```sh
 "vendor/bin/phpunit" --stderr --testsuite Unit
 ```
+
+### Test data
+
+Testing data should be specified as environment variables in the `php` section via the `phpunit.xml`.
 
 ## System requirements
 
