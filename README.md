@@ -336,6 +336,43 @@ GET /cronjob/tasks/tomorrow?cronpw={your-auth-token}
 GET /cronjob/calendar/reminder?cronpw={your-auth-token}
 ```
 
+## Application testing
+
+
+### Introduction
+
+Application tests are useful to verify that specific parts of the application are still working after an update.
+
+There are two types of tests whose purpose depend on the use case.
+
+### Feature
+
+Feature tests are used to test an entire workflow. In order to achieve this, you simulate a call to a specific route of the application.
+Afterwards the returned result is checked if it matches the assumption. The assumption can depend on the calling context and request data (if any).
+Often calling a route will encompass various parts of the application during the process, such as Models, Modules, Helper functions, etc.
+
+### Unit
+
+Unit tests are useful to test against specific parts of the application. For instance, you can test various methods of a Model or a Module. 
+This is especially useful if you employ a test-driven-development approach to verify that a method works as expected in various scenarios.
+
+### Running the tests
+
+In order to run all application tests, please issue the following command in the context of the root project directory:
+```sh
+"vendor/bin/phpunit" --stderr
+```
+
+In order to run the Feature suite, please issue the following command:
+```sh
+"vendor/bin/phpunit" --stderr --testsuite Feature
+```
+
+In order to run the Unit suite, please issue the following command:
+```sh
+"vendor/bin/phpunit" --stderr --testsuite Unit
+```
+
 ## System requirements
 
 - PHP ^8.3
