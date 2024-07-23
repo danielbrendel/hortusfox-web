@@ -339,6 +339,7 @@ GET /cronjob/calendar/reminder?cronpw={your-auth-token}
 
 ## Application testing
 
+**WARNING: Application testing is currently under construction and will progress with further development.**
 
 ### Introduction
 
