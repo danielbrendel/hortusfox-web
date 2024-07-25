@@ -327,11 +327,48 @@
 								</div>
 								<p class="help" id="inpEditPhotoHint"></p>
 							</div>
+
+							<div class="field">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inpEditPhotoPlantIdURL').value = document.getElementById('inpEditPhotoPlantId').value; document.getElementById('inpEditPhotoAttributeURL').value = document.getElementById('inpEditPhotoAttribute').value; window.vue.bShowEPUrl = true; window.vue.bShowEditPhoto = false;">{{ __('app.photo_edit_specify_url') }}</a>
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
 						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPhoto').submit();">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditPhoto = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEPUrl}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEPUrl = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditPhotoURL" method="POST" action="{{ url('/plants/details/edit/photo/url') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpEditPhotoPlantIdURL"/>
+							<input type="hidden" name="attribute" id="inpEditPhotoAttributeURL"/>
+
+							<div class="field">
+								<div class="control has-icons-left">
+									<input type="text" class="input" name="value" placeholder="{{ __('app.photo_edit_url_placeholder') }}" required>
+									<span class="icon is-small is-left">
+										<i class="fas fa-globe"></i>
+									</span>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPhotoURL').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEPUrl = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
 			</div>
@@ -356,9 +393,15 @@
 							</div>
 
 							<div class="field">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inpSetPhotoURLPlantId').value = document.getElementById('inpUploadPhotoPlantId').value; document.getElementById('inpSetPhotoURLLabelText').value = document.getElementById('inpUploadPhotoLabelText').value; window.vue.bShowSetPhotoURL = true; window.vue.bShowUploadPhoto = false;">{{ __('app.photo_edit_specify_url') }}</a>
+								</div>
+							</div>
+
+							<div class="field">
 								<label class="label">{{ __('app.label') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="label" required>
+									<input type="text" class="input" name="label" id="inpUploadPhotoLabelText" required>
 								</div>
 							</div>
 						</form>
@@ -366,6 +409,43 @@
 					<footer class="modal-card-foot is-stretched">
 						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmUploadPhoto').submit();">{{ __('app.upload') }}</button>
 						<button class="button" onclick="window.vue.bShowUploadPhoto = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowSetPhotoURL}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.upload_photo') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowSetPhotoURL = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmSetPhotoURL" method="POST" action="{{ url('/plants/details/gallery/add/url') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpSetPhotoURLPlantId"/>
+
+							<div class="field">
+								<div class="control has-icons-left">
+									<input type="text" class="input" name="value" placeholder="{{ __('app.photo_edit_url_placeholder') }}" required>
+									<span class="icon is-small is-left">
+										<i class="fas fa-globe"></i>
+									</span>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.label') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="label" id="inpSetPhotoURLLabelText" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmSetPhotoURL').submit();">{{ __('app.upload') }}</button>
+						<button class="button" onclick="window.vue.bShowSetPhotoURL = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
 			</div>
@@ -483,18 +563,40 @@
 								</div>
 							</div>
 
-							<div class="field">
+							<div class="field" id="inventory-add-photo-file">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
 									<input type="file" class="input" name="photo" accept="image/*">
 								</div>
 							</div>
 
+							<div class="field" id="inventory-add-photo-url-action">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inventory-add-photo-file').classList.add('is-hidden'); document.getElementById('inventory-add-photo-url').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-file-action').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-url-action').classList.add('is-hidden');">{{ __('app.photo_edit_specify_url') }}</a>
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="inventory-add-photo-url">
+								<label class="label">{{ __('app.photo') }}</label>
+								<div class="control has-icons-left">
+									<input type="text" class="input" name="photo" placeholder="{{ __('app.photo_edit_url_placeholder') }}">
+									<span class="icon is-small is-left">
+										<i class="fas fa-globe"></i>
+									</span>
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="inventory-add-photo-file-action">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inventory-add-photo-file').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-url').classList.add('is-hidden'); document.getElementById('inventory-add-photo-url-action').classList.remove('is-hidden'); document.getElementById('inventory-add-photo-file-action').classList.add('is-hidden');">{{ __('app.photo_edit_specify_file') }}</a>
+								</div>
+							</div>
+
 							<div class="field">
 								<label class="label">{{ __('app.location') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="location" list="invlocations">
-									<datalist id="invlocations">
+									<input type="text" class="input" name="location" list="addinvlocations">
+									<datalist id="addinvlocations">
 										@foreach (LocationsModel::getAll() as $invloc)
 											<option value="{{ $invloc->get('name') }}"></option>
 										@endforeach
@@ -550,17 +652,44 @@
 								</div>
 							</div>
 
-							<div class="field">
+							<div class="field" id="inventory-edit-photo-file">
 								<label class="label">{{ __('app.photo') }}</label>
 								<div class="control">
 									<input type="file" class="input" name="photo" accept="image/*" required>
 								</div>
 							</div>
 
+							<div class="field" id="inventory-edit-photo-url-action">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inventory-edit-photo-file').classList.add('is-hidden'); document.getElementById('inventory-edit-photo-url').classList.remove('is-hidden'); document.getElementById('inventory-edit-photo-file-action').classList.remove('is-hidden'); document.getElementById('inventory-edit-photo-url-action').classList.add('is-hidden');">{{ __('app.photo_edit_specify_url') }}</a>
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="inventory-edit-photo-url">
+								<label class="label">{{ __('app.photo') }}</label>
+								<div class="control has-icons-left">
+									<input type="text" class="input" name="photo" placeholder="{{ __('app.photo_edit_url_placeholder') }}">
+									<span class="icon is-small is-left">
+										<i class="fas fa-globe"></i>
+									</span>
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="inventory-edit-photo-file-action">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inventory-edit-photo-file').classList.remove('is-hidden'); document.getElementById('inventory-edit-photo-url').classList.add('is-hidden'); document.getElementById('inventory-edit-photo-url-action').classList.remove('is-hidden'); document.getElementById('inventory-edit-photo-file-action').classList.add('is-hidden');">{{ __('app.photo_edit_specify_file') }}</a>
+								</div>
+							</div>
+
 							<div class="field">
 								<label class="label">{{ __('app.location') }}</label>
 								<div class="control">
-									<input type="text" class="input" name="location" id="inpInventoryItemLocation" required>
+									<input type="text" class="input" name="location" id="inpInventoryItemLocation" list="edinvlocations" required>
+									<datalist id="edinvlocations">
+										@foreach (LocationsModel::getAll() as $invloc)
+											<option value="{{ $invloc->get('name') }}"></option>
+										@endforeach
+									</datalist>
 								</div>
 							</div>
 

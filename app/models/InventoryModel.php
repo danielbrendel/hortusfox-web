@@ -11,10 +11,11 @@ class InventoryModel extends \Asatru\Database\Model {
      * @param $description
      * @param $location
      * @param $group
+     * @param $photo
      * @return int
      * @throws \Exception
      */
-    public static function addItem($name, $description, $location, $group)
+    public static function addItem($name, $description, $location, $group, $photo)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -50,6 +51,12 @@ class InventoryModel extends \Asatru\Database\Model {
                 static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
                     $file_name . '_thumb.' . $file_ext, $row->get('id')
                 ]);
+            } else {
+                if ((is_string($photo)) && ((strpos($photo, 'http://') === 0) || (strpos($photo, 'https://') === 0))) {
+                    static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
+                        $photo, $row->get('id')
+                    ]);
+                }
             }
 
             LogModel::addLog($user->get('id'), 'inventory', 'add_inventory_item', $name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
@@ -67,10 +74,11 @@ class InventoryModel extends \Asatru\Database\Model {
      * @param $description
      * @param $location
      * @param $group
+     * @param $photo
      * @return void
      * @throws \Exception
      */
-    public static function editItem($id, $name, $description, $location, $group)
+    public static function editItem($id, $name, $description, $location, $group, $photo)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -109,6 +117,12 @@ class InventoryModel extends \Asatru\Database\Model {
                 static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
                     $file_name . '_thumb.' . $file_ext, $row->get('id')
                 ]);
+            } else {
+                if ((is_string($photo)) && ((strpos($photo, 'http://') === 0) || (strpos($photo, 'https://') === 0))) {
+                    static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
+                        $photo, $row->get('id')
+                    ]);
+                }
             }
 
             static::raw('UPDATE `' . self::tableName() . '` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [

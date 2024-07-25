@@ -39,7 +39,7 @@
                     @endif
 
                     <div class="auth-form">
-                        <form method="POST" action="{{ url('/login') }}">
+                        <form method="POST" action="{{ url('/login' . (isset($_GET['redirect']) ? '?redirect=' . $_GET['redirect'] : '')) }}">
                             @csrf
 
                             <div class="field">

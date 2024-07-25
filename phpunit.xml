@@ -8,9 +8,16 @@
 	>
 	
 	<testsuites>
-		<testsuite name="Testcases">
-			<directory>app/tests</directory>
+		<testsuite name="Feature">
+			<directory>app/tests/feature</directory>
+		</testsuite>
+		<testsuite name="Unit">
+			<directory>app/tests/unit</directory>
 		</testsuite>
 	</testsuites>
 	
+	<php>
+		<env name="TEST_USER_EMAIL" value=""/>
+		<env name="TEST_USER_PASSWORD" value=""/>
+	</php>
 </phpunit>

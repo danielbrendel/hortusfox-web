@@ -285,6 +285,34 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/details/edit/photo/url
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_plant_details_photo_url($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'attribute' => 'required',
+			'value' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			FlashMessage::setMsg('error', 'Invalid data given');
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$attribute = $request->params()->query('attribute', null);
+		$value = $request->params()->query('value', null);
+		
+		PlantsModel::editPlantPhotoURL($plant, $attribute, $value);
+
+		return redirect('/plants/details/' . $plant);
+	}
+
+	/**
 	 * Handles URL: /plants/details/gallery/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
@@ -312,6 +340,43 @@ class PlantsController extends BaseController {
 		$label = $request->params()->query('label', '');
 
 		PlantPhotoModel::uploadPhoto($plant, $label);
+		PlantsModel::setUpdated($plant);
+
+		FlashMessage::setMsg('success', __('app.photo_uploaded_successfully'));
+
+		return redirect('/plants/details/' . $plant . '#plant-gallery-photo-anchor');
+	}
+
+	/**
+	 * Handles URL: /plants/details/gallery/add/url
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_plant_gallery_photo_url($request)
+	{
+		$validator = new Asatru\Controller\PostValidator([
+			'plant' => 'required',
+			'label' => 'required',
+			'value' => 'required'
+		]);
+
+		if (!$validator->isValid()) {
+			$errorstr = '';
+			foreach ($validator->errorMsgs() as $err) {
+				$errorstr .= $err . '<br/>';
+			}
+
+			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
+			
+			return back();
+		}
+
+		$plant = $request->params()->query('plant', null);
+		$label = $request->params()->query('label', '');
+		$value = $request->params()->query('value', null);
+
+		PlantPhotoModel::addPhotoURL($plant, $label, $value);
 		PlantsModel::setUpdated($plant);
 
 		FlashMessage::setMsg('success', __('app.photo_uploaded_successfully'));

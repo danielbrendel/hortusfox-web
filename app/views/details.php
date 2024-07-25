@@ -223,9 +223,9 @@
 	</div>
 
 	<div class="column is-one-third">
-		<div class="plant-photo" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
+		<div class="plant-photo" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
 			<div class="plant-photo-overlay">
-				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', asset('img/' . $plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
+				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', abs_photo($plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
 				<div class="plant-photo-edit is-pointer" onclick="window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo', '{{ __('app.plant_photo_orientation_hint') }}');"><i class="fas fa-upload fa-lg"></i></div>
 			
 				@if (app('enable_media_share', false))
@@ -314,10 +314,10 @@
 							</div>
 
 							<div class="plant-gallery-item-photo">
-								<a href="{{ asset('img/' . $photo->get('original')) }}" target="_blank">
+								<a href="{{ abs_photo($photo->get('original')) }}" target="_blank">
 									<div class="plant-gallery-item-photo-overlay"></div>
 
-									<img class="plant-gallery-item-photo-image" src="{{ asset('img/' . $photo->get('thumb')) }}" alt="photo"/>
+									<img class="plant-gallery-item-photo-image" src="{{ abs_photo($photo->get('thumb')) }}" alt="photo"/>
 								</a>
 							</div>
 

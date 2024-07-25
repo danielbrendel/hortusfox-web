@@ -40,7 +40,7 @@ class BaseController extends Asatru\Controller\Controller {
 			);
 
 			if (!in_array($url, $allowed_urls)) {
-				header('Location: /auth');
+				header('Location: /auth?redirect=' . urlencode($_SERVER['REQUEST_URI']));
 				exit();
 			}
 		} else {

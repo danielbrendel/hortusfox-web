@@ -92,3 +92,12 @@ function workspace_url($path)
 
     return url($path);
 }
+
+/**
+ * @param $asset
+ * @return string
+ */
+function abs_photo($asset)
+{
+    return UtilsModule::absolutePhoto($asset);
+}

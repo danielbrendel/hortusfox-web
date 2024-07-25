@@ -91,6 +91,9 @@ require_once __DIR__ . '/../../vendor/danielbrendel/asatru-php-framework/src/loc
 //Require database management
 require_once __DIR__ . '/../../vendor/danielbrendel/asatru-php-framework/src/database.php';
 
+//Require modules
+require_once __DIR__ . '/../../vendor/danielbrendel/asatru-php-framework/src/modules.php';
+
 //Require event manager
 require_once __DIR__ . '/../../vendor/danielbrendel/asatru-php-framework/src/events.php';
 

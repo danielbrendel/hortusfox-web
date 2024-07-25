@@ -28,8 +28,10 @@ window.vue = new Vue({
         bShowEditDate: false,
         bShowEditCombo: false,
         bShowEditPhoto: false,
+        bShowEPUrl: false,
         bShowEditLinkText: false,
         bShowUploadPhoto: false,
+        bShowSetPhotoURL: false,
         bShowCreateTask: false,
         bShowEditTask: false,
         bShowEditPreferences: false,
@@ -531,9 +533,9 @@ window.vue = new Vue({
         editInventoryItem: function(id, name, group, location, description)
         {
             document.getElementById('inpInventoryItemId').value = id;
-            document.getElementById('inpInventoryItemName').value = name;
+            document.getElementById('inpInventoryItemName').value = document.getElementById(name).innerText;
             document.getElementById('inpInventoryItemGroup').value = group;
-            document.getElementById('inpInventoryItemLocation').value = location;
+            document.getElementById('inpInventoryItemLocation').value = document.getElementById(location).innerText;
             document.getElementById('inpInventoryItemDescription').value = document.getElementById(description).innerText;
 
             window.vue.bShowEditInventoryItem = true;

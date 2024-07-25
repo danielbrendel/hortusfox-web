@@ -37,7 +37,7 @@
 
 	@foreach ($plants as $plant)
 		<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-			<div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
+			<div class="plant-card" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
 				<div class="plant-card-overlay">
 					<div class="plant-card-health-state">
 						@if ($plant->get('health_state') !== 'in_good_standing')

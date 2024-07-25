@@ -54,6 +54,35 @@ class PlantPhotoModel extends \Asatru\Database\Model {
 
     /**
      * @param $plantId
+     * @param $label
+     * @param $photo
+     * @return void
+     * @throws \Exception
+     */
+    public static function addPhotoURL($plantId, $label, $photo)
+    {
+        try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
+            static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label) VALUES(?, ?, ?, ?, ?)', [
+                $plantId, $user->get('id'), $photo, $photo, $label
+            ]);
+
+            LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label, url('/plants/details/' . $plantId . '#plant-gallery-photo-anchor'));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] add_gallery_photo: ' . $label . ' = ' . $photo);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $plantId
      * @return mixed
      * @throws \Exception
      */

@@ -91,8 +91,13 @@ class IndexController extends BaseController {
 		try {
 			$email = $request->params()->query('email', null);
 			$password = $request->params()->query('password', null);
+			$redirect = $request->params()->query('redirect', null);
 			
 			UserModel::login($email, $password);
+
+			if ((is_string($redirect)) && (strlen($redirect) > 0)) {
+				return redirect($redirect);
+			}
 
 			return redirect('/');
 		} catch (\Exception $e) {

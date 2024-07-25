@@ -32,7 +32,7 @@
                 <a name="anchor-item-{{ $inventory->get($i)->get('id') }}"></a>
 
                 <div class="inventory-item-header">
-                    <div class="inventory-item-name"><a href="javascript:void(0);" onclick="window.vue.expandInventoryItem('inventory-item-body-{{ $inventory->get($i)->get('id') }}');">{{ $inventory->get($i)->get('name') }}</a></div>
+                    <div class="inventory-item-name" id="inventory-item-name-{{ $inventory->get($i)->get('id') }}"><a href="javascript:void(0);" onclick="window.vue.expandInventoryItem('inventory-item-body-{{ $inventory->get($i)->get('id') }}');">{{ $inventory->get($i)->get('name') }}</a></div>
 
                     <div class="inventory-item-amount">
                         <a href="javascript:void(0);" onclick="window.vue.decrementInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-amount-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-chevron-left"></i></a>
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="inventory-item-actions">
-                        <a href="javascript:void(0);" onclick="window.vue.editInventoryItem({{ $inventory->get($i)->get('id') }}, '{{ $inventory->get($i)->get('name') }}', '{{ $inventory->get($i)->get('group_ident') }}', '{{ ($inventory->get($i)->get('location') ?? 'N/A') }}', 'inventory-item-description-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-edit"></i></a>
+                        <a href="javascript:void(0);" onclick="window.vue.editInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-name-{{ $inventory->get($i)->get('id') }}', '{{ $inventory->get($i)->get('group_ident') }}', 'inventory-item-location-{{ $inventory->get($i)->get('id') }}', 'inventory-item-description-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-edit"></i></a>
                         <a href="javascript:void(0);" onclick="window.vue.deleteInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-times"></i></a>
                     </div>
                 </div>
@@ -58,15 +58,19 @@
                     </div>
 
                     <div class="inventory-item-photo">
-                        @if (($inventory->get($i)->get('photo')) && (file_exists(public_path('/img/' . $inventory->get($i)->get('photo')))))
-                            <img src="{{ asset('/img/' . $inventory->get($i)->get('photo')) }}" alt="photo"/>
+                        @if ($inventory->get($i)->get('photo'))
+                            @if (file_exists(public_path('/img/' . $inventory->get($i)->get('photo'))))
+                                <img src="{{ asset('/img/' . $inventory->get($i)->get('photo')) }}" alt="photo"/>
+                            @else
+                                <img src="{{ $inventory->get($i)->get('photo') }}" alt="photo"/>
+                            @endif
                         @else
                             <p>{{ __('app.no_photo_available') }}</p>
                         @endif
                     </div>
 
                     <div class="inventory-item-footer">
-                        <div class="inventory-item-location">
+                        <div class="inventory-item-location" id="inventory-item-location-{{ $inventory->get($i)->get('id') }}">
                             {{ __('app.location_fmt', ['loc' => ($inventory->get($i)->get('location')) ?? 'N/A']) }}
                         </div>
 

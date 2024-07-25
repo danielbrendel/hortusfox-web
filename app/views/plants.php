@@ -45,7 +45,7 @@
 	@if (count($plants) > 0)
 		@foreach ($plants as $plant)
 			<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-				<div class="plant-card" style="background-image: url('{{ asset('img/' . $plant->get('photo')) }}');">
+				<div class="plant-card" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
 					<div class="plant-card-overlay">
 						@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
 							<div class="plant-card-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>
