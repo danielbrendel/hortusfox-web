@@ -9,7 +9,7 @@
 */
 
 return [
-	'_language_ident' => 'Polish',
+	'_language_ident' => 'Polski',
 	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
 	'enter_email' => 'Wprowadź adres e-mail',
 	'enter_password' => 'Wprowadź hasło',
