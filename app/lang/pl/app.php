@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Asatru PHP - English language file
+	Asatru PHP - Polish language file
 
 	Extend this with your phrases
 	
@@ -9,7 +9,7 @@
 */
 
 return [
-	'_language_ident' => 'Polski',
+	'_language_ident' => 'Polish',
 	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
 	'enter_email' => 'Wprowadź adres e-mail',
 	'enter_password' => 'Wprowadź hasło',
@@ -330,7 +330,7 @@ return [
 	'show_plant_id' => 'Pokaż ID roślin na listach',
 	'unknown_calendar_class' => 'Nieznane',
 	'add_calendar_class' => 'Dodaj klasę kalendarza',
-	'calendar_class_ident' => 'Identyfikator', // is this ID?
+	'calendar_class_ident' => 'Identyfikator',
 	'calendar_class_name' => 'Nazwa',
 	'calendar_class_color_background' => 'Kolor tła',
 	'calendar_class_color_border' => 'Kolor ramki',
@@ -409,5 +409,10 @@ return [
 	'load_more' => 'Załaduj więcej',
 	'operationSucceeded' => 'Operacja się powiodła',
 	'admin_support' => 'Support',
-	'mail_rp_address' => 'Reverse Proxy'
+	'mail_rp_address' => 'Reverse Proxy',
+	'photo_edit_specify_url' => 'Określ adres URL zasobu zewnętrznego',
+	'photo_edit_specify_file' => 'Wybierz plik do przesłania',
+	'photo_edit_url_placeholder' => 'Wprowadź URL...',
+	'donation_sponsoring' => 'GitHub Sponsoring',
+	'donation_kofi' => 'Buy Me a Coffee'
 ];
