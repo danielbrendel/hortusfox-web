@@ -237,16 +237,16 @@
         },
         {
             "name": "danielbrendel/asatru-php-framework",
-            "version": "v1.1",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielbrendel/dnyAsatruPHP-Framework.git",
-                "reference": "2e534fc007b8d3b38564d3c62f91fb05fdac0b25"
+                "reference": "2b15cddb53a10eae81e0b684890dd9a5d6997fee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielbrendel/dnyAsatruPHP-Framework/zipball/2e534fc007b8d3b38564d3c62f91fb05fdac0b25",
-                "reference": "2e534fc007b8d3b38564d3c62f91fb05fdac0b25",
+                "url": "https://api.github.com/repos/danielbrendel/dnyAsatruPHP-Framework/zipball/2b15cddb53a10eae81e0b684890dd9a5d6997fee",
+                "reference": "2b15cddb53a10eae81e0b684890dd9a5d6997fee",
                 "shasum": ""
             },
             "require": {
@@ -274,9 +274,9 @@
             ],
             "support": {
                 "issues": "https://github.com/danielbrendel/dnyAsatruPHP-Framework/issues",
-                "source": "https://github.com/danielbrendel/dnyAsatruPHP-Framework/tree/v1.1"
+                "source": "https://github.com/danielbrendel/dnyAsatruPHP-Framework/tree/v1.2"
             },
-            "time": "2024-07-20T10:53:55+00:00"
+            "time": "2024-07-23T10:35:50+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -2114,16 +2114,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v6.4.8",
+            "version": "v6.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "a002933b13989fc4bd0b58e04bf7eec5210e438a"
+                "reference": "94041203f8ac200ae9e7c6a18fa6137814ccecc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/a002933b13989fc4bd0b58e04bf7eec5210e438a",
-                "reference": "a002933b13989fc4bd0b58e04bf7eec5210e438a",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/94041203f8ac200ae9e7c6a18fa6137814ccecc9",
+                "reference": "94041203f8ac200ae9e7c6a18fa6137814ccecc9",
                 "shasum": ""
             },
             "require": {
@@ -2189,7 +2189,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v6.4.8"
+                "source": "https://github.com/symfony/translation/tree/v6.4.10"
             },
             "funding": [
                 {
@@ -2205,7 +2205,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:49:08+00:00"
+            "time": "2024-07-26T12:30:32+00:00"
         },
         {
             "name": "symfony/translation-contracts",
