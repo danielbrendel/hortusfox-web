@@ -18,7 +18,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
 	"require": {
-        "php": "^8.0",
+        "php": "^8.3",
 		"danielbrendel/asatru-php-framework": "^1.0",
         "phpmailer/phpmailer": "^6.1",
         "nesbot/carbon": "^2.0",
