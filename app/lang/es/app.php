@@ -9,7 +9,6 @@
 */
 
 return [
-	'_language_ident' => 'Castellano',
 	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
 	'enter_email' => 'Introduce tu e-mail',
 	'enter_password' => 'Introduce tu contraseña',

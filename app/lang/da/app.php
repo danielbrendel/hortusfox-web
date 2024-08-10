@@ -9,7 +9,6 @@
 */
 
 return [
-	'_language_ident' => 'Dansk',
 	'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
 	'enter_email' => 'Indsæt din e-mail',
 	'enter_password' => 'Indsæt dit kodeord',
