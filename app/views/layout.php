@@ -731,6 +731,37 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowInventoryBulkPrint}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.bulk_qrcodes') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowInventoryBulkPrint = false;"></button>
+					</header>
+					<section class="modal-card-body modal-anchors is-stretched">
+						<div class="field">
+							<div class="control">
+								<a href="javascript:void(0);" onclick="window.vue.bulkChecked('inventory-bulk-print-qrcode', true);">{{ __('app.select_all') }}</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="window.vue.bulkChecked('inventory-bulk-print-qrcode', false);">{{ __('app.unselect_all') }}</a>
+							</div>
+						</div>
+
+						@if ((isset($inventory)) && (is_countable($inventory)) && (count($inventory) > 0))
+							@foreach ($inventory as $inventory_item)
+								<div class="field">
+									<div class="control">
+										<input type="checkbox" class="inventory-bulk-print-qrcode" data-invitemid="{{ $inventory_item->get('id') }}" data-invitemname="{{ $inventory_item->get('name') }}" value="1"/>&nbsp;{{ $inventory_item->get('name') }}
+									</div>
+								</div>
+							@endforeach
+						@endif
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="window.vue.bulkPrintInvQRCodes('inventory-bulk-print-qrcode', '{{ __('app.inventory') }}');">{{ __('app.print') }}</button>
+						<button class="button" onclick="window.vue.bShowInventoryBulkPrint = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			<div class="modal" :class="{'is-active': bShowManageGroups}">
 				<div class="modal-background"></div>
 				<div class="modal-card">

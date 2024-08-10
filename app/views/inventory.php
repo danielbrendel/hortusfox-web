@@ -9,6 +9,8 @@
         <a class="button is-success" href="javascript:void(0);" onclick="window.vue.bShowAddInventoryItem = true;">{{ __('app.create_new') }}</a>
         &nbsp;
         <a class="button is-link" href="javascript:void(0);" onclick="window.vue.bShowManageGroups = true;">{{ __('app.manage_groups') }}</a>
+        &nbsp;
+        <a class="button" href="javascript:void(0);" onclick="window.vue.bShowInventoryBulkPrint = true;">{{ __('app.bulk_print_qr_codes') }}</a>
     </div>
 
     <div class="sorting-control is-rounded is-small is-inline-block is-next-to-elem">

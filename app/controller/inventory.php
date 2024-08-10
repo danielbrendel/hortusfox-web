@@ -211,6 +211,41 @@ class InventoryController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /inventory/qrcode/bulk
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function get_bulk_qr_codes($request)
+	{
+		try {
+			$result = [];
+
+			$invitems = json_decode($request->params()->query('list', null));
+			foreach ($invitems as $invitem) {
+				$code = InventoryModel::generateQRCode($invitem[0]);
+				if ($code) {
+					$result[] = [
+						'invitemid' => $invitem[0],
+						'invitemname' => $invitem[1],
+						'qrcode' => $code
+					];
+				}
+			}
+
+			return json([
+				'code' => 200,
+				'list' => $result
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /inventory/group/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

@@ -38,6 +38,7 @@ window.vue = new Vue({
         bShowAddInventoryItem: false,
         bShowEditInventoryItem: false,
         bShowInvItemQRCode: false,
+        bShowInventoryBulkPrint: false,
         bShowManageGroups: false,
         bShowRestorePassword: false,
         bShowCreateNewUser: false,
@@ -1322,6 +1323,42 @@ window.vue = new Vue({
                     alert(response.msg);
                 }
             });
+        },
+
+        bulkPrintInvQRCodes: function(target, title) {
+            let invIds = [];
+
+            let elems = document.getElementsByClassName(target);
+            if (elems) {
+                Array.prototype.forEach.call(elems, function(elem) {
+                    if (elem.checked) {
+                        invIds.push([elem.dataset.invitemid, elem.dataset.invitemname]);
+                    }
+                });
+
+                if (invIds.length > 0) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/inventory/qrcode/bulk', { list: JSON.stringify(invIds) }, function(response) {
+                        if (response.code == 200) {
+                            let wnd = window.open('', title, 'height=auto, width=auto');
+
+                            wnd.document.write('<html><head><title>' + title + '</title></head><body>');
+
+                            response.list.forEach(function(elem, index) {
+                                wnd.document.write('<div style="position: relative; display: inline-block; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">#' + elem.invitemid + ' ' + elem.invitemname + '<br/><img src="' + elem.qrcode + '" width="152" height="152"/></div>');
+                            });
+
+                            wnd.document.write('</body></html>');
+
+                            wnd.print();
+                            wnd.close();
+                        } else {
+                            alert(response.msg);
+                        }
+                    });
+                } else {
+                   alert(window.vue.noListItemsSelected); 
+                }
+            }
         },
 
         editGalleryPhotoLabel: function(id, plant, old) {

@@ -83,6 +83,7 @@ return [
     array('/inventory/group/edit', 'POST', 'inventory@edit_inventory_group_item'),
     array('/inventory/group/remove', 'ANY', 'inventory@remove_inventory_group_item'),
     array('/inventory/qrcode', 'ANY', 'inventory@generate_qr_code'),
+    array('/inventory/qrcode/bulk', 'POST', 'inventory@get_bulk_qr_codes'),
 
     /** Calendar Controller */
     array('/calendar', 'GET', 'calendar@view_calendar'),
