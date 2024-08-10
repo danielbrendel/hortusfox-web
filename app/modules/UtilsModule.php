@@ -244,8 +244,6 @@ class UtilsModule {
         $files = scandir(app_path('/lang'));
         foreach ($files as $file) {
             if (substr($file, 0, 1) !== '.') {
-                
-
                 $result[] = ['ident' => $file, 'name' => locale_get_display_language($file, static::getLanguage())];
             }
         }
