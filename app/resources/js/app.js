@@ -37,6 +37,7 @@ window.vue = new Vue({
         bShowEditPreferences: false,
         bShowAddInventoryItem: false,
         bShowEditInventoryItem: false,
+        bShowInvItemQRCode: false,
         bShowManageGroups: false,
         bShowRestorePassword: false,
         bShowCreateNewUser: false,
@@ -1252,12 +1253,10 @@ window.vue = new Vue({
             });
         },
 
-        printQRCode: function(content) {
-            let elPlantTitle = document.getElementById('title-plant-qr-code');
+        printQRCode: function(content, title) {
+            let wnd = window.open('', title, 'height=auto, width=auto');
 
-            let wnd = window.open('', elPlantTitle.value, 'height=auto, width=auto');
-
-            wnd.document.write('<html><head><title>' + elPlantTitle.value + '</title></head><body>');
+            wnd.document.write('<html><head><title>' + title + '</title></head><body>');
             wnd.document.write('<img src="' + content + '"/>');
             wnd.document.write('</body></html>');
 
@@ -1309,6 +1308,20 @@ window.vue = new Vue({
                    alert(window.vue.noListItemsSelected); 
                 }
             }
+        },
+
+        queryInvQrCode: function(item) {
+            window.vue.ajaxRequest('get', window.location.origin + '/inventory/qrcode?item=' + item, {}, function(response) {
+                if (response.code == 200) {
+                    let elTarget = document.getElementById('image-inventory-qr-code');
+                    if (elTarget) {
+                        elTarget.src = response.qrcode;
+                        window.vue.bShowInvItemQRCode = true;
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
         },
 
         editGalleryPhotoLabel: function(id, plant, old) {

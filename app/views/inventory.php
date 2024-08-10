@@ -78,6 +78,10 @@
                             {{ __('app.last_edited_by', ['name' => UserModel::getNameById($inventory->get($i)->get('last_edited_user')), 'when' => (new Carbon($inventory->get($i)->get('last_edited_date')))->diffForHumans()]) }}
                         </div>
                     </div>
+
+                    <div class="inventory-item-foac">
+                        <a href="javascript:void(0);" onclick="document.getElementById('title-inventory-qr-code').value = '#{{ $inventory->get($i)->get('id') }} ' + document.getElementById('inventory-item-name-{{ $inventory->get($i)->get('id') }}').innerText; window.vue.queryInvQrCode({{ $inventory->get($i)->get('id') }});">{{ __('app.show_qr_code') }}</a>
+                    </div>
                 </div>
             </div>
         @endfor

@@ -186,6 +186,31 @@ class InventoryController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /inventory/qrcode
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function generate_qr_code($request)
+	{
+		try {
+			$item = $request->params()->query('item', null);
+
+			$qrcode = InventoryModel::generateQRCode($item);
+
+			return json([
+				'code' => 200,
+				'qrcode' => $qrcode
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /inventory/group/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

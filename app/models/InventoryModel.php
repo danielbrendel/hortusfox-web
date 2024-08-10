@@ -1,5 +1,7 @@
 <?php
 
+use chillerlan\QRCode\{QRCode, QROptions};
+
 /**
  * Class InventoryModel
  * 
@@ -260,6 +262,29 @@ class InventoryModel extends \Asatru\Database\Model {
             }
 
             return $row->get('count') > 0;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function generateQRCode($id)
+    {
+        try {
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            if (!$item) {
+                throw new \Exception('Invalid item: ' . $id);
+            }
+
+            $options = new QROptions();
+            $options->invertMatrix = true;
+
+            $oqr = new QRCode($options);
+			return $oqr->render(url('/inventory?expand=' . $item->get('id') . '#anchor-item-' . $item->get('id')));
         } catch (\Exception $e) {
             throw $e;
         }
