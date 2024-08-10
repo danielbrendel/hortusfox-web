@@ -228,6 +228,7 @@ class InventoryController extends BaseController {
 					$result[] = [
 						'invitemid' => $invitem[0],
 						'invitemname' => $invitem[1],
+						'invgroup' => $invitem[2],
 						'qrcode' => $code
 					];
 				}

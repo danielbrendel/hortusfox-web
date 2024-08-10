@@ -749,7 +749,7 @@
 							@foreach ($inventory as $inventory_item)
 								<div class="field">
 									<div class="control">
-										<input type="checkbox" class="inventory-bulk-print-qrcode" data-invitemid="{{ $inventory_item->get('id') }}" data-invitemname="{{ $inventory_item->get('name') }}" value="1"/>&nbsp;{{ $inventory_item->get('name') }}
+										<input type="checkbox" class="inventory-bulk-print-qrcode" data-invitemid="{{ $inventory_item->get('id') }}" data-invitemname="{{ $inventory_item->get('name') }}" data-invgroup="{{ InvGroupModel::getLabel($inventory_item->get('group_ident')) }}" value="1"/>&nbsp;{{ '[' . InvGroupModel::getLabel($inventory_item->get('group_ident')) . '] ' . $inventory_item->get('name') }}
 									</div>
 								</div>
 							@endforeach

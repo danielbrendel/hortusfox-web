@@ -1332,7 +1332,7 @@ window.vue = new Vue({
             if (elems) {
                 Array.prototype.forEach.call(elems, function(elem) {
                     if (elem.checked) {
-                        invIds.push([elem.dataset.invitemid, elem.dataset.invitemname]);
+                        invIds.push([elem.dataset.invitemid, elem.dataset.invitemname, elem.dataset.invgroup]);
                     }
                 });
 
@@ -1344,7 +1344,7 @@ window.vue = new Vue({
                             wnd.document.write('<html><head><title>' + title + '</title></head><body>');
 
                             response.list.forEach(function(elem, index) {
-                                wnd.document.write('<div style="position: relative; display: inline-block; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">#' + elem.invitemid + ' ' + elem.invitemname + '<br/><img src="' + elem.qrcode + '" width="152" height="152"/></div>');
+                                wnd.document.write('<div style="position: relative; display: inline-block; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">#' + elem.invitemid + ' [' + elem.invgroup + '] ' + elem.invitemname + '<br/><img src="' + elem.qrcode + '" width="152" height="152"/></div>');
                             });
 
                             wnd.document.write('</body></html>');
