@@ -246,11 +246,7 @@ class UtilsModule {
             if (substr($file, 0, 1) !== '.') {
                 
 
-                $result[] = ['ident' => $file, 'name' => CacheModel::remember('_language_ident_' . $file, 3600 * 24, function() use ($file) {
-                        $olng = new Asatru\Lang\Language($file);
-                        return $olng->query('app._language_ident', $file);
-                    }
-                )];
+                $result[] = ['ident' => $file, 'name' => locale_get_display_language($file, static::getLanguage())];
             }
         }
 
