@@ -43,6 +43,7 @@
                     </div>
 
                     <div class="inventory-item-actions">
+                        <a href="javascript:void(0);" onclick="document.getElementById('title-inventory-qr-code').value = '#{{ $inventory->get($i)->get('id') }} ' + document.getElementById('inventory-item-name-{{ $inventory->get($i)->get('id') }}').innerText; window.vue.queryInvQrCode({{ $inventory->get($i)->get('id') }});"><i class="fas fa-qrcode"></i></a>&nbsp;
                         <a href="javascript:void(0);" onclick="window.vue.editInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-name-{{ $inventory->get($i)->get('id') }}', '{{ $inventory->get($i)->get('group_ident') }}', 'inventory-item-location-{{ $inventory->get($i)->get('id') }}', 'inventory-item-description-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-edit"></i></a>
                         <a href="javascript:void(0);" onclick="window.vue.deleteInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-times"></i></a>
                     </div>
@@ -79,10 +80,6 @@
                         <div class="inventory-item-author">
                             {{ __('app.last_edited_by', ['name' => UserModel::getNameById($inventory->get($i)->get('last_edited_user')), 'when' => (new Carbon($inventory->get($i)->get('last_edited_date')))->diffForHumans()]) }}
                         </div>
-                    </div>
-
-                    <div class="inventory-item-foac">
-                        <a href="javascript:void(0);" onclick="document.getElementById('title-inventory-qr-code').value = '#{{ $inventory->get($i)->get('id') }} ' + document.getElementById('inventory-item-name-{{ $inventory->get($i)->get('id') }}').innerText; window.vue.queryInvQrCode({{ $inventory->get($i)->get('id') }});">{{ __('app.show_qr_code') }}</a>
                     </div>
                 </div>
             </div>
