@@ -40,6 +40,7 @@ RUN apt-get update \
         exif \
         pcntl \
         bcmath \
+        intl \
         zip \
 # Configure and install GD
  && docker-php-ext-configure gd --with-jpeg \
