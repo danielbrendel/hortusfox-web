@@ -6,4 +6,4 @@ Security vulnerabilities describe major issues in a supported version of this pr
 
 ## Reporting a Vulnerability
 
-Please report any security vulnerability to security@hortusfox.com confidently. We will address this issue as soon as possible in order to provide a fix. 
+Please report any security vulnerability to security@hortusfox.com confidently. Security vulnerabilities will be addressed as soon as possible in order to provide a fix. 

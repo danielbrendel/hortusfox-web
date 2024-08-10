@@ -388,8 +388,8 @@ Testing data should be specified as environment variables in the `php` section v
 
 ## Contributing
 
-Please view the [contribution guidelines](CONTRIBUTING.md) if you intend to contribute to our repository.
+Please view the [contribution guidelines](CONTRIBUTING.md) if you intend to contribute to this repository.
 
 ## Security
 
-If you discover any security vulnerability, please refer to our [security guidelines](SECURITY.md) on how to proceed.
+If you discover any security vulnerability, please refer to the [security guidelines](SECURITY.md) on how to proceed.
