@@ -44,16 +44,7 @@ Steps to create a new language
 /app/lang/de/tb.php
 ```
 
-2. Set the `_language_ident` token in your `app.php` file
-
-```php
-return [
-    '_language_ident' => 'German',
-    //...
-];
-```
-
-3. Translate the original phrases into your desired language. Note that expressions in moustache-brackets are placeholders for variables.
+2. Translate the original phrases into your desired language. Note that expressions in moustache-brackets are placeholders for variables.
 
 ```php
 return [
