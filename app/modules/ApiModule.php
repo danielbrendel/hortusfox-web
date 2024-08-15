@@ -30,6 +30,7 @@ class ApiModule {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, [
                 'title' => $title,
+                'workspace' => app('workspace'),
                 'hortusfox_photo' => curl_file_create($file)
             ]);
 
