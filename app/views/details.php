@@ -202,7 +202,11 @@
 								@if (is_bool($custom_attribute->content))
 									{!! ($custom_attribute->content) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!}
 								@else
-									{{ $custom_attribute->content }}
+									@if ((is_string($custom_attribute->content)) && ((strpos($custom_attribute->content, 'http://') === 0) || (strpos($custom_attribute->content, 'https://') === 0)))
+										<a class="is-default-link" href="{{ $custom_attribute->content }}" target="_blank">{{ $custom_attribute->content }}</a>
+									@else
+										{{ $custom_attribute->content }}
+									@endif
 								@endif
 							@else
 								<span class="is-not-available">N/A</span>
