@@ -141,7 +141,7 @@
 
 						<span class="location-footer-count-desktop">
 							@if ($danger_count > 0)
-								<i class="fas fa-biohazard is-color-danger"></i>&nbsp;{{ __('app.danger_count', ['count' => $danger_count]) }}
+								<i class="fas fa-exclamation-triangle is-color-danger"></i>&nbsp;{{ __('app.danger_count', ['count' => $danger_count]) }}
 							@else
 								<i class="far fa-check-circle is-color-ok"></i>&nbsp;{{ __('app.all_in_good_standing') }}
 							@endif
@@ -149,7 +149,7 @@
 
 						<span class="location-footer-count-mobile">
 							@if ($danger_count > 0)
-								<i class="fas fa-biohazard is-color-danger"></i>&nbsp;{{ $danger_count }}
+								<i class="fas fa-exclamation-triangle is-color-danger"></i>&nbsp;{{ $danger_count }}
 							@else
 								<i class="far fa-check-circle is-color-ok"></i>&nbsp;{{ __('app.all_in_good_standing') }}
 							@endif
