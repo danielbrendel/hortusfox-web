@@ -1767,6 +1767,14 @@
 				@if (app('chat_system'))
 					window.vue.fetchNewSystemMessage(document.getElementById('small-system-messages'));
 				@endif
+
+				@if (isset($current_version))
+					let versionSection = document.getElementsByClassName('version-info');
+					if (versionSection) {
+						versionSection = versionSection[0];
+						versionSection.scrollIntoView({behavior: 'smooth'});
+					}
+				@endif
 			});
 		</script>
 	</body>
