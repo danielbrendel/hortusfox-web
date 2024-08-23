@@ -2,15 +2,14 @@
 #
 # This script launches a local web environment and opens the default browser with the URL of the web app.
 # 
-# Requires AquaShell, Windows and Apache & MariaDB (e.g. XAMPP installation)
+# Requires AquaShell, Windows and PHP with Apache & MariaDB (e.g. XAMPP installation)
 # On first start you'll need to specify your paths to httpd and mysqld.
 #
 
 require "auto";
 require "fileio";
 require "datetime";
-require "textinput";
-require "miscutils";
+require "input";
 
 const SERVER_PORT int <= 8000;
 
@@ -31,17 +30,21 @@ function create_path_file void()
 	local apache_path string;
 	local mysql_path string;
 	local timestamp string;
+	local hfile int;
 	
 	input apache_path "Please enter path to your httpd.exe: ";
 	input mysql_path "Please enter path to your mysqld.exe: ";
 	
 	fmtdatetime "%F %T" timestamp;
 	
-	fopen(fh, "%project_path\paths.dnys", false) {
-		fwriteline %fh "# Auto-generated at %timestamp";
-		fwriteline %fh "";
-		fwriteline %fh { const APACHE_PATH string <= "%apache_path"; };
-		fwriteline %fh { const MYSQL_PATH string <= "%mysql_path"; };
+	fopen "%project_path\paths.dnys" false hfile;
+	if (%hfile, -nt, %FIO_INVALID_HANDLE) {
+		fwriteline %hfile "# Auto-generated at %timestamp";
+		fwriteline %hfile "";
+		fwriteline %hfile { const APACHE_PATH string <= "%apache_path"; };
+		fwriteline %hfile { const MYSQL_PATH string <= "%mysql_path"; };
+		
+		fclose %hfile;
 	};
 };
 
