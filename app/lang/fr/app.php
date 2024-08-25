@@ -414,5 +414,10 @@ return [
 	'photo_edit_specify_file' => 'Sélectionnez un fichier à télécharger',
 	'photo_edit_url_placeholder' => 'Entrer l\'URL...',
 	'donation_sponsoring' => 'GitHub Sponsoring',
-	'donation_kofi' => 'Buy Me a Coffee'
+	'donation_kofi' => 'Buy Me a Coffee',
+	'auto_backup' => 'Activer la sauvegarde automatique',
+	'auto_backup_cronjob_url' => 'Cronjob URL',
+	'backup_path' => 'Chemin facultatif pour stocker les fichiers de sauvegarde',
+	'backup_settings_stored' => 'Les paramètres de sauvegarde de la tâche cron ont été enregistrés avec succès',
+	'auto_backup_not_active' => 'La fonction de sauvegarde automatique n\'a pas encore été activée'
 ];

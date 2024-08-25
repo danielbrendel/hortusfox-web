@@ -412,5 +412,10 @@ return [
 	'photo_edit_specify_file' => 'Vælg en fil, der skal uploades',
 	'photo_edit_url_placeholder' => 'Indtast URL...',
 	'donation_sponsoring' => 'GitHub Sponsoring',
-	'donation_kofi' => 'Buy Me a Coffee'
+	'donation_kofi' => 'Buy Me a Coffee',
+	'auto_backup' => 'Aktiver automatisk sikkerhedskopiering',
+	'auto_backup_cronjob_url' => 'Cronjob URL',
+	'backup_path' => 'Valgfri sti til at gemme backup-filer',
+	'backup_settings_stored' => 'Backup cronjob-indstillinger blev gemt',
+	'auto_backup_not_active' => 'Auto-backup-funktionen er ikke blevet aktiveret endnu'
 ];

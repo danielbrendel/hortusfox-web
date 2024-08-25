@@ -413,5 +413,10 @@ return [
 	'photo_edit_specify_file' => 'Select a file to upload',
 	'photo_edit_url_placeholder' => 'Enter URL...',
 	'donation_sponsoring' => 'GitHub Sponsoring',
-	'donation_kofi' => 'Buy Me a Coffee'
+	'donation_kofi' => 'Buy Me a Coffee',
+	'auto_backup' => 'Enable Auto-Backup',
+	'auto_backup_cronjob_url' => 'Cronjob URL',
+	'backup_path' => 'Optional path to store backup files',
+	'backup_settings_stored' => 'Backup cronjob settings were saved succesfully',
+	'auto_backup_not_active' => 'The auto-backup feature has not been activated yet'
 ];

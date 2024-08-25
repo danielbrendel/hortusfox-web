@@ -130,6 +130,7 @@ return [
     array('/admin/mail/save', 'POST', 'admin@save_mail_settings'),
     array('/admin/themes/import', 'POST', 'admin@import_theme'),
     array('/admin/themes/remove', 'POST', 'admin@remove_theme'),
+    array('/admin/backup/cronjob/save', 'POST', 'admin@save_backup_cronjob_settings'),
     array('/admin/cronjob/token', 'POST', 'admin@generate_cronjob_token'),
     array('/admin/weather/save', 'POST', 'admin@save_weather_data'),
     array('/admin/api/add', 'ANY', 'admin@add_api_key'),
@@ -140,6 +141,7 @@ return [
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),
     array('/cronjob/tasks/tomorrow', 'GET', 'cronjobs@tomorrow_tasks'),
     array('/cronjob/calendar/reminder', 'GET', 'cronjobs@calendar_reminder'),
+    array('/cronjob/backup/auto', 'GET', 'cronjobs@auto_backup'),
 
     /** Share Controller */
     array('/share/photo/post', 'POST', 'share@share_photo'),

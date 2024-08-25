@@ -808,4 +808,32 @@ class AdminController extends BaseController {
             ]);
         }
 	}
+
+	/**
+	 * Handles URL: /admin/backup/cronjob/save
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function save_backup_cronjob_settings($request)
+	{
+		try {
+			$auto_backup = (bool)$request->params()->query('auto_backup', 0);
+			$backup_path = $request->params()->query('backup_path', null);
+
+			$set = [
+				'auto_backup' => $auto_backup,
+				'backup_path' => $backup_path
+			];
+
+			AppModel::updateSet($set);
+
+			FlashMessage::setMsg('success', __('app.backup_settings_stored'));
+
+			return redirect('/admin?tab=backup');
+        } catch (\Exception $e) {
+            FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+        }
+	}
 }

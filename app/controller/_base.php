@@ -36,7 +36,9 @@ class BaseController extends Asatru\Controller\Controller {
 				'/password/restore', 
 				'/password/reset',
 				'/cronjob/tasks/overdue',
-				'/cronjob/tasks/tomorrow'
+				'/cronjob/tasks/tomorrow',
+				'/cronjob/calendar/reminder',
+				'/cronjob/backup/auto'
 			);
 
 			if (!in_array($url, $allowed_urls)) {

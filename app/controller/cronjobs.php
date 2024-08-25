@@ -85,4 +85,47 @@ class CronjobsController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /cronjob/backup/auto
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function auto_backup($request)
+    {
+        try {
+            if (!app('auto_backup')) {
+                throw new \Exception(__('app.auto_backup_not_active'));
+            }
+
+            $file_name = BackupModule::start([
+                'locations' => true,
+                'plants' => true,
+                'gallery' => true,
+                'tasks' => true,
+                'inventory' => true,
+                'calendar' => true
+            ]);
+
+            $storage_path = app('backup_path');
+            if ((is_string($storage_path)) && (strlen($storage_path) > 0) && (is_dir($storage_path))) {
+                if (strpos($storage_path, '/', -1) === false) {
+                    $storage_path .= '/';
+                }
+                
+                copy(public_path() . '/backup/' . $file_name, $storage_path . $file_name);
+                unlink(public_path() . '/backup/' . $file_name);
+            }
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }

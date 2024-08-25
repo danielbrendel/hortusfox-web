@@ -606,6 +606,38 @@
 
     <hr/>
 
+    <form method="POST" action="{{ url('/admin/backup/cronjob/save') }}">
+        @csrf
+
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" name="auto_backup" value="1" {{ ((app('auto_backup')) ? 'checked' : '') }}/>&nbsp;<span>{{ __('app.auto_backup') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.auto_backup_cronjob_url') }}</label>
+            <div class="control">
+               <input type="text" class="input" value="{{ url('/cronjob/backup/auto') }}" readonly/>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.backup_path') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="backup_path" value="{{ app('backup_path') }}"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="submit" class="button is-link" value="{{ __('app.save') }}"/>
+            </div>
+        </div>
+    </form>
+
+    <hr/>
+
     <h2>{{ __('app.import') }}</h2>
 
     <div class="field">

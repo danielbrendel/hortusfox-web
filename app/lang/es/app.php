@@ -413,5 +413,10 @@ return [
 	'photo_edit_specify_file' => 'Seleccione un archivo para cargar',
 	'photo_edit_url_placeholder' => 'Introducir URL...',
 	'donation_sponsoring' => 'GitHub Sponsoring',
-	'donation_kofi' => 'Buy Me a Coffee'
+	'donation_kofi' => 'Buy Me a Coffee',
+	'auto_backup' => 'Habilitar copia de seguridad automática',
+	'auto_backup_cronjob_url' => 'Cronjob URL',
+	'backup_path' => 'Ruta opcional para almacenar archivos de respaldo',
+	'backup_settings_stored' => 'La configuración del cronjob de respaldo se guardó exitosamente',
+	'auto_backup_not_active' => 'La función de copia de seguridad automática aún no se ha activado'
 ];

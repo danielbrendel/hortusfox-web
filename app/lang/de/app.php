@@ -413,5 +413,10 @@ return [
 	'photo_edit_specify_file' => 'Photo von einem Datenträger hochladen',
 	'photo_edit_url_placeholder' => 'URL hier eingeben...',
 	'donation_sponsoring' => 'GitHub Sponsoring',
-	'donation_kofi' => 'Buy Me a Coffee'
+	'donation_kofi' => 'Buy Me a Coffee',
+	'auto_backup' => 'Automatisches Backup aktivieren',
+	'auto_backup_cronjob_url' => 'Cronjob URL',
+	'backup_path' => 'Optionaler Speicherort der Backup-Dateien',
+	'backup_settings_stored' => 'Die Backup Cronjob Einstellungen wurden erfolgreich gespeichert',
+	'auto_backup_not_active' => 'Das automatische Backup ist nicht aktiviert'
 ];

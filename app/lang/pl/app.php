@@ -413,5 +413,10 @@ return [
 	'photo_edit_specify_file' => 'Wybierz plik do przesłania',
 	'photo_edit_url_placeholder' => 'Wprowadź URL...',
 	'donation_sponsoring' => 'GitHub Sponsoring',
-	'donation_kofi' => 'Buy Me a Coffee'
+	'donation_kofi' => 'Buy Me a Coffee',
+	'auto_backup' => 'Włącz automatyczną kopię zapasową',
+	'auto_backup_cronjob_url' => 'Cronjob URL',
+	'backup_path' => 'Opcjonalna ścieżka do przechowywania plików kopii zapasowych',
+	'backup_settings_stored' => 'Ustawienia kopii zapasowej zadania cronjob zostały pomyślnie zapisane',
+	'auto_backup_not_active' => 'Funkcja automatycznego tworzenia kopii zapasowych nie została jeszcze aktywowana'
 ];
