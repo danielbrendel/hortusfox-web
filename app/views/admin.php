@@ -821,10 +821,6 @@
         @if (env('APP_SOCIAL_YOUTUBE'))
         <a href="{{ env('APP_SOCIAL_YOUTUBE') }}" target="_blank"><img src="https://img.shields.io/badge/youtube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="social-youtube"></a>
         @endif
-
-        @if (env('APP_SOCIAL_INSTAGRAM'))
-        <a href="{{ env('APP_SOCIAL_INSTAGRAM') }}" target="_blank"><img src="https://img.shields.io/badge/instagram-blue?style=for-the-badge&logo=instagram&logoColor=white" alt="social-instagram"></a>
-        @endif
     </div>
 
     <div class="admin-info-extensions">

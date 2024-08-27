@@ -83,7 +83,6 @@ create_environment_file() {
     APP_SOCIAL_DISCORD="https://discord.gg/kc6xGmjzVS"
     APP_SOCIAL_MASTODON="https://mastodon.social/@hortusfox"
     APP_SOCIAL_YOUTUBE="https://www.youtube.com/@HortusFox"
-    APP_SOCIAL_INSTAGRAM="https://www.instagram.com/hortusfox/"
     APP_ENABLEHISTORY=$APP_ENABLE_HISTORY
     APP_HISTORY_NAME="$APP_HISTORY_NAME"
 

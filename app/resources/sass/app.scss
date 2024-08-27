@@ -2751,9 +2751,11 @@ fieldset .field {
 }
 
 .admin-info-social img {
+    width: 152px;
+    height: 35px;
     @media screen and (max-width: 495px) {
-        width: 49%;
-        height: 41px;
+        width: 32%;
+        height: 30px;
     }
 }
 

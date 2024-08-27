@@ -23,7 +23,6 @@
     <a href="https://discord.gg/kc6xGmjzVS"><img src="https://img.shields.io/badge/discord-5715BA?style=for-the-badge&logo=discord&logoColor=white" alt="social-discord"></a>
     <a href="https://mastodon.social/@hortusfox"><img src="https://img.shields.io/badge/mastodon-D1550A?style=for-the-badge&logo=mastodon&logoColor=white" alt="social-mastodon"></a>
     <a href="https://www.youtube.com/@HortusFox"><img src="https://img.shields.io/badge/youtube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="social-youtube"></a>
-    <a href="https://www.instagram.com/hortusfox/"><img src="https://img.shields.io/badge/instagram-blue?style=for-the-badge&logo=instagram&logoColor=white" alt="social-instagram"></a>
 </p>
 
 <p align="center">
