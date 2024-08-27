@@ -1374,6 +1374,19 @@ window.vue = new Vue({
             }
         },
 
+        removeSharedPhoto: function(ident) {
+            window.vue.ajaxRequest('get', window.location.origin + '/share/photo/remove?ident=' + ident, {}, function(response) {
+                if (response.code == 200) {
+                    let elem = document.getElementById('photo-share-entry-' + ident);
+                    if (elem) {
+                        elem.remove();
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         acquireGeoPosition: function(destLatitude, destLongitude, button) {
             let oldText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + button.innerHTML;

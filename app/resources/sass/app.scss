@@ -2212,6 +2212,46 @@ fieldset .field {
     color: rgb(150, 150, 150);
 }
 
+.profile-shared-photos table {
+    width: 100%;
+}
+
+.profile-shared-photos thead {
+    background-color: rgba(104, 145, 194, 0.5);
+}
+
+.profile-shared-photos thead:hover {
+    background-color: rgba(104, 145, 194, 0.5);
+}
+
+.profile-shared-photos td {
+    padding: 10px;
+    color: rgb(150, 150, 150);
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.profile-shared-photos td a {
+    color: rgb(111, 143, 225);
+}
+
+.profile-shared-photos td a:hover {
+    color: rgb(111, 143, 225);
+    text-decoration: underline;
+}
+
+.profile-shared-photos td i {
+    color: rgb(150, 150, 150);
+}
+
+.profile-shared-photos td i:hover {
+    color: rgb(150, 150, 150);
+}
+
+.profile-shared-photos td:last-child {
+    width: 5%;
+    text-align: center;
+}
+
 .admin-tabs {
     margin-top: 23px;
 }

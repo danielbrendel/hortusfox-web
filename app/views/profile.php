@@ -32,6 +32,33 @@
 	</form>
 </div>
 
+<div><hr/></div>
+
+@if ((app('enable_media_share')) && (count($sharelog) > 0))
+<div class="margin-vertical profile-shared-photos">
+	<h2 class="smaller-headline">{{ __('app.shared_photos') }}</h2>
+
+	<table>
+		<thead>
+			<tr>
+				<td>{{ __('app.link') }}</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach ($sharelog as $sharelog_item)
+			<tr id="photo-share-entry-{{ $sharelog_item->get('ident') }}">
+				<td><a href="{{ $sharelog_item->get('url') }}" target="_blank">{{ $sharelog_item->get('url') }}</a></td>
+				<td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_shared_photo') }}')) { window.vue.removeSharedPhoto('{{ $sharelog_item->get('ident') }}'); }"><i class="fas fa-trash-alt"></i></a></td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+</div>
+
+<div><hr/></div>
+@endif
+
 <div class="plants">
 	<h2 class="smaller-headline">{{ __('app.last_authored_plants') }}</h2>
 

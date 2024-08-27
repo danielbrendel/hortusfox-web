@@ -31,6 +31,11 @@ class ShareController extends BaseController {
     public function share_photo($request)
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
             $asset = $request->params()->query('asset', null);
             $title = $request->params()->query('title', null);
             $type = $request->params()->query('type', null);
@@ -41,10 +46,7 @@ class ShareController extends BaseController {
                 throw new \Exception($result->msg);
             }
 
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
-            }
+            ShareLogModel::addEntry($user->get('id'), $result->data->ident, $result->data->url, $result->data->asset);
 
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($user->get('email'));
@@ -74,6 +76,11 @@ class ShareController extends BaseController {
     public function remove_photo($request)
     {
         try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
             $ident = $request->params()->query('ident', null);
 
             $result = ApiModule::removePhoto($ident);
@@ -81,6 +88,8 @@ class ShareController extends BaseController {
             if ($result->code != 200) {
                 throw new \Exception($result->msg);
             }
+
+            ShareLogModel::removeEntry($user->get('id'), $ident);
 
             return json([
                 'code' => 200

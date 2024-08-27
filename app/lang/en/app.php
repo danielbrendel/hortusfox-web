@@ -418,5 +418,7 @@ return [
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Optional path to store backup files',
 	'backup_settings_stored' => 'Backup cronjob settings were saved succesfully',
-	'auto_backup_not_active' => 'The auto-backup feature has not been activated yet'
+	'auto_backup_not_active' => 'The auto-backup feature has not been activated yet',
+	'shared_photos' => 'Shared Photos',
+	'confirm_remove_shared_photo' => 'Do you really want to remove this item?'
 ];

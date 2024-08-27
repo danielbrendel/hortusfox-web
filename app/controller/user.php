@@ -29,11 +29,13 @@ class UserController extends BaseController {
 		$user = UserModel::getAuthUser();
 		$plants = PlantsModel::getAuthoredPlants($user->get('id'));
 		$log = LogModel::getHistory($user->get('id'));
+		$sharelog = ShareLogModel::getForUser($user->get('id'));
 		
 		return parent::view(['content', 'profile'], [
 			'user' => $user,
 			'plants' => $plants,
-			'log' => $log
+			'log' => $log,
+			'sharelog' => $sharelog
 		]);
 	}
 
