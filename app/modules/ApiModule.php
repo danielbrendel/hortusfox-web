@@ -10,10 +10,13 @@ class ApiModule {
      * @param $asset
      * @param $title
      * @param $type
+     * @param $public
+     * @param $description
+     * @param $keywords
      * @return mixed
      * @throws \Exception
      */
-    public static function sharePhoto($asset, $title, $type)
+    public static function sharePhoto($asset, $title, $type, $public, $description, $keywords)
     {
         try {
             $file = null;
@@ -31,7 +34,10 @@ class ApiModule {
             curl_setopt($ch, CURLOPT_POSTFIELDS, [
                 'title' => $title,
                 'workspace' => app('workspace'),
-                'hortusfox_photo' => curl_file_create($file)
+                'hortusfox_photo' => curl_file_create($file),
+                'public' => $public,
+                'description' => $description,
+                'keywords' => $keywords
             ]);
 
             $response = curl_exec($ch);

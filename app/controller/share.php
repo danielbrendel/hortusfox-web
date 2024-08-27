@@ -39,8 +39,11 @@ class ShareController extends BaseController {
             $asset = $request->params()->query('asset', null);
             $title = $request->params()->query('title', null);
             $type = $request->params()->query('type', null);
+            $public = $request->params()->query('public', null);
+            $description = $request->params()->query('description', null);
+            $keywords = $request->params()->query('keywords', null);
             
-            $result = ApiModule::sharePhoto($asset, $title, $type);
+            $result = ApiModule::sharePhoto($asset, $title, $type, $public, $description, $keywords);
             
             if ($result->code != 200) {
                 throw new \Exception($result->msg);

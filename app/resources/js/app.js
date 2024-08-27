@@ -940,11 +940,11 @@ window.vue = new Vue({
             window.vue.bShowSharePhoto = true;
         },
 
-        performPhotoShare: function(asset, title, type, result, button, error) {
+        performPhotoShare: function(asset, title, _public, description, keywords, type, result, button, error) {
             let origButtonHtml = button.innerHTML;
             button.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;' + window.vue.loadingPleaseWait;
 
-            window.vue.ajaxRequest('post', window.location.origin + '/share/photo/post', { asset: asset, title: title, type: type }, function(response) {
+            window.vue.ajaxRequest('post', window.location.origin + '/share/photo/post', { asset: asset, title: title, public: _public, description: description, keywords: keywords, type: type }, function(response) {
                 button.innerHTML = origButtonHtml;
 
                 if (response.code == 200) {

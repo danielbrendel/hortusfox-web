@@ -420,5 +420,8 @@ return [
 	'backup_settings_stored' => 'Backup cronjob settings were saved succesfully',
 	'auto_backup_not_active' => 'The auto-backup feature has not been activated yet',
 	'shared_photos' => 'Shared Photos',
-	'confirm_remove_shared_photo' => 'Do you really want to remove this item?'
+	'confirm_remove_shared_photo' => 'Do you really want to remove this item?',
+	'share_photo_public' => 'Share this photo publicly',
+	'share_photo_description' => 'Description',
+	'share_photo_keywords' => 'Keywords'
 ];

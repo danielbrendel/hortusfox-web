@@ -1093,6 +1093,28 @@
 						</div>
 
 						<div class="field">
+							<div class="control">
+								<input type="checkbox" class="checkbox" id="share-photo-public" value="0" onclick="if (this.checked) { document.getElementById('share-photo-public-data').classList.remove('is-hidden'); } else { document.getElementById('share-photo-public-data').classList.add('is-hidden'); }">&nbsp;<span>{{ __('app.share_photo_public') }}</span>
+							</div>
+						</div>
+
+						<div id="share-photo-public-data" class="is-hidden">
+							<div class="field">
+								<label class="label">{{ __('app.share_photo_description') }}</label>
+								<div class="control">
+									<input type="text" class="input" id="share-photo-description">
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.share_photo_keywords') }}</label>
+								<div class="control">
+									<input type="text" class="input" id="share-photo-keywords">
+								</div>
+							</div>
+						</div>
+
+						<div class="field">
 							<p class="is-color-error is-hidden" id="share-photo-error"></p>
 						</div>
 
@@ -1109,7 +1131,7 @@
 						</div>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button id="share-photo-submit-action" class="button is-success" onclick="window.vue.performPhotoShare(document.getElementById('share-photo-id').value, document.getElementById('share-photo-title').value, document.getElementById('share-photo-type').value, document.getElementById('share-photo-link'), this, document.getElementById('share-photo-error'));">{{ __('app.share') }}</button>
+						<button id="share-photo-submit-action" class="button is-success" onclick="window.vue.performPhotoShare(document.getElementById('share-photo-id').value, document.getElementById('share-photo-title').value, document.getElementById('share-photo-public').checked, document.getElementById('share-photo-description').value, document.getElementById('share-photo-keywords').value, document.getElementById('share-photo-type').value, document.getElementById('share-photo-link'), this, document.getElementById('share-photo-error'));">{{ __('app.share') }}</button>
 					</footer>
 				</div>
 			</div>
