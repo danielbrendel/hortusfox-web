@@ -337,7 +337,7 @@ GET /cronjob/tasks/tomorrow?cronpw={your-auth-token}
 GET /cronjob/calendar/reminder?cronpw={your-auth-token}
 
 # Used to perform the automatic backup of your workspace data
-GET /cronjob/backup/auto
+GET /cronjob/backup/auto?cronpw={your-auth-token}
 ```
 
 ## Application testing
