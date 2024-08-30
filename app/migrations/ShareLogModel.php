@@ -28,7 +28,7 @@ class ShareLogModel_Migration {
         $this->database = new Asatru\Database\Migration('sharelog', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
-        $this->database->add('userId INT NO NULL');
+        $this->database->add('userId INT NOT NULL');
         $this->database->add('ident VARCHAR(512) NOT NULL');
         $this->database->add('url VARCHAR(512) NOT NULL');
         $this->database->add('asset VARCHAR(512) NOT NULL');
