@@ -503,10 +503,10 @@ fieldset .field {
     position: relative;
     display: inline-block;
     width: 245px;
-    height: 250px;
+    min-height: 250px;
     @media screen and (max-width: 830px) {
         width: 134px;
-        height: 137px;
+        min-height: 137px;
     }
     margin-left: 10px;
     margin-right: 10px;
