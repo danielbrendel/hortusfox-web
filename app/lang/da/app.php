@@ -326,6 +326,7 @@ return [
 	'confirm_remove_calendar_item' => 'Er du sikker på at du vil fjerne denne begivenhed?',
 	'calendar_overview' => 'Datoer for den næste uge',
 	'show_calendar_view' => 'Vis kalender visning på panelet',
+	'show_plant_id' => 'Vis plante-id\'er i lister',
 	'unknown_calendar_class' => 'Ukendt',
 	'add_calendar_class' => 'Tilføj kalender klasse',
 	'calendar_class_ident' => 'Ident',
@@ -417,5 +418,10 @@ return [
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Valgfri sti til at gemme backup-filer',
 	'backup_settings_stored' => 'Backup cronjob-indstillinger blev gemt',
-	'auto_backup_not_active' => 'Auto-backup-funktionen er ikke blevet aktiveret endnu'
+	'auto_backup_not_active' => 'Auto-backup-funktionen er ikke blevet aktiveret endnu',
+	'shared_photos' => 'Delte billeder',
+	'confirm_remove_shared_photo' => 'Vil du virkelig fjerne dette element?',
+	'share_photo_public' => 'Del dette billede offentligt',
+	'share_photo_description' => 'Beskrivelse',
+	'share_photo_keywords' => 'Nøgleord'
 ];

@@ -418,5 +418,10 @@ return [
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Opcjonalna ścieżka do przechowywania plików kopii zapasowych',
 	'backup_settings_stored' => 'Ustawienia kopii zapasowej zadania cronjob zostały pomyślnie zapisane',
-	'auto_backup_not_active' => 'Funkcja automatycznego tworzenia kopii zapasowych nie została jeszcze aktywowana'
+	'auto_backup_not_active' => 'Funkcja automatycznego tworzenia kopii zapasowych nie została jeszcze aktywowana',
+	'shared_photos' => 'Udostępnione zdjęcia',
+	'confirm_remove_shared_photo' => 'Czy na pewno chcesz usunąć ten element?',
+	'share_photo_public' => 'Udostępnij to zdjęcie publicznie',
+	'share_photo_description' => 'Opis',
+	'share_photo_keywords' => 'Słowa kluczowe'
 ];

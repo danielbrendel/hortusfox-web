@@ -418,5 +418,10 @@ return [
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Ruta opcional para almacenar archivos de respaldo',
 	'backup_settings_stored' => 'La configuración del cronjob de respaldo se guardó exitosamente',
-	'auto_backup_not_active' => 'La función de copia de seguridad automática aún no se ha activado'
+	'auto_backup_not_active' => 'La función de copia de seguridad automática aún no se ha activado',
+	'shared_photos' => 'Fotos compartidas',
+	'confirm_remove_shared_photo' => '¿Realmente deseas eliminar este elemento?',
+	'share_photo_public' => 'Comparte esta foto públicamente',
+	'share_photo_description' => 'Descripción',
+	'share_photo_keywords' => 'Palabras clave'
 ];

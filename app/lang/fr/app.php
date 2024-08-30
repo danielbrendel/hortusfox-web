@@ -224,7 +224,6 @@ return [
 	'restore_from_history' => 'Restaurer',
 	'content_empty' => 'Ça a l\'air plutôt vide ici...',
 	'last_added_plants' => 'Dernières plantes ajoutées',
-	'last_authored_plants' => 'Dernières plantes créées',
 	'info' => 'Info',
 	'hortusfox_version' => 'HortusFox v{version}',
 	'php_version' => 'Version PHP: {version}',
@@ -419,5 +418,10 @@ return [
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Chemin facultatif pour stocker les fichiers de sauvegarde',
 	'backup_settings_stored' => 'Les paramètres de sauvegarde de la tâche cron ont été enregistrés avec succès',
-	'auto_backup_not_active' => 'La fonction de sauvegarde automatique n\'a pas encore été activée'
+	'auto_backup_not_active' => 'La fonction de sauvegarde automatique n\'a pas encore été activée',
+	'shared_photos' => 'Photos partagées',
+	'confirm_remove_shared_photo' => 'Voulez-vous vraiment supprimer cet élément?',
+	'share_photo_public' => 'Partager cette photo publiquement',
+	'share_photo_description' => 'Description',
+	'share_photo_keywords' => 'Mots-clés'
 ];

@@ -418,5 +418,10 @@ return [
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Optionaler Speicherort der Backup-Dateien',
 	'backup_settings_stored' => 'Die Backup Cronjob Einstellungen wurden erfolgreich gespeichert',
-	'auto_backup_not_active' => 'Das automatische Backup ist nicht aktiviert'
+	'auto_backup_not_active' => 'Das automatische Backup ist nicht aktiviert',
+	'shared_photos' => 'Geteilte Fotos',
+	'confirm_remove_shared_photo' => 'Soll dieses Objekt wirklich gelöscht werden?',
+	'share_photo_public' => 'Dieses Foto öffentlich teilen',
+	'share_photo_description' => 'Beschreibung',
+	'share_photo_keywords' => 'Schlüsselwörter'
 ];
