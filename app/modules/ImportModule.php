@@ -72,10 +72,14 @@ class ImportModule {
     public static function importLocations($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $locations = json_decode(file_get_contents($path . '/data.json'));
             if ($locations) {
                 foreach ($locations as $location) {
-                    LocationsModel::raw('INSERT INTO `' . LocationsModel::tableName() . '` (id, name, icon, active, created_at) VALUES(?, ?, ?, ?, ?)', [
+                    LocationsModel::raw('INSERT IGNORE INTO `' . LocationsModel::tableName() . '` (id, name, icon, active, created_at) VALUES(?, ?, ?, ?, ?)', [
                         $location->id,
                         $location->name,
                         $location->icon,
@@ -97,10 +101,14 @@ class ImportModule {
     public static function importPlants($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $plants = json_decode(file_get_contents($path . '/data.json'));
             if ($plants) {
                 foreach ($plants as $plant) {
-                    PlantsModel::raw('INSERT INTO `' . PlantsModel::tableName() . '` (id, name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, history, history_date, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                    PlantsModel::raw('INSERT IGNORE INTO `' . PlantsModel::tableName() . '` (id, name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, history, history_date, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
                         $plant->id,
                         $plant->name,
                         $plant->scientific_name,
@@ -142,10 +150,14 @@ class ImportModule {
     public static function importPlantLog($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $plantlog_entries = json_decode(file_get_contents($path . '/data.json'));
             if ($plantlog_entries) {
                 foreach ($plantlog_entries as $plantlog_entry) {
-                    PlantLogModel::raw('INSERT INTO `' . PlantLogModel::tableName() . '` (plant, content, updated_at, created_at) VALUES(?, ?, ?, ?)', [
+                    PlantLogModel::raw('INSERT IGNORE INTO `' . PlantLogModel::tableName() . '` (plant, content, updated_at, created_at) VALUES(?, ?, ?, ?)', [
                         $plantlog_entry->plant,
                         $plantlog_entry->content,
                         $plantlog_entry->updated_at,
@@ -166,10 +178,14 @@ class ImportModule {
     public static function importGallery($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $gallery_items = json_decode(file_get_contents($path . '/data.json'));
             if ($gallery_items) {
                 foreach ($gallery_items as $gallery_item) {
-                    PlantPhotoModel::raw('INSERT INTO `' . PlantPhotoModel::tableName() . '` (plant, author, thumb, original, label, created_at) VALUES(?, ?, ?, ?, ?, ?)', [
+                    PlantPhotoModel::raw('INSERT IGNORE INTO `' . PlantPhotoModel::tableName() . '` (plant, author, thumb, original, label, created_at) VALUES(?, ?, ?, ?, ?, ?)', [
                         $gallery_item->plant,
                         $gallery_item->author,
                         $gallery_item->thumb,
@@ -200,10 +216,14 @@ class ImportModule {
     public static function importTasks($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $tasks = json_decode(file_get_contents($path . '/data.json'));
             if ($tasks) {
                 foreach ($tasks as $task) {
-                    TasksModel::raw('INSERT INTO `' . TasksModel::tableName() . '` (title, description, due_date, done, created_at) VALUES(?, ?, ?, ?, ?)', [
+                    TasksModel::raw('INSERT IGNORE INTO `' . TasksModel::tableName() . '` (title, description, due_date, done, created_at) VALUES(?, ?, ?, ?, ?)', [
                         $task->title,
                         $task->description,
                         $task->due_date,
@@ -225,10 +245,14 @@ class ImportModule {
     public static function importInvGroups($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $invgroup_items = json_decode(file_get_contents($path . '/data.json'));
             if ($invgroup_items) {
                 foreach ($invgroup_items as $invgroup_item) {
-                    InvGroupModel::raw('INSERT INTO `' . InvGroupModel::tableName() . '` (id, token, label, created_at) VALUES(?, ?, ?, ?)', [
+                    InvGroupModel::raw('INSERT IGNORE INTO `' . InvGroupModel::tableName() . '` (id, token, label, created_at) VALUES(?, ?, ?, ?)', [
                         $invgroup_item->id,
                         $invgroup_item->token,
                         $invgroup_item->label,
@@ -249,10 +273,14 @@ class ImportModule {
     public static function importInventory($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $inventory_items = json_decode(file_get_contents($path . '/data.json'));
             if ($inventory_items) {
                 foreach ($inventory_items as $inventory_item) {
-                    InventoryModel::raw('INSERT INTO `' . InventoryModel::tableName() . '` (name, group_ident, description, photo, amount, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [
+                    InventoryModel::raw('INSERT IGNORE INTO `' . InventoryModel::tableName() . '` (name, group_ident, description, photo, amount, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [
                         $inventory_item->name,
                         $inventory_item->group_ident,
                         $inventory_item->description,
@@ -281,10 +309,14 @@ class ImportModule {
     public static function importCalendar($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $calendar_items = json_decode(file_get_contents($path . '/data.json'));
             if ($calendar_items) {
                 foreach ($calendar_items as $calendar_item) {
-                    CalendarModel::raw('INSERT INTO `' . CalendarModel::tableName() . '` (name, date_from, date_till, class_name, color_background, color_border, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                    CalendarModel::raw('INSERT IGNORE INTO `' . CalendarModel::tableName() . '` (name, date_from, date_till, class_name, color_background, color_border, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', [
                         $calendar_item->name,
                         $calendar_item->date_from,
                         $calendar_item->date_till,
@@ -310,10 +342,14 @@ class ImportModule {
     public static function importCalClasses($path)
     {
         try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
             $calendar_class_items = json_decode(file_get_contents($path . '/data.json'));
             if ($calendar_class_items) {
                 foreach ($calendar_class_items as $calendar_class_item) {
-                    CalendarModel::raw('INSERT INTO `' . CalendarClassModel::tableName() . '` (ident, name, color_background, color_border, created_at) VALUES(?, ?, ?, ?, ?)', [
+                    CalendarModel::raw('INSERT IGNORE INTO `' . CalendarClassModel::tableName() . '` (ident, name, color_background, color_border, created_at) VALUES(?, ?, ?, ?, ?)', [
                         $calendar_class_item->ident,
                         $calendar_class_item->name,
                         $calendar_class_item->color_background,
