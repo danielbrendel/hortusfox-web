@@ -11,14 +11,15 @@ class ShareLogModel extends \Asatru\Database\Model {
      * @param $ident
      * @param $url
      * @param $asset
+     * @param $title
      * @return void
      * @throws \Exception
      */
-    public static function addEntry($userId, $ident, $url, $asset)
+    public static function addEntry($userId, $ident, $url, $asset, $title)
     {
         try {
-            static::raw('INSERT INTO `' . self::tableName() . '` (userId, ident, url, asset) VALUES(?, ?, ?, ?)', [
-                $userId, $ident, $url, $asset
+            static::raw('INSERT INTO `' . self::tableName() . '` (userId, ident, url, asset, title) VALUES(?, ?, ?, ?, ?)', [
+                $userId, $ident, $url, $asset, $title
             ]);
         } catch (\Exception $e) {
             throw $e;
@@ -35,9 +36,9 @@ class ShareLogModel extends \Asatru\Database\Model {
     {
         try {
             if ($limit) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? LIMIT ' . $limit, [$userId]);
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? ORDER BY id DESC LIMIT ' . $limit, [$userId]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ?', [$userId]);
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? ORDER BY id DESC', [$userId]);
             }
         } catch (\Exception $e) {
             throw $e;

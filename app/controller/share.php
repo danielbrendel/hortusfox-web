@@ -49,7 +49,7 @@ class ShareController extends BaseController {
                 throw new \Exception($result->msg);
             }
 
-            ShareLogModel::addEntry($user->get('id'), $result->data->ident, $result->data->url, $result->data->asset);
+            ShareLogModel::addEntry($user->get('id'), $result->data->ident, $result->data->url, $result->data->asset, $title);
 
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($user->get('email'));

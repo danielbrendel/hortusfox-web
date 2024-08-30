@@ -43,12 +43,14 @@
 			<tr>
 				<td>{{ __('app.link') }}</td>
 				<td></td>
+				<td></td>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($sharelog as $sharelog_item)
 			<tr id="photo-share-entry-{{ $sharelog_item->get('ident') }}">
-				<td><a href="{{ $sharelog_item->get('url') }}" target="_blank">{{ $sharelog_item->get('url') }}</a></td>
+				<td><a href="{{ $sharelog_item->get('url') }}" target="_blank">{{ $sharelog_item->get('title') }}</a></td>
+				<td title="{{ $sharelog_item->get('created_at') }}">{{ (new Carbon($sharelog_item->get('created_at')))->diffForHumans() }}</td>
 				<td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_shared_photo') }}')) { window.vue.removeSharedPhoto('{{ $sharelog_item->get('ident') }}'); }"><i class="fas fa-trash-alt"></i></a></td>
 			</tr>
 			@endforeach

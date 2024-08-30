@@ -32,6 +32,7 @@ class ShareLogModel_Migration {
         $this->database->add('ident VARCHAR(512) NOT NULL');
         $this->database->add('url VARCHAR(512) NOT NULL');
         $this->database->add('asset VARCHAR(512) NOT NULL');
+        $this->database->add('title VARCHAR(512) NOT NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }
