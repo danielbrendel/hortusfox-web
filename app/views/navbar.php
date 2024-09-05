@@ -100,11 +100,13 @@
             </div>
             @endif
 
+            @if ((!app('auth_proxy_enable')) || (!app('auth_proxy_hide_logout')))
             <div class="navbar-item">
                 <a href="{{ url('/logout') }}">
                     <i class="fas fa-sign-out-alt" title="{{ __('app.logout') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.logout') }}</span>
                 </a>
             </div>
+            @endif
 
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link navbar-dropdown-minwidth">

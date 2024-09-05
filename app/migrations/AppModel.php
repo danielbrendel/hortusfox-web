@@ -61,6 +61,12 @@ class AppModel_Migration {
         $this->database->add('system_message_plant_log BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('auto_backup BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('backup_path VARCHAR(1024) NULL');
+        $this->database->add('auth_proxy_enable BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('auth_proxy_header_email VARCHAR(512) NULL');
+        $this->database->add('auth_proxy_header_username VARCHAR(512) NULL');
+        $this->database->add('auth_proxy_sign_up BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('auth_proxy_whitelist TEXT NULL');
+        $this->database->add('auth_proxy_hide_logout BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }

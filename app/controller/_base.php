@@ -26,6 +26,15 @@ class BaseController extends Asatru\Controller\Controller {
 		app_mail_config();
 		app_set_timezone();
 
+		if (app('auth_proxy_enable')) {
+			try {
+				UserModel::performProxyAuth();
+			} catch (\Exception $e) {
+				http_response_code(401);
+				exit($e->getMessage());
+			}
+		}
+
 		$auth_user = UserModel::getAuthUser();
 		if (!$auth_user) {
 			$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

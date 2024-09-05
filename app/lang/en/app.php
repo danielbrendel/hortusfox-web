@@ -423,5 +423,14 @@ return [
 	'confirm_remove_shared_photo' => 'Do you really want to remove this item?',
 	'share_photo_public' => 'Share this photo publicly',
 	'share_photo_description' => 'Description',
-	'share_photo_keywords' => 'Keywords'
+	'share_photo_keywords' => 'Keywords',
+	'auth' => 'Auth',
+	'auth_proxy_enable' => 'Enable Proxy Authentication',
+	'auth_proxy_header_email' => 'HTTP Header for E-mail',
+	'auth_proxy_header_username' => 'HTTP Header for Username',
+	'auth_proxy_sign_up' => 'Automatically register unknown users',
+	'auth_proxy_whitelist' => 'Proxy Address Whitelist',
+	'auth_proxy_hide_logout' => 'Hide logout button',
+	'proxy_auth_settings_saved_successfully' => 'Proxy authentication settings saved successfully',
+	'auth_proxy_warning' => 'Warning: Be sure that your workspace instance is protected behind a proxy before enabling this feature'
 ];

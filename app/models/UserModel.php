@@ -29,6 +29,66 @@ class UserModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function performProxyAuth()
+    {
+        try {
+            if (!app('auth_proxy_enable')) {
+                throw new \Exception('Feature is currently not active');
+            }
+
+            $whitelist = app('auth_proxy_whitelist');
+            if ((is_string($whitelist)) && (strlen($whitelist) > 0)) {
+                $accepted = false;
+                $remote_addr = $_SERVER['REMOTE_ADDR'];
+                $whitelist = explode(PHP_EOL, $whitelist);
+
+                foreach ($whitelist as $address) {
+                    if ($address === $remote_addr) {
+                        $accepted = true;
+                        break;
+                    }
+                }
+
+                if (!$accepted) {
+                    throw new \Exception('Unauthorized Proxy: ' . $remote_addr);
+                }
+            }
+
+            $header_email = $_SERVER['HTTP_' . strtoupper(str_replace('-', '_', app('auth_proxy_header_email')))] ?? null;
+            if ((!is_string($header_email)) || (strlen($header_email) == 0)) {
+                throw new \Exception('Invalid E-Mail header value provided: ' . $header_email);
+            }
+
+            $header_username = $_SERVER['HTTP_' . strtoupper(str_replace('-', '_', app('auth_proxy_header_username')))] ?? null;
+            if ((!is_string($header_username)) || (strlen($header_username) == 0)) {
+                throw new \Exception('Invalid username header value provided: ' . $header_username);
+            }
+
+            $authuser = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$header_email])->first();
+            if (!$authuser) {
+                if (app('auth_proxy_sign_up')) {
+                    static::createUser($header_username, $header_email, false);
+
+                    $authuser = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$header_email])->first();
+                } else {
+                    throw new \Exception('User not found: ' . $header_email);
+                }
+            }
+
+            if (!$header_username !== $authuser->get('name')) {
+                static::raw('UPDATE `' . self::tableName() . '` SET name = ? WHERE id = ?', [$header_username, $authuser->get('id')]);
+            }
+            
+            SessionModel::loginSession($authuser->get('id'), session_id());
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $email
      * @param $password
      * @return void

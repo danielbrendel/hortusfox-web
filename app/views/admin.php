@@ -8,6 +8,7 @@
         <li class="admin-tab-media {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'media')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('media');">{{ __('app.admin_media') }}</a></li>
         <li class="admin-tab-users {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'users')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('users');">{{ __('app.users') }}</a></li>
         <li class="admin-tab-locations {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'locations')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('locations');">{{ __('app.locations') }}</a></li>
+        <li class="admin-tab-auth {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'auth')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('auth');">{{ __('app.auth') }}</a></li>
         <li class="admin-tab-attributes {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'attributes')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('attributes');">{{ __('app.attributes') }}</a></li>
         <li class="admin-tab-calendar {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'calendar')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('calendar');">{{ __('app.calendar') }}</a></li>
         <li class="admin-tab-mail {{ ((isset($_GET['tab'])) && ($_GET['tab'] === 'mail')) ? 'is-active' : ''}}"><a href="javascript:void(0);" onclick="window.vue.switchAdminTab('mail');">{{ __('app.mail') }}</a></li>
@@ -322,6 +323,61 @@
     <div class="admin-locations-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewLocation = true;">{{ __('app.add_location') }}</a></span>
     </div>
+</div>
+
+<div class="admin-auth {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'auth')) ? 'is-hidden' : ''}}">
+    <h2>{{ __('app.auth') }}</h2>
+
+    <form method="POST" action="{{ url('/admin/auth/proxy/save') }}">
+        @csrf 
+
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" name="auth_proxy_enable" value="1" onclick="if (this.checked) { document.querySelector('.admin-auth-warning').style.display = 'block'; } else { document.querySelector('.admin-auth-warning').style.display = 'none'; }" {{ ((app('auth_proxy_enable')) ? 'checked' : '') }}/>&nbsp;<span>{{ __('app.auth_proxy_enable') }}</span>
+            </div>
+        </div>
+
+        <div class="admin-auth-warning">{{ __('app.auth_proxy_warning') }}</div>
+
+        <div class="field">
+            <label class="label">{{ __('app.auth_proxy_header_email') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="auth_proxy_header_email" value="{{ app('auth_proxy_header_email') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.auth_proxy_header_username') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="auth_proxy_header_username" value="{{ app('auth_proxy_header_username') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" name="auth_proxy_sign_up" value="1" {{ ((app('auth_proxy_sign_up')) ? 'checked' : '') }}/>&nbsp;<span>{{ __('app.auth_proxy_sign_up') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.auth_proxy_whitelist') }}</label>
+            <div class="control">
+                <textarea class="textarea" name="auth_proxy_whitelist">{{ app('auth_proxy_whitelist') }}</textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" name="auth_proxy_hide_logout" value="1" {{ ((app('auth_proxy_hide_logout')) ? 'checked' : '') }}/>&nbsp;<span>{{ __('app.auth_proxy_hide_logout') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="submit" class="button is-success" value="{{ __('app.save') }}" />
+            </div>
+        </div>
+    </form>
 </div>
 
 <div class="admin-attributes {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'attributes')) ? 'is-hidden' : ''}}">

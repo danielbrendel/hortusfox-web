@@ -303,6 +303,42 @@ class AdminController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /admin/auth/proxy/save
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function save_proxy_auth_settings($request)
+	{
+		try {
+			$auth_proxy_enable = (bool)$request->params()->query('auth_proxy_enable', 0);
+			$auth_proxy_header_email = $request->params()->query('auth_proxy_header_email', '');
+			$auth_proxy_header_username = $request->params()->query('auth_proxy_header_username', '');
+			$auth_proxy_sign_up = (bool)$request->params()->query('auth_proxy_sign_up', 0);
+			$auth_proxy_whitelist = $request->params()->query('auth_proxy_whitelist', '');
+			$auth_proxy_hide_logout = (bool)$request->params()->query('auth_proxy_hide_logout', 0);
+
+			$set = [
+				'auth_proxy_enable' => $auth_proxy_enable,
+				'auth_proxy_header_email' => $auth_proxy_header_email,
+				'auth_proxy_header_username' => $auth_proxy_header_username,
+				'auth_proxy_sign_up' => $auth_proxy_sign_up,
+				'auth_proxy_whitelist' => $auth_proxy_whitelist,
+				'auth_proxy_hide_logout' => $auth_proxy_hide_logout
+			];
+
+			AppModel::updateSet($set);
+
+			FlashMessage::setMsg('success', __('app.proxy_auth_settings_saved_successfully'));
+
+			return redirect('/admin?tab=auth');
+        } catch (\Exception $e) {
+            FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/admin?tab=auth');
+        }
+	}
+
+	/**
 	 * Handles URL: /admin/attribute/schema/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
