@@ -438,6 +438,7 @@ return [
 	'location_log_date' => 'Created / Updated',
 	'location_log_actions' => 'Actions',
 	'add_location_log_entry' => 'Add entry',
+	'edit_location_log_entry' => 'Edit entry',
 	'confirm_remove_location_log_entry' => 'Do you really want to remove this entry?',
 	'no_location_log_entries_yet' => 'No entries yet.'
 ];

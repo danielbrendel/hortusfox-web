@@ -1505,5 +1505,9 @@ window.vue = new Vue({
             document.body.removeChild(el);
             alert(window.vue.copiedToClipboard);
         },
+
+        isProgressiveWebApp: function() {
+            return window.matchMedia('(display-mode: standalone)').matches;
+        },
     }
 });

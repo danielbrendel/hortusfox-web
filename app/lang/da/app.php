@@ -423,5 +423,22 @@ return [
 	'confirm_remove_shared_photo' => 'Vil du virkelig fjerne dette element?',
 	'share_photo_public' => 'Del dette billede offentligt',
 	'share_photo_description' => 'Beskrivelse',
-	'share_photo_keywords' => 'Nøgleord'
+	'share_photo_keywords' => 'Nøgleord',
+	'auth' => 'Auth',
+	'auth_proxy_enable' => 'Enable Proxy Authentication',
+	'auth_proxy_header_email' => 'HTTP Header for E-mail',
+	'auth_proxy_header_username' => 'HTTP Header for Username',
+	'auth_proxy_sign_up' => 'Automatically register unknown users',
+	'auth_proxy_whitelist' => 'Proxy Address Whitelist',
+	'auth_proxy_hide_logout' => 'Hide logout button',
+	'proxy_auth_settings_saved_successfully' => 'Proxy authentication settings saved successfully',
+	'auth_proxy_warning' => 'Warning: Be sure that your workspace instance is protected behind a proxy before enabling this feature',
+	'location_log' => 'Location Log',
+	'location_log_content' => 'Content',
+	'location_log_date' => 'Created / Updated',
+	'location_log_actions' => 'Actions',
+	'add_location_log_entry' => 'Add entry',
+	'edit_location_log_entry' => 'Edit entry',
+	'confirm_remove_location_log_entry' => 'Do you really want to remove this entry?',
+	'no_location_log_entries_yet' => 'No entries yet.'
 ];

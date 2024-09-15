@@ -423,5 +423,22 @@ return [
 	'confirm_remove_shared_photo' => 'Soll dieses Objekt wirklich gelöscht werden?',
 	'share_photo_public' => 'Dieses Foto öffentlich teilen',
 	'share_photo_description' => 'Beschreibung',
-	'share_photo_keywords' => 'Schlüsselwörter'
+	'share_photo_keywords' => 'Schlüsselwörter',
+	'auth' => 'Auth',
+	'auth_proxy_enable' => 'Proxy-Authentifizierung aktivieren',
+	'auth_proxy_header_email' => 'HTTP Header für E-mail',
+	'auth_proxy_header_username' => 'HTTP Header für Name',
+	'auth_proxy_sign_up' => 'Unbekannte User automatisch registrieren',
+	'auth_proxy_whitelist' => 'Proxy Address Whitelist',
+	'auth_proxy_hide_logout' => 'Logout Button verstecken',
+	'proxy_auth_settings_saved_successfully' => 'Einstellungen für die Proxy-Authentifizierung erfolgreich gespeichert',
+	'auth_proxy_warning' => 'Warnung: Es muss sichergestellt sein, dass diese Instanz durch einen Proxy geschützt wird',
+	'location_log' => 'Log',
+	'location_log_content' => 'Inhalt',
+	'location_log_date' => 'Erstellt / Bearbeitet',
+	'location_log_actions' => 'Aktionen',
+	'add_location_log_entry' => 'Eintrag hinzufügen',
+	'edit_location_log_entry' => 'Eintrag bearbeiten',
+	'confirm_remove_location_log_entry' => 'Soll dieser Eintrag wirklich gelöscht werden?',
+	'no_location_log_entries_yet' => 'Noch keine Einträge.'
 ];
