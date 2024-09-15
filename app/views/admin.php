@@ -342,14 +342,14 @@
         <div class="field">
             <label class="label">{{ __('app.auth_proxy_header_email') }}</label>
             <div class="control">
-                <input type="text" class="input" name="auth_proxy_header_email" value="{{ app('auth_proxy_header_email') }}">
+                <input type="text" class="input" name="auth_proxy_header_email" value="{{ app('auth_proxy_header_email') ?? '' }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.auth_proxy_header_username') }}</label>
             <div class="control">
-                <input type="text" class="input" name="auth_proxy_header_username" value="{{ app('auth_proxy_header_username') }}">
+                <input type="text" class="input" name="auth_proxy_header_username" value="{{ app('auth_proxy_header_username') ?? '' }}">
             </div>
         </div>
 
@@ -362,7 +362,7 @@
         <div class="field">
             <label class="label">{{ __('app.auth_proxy_whitelist') }}</label>
             <div class="control">
-                <textarea class="textarea" name="auth_proxy_whitelist">{{ app('auth_proxy_whitelist') }}</textarea>
+                <textarea class="textarea" name="auth_proxy_whitelist">{{ app('auth_proxy_whitelist') ?? '' }}</textarea>
             </div>
         </div>
 
@@ -499,21 +499,21 @@
         <div class="field">
             <label class="label">{{ __('app.smtp_fromname') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_fromname" value="{{ app('smtp_fromname') }}">
+                <input type="text" class="input" name="smtp_fromname" value="{{ app('smtp_fromname') ?? '' }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_fromaddress') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_fromaddress" value="{{ app('smtp_fromaddress') }}">
+                <input type="text" class="input" name="smtp_fromaddress" value="{{ app('smtp_fromaddress') ?? '' }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_host') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_host" value="{{ app('smtp_host') }}">
+                <input type="text" class="input" name="smtp_host" value="{{ app('smtp_host') ?? '' }}">
             </div>
         </div>
 
@@ -527,14 +527,14 @@
         <div class="field">
             <label class="label">{{ __('app.smtp_username') }}</label>
             <div class="control">
-                <input type="text" class="input" name="smtp_username" value="{{ app('smtp_username') }}">
+                <input type="text" class="input" name="smtp_username" value="{{ app('smtp_username') ?? '' }}">
             </div>
         </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_password') }}</label>
             <div class="control">
-                <input type="password" class="input" name="smtp_password" value="{{ app('smtp_password') }}">
+                <input type="password" class="input" name="smtp_password" value="{{ app('smtp_password') ?? '' }}">
             </div>
         </div>
 
@@ -552,7 +552,7 @@
         <div class="field">
             <label class="label">{{ __('app.mail_rp_address') }}</label>
             <div class="control">
-                <input type="text" class="input" name="mail_rp_address" value="{{ app('mail_rp_address') }}">
+                <input type="text" class="input" name="mail_rp_address" value="{{ app('mail_rp_address') ?? '' }}">
             </div>
         </div>
 
@@ -681,7 +681,7 @@
         <div class="field">
             <label class="label">{{ __('app.backup_path') }}</label>
             <div class="control">
-                <input type="text" class="input" name="backup_path" value="{{ app('backup_path') }}"/>
+                <input type="text" class="input" name="backup_path" value="{{ app('backup_path') ?? '' }}"/>
             </div>
         </div>
 
