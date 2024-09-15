@@ -94,7 +94,7 @@ class AppModel extends \Asatru\Database\Model {
                     ]
                 ],
                 'start_url' => '/',
-                'display' => 'fullscreen',
+                'display' => 'standalone',
                 'background_color' => '#323232',
                 'theme_color' => '#323232'
             ];
