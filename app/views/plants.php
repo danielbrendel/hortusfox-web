@@ -78,3 +78,47 @@
 		</div>
 	@endif
 </div>
+
+<div class="location-log">
+	<div class="location-log-title">{{ __('app.location_log') }}</div>
+
+	<a name="location-log-anchor"></a>
+
+	@if ((is_countable($location_log_entries)) && (count($location_log_entries) > 0))
+	<table id="location-log-table">
+		<thead>
+			<tr>
+				<td>{{ __('app.location_log_content') }}</td>
+				<td>{{ __('app.location_log_date') }}</td>
+				<td><span class="float-right">{{ __('app.location_log_actions') }}</span></td>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach ($location_log_entries as $location_log_entry)
+			<tr id="location-log-entry-table-row-{{ $location_log_entry->get('id') }}">
+				<td id="location-log-entry-item-{{ $location_log_entry->get('id') }}">{{ $location_log_entry->get('content') }}</td>
+				<td>{{ date('Y-m-d', strtotime($location_log_entry->get('created_at'))) }} / {{ date('Y-m-d', strtotime($location_log_entry->get('updated_at'))) }}</td>
+				<td>
+					<span class="float-right">
+						<span><a href="javascript:void(0);" onclick="window.vue.showEditLocationLogEntry('{{ $location_log_entry->get('id') }}', '{{ $location_log_entry->get('location') }}', document.getElementById('location-log-entry-item-{{ $location_log_entry->get('id') }}').innerText, 'location-log-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_location_log_entry') }}')) { window.vue.removeLocationLogEntry('{{ $location_log_entry->get('id') }}', 'location-log-entry-table-row-{{ $location_log_entry->get('id') }}'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+					</span>
+				</td>
+			</tr>
+			@endforeach
+
+			@if ($location_log_entries->asArray()[count($location_log_entries) - 1]['id'] > 1)
+				<tr id="location-log-load-more" class="location-log-paginate">
+					<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextLocationLogEntries(this, '{{ $location }}', document.getElementById('location-log-table'));" data-paginate="{{ $location_log_entries->asArray()[count($location_log_entries) - 1]['id'] }}">{{ __('app.load_more') }}</a></td>
+				</tr>
+			@endif
+		</tbody>
+	</table>
+	@else
+		<strong>{{ __('app.no_location_log_entries_yet') }}</strong>
+	@endif
+
+	<div class="location-log-action">
+		<a class="button is-info" href="javascript:void(0);" onclick="window.vue.showAddLocationLogEntry('{{ $location }}', 'location-log-anchor');">{{ __('app.add_location_log_entry') }}</a>
+	</div>
+</div>

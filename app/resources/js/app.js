@@ -58,6 +58,8 @@ window.vue = new Vue({
         bShowCreateNewAttributeSchema: false,
         bShowAddPlantLogEntry: false,
         bShowEditPlantLogEntry: false,
+        bShowAddLocationLogEntry: false,
+        bShowEditLocationLogEntry: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -72,6 +74,7 @@ window.vue = new Vue({
         confirmPlantAddHistory: 'Please confirm if you want to do this action.',
         confirmPlantRemoveHistory: 'Please confirm if you want to do this action.',
         confirmRemovePlantLogEntry: 'Do you really want to remove this entry?',
+        confirmRemoveLocationLogEntry: 'Do you really want to remove this entry?',
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
         loadingPleaseWait: 'Please wait...',
@@ -387,6 +390,64 @@ window.vue = new Vue({
                     actionRow.id = 'plant-log-load-more';
                     actionRow.classList.add('plant-log-paginate');
                     actionRow.innerHTML = `<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantLogEntries(this, '` + plant + `', document.getElementById('plant-log-table'));" data-paginate="` + response.data[response.data.length - 1].id + `">` + window.vue.loadMore + `</a></td>`;
+                    tbody.appendChild(actionRow);
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        showAddLocationLogEntry: function(location, anchor = '') {
+            document.getElementById('inpAddLocationLogEntryLocationId').value = location;
+            document.getElementById('inpAddLocationLogEntryAnchor').value = anchor;
+            window.vue.bShowAddLocationLogEntry = true;
+        },
+
+        showEditLocationLogEntry: function(id, location, content, anchor = '') {
+            document.getElementById('inpEditLocationLogEntryItemId').value = id;
+            document.getElementById('inpEditLocationLogEntryLocationId').value = location;
+            document.getElementById('inpEditLocationLogEntryContent').value = content;
+            document.getElementById('inpEditLocationLogEntryAnchor').value = anchor;
+            window.vue.bShowEditLocationLogEntry = true;
+        },
+
+        removeLocationLogEntry: function(id, table_entry) {
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/location/log/remove', { item: id }, function(response) {
+                if (response.code == 200) {
+                    document.getElementById(table_entry).remove();
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        loadNextLocationLogEntries: function(obj, location, table) {
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/location/log/fetch', { location: location, paginate: obj.dataset.paginate }, function(response) {
+                if (response.code == 200) {
+                    let tbody = table.getElementsByTagName('tbody')[0];
+
+                    response.data.forEach(function(elem, index) {
+                        let newRow = document.createElement('tr');
+                        newRow.id = 'location-log-entry-table-row-' + elem.id;
+                        newRow.innerHTML = `
+                            <td id="location-log-entry-item-` + elem.id + `">` + elem.content + `</td>
+                            <td>` + elem.created_at + ` / ` + elem.updated_at + `</td>
+                            <td>
+                                <span class="float-right">
+                                    <span><a href="javascript:void(0);" onclick="window.vue.showEditLocationLogEntry('` + elem.id + `', '` + location + `', document.getElementById('location-log-entry-item-` + elem.id + `').innerText, 'location-log-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('` + window.vue.confirmRemoveLocationLogEntry + `')) { window.vue.removeLocationLogEntry('` + elem.id + `', 'location-log-entry-table-row-` + elem.id + `'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+                                </span>
+                            </td>
+                        `;
+
+                        tbody.appendChild(newRow);
+                    });
+
+                    obj.parentNode.parentNode.remove();
+
+                    let actionRow = document.createElement('tr');
+                    actionRow.id = 'location-log-load-more';
+                    actionRow.classList.add('location-log-paginate');
+                    actionRow.innerHTML = `<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextLocationLogEntries(this, '` + location + `', document.getElementById('location-log-table'));" data-paginate="` + response.data[response.data.length - 1].id + `">` + window.vue.loadMore + `</a></td>`;
                     tbody.appendChild(actionRow);
                 } else {
                     alert(response.msg);

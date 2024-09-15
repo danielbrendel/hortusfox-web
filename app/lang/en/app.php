@@ -432,5 +432,12 @@ return [
 	'auth_proxy_whitelist' => 'Proxy Address Whitelist',
 	'auth_proxy_hide_logout' => 'Hide logout button',
 	'proxy_auth_settings_saved_successfully' => 'Proxy authentication settings saved successfully',
-	'auth_proxy_warning' => 'Warning: Be sure that your workspace instance is protected behind a proxy before enabling this feature'
+	'auth_proxy_warning' => 'Warning: Be sure that your workspace instance is protected behind a proxy before enabling this feature',
+	'location_log' => 'Location Log',
+	'location_log_content' => 'Content',
+	'location_log_date' => 'Created / Updated',
+	'location_log_actions' => 'Actions',
+	'add_location_log_entry' => 'Add entry',
+	'confirm_remove_location_log_entry' => 'Do you really want to remove this entry?',
+	'no_location_log_entries_yet' => 'No entries yet.'
 ];

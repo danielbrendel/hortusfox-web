@@ -1646,6 +1646,65 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowAddLocationLogEntry}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_location_log_entry') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowAddLocationLogEntry = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmAddLocationLogEntry" method="POST" action="{{ url('/plants/location/log/add') }}">
+							@csrf
+
+							<input type="hidden" name="location" id="inpAddLocationLogEntryLocationId"/>
+							<input type="hidden" name="anchor" id="inpAddLocationLogEntryAnchor"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.location_log_content') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="content" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddLocationLogEntry').submit();">{{ __('app.add') }}</button>
+						<button class="button" onclick="window.vue.bShowAddLocationLogEntry = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditLocationLogEntry}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_location_log_entry') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditLocationLogEntry = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditLocationLogEntry" method="POST" action="{{ url('/plants/location/log/edit') }}">
+							@csrf
+
+							<input type="hidden" name="item" id="inpEditLocationLogEntryItemId"/>
+							<input type="hidden" name="location" id="inpEditLocationLogEntryLocationId"/>
+							<input type="hidden" name="anchor" id="inpEditLocationLogEntryAnchor"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.location_log_content') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="content" id="inpEditLocationLogEntryContent" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditLocationLogEntry').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditLocationLogEntry = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))
@@ -1702,6 +1761,7 @@
 				window.vue.confirmSetAllFertilised = '{{ __('app.confirmSetAllFertilised') }}';
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
 				window.vue.confirmRemovePlantLogEntry = '{{ __('app.confirm_remove_plant_log_entry') }}';
+				window.vue.confirmRemoveLocationLogEntry = '{{ __('app.confirm_remove_location_log_entry') }}';
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';

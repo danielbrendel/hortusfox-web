@@ -1418,6 +1418,65 @@ fieldset .field {
     text-decoration: underline;
 }
 
+.location-log {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @media screen and (max-width: 410px) {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+.location-log-title {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: rgb(150, 150, 150);
+}
+
+.location-log table {
+    width: 100%;
+    color: rgb(200, 200, 200);
+}
+
+.location-log table strong {
+    color: rgb(200, 200, 200);
+}
+
+.location-log thead {
+    background-color: rgba(104, 145, 194, 0.5);
+}
+
+.location-log table td {
+    border: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+.location-log strong {
+    color: rgb(100, 100, 100);
+}
+
+.location-log-action {
+    margin-top: 20px;
+}
+
+.location-log-paginate {
+    position: relative;
+}
+
+.location-log-paginate td {
+    text-align: center;
+}
+
+.location-log-paginate a {
+    color: rgb(0, 145, 215);
+}
+
+.location-log-paginate a:hover {
+    color: rgb(0, 145, 215);
+    text-decoration: underline;
+}
+
 .stats {
     position: relative;
     margin-top: 10px;

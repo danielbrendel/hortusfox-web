@@ -38,6 +38,8 @@ class PlantsController extends BaseController {
 		$direction = $request->params()->query('direction', null);
 
 		$plants = PlantsModel::getAll($location, $sorting, $direction);
+
+		$location_log_entries = LocationLogModel::getLogEntries($location);
 		
 		return parent::view(['content', 'plants'], [
 			'user' => $user,
@@ -45,7 +47,8 @@ class PlantsController extends BaseController {
 			'sorting_types' => PlantsModel::$sorting_list,
 			'sorting_dirs' => PlantsModel::$sorting_dir,
 			'location' => $location,
-			'location_name' => LocationsModel::getNameById($location)
+			'location_name' => LocationsModel::getNameById($location),
+			'location_log_entries' => $location_log_entries
 		]);
 	}
 
@@ -830,6 +833,107 @@ class PlantsController extends BaseController {
 			$paginate = $request->params()->query('paginate', null);
 			
 			$data = PlantLogModel::getLogEntries($plant, $paginate)?->asArray();
+			if (is_array($data)) {
+				foreach ($data as &$item) {
+					$item['updated_at'] = date('Y-m-d', strtotime($item['updated_at']));
+					$item['created_at'] = date('Y-m-d', strtotime($item['created_at']));
+				}
+			}
+
+			return json([
+				'code' => 200,
+				'data' => $data
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/location/log/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_location_log_entry($request)
+	{
+		try {
+			$location = $request->params()->query('location');
+			$content = $request->params()->query('content');
+			$anchor = $request->params()->query('anchor');
+
+			LocationLogModel::addEntry($location, $content);
+
+			return redirect('/plants/location/' . $location . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/plants/location/' . $location . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/location/log/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_location_log_entry($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			$location = $request->params()->query('location');
+			$content = $request->params()->query('content');
+			$anchor = $request->params()->query('anchor');
+			
+			LocationLogModel::editEntry($item, $content);
+
+			return redirect('/plants/location/' . $location . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/plants/location/' . $location . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/location/log/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_location_log_entry($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			
+			LocationLogModel::removeEntry($item);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/location/log/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function fetch_location_log_entries($request)
+	{
+		try {
+			$location = $request->params()->query('location');
+			$paginate = $request->params()->query('paginate', null);
+			
+			$data = LocationLogModel::getLogEntries($location, $paginate)?->asArray();
 			if (is_array($data)) {
 				foreach ($data as &$item) {
 					$item['updated_at'] = date('Y-m-d', strtotime($item['updated_at']));
