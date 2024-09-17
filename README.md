@@ -30,7 +30,7 @@
 </p>
 
 <p align="center">
-    <img src="app/resources/gfx/screenshot-desktop.png"/><br/>
+    <img src="app/resources/gfx/screenshot-desktop.png" width="960"/><br/>
 </p>
 
 ## Table of Contents
