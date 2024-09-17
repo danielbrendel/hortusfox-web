@@ -61,6 +61,19 @@ h2 {
     text-decoration: underline;
 }
 
+.is-gray-link {
+    color: rgb(150, 150, 150);
+}
+
+.is-gray-link:hover {
+    color: rgb(150, 150, 150);
+    text-decoration: underline;
+}
+
+.is-dark-delimiter hr {
+    background-color: rgb(100, 100, 100);
+}
+
 .is-fixed-button-link {
     position: relative;
     top: 5px;
@@ -622,6 +635,22 @@ fieldset .field {
 
 .margin-bottom {
     margin-bottom: 20px;
+}
+
+.action-strip {
+    position: relative;
+    display: inline-block;
+}
+
+.action-strip-left {
+    @media screen and (max-width: 1111px) {
+        width: 83%;
+    }
+}
+
+.action-strip-right {
+    position: relative;
+    float: right;
 }
 
 .sorting {
