@@ -674,10 +674,13 @@ class PlantsController extends BaseController {
 
 			$attribute = $request->params()->query('attribute', null);
 			$plants = json_decode($request->params()->query('list', null));
+			$location = $request->params()->query('location', null);
 
 			foreach ($plants as $plant) {
 				PlantsModel::editPlantAttribute($plant[0], $attribute, date('Y-m-d H:i:s'));
 			}
+
+			LocationLogModel::addEntry($location, '[System] bulk_action ' . $attribute . '@' . count($plants));
 
 			return json([
 				'code' => 200,

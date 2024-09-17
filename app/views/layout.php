@@ -1349,6 +1349,7 @@
 					</header>
 					<section class="modal-card-body modal-anchors is-stretched">
 						<input type="hidden" id="plant-bulk-perform-operation-operation" value=""/>
+						<input type="hidden" id="plant-bulk-perform-operation-location" value=""/>
 
 						<div class="field">
 							<div class="control">
@@ -1367,7 +1368,7 @@
 						@endif
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantUpdate('plant-bulk-perform-operation', document.getElementById('plant-bulk-perform-operation-operation').value);"></button>
+						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantUpdate('plant-bulk-perform-operation', document.getElementById('plant-bulk-perform-operation-operation').value, document.getElementById('plant-bulk-perform-operation-location').value);"></button>
 						<button class="button" onclick="window.vue.bShowPlantBulkPerformUpdate = false;">{{ __('app.close') }}</button>
 					</footer>
 				</div>

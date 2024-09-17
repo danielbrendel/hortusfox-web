@@ -1265,8 +1265,9 @@ window.vue = new Vue({
             });
         },
 
-        showPerformBulkUpdate: function(operation, title, button) {
+        showPerformBulkUpdate: function(operation, title, button, location) {
             document.getElementById('plant-bulk-perform-operation-operation').value = operation;
+            document.getElementById('plant-bulk-perform-operation-location').value = location;
             document.getElementById('plant-bulk-perform-operation-title').innerText = title;
             document.getElementById('plant-bulk-perform-operation-button').innerText = button;
 
@@ -1275,7 +1276,7 @@ window.vue = new Vue({
             window.vue.bShowPlantBulkPerformUpdate = true;
         },
 
-        bulkPerformPlantUpdate: function(target, attribute) {
+        bulkPerformPlantUpdate: function(target, attribute, location) {
             let plantIds = [];
 
             let elems = document.getElementsByClassName(target);
@@ -1287,7 +1288,7 @@ window.vue = new Vue({
                 });
                 
                 if (plantIds.length > 0) {
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds) }, function(response) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds), location: location }, function(response) {
                         if (response.code == 200) {
                             alert(window.vue.operationSucceeded);
                             window.vue.bShowPlantBulkPerformUpdate = false;
