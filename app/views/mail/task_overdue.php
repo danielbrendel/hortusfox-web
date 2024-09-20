@@ -4,6 +4,12 @@
         <meta charset="utf-8"/>
 
 		<title>{{ __('app.mail_info_task_overdue') }}</title>
+
+        @if (ThemeModule::hasMailStyles())
+        <style>
+            {{ ThemeModule::getMailStyles() }}
+        </style>
+        @endif
     </head>
 
     <body>

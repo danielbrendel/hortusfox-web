@@ -4,6 +4,12 @@
         <meta charset="utf-8"/>
 
 		<title>{{ __('app.mail_share_photo') }}</title>
+
+        @if (ThemeModule::hasMailStyles())
+        <style>
+            {{ ThemeModule::getMailStyles() }}
+        </style>
+        @endif
     </head>
 
     <body>

@@ -4,6 +4,12 @@
         <meta charset="utf-8"/>
 
 		<title>{{ __('app.account_created') }}</title>
+
+        @if (ThemeModule::hasMailStyles())
+        <style>
+            {{ ThemeModule::getMailStyles() }}
+        </style>
+        @endif
     </head>
 
     <body>

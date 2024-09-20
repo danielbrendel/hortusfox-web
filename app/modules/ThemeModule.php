@@ -88,6 +88,12 @@ class ThemeModule {
                     self::$theme_data->accessory->inline_rules->img .= $key . ': ' . $value . ' !important;';
                 }
             }
+
+            if (isset(self::$theme_data->mail)) {
+                if (!file_exists($path . '/' . self::$theme_data->mail)) {
+                    throw new \Exception('Mail style asset not found');
+                }
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -112,6 +118,22 @@ class ThemeModule {
     public static function ready()
     {
         return (is_object(self::$theme_data));
+    }
+
+    /**
+     * @return bool
+     */
+    public static function hasMailStyles()
+    {
+        return (static::ready()) && (isset(self::$theme_data->mail)) && (file_exists(public_path() . '/themes/' . self::$theme_data->name . '/' . self::$theme_data->mail));
+    }
+
+    /**
+     * @return string
+     */
+    public static function getMailStyles()
+    {
+        return file_get_contents(public_path() . '/themes/' . self::$theme_data->name . '/' . self::$theme_data->mail);
     }
 
     /**
