@@ -534,4 +534,21 @@ class UtilsModule {
 
         return asset('img/' . $asset);
     }
+
+    /**
+     * @param $haystack
+     * @param $key
+     * @param $value
+     * @return int
+     */
+    public static function array_from_key_value($haystack, $key, $value)
+    {
+        foreach ($haystack as $ident => $item) {
+            if ($item[$key] == $value) {
+                return $ident;
+            }
+        }
+
+        return -1;
+    }
 }

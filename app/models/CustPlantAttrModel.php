@@ -196,6 +196,20 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $expression
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function performSearch($expression)
+    {
+        try {
+            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE CONVERT(content USING ' . env('DB_CHARSET', 'utf8') . ') LIKE ?', ['%' . $expression . '%']);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

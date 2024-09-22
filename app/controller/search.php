@@ -37,7 +37,8 @@ class SearchController extends BaseController {
 			'search_name' => true,
 			'search_scientific_name' => true,
 			'search_tags' => true,
-			'search_notes' => true
+			'search_notes' => true,
+			'search_custom' => true
 		]);
 	}
 
@@ -57,9 +58,29 @@ class SearchController extends BaseController {
 			$search_scientific_name = (bool)$request->params()->query('search_scientific_name', 0);
 			$search_tags = (bool)$request->params()->query('search_tags', 0);
 			$search_notes = (bool)$request->params()->query('search_notes', 0);
+			$search_custom = (bool)$request->params()->query('search_custom', 0);
 			
-			$search_result = PlantsModel::performSearch($text, $search_name, $search_scientific_name, $search_tags, $search_notes);
+			$search_result = PlantsModel::performSearch($text, $search_name, $search_scientific_name, $search_tags, $search_notes)->asArray();
 
+			if ($search_custom) {
+				$cust_attr_plants = CustPlantAttrModel::performSearch($text)->asArray();
+
+				foreach ($cust_attr_plants as $key => $cust_plant) {
+					$exists = UtilsModule::array_from_key_value($search_result, 'id', $cust_plant['plant']);
+					if ($exists > -1) {
+						$search_result[$exists][$cust_plant['label']] = $cust_plant['content'];
+					} else {
+						$plant_info = PlantsModel::getDetails($cust_plant['plant'])->asArray();
+
+						if ($plant_info) {
+							$plant_info[$cust_plant['label']] = $cust_plant['content'];
+
+							$search_result[] = $plant_info;
+						}
+					}
+				}
+			}
+			
 			return parent::view(['content', 'search'], [
 				'user' => $user,
 				'query' => $text,
@@ -67,7 +88,8 @@ class SearchController extends BaseController {
 				'search_name' => $search_name,
 				'search_scientific_name' => $search_scientific_name,
 				'search_tags' => $search_tags,
-				'search_notes' => $search_notes
+				'search_notes' => $search_notes,
+				'search_custom' => $search_custom
 			]);
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());

@@ -441,5 +441,6 @@ return [
 	'edit_location_log_entry' => 'Edit entry',
 	'confirm_remove_location_log_entry' => 'Do you really want to remove this entry?',
 	'no_location_log_entries_yet' => 'No entries yet.',
-	'share_api_host' => 'Host to share images on'
+	'share_api_host' => 'Host to share images on',
+	'search_custom' => 'Search in custom attributes'
 ];

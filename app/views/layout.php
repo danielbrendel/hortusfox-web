@@ -1357,7 +1357,7 @@
 							</div>
 						</div>
 
-						@if ((isset($plants)) && (is_countable($plants)) && (count($plants) > 0))
+						@if ((isset($plants)) && (is_countable($plants)) && (is_object($plants)) && (count($plants) > 0))
 							@foreach ($plants as $plant_item)
 								<div class="field">
 									<div class="control">
@@ -1388,7 +1388,7 @@
 							</div>
 						</div>
 
-						@if ((isset($plants)) && (is_countable($plants)) && (count($plants) > 0))
+						@if ((isset($plants)) && (is_countable($plants)) && (is_object($plants)) && (count($plants) > 0))
 							@foreach ($plants as $plant_item)
 								<div class="field">
 									<div class="control">
