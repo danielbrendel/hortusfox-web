@@ -114,7 +114,7 @@ class AdminController extends BaseController {
 				'history_enable' => $enablehistory,
 				'history_name' => $history_name,
 				'enable_media_share' => $enablephotoshare,
-				'custom_media_share_host' => $custom_media_share_host,
+				'custom_media_share_host' => rtrim($custom_media_share_host, '/'),
 				'cronjob_pw' => $cronpw,
 				'pwa_enable' => $enablepwa
 			];
