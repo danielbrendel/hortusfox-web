@@ -199,6 +199,10 @@ body {
     background-color: rgb(67, 67, 67);
 }
 
+.install-content input[type=checkbox] {
+    margin-top: 30px;
+}
+
 .install-content a {
     width: 25%;
     margin-top: 20px;

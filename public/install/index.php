@@ -244,6 +244,12 @@
 
                             <div class="field">
                                 <div class="control">
+                                    <input type="checkbox" name="ignore_reqs" value="1">&nbsp;Ignore platform requirements
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
                                     <input type="submit" class="is-hidden" id="btnSubmit"/>
                                     <a href="javascript:void(0);" class="button is-success is-full-width" id="anchor-submit" onclick="document.querySelector('#btnSubmit').click();">Install!</a>
                                 </div>
@@ -319,10 +325,12 @@
             return $result;
         }
 
-        function install($workspace, $name, $email, $password, $dbhost, $dbport, $dbdatabase, $dbuser, $dbpassword, $smtphost, $smtpport, $smtpaddr, $smtpuser, $smtppw)
+        function install($workspace, $name, $email, $password, $dbhost, $dbport, $dbdatabase, $dbuser, $dbpassword, $smtphost, $smtpport, $smtpaddr, $smtpuser, $smtppw, $ignore_reqs)
         {
             if (!is_dir(__DIR__ . '/../../vendor')) {
-                system('composer install --working-dir=' . __DIR__ . '/../../');
+                $ignore_reqs_arg = ($ignore_reqs) ? '--ignore-platform-reqs': '';
+
+                system('composer install ' . $ignore_reqs_arg . ' --working-dir=' . __DIR__ . '/../../');
             }
 
             $env = '# App settings' . PHP_EOL;
@@ -424,6 +432,7 @@
         $smtpaddr = (isset($_POST['smtpaddr'])) ? $_POST['smtpaddr'] : '';
         $smtpuser = (isset($_POST['smtpuser'])) ? $_POST['smtpuser'] : '';
         $smtppw = (isset($_POST['smtppw'])) ? $_POST['smtppw'] : '';
+        $ignore_reqs = (isset($_POST['ignore_reqs'])) ? (bool)$_POST['ignore_reqs'] : false;
 
         validateArg($workspace, 'workspace');
         validateArg($name, 'name');
@@ -435,7 +444,7 @@
         validateArg($dbuser, 'dbuser');
         validateArg($dbpassword, 'dbpassword');
 
-        install($workspace, $name, $email, $password, $dbhost, $dbport, $dbdatabase, $dbuser, $dbpassword, $smtphost, $smtpport, $smtpaddr, $smtpuser, $smtppw);
+        install($workspace, $name, $email, $password, $dbhost, $dbport, $dbdatabase, $dbuser, $dbpassword, $smtphost, $smtpport, $smtpaddr, $smtpuser, $smtppw, $ignore_reqs);
 
         header('Location: /');
         exit();
