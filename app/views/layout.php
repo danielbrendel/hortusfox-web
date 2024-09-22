@@ -1082,7 +1082,7 @@
 					</header>
 					<section class="modal-card-body is-stretched">
 						<div class="field">
-							<p>{{ __('app.share_photo_hint', ['url' => env('APP_SERVICE_URL')]) }}</p>
+							<p>{{ __('app.share_photo_hint', ['url' => share_api_host()]) }}</p>
 						</div>
 
 						<div class="field">

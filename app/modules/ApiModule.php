@@ -27,7 +27,7 @@ class ApiModule {
                 $file = public_path() . '/img/' . PlantPhotoModel::getItem($asset)->get('original');
             }
             
-            $ch = curl_init(env('APP_SERVICE_URL') . '/api/photo/share');
+            $ch = curl_init(share_api_host() . '/api/photo/share');
 
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POST, true);
@@ -63,7 +63,7 @@ class ApiModule {
     public static function removePhoto($ident)
     {
         try {
-            $ch = curl_init(env('APP_SERVICE_URL') . '/api/photo/remove');
+            $ch = curl_init(share_api_host() . '/api/photo/remove');
 
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POST, true);

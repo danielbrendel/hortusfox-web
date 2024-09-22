@@ -96,6 +96,7 @@ class AdminController extends BaseController {
 			$enablehistory = (bool)$request->params()->query('enablehistory', 0);
 			$history_name = $request->params()->query('history_name', app('history_name'));
 			$enablephotoshare = (bool)$request->params()->query('enablephotoshare', 0);
+			$custom_media_share_host = $request->params()->query('custom_media_share_host', share_api_host());
 			$cronpw = $request->params()->query('cronpw', app('cronjob_pw'));
 			$enablepwa = (bool)$request->params()->query('enablepwa', 0);
 
@@ -113,6 +114,7 @@ class AdminController extends BaseController {
 				'history_enable' => $enablehistory,
 				'history_name' => $history_name,
 				'enable_media_share' => $enablephotoshare,
+				'custom_media_share_host' => $custom_media_share_host,
 				'cronjob_pw' => $cronpw,
 				'pwa_enable' => $enablepwa
 			];

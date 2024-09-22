@@ -101,3 +101,16 @@ function abs_photo($asset)
 {
     return UtilsModule::absolutePhoto($asset);
 }
+
+/**
+ * @return string
+ */
+function share_api_host()
+{
+    $host = app('custom_media_share_host');
+    if ((is_string($host)) && (strlen($host) > 0)) {
+        return $host;
+    }
+
+    return env('APP_SERVICE_URL');
+}

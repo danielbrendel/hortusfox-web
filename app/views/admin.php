@@ -132,6 +132,13 @@
         </div>
 
         <div class="field">
+            <label class="label">{{ __('app.share_api_host') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="custom_media_share_host" value="{{ share_api_host() }}">
+            </div>
+        </div>
+
+        <div class="field">
             <label class="label">{{ __('app.cronpw') }}</label>
         </div>
 

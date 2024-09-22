@@ -440,5 +440,6 @@ return [
 	'add_location_log_entry' => 'Eintrag hinzufügen',
 	'edit_location_log_entry' => 'Eintrag bearbeiten',
 	'confirm_remove_location_log_entry' => 'Soll dieser Eintrag wirklich gelöscht werden?',
-	'no_location_log_entries_yet' => 'Noch keine Einträge.'
+	'no_location_log_entries_yet' => 'Noch keine Einträge.',
+	'share_api_host' => 'Server zum Teilen von Fotos'
 ];
