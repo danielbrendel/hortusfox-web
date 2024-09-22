@@ -103,9 +103,18 @@ body {
     padding-top: 15px;
 }
 
+.install-sponsoring div:first-child {
+    margin-bottom: 10px;
+}
+
 .install-sponsoring small {
     position: relative;
     top: -10px;
+}
+
+.install-sponsoring iframe {
+    width: 150px;
+    height: 32px;
 }
 
 .install-action {
