@@ -2618,6 +2618,54 @@ fieldset .field {
     margin-bottom: 30px;
 }
 
+.admin-bulk-commands-list {
+    position: relative;
+}
+
+.admin-bulk-command {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.admin-bulk-command label, .admin-bulk-command span {
+    color: rgb(150, 150, 150);
+}
+
+.admin-bulk-command input, .admin-bulk-command select {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+}
+
+.admin-bulk-command-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: rgb(150, 150, 150);
+}
+
+.admin-bulk-command-item-input {
+    width: 30%;
+}
+
+.admin-bulk-command-actions {
+    position: relative;
+    display: inline-block;
+}
+
+.admin-bulk-command-item-centered {
+    text-align: center;
+}
+
+.admin-bulk-command-action-item {
+    position: relative;
+}
+
+.admin-bulk-command-actions {
+    position: relative;
+    margin-top: 20px;
+}
+
 .admin-calendar-classes {
     position: relative;
     width: 100%;
