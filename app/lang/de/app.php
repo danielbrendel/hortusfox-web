@@ -442,5 +442,12 @@ return [
 	'confirm_remove_location_log_entry' => 'Soll dieser Eintrag wirklich gelöscht werden?',
 	'no_location_log_entries_yet' => 'Noch keine Einträge.',
 	'share_api_host' => 'Server zum Teilen von Fotos',
-	'search_custom' => 'Selbsterstellte Attribute durchsuchen'
+	'search_custom' => 'Selbsterstellte Attribute durchsuchen',
+	'custom_bulk_commands' => 'Selbsterstellte Bulk-Befehle',
+	'add_bulk_cmd' => 'Bulk-Befehl hinzufügen',
+	'styles' => 'Stile',
+	'confirm_remove_bulk_cmd' => 'Soll dieser Bulk-Befehl wirklich entfernt werden?',
+	'bulk_cmd_added_successfully' => 'Der Bulk-Befehl wurde erfolgreich erstellt',
+	'bulk_cmd_updated_successfully' => 'Der Bulk-Befehl wurde erfolgreich aktualisiert',
+	'bulk_cmd_removed_successfully' => 'Der Bulk-Befehl wurde erfolgreich entfernt'
 ];

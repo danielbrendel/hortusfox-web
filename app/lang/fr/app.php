@@ -442,5 +442,12 @@ return [
 	'confirm_remove_location_log_entry' => 'Do you really want to remove this entry?',
 	'no_location_log_entries_yet' => 'No entries yet.',
 	'share_api_host' => 'Host to share images on',
-	'search_custom' => 'Search in custom attributes'
+	'search_custom' => 'Search in custom attributes',
+	'custom_bulk_commands' => 'Custom bulk commands',
+	'add_bulk_cmd' => 'Add bulk command',
+	'styles' => 'Styles',
+	'confirm_remove_bulk_cmd' => 'Do you really want to remove this item?',
+	'bulk_cmd_added_successfully' => 'Bulk command was successfully added',
+	'bulk_cmd_updated_successfully' => 'Bulk command was successfully updated',
+	'bulk_cmd_removed_successfully' => 'Bulk command was successfully removed'
 ];
