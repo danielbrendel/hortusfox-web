@@ -12,6 +12,9 @@
 		@if (plant_attr('last_fertilised'))
 		<div class="is-inline-block is-action-button-margin"><a class="button is-chocolate" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('last_fertilised', '{{ __('app.bulk_set_fertilised') }}', '{{ __('app.set_fertilised') }}', '{{ $location }}');">{{ __('app.set_fertilised') }}</a></div>
 		@endif
+		@foreach (CustBulkCmdModel::getCmdList() as $bulk_cmd)
+		<div class="is-inline-block is-action-button-margin"><a class="button" style="{{ $bulk_cmd->get('styles') }}" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('{{ $bulk_cmd->get('attribute') }}', '{{ $bulk_cmd->get('label') }}', '{{ $bulk_cmd->get('label') }}', '{{ $location }}', true);">{{ $bulk_cmd->get('label') }}</a></div>
+		@endforeach
 		<div class="is-inline-block is-action-button-margin"><a class="button" href="javascript:void(0);" onclick="window.vue.bShowPlantBulkPrint = true;">{{ __('app.bulk_print_qr_codes') }}</a></div>
 		<div class="is-inline-block is-action-button-margin"><a class="is-default-link is-fixed-button-link is-fixed-margin-left-mobile" href="{{ url('/') }}">{{ __('app.back_to_dashboard') }}</a></div>
 	</div>

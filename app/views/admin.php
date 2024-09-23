@@ -454,6 +454,45 @@
         </div>
         @endforeach
     </div>
+
+    <hr/>
+
+    <p>{{ __('app.custom_bulk_commands') }}</p>
+
+    <div class="admin-attribute-schema-list">
+        @foreach ($bulk_cmds as $bulk_cmd)
+            <div class="admin-attribute-schema">
+                <form method="POST" action="{{ url('/admin/attributes/bulkcmd/edit') }}">
+                    @csrf
+
+                    <input type="hidden" name="id" value="{{ $bulk_cmd->get('id') }}"/>
+
+                    <div class="admin-attribute-schema-item">#{{ $bulk_cmd->get('id') }}</div>
+
+                    <div class="admin-attribute-schema-item admin-attribute-schema-item-input">
+                        <input type="text" class="input" name="label" value="{{ $bulk_cmd->get('label') }}"/>
+                    </div>
+
+                    <div class="admin-attribute-schema-item admin-attribute-schema-item-input">
+                        <input type="text" class="input" name="attribute" value="{{ $bulk_cmd->get('attribute') }}"/>
+                    </div>
+
+                    <div class="admin-attribute-schema-item admin-attribute-schema-item-input">
+                        <input type="text" class="input" name="styles" value="{{ $bulk_cmd->get('styles') }}"/>
+                    </div>
+
+                    <div class="admin-attribute-schema-actions">
+                        <span class="admin-attribute-schema-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
+                        <span class="admin-attribute-schema-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_bulk_cmd') }}')) { location.href = '{{ url('/admin/attributes/bulkcmd/remove?id=' . $bulk_cmd->get('id')) }}'; }">{{ __('app.remove') }}</a></span> 
+                    </div>
+                </form>
+            </div>
+        @endforeach
+    </div>
+
+    <div class="admin-locations-actions">
+        <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewBulkCmd = true;">{{ __('app.add_bulk_cmd') }}</a></span>
+    </div>
 </div>
 
 <div class="admin-calendar {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'calendar')) ? 'is-hidden' : ''}}">

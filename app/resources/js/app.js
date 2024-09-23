@@ -60,6 +60,7 @@ window.vue = new Vue({
         bShowEditPlantLogEntry: false,
         bShowAddLocationLogEntry: false,
         bShowEditLocationLogEntry: false,
+        bShowCreateNewBulkCmd: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -1265,18 +1266,19 @@ window.vue = new Vue({
             });
         },
 
-        showPerformBulkUpdate: function(operation, title, button, location) {
+        showPerformBulkUpdate: function(operation, title, button, location, is_custom = false) {
             document.getElementById('plant-bulk-perform-operation-operation').value = operation;
             document.getElementById('plant-bulk-perform-operation-location').value = location;
             document.getElementById('plant-bulk-perform-operation-title').innerText = title;
             document.getElementById('plant-bulk-perform-operation-button').innerText = button;
+            document.getElementById('plant-bulk-perform-operation-custom').checked = is_custom;
 
             window.vue.bulkChecked('plant-bulk-perform-operation', false);
 
             window.vue.bShowPlantBulkPerformUpdate = true;
         },
 
-        bulkPerformPlantUpdate: function(target, attribute, location) {
+        bulkPerformPlantUpdate: function(target, attribute, location, is_custom = false) {
             let plantIds = [];
 
             let elems = document.getElementsByClassName(target);
@@ -1288,7 +1290,7 @@ window.vue = new Vue({
                 });
                 
                 if (plantIds.length > 0) {
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds), location: location }, function(response) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds), location: location, custom: is_custom }, function(response) {
                         if (response.code == 200) {
                             alert(window.vue.operationSucceeded);
                             window.vue.bShowPlantBulkPerformUpdate = false;

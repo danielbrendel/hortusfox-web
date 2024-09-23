@@ -56,6 +56,8 @@ class AdminController extends BaseController {
 
 		$global_attributes = CustAttrSchemaModel::getAll(false);
 		$plant_attributes = PlantDefAttrModel::getAll();
+
+		$bulk_cmds = CustBulkCmdModel::getCmdList();
 		
 		return parent::view(['content', 'admin'], [
 			'user' => $user,
@@ -69,6 +71,7 @@ class AdminController extends BaseController {
 			'current_timezone' => $current_timezone,
 			'global_attributes' => $global_attributes,
 			'plant_attributes' => $plant_attributes,
+			'bulk_cmds' => $bulk_cmds,
 			'new_version' => $new_version,
 			'current_version' => $current_version
 		]);
@@ -432,6 +435,77 @@ class AdminController extends BaseController {
 				'code' => 500,
 				'msg' => $e->getMessage()
 			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/attributes/bulkcmd/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_bulk_cmd($request)
+	{
+		try {
+			$label = $request->params()->query('label');
+			$attribute = $request->params()->query('attribute');
+			$styles = $request->params()->query('styles');
+			
+			CustBulkCmdModel::addCmd($label, $attribute, $styles);
+
+			FlashMessage::setMsg('success', __('app.bulk_cmd_added_successfully'));
+
+			return redirect('/admin?tab=attributes');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/admin?tab=attributes');
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/attributes/bulkcmd/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_bulk_cmd($request)
+	{
+		try {
+			$id = $request->params()->query('id');
+			$label = $request->params()->query('label');
+			$attribute = $request->params()->query('attribute');
+			$styles = $request->params()->query('styles');
+			
+			CustBulkCmdModel::editCmd($id, $label, $attribute, $styles);
+
+			FlashMessage::setMsg('success', __('app.bulk_cmd_updated_successfully'));
+
+			return redirect('/admin?tab=attributes');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/admin?tab=attributes');
+		}
+	}
+
+	/**
+	 * Handles URL: /admin/attributes/bulkcmd/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function remove_bulk_cmd($request)
+	{
+		try {
+			$id = $request->params()->query('id');
+			
+			CustBulkCmdModel::removeCmd($id);
+
+			FlashMessage::setMsg('success', __('app.bulk_cmd_removed_successfully'));
+
+			return redirect('/admin?tab=attributes');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/admin?tab=attributes');
 		}
 	}
 

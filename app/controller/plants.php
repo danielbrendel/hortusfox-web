@@ -670,21 +670,25 @@ class PlantsController extends BaseController {
 	public function perform_bulk_updates($request)
 	{
 		try {
-			$result = [];
-
 			$attribute = $request->params()->query('attribute', null);
 			$plants = json_decode($request->params()->query('list', null));
 			$location = $request->params()->query('location', null);
+			$custom = (bool)$request->params()->query('custom', false);
+
+			$updated_datetime = date('Y-m-d H:i:s');
 
 			foreach ($plants as $plant) {
-				PlantsModel::editPlantAttribute($plant[0], $attribute, date('Y-m-d H:i:s'));
+				if (!$custom) {
+					PlantsModel::editPlantAttribute($plant[0], $attribute, $updated_datetime);
+				} else {
+					CustPlantAttrModel::editAttribute(CustPlantAttrModel::getAttrIdOfPlant($plant[0], $attribute), $plant[0], $attribute, 'datetime', $updated_datetime);
+				}
 			}
 
 			LocationLogModel::addEntry($location, '[System] bulk_action ' . $attribute . '@' . count($plants));
 
 			return json([
-				'code' => 200,
-				'list' => $result
+				'code' => 200
 			]);
 		} catch (\Exception $e) {
 			return json([

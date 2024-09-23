@@ -210,6 +210,26 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $plant
+     * @param $label
+     * @return int
+     * @throws \Exception
+     */
+    public static function getAttrIdOfPlant($plant, $label)
+    {
+        try {
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ? AND label = ?', [$plant, $label])->first();
+            if ($item) {
+                return $item->get('id');
+            }
+
+            return 0;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string
