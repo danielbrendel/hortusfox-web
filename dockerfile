@@ -46,6 +46,9 @@ RUN apt-get update \
  && docker-php-ext-configure gd --with-jpeg \
  && docker-php-ext-install gd
 
+# Install tzdata package
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
+
 # Enable Apache mod_rewrite for .htaccess support
 RUN a2enmod rewrite
 

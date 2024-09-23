@@ -9,6 +9,7 @@ DEFAULT_APP_BASE_DIR=""
 DEFAULT_APP_DEBUG=true
 DEFAULT_APP_LANG="en"
 DEFAULT_APP_WORKSPACE="My plant home"
+DEFAULT_APP_TIMEZONE="UTC"
 DEFAULT_APP_ONLINE_MINUTE_LIMIT=5
 DEFAULT_APP_OVERDUE_TASK_HOURS=10
 DEFAULT_APP_CRON_PW=$(openssl rand -base64 12)
@@ -29,6 +30,7 @@ APP_BASE_DIR="${APP_BASE_DIR:-$DEFAULT_APP_BASE_DIR}"
 APP_DEBUG=${APP_DEBUG:-$DEFAULT_APP_DEBUG}
 APP_LANG="${APP_LANG:-$DEFAULT_APP_LANG}"
 APP_WORKSPACE="${APP_WORKSPACE:-$DEFAULT_APP_WORKSPACE}"
+APP_TIMEZONE="${APP_TIMEZONE:-$DEFAULT_APP_TIMEZONE}"
 APP_ONLINE_MINUTE_LIMIT=${APP_ONLINE_MINUTE_LIMIT:-$DEFAULT_APP_ONLINE_MINUTE_LIMIT}
 APP_OVERDUE_TASK_HOURS=${APP_OVERDUE_TASK_HOURS:-$DEFAULT_APP_OVERDUE_TASK_HOURS}
 APP_CRON_PW="${APP_CRON_PW:-$DEFAULT_APP_CRON_PW}"
@@ -41,6 +43,13 @@ SMTP_PORT=${SMTP_PORT:-$DEFAULT_SMTP_PORT}
 SMTP_USERNAME="${SMTP_USERNAME:-$DEFAULT_SMTP_USERNAME}"
 SMTP_PASSWORD="${SMTP_PASSWORD:-$DEFAULT_SMTP_PASSWORD}"
 SMTP_ENCRYPTION="${SMTP_ENCRYPTION:-$DEFAULT_SMTP_ENCRYPTION}"
+
+# Function to set the desired timezone
+configure_timezone() {
+    ln -sf /usr/share/zoneinfo/$APP_TIMEZONE /etc/localtime
+    echo "$APP_TIMEZONE" > /etc/timezone
+    dpkg-reconfigure -f noninteractive tzdata
+}
 
 # Function to set PHP error reporting based on APP_DEBUG
 configure_php_error_reporting() {
@@ -187,6 +196,9 @@ wait_for_db() {
 
     echo "Database is available."
 }
+
+# Configure timezone
+configure_timezone
 
 # Configure PHP error reporting
 configure_php_error_reporting

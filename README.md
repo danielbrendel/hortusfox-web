@@ -110,6 +110,13 @@ APP_ADMIN_EMAIL: "admin@example.com"
 APP_ADMIN_PASSWORD: "password"
 ```
 
+Set your prefered timezone. Default is UTC.
+```yaml
+# Timezone setting
+# services.app.environment
+APP_TIMEZONE: "UTC"
+```
+
 Set database settings if required. It is encouraged to set custom passwords due to security reasons. All other settings can be left unaltered.
 ```yaml
 # Settings used to establish connections to the database
