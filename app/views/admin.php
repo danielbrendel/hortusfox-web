@@ -437,7 +437,7 @@
         @endforeach
     </div>
 
-    <div class="admin-locations-actions">
+    <div class="admin-attribute-schema-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewAttributeSchema = true;">{{ __('app.add_custom_attribute') }}</a></span>
     </div>
 
