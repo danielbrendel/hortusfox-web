@@ -490,7 +490,7 @@
         @endforeach
     </div>
 
-    <div class="admin-locations-actions">
+    <div class="admin-bulk-command-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewBulkCmd = true;">{{ __('app.add_bulk_cmd') }}</a></span>
     </div>
 </div>
