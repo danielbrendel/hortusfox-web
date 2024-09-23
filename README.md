@@ -227,37 +227,12 @@ After saving the file you can now let the product create all neccessary tables v
 php asatru migrate:fresh
 ```
 
-Now you need to insert your initial app settings profile into the database. These settings can be later adjusted in the admin dashboard.
+Now you need to insert your initial app settings profile into the database. There are many more settings available, but you can adjust them later in the admin dashboard.
 ```sql
-INSERT INTO `AppModel` (id, workspace, language, scroller, chat_enable, chat_timelimit, chat_showusers, chat_indicator, chat_system, history_enable, history_name, enable_media_share, cronjob_pw, overlay_alpha, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, pwa_enable, owm_enable, owm_api_key, owm_latitude, owm_longitude, owm_unittype, owm_cache, created_at) VALUES (
+INSERT INTO `AppModel` (id, workspace, language, created_at) VALUES (
     NULL, 
     'My workspace name', 
     'en', 
-    1, 
-    1, 
-    5, 
-    1, 
-    0,
-    1, 
-    1, 
-    'History', 
-    0, 
-    'a-secret-pw', 
-    null, 
-    '', 
-    '', 
-    '', 
-    587, 
-    '', 
-    '', 
-    'tls',
-    0,
-    0,
-    null,
-    null,
-    null,
-    'default',
-    300,
     CURRENT_TIMESTAMP
 );
 ```
@@ -320,7 +295,6 @@ INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 
 The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
 You can use all free FontAwesome icons (v5.15.4 free icons). For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges.
-Additionally you might want to build the <a href="https://github.com/danielbrendel/hortusfox-app-android">android mobile app</a> for your users.
 
 ## Cronjobs
 
