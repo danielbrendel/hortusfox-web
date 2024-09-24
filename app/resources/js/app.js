@@ -1499,6 +1499,29 @@ window.vue = new Vue({
             });
         },
 
+        toggleAdminAuthInfoMessages: function(checked, warning, caution) {
+            let elWarning = document.querySelector(warning);
+            let elCaution = document.querySelector(caution);
+
+            if (checked) {
+                if (elWarning) {
+                    elWarning.style.display = 'block';
+                }
+
+                if (elCaution) {
+                    elCaution.style.display = 'block';
+                }
+            } else {
+                if (elWarning) {
+                    elWarning.style.display = 'none';
+                }
+
+                if (elCaution) {
+                    elCaution.style.display = 'none';
+                }
+            }
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

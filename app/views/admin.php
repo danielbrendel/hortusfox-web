@@ -340,11 +340,15 @@
 
         <div class="field">
             <div class="control">
-                <input type="checkbox" name="auth_proxy_enable" value="1" onclick="if (this.checked) { document.querySelector('.admin-auth-warning').style.display = 'block'; } else { document.querySelector('.admin-auth-warning').style.display = 'none'; }" {{ ((app('auth_proxy_enable')) ? 'checked' : '') }}/>&nbsp;<span>{{ __('app.auth_proxy_enable') }}</span>
+                <input type="checkbox" name="auth_proxy_enable" value="1" onclick="window.vue.toggleAdminAuthInfoMessages(this.checked, '.admin-auth-warning', '.admin-auth-caution');" {{ ((app('auth_proxy_enable')) ? 'checked' : '') }}/>&nbsp;<span>{{ __('app.auth_proxy_enable') }}</span>
             </div>
         </div>
 
-        <div class="admin-auth-warning">{{ __('app.auth_proxy_warning') }}</div>
+        <div class="admin-auth-warning"><i class="fas fa-exclamation-triangle"></i>&nbsp;{{ __('app.auth_proxy_warning') }}</div>
+
+        @if (!UtilsModule::isHTTPS())
+        <div class="admin-auth-caution"><i class="fas fa-exclamation-triangle"></i>&nbsp;{{ __('app.auth_proxy_no_https_detected') }}</div>
+        @endif 
 
         <div class="field">
             <label class="label">{{ __('app.auth_proxy_header_email') }}</label>

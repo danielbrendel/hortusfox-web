@@ -551,4 +551,12 @@ class UtilsModule {
 
         return -1;
     }
+
+    /**
+     * @return bool
+     */
+    public static function isHTTPS()
+    {
+        return (isset($_SERVER['HTTPS'])) && ($_SERVER['HTTPS'] !== 'off');
+    }
 }

@@ -433,6 +433,7 @@ return [
 	'auth_proxy_hide_logout' => 'Logout Button verstecken',
 	'proxy_auth_settings_saved_successfully' => 'Einstellungen für die Proxy-Authentifizierung erfolgreich gespeichert',
 	'auth_proxy_warning' => 'Warnung: Es muss sichergestellt sein, dass diese Instanz durch einen Proxy geschützt wird',
+	'auth_proxy_no_https_detected' => 'Achtung: Kein HTTPS erkannt. Es muss sichergestellt sein, dass die Kommunikation zum Workspace geschützt ist',
 	'location_log' => 'Log',
 	'location_log_content' => 'Inhalt',
 	'location_log_date' => 'Erstellt / Bearbeitet',
