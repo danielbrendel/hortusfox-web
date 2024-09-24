@@ -205,6 +205,19 @@ h2 {
     text-decoration: underline;
 }
 
+.navbar-menu {
+     @media screen and (max-width: 1087px) {
+        max-height: calc(100vh - 3.25rem);
+        overflow-y: auto;
+     }
+}
+
+.navbar-end {
+    @media screen and (max-width: 1087px) {
+        margin-bottom: 100px;
+    }
+}
+
 .navbar-item a {
     color: rgb(200, 200, 200);
 }
