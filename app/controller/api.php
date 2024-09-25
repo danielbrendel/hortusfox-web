@@ -266,4 +266,79 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/plants/log/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function add_plant_log_entry($request)
+    {
+        try {
+            $plantId = $request->params()->query('plant', null);
+            $content = $request->params()->query('content', null);
+            
+            $logid = PlantLogModel::addEntry($plantId, $content);
+
+            return json([
+                'code' => 200,
+                'logid' => $logid
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/plants/log/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function edit_plant_log_entry($request)
+    {
+        try {
+            $logid = $request->params()->query('logid', null);
+            $content = $request->params()->query('content', null);
+            
+            PlantLogModel::editEntry($logid, $content);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/plants/log/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function remove_plant_log_entry($request)
+    {
+        try {
+            $logid = $request->params()->query('logid', null);
+            
+            PlantLogModel::removeEntry($logid);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }

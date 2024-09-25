@@ -165,6 +165,9 @@ return [
     array('/api/plants/attributes/edit', 'ANY', 'api@edit_attribute'),
     array('/api/plants/attributes/remove', 'ANY', 'api@remove_attribute'),
     array('/api/plants/photo/update', 'ANY', 'api@update_plant_photo'),
+    array('/api/plants/log/add', 'ANY', 'api@add_plant_log_entry'),
+    array('/api/plants/log/edit', 'ANY', 'api@edit_plant_log_entry'),
+    array('/api/plants/log/remove', 'ANY', 'api@remove_plant_log_entry'),
 
     /** Backup Controller */
     array('/export/start', 'POST', 'backup@export'),

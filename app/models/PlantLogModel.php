@@ -9,7 +9,7 @@ class PlantLogModel extends \Asatru\Database\Model {
     /**
      * @param $plant
      * @param $content
-     * @return void
+     * @return int
      * @throws \Exception
      */
     public static function addEntry($plant, $content)
@@ -25,6 +25,13 @@ class PlantLogModel extends \Asatru\Database\Model {
             ]);
 
             LogModel::addLog($user->get('id'), $plant, 'add_plant_log', $content, url('/plants/details/' . $plant));
+
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            if ($item) {
+                return $item->get('id');
+            }
+
+            return 0;
         } catch (\Exception $e) {
             throw $e;
         }
