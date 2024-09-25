@@ -268,6 +268,40 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/plants/gallery/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function add_plant_gallery_photo($request)
+    {
+        try {
+            $plantId = $request->params()->query('plant', null);
+            $label = $request->params()->query('label', null);
+            $external = (bool)$request->params()->query('external', false);
+
+            if (!$external) {
+                PlantPhotoModel::uploadPhoto($plantId, $label);
+            } else {
+                $photo = $request->params()->query('photo', null);
+
+                PlantPhotoModel::addPhotoURL($plantId, $label, $photo);
+            }
+
+            PlantsModel::setUpdated($plantId);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/plants/log/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
