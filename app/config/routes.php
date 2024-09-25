@@ -164,6 +164,7 @@ return [
     array('/api/plants/attributes/add', 'ANY', 'api@add_attribute'),
     array('/api/plants/attributes/edit', 'ANY', 'api@edit_attribute'),
     array('/api/plants/attributes/remove', 'ANY', 'api@remove_attribute'),
+    array('/api/plants/photo/update', 'ANY', 'api@update_plant_photo'),
 
     /** Backup Controller */
     array('/export/start', 'POST', 'backup@export'),

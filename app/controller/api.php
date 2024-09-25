@@ -235,4 +235,35 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/plants/photo/update
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function update_plant_photo($request)
+    {
+        try {
+            $plantId = $request->params()->query('plant', null);
+            $external = (bool)$request->params()->query('external', false);
+
+            if (!$external) {
+                PlantsModel::editPlantPhoto($plantId, 'photo', 'photo');
+            } else {
+                $photo = $request->params()->query('photo', null);
+
+                PlantsModel::editPlantPhotoURL($plantId, 'photo', $photo);
+            }
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }
