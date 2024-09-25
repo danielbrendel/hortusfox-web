@@ -341,4 +341,31 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/plants/log/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function fetch_plant_log_entries($request)
+    {
+        try {
+            $plantId = $request->params()->query('plant', null);
+            $paginate = $request->params()->query('paginate', null);
+            $limit = $request->params()->query('limit', 10);
+			
+			$data = PlantLogModel::getLogEntries($plantId, $paginate, $limit);
+
+            return json([
+                'code' => 200,
+                'log' => $data?->asArray()
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }
