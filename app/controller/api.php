@@ -289,7 +289,31 @@ class ApiController extends BaseController {
                 PlantPhotoModel::addPhotoURL($plantId, $label, $photo);
             }
 
-            PlantsModel::setUpdated($plantId);
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+	 * Handles URL: /api/plants/gallery/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function edit_plant_gallery_photo($request)
+    {
+        try {
+            $plantId = $request->params()->query('plant', null);
+            $item = $request->params()->query('item', null);
+            $label = $request->params()->query('label', null);
+
+            PlantPhotoModel::editLabel($item, $label, true);
 
             return json([
                 'code' => 200

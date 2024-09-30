@@ -174,10 +174,11 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     /**
      * @param $id
      * @param $label
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editLabel($id, $label)
+    public static function editLabel($id, $label, $api = false)
     {
         try {
             $photo_data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
@@ -185,7 +186,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
 
             static::raw('UPDATE `' . self::tableName() . '` SET label = ? WHERE id = ?', [$label, $id]);
 
-            if (app('system_message_plant_log')) {
+            if ((app('system_message_plant_log')) && (!$api)) {
                 PlantLogModel::addEntry($plant->get('id'), '[System] edit_gallery_photo: \'' . $photo_data->get('label') . '\' to \'' . $label . '\'');
             }
         } catch (\Exception $e) {
