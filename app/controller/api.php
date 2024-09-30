@@ -194,12 +194,12 @@ class ApiController extends BaseController {
     public static function edit_attribute($request)
     {
         try {
-            $attribute = $request->params()->query('attribute', null);
+            $plant = $request->params()->query('plant', null);
             $label = $request->params()->query('label', null);
             $datatype = $request->params()->query('datatype', null);
             $content = $request->params()->query('content', null);
             
-            CustPlantAttrModel::editAttribute($attribute, null, $label, $datatype, $content, true);
+            CustPlantAttrModel::editAttribute(CustPlantAttrModel::getAttrIdOfPlant($plant, $label), null, $label, $datatype, $content, true);
 
             return json([
                 'code' => 200
@@ -221,9 +221,10 @@ class ApiController extends BaseController {
     public static function remove_attribute($request)
     {
         try {
-            $attribute = $request->params()->query('attribute', null);
+            $plant = $request->params()->query('plant', null);
+            $label = $request->params()->query('label', null);
             
-            CustPlantAttrModel::removeAttribute($attribute, true);
+            CustPlantAttrModel::removeAttribute(CustPlantAttrModel::getAttrIdOfPlant($plant, $label), true);
 
             return json([
                 'code' => 200
