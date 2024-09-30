@@ -327,6 +327,30 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/plants/gallery/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function remove_plant_gallery_photo($request)
+    {
+        try {
+            $item = $request->params()->query('item', null);
+
+            PlantPhotoModel::removePhoto($item, true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/plants/log/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

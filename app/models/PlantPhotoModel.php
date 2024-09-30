@@ -97,14 +97,15 @@ class PlantPhotoModel extends \Asatru\Database\Model {
 
     /**
      * @param $photo
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function removePhoto($photo)
+    public static function removePhoto($photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
@@ -122,10 +123,12 @@ class PlantPhotoModel extends \Asatru\Database\Model {
 
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$photo]);
 
-            LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_gallery_photo', $photo_data->get('label'), url('/plants/details/' . $plant->get('id') . '#plant-gallery-photo-anchor'));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_gallery_photo', $photo_data->get('label'), url('/plants/details/' . $plant->get('id') . '#plant-gallery-photo-anchor'));
 
-            if (app('system_message_plant_log')) {
-                PlantLogModel::addEntry($plant->get('id'), '[System] remove_gallery_photo: ' . $photo_data->get('label'));
+                if (app('system_message_plant_log')) {
+                    PlantLogModel::addEntry($plant->get('id'), '[System] remove_gallery_photo: ' . $photo_data->get('label'));
+                }
             }
         } catch (\Exception $e) {
             throw $e;
