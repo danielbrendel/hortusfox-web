@@ -9,14 +9,15 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     /**
      * @param $plantId
      * @param $label
-     * @return void
+     * @param $api
+     * @return int
      * @throws \Exception
      */
-    public static function uploadPhoto($plantId, $label)
+    public static function uploadPhoto($plantId, $label, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
@@ -39,14 +40,23 @@ class PlantPhotoModel extends \Asatru\Database\Model {
             }
 
             static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label) VALUES(?, ?, ?, ?, ?)', [
-                $plantId, $user->get('id'), $file_name . '_thumb.' . $file_ext, $file_name . '.' . $file_ext, $label
+                $plantId, (($user) ? $user->get('id') : 0), $file_name . '_thumb.' . $file_ext, $file_name . '.' . $file_ext, $label
             ]);
 
-            LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label, url('/plants/details/' . $plantId . '#plant-gallery-photo-anchor'));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label, url('/plants/details/' . $plantId . '#plant-gallery-photo-anchor'));
 
-            if (app('system_message_plant_log')) {
-                PlantLogModel::addEntry($plantId, '[System] add_gallery_photo: ' . $label . ' = ' . $file_name . '.' . $file_ext);
+                if (app('system_message_plant_log')) {
+                    PlantLogModel::addEntry($plantId, '[System] add_gallery_photo: ' . $label . ' = ' . $file_name . '.' . $file_ext);
+                }
             }
+
+            $recent = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            if ($recent) {
+                return $recent->get('id');
+            }
+
+            return 0;
         } catch (\Exception $e) {
             throw $e;
         }
@@ -56,26 +66,36 @@ class PlantPhotoModel extends \Asatru\Database\Model {
      * @param $plantId
      * @param $label
      * @param $photo
-     * @return void
+     * @param $api
+     * @return int
      * @throws \Exception
      */
-    public static function addPhotoURL($plantId, $label, $photo)
+    public static function addPhotoURL($plantId, $label, $photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
             static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label) VALUES(?, ?, ?, ?, ?)', [
-                $plantId, $user->get('id'), $photo, $photo, $label
+                $plantId, (($user) ? $user->get('id') : 0), $photo, $photo, $label
             ]);
 
-            LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label, url('/plants/details/' . $plantId . '#plant-gallery-photo-anchor'));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plantId, 'add_gallery_photo', $label, url('/plants/details/' . $plantId . '#plant-gallery-photo-anchor'));
 
-            if (app('system_message_plant_log')) {
-                PlantLogModel::addEntry($plantId, '[System] add_gallery_photo: ' . $label . ' = ' . $photo);
+                if (app('system_message_plant_log')) {
+                    PlantLogModel::addEntry($plantId, '[System] add_gallery_photo: ' . $label . ' = ' . $photo);
+                }
             }
+
+            $recent = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            if ($recent) {
+                return $recent->get('id');
+            }
+
+            return 0;
         } catch (\Exception $e) {
             throw $e;
         }

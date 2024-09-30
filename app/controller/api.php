@@ -281,16 +281,19 @@ class ApiController extends BaseController {
             $label = $request->params()->query('label', null);
             $external = (bool)$request->params()->query('external', false);
 
+            $result = 0;
+
             if (!$external) {
-                PlantPhotoModel::uploadPhoto($plantId, $label);
+                $result = PlantPhotoModel::uploadPhoto($plantId, $label, true);
             } else {
                 $photo = $request->params()->query('photo', null);
 
-                PlantPhotoModel::addPhotoURL($plantId, $label, $photo);
+                $result = PlantPhotoModel::addPhotoURL($plantId, $label, $photo, true);
             }
 
             return json([
-                'code' => 200
+                'code' => 200,
+                'item' => $result
             ]);
         } catch (\Exception $e) {
             return json([
