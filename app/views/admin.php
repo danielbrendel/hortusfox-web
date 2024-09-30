@@ -876,7 +876,7 @@
             <tbody>
                 @foreach ($api_keys as $api_key)
                 <tr>
-                    <td>{{ $api_key->get('token') }}</td>
+                    <td><span id="api-key-{{ $api_key->get('id') }}">{{ $api_key->get('token') }}</span>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="window.vue.copyToClipboard(document.getElementById('api-key-{{ $api_key->get('id') }}').innerText);"><i class="far fa-copy"></i></a></td>
                     <td><input type="checkbox" id="api-key-checkbox-{{ $api_key->get('id') }}" value="1" onclick="window.vue.toggleApiKey({{ $api_key->get('id') }}); return false;" {{ (($api_key->get('active')) ? 'checked': '') }}/>&nbsp;{{ __('app.active') }}</td>
                     <td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_api_key') }}')) { location.href = '{{ url('/admin/api/' . $api_key->get('token') . '/remove') }}'; }"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
