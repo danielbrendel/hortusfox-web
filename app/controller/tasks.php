@@ -107,10 +107,6 @@ class TasksController extends BaseController {
 		$description = $request->params()->query('description', '');
 		$due_date = $request->params()->query('due_date', '');
 
-		if (strlen($due_date) === 0) {
-			$due_date = null;
-		}
-
 		TasksModel::editTask($task, $title, $description, $due_date);
 
 		FlashMessage::setMsg('success', __('app.task_edited_successfully'));

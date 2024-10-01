@@ -483,6 +483,34 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/tasks/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function edit_task($request)
+    {
+        try {
+            $taskid = $request->params()->query('task', null);
+            $title = $request->params()->query('title', null);
+            $description = $request->params()->query('description', null);
+            $due_date = $request->params()->query('due_date', null);
+            $done = $request->params()->query('done', null);
+			
+			TasksModel::editTask($taskid, $title, $description, $due_date, $done, true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/inventory/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

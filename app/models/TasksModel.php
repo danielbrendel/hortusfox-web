@@ -45,20 +45,44 @@ class TasksModel extends \Asatru\Database\Model {
      * @param $title
      * @param $description
      * @param $due_date
+     * @param $done
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editTask($taskId, $title, $description, $due_date)
+    public static function editTask($taskId, $title, $description, $due_date, $done = null, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET title = ?, description = ?, due_date = ? WHERE id = ?', [$title, $description, $due_date, $taskId]);
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$taskId])->first();
 
-            LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title, url('/tasks#task-anchor-' . $taskId));
+            if ($title === null) {
+                $title = $item->get('title');
+            }
+
+            if ($description === null) {
+                $description = $item->get('description');
+            }
+
+            if ($due_date === null) {
+                $due_date = $item->get('due_date');
+            } else if ($due_date === '') {
+                $due_date = null;
+            }
+
+            if ($done === null) {                
+                $done = $item->get('done');
+            }
+
+            static::raw('UPDATE `' . self::tableName() . '` SET title = ?, description = ?, due_date = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $done, $taskId]);
+
+            if (!$api) {
+                LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title, url('/tasks#task-anchor-' . $taskId));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
