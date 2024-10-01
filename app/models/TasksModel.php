@@ -10,21 +10,31 @@ class TasksModel extends \Asatru\Database\Model {
      * @param $title
      * @param $description
      * @param $due_date
-     * @return void
+     * @param $api
+     * @return int
      * @throws \Exception
      */
-    public static function addTask($title, $description = '', $due_date = null)
+    public static function addTask($title, $description = '', $due_date = null, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
             
             static::raw('INSERT INTO `' . self::tableName() . '` (title, description, due_date) VALUES(?, ?, ?)', [$title, $description, $due_date]);
 
-            LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title, url('/tasks'));
-            TextBlockModule::createdTask($title, url('/tasks'));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title, url('/tasks'));
+                TextBlockModule::createdTask($title, url('/tasks'));
+            }
+
+            $latest = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            if ($latest) {
+                return $latest->get('id');
+            }
+
+            return 0;
         } catch (\Exception $e) {
             throw $e;
         }

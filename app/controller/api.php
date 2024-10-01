@@ -456,6 +456,33 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/tasks/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function add_task($request)
+    {
+        try {
+            $title = $request->params()->query('title', null);
+            $description = $request->params()->query('description', null);
+            $due_date = $request->params()->query('due_date', null);
+			
+			$itemid = TasksModel::addTask($title, $description, $due_date, true);
+
+            return json([
+                'code' => 200,
+                'item' => $itemid
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/inventory/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
