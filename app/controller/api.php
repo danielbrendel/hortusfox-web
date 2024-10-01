@@ -454,4 +454,28 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/chat/message/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function add_chat_message($request)
+    {
+        try {
+            $message = $request->params()->query('message', null);
+			
+			TextBlockModule::addToChat($message, 'x1f916', true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }

@@ -295,7 +295,7 @@ class UserModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
-     * @return string
+     * @return mixed
      * @throws \Exception
      */
     public static function getNameById($id)
@@ -308,7 +308,7 @@ class UserModel extends \Asatru\Database\Model {
 
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
 
-            return $row->get('name');
+            return $row?->get('name');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -350,7 +350,7 @@ class UserModel extends \Asatru\Database\Model {
 
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
 
-            $color = $row->get('chatcolor');
+            $color = $row?->get('chatcolor');
             if (($color === null) || (strlen($color) === 0)) {
                 return '#7BC1DF';
             }

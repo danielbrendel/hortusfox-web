@@ -194,10 +194,11 @@ class TextBlockModule {
     /**
      * @param $message
      * @param $icon
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    private static function addToChat($message, $icon)
+    public static function addToChat($message, $icon, $api = false)
     {
         try {
             if (!app('chat_system')) {
@@ -205,14 +206,14 @@ class TextBlockModule {
             }
 
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
             $icon = html_entity_decode('&#' . $icon, ENT_COMPAT | ENT_QUOTES);
 
             ChatMsgModel::raw('INSERT INTO `' . ChatMsgModel::tableName() . '` (userId, message, sysmsg, created_at) VALUES(?, ?, 1, CURRENT_TIMESTAMP)', [
-                $user->get('id'),
+                (($user) ? $user->get('id') : 0),
                 $icon . ' ' . $message
             ]);
         } catch (\Exception $e) {
