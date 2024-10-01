@@ -172,6 +172,7 @@ return [
     array('/api/plants/log/edit', 'ANY', 'api@edit_plant_log_entry'),
     array('/api/plants/log/remove', 'ANY', 'api@remove_plant_log_entry'),
     array('/api/plants/log/fetch', 'ANY', 'api@fetch_plant_log_entries'),
+    array('/api/inventory/add', 'ANY', 'api@add_inventory_item'),
     array('/api/chat/message/add', 'ANY', 'api@add_chat_message'),
 
     /** Backup Controller */

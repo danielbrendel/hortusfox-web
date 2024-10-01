@@ -14,14 +14,15 @@ class InventoryModel extends \Asatru\Database\Model {
      * @param $location
      * @param $group
      * @param $photo
+     * @param $api
      * @return int
      * @throws \Exception
      */
-    public static function addItem($name, $description, $location, $group, $photo)
+    public static function addItem($name, $description, $location, $group, $photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
@@ -30,7 +31,7 @@ class InventoryModel extends \Asatru\Database\Model {
             }
 
             static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, location, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                $name, $group, $description, $location, $user->get('id')
+                $name, $group, $description, $location, (($user) ? $user->get('id') : 0)
             ]);
 
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
@@ -61,9 +62,11 @@ class InventoryModel extends \Asatru\Database\Model {
                 }
             }
 
-            LogModel::addLog($user->get('id'), 'inventory', 'add_inventory_item', $name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
-            TextBlockModule::createdInventoryItem($name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
-            
+            if (!$api) {
+                LogModel::addLog($user->get('id'), 'inventory', 'add_inventory_item', $name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
+                TextBlockModule::createdInventoryItem($name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
+            }
+
             return $row->get('id');
         } catch (\Exception $e) {
             throw $e;

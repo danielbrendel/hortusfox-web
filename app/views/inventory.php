@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="inventory-item-author">
-                            {{ __('app.last_edited_by', ['name' => UserModel::getNameById($inventory->get($i)->get('last_edited_user')), 'when' => (new Carbon($inventory->get($i)->get('last_edited_date')))->diffForHumans()]) }}
+                            {{ __('app.last_edited_by', ['name' => (($inventory->get($i)->get('last_edited_user')) ? UserModel::getNameById($inventory->get($i)->get('last_edited_user')) : 'System'), 'when' => (new Carbon($inventory->get($i)->get('last_edited_date')))->diffForHumans()]) }}
                         </div>
                     </div>
                 </div>
