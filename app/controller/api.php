@@ -8,8 +8,6 @@
 class ApiController extends BaseController {
     public function __construct()
     {
-        //parent::__construct();
-
         $token = null;
         if (isset($_GET['token'])) {
             $token = $_GET['token'];
