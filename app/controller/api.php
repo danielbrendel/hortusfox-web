@@ -17,7 +17,16 @@ class ApiController extends BaseController {
             $token = $_POST['token'];
         }
 
-        ApiModel::validateKey($token);
+        try {
+            ApiModel::validateKey($token);
+        } catch (\Exception $e) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            exit(json([
+                'code' => 403,
+                'invalid_token' => $token
+            ])->out(true));
+        }
     }
 
     /**
