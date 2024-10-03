@@ -618,6 +618,31 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/inventory/amount/inc
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function inc_inventory_item($request)
+    {
+        try {
+            $item = $request->params()->query('item', null);
+			
+			$amount = InventoryModel::incAmount($item, true);
+
+            return json([
+                'code' => 200,
+                'amount' => $amount
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/chat/message/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

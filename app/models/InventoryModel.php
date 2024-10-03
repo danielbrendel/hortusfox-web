@@ -145,14 +145,15 @@ class InventoryModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
+     * @param $api
      * @return int
      * @throws \Exception
      */
-    public static function incAmount($id)
+    public static function incAmount($id, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
@@ -164,10 +165,12 @@ class InventoryModel extends \Asatru\Database\Model {
             $amount = $row->get('amount') + 1;
             
             static::raw('UPDATE `' . self::tableName() . '` SET amount = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
-                $amount, $user->get('id'), $row->get('id')
+                $amount, (($user) ? $user->get('id') : 0), $row->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'increment_inventory_item', $row->get('name'), url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), 'inventory', 'increment_inventory_item', $row->get('name'), url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
+            }
 
             return $amount;
         } catch (\Exception $e) {
