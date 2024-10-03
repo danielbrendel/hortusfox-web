@@ -71,14 +71,15 @@ class CalendarModel extends \Asatru\Database\Model {
      * @param $date_from
      * @param $date_till
      * @param $class
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editItem($ident, $name, $date_from = null, $date_till = null, $class = null)
+    public static function editItem($ident, $name, $date_from = null, $date_till = null, $class = null, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
@@ -90,11 +91,13 @@ class CalendarModel extends \Asatru\Database\Model {
             }
 
             static::raw('UPDATE `' . self::tableName() . '` SET name = ?, date_from = ?, date_till = ?, class_name = ?, color_background = ?, color_border = ?, last_edited_user = ?, last_edited_date = ? WHERE id = ?', [
-                $name, $date_from, $date_till, $class, $class_item['color_background'], $class_item['color_border'], $user->get('id'), date('Y-m-d H:i:s'), $ident
+                $name, $date_from, $date_till, $class, $class_item['color_background'], $class_item['color_border'], (($user) ? $user->get('id') : 0), date('Y-m-d H:i:s'), $ident
             ]);
 
-            TextBlockModule::editedCalendarItem($name, url('/calendar'));
-            LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'edit_calendar', $name, url('/calendar'));
+            if (!$api) {
+                TextBlockModule::editedCalendarItem($name, url('/calendar'));
+                LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'edit_calendar', $name, url('/calendar'));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
