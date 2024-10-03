@@ -76,6 +76,7 @@ window.vue = new Vue({
         confirmPlantRemoveHistory: 'Please confirm if you want to do this action.',
         confirmRemovePlantLogEntry: 'Do you really want to remove this entry?',
         confirmRemoveLocationLogEntry: 'Do you really want to remove this entry?',
+        confirmRemoveSharedPlantPhoto: 'Do you really want to remove this item?',
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
         loadingPleaseWait: 'Please wait...',
@@ -1445,6 +1446,36 @@ window.vue = new Vue({
                     if (elem) {
                         elem.remove();
                     }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        loadNextShareLogEntries: function(table, action) {
+            window.vue.ajaxRequest('post', window.location.origin + '/profile/sharelog/fetch', { paginate: action.dataset.paginate }, function(response) {
+                if (response.code == 200) {
+                    let tbody = table.getElementsByTagName('tbody')[0];
+
+                    response.data.forEach(function(elem, index) {
+                        let newRow = document.createElement('tr');
+                        newRow.id = 'photo-share-entry-' + elem.id;
+                        newRow.innerHTML = `
+                            <td><a href="` + elem.url + `" target="_blank">` + elem.title + `</a></td>
+                            <td title="`+ elem.created_at + `">` + elem.diffForHumans + `</td>
+                            <td><a href="javascript:void(0);" onclick="if (confirm('` + window.vue.confirmRemoveSharedPlantPhoto + `')) { window.vue.removeSharedPhoto('` + elem.ident + `'); }"><i class="fas fa-trash-alt"></i></a></td>
+                        `;
+
+                        tbody.appendChild(newRow);
+                    });
+
+                    action.parentNode.parentNode.remove();
+
+                    let actionRow = document.createElement('tr');
+                    actionRow.id = 'share-log-load-more';
+                    actionRow.classList.add('share-log-paginate');
+                    actionRow.innerHTML = `<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextShareLogEntries(document.getElementById('` + table.id + `'), this);" data-paginate="` + response.data[response.data.length - 1].id + `">` + window.vue.loadMore + `</a></td>`;
+                    tbody.appendChild(actionRow);
                 } else {
                     alert(response.msg);
                 }

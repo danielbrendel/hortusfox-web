@@ -1519,6 +1519,27 @@ fieldset .field {
     text-decoration: underline;
 }
 
+.share-log-action {
+    margin-top: 20px;
+}
+
+.share-log-paginate {
+    position: relative;
+}
+
+.share-log-paginate td {
+    text-align: center;
+}
+
+.share-log-paginate a {
+    color: rgb(0, 145, 215);
+}
+
+.share-log-paginate a:hover {
+    color: rgb(0, 145, 215);
+    text-decoration: underline;
+}
+
 .stats {
     position: relative;
     margin-top: 10px;

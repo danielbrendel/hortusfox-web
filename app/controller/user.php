@@ -40,6 +40,38 @@ class UserController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /profile/sharelog/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function fetch_share_log($request)
+	{
+		try {
+			$paginate = $request->params()->query('paginate', null);
+
+			$user = UserModel::getAuthUser();
+			$data = ShareLogModel::getForUser($user->get('id'), $paginate)?->asArray();
+
+			if (is_array($data)) {
+				foreach ($data as $key => &$value) {
+					$value['diffForHumans'] = (new Carbon($value['created_at']))->diffForHumans();
+				}
+			}
+
+			return json([
+				'code' => 200,
+				'data' => $data
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /profile/preferences
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

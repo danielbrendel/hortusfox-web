@@ -38,7 +38,7 @@
 <div class="margin-vertical profile-shared-photos">
 	<h2 class="smaller-headline">{{ __('app.shared_photos') }}</h2>
 
-	<table>
+	<table id="share-log-table">
 		<thead>
 			<tr>
 				<td>{{ __('app.link') }}</td>
@@ -54,6 +54,12 @@
 				<td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_shared_photo') }}')) { window.vue.removeSharedPhoto('{{ $sharelog_item->get('ident') }}'); }"><i class="fas fa-trash-alt"></i></a></td>
 			</tr>
 			@endforeach
+
+			@if ($sharelog->get(count($sharelog) - 1)?->get('id') > 1)
+				<tr id="share-log-load-more" class="share-log-paginate">
+					<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextShareLogEntries(document.getElementById('share-log-table'), this);" data-paginate="{{ $sharelog->get(count($sharelog) - 1)?->get('id') }}">{{ __('app.load_more') }}</a></td>
+				</tr>
+			@endif
 		</tbody>
 	</table>
 </div>

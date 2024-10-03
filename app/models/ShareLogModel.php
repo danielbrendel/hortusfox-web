@@ -28,17 +28,18 @@ class ShareLogModel extends \Asatru\Database\Model {
 
     /**
      * @param $userId
+     * @param $paginate
      * @param $limit
      * @return mixed
      * @throws \Exception
      */
-    public static function getForUser($userId, $limit = 0)
+    public static function getForUser($userId, $paginate = null, $limit = 10)
     {
         try {
-            if ($limit) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? ORDER BY id DESC LIMIT ' . $limit, [$userId]);
+            if ($paginate) {
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$userId, $paginate]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? ORDER BY id DESC', [$userId]);
+                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? ORDER BY id DESC LIMIT ' . $limit, [$userId]);
             }
         } catch (\Exception $e) {
             throw $e;

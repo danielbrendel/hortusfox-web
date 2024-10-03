@@ -1804,6 +1804,7 @@
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
 				window.vue.confirmRemovePlantLogEntry = '{{ __('app.confirm_remove_plant_log_entry') }}';
 				window.vue.confirmRemoveLocationLogEntry = '{{ __('app.confirm_remove_location_log_entry') }}';
+				window.vue.confirmRemoveSharedPlantPhoto = '{{ __('app.confirm_remove_shared_photo') }}';
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';
