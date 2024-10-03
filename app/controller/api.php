@@ -701,6 +701,55 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/calendar/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function fetch_calendar_entries($request)
+    {
+        try {
+			$date_from = $request->params()->query('date_from', null);
+            $date_till = $request->params()->query('date_till', null);
+
+            if ($date_from === null) {
+                $date_from = date('Y-m-d');
+            }
+
+            if ($date_till === null) {
+                $date_till = date('Y-m-d', strtotime('+30 days'));
+            }
+
+            $items = CalendarModel::getItems($date_from, $date_till)->asArray();
+
+            foreach ($items as $key => &$value) {
+                if (isset($value['class_name'])) {
+                    $value['class_descriptor'] = $value['class_name'];
+
+                    $calendar_class_item = CalendarClassModel::findClass($value['class_name']);
+                    if ($calendar_class_item) {
+                        $value['class_name'] = __($calendar_class_item->get('name'));
+                    } else {
+                        $value['class_name'] = __('app.unknown_calendar_class');
+                    }
+                }
+            }
+
+            return json([
+                'code' => 200,
+                'data' => $items,
+                'date_from' => $date_from,
+                'date_till' => $date_till
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/chat/message/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
