@@ -456,6 +456,32 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/tasks/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function fetch_tasks_list($request)
+    {
+        try {
+            $done = (bool)$request->params()->query('done', false);
+            $limit = $request->params()->query('limit', 100);
+			
+			$data = TasksModel::getTasks($done, $limit);
+
+            return json([
+                'code' => 200,
+                'data' => $data?->asArray()
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/tasks/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
