@@ -80,14 +80,15 @@ class InventoryModel extends \Asatru\Database\Model {
      * @param $location
      * @param $group
      * @param $photo
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editItem($id, $name, $description, $location, $group, $photo)
+    public static function editItem($id, $name, $description, $location, $group, $photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
@@ -131,10 +132,12 @@ class InventoryModel extends \Asatru\Database\Model {
             }
 
             static::raw('UPDATE `' . self::tableName() . '` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
-                $user->get('id'), $row->get('id')
+                (($user) ? $user->get('id') : 0), $row->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'edit_inventory_item', $name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), 'inventory', 'edit_inventory_item', $name, url('/inventory?expand=' . $row->get('id') . '#anchor-item-' . $row->get('id')));
+            }
         } catch (\Exception $e) {
             throw $e;
         }

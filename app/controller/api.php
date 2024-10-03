@@ -589,6 +589,35 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/inventory/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function edit_inventory_item($request)
+    {
+        try {
+            $item = $request->params()->query('item', null);
+            $name = $request->params()->query('name', null);
+            $description = $request->params()->query('description', null);
+            $location = $request->params()->query('location', null);
+            $group = $request->params()->query('group', null);
+            $photo = $request->params()->query('photo', null);
+			
+			InventoryModel::editItem($item, $name, $description, $location, $group, $photo, true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/chat/message/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
