@@ -9,6 +9,7 @@ class ApiController extends BaseController {
     public function __construct()
     {
         $token = null;
+        
         if (isset($_GET['token'])) {
             $token = $_GET['token'];
         } else if ((isset($_POST)) && (isset($_POST['token']))) {
