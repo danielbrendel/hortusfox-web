@@ -368,9 +368,9 @@
 					</tr>
 					@endforeach
 
-					@if ($plant_log_entries->asArray()[count($plant_log_entries) - 1]['id'] > 1)
+					@if ($plant_log_entries->get(count($plant_log_entries) - 1)?->get('id') > 1)
 						<tr id="plant-log-load-more" class="plant-log-paginate">
-							<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantLogEntries(this, '{{ $plant->get('id') }}', document.getElementById('plant-log-table'));" data-paginate="{{ $plant_log_entries->asArray()[count($plant_log_entries) - 1]['id'] }}">{{ __('app.load_more') }}</a></td>
+							<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantLogEntries(this, '{{ $plant->get('id') }}', document.getElementById('plant-log-table'));" data-paginate="{{ $plant_log_entries->get(count($plant_log_entries) - 1)?->get('id') }}">{{ __('app.load_more') }}</a></td>
 						</tr>
 					@endif
 				</tbody>
