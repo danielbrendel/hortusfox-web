@@ -1221,6 +1221,12 @@
 							<input type="hidden" name="ident" id="inpEditCalendarItemId"/>
 
 							<div class="field">
+								<div class="control">
+									<div id="inpEditCalendarItemIdent"></div>
+								</div>
+							</div>
+
+							<div class="field">
 								<label class="label">{{ __('app.name') }}</label>
 								<div class="control">
 									<input type="text" class="input" name="name" id="inpEditCalendarItemName" required>

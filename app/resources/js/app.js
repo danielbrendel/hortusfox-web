@@ -1218,6 +1218,7 @@ window.vue = new Vue({
                                 const value = window.calendarChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
                                 console.log(value);
                                 if (value.length) {
+                                    document.getElementById('inpEditCalendarItemIdent').innerText = '#' + value[3] + ' ' + label;
                                     document.getElementById('inpEditCalendarItemId').value = value[3];
                                     document.getElementById('inpEditCalendarItemName').value = label;
                                     document.getElementById('inpEditCalendarItemDateFrom').value = value[0];

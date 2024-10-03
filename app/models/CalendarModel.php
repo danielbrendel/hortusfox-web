@@ -34,7 +34,7 @@ class CalendarModel extends \Asatru\Database\Model {
      * @param $date_till
      * @param $class
      * @param $api
-     * @return void
+     * @return int
      * @throws \Exception
      */
     public static function addItem($name, $date_from = null, $date_till = null, $class = null, $api = false)
@@ -60,6 +60,13 @@ class CalendarModel extends \Asatru\Database\Model {
                 TextBlockModule::addedCalendarItem($name, url('/calendar'));
                 LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'add_calendar', $name, url('/calendar'));
             }
+
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            if ($item) {
+                return $item->get('id');
+            }
+
+            return 0;
         } catch (\Exception $e) {
             throw $e;
         }

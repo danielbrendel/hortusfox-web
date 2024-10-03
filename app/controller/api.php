@@ -771,10 +771,11 @@ class ApiController extends BaseController {
                 $date_till = date('Y-m-d', strtotime('+1 day', strtotime($date_from)));
             }
 
-            CalendarModel::addItem($name, $date_from, $date_till, $class, true);
+            $item = CalendarModel::addItem($name, $date_from, $date_till, $class, true);
 
             return json([
-                'code' => 200
+                'code' => 200,
+                'item' => $item
             ]);
         } catch (\Exception $e) {
             return json([
