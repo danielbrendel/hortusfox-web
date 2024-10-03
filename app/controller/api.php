@@ -821,6 +821,30 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/calendar/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function remove_calendar_entry($request)
+    {
+        try {
+            $ident = $request->params()->query('ident', null);
+
+            CalendarModel::removeItem($ident);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/chat/message/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
