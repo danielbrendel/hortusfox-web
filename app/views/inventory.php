@@ -34,7 +34,7 @@
                 <a name="anchor-item-{{ $inventory->get($i)->get('id') }}"></a>
 
                 <div class="inventory-item-header">
-                    <div class="inventory-item-name" id="inventory-item-name-{{ $inventory->get($i)->get('id') }}"><a href="javascript:void(0);" onclick="window.vue.expandInventoryItem('inventory-item-body-{{ $inventory->get($i)->get('id') }}');">{{ $inventory->get($i)->get('name') }}</a></div>
+                    <div class="inventory-item-name" id="inventory-item-name-{{ $inventory->get($i)->get('id') }}"><span>#{{ sprintf('%03d', $inventory->get($i)->get('id')) }}</span> <a href="javascript:void(0);" onclick="window.vue.expandInventoryItem('inventory-item-body-{{ $inventory->get($i)->get('id') }}');">{{ $inventory->get($i)->get('name') }}</a></div>
 
                     <div class="inventory-item-amount">
                         <a href="javascript:void(0);" onclick="window.vue.decrementInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-amount-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-chevron-left"></i></a>
