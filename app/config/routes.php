@@ -183,6 +183,7 @@ return [
     array('/api/inventory/amount/dec', 'ANY', 'api@dec_inventory_item'),
     array('/api/inventory/remove', 'ANY', 'api@remove_inventory_item'),
     array('/api/calendar/fetch', 'ANY', 'api@fetch_calendar_entries'),
+    array('/api/calendar/add', 'ANY', 'api@add_calendar_entry'),
     array('/api/chat/message/add', 'ANY', 'api@add_chat_message'),
 
     /** Backup Controller */

@@ -750,6 +750,41 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/calendar/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function add_calendar_entry($request)
+    {
+        try {
+            $name = $request->params()->query('name', null);
+            $date_from = $request->params()->query('date_from', null);
+            $date_till = $request->params()->query('date_till', null);
+            $class = $request->params()->query('class', null);
+
+            if ($date_till === null) {
+                $date_till = date('Y-m-d', strtotime('+1 day', strtotime($date_from)));
+            }
+
+            if ($date_from === $date_till) {
+                $date_till = date('Y-m-d', strtotime('+1 day', strtotime($date_from)));
+            }
+
+            CalendarModel::addItem($name, $date_from, $date_till, $class, true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/chat/message/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
