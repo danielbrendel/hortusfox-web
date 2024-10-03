@@ -668,6 +668,30 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/inventory/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function remove_inventory_item($request)
+    {
+        try {
+            $item = $request->params()->query('item', null);
+			
+			InventoryModel::removeItem($item, true);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/chat/message/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

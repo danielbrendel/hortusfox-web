@@ -181,6 +181,7 @@ return [
     array('/api/inventory/edit', 'ANY', 'api@edit_inventory_item'),
     array('/api/inventory/amount/inc', 'ANY', 'api@inc_inventory_item'),
     array('/api/inventory/amount/dec', 'ANY', 'api@dec_inventory_item'),
+    array('/api/inventory/remove', 'ANY', 'api@remove_inventory_item'),
     array('/api/chat/message/add', 'ANY', 'api@add_chat_message'),
 
     /** Backup Controller */

@@ -231,14 +231,15 @@ class InventoryModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function removeItem($id)
+    public static function removeItem($id, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
-            if (!$user) {
+            if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
 
@@ -253,8 +254,10 @@ class InventoryModel extends \Asatru\Database\Model {
 
             static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$row->get('id')]);
 
-            LogModel::addLog($user->get('id'), 'inventory', 'remove_inventory_item', $row->get('name'), url('/inventory'));
-            TextBlockModule::removedInventoryItem($row->get('name'));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), 'inventory', 'remove_inventory_item', $row->get('name'), url('/inventory'));
+                TextBlockModule::removedInventoryItem($row->get('name'));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
