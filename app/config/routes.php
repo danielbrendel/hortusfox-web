@@ -176,6 +176,7 @@ return [
     array('/api/tasks/fetch', 'ANY', 'api@fetch_tasks_list'),
     array('/api/tasks/add', 'ANY', 'api@add_task'),
     array('/api/tasks/edit', 'ANY', 'api@edit_task'),
+    array('/api/tasks/remove', 'ANY', 'api@remove_task'),
     array('/api/inventory/fetch', 'ANY', 'api@fetch_inventory'),
     array('/api/inventory/add', 'ANY', 'api@add_inventory_item'),
     array('/api/inventory/edit', 'ANY', 'api@edit_inventory_item'),

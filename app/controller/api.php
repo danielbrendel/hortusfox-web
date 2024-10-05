@@ -545,6 +545,30 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/tasks/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function remove_task($request)
+    {
+        try {
+            $taskid = $request->params()->query('task', null);
+			
+			TasksModel::removeTask($taskid);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/inventory/fetch
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
