@@ -24,7 +24,7 @@
                     <a name="task-anchor-{{ $task->get('id') }}"></a>
 
                     <div class="task-header">
-                        <div class="task-header-title" id="task-item-title-{{ $task->get('id') }}">{{ $task->get('title') }}</div>
+                        <div class="task-header-title" id="task-item-title-{{ $task->get('id') }}"><span>#{{ sprintf('%03d', $task->get('id')) }}</span> {{ $task->get('title') }}</div>
                         <div class="task-header-action">
                             <span><a href="javascript:void(0);" onclick="window.vue.editTask({{ $task->get('id') }});"><i class="fas fa-edit"></i></a></span>
 
