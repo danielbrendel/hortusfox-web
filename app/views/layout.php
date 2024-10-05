@@ -888,12 +888,6 @@
 
 							<div class="field">
 								<div class="control">
-									<input type="checkbox" name="show_log" value="1" {{ ($user->get('show_log')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_log') }}
-								</div>
-							</div>
-
-							<div class="field">
-								<div class="control">
 									<input type="checkbox" name="show_calendar_view" value="1" {{ ($user->get('show_calendar_view')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_calendar_view') }}
 								</div>
 							</div>
@@ -919,6 +913,12 @@
 							<div class="field">
 								<div class="control">
 									<input type="checkbox" name="notify_calendar_reminder" value="1" {{ ($user->get('notify_calendar_reminder')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_calendar_reminder') }}
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" name="show_log" value="1" {{ ($user->get('show_log')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_log') }}
 								</div>
 							</div>
 
