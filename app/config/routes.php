@@ -186,6 +186,7 @@ return [
     array('/api/calendar/add', 'ANY', 'api@add_calendar_entry'),
     array('/api/calendar/edit', 'ANY', 'api@edit_calendar_entry'),
     array('/api/calendar/remove', 'ANY', 'api@remove_calendar_entry'),
+    array('/api/chat/fetch', 'ANY', 'api@fetch_chat_messages'),
     array('/api/chat/message/add', 'ANY', 'api@add_chat_message'),
 
     /** Backup Controller */

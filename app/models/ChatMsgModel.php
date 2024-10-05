@@ -31,20 +31,23 @@ class ChatMsgModel extends \Asatru\Database\Model {
 
     /**
      * @param $limit
+     * @param $api
      * @return mixed
      * @throws \Exception
      */
-    public static function getChat($limit = 50)
+    public static function getChat($limit = 50, $api = false)
     {
         try {
             $result = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY created_at DESC LIMIT ' . $limit);
 
-            if (count($result) > 0) {
-                UserModel::updateLastSeenMsg($result->get(0)->get('id'));
+            if (!$api) {
+                if (count($result) > 0) {
+                    UserModel::updateLastSeenMsg($result->get(0)->get('id'));
 
-                $lastsysmsg = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE sysmsg = 1 ORDER BY created_at DESC')->first();
-                if ($lastsysmsg) {
-                    UserModel::updateLastSeenSysMsg($lastsysmsg->get('id'));
+                    $lastsysmsg = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE sysmsg = 1 ORDER BY created_at DESC')->first();
+                    if ($lastsysmsg) {
+                        UserModel::updateLastSeenSysMsg($lastsysmsg->get('id'));
+                    }
                 }
             }
 

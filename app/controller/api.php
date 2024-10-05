@@ -845,6 +845,31 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/chat/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public static function fetch_chat_messages($request)
+    {
+        try {
+            $limit = $request->params()->query('limit', 50);
+			
+			$data = ChatMsgModel::getChat($limit, true);
+
+            return json([
+                'code' => 200,
+                'data' => $data?->asArray()
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/chat/message/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
