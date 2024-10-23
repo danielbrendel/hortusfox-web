@@ -1891,6 +1891,10 @@ fieldset .field {
     color: rgb(150, 150, 150);
 }
 
+.inventory-groups thead td:last-child {
+    width: 5%;
+}
+
 .inventory-groups.table td {
     border: 1px solid rgb(100, 100, 100);
 }
