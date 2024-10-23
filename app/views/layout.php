@@ -782,8 +782,8 @@
 							<tbody>
 								@foreach (InvGroupModel::getAll() as $group_item)
 									<tr id="inventory-group-item-{{ $group_item->get('id') }}">
-										<td><a href="javascript:void(0);" id="inventory-group-elem-token-{{ $group_item->get('id') }}" onclick="window.vue.editInventoryGroupItem({{ $group_item->get('id') }}, 'token', '{{ $group_item->get('token') }}');">{{ $group_item->get('token') }}</a></td>
-										<td><a href="javascript:void(0);" id="inventory-group-elem-label-{{ $group_item->get('id') }}" onclick="window.vue.editInventoryGroupItem({{ $group_item->get('id') }}, 'label', '{{ $group_item->get('label') }}');">{{ $group_item->get('label') }}</a></td>
+										<td><a href="javascript:void(0);" id="inventory-group-elem-token-{{ $group_item->get('id') }}" onclick="window.vue.editInventoryGroupItem({{ $group_item->get('id') }}, 'token', document.getElementById('inventory-group-elem-token-{{ $group_item->get('id') }}').innerText);">{{ $group_item->get('token') }}</a></td>
+										<td><a href="javascript:void(0);" id="inventory-group-elem-label-{{ $group_item->get('id') }}" onclick="window.vue.editInventoryGroupItem({{ $group_item->get('id') }}, 'label', document.getElementById('inventory-group-elem-label-{{ $group_item->get('id') }}').innerText);">{{ $group_item->get('label') }}</a></td>
 										<td><a href="javascript:void(0);" onclick="window.vue.removeInventoryGroupItem({{ $group_item->get('id') }}, 'inventory-group-item-{{ $group_item->get('id') }}');"><i class="fas fa-times"></i></a></td>
 									</tr>
 								@endforeach
