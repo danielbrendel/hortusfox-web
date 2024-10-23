@@ -74,7 +74,7 @@
 
                     <div class="inventory-item-footer">
                         <div class="inventory-item-location" id="inventory-item-location-{{ $inventory->get($i)->get('id') }}">
-                            {{ __('app.location_fmt', ['loc' => ($inventory->get($i)->get('location')) ?? 'N/A']) }}
+                            {!! __('app.location_fmt', ['loc' => ($inventory->get($i)->get('location')) ?? 'N/A']) !!}
                         </div>
 
                         <div class="inventory-item-author">
