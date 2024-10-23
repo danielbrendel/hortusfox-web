@@ -350,7 +350,7 @@ return [
 	'confirmSetAllFertilised' => 'Er du sikker på at du vil opdatere sidst gødet dato for alle disse planter?',
 	'all_plants_fertilised' => 'Sidst gødet status blev opdateret for disse planter',
 	'media_sound_message' => 'Ny-Besked lyd',
-	'location_fmt' => 'Lokation: {loc}',
+	'location_fmt' => 'Lokation: <span>{loc}</span>',
 	'weather' => 'Vejr',
 	'enable_weather' => 'Slå OpenWeatherMap til',
 	'weather_api_key' => 'API Nøgle',

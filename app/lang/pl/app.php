@@ -350,7 +350,7 @@ return [
 	'confirmSetAllFertilised' => 'Czy na pewno chcesz zaktualizować ostatni termin nawożenia wszystkich tych roślin?',
 	'all_plants_fertilised' => 'Dla tych roślin zaktualizowano status ostatniego zapłodnienia',
 	'media_sound_message' => 'Dźwięk nowej wiadomości',
-	'location_fmt' => 'Miejsce: {loc}',
+	'location_fmt' => 'Miejsce: <span>{loc}</span>',
 	'weather' => 'Pogoda',
 	'enable_weather' => 'Włącz OpenWeatherMap',
 	'weather_api_key' => 'Klucz API',

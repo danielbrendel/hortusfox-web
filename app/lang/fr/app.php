@@ -350,7 +350,7 @@ return [
 	'confirmSetAllFertilised' => 'Mettre à jour la date de fertilisation de toutes ces plantes?',
 	'all_plants_fertilised' => 'La date de dernière fertilisation a été mise à jour pour ces plantes',
 	'media_sound_message' => 'Son de nouveau message',
-	'location_fmt' => 'Emplacement: {loc}',
+	'location_fmt' => 'Emplacement: <span>{loc}</span>',
 	'weather' => 'Météo',
 	'enable_weather' => 'Activer OpenWeatherMap',
 	'weather_api_key' => 'Clé d\'API',
