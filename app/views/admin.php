@@ -174,6 +174,17 @@
         </div>
 
         <div class="field">
+            <label class="label">{{ __('app.custom_head_code') }}</label>
+            <div class="control">
+                <textarea class="textarea" name="custom_head_code">{{ app('custom_head_code') }}</textarea>
+            </div>
+        </div>
+
+        <div class="field belongs-to-previous-field">
+            <small>{{ __('app.custom_head_code_hint') }}</small>
+        </div>
+
+        <div class="field">
             <div class="control">
                 <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
             </div>

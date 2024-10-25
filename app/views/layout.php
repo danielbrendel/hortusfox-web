@@ -21,6 +21,10 @@
 		<script src="{{ asset('js/vue.min.js') }}"></script>
 		@endif
 		<script src="{{ asset('js/fontawesome.js') }}"></script>
+
+		@if (is_string(app('custom_head_code')))
+		{!! app('custom_head_code') !!}
+		@endif
 	</head>
 	
 	<body>

@@ -104,6 +104,7 @@ class AdminController extends BaseController {
 			$enablephotoshare = (bool)$request->params()->query('enablephotoshare', 0);
 			$custom_media_share_host = $request->params()->query('custom_media_share_host', share_api_host());
 			$cronpw = $request->params()->query('cronpw', app('cronjob_pw'));
+			$custom_head_code = $request->params()->query('custom_head_code', app('custom_head_code'));
 			$enablepwa = (bool)$request->params()->query('enablepwa', 0);
 
 			$set = [
@@ -125,6 +126,7 @@ class AdminController extends BaseController {
 				'enable_media_share' => $enablephotoshare,
 				'custom_media_share_host' => rtrim($custom_media_share_host, '/'),
 				'cronjob_pw' => $cronpw,
+				'custom_head_code' => $custom_head_code,
 				'pwa_enable' => $enablepwa
 			];
 

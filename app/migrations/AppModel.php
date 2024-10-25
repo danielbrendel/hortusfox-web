@@ -45,6 +45,7 @@ class AppModel_Migration {
         $this->database->add('enable_media_share BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('custom_media_share_host VARCHAR(1024) NULL');
         $this->database->add('cronjob_pw VARCHAR(512) NOT NULL DEFAULT \'\'');
+        $this->database->add('custom_head_code TEXT NULL DEFAULT \'\'');
         $this->database->add('overlay_alpha VARCHAR(512) NULL');
         $this->database->add('smtp_fromname VARCHAR(512) NULL');
         $this->database->add('smtp_fromaddress VARCHAR(512) NULL');
