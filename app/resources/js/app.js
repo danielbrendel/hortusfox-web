@@ -77,6 +77,7 @@ window.vue = new Vue({
         confirmRemovePlantLogEntry: 'Do you really want to remove this entry?',
         confirmRemoveLocationLogEntry: 'Do you really want to remove this entry?',
         confirmRemoveSharedPlantPhoto: 'Do you really want to remove this item?',
+        addItem: 'Add',
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
         loadingPleaseWait: 'Please wait...',
@@ -619,6 +620,28 @@ window.vue = new Vue({
                         elem.remove();
                     }
                 } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        createInventoryGroup: function(token, label, tbody, button)
+        {
+            window.vue.ajaxRequest('post', window.location.origin + '/inventory/group/add', { token: token, label: label }, function(response) {
+                if (response.code == 200) {
+                    button.innerText = window.vue.addItem;
+
+                    let newRow = document.createElement('tr');
+                    newRow.id = 'inventory-group-item-' + response.itemid;
+                    newRow.innerHTML = `
+                        <td><a href="javascript:void(0);" id="inventory-group-elem-token-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'token', document.getElementById('inventory-group-elem-token-` + response.itemid + `').innerText);">` + token + `</a></td>
+                        <td><a href="javascript:void(0);" id="inventory-group-elem-label-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'label', document.getElementById('inventory-group-elem-label-` + response.itemid + `').innerText);">` + label + `</a></td>
+                        <td><a href="javascript:void(0);" onclick="window.vue.removeInventoryGroupItem(` + response.itemid + `, 'inventory-group-item-` + response.itemid + `');"><i class="fas fa-times"></i></a></td>
+                    `;
+
+                    tbody.appendChild(newRow);
+                } else {
+                    button.innerText = window.vue.addItem;
                     alert(response.msg);
                 }
             });

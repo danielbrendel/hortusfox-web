@@ -254,37 +254,26 @@ class InventoryController extends BaseController {
 	 * Handles URL: /inventory/group/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function add_inventory_group_item($request)
 	{
-		$validator = new Asatru\Controller\PostValidator([
-			'token' => 'required',
-			'label' => 'required'
-		]);
-
-		if (!$validator->isValid()) {
-			$errorstr = '';
-			foreach ($validator->errorMsgs() as $err) {
-				$errorstr .= $err . '<br/>';
-			}
-
-			FlashMessage::setMsg('error', 'Invalid data given:<br/>' . $errorstr);
-			
-			return back();
-		}
-
-		$token = $request->params()->query('token', null);
-		$label = $request->params()->query('label', null);
-
 		try {
-			InvGroupModel::addItem($token, $label);
-		} catch (\Exception $e) {
-			FlashMessage::setMsg('error', $e->getMessage());
-			return back();
-		}
+			$token = $request->params()->query('token', null);
+			$label = $request->params()->query('label', null);
 
-		return redirect('/inventory');
+			$itemid = InvGroupModel::addItem($token, $label);
+
+			return json([
+				'code' => 200,
+				'itemid' => $itemid
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
 	}
 
 	/**

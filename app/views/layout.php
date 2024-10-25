@@ -779,7 +779,7 @@
 								</tr>
 							</thead>
 
-							<tbody>
+							<tbody id="inventory-group-list">
 								@foreach (InvGroupModel::getAll() as $group_item)
 									<tr id="inventory-group-item-{{ $group_item->get('id') }}">
 										<td><a href="javascript:void(0);" id="inventory-group-elem-token-{{ $group_item->get('id') }}" onclick="window.vue.editInventoryGroupItem({{ $group_item->get('id') }}, 'token', document.getElementById('inventory-group-elem-token-{{ $group_item->get('id') }}').innerText);">{{ $group_item->get('token') }}</a></td>
@@ -792,25 +792,21 @@
 
 						<div><hr/></div>
 
-						<form id="frmAddInventoryGroup" method="POST" action="{{ url('/inventory/group/add') }}">
-							@csrf
-
-							<div class="field">
-								<label class="label">{{ __('app.token') }}</label>
-								<div class="control">
-									<input type="text" class="input" name="token" required>
-								</div>
+						<div class="field">
+							<label class="label">{{ __('app.token') }}</label>
+							<div class="control">
+								<input type="text" class="input" name="token" id="inventory-group-token" required>
 							</div>
+						</div>
 
-							<div class="field">
-								<label class="label">{{ __('app.label') }}</label>
-								<div class="control">
-									<input type="text" class="input" name="label" required>
-								</div>
+						<div class="field">
+							<label class="label">{{ __('app.label') }}</label>
+							<div class="control">
+								<input type="text" class="input" name="label" id="inventory-group-label" required>
 							</div>
+						</div>
 
-							<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddInventoryGroup').submit();">{{ __('app.add') }}</button>
-						</form>
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; window.vue.createInventoryGroup(document.getElementById('inventory-group-token').value, document.getElementById('inventory-group-label').value, document.getElementById('inventory-group-list'), this);">{{ __('app.add') }}</button>
 					</section>
 					<footer class="modal-card-foot is-stretched">
 						<button class="button" onclick="window.vue.bShowManageGroups = false;">{{ __('app.close') }}</button>
@@ -1811,6 +1807,7 @@
 				window.vue.confirmRemovePlantLogEntry = '{{ __('app.confirm_remove_plant_log_entry') }}';
 				window.vue.confirmRemoveLocationLogEntry = '{{ __('app.confirm_remove_location_log_entry') }}';
 				window.vue.confirmRemoveSharedPlantPhoto = '{{ __('app.confirm_remove_shared_photo') }}';
+				window.vue.addItem = '{{ __('app.add') }}';
 				window.vue.newChatMessage = '{{ __('app.new') }}';
 				window.vue.currentlyOnline = '{{ __('app.currentlyOnline') }}';
 				window.vue.loadingPleaseWait = '{{ __('app.loading_please_wait') }}';

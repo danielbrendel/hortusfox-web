@@ -51,7 +51,7 @@ class InvGroupModel extends \Asatru\Database\Model {
     /**
      * @param $token
      * @param $label
-     * @return void
+     * @return int
      * @throws \Exception
      */
     public static function addItem($token, $label)
@@ -73,7 +73,11 @@ class InvGroupModel extends \Asatru\Database\Model {
                 $token, $label
             ]);
 
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+
             LogModel::addLog($user->get('id'), 'inventory_groups', 'add_group_item', $token . '|' . $label, url('/inventory'));
+
+            return $item->get('id');
         } catch (\Exception $e) {
             throw $e;
         }
