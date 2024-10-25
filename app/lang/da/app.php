@@ -199,6 +199,8 @@ return [
 	'mail_info_calendar_reminder_hint' => 'Kalender artiklen <strong>{name}</strong> forfalder: {date_from} - {date_till}. Gå til kalender: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Påmind mig om forfaldne kalender datoer',
 	'cronpw' => 'Cronjob godkendelses token',
+	'custom_head_code' => 'Brugerdefineret kode til hovedsektion',
+	'custom_head_code_hint' => 'ADVARSEL: Korrupt kode kan ødelægge dokumentet. Vær sikker på, at du ved, hvad du laver',
 	'enable_tasks' => 'Aktiver opgaver',
 	'enable_inventory' => 'Aktiver beholdning',
 	'enable_calendar' => 'Aktiver Kalender',

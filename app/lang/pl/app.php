@@ -199,6 +199,8 @@ return [
 	'mail_info_calendar_reminder_hint' => 'Termin elementu kalendarza <strong>{name}</strong>: {date_from} - {date_till}. Przejdź do kalendarza: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Przypomnij mi o terminach kalendarzowych',
 	'cronpw' => 'Token uwierzytelniania Cronjob',
+	'custom_head_code' => 'Niestandardowy kod dla sekcji głowy',
+	'custom_head_code_hint' => 'OSTRZEŻENIE: Uszkodzony kod może spowodować uszkodzenie dokumentu. Upewnij się, że wiesz, co robisz',
 	'enable_tasks' => 'Włącz zadania',
 	'enable_inventory' => 'Włącz zasoby',
 	'enable_calendar' => 'Włącz kalendarz',

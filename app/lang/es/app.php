@@ -199,6 +199,8 @@ return [
 	'mail_info_calendar_reminder_hint' => 'El ítem del calendario <strong>{name}</strong> tiene como fecha límite: {date_from} - {date_till}. Ir al calendario: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Notifícame sobre fechas límite del calendario',
 	'cronpw' => 'Token de autenticación de CronJob',
+	'custom_head_code' => 'Código personalizado para la sección principal',
+	'custom_head_code_hint' => 'ADVERTENCIA: El código dañado puede dañar el documento. Asegúrate de saber lo que estás haciendo.',
 	'enable_tasks' => 'Activar tareas',
 	'enable_inventory' => 'Activar inventario',
 	'enable_calendar' => 'Activar calendario',

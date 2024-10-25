@@ -199,6 +199,8 @@ return [
 	'mail_info_calendar_reminder_hint' => 'L\'élément <strong>{name}</strong> du calendrier est arrivé à échéance: {date_from} - {date_till}. Aller au calendrier: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Me rappeler les dates d\'échéance du calendrier',
 	'cronpw' => 'Jeton d\'authentification cronjob',
+	'custom_head_code' => 'Code personnalisé pour la section de tête',
+	'custom_head_code_hint' => 'AVERTISSEMENT: un code corrompu peut détruire le document. Assurez-vous de savoir ce que vous faites',
 	'enable_tasks' => 'Activez les tâches',
 	'enable_inventory' => 'Activer l\'inventaire',
 	'enable_calendar' => 'Activer le calendrier',
