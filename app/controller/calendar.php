@@ -16,6 +16,10 @@ class CalendarController extends BaseController {
 	public function __construct()
 	{
 		parent::__construct(self::INDEX_LAYOUT);
+
+        if (!app('calendar_enable')) {
+			throw new \Exception(403);
+		}
 	}
 
     /**

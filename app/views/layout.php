@@ -1844,11 +1844,13 @@
 					window.vue.expandInventoryItem('inventory-item-body-{{ $_expand_inventory_item }}');
 				@endif
 
+				@if (app('calendar_enable'))
 				window.calendarChart = null;
 				let elCalendar = document.getElementById('calendar');
 				if (elCalendar) {
 					window.vue.renderCalendar(elCalendar.id, null, null);
 				}
+				@endif
 
 				@if ((isset($user)) && ($user->get('show_calendar_view')) && (isset($calendar_sv_date_from)) && (isset($calendar_sv_date_till)))
 				let elCalendarSmallView = document.getElementById('calendar-small-view');

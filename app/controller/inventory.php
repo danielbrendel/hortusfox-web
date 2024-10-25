@@ -16,6 +16,10 @@ class InventoryController extends BaseController {
 	public function __construct()
 	{
 		parent::__construct(self::INDEX_LAYOUT);
+
+		if (!app('inventory_enable')) {
+			throw new \Exception(403);
+		}
 	}
 
     /**

@@ -11,6 +11,23 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo3dot7()
+    {
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS tasks_enable BOOLEAN NOT NULL DEFAULT 1');
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS inventory_enable BOOLEAN NOT NULL DEFAULT 1');
+        AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS calendar_enable BOOLEAN NOT NULL DEFAULT 1');
+    }
+
+    /**
+     * @return void
+     */
+    public function upgradeTo3dot6()
+    {
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo3dot5()
     {
         AppModel::raw('ALTER TABLE `' . AppModel::tableName() . '` ADD COLUMN IF NOT EXISTS auth_proxy_enable BOOLEAN NOT NULL DEFAULT 0');

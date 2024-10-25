@@ -32,6 +32,9 @@ class AppModel_Migration {
         $this->database->add('language VARCHAR(512) NOT NULL DEFAULT \'en\'');
         $this->database->add('timezone VARCHAR(512) NULL');
         $this->database->add('scroller BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('tasks_enable BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('inventory_enable BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('calendar_enable BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('chat_enable BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('chat_timelimit INT NOT NULL DEFAULT 5');
         $this->database->add('chat_showusers BOOLEAN NOT NULL DEFAULT 1');

@@ -16,6 +16,10 @@ class TasksController extends BaseController {
 	public function __construct()
 	{
 		parent::__construct(self::INDEX_LAYOUT);
+
+		if (!app('tasks_enable')) {
+			throw new \Exception(403);
+		}
 	}
 
     /**

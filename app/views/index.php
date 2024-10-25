@@ -78,7 +78,7 @@
 		</div>
 	@endif
 
-	@if (count($overdue_tasks) > 0)
+	@if ((app('tasks_enable')) && (count($overdue_tasks) > 0))
 		<div class="overdue-tasks">
 			<div class="overdue-tasks-title">{{ __('app.overdue_tasks') }}</div>
 
@@ -107,7 +107,7 @@
 	@endif
 </div>
 
-@if ($user->get('show_calendar_view'))
+@if ((app('calendar_enable')) && ($user->get('show_calendar_view')))
 <div class="calendar-view">
 	<h3>{{ __('app.calendar_overview') }}</h3>
 
@@ -161,7 +161,7 @@
 	@endforeach
 </div>
 
-@if (count($upcoming_tasks_overview) > 0)
+@if ((app('tasks_enable')) && (count($upcoming_tasks_overview) > 0))
 <div class="upcoming-tasks-overview">
 	<h3>{{ __('app.upcoming_tasks_overview') }}</h3>
 

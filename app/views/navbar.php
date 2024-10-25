@@ -31,17 +31,21 @@
                 @endif
             </div>
 
+            @if (app('tasks_enable'))
             <div class="navbar-item">
                 <a href="{{ url('/tasks') }}">
                     <i class="fas fa-tasks" title="{{ __('app.tasks') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.tasks') }}</span>
                 </a>
             </div>
+            @endif
 
+            @if (app('inventory_enable'))
             <div class="navbar-item">
                 <a href="{{ url('/inventory') }}">
                     <i class="fas fa-warehouse" title="{{ __('app.inventory') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.inventory') }}</span>
                 </a>
             </div>
+            @endif
 
             <div class="navbar-item">
                 <a href="{{ url('/search') }}">
@@ -49,11 +53,13 @@
                 </a>
             </div>
 
+            @if (app('calendar_enable'))
             <div class="navbar-item">
                 <a href="{{ url('/calendar') }}">
                     <i class="far fa-calendar-alt" title="{{ __('app.calendar') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.calendar') }}</span>
                 </a>
             </div>
+            @endif
 
             @if (app('owm_enable'))
             <div class="navbar-item">

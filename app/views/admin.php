@@ -77,6 +77,24 @@
 
         <div class="field">
             <div class="control">
+                <input type="checkbox" class="checkbox" name="enabletasks" value="1" {{ (app('tasks_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_tasks') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" class="checkbox" name="enableinventory" value="1" {{ (app('inventory_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_inventory') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" class="checkbox" name="enablecalendar" value="1" {{ (app('calendar_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_calendar') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
                 <input type="checkbox" class="checkbox" name="enablechat" value="1" {{ (app('chat_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_chat') }}</span>
             </div>
         </div>

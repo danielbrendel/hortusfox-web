@@ -90,6 +90,9 @@ class AdminController extends BaseController {
 			$lang = $request->params()->query('lang', app('language'));
 			$timezone = $request->params()->query('timezone', app('timezone'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
+			$enabletasks = (bool)$request->params()->query('enabletasks', 0);
+			$enableinventory = (bool)$request->params()->query('enableinventory', 0);
+			$enablecalendar = (bool)$request->params()->query('enablecalendar', 0);
 			$enablechat = (bool)$request->params()->query('enablechat', 0);
 			$enablesysmsgs = (bool)$request->params()->query('enablesysmsgs', 0);
 			$system_message_plant_log = (bool)$request->params()->query('system_message_plant_log', 0);
@@ -108,6 +111,9 @@ class AdminController extends BaseController {
 				'language' => $lang,
 				'timezone' => $timezone,
 				'scroller' => $scroller,
+				'tasks_enable' => $enabletasks,
+				'inventory_enable' => $enableinventory,
+				'calendar_enable' => $enablecalendar,
 				'chat_enable' => $enablechat,
 				'chat_system' => $enablesysmsgs,
 				'system_message_plant_log' => $system_message_plant_log,
