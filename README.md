@@ -74,6 +74,7 @@ There are many more features. You can see a list of features below.
 - 📢 Reminders
 - 💾 Backups
 - 💻 REST API
+- 🔬 Plant identification
 
 ## Resources
 
