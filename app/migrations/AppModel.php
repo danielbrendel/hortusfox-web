@@ -62,6 +62,8 @@ class AppModel_Migration {
         $this->database->add('owm_longitude DECIMAL(11, 8) NULL');
         $this->database->add('owm_unittype VARCHAR(512) NOT NULL DEFAULT \'default\'');
         $this->database->add('owm_cache INT NOT NULL DEFAULT 300');
+        $this->database->add('plantrec_enable BOOLEAN NOT NULL DEFAULT 0');
+        $this->database->add('plantrec_apikey VARCHAR(512) NOT NULL');
         $this->database->add('allow_custom_attributes BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('system_message_plant_log BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('auto_backup BOOLEAN NOT NULL DEFAULT 0');
