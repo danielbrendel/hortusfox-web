@@ -45,6 +45,9 @@
 - [Cronjobs](#cronjobs)
 - [Application testing](#application-testing)
 - [System requirements](#system-requirements)
+- [External Services](#external-services)
+  - [Weather Forecast](#weather-forecast)
+  - [Plant Identification](#plant-identification)
 - [Contributing](#contributing)
 - [Security](#security)
 
@@ -370,6 +373,19 @@ Testing data should be specified as environment variables in the `php` section v
 - MariaDB ^11.4
 - SMTP server for e-mailing
 - Docker with Docker-Compose for containerization
+
+## External Services
+
+Some features rely on external services. These features however need to be activated and are not enabled by default.
+
+### Weather forecast
+
+In order to provide the weather forecast feature, the project uses [OpenWeatherMap](https://openweathermap.org/) to get the weather data. 
+In order to use this feature you need to create an account and get your own API key.
+
+### Plant identification
+
+The project uses the [Pl@ntNet API](https://my.plantnet.org/) to identify plants. In order to use this feature you need to create an account and get your own API key.
 
 ## Contributing
 
