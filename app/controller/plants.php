@@ -439,6 +439,42 @@ class PlantsController extends BaseController {
 			]);
 		}
 	}
+	
+	/**
+	 * Handles URL: /plants/details/identify
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function identify_plant($request)
+	{
+		try {
+			$plant = $request->params()->query('plant', null);
+			$image_file = UtilsModule::uploadFile('photo', public_path() . '/img/');
+
+			$data = RecognitionModule::identify($image_file);
+
+			if ((isset($data->statusCode)) && ($data->statusCode == 404)) {
+				throw new \Exception($data->error . ': ' . $data->message);
+			}
+
+			if ((isset($data->results)) && (is_array($data->results)) && (count($data->results) > 0)) {
+				PlantsModel::editPlantAttribute($plant, 'name', $data->results[0]->species->scientificNameWithoutAuthor);
+				PlantsModel::editPlantAttribute($plant, 'scientific_name', $data->results[0]->species->scientificName);
+			}
+
+			unlink($image_file);
+	
+			return redirect('/plants/details/' . $plant);
+		} catch (\Exception $e) {
+			if ((isset($image_file)) && (is_string($image_file)) && (file_exists($image_file))) {
+				unlink($image_file);
+			}
+
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
 
 	/**
 	 * Handles URL: /plants/attributes/add

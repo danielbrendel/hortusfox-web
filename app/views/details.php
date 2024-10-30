@@ -20,6 +20,15 @@
 
 <div class="columns plant-column">
 	<div class="column is-two-third">
+		@if (app('plantrec_enable'))
+			<form id="plant-rec-form" class="is-hidden" method="POST" action="{{ url('/plants/details/identify') }}" enctype="multipart/form-data">
+				@csrf
+
+				<input type="text" name="plant" value="{{ $plant->get('id') }}"/>
+				<input type="file" name="photo" id="plant-rec-file-input" onchange="document.getElementById('plant-rec-action-icon').classList.remove('fa-microscope'); document.getElementById('plant-rec-action-icon').classList.add('fa-spinner'); document.getElementById('plant-rec-action-icon').classList.add('fa-spin'); document.getElementById('plant-rec-form').submit();"/>
+			</form>
+		@endif
+
 		<table>
 			<thead>
 				<tr>
@@ -31,7 +40,7 @@
 			<tbody>
 				<tr>
 					<td><strong>{{ __('app.name') }}</strong></td>
-					<td><span id="plant-details-plant-name-{{ $plant->get('id') }}">{{ $plant->get('name') }}</span> <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'name', document.getElementById('plant-details-plant-name-{{ $plant->get('id') }}').innerText);"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+					<td><span id="plant-details-plant-name-{{ $plant->get('id') }}">{{ $plant->get('name') }}</span> <span class="float-right">{!! ((app('plantrec_enable')) ? '<a href="javascript:void(0);" onclick="document.getElementById(\'plant-rec-file-input\').click();"><i id="plant-rec-action-icon" class="fas fa-microscope is-color-darker"></i></a>&nbsp;&nbsp;' : '') !!}<a href="javascript:void(0);" onclick="window.vue.showEditText({{ $plant->get('id') }}, 'name', document.getElementById('plant-details-plant-name-{{ $plant->get('id') }}').innerText);"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 				</tr>
 
 				<tr>

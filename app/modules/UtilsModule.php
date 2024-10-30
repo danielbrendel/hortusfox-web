@@ -559,4 +559,29 @@ class UtilsModule {
     {
         return (isset($_SERVER['HTTPS'])) && ($_SERVER['HTTPS'] !== 'off');
     }
+
+    /**
+     * @param $ident
+     * @param $dest
+     * @return string
+     * @throws \Exception
+     */
+    public static function uploadFile($ident, $dest)
+    {
+        if ((!isset($_FILES[$ident])) || ($_FILES[$ident]['error'] !== UPLOAD_ERR_OK)) {
+            throw new \Exception('Errorneous file');
+        }
+
+        $file_ext = UtilsModule::getImageExt($_FILES[$ident]['tmp_name']);
+
+        if ($file_ext === null) {
+            throw new \Exception('File is not a valid image');
+        }
+
+        $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
+
+        move_uploaded_file($_FILES[$ident]['tmp_name'], $dest . $file_name . '.' . $file_ext);
+
+        return $dest . $file_name . '.' . $file_ext;
+    }
 }
