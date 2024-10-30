@@ -93,6 +93,8 @@
             </div>
         </div>
 
+        <div><hr></div>
+
         <div class="field">
             <div class="control">
                 <input type="checkbox" class="checkbox" name="enablechat" value="1" {{ (app('chat_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_chat') }}</span>
@@ -130,6 +132,8 @@
             </div>
         </div>
 
+        <div><hr></div>
+
         <div class="field">
             <div class="control">
                 <input type="checkbox" class="checkbox" name="enablehistory" value="1" {{ (app('history_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_history') }}</span>
@@ -142,6 +146,8 @@
                 <input type="text" class="input" name="history_name" value="{{ app('history_name') }}">
             </div>
         </div>
+
+        <div><hr></div>
 
         <div class="field">
             <div class="control">
@@ -156,6 +162,8 @@
             </div>
         </div>
 
+        <div><hr></div>
+
         <div class="field">
             <div class="control">
                 <input type="checkbox" class="checkbox" name="enablephotoshare" value="1" {{ (app('enable_media_share')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_photo_share') }}</span>
@@ -168,6 +176,8 @@
                 <input type="text" class="input" name="custom_media_share_host" value="{{ share_api_host() }}">
             </div>
         </div>
+
+        <div><hr></div>
 
         <div class="field">
             <label class="label">{{ __('app.cronpw') }}</label>
@@ -185,6 +195,8 @@
         <div class="field belongs-to-previous-field">
             <small>{{ __('app.generate_cronpw_hint') }}</small>
         </div>
+
+        <div><hr></div>
 
         <div class="field">
             <label class="label">{{ __('app.custom_head_code') }}</label>
