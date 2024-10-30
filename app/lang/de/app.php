@@ -455,5 +455,7 @@ return [
 	'confirm_remove_bulk_cmd' => 'Soll dieser Bulk-Befehl wirklich entfernt werden?',
 	'bulk_cmd_added_successfully' => 'Der Bulk-Befehl wurde erfolgreich erstellt',
 	'bulk_cmd_updated_successfully' => 'Der Bulk-Befehl wurde erfolgreich aktualisiert',
-	'bulk_cmd_removed_successfully' => 'Der Bulk-Befehl wurde erfolgreich entfernt'
+	'bulk_cmd_removed_successfully' => 'Der Bulk-Befehl wurde erfolgreich entfernt',
+	'plantrec_enable_label' => 'Pflanzenerkennung via Pl@ntNet aktivieren',
+	'plantrec_apikey_label' => 'Pl@ntNet API-Schlüssel'
 ];

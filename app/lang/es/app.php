@@ -455,5 +455,7 @@ return [
 	'confirm_remove_bulk_cmd' => 'Do you really want to remove this item?',
 	'bulk_cmd_added_successfully' => 'Bulk command was successfully added',
 	'bulk_cmd_updated_successfully' => 'Bulk command was successfully updated',
-	'bulk_cmd_removed_successfully' => 'Bulk command was successfully removed'
+	'bulk_cmd_removed_successfully' => 'Bulk command was successfully removed',
+	'plantrec_enable_label' => 'Habilite el reconocimiento de plantas a través de Pl@ntNet',
+	'plantrec_apikey_label' => 'Clave API de Pl@ntNet'
 ];

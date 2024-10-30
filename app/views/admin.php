@@ -145,6 +145,19 @@
 
         <div class="field">
             <div class="control">
+                <input type="checkbox" class="checkbox" name="plantrec_enable" value="1" {{ (app('plantrec_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.plantrec_enable_label') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.plantrec_apikey_label') }}</label>
+            <div class="control">
+                <input type="text" class="input" name="plantrec_apikey" value="{{ app('plantrec_apikey') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
                 <input type="checkbox" class="checkbox" name="enablephotoshare" value="1" {{ (app('enable_media_share')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_photo_share') }}</span>
             </div>
         </div>

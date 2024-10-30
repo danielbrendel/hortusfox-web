@@ -106,6 +106,8 @@ class AdminController extends BaseController {
 			$cronpw = $request->params()->query('cronpw', app('cronjob_pw'));
 			$custom_head_code = $request->params()->query('custom_head_code', app('custom_head_code'));
 			$enablepwa = (bool)$request->params()->query('enablepwa', 0);
+			$plantrec_enable = (bool)$request->params()->query('plantrec_enable', 0);
+			$plantrec_apikey = $request->params()->query('plantrec_apikey', app('plantrec_apikey'));
 
 			$set = [
 				'workspace' => $workspace,
@@ -127,7 +129,9 @@ class AdminController extends BaseController {
 				'custom_media_share_host' => rtrim($custom_media_share_host, '/'),
 				'cronjob_pw' => $cronpw,
 				'custom_head_code' => $custom_head_code,
-				'pwa_enable' => $enablepwa
+				'pwa_enable' => $enablepwa,
+				'plantrec_enable' => $plantrec_enable,
+				'plantrec_apikey' => $plantrec_apikey
 			];
 
 			AppModel::updateSet($set);
