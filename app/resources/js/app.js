@@ -306,6 +306,41 @@ window.vue = new Vue({
             });
         },
 
+        saveAllAttributes: function(source) {
+            const forms = document.querySelector(source).getElementsByTagName('form');
+            window.vue.bulkSubmitForm(0, forms, 100);
+        },
+
+        bulkSubmitForm: function(index, forms, delay) {
+            if (index >= forms.length) {
+                alert(window.vue.operationSucceeded);
+                location.reload();
+                return;
+            }
+
+            const form = forms[index];
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+            });
+
+            const formData = new FormData(form);
+
+            setTimeout(function() {
+                fetch(form.action, {
+                    method: form.method || 'POST',
+                    body: formData
+                }).then(function(response){
+                    return response.text();
+                }).then(function(data){
+                    window.vue.bulkSubmitForm(index + 1, forms, delay);
+                }).catch(function(error){
+                    console.error(error);
+                    window.vue.bulkSubmitForm(index + 1, forms, delay);
+                });
+            }, delay);
+        },
+
         showEditPhoto: function(plant, property, hint = '')
         {
             document.getElementById('inpEditPhotoPlantId').value = plant;

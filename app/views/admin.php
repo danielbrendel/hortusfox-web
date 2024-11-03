@@ -497,6 +497,7 @@
 
     <div class="admin-attribute-schema-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewAttributeSchema = true;">{{ __('app.add_custom_attribute') }}</a></span>
+        <span><a class="button is-success" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-attribute-schema-list');">{{ __('app.save_all') }}</a></span>
     </div>
 
     <hr/>

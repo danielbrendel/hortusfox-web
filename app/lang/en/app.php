@@ -457,5 +457,6 @@ return [
 	'bulk_cmd_updated_successfully' => 'Bulk command was successfully updated',
 	'bulk_cmd_removed_successfully' => 'Bulk command was successfully removed',
 	'plantrec_enable_label' => 'Enable Plant Recognition via Pl@ntNet',
-	'plantrec_apikey_label' => 'Pl@ntNet API Key'
+	'plantrec_apikey_label' => 'Pl@ntNet API Key',
+	'save_all' => 'Save all'
 ];

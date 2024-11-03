@@ -457,5 +457,6 @@ return [
 	'bulk_cmd_updated_successfully' => 'Bulk command was successfully updated',
 	'bulk_cmd_removed_successfully' => 'Bulk command was successfully removed',
 	'plantrec_enable_label' => 'Aktiver plantegenkendelse via Pl@ntNet',
-	'plantrec_apikey_label' => 'Pl@ntNet API nøgle'
+	'plantrec_apikey_label' => 'Pl@ntNet API nøgle',
+	'save_all' => 'Gem alle'
 ];
