@@ -12,6 +12,7 @@ class PlantsModel extends \Asatru\Database\Model {
     const PLANT_LONG_TEXT_THRESHOLD = 22;
     const PLANT_PLACEHOLDER_FILE = 'placeholder.jpg';
     const PLANT_LAST_UPDATED_AUTHORED_COUNT = 8;
+    const PLANT_LIST_MAX_STRLEN = 15;
 
     static $sorting_list = [
         'name',

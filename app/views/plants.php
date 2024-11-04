@@ -89,9 +89,12 @@
 				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
 					<div class="plant-list-item">
 						<div class="plant-list-id">#{{ sprintf('%04d', $plant->get('id')) }}</div>
-						<div class="plant-list-name">{{ $plant->get('name') }}</div>
-						<div class="plant-list-scientific-name">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
-						<div class="plant-list-last-edited">{{ ($plant->get('last_edited_date') ?? 'N/A') }}</div>
+						<div class="plant-list-name-full">{{ $plant->get('name') }}</div>
+						<div class="plant-list-name-short">{{ substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
+						<div class="plant-list-scientific-name plant-list-item-hide-small-devices">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
+						@if ($plant->get('last_edited_date'))
+						<div class="plant-list-last-edited">{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</div>
+						@endif
 					</div>
 				</a>
 			@endif
