@@ -239,6 +239,12 @@
 									<input type="date" class="input" name="value" id="inpEditDateValue" required>
 								</div>
 							</div>
+
+							<div class="field">
+								<div class="control">
+									<a class="is-default-link" href="javascript:void(0);" onclick="document.querySelector('#inpEditDateValue').value = '{{ date('Y-m-d') }}';">{{ __('app.date_select_today') }}</a>
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">

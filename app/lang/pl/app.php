@@ -458,5 +458,6 @@ return [
 	'bulk_cmd_removed_successfully' => 'Bulk command was successfully removed',
 	'plantrec_enable_label' => 'Włącz rozpoznawanie roślin poprzez Pl@ntNet',
 	'plantrec_apikey_label' => 'Klucz API Pl@ntNet',
-	'save_all' => 'Zapisz wszystko'
+	'save_all' => 'Zapisz wszystko',
+	'date_select_today' => 'Użyj dzisiejszej daty'
 ];
