@@ -459,5 +459,7 @@ return [
 	'plantrec_enable_label' => 'Habilite el reconocimiento de plantas a través de Pl@ntNet',
 	'plantrec_apikey_label' => 'Clave API de Pl@ntNet',
 	'save_all' => 'Guardar todo',
-	'date_select_today' => 'Utilice la fecha de hoy'
+	'date_select_today' => 'Utilice la fecha de hoy',
+	'plant_sorting_view_cards' => 'Ver como tarjetas',
+	'plant_sorting_view_list' => 'Ver como lista'
 ];

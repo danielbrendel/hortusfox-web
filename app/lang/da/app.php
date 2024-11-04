@@ -459,5 +459,7 @@ return [
 	'plantrec_enable_label' => 'Aktiver plantegenkendelse via Pl@ntNet',
 	'plantrec_apikey_label' => 'Pl@ntNet API nøgle',
 	'save_all' => 'Gem alle',
-	'date_select_today' => 'Brug dagens dato'
+	'date_select_today' => 'Brug dagens dato',
+	'plant_sorting_view_cards' => 'Se som kort',
+	'plant_sorting_view_list' => 'Se som liste'
 ];

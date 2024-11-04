@@ -703,6 +703,20 @@ fieldset .field {
     padding-left: 1em;
 }
 
+.sorting-mobile-only {
+    margin-right: 10px;
+}
+
+.sorting-mobile-only-last-elem {
+    margin-bottom: 20px;
+}
+
+.sorting-mobile-only span {
+    @media screen and (min-width: 501px) {
+        display: none;
+    }
+}
+
 .select:not(.is-multiple):not(.is-loading)::after {
     border-color: rgb(50, 115, 220) !important;
 }

@@ -27,12 +27,18 @@
 @include('flashmsg.php')
 
 <div class="sorting">
-	<div class="sorting-control">
-		<a class="{{ (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=cards') }}"><i class="far fa-file-image"></i></a>
+	<div class="sorting-control sorting-mobile-only">
+		<a class="{{ (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=cards') }}">
+			<i class="far fa-file-image"></i>
+			<span>{{ __('app.plant_sorting_view_cards') }}</span>
+		</a>
 	</div>
 
-	<div class="sorting-control">
-		<a class="{{ (((isset($_GET['show'])) && ($_GET['show'] === 'list')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=list') }}"><i class="far fa-list-alt"></i></a>
+	<div class="sorting-control sorting-mobile-only sorting-mobile-only-last-elem">
+		<a class="{{ (((isset($_GET['show'])) && ($_GET['show'] === 'list')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=list') }}">
+			<i class="far fa-list-alt"></i>
+			<span>{{ __('app.plant_sorting_view_list') }}</span>
+		</a>
 	</div>
 
 	<div class="sorting-control select is-rounded is-small">
