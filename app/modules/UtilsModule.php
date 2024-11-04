@@ -152,8 +152,12 @@ class UtilsModule {
      * @param $fileext
      * @return bool
      */
-    public static function createThumbFile($srcfile, $imgtype, $basefile, $fileext)
+    public static function createThumbFile($srcfile, $imgtype, $basefile, $fileext, $setmem = true)
     {
+        if ($setmem === true) {
+            ini_set('memory_limit', '512M');
+        }
+
         list($width, $height) = getimagesize($srcfile);
 
         $factor = config('resize')->default;
