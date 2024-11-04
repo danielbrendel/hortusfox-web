@@ -1167,6 +1167,44 @@ fieldset .field {
     color: rgb(212, 50, 50);
 }
 
+.plant-bulk-update-list {
+    position: relative;
+    text-align: center;
+}
+
+.plant-bulk-update-item {
+    position: relative;
+    display: inline-block;
+    width: 195px;
+    height: 300px;
+    @media screen and (max-width: 430px) {
+        width: 295px;
+        height: 453px;
+    }
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 50px !important;
+}
+
+.plant-bulk-update-item div:first-child {
+    width: 100%;
+    height: 100%;
+}
+
+.plant-bulk-update-image {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.plant-bulk-update-selection {
+    text-align: center;
+}
+
 .line-up-frames {
     @media screen and (min-width: 795px) {
         display: flex;

@@ -1359,19 +1359,25 @@
 						<input type="hidden" id="plant-bulk-perform-operation-custom" value="1"/>
 
 						<div class="field">
-							<div class="control">
+							<div class="control is-centered">
 								<a href="javascript:void(0);" onclick="window.vue.bulkChecked('plant-bulk-perform-operation', true);">{{ __('app.select_all') }}</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="window.vue.bulkChecked('plant-bulk-perform-operation', false);">{{ __('app.unselect_all') }}</a>
 							</div>
 						</div>
 
 						@if ((isset($plants)) && (is_countable($plants)) && (is_object($plants)) && (count($plants) > 0))
-							@foreach ($plants as $plant_item)
-								<div class="field">
-									<div class="control">
-										<input type="checkbox" class="plant-bulk-perform-operation" data-plantid="{{ $plant_item->get('id') }}" data-plantname="{{ $plant_item->get('name') }}" value="1"/>&nbsp;{{ $plant_item->get('name') }}
+							<div class="plant-bulk-update-list">
+								@foreach ($plants as $plant_item)
+									<div class="field plant-bulk-update-item">
+										<div class="control">
+											<div class="plant-bulk-update-image" style="background-image: url('{{ abs_photo($plant_item->get('photo')) }}');"></div>
+
+											<div class="plant-bulk-update-selection">
+												<input type="checkbox" class="plant-bulk-perform-operation" data-plantid="{{ $plant_item->get('id') }}" data-plantname="{{ $plant_item->get('name') }}" value="1"/>&nbsp;{{ $plant_item->get('name') }}
+											</div>
+										</div>
 									</div>
-								</div>
-							@endforeach
+								@endforeach
+							</div>
 						@endif
 					</section>
 					<footer class="modal-card-foot is-stretched">
