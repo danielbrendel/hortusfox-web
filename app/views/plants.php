@@ -27,6 +27,14 @@
 @include('flashmsg.php')
 
 <div class="sorting">
+	<div class="sorting-control">
+		<a class="{{ (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=cards') }}"><i class="far fa-file-image"></i></a>
+	</div>
+
+	<div class="sorting-control">
+		<a class="{{ (((isset($_GET['show'])) && ($_GET['show'] === 'list')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=list') }}"><i class="far fa-list-alt"></i></a>
+	</div>
+
 	<div class="sorting-control select is-rounded is-small">
 		<select onchange="location.href = '{{ url('/plants/location/' . $location . '?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') }}';">
 			@foreach ($sorting_types as $sorting_type)
@@ -53,29 +61,40 @@
 <div class="plants">
 	@if (count($plants) > 0)
 		@foreach ($plants as $plant)
-			<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-				<div class="plant-card" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
-					<div class="plant-card-overlay">
-						@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
-							<div class="plant-card-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>
-						@endif
-
-						<div class="plant-card-health-state">
-							@if ($plant->get('health_state') !== 'in_good_standing')
-								<i class="{{ PlantsModel::$plant_health_states[$plant->get('health_state')]['icon'] }} plant-state-{{ $plant->get('health_state') }}"></i>
-							@endif
-						</div>
-
-						<div class="plant-card-title {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
-							@if ($user->get('show_plant_id'))
-								<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
+			@if ((!isset($_GET['show'])) || ($_GET['show'] === 'cards'))
+				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
+					<div class="plant-card" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
+						<div class="plant-card-overlay">
+							@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
+								<div class="plant-card-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>
 							@endif
 
-							<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
+							<div class="plant-card-health-state">
+								@if ($plant->get('health_state') !== 'in_good_standing')
+									<i class="{{ PlantsModel::$plant_health_states[$plant->get('health_state')]['icon'] }} plant-state-{{ $plant->get('health_state') }}"></i>
+								@endif
+							</div>
+
+							<div class="plant-card-title {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
+								@if ($user->get('show_plant_id'))
+									<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
+								@endif
+
+								<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
+							</div>
 						</div>
 					</div>
-				</div>
-			</a>
+				</a>
+			@elseif ((isset($_GET['show'])) && ($_GET['show'] === 'list'))
+				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
+					<div class="plant-list-item">
+						<div class="plant-list-id">#{{ sprintf('%04d', $plant->get('id')) }}</div>
+						<div class="plant-list-name">{{ $plant->get('name') }}</div>
+						<div class="plant-list-scientific-name">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
+						<div class="plant-list-last-edited">{{ ($plant->get('last_edited_date') ?? 'N/A') }}</div>
+					</div>
+				</a>
+			@endif
 		@endforeach
 	@else
 		<div class="plants-empty">

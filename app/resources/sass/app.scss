@@ -678,6 +678,18 @@ fieldset .field {
     margin-bottom: 10px;
 }
 
+.sorting-control a {
+    color: rgb(150, 150, 150);
+}
+
+.sorting-control a.is-selected {
+    color: rgb(200, 200, 200);
+}
+
+.sorting-control i {
+    margin-right: 5px;
+}
+
 .sorting-control select, .sorting-control input[type=text] {
     color: rgb(200, 200, 200);
     background-color: rgba(50, 50, 50, 0.9);
@@ -839,6 +851,41 @@ fieldset .field {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
     border-radius: 32%;
+}
+
+.plant-list-item {
+    position: relative;
+    width: 100%;
+    color: rgb(150, 150, 150);
+    background-color: rgba(50, 50, 50, 0.76);
+    border: 1px solid rgb(90, 90, 90);
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.plant-list-id {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    color: rgb(100, 100, 100);
+}
+
+.plant-list-name {
+    position: relative;
+    display: inline-block;
+}
+
+.plant-list-scientific-name {
+    position: relative;
+    display: inline-block;
+}
+
+.plant-list-last-edited {
+    position: relative;
+    display: inline-block;
+    float: right;
 }
 
 .plant-column {
