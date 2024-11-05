@@ -158,7 +158,7 @@
         <div class="field">
             <label class="label">{{ __('app.plantrec_apikey_label') }}</label>
             <div class="control">
-                <input type="text" class="input" name="plantrec_apikey" value="{{ app('plantrec_apikey') }}">
+                <input type="text" class="input" name="plantrec_apikey" value="{{ app('plantrec_apikey', '') }}">
             </div>
         </div>
 
