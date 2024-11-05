@@ -102,7 +102,6 @@ return [
 	'photo_uploaded_successfully' => 'Billede blev uploadet succesfuldt',
 	'success' => 'Succes',
 	'profile' => 'Profil',
-	'profile_hint' => 'Logget ind som {name} ({email})',
 	'last_authored_plants' => 'Sidst forfattet planter',
 	'search' => 'Søg',
 	'search_hint' => 'Søg gennem databasen',

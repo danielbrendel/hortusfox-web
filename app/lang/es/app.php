@@ -102,7 +102,6 @@ return [
 	'photo_uploaded_successfully' => 'La foto se ha subido exitosamente',
 	'success' => 'Éxito',
 	'profile' => 'Perfil',
-	'profile_hint' => 'Sesión iniciada como {name} ({email})',
 	'last_authored_plants' => 'Últimas plantas creadas',
 	'search' => 'Buscar',
 	'search_hint' => 'Buscar en la base de datos',
