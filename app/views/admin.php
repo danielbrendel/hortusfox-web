@@ -344,6 +344,7 @@
 
     <div class="admin-users-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewUser = true;">{{ __('app.create') }}</a></span>
+        <span><a class="button is-success" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-users-list');">{{ __('app.save_all') }}</a></span>
     </div>
 </div>
 
