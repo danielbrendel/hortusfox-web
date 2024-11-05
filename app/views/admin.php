@@ -344,7 +344,7 @@
 
     <div class="admin-users-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewUser = true;">{{ __('app.create') }}</a></span>
-        <span><a class="button is-success" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-users-list');">{{ __('app.save_all') }}</a></span>
+        <span><a class="button is-success button-margin-left" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-users-list');">{{ __('app.save_all') }}</a></span>
     </div>
 </div>
 
@@ -384,7 +384,7 @@
 
     <div class="admin-locations-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewLocation = true;">{{ __('app.add_location') }}</a></span>
-        <span><a class="button is-success" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-locations-list');">{{ __('app.save_all') }}</a></span>
+        <span><a class="button is-success button-margin-left" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-locations-list');">{{ __('app.save_all') }}</a></span>
     </div>
 </div>
 
@@ -499,7 +499,7 @@
 
     <div class="admin-attribute-schema-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewAttributeSchema = true;">{{ __('app.add_custom_attribute') }}</a></span>
-        <span><a class="button is-success" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-attribute-schema-list');">{{ __('app.save_all') }}</a></span>
+        <span><a class="button is-success button-margin-left" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-attribute-schema-list');">{{ __('app.save_all') }}</a></span>
     </div>
 
     <hr/>
@@ -594,7 +594,7 @@
 
     <div class="admin-calendar-classes-actions">
         <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewCalendarClass = true;">{{ __('app.add_calendar_class') }}</a></span>
-        <span><a class="button is-success" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-calendar-classes-list');">{{ __('app.save_all') }}</a></span>
+        <span><a class="button is-success button-margin-left" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-calendar-classes-list');">{{ __('app.save_all') }}</a></span>
     </div>
 </div>
 
