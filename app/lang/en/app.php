@@ -102,7 +102,6 @@ return [
 	'photo_uploaded_successfully' => 'Photo was uploaded successfully',
 	'success' => 'Success',
 	'profile' => 'Profile',
-	'profile_hint' => 'Logged in as {name} ({email})',
 	'last_authored_plants' => 'Last authored plants',
 	'search' => 'Search',
 	'search_hint' => 'Search through the database',

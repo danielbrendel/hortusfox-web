@@ -8,8 +8,6 @@
 	</div>
 </div>
 
-<div class="margin-vertical is-default-text-color">{{ __('app.profile_hint', ['name' => $user->get('name'), 'email' => $user->get('email')]) }}</div>
-
 @include('flashmsg.php')
 
 <div class="margin-vertical">
