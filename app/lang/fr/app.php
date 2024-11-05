@@ -102,7 +102,6 @@ return [
 	'photo_uploaded_successfully' => 'La photo a été ajoutée avec succès',
 	'success' => 'Succès',
 	'profile' => 'Profil',
-	'profile_hint' => 'Connecté en tant que {name} ({email})',
 	'last_authored_plants' => 'Dernières plantes créées',
 	'search' => 'Recherche',
 	'search_hint' => 'Rechercher dans la base de données',
