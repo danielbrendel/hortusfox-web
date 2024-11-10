@@ -28,21 +28,21 @@
 
 <div class="sorting">
 	<div class="sorting-control sorting-mobile-only">
-		<a class="{{ (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=cards') }}">
+		<a class="{{ (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=cards' . url_query('sorting', '&') . url_query('direction', '&')) }}">
 			<i class="far fa-file-image"></i>
 			<span>{{ __('app.plant_sorting_view_cards') }}</span>
 		</a>
 	</div>
 
 	<div class="sorting-control sorting-mobile-only sorting-mobile-only-last-elem">
-		<a class="{{ (((isset($_GET['show'])) && ($_GET['show'] === 'list')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=list') }}">
+		<a class="{{ (((isset($_GET['show'])) && ($_GET['show'] === 'list')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=list' . url_query('sorting', '&') . url_query('direction', '&')) }}">
 			<i class="far fa-list-alt"></i>
 			<span>{{ __('app.plant_sorting_view_list') }}</span>
 		</a>
 	</div>
 
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/plants/location/' . $location . '?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') }}';">
+		<select onchange="location.href = '{{ url('/plants/location/' . $location . '?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') . url_query('show', '&') }}';">
 			@foreach ($sorting_types as $sorting_type)
 				@if (strpos($sorting_type, 'history') === false)
 					<option value="{{ $sorting_type }}" {{ ((isset($_GET['sorting'])) && ($_GET['sorting'] === $sorting_type)) ? 'selected' : '' }}>{{ __('app.sorting_type_' . $sorting_type) }}</option>
@@ -52,7 +52,7 @@
 	</div>
 
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/plants/location/' . $location . '?sorting=' . ((isset($_GET['sorting'])) ? $_GET['sorting'] : 'name')) }}&direction=' + this.value;">
+		<select onchange="location.href = '{{ url('/plants/location/' . $location . '?sorting=' . ((isset($_GET['sorting'])) ? $_GET['sorting'] : 'name')) . url_query('show', '&') }}&direction=' + this.value;">
 			@foreach ($sorting_dirs as $sorting_dir)
 				<option value="{{ $sorting_dir }}" {{ ((isset($_GET['direction'])) && ($_GET['direction'] === $sorting_dir)) ? 'selected' : '' }}>{{ __('app.sorting_dir_' . $sorting_dir) }}</option>
 			@endforeach

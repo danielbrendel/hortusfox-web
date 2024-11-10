@@ -16,6 +16,35 @@ function app($name, $fallback = null)
 }
 
 /**
+ * @param $ident
+ * @param $default
+ * @return mixed
+ */
+function url_param($ident, $default = '')
+{
+    if (isset($_GET[$ident])) {
+        return $_GET[$ident];
+    }
+
+    return $default;
+}
+
+/**
+ * @param $ident
+ * @param $precedence
+ * @param $default
+ * @return mixed
+ */
+function url_query($ident, $precedence, $default = '')
+{
+    if (isset($_GET[$ident])) {
+        return $precedence . $ident . '=' . $_GET[$ident];
+    }
+
+    return $default;
+}
+
+/**
  * @return void
  */
 function app_mail_config()
