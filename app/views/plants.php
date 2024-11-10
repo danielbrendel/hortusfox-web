@@ -69,7 +69,7 @@
 		@foreach ($plants as $plant)
 			@if ((!isset($_GET['show'])) || ($_GET['show'] === 'cards'))
 				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-					<div class="plant-card" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
+					<div class="plant-card plant-filter-text-root" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
 						<div class="plant-card-overlay">
 							@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
 								<div class="plant-card-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>
@@ -81,7 +81,7 @@
 								@endif
 							</div>
 
-							<div class="plant-card-title {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
+							<div class="plant-card-title plant-filter-text-target {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
 								@if ($user->get('show_plant_id'))
 									<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
 								@endif
@@ -93,9 +93,9 @@
 				</a>
 			@elseif ((isset($_GET['show'])) && ($_GET['show'] === 'list'))
 				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-					<div class="plant-list-item">
+					<div class="plant-list-item plant-filter-text-root">
 						<div class="plant-list-id">#{{ sprintf('%04d', $plant->get('id')) }}</div>
-						<div class="plant-list-name-full">{{ $plant->get('name') }}</div>
+						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') }}</div>
 						<div class="plant-list-name-short">{{ substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
 						<div class="plant-list-scientific-name plant-list-item-hide-small-devices">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
 						@if ($plant->get('last_edited_date'))

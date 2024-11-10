@@ -951,11 +951,11 @@ window.vue = new Vue({
         },
 
         textFilterElements: function(token) {
-            let elems = document.getElementsByClassName('plant-card-title');
+            let elems = document.getElementsByClassName('plant-filter-text-target');
             for (let i = 0; i < elems.length; i++) {
                 let target = elems[i].parentNode;
                 
-                while (!target.classList.contains('plant-card')) {
+                while (!target.classList.contains('plant-filter-text-root')) {
                     target = target.parentNode;
                 }
 
