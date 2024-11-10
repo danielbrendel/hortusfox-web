@@ -98,8 +98,12 @@
 						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') }}</div>
 						<div class="plant-list-name-short">{{ substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
 						<div class="plant-list-scientific-name plant-list-item-hide-small-devices">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
-						@if ($plant->get('last_edited_date'))
-						<div class="plant-list-last-edited">{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</div>
+						@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
+							<div class="plant-list-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>
+						@else
+							@if ($plant->get('last_edited_date'))
+							<div class="plant-list-last-edited">{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</div>
+							@endif
 						@endif
 					</div>
 				</a>

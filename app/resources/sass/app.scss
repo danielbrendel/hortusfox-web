@@ -922,6 +922,19 @@ fieldset .field {
     float: right;
 }
 
+.plant-list-sorting {
+    position: relative;
+    display: inline-block;
+    float: right;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    color: rgb(200, 200, 200);
+    background-color: rgba(240, 65, 205, 0.75);
+    border: 1px solid rgb(255, 80, 230);
+    border-radius: 5px;
+}
+
 .plant-column {
     @media screen and (min-width: 520px) {
         padding: 20px;
