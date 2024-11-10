@@ -14,11 +14,12 @@
 
                 <div class="field has-addons">
                     <div class="control is-stretched">
-                        <input class="input is-input-dark" type="text" name="message" onkeypress="window.vue.handleChatInput();">
+                        <textarea class="textarea is-input-dark" name="message" onkeypress="window.vue.handleChatInput();"></textarea>
                     </div>
-                    <div class="control">
-                        <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('frmSendChatMessage').submit();">{{ __('app.send') }}</a>
-                    </div>
+                </div>
+
+                <div class="control">
+                    <a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('frmSendChatMessage').submit();">{{ __('app.send') }}</a>
                 </div>
             </form>
         </div>
