@@ -32,10 +32,12 @@
 		<div class="stats-item-label">{{ __('app.locations') }}</div>
 	</div>
 
+	@if (app('tasks_enable'))
 	<div class="stats-item is-pointer" onclick="location.href = '{{ url('/tasks') }}';">
 		<div class="stats-item-count">{{ $stats['tasks'] }}</div>
 		<div class="stats-item-label">{{ __('app.tasks') }}</div>
 	</div>
+	@endif
 
 	<div class="stats-item is-pointer" onclick="location.href = '{{ (($user->get('admin')) ? url('/admin?tab=users') : url('/profile')) }}';">
 		<div class="stats-item-count">{{ $stats['users'] }}</div>
