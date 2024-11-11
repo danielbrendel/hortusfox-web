@@ -234,6 +234,32 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/details/edit/ajax
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function edit_plant_details_ajax($request)
+	{
+		try {
+			$plant = $request->params()->query('plant', null);
+			$attribute = $request->params()->query('attribute', null);
+			$value = $request->params()->query('value', false);
+			
+			PlantsModel::editPlantAttribute($plant, $attribute, $value);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/details/edit/link
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
@@ -444,7 +470,7 @@ class PlantsController extends BaseController {
 	 * Handles URL: /plants/details/identify
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function identify_plant($request)
 	{
@@ -458,21 +484,25 @@ class PlantsController extends BaseController {
 				throw new \Exception($data->error . ': ' . $data->message);
 			}
 
-			if ((isset($data->results)) && (is_array($data->results)) && (count($data->results) > 0)) {
-				PlantsModel::editPlantAttribute($plant, 'name', $data->results[0]->species->scientificNameWithoutAuthor);
-				PlantsModel::editPlantAttribute($plant, 'scientific_name', $data->results[0]->species->scientificName);
+			if ((!isset($data->results)) || (!is_array($data->results))) {
+				throw new \Exception('Invalid results returned');
 			}
 
 			unlink($image_file);
 	
-			return redirect('/plants/details/' . $plant);
+			return json([
+				'code' => 200,
+				'data' => $data->results
+			]);
 		} catch (\Exception $e) {
 			if ((isset($image_file)) && (is_string($image_file)) && (file_exists($image_file))) {
 				unlink($image_file);
 			}
 
-			FlashMessage::setMsg('error', $e->getMessage());
-			return back();
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 

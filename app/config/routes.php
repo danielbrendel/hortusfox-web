@@ -33,6 +33,7 @@ return [
     array('/plants/details/{id}', 'GET', 'plants@view_plant_details'),
     array('/plants/add', 'POST', 'plants@add_plant'),
     array('/plants/details/edit', 'POST', 'plants@edit_plant_details'),
+    array('/plants/details/edit/ajax', 'POST', 'plants@edit_plant_details_ajax'),
     array('/plants/details/edit/link', 'POST', 'plants@edit_plant_link'),
     array('/plants/details/edit/photo', 'POST', 'plants@edit_plant_details_photo'),
     array('/plants/details/edit/photo/url', 'POST', 'plants@edit_plant_details_photo_url'),

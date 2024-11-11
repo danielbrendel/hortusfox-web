@@ -25,7 +25,7 @@
 				@csrf
 
 				<input type="text" name="plant" value="{{ $plant->get('id') }}"/>
-				<input type="file" name="photo" id="plant-rec-file-input" onchange="document.getElementById('plant-rec-action-icon').classList.remove('fa-microscope'); document.getElementById('plant-rec-action-icon').classList.add('fa-spinner'); document.getElementById('plant-rec-action-icon').classList.add('fa-spin'); document.getElementById('plant-rec-form').submit();"/>
+				<input type="file" name="photo" id="plant-rec-file-input" onchange="document.getElementById('plant-rec-action-icon').classList.remove('fa-microscope'); document.getElementById('plant-rec-action-icon').classList.add('fa-spinner'); document.getElementById('plant-rec-action-icon').classList.add('fa-spin'); window.vue.performPlantRecognition('plant-rec-form', '{{ $plant->get('id') }}');"/>
 			</form>
 		@endif
 

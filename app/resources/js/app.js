@@ -61,6 +61,7 @@ window.vue = new Vue({
         bShowAddLocationLogEntry: false,
         bShowEditLocationLogEntry: false,
         bShowCreateNewBulkCmd: false,
+        bShowSelectRecognizedPlant: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -1608,6 +1609,88 @@ window.vue = new Vue({
 
                 if (elCaution) {
                     elCaution.style.display = 'none';
+                }
+            }
+        },
+
+        performPlantRecognition: function(target, plantid) {
+            const form = document.getElementById(target);
+            const data = new FormData(form);
+
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/details/identify', data, function(response) {
+                if (response.code == 200) {
+                    let dest = document.getElementById('recognized-plant-selection');
+
+                    dest.innerHTML = '<fieldset>';
+
+                    response.data.forEach(function(elem, index) {
+                        dest.innerHTML += `
+                            <div class="field">
+                                <div class="control">
+                                    <input type="radio" name="plant-selection" data-plantid="` + plantid + `" data-plantname="` + elem.species.scientificNameWithoutAuthor + `" data-plantscientificname="` + elem.species.scientificName + `" onclick="document.getElementById('action-save-selected-plant-data').removeAttribute('disabled');">&nbsp;` + elem.species.scientificNameWithoutAuthor + ` (` + (elem.score * 100).toFixed(2) + '%)' + `
+                                </div>
+                            </div>
+                            `;
+                    });
+
+                    dest.innerHTML += '</fieldset>';
+
+                    document.getElementById('plant-rec-action-icon').classList.remove('fa-spinner');
+                    document.getElementById('plant-rec-action-icon').classList.remove('fa-spin');
+                    document.getElementById('plant-rec-action-icon').classList.add('fa-microscope');
+
+                    window.vue.bShowSelectRecognizedPlant = true;
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        storeRecognizedPlantData: function(target) {
+            const selection = document.getElementById(target).getElementsByTagName('input');
+
+            for (let i = 0; i < selection.length; i++) {
+                if (selection[i].checked) {
+                    const item = selection[i];
+
+                    window.plantRecStorageStep = 0;
+                    window.plantRecErrorCount = 0;
+
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/details/edit/ajax', {
+                        plant: item.dataset.plantid,
+                        attribute: 'name',
+                        value: item.dataset.plantname
+                    }, function(response) {
+                        window.plantRecStorageStep++;
+                        
+                        if (response.code == 500) {
+                            window.plantRecErrorCount++;
+                            alert(response.msg);
+                        }
+                    });
+
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/details/edit/ajax', {
+                        plant: item.dataset.plantid,
+                        attribute: 'scientific_name',
+                        value: item.dataset.plantscientificname
+                    }, function(response) {
+                        window.plantRecStorageStep++;
+
+                        if (response.code == 500) {
+                            window.plantRecErrorCount++;
+                            alert(response.msg);
+                        }
+                    });
+
+                    setTimeout(function awaitPlantAttributeStorage() {
+                        if (window.plantRecStorageStep < 2) {
+                            setTimeout(awaitPlantAttributeStorage, 1000);
+                        } else {
+                            location.reload();
+                        }
+                    }, 100);
+
+                    break;
                 }
             }
         },

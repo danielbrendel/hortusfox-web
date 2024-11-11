@@ -1765,6 +1765,23 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowSelectRecognizedPlant}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.select') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowSelectRecognizedPlant = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<div id="recognized-plant-selection"></div>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button id="action-save-selected-plant-data" class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; window.vue.storeRecognizedPlantData('recognized-plant-selection');" disabled>{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowSelectRecognizedPlant = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))
