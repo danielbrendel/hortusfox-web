@@ -96,6 +96,16 @@ function app_set_timezone()
     }
 }
 
+function convert_date($format, $timestamp = null)
+{
+    return UtilsModule::convertDate($format, $timestamp);
+}
+
+function daylight_saving_time()
+{
+    return UtilsModule::isDaylightSavingTime();
+}
+
 /**
  * @return bool
  */

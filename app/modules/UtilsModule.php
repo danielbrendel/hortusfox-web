@@ -588,4 +588,31 @@ class UtilsModule {
 
         return $dest . $file_name . '.' . $file_ext;
     }
+
+    /**
+     * @param $format
+     * @param $timestamp
+     * @return string
+     */
+    public static function convertDate($format, $timestamp = null)
+    {
+        if ($timestamp === null) {
+            $timestamp = time();
+        }
+        
+        $date = new DateTime("@$timestamp", new DateTimeZone(app('timezone', date_default_timezone_get())));
+        $date->setTimezone(new DateTimeZone('UTC'));
+        
+        return $date->format($format);
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isDaylightSavingTime()
+    {
+        $date = new DateTime("now", new DateTimeZone(app('timezone', date_default_timezone_get())));
+
+        return (bool)$date->format('I');
+    }
 }

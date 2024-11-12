@@ -68,15 +68,17 @@ class WeatherModule {
 
             $forecast->is_filled = false;
 
-            $time = date('H:00', $forecast->list[0]->dt);
+            $fillcheck = (daylight_saving_time()) ? '02:00' : '01:00';
+
+            $time = convert_date('H:00', $forecast->list[0]->dt);
             if ($time !== '02:00') {
                 $forecast->is_filled = true;
             }
             
-            $first_date = date('H:i', $forecast->list[0]->dt);
+            $first_date = convert_date('H:i', $forecast->list[0]->dt);
             
             $fills = [];
-            $count = 2;
+            $count = (daylight_saving_time()) ? 2 : 1;
             $sc = 0;
 
             foreach ($forecast->list as $key => $item) {
@@ -85,7 +87,7 @@ class WeatherModule {
                     $obj = new stdClass();
                     $obj->filled = true;
                     $obj->timeStr = $timeStr;
-                    $obj->dt = strtotime(date('Y-m-d ' . $timeStr));
+                    $obj->dt = strtotime(convert_date('Y-m-d ' . $timeStr));
 
                     $count += 3;
                     $sc++;
@@ -96,9 +98,11 @@ class WeatherModule {
                 }
             }
 
-            if ($forecast->is_filled) {
-                for ($i = count($fills) - 1; $i >= 0; $i--) {
-                    array_unshift($forecast->list, $fills[$i]);
+            if (daylight_saving_time()) {
+                if ($forecast->is_filled) {
+                    for ($i = count($fills) - 1; $i >= 0; $i--) {
+                        array_unshift($forecast->list, $fills[$i]);
+                    }
                 }
             }
             
