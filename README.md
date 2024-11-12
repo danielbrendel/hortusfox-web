@@ -14,7 +14,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/web-php-orange" alt="web-php"/>
-    <img src="https://img.shields.io/badge/db-mysql-pink" alt="db-mysql"/>
+    <img src="https://img.shields.io/badge/db-mariadb-pink" alt="db-mariadb"/>
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="license-mit"/>
     <img src="https://img.shields.io/badge/maintained-yes-green" alt="maintained-yes"/>
 </p>
@@ -164,7 +164,7 @@ browse to the installer and the system will guide you through the installation p
 http://localhost/install
 ```
 
-Be sure that PHP is installed and both your webserver and mysql server are running. If there is no vendor folder already created then
+Be sure that PHP is installed and both your webserver and mariadb server are running. If there is no vendor folder already created then
 the system will try to run Composer in order to install all required dependencies. For that to work you need to have Composer installed
 on your system. Altough the system tries to create the database for you, sometimes this might fail, so you will have to create the
 database before running the installation. However all table migrations will then be created by the system. The system can then be managed
