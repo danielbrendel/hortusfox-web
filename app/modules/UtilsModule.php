@@ -600,8 +600,8 @@ class UtilsModule {
             $timestamp = time();
         }
         
-        $date = new DateTime("@$timestamp", new DateTimeZone(app('timezone', date_default_timezone_get())));
-        $date->setTimezone(new DateTimeZone('UTC'));
+        $date = new DateTime("@$timestamp", new DateTimeZone('UTC'));
+        $date->setTimezone(new DateTimeZone(app('timezone', date_default_timezone_get())));
         
         return $date->format($format);
     }

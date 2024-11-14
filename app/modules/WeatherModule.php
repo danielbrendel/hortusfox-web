@@ -71,7 +71,7 @@ class WeatherModule {
             $fillcheck = (daylight_saving_time()) ? '02:00' : '01:00';
 
             $time = convert_date('H:00', $forecast->list[0]->dt);
-            if ($time !== '02:00') {
+            if ($time !== $fillcheck) {
                 $forecast->is_filled = true;
             }
             
@@ -98,11 +98,9 @@ class WeatherModule {
                 }
             }
 
-            if (daylight_saving_time()) {
-                if ($forecast->is_filled) {
-                    for ($i = count($fills) - 1; $i >= 0; $i--) {
-                        array_unshift($forecast->list, $fills[$i]);
-                    }
+            if ($forecast->is_filled) {
+                for ($i = count($fills) - 1; $i >= 0; $i--) {
+                    array_unshift($forecast->list, $fills[$i]);
                 }
             }
             
