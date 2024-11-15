@@ -461,5 +461,5 @@ return [
 	'date_select_today' => 'Utilisez la date du jour',
 	'plant_sorting_view_cards' => 'Afficher sous forme de cartes',
 	'plant_sorting_view_list' => 'Afficher sous forme de liste',
-	'amount' => 'Amount'
+	'amount' => 'Quantité'
 ];
