@@ -633,10 +633,11 @@ class ApiController extends BaseController {
             $name = $request->params()->query('name', null);
             $description = $request->params()->query('description', null);
             $location = $request->params()->query('location', null);
+            $amount = $request->params()->query('amount', null);
             $group = $request->params()->query('group', null);
             $photo = $request->params()->query('photo', null);
 			
-			InventoryModel::editItem($item, $name, $description, $location, $group, $photo, true);
+			InventoryModel::editItem($item, $name, $description, $location, $amount, $group, $photo, true);
 
             return json([
                 'code' => 200
