@@ -107,10 +107,11 @@ class InventoryController extends BaseController {
 		$name = $request->params()->query('name', null);
 		$group = $request->params()->query('group', null);
 		$location = $request->params()->query('location', null);
+		$amount = $request->params()->query('amount', null);
 		$description = $request->params()->query('description', null);
 		$photo = $request->params()->query('photo', null);
 
-		InventoryModel::editItem($id, $name, $description, $location, $group, $photo);
+		InventoryModel::editItem($id, $name, $description, $location, $amount, $group, $photo);
 
 		return redirect('/inventory?expand=' . $id . '#anchor-item-' . $id);
 	}

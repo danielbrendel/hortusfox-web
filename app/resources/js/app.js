@@ -632,13 +632,14 @@ window.vue = new Vue({
             });
         },
 
-        editInventoryItem: function(id, name, group, location, description)
+        editInventoryItem: function(id, name, group, location, description, amount)
         {
             document.getElementById('inpInventoryItemId').value = id;
             document.getElementById('inpInventoryItemName').value = document.getElementById(name).children[1].innerText;
             document.getElementById('inpInventoryItemGroup').value = group;
             document.getElementById('inpInventoryItemLocation').value = document.getElementById(location).children[0].innerText;
             document.getElementById('inpInventoryItemDescription').value = document.getElementById(description).innerText;
+            document.getElementById('inpInventoryItemAmount').value = amount;
 
             window.vue.bShowEditInventoryItem = true;
         },

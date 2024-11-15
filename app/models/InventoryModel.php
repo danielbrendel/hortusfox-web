@@ -78,13 +78,14 @@ class InventoryModel extends \Asatru\Database\Model {
      * @param $name
      * @param $description
      * @param $location
+     * @param $amount
      * @param $group
      * @param $photo
      * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editItem($id, $name, $description, $location, $group, $photo, $api = false)
+    public static function editItem($id, $name, $description, $location, $amount, $group, $photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -97,8 +98,8 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid item: ' . $id);
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, group_ident = ?, location = ?, description = ? WHERE id = ?', [
-                $name, $group, $location, $description, $row->get('id')
+            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, group_ident = ?, location = ?, description = ?, amount = ? WHERE id = ?', [
+                $name, $group, $location, $description, $amount, $row->get('id')
             ]);
 
             if ((isset($_FILES['photo'])) && ($_FILES['photo']['error'] === UPLOAD_ERR_OK)) {

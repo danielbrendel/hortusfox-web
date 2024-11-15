@@ -709,6 +709,13 @@
 									<textarea class="textarea" name="description" id="inpInventoryItemDescription"></textarea>
 								</div>
 							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.amount') }}</label>
+								<div class="control">
+									<input type="number" class="input" name="amount" id="inpInventoryItemAmount" required>
+								</div>
+							</div>
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
