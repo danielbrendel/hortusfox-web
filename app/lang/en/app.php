@@ -460,5 +460,6 @@ return [
 	'save_all' => 'Save all',
 	'date_select_today' => 'Use today\'s date',
 	'plant_sorting_view_cards' => 'View as cards',
-	'plant_sorting_view_list' => 'View as list'
+	'plant_sorting_view_list' => 'View as list',
+	'amount' => 'Amount'
 ];

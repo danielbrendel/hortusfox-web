@@ -460,5 +460,6 @@ return [
 	'save_all' => 'Alle speichern',
 	'date_select_today' => 'Das heutige Datum verwenden',
 	'plant_sorting_view_cards' => 'Als Karten anzeigen',
-	'plant_sorting_view_list' => 'Als Liste anzeigen'
+	'plant_sorting_view_list' => 'Als Liste anzeigen',
+	'amount' => 'Amount'
 ];

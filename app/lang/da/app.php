@@ -460,5 +460,6 @@ return [
 	'save_all' => 'Gem alle',
 	'date_select_today' => 'Brug dagens dato',
 	'plant_sorting_view_cards' => 'Se som kort',
-	'plant_sorting_view_list' => 'Se som liste'
+	'plant_sorting_view_list' => 'Se som liste',
+	'amount' => 'Amount'
 ];
