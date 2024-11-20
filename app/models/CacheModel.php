@@ -110,7 +110,7 @@ class CacheModel extends \Asatru\Database\Model {
 	{
 		$item = CacheModel::find($ident, 'ident');
 		if ($item->count() > 0) {
-			CacheModel::update('updated_at', date('1970-01-01 00:00:00'))->where('ident', '=', $ident)->go();
+			CacheModel::update('updated_at', '1970-01-05 00:00:00')->where('ident', '=', $ident)->go();
 
 			return true;
 		}

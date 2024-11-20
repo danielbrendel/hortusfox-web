@@ -14,19 +14,23 @@
             </a>
         </div>
 
+        @if (app('tasks_enable'))
         <div class="bottomnav-item">
             <a href="{{ url('/tasks') }}">
                 <div><i class="fas fa-tasks"></i></div>
                 <div>{{ __('app.tasks') }}</div>
             </a>
         </div>
+        @endif
 
+        @if (app('inventory_enable'))
         <div class="bottomnav-item">
             <a href="{{ url('/inventory') }}">
                 <div><i class="fas fa-warehouse"></i></div>
                 <div>{{ __('app.inventory') }}</div>
             </a>
         </div>
+        @endif
 
         <div class="bottomnav-item">
             <a href="{{ url('/search') }}">
