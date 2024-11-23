@@ -20,13 +20,11 @@ class CacheClearCommand implements Asatru\Commands\Command {
 
         try {
             CacheModel::clear();
+
+            echo "\033[32mDone!\033[39m\n";
         } catch (\Exception $e) {
             echo "\033[31mOperation failed: {$e->getMessage()}\033[39m\n";
-            
-            return;
         }
-
-        echo "\033[32mDone!\033[39m\n";
     }
 }
     
