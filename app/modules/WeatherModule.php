@@ -52,6 +52,34 @@ class WeatherModule {
     }
 
     /**
+     * @param $data
+     * @return int
+     * @throws \Exception
+     */
+    public static function findBaseTime($entries)
+    {
+        try {
+            foreach ($entries as $entry) {
+                $time = convert_date('H:00', $entry->dt);
+
+                if ($time === '00:00') {
+                    return 0;
+                } else if ($time === '01:00') {
+                    return 1;
+                } else if ($time === '02:00') {
+                    return 2;
+                } else if ($time === '03:00') {
+                    return 3;
+                }
+            }
+
+            throw new \Exception('Base time not found');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return mixed
      * @throws \Exception
      */
@@ -67,8 +95,8 @@ class WeatherModule {
             }
 
             $forecast->is_filled = false;
-
-            $fillcheck = (daylight_saving_time()) ? '02:00' : '01:00';
+            $btnum = static::findBaseTime($forecast->list);
+            $fillcheck = '0' . $btnum . ':00';
 
             $time = convert_date('H:00', $forecast->list[0]->dt);
             if ($time !== $fillcheck) {
@@ -78,7 +106,7 @@ class WeatherModule {
             $first_date = convert_date('H:i', $forecast->list[0]->dt);
             
             $fills = [];
-            $count = (daylight_saving_time()) ? 2 : 1;
+            $count = $btnum;
             $sc = 0;
 
             foreach ($forecast->list as $key => $item) {
