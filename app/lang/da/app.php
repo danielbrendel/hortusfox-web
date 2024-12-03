@@ -461,5 +461,7 @@ return [
 	'date_select_today' => 'Brug dagens dato',
 	'plant_sorting_view_cards' => 'Se som kort',
 	'plant_sorting_view_list' => 'Se som liste',
-	'amount' => 'Beløb'
+	'amount' => 'Beløb',
+	'confirm_remove_preview_photo' => 'Do you really want to remove this photo?',
+	'move_current_photo_to_gallery' => 'Move current photo to gallery'
 ];

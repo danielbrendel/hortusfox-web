@@ -241,7 +241,7 @@
 				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', abs_photo($plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
 				<div class="plant-photo-edit is-pointer" onclick="{{ (($plant->get('photo') === PlantsModel::PLANT_PLACEHOLDER_FILE) ? 'document.getElementById(\'checkbox-move-to-gallery\').style.display = \'none\';': '') }}window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo', '{{ __('app.plant_photo_orientation_hint') }}');"><i class="fas fa-upload fa-lg"></i></div>
 				@if ($plant->get('photo') !== PlantsModel::PLANT_PLACEHOLDER_FILE)
-				<div class="plant-photo-clear is-pointer" onclick="if (confirm('{{ __('app.confirm_remove_generic_item') }}')) { window.vue.removePlantPreviewPhoto({{ $plant->get('id') }}, '.plant-photo'); }"><i class="far fa-minus-square fa-lg"></i></div>
+				<div class="plant-photo-clear is-pointer" onclick="if (confirm('{{ __('app.confirm_remove_preview_photo') }}')) { window.vue.removePlantPreviewPhoto({{ $plant->get('id') }}, '.plant-photo'); }"><i class="far fa-minus-square fa-lg"></i></div>
 				@endif
 
 				@if (app('enable_media_share', false))

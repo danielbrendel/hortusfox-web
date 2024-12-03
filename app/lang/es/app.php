@@ -461,5 +461,7 @@ return [
 	'date_select_today' => 'Utilice la fecha de hoy',
 	'plant_sorting_view_cards' => 'Ver como tarjetas',
 	'plant_sorting_view_list' => 'Ver como lista',
-	'amount' => 'Cantidad'
+	'amount' => 'Cantidad',
+	'confirm_remove_preview_photo' => 'Do you really want to remove this photo?',
+	'move_current_photo_to_gallery' => 'Move current photo to gallery'
 ];

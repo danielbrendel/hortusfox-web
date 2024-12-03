@@ -461,5 +461,7 @@ return [
 	'date_select_today' => 'Użyj dzisiejszej daty',
 	'plant_sorting_view_cards' => 'Zobacz jako karty',
 	'plant_sorting_view_list' => 'Wyświetl jako listę',
-	'amount' => 'Ilość'
+	'amount' => 'Ilość',
+	'confirm_remove_preview_photo' => 'Do you really want to remove this photo?',
+	'move_current_photo_to_gallery' => 'Move current photo to gallery'
 ];
