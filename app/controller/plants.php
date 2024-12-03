@@ -307,7 +307,15 @@ class PlantsController extends BaseController {
 
 		$plant = $request->params()->query('plant', null);
 		$attribute = $request->params()->query('attribute', null);
+		$mtg = (bool)$request->params()->query('move_to_gallery', false);
 		
+		if ($mtg) {
+			$plant_item = PlantsModel::getDetails($plant);
+			if ($plant_item) {
+				PlantPhotoModel::addCustom($plant_item->get('id'), $plant_item->get('photo'), str_replace('_thumb', '', $plant_item->get('photo')), $plant_item->get('name'));
+			}
+		}
+
 		PlantsModel::editPlantPhoto($plant, $attribute, 'value');
 
 		return redirect('/plants/details/' . $plant);

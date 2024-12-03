@@ -338,6 +338,12 @@
 								<p class="help" id="inpEditPhotoHint"></p>
 							</div>
 
+							<div class="field" id="checkbox-move-to-gallery">
+								<div class="control">
+									<input type="checkbox" name="move_to_gallery" value="1">&nbsp;{{ __('app.move_current_photo_to_gallery') }}
+								</div>
+							</div>
+
 							<div class="field">
 								<div class="control">
 									<a class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('inpEditPhotoPlantIdURL').value = document.getElementById('inpEditPhotoPlantId').value; document.getElementById('inpEditPhotoAttributeURL').value = document.getElementById('inpEditPhotoAttribute').value; window.vue.bShowEPUrl = true; window.vue.bShowEditPhoto = false;">{{ __('app.photo_edit_specify_url') }}</a>

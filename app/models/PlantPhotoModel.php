@@ -218,6 +218,26 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $plant
+     * @param $thumb
+     * @param $original
+     * @param $label
+     */
+    public static function addCustom($plant, $thumb, $original, $label)
+    {
+        try {
+            $user = UserModel::getAuthUser();
+            if ((!$user) && (!$api)) {
+                throw new \Exception('Invalid user');
+            }
+
+            static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label) VALUES (?, ?, ?, ?, ?)', [$plant, (($user) ? $user->get('id') : 0), $thumb, $original, $label]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

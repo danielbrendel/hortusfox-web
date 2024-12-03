@@ -463,5 +463,6 @@ return [
 	'plant_sorting_view_list' => 'View as list',
 	'amount' => 'Amount',
 	'remove_generic_item' => 'Remove item',
-	'confirm_remove_generic_item' => 'Do you really want to remove this item?'
+	'confirm_remove_generic_item' => 'Do you really want to remove this item?',
+	'move_current_photo_to_gallery' => 'Move current photo to gallery'
 ];
