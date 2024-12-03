@@ -88,9 +88,9 @@ class ShareController extends BaseController {
 
             $result = ApiModule::removePhoto($ident);
             
-            if ($result->code != 200) {
+            /*if ($result->code != 200) {
                 throw new \Exception($result->msg);
-            }
+            }*/
 
             ShareLogModel::removeEntry($user->get('id'), $ident);
 
