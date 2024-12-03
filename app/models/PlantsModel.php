@@ -457,6 +457,10 @@ class PlantsModel extends \Asatru\Database\Model {
 
             $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$plantId])->first();
 
+            if ($item->get('photo') === self::PLANT_PLACEHOLDER_FILE) {
+                throw new \Exception('There is no preview photo set');
+            }
+
             static::raw('UPDATE `' . self::tableName() . '` SET photo = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [self::PLANT_PLACEHOLDER_FILE, $user->get('id'), $plantId]);
         
             unlink(public_path() . '/img/' . $item->get('photo'));
