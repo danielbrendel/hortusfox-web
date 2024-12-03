@@ -360,6 +360,19 @@ window.vue = new Vue({
             window.vue.bShowUploadPhoto = true;
         },
 
+        removePlantPreviewPhoto: function(plant, target) {
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/details/photo/remove', { plant: plant }, function(response){
+                if (response.code == 200) {
+                    let elem = document.querySelector(target);
+                    if (elem) {
+                        elem.style.backgroundImage = 'url(' + response.placeholder + ')';
+                    }
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         deletePhoto: function(photo, plant, target)
         {
             if (!confirm(window.vue.confirmPhotoRemoval)) {

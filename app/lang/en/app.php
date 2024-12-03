@@ -461,5 +461,7 @@ return [
 	'date_select_today' => 'Use today\'s date',
 	'plant_sorting_view_cards' => 'View as cards',
 	'plant_sorting_view_list' => 'View as list',
-	'amount' => 'Amount'
+	'amount' => 'Amount',
+	'remove_generic_item' => 'Remove item',
+	'confirm_remove_generic_item' => 'Do you really want to remove this item?'
 ];

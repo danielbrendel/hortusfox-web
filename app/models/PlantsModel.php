@@ -443,6 +443,36 @@ class PlantsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $plantId
+     * @return void
+     * @throws \Exception
+     */
+    public static function clearPreviewPhoto($plantId)
+    {
+        try {
+            $user = UserModel::getAuthUser();
+            if (!$user) {
+                throw new \Exception('Invalid user');
+            }
+
+            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$plantId])->first();
+
+            static::raw('UPDATE `' . self::tableName() . '` SET photo = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [self::PLANT_PLACEHOLDER_FILE, $user->get('id'), $plantId]);
+        
+            unlink(public_path() . '/img/' . $item->get('photo'));
+            unlink(public_path() . '/img/' . str_replace('_thumb', '', $item->get('photo')));
+
+            LogModel::addLog($user->get('id'), $plantId, 'photo', self::PLANT_PLACEHOLDER_FILE, url('/plants/details/' . $plantId));
+
+            if (app('system_message_plant_log')) {
+                PlantLogModel::addEntry($plantId, '[System] photo = ' . self::PLANT_PLACEHOLDER_FILE);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @return int
      * @throws \Exception
      */

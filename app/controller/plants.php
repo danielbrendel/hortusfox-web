@@ -342,6 +342,31 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/details/photo/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function edit_remove_preview_photo($request)
+	{
+		try {
+			$plant = $request->params()->query('plant', null);
+
+			PlantsModel::clearPreviewPhoto($plant);
+
+			return json([
+				'code' => 200,
+				'placeholder' => asset('img/' . PlantsModel::PLANT_PLACEHOLDER_FILE)
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/details/gallery/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

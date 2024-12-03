@@ -240,6 +240,7 @@
 			<div class="plant-photo-overlay">
 				<div class="plant-photo-view is-pointer" onclick="window.vue.showImagePreview('{{ str_replace('_thumb', '', abs_photo($plant->get('photo'))) }}');"><i class="fas fa-expand fa-lg"></i></div>
 				<div class="plant-photo-edit is-pointer" onclick="window.vue.showEditPhoto({{ $plant->get('id') }}, 'photo', '{{ __('app.plant_photo_orientation_hint') }}');"><i class="fas fa-upload fa-lg"></i></div>
+				<div class="plant-photo-clear is-pointer" onclick="if (confirm('{{ __('app.confirm_remove_generic_item') }}')) { window.vue.removePlantPreviewPhoto({{ $plant->get('id') }}, '.plant-photo'); }"><i class="far fa-minus-square fa-lg"></i></div>
 			
 				@if (app('enable_media_share', false))
 					<div class="plant-photo-share is-pointer" onclick="window.vue.showSharePhoto({{ $plant->get('id') }}, document.getElementById('plant-details-plant-name-{{ $plant->get('id') }}').innerText, 'preview');"><i class="fas fa-share fa-lg"></i></div>

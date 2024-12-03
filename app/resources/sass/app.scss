@@ -1126,6 +1126,12 @@ fieldset .field {
     left: 40px;
 }
 
+.plant-photo-clear {
+    position: absolute;
+    top: 10px;
+    left: 70px;
+}
+
 .plant-photo-share {
     position: absolute;
     top: 10px;
@@ -1140,7 +1146,7 @@ fieldset .field {
     border-radius: 4px;
 }
 
-.plant-photo-edit i, .plant-photo-view i, .plant-photo-share i {
+.plant-photo-edit i, .plant-photo-view i, .plant-photo-share i, .plant-photo-clear i {
     color: rgb(200, 200, 200);
 }
 
