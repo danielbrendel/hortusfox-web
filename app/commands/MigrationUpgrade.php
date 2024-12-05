@@ -11,6 +11,13 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo3dot9()
+    {
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo3dot8()
     {
     }
