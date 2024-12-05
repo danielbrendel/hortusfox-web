@@ -462,6 +462,6 @@ return [
 	'plant_sorting_view_cards' => 'Se som kort',
 	'plant_sorting_view_list' => 'Se som liste',
 	'amount' => 'Beløb',
-	'confirm_remove_preview_photo' => 'Do you really want to remove this photo?',
-	'move_current_photo_to_gallery' => 'Move current photo to gallery'
+	'confirm_remove_preview_photo' => 'Vil du virkelig fjerne dette billede?',
+	'move_current_photo_to_gallery' => 'Flyt det aktuelle billede til galleriet'
 ];
