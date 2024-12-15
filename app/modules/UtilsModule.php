@@ -537,7 +537,7 @@ class UtilsModule {
         }
 
         if (!file_exists(public_path() . '/img/' . $asset)) {
-            return asset('img/placeholder.jpg');
+            return asset('img/' . PlantsModel::PLANT_PLACEHOLDER_FILE);
         }
 
         return asset('img/' . $asset);
