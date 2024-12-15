@@ -357,7 +357,16 @@ class InventoryModel extends \Asatru\Database\Model {
     public static function exportItemsAsCsv($items)
     {
         try {
-            throw new \Exception('Not yet implemented.');
+            $data = "id,name,description,group,amount,location,photo,created,updated;" . PHP_EOL;
+
+            foreach ($items as $item) {
+                $data .= "\"" . $item[0] . "\",\"" . $item[1] . "\",\"" . $item[2] . "\",\"" . $item[3] . "\",\"" . $item[4] . "\",\"" . $item[5] . "\",\"" . $item[6] . "\",\"" . $item[7] . "\",\"" . $item[8] . "\"," . PHP_EOL;
+            }
+
+            $file_name = 'inventory_export_' . md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.csv';
+            file_put_contents(public_path() . '/exports/' . $file_name, $data);
+
+            return $file_name;
         } catch (\Exception $e) {
             throw $e;
         }
