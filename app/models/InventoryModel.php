@@ -8,6 +8,23 @@ use chillerlan\QRCode\{QRCode, QROptions};
  * Manages inventory data
  */ 
 class InventoryModel extends \Asatru\Database\Model {
+    public static $supported_exports = [
+        'json' => [
+            'label' => 'JSON',
+            'method' => 'exportItemsAsJson'
+        ],
+
+        'csv' => [
+            'label' => 'CSV',
+            'method' => 'exportItemsAsCsv'
+        ],
+
+        'pdf' => [
+            'label' => 'PDF',
+            'method' => 'exportItemsAsPdf'
+        ]
+    ];
+
     /**
      * @param $name
      * @param $description
@@ -397,12 +414,10 @@ class InventoryModel extends \Asatru\Database\Model {
         try {
             $file = '';
 
-            if ($format === 'json') {
-                $file = static::exportItemsAsJson($items);
-            } else if ($format === 'csv') {
-                $file = static::exportItemsAsCsv($items);
-            } else if ($format === 'pdf') {
-                $file = static::exportItemsAsPdf($items);
+            $exports = static::exports();
+
+            if (isset($exports[$format])) {
+                $file = static::{$exports[$format]['method']}($items);
             } else {
                 throw new \Exception('Unsupported format: ' . $format);
             }
@@ -411,6 +426,14 @@ class InventoryModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    /**
+     * @return array
+     */
+    public static function exports()
+    {
+        return static::$supported_exports;
     }
 
     /**

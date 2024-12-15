@@ -802,9 +802,9 @@
 						<div class="field">
 							<div class="control">
 								<select class="select input" id="inventory-export-format">
-									<option value="json">JSON</option>
-									<option value="csv">CSV</option>
-									<option value="pdf">PDF</option>
+									@foreach (InventoryModel::exports() as $export_key => $export_value)
+										<option value="{{ $export_key }}">{{ $export_value['label'] }}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
