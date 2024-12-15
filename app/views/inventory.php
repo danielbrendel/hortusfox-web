@@ -11,6 +11,8 @@
         <a class="button is-link" href="javascript:void(0);" onclick="window.vue.bShowManageGroups = true;">{{ __('app.manage_groups') }}</a>
         &nbsp;
         <a class="button" href="javascript:void(0);" onclick="window.vue.bShowInventoryBulkPrint = true;">{{ __('app.bulk_print_qr_codes') }}</a>
+        &nbsp;
+        <a class="button is-warning" href="javascript:void(0);" onclick="window.vue.bShowInventoryExport = true;">{{ __('app.export') }}</a>
     </div>
 
     <div class="sorting-control is-rounded is-small is-inline-block is-next-to-elem">

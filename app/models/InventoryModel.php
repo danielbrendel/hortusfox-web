@@ -307,6 +307,88 @@ class InventoryModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $items
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItemsAsJson($items)
+    {
+        try {
+            $pretty_items = [];
+
+            foreach ($items as $item) {
+                $pretty_items[$item[3]][] = [
+                    'id' => $item[0],
+                    'name' => $item[1],
+                    'description' => $item[2],
+                    'group' => $item[3],
+                    'amount' => $item[4],
+                    'location' => $item[5],
+                    'photo' => $item[6],
+                    'created' => $item[7],
+                    'updated' => $item[8]
+                ];
+            }
+
+            $data = [
+                'meta' => [
+                    'workspace' => app('workspace'),
+                    'url' => url('/inventory'),
+                    'exported' => date('Y-m-d H:i:s')
+                ],
+
+                'items' => $pretty_items
+            ];
+
+            $file_name = 'inventory_export_' . md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.json';
+            file_put_contents(public_path() . '/exports/' . $file_name, json_encode($data));
+
+            return $file_name;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $items
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItemsAsCsv($items)
+    {
+        try {
+            throw new \Exception('Not yet implemented.');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $items
+     * @param $format
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItems($items, $format)
+    {
+        try {
+            $file = '';
+
+            if ($format === 'json') {
+                $file = static::exportItemsAsJson($items);
+            } else if ($format === 'csv') {
+                $file = static::exportItemsAsCsv($items);
+            } else {
+                throw new \Exception('Unsupported format: ' . $format);
+            }
+
+            return $file;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Return the associated table name of the migration
      * 
      * @return string

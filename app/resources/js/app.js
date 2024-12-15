@@ -39,6 +39,7 @@ window.vue = new Vue({
         bShowEditInventoryItem: false,
         bShowInvItemQRCode: false,
         bShowInventoryBulkPrint: false,
+        bShowInventoryExport: false,
         bShowManageGroups: false,
         bShowRestorePassword: false,
         bShowCreateNewUser: false,
@@ -1490,6 +1491,35 @@ window.vue = new Vue({
 
                             wnd.print();
                             wnd.close();
+                        } else {
+                            alert(response.msg);
+                        }
+                    });
+                } else {
+                   alert(window.vue.noListItemsSelected); 
+                }
+            }
+        },
+
+        bulkExportInventory: function(target, format, title) {
+            let invIds = [];
+
+            let elems = document.getElementsByClassName(target);
+            if (elems) {
+                Array.prototype.forEach.call(elems, function(elem) {
+                    if (elem.checked) {
+                        invIds.push([elem.dataset.invitemid, elem.dataset.invitemname, document.getElementById(elem.dataset.invdescription).innerText, elem.dataset.invgroup, elem.dataset.invamount, elem.dataset.invlocation, elem.dataset.invphoto, elem.dataset.invcreated, elem.dataset.invupdated]);
+                    }
+                });
+
+                if (invIds.length > 0) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/inventory/export', { list: JSON.stringify(invIds), format: document.getElementById(format).value }, function(response) {
+                        if (response.code == 200) {
+                            const dlanchor = document.createElement('a');
+                            dlanchor.href = response.resource;
+                            dlanchor.target = '_blank';
+                            dlanchor.setAttribute('download', response.resource);
+                            dlanchor.click();
                         } else {
                             alert(response.msg);
                         }

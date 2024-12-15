@@ -252,6 +252,34 @@ class InventoryController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /inventory/export
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function export_items($request)
+	{
+		try {
+			$result = [];
+
+			$list = json_decode($request->params()->query('list', null));
+			$format = $request->params()->query('format', null);
+			
+			$storage_file = InventoryModel::exportItems($list, $format);
+
+			return json([
+				'code' => 200,
+				'resource' => asset('exports/' . $storage_file)
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /inventory/group/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
