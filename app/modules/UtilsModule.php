@@ -536,6 +536,10 @@ class UtilsModule {
             return $asset;
         }
 
+        if (!file_exists(public_path() . '/img/' . $asset)) {
+            return asset('img/placeholder.jpg');
+        }
+
         return asset('img/' . $asset);
     }
 
