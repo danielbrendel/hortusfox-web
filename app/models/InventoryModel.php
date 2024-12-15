@@ -374,6 +374,20 @@ class InventoryModel extends \Asatru\Database\Model {
 
     /**
      * @param $items
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItemsAsPdf($items)
+    {
+        try {
+            throw new \Exception('Not yet implemented');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $items
      * @param $format
      * @return string
      * @throws \Exception
@@ -387,6 +401,8 @@ class InventoryModel extends \Asatru\Database\Model {
                 $file = static::exportItemsAsJson($items);
             } else if ($format === 'csv') {
                 $file = static::exportItemsAsCsv($items);
+            } else if ($format === 'pdf') {
+                $file = static::exportItemsAsPdf($items);
             } else {
                 throw new \Exception('Unsupported format: ' . $format);
             }

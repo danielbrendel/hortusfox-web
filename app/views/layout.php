@@ -804,6 +804,7 @@
 								<select class="select input" id="inventory-export-format">
 									<option value="json">JSON</option>
 									<option value="csv">CSV</option>
+									<option value="pdf">PDF</option>
 								</select>
 							</div>
 						</div>
