@@ -8,6 +8,23 @@ use chillerlan\QRCode\{QRCode, QROptions};
  * Manages inventory data
  */ 
 class InventoryModel extends \Asatru\Database\Model {
+    public static $supported_exports = [
+        'json' => [
+            'label' => 'JSON',
+            'method' => 'exportItemsAsJson'
+        ],
+
+        'csv' => [
+            'label' => 'CSV',
+            'method' => 'exportItemsAsCsv'
+        ],
+
+        'pdf' => [
+            'label' => 'PDF',
+            'method' => 'exportItemsAsPdf'
+        ]
+    ];
+
     /**
      * @param $name
      * @param $description
@@ -304,6 +321,119 @@ class InventoryModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    /**
+     * @param $items
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItemsAsJson($items)
+    {
+        try {
+            $pretty_items = [];
+
+            foreach ($items as $item) {
+                $pretty_items[$item[3]][] = [
+                    'id' => $item[0],
+                    'name' => $item[1],
+                    'description' => $item[2],
+                    'group' => $item[3],
+                    'amount' => $item[4],
+                    'location' => $item[5],
+                    'photo' => $item[6],
+                    'created' => $item[7],
+                    'updated' => $item[8]
+                ];
+            }
+
+            $data = [
+                'meta' => [
+                    'workspace' => app('workspace'),
+                    'url' => url('/inventory'),
+                    'exported' => date('Y-m-d H:i:s')
+                ],
+
+                'items' => $pretty_items
+            ];
+
+            $file_name = 'inventory_export_' . md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.json';
+            file_put_contents(public_path() . '/exports/' . $file_name, json_encode($data));
+
+            return $file_name;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $items
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItemsAsCsv($items)
+    {
+        try {
+            $data = "id,name,description,group,amount,location,photo,created,updated;" . PHP_EOL;
+
+            foreach ($items as $item) {
+                $data .= "\"" . $item[0] . "\",\"" . $item[1] . "\",\"" . $item[2] . "\",\"" . $item[3] . "\",\"" . $item[4] . "\",\"" . $item[5] . "\",\"" . $item[6] . "\",\"" . $item[7] . "\",\"" . $item[8] . "\"," . PHP_EOL;
+            }
+
+            $file_name = 'inventory_export_' . md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.csv';
+            file_put_contents(public_path() . '/exports/' . $file_name, $data);
+
+            return $file_name;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $items
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItemsAsPdf($items)
+    {
+        try {
+            throw new \Exception('Not yet implemented');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $items
+     * @param $format
+     * @return string
+     * @throws \Exception
+     */
+    public static function exportItems($items, $format)
+    {
+        try {
+            $file = '';
+
+            $exports = static::exports();
+
+            if (isset($exports[$format])) {
+                $file = static::{$exports[$format]['method']}($items);
+            } else {
+                throw new \Exception('Unsupported format: ' . $format);
+            }
+
+            return $file;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public static function exports()
+    {
+        return static::$supported_exports;
     }
 
     /**

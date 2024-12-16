@@ -785,6 +785,47 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowInventoryExport}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.export') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowInventoryExport = false;"></button>
+					</header>
+					<section class="modal-card-body modal-anchors is-stretched">
+						<div class="field">
+							<div class="control">
+								<a href="javascript:void(0);" onclick="window.vue.bulkChecked('inventory-export-items', true);">{{ __('app.select_all') }}</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="window.vue.bulkChecked('inventory-export-items', false);">{{ __('app.unselect_all') }}</a>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control">
+								<select class="select input" id="inventory-export-format">
+									@foreach (InventoryModel::exports() as $export_key => $export_value)
+										<option value="{{ $export_key }}">{{ $export_value['label'] }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+
+						@if ((isset($inventory)) && (is_countable($inventory)) && (count($inventory) > 0))
+							@foreach ($inventory as $inventory_item)
+								<div class="field">
+									<div class="control">
+										<input type="checkbox" class="inventory-export-items" data-invitemid="{{ $inventory_item->get('id') }}" data-invitemname="{{ $inventory_item->get('name') }}" data-invdescription="inventory-item-description-{{ $inventory_item->get('id') }}" data-invgroup="{{ InvGroupModel::getLabel($inventory_item->get('group_ident')) }}" data-invamount="{{ $inventory_item->get('amount') }}" data-invlocation="{{ $inventory_item->get('location') ?? '' }}" data-invphoto="{{ $inventory_item->get('photo') ?? '' }}" data-invcreated="{{ $inventory_item->get('created_at') }}" data-invupdated="{{ $inventory_item->get('last_edited_date') ?? '' }}" value="1"/>&nbsp;{{ '[' . InvGroupModel::getLabel($inventory_item->get('group_ident')) . '] ' . $inventory_item->get('name') }}
+									</div>
+								</div>
+							@endforeach
+						@endif
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="window.vue.bulkExportInventory('inventory-export-items', 'inventory-export-format', '{{ __('app.inventory') }}');">{{ __('app.export') }}</button>
+						<button class="button" onclick="window.vue.bShowInventoryExport = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			<div class="modal" :class="{'is-active': bShowManageGroups}">
 				<div class="modal-background"></div>
 				<div class="modal-card">
