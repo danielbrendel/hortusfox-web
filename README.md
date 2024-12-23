@@ -305,7 +305,7 @@ INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 ```
 
 The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
-You can use all free FontAwesome icons (v5.15.4 free icons). For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?m=free">FontAwesome search page</a>. Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges.
+You can use all free FontAwesome icons (v6.x free icons). For a complete list of available icons, visit the <a href="https://fontawesome.com/v6/search?o=r&m=free">FontAwesome search page</a>. Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges.
 
 ## Cronjobs
 
@@ -377,6 +377,10 @@ Testing data should be specified as environment variables in the `php` section v
 ## External Services
 
 Some features rely on external services. These features however need to be activated and are not enabled by default.
+
+### App icons
+
+The project uses <a href="https://fontawesome.com/">FontAwesome</a> free tier to display icons on various occassions. Please see the free license <a href="https://fontawesome.com/license/free">here</a>.
 
 ### Weather forecast
 
