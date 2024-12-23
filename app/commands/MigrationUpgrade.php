@@ -160,17 +160,17 @@ class MigrationUpgrade implements Asatru\Commands\Command {
                 $version = $args->get(0)->getValue();
             }
 
-            echo "Upgrading to \033[93m{$version}\033[39m...\n";
+            echo "Upgrading to \033[94m{$version}\033[39m...\n";
 
             $method = 'upgradeTo' . str_replace('.', 'dot', $version);
 
-            if (!method_exists($this, $method)) {
-                throw new \Exception('Upgrade method not found for the specified version.');
+            if (method_exists($this, $method)) {
+                $this->$method();
+
+                echo "\033[32mDone!\033[39m\n";
+            } else {
+                echo "\033[93mNothing to migrate or upgrade.\033[39m\n";
             }
-
-            $this->$method();
-
-            echo "\033[32mDone!\033[39m\n";
         } catch (\Exception $e) {
             echo "\033[31mOperation failed: {$e->getMessage()}\033[39m\n";
         }
