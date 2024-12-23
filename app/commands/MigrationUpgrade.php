@@ -13,6 +13,7 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo4dot0()
     {
+        PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS last_photo_date DATETIME NULL');
     }
 
     /**
