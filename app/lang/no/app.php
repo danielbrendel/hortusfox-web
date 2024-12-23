@@ -3,9 +3,9 @@
 /*
 	Asatru PHP - Norwegian language file
 
-	Utvid dette med dine setninger
+	Extend this with your phrases
 	
-	Bruk variabler med {variable-name}
+	Set variables with {variable-name}
 */
 
 return [

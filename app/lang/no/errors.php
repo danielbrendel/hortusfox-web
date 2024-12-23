@@ -1,11 +1,11 @@
 <?php
 
 /*
-    Asatru PHP - Norsk språkfil for feil
+    Asatru PHP - Norwegian language file for errors
     
-    Endre og legg til feilmeldinger her
+    Modify and add error related messages here
 	
-	Bruk variabler med {variable-name}
+	Set variables with {variable-name}
 */
 
 return [
