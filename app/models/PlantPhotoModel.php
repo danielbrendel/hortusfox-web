@@ -222,8 +222,9 @@ class PlantPhotoModel extends \Asatru\Database\Model {
      * @param $thumb
      * @param $original
      * @param $label
+     * @param $date
      */
-    public static function addCustom($plant, $thumb, $original, $label)
+    public static function addCustom($plant, $thumb, $original, $label, $date = null)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -231,7 +232,11 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label) VALUES (?, ?, ?, ?, ?)', [$plant, (($user) ? $user->get('id') : 0), $thumb, $original, $label]);
+            if ($date === null) {
+                $date = convert_date('Y-m-d H:i:s');
+            }
+
+            static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label, created_at) VALUES (?, ?, ?, ?, ?, ?)', [$plant, (($user) ? $user->get('id') : 0), $thumb, $original, $label, $date]);
         } catch (\Exception $e) {
             throw $e;
         }
