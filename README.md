@@ -391,6 +391,10 @@ In order to use this feature you need to create an account and get your own API 
 
 The project uses the [Pl@ntNet API](https://my.plantnet.org/) to identify plants. In order to use this feature you need to create an account and get your own API key.
 
+### Plant information
+
+The project uses the [Global Biodiversity Information Facility](https://techdocs.gbif.org/en/) in order to query plant data on various occasions. As of now you do not need to obtain an extra API key in order for this to work.
+
 ## Contributing
 
 Please view the [contribution guidelines](CONTRIBUTING.md) if you intend to contribute to this repository.

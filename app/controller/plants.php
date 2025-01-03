@@ -1058,4 +1058,35 @@ class PlantsController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/gbif
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function gbif_query($request)
+	{
+		try {
+			$section = $request->arg('section', 0);
+			$ident = $request->arg('identifier', 0);
+			$info = $request->arg('information', '');
+
+			if (!GbifModule::hasSection($section)) {
+				throw new \Exception('Unsupported API section: ' . $section);
+			}
+
+			$data = GbifModule::$section($ident, $info);
+
+			return json([
+				'code' => 200,
+				'data' => $data
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

@@ -62,6 +62,7 @@ return [
     array('/plants/location/log/edit', 'POST', 'plants@edit_location_log_entry'),
     array('/plants/location/log/remove', 'POST', 'plants@remove_location_log_entry'),
     array('/plants/location/log/fetch', 'ANY', 'plants@fetch_location_log_entries'),
+    array('/plants/gbif/{section}/{identifier}/{information}', 'ANY', 'plants@gbif_query'),
 
     /** User controller Controller */
     array('/profile', 'GET', 'user@view_profile'),
