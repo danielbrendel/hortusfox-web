@@ -5,7 +5,7 @@
 
 <p align="center">
     A self-hosted collaborative plant management system<br/>
-    (C) 2023 - 2024 by Daniel Brendel
+    (C) 2023 - 2025 by Daniel Brendel
 </p>
 
 <p align="center">
