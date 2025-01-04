@@ -2002,6 +2002,14 @@ fieldset .field {
     white-space: normal;
 }
 
+.inventory-item-description a {
+    color: rgb(111, 185, 235);
+}
+
+.inventory-item-description a:hover {
+    text-decoration: underline;
+}
+
 .inventory-item-photo {
     position: relative;
     text-align: center;

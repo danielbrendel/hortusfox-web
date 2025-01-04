@@ -55,7 +55,7 @@
                     <div class="inventory-item-description" id="inventory-item-description-{{ $inventory->get($i)->get('id') }}">
                         <pre>
                             @if ((is_string($inventory->get($i)->get('description'))) && (strlen($inventory->get($i)->get('description')) > 0))
-                                {{ $inventory->get($i)->get('description') }}
+                                {!! UtilsModule::translateURLs($inventory->get($i)->get('description')) !!}
                             @else
                                 {{ 'N/A' }}
                             @endif

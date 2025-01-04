@@ -415,7 +415,7 @@ class UtilsModule {
     public static function translateURLs($text)
     {
         try {
-            return preg_replace('"\b(https?://\S+)"', '<a href="$1">$1</a>', $text);
+            return preg_replace('/\bhttps?:\/\/[^\s]+/i', '<a href="$0">$0</a>', $text);
         } catch (\Exception $e) {
             throw $e;
         }
