@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    <div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{{ ($task->get('description')) ?? 'N/A' }}</pre></div>
+                    <div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{!! ($task->get('description')) ? UtilsModule::translateURLs($task->get('description')) : 'N/A' !!}</pre></div>
                     
                     <div class="task-footer">
                         <div class="task-footer-date">{{ (new Carbon($task->get('created_at')))->diffForHumans() }}</div>

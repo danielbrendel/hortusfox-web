@@ -1847,6 +1847,14 @@ fieldset .field {
     word-wrap: break-word;
 }
 
+.task-description a {
+    color: rgb(111, 185, 235);
+}
+
+.task-description a:hover {
+    text-decoration: underline;
+}
+
 .task-footer {
     position: absolute;
     bottom: 0;
