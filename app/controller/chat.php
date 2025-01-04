@@ -89,7 +89,7 @@ class ChatController extends BaseController {
 					'id' => $message->get('id'),
 					'userId' => $message->get('userId'),
 					'userName' => UserModel::getNameById($message->get('userId')),
-					'message' => $message->get('message'),
+					'message' => UtilsModule::translateURLs($message->get('message')),
 					'system' => $message->get('sysmsg'),
 					'chatcolor' => UserModel::getChatColorForUser($message->get('userId')),
 					'created_at' => date('Y-m-h H:i', strtotime($message->get('created_at'))),

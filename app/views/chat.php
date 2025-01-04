@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="chat-message-content">
-                                <pre>{{ $message->get('message') }}</pre>
+                                <pre>{!! UtilsModule::translateURLs($message->get('message')) !!}</pre>
                             </div>
 
                             <div class="chat-message-info">

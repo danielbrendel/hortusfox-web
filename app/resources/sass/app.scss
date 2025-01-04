@@ -2233,6 +2233,14 @@ fieldset .field {
     color: rgb(255, 255, 255);
 }
 
+.chat-message-content a {
+    color: rgb(111, 185, 235);
+}
+
+.chat-message-content a:hover {
+    text-decoration: underline;
+}
+
 .chat-message-info {
     position: relative;
     margin-top: 10px;
