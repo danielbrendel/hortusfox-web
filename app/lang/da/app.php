@@ -465,5 +465,6 @@ return [
 	'confirm_remove_preview_photo' => 'Vil du virkelig fjerne dette billede?',
 	'move_current_photo_to_gallery' => 'Flyt det aktuelle billede til galleriet',
 	'created_at' => 'Oprettet',
-	'updated_at' => 'Redigeret'
+	'updated_at' => 'Redigeret',
+	'tags' => 'Tags'
 ];

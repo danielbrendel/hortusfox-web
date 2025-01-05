@@ -2018,6 +2018,37 @@ fieldset .field {
     text-decoration: underline;
 }
 
+.inventory-item-tags {
+    position: relative;
+    margin-top: 5px;
+}
+
+.inventory-item-tags-tag {
+    position: relative;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    background-color: rgb(100, 100, 100);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    font-size: 0.75em;
+    color: rgb(250, 250, 250);
+}
+
+.inventory-item-tags-tag:hover {
+    background-color: rgb(150, 150, 150);
+    color: rgb(255, 255, 255);
+}
+
+.inventory-item-tags-tag a {
+    color: rgb(250, 250, 250);
+}
+
+.inventory-item-tags-tag a:hover {
+    color: rgb(250, 250, 250);
+}
+
 .inventory-item-photo {
     position: relative;
     text-align: center;

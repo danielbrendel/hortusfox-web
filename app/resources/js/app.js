@@ -646,13 +646,14 @@ window.vue = new Vue({
             });
         },
 
-        editInventoryItem: function(id, name, group, location, description, amount)
+        editInventoryItem: function(id, name, group, location, description, tags, amount)
         {
             document.getElementById('inpInventoryItemId').value = id;
             document.getElementById('inpInventoryItemName').value = document.getElementById(name).children[1].innerText;
             document.getElementById('inpInventoryItemGroup').value = group;
             document.getElementById('inpInventoryItemLocation').value = document.getElementById(location).children[0].innerText;
             document.getElementById('inpInventoryItemDescription').value = document.getElementById(description).innerText;
+            document.getElementById('inpInventoryItemTags').value = document.getElementById(tags).innerText;
             document.getElementById('inpInventoryItemAmount').value = amount;
 
             window.vue.bShowEditInventoryItem = true;
@@ -1001,9 +1002,11 @@ window.vue = new Vue({
             let elems = document.getElementsByClassName('inventory-item');
             for (let i = 0; i < elems.length; i++) {
                 let elemName = elems[i].children[1].children[0];
-                let elemDescription = elems[i].children[2].children[0];
-
-                if ((elemName.innerText.toLowerCase().includes(token.toLowerCase())) || (elemDescription.innerText.toLowerCase().includes(token.toLowerCase()))) {
+                let elemDescription = elems[i].children[2].children[1];
+                let elemTags = elems[i].children[2].children[0].children[0];
+                let elemLocation = elems[i].children[2].children[3].children[0];
+                
+                if ((elemName.innerText.toLowerCase().includes(token.toLowerCase())) || (elemDescription.innerText.toLowerCase().includes(token.toLowerCase())) || (elemTags.innerText.toLowerCase().includes(token.toLowerCase())) || (elemLocation.innerText.toLowerCase().includes(token.toLowerCase()))) {
                     elems[i].classList.remove('is-hidden'); 
                 } else {
                     elems[i].classList.add('is-hidden'); 

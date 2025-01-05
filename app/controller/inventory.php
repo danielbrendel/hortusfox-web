@@ -71,9 +71,10 @@ class InventoryController extends BaseController {
 		$group = $request->params()->query('group', null);
 		$location = $request->params()->query('location', null);
 		$description = $request->params()->query('description', null);
+		$tags = $request->params()->query('tags', null);
 		$photo = $request->params()->query('photo', null);
 
-		$id = InventoryModel::addItem($name, $description, $location, $group, $photo);
+		$id = InventoryModel::addItem($name, $description, $tags, $location, $group, $photo);
 
 		return redirect('/inventory?expand=' . $id . '#anchor-item-' . $id);
 	}
@@ -109,9 +110,10 @@ class InventoryController extends BaseController {
 		$location = $request->params()->query('location', null);
 		$amount = $request->params()->query('amount', null);
 		$description = $request->params()->query('description', null);
+		$tags = $request->params()->query('tags', null);
 		$photo = $request->params()->query('photo', null);
 
-		InventoryModel::editItem($id, $name, $description, $location, $amount, $group, $photo);
+		InventoryModel::editItem($id, $name, $description, $tags, $location, $amount, $group, $photo);
 
 		return redirect('/inventory?expand=' . $id . '#anchor-item-' . $id);
 	}

@@ -28,6 +28,7 @@ class InventoryModel extends \Asatru\Database\Model {
     /**
      * @param $name
      * @param $description
+     * @param $tags
      * @param $location
      * @param $group
      * @param $photo
@@ -35,7 +36,7 @@ class InventoryModel extends \Asatru\Database\Model {
      * @return int
      * @throws \Exception
      */
-    public static function addItem($name, $description, $location, $group, $photo, $api = false)
+    public static function addItem($name, $description, $tags, $location, $group, $photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -47,8 +48,8 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid group token: ' . $group);
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, location, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                $name, $group, $description, $location, (($user) ? $user->get('id') : 0)
+            static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, tags, location, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+                $name, $group, $description, trim($tags), $location, (($user) ? $user->get('id') : 0)
             ]);
 
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
@@ -94,6 +95,7 @@ class InventoryModel extends \Asatru\Database\Model {
      * @param $id
      * @param $name
      * @param $description
+     * @param $tags
      * @param $location
      * @param $amount
      * @param $group
@@ -102,7 +104,7 @@ class InventoryModel extends \Asatru\Database\Model {
      * @return void
      * @throws \Exception
      */
-    public static function editItem($id, $name, $description, $location, $amount, $group, $photo, $api = false)
+    public static function editItem($id, $name, $description, $tags, $location, $amount, $group, $photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -115,8 +117,8 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid item: ' . $id);
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, group_ident = ?, location = ?, description = ?, amount = ? WHERE id = ?', [
-                $name, $group, $location, $description, $amount, $row->get('id')
+            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, group_ident = ?, location = ?, description = ?, tags = ?, amount = ? WHERE id = ?', [
+                $name, $group, $location, $description, $tags, $amount, $row->get('id')
             ]);
 
             if ((isset($_FILES['photo'])) && ($_FILES['photo']['error'] === UPLOAD_ERR_OK)) {

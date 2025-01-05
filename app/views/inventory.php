@@ -16,7 +16,7 @@
     </div>
 
     <div class="sorting-control is-rounded is-small is-inline-block is-next-to-elem">
-        <input type="text" id="inventory-filter" placeholder="{{ __('app.filter_by_text') }}">
+        <input type="text" id="inventory-filter" placeholder="{{ __('app.filter_by_text') }}" value="{{ ($_GET['filter']) ?? '' }}">
     </div>
 </div>
 
@@ -46,12 +46,24 @@
 
                     <div class="inventory-item-actions">
                         <a href="javascript:void(0);" onclick="document.getElementById('title-inventory-qr-code').value = '#{{ $inventory->get($i)->get('id') }} ' + document.getElementById('inventory-item-name-{{ $inventory->get($i)->get('id') }}').innerText; window.vue.queryInvQrCode({{ $inventory->get($i)->get('id') }});"><i class="fas fa-qrcode"></i></a>&nbsp;
-                        <a href="javascript:void(0);" onclick="window.vue.editInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-name-{{ $inventory->get($i)->get('id') }}', '{{ $inventory->get($i)->get('group_ident') }}', 'inventory-item-location-{{ $inventory->get($i)->get('id') }}', 'inventory-item-description-{{ $inventory->get($i)->get('id') }}', {{ $inventory->get($i)->get('amount') }});"><i class="fas fa-edit"></i></a>
+                        <a href="javascript:void(0);" onclick="window.vue.editInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-name-{{ $inventory->get($i)->get('id') }}', '{{ $inventory->get($i)->get('group_ident') }}', 'inventory-item-location-{{ $inventory->get($i)->get('id') }}', 'inventory-item-description-{{ $inventory->get($i)->get('id') }}', 'inventory-item-tags-{{ $inventory->get($i)->get('id') }}', {{ $inventory->get($i)->get('amount') }});"><i class="fas fa-edit"></i></a>
                         <a href="javascript:void(0);" onclick="window.vue.deleteInventoryItem({{ $inventory->get($i)->get('id') }}, 'inventory-item-{{ $inventory->get($i)->get('id') }}');"><i class="fas fa-times"></i></a>
                     </div>
                 </div>
 
                 <div class="inventory-item-body" id="inventory-item-body-{{ $inventory->get($i)->get('id') }}">
+                    <div class="inventory-item-tags">
+                        <div class="is-hidden" id="inventory-item-tags-{{ $inventory->get($i)->get('id') }}">{{ $inventory->get($i)->get('tags') ?? '' }}</div>
+
+                        @foreach (UtilsModule::splitTags($inventory->get($i)->get('tags')) as $tag)
+                            @if (strlen($tag) > 0)
+                                <div class="inventory-item-tags-tag">
+                                    <a href="{{ url('/inventory?filter=' . $tag) }}">{{ $tag }}</a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+
                     <div class="inventory-item-description" id="inventory-item-description-{{ $inventory->get($i)->get('id') }}">
                         <pre>
                             @if ((is_string($inventory->get($i)->get('description'))) && (strlen($inventory->get($i)->get('description')) > 0))

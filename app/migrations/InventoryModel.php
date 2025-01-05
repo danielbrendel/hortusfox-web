@@ -31,6 +31,7 @@ class InventoryModel_Migration {
         $this->database->add('name VARCHAR(512) NOT NULL');
         $this->database->add('group_ident VARCHAR(512) NOT NULL');
         $this->database->add('description TEXT NULL');
+        $this->database->add('tags VARCHAR(512) NULL');
         $this->database->add('location VARCHAR(512) NULL');
         $this->database->add('photo VARCHAR(512) NULL');
         $this->database->add('amount INT NOT NULL DEFAULT 0');

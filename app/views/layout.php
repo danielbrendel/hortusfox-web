@@ -608,6 +608,13 @@
 								</div>
 							</div>
 
+							<div class="field">
+								<label class="label">{{ __('app.tags') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="tags">
+								</div>
+							</div>
+
 							<input type="submit" class="is-hidden" id="submit-add-inventory"/>
 						</form>
 					</section>
@@ -694,6 +701,13 @@
 								<label class="label">{{ __('app.description') }}</label>
 								<div class="control">
 									<textarea class="textarea" name="description" id="inpInventoryItemDescription"></textarea>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.tags') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="tags" id="inpInventoryItemTags">
 								</div>
 							</div>
 
@@ -1960,6 +1974,14 @@
 					inventoryFilterSearchInput.addEventListener('input', function() {
 						window.vue.filterInventory(this.value);
 					});
+
+					@if (isset($_GET['filter']))
+					inventoryFilterSearchInput.value = '{{ $_GET['filter'] }}';
+
+					if (inventoryFilterSearchInput.value.length > 0) {
+						window.vue.filterInventory('{{ $_GET['filter'] }}');
+					}
+					@endif
 				}
 
 				@if (app('chat_system'))

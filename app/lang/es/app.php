@@ -465,5 +465,6 @@ return [
 	'confirm_remove_preview_photo' => '¿Realmente quieres eliminar esta foto?',
 	'move_current_photo_to_gallery' => 'Mover la foto actual a la galería',
 	'created_at' => 'Creado',
-	'updated_at' => 'Editado'
+	'updated_at' => 'Editado',
+	'tags' => 'Tags'
 ];

@@ -619,4 +619,17 @@ class UtilsModule {
 
         return (bool)$date->format('I');
     }
+
+    /**
+     * @param $expression
+     * @return array
+     */
+    public static function splitTags($expression)
+    {
+        if (!is_string($expression)) {
+            return [];
+        }
+
+        return preg_split('/\s+/', trim($expression));
+    }
 }
