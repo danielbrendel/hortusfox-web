@@ -615,6 +615,13 @@
 								</div>
 							</div>
 
+							<div class="field">
+								<label class="label">{{ __('app.amount') }}</label>
+								<div class="control">
+									<input type="number" class="input" name="amount" value="0">
+								</div>
+							</div>
+
 							<input type="submit" class="is-hidden" id="submit-add-inventory"/>
 						</form>
 					</section>

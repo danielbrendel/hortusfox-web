@@ -30,13 +30,14 @@ class InventoryModel extends \Asatru\Database\Model {
      * @param $description
      * @param $tags
      * @param $location
+     * @param $amount
      * @param $group
      * @param $photo
      * @param $api
      * @return int
      * @throws \Exception
      */
-    public static function addItem($name, $description, $tags, $location, $group, $photo, $api = false)
+    public static function addItem($name, $description, $tags, $location, $amount, $group, $photo, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -48,8 +49,8 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid group token: ' . $group);
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, tags, location, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                $name, $group, $description, trim($tags), $location, (($user) ? $user->get('id') : 0)
+            static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, tags, location, amount, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+                $name, $group, $description, trim($tags), $location, $amount, (($user) ? $user->get('id') : 0)
             ]);
 
             $row = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();

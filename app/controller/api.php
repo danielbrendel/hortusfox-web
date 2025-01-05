@@ -604,10 +604,11 @@ class ApiController extends BaseController {
             $description = $request->params()->query('description', null);
             $tags = $request->params()->query('tags', null);
             $location = $request->params()->query('location', null);
+            $amount = $request->params()->query('amount', null);
             $group = $request->params()->query('group', null);
             $photo = $request->params()->query('photo', null);
 			
-			$itemid = InventoryModel::addItem($name, $description, $tags, $location, $group, $photo, true);
+			$itemid = InventoryModel::addItem($name, $description, $tags, $location, $amount, $group, $photo, true);
 
             return json([
                 'code' => 200,
