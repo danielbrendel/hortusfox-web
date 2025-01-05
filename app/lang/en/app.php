@@ -463,5 +463,7 @@ return [
 	'plant_sorting_view_list' => 'View as list',
 	'amount' => 'Amount',
 	'confirm_remove_preview_photo' => 'Do you really want to remove this photo?',
-	'move_current_photo_to_gallery' => 'Move current photo to gallery'
+	'move_current_photo_to_gallery' => 'Move current photo to gallery',
+	'created_at' => 'Created at',
+	'updated_at' => 'Updated at'
 ];

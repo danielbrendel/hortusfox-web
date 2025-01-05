@@ -463,5 +463,7 @@ return [
 	'plant_sorting_view_list' => 'Afficher sous forme de liste',
 	'amount' => 'Quantité',
 	'confirm_remove_preview_photo' => 'Voulez-vous vraiment supprimer cette photo?',
-	'move_current_photo_to_gallery' => 'Déplacer la photo actuelle vers la galerie'
+	'move_current_photo_to_gallery' => 'Déplacer la photo actuelle vers la galerie',
+	'created_at' => 'Créé',
+	'updated_at' => 'Édité'
 ];

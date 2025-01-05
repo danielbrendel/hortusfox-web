@@ -463,5 +463,7 @@ return [
 	'plant_sorting_view_list' => 'Vis som liste',
 	'amount' => 'Mengde',
 	'confirm_remove_preview_photo' => 'Er du sikker på at du vil fjerne dette bildet?',
-	'move_current_photo_to_gallery' => 'Flytt gjeldende bilde til galleriet'
+	'move_current_photo_to_gallery' => 'Flytt gjeldende bilde til galleriet',
+	'created_at' => 'Opprettet',
+	'updated_at' => 'Redigert'
 ];

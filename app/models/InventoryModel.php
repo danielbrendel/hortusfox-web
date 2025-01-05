@@ -418,14 +418,14 @@ class InventoryModel extends \Asatru\Database\Model {
                     <thead>
                         <tr style="background-color: rgb(150, 150, 150); font-weight: bold; text-align: left;">
                             <td>ID</td>
-                            <td>Name</td>
-                            <td>Description</td>
-                            <td>Group</td>
-                            <td>Amount</td>
-                            <td>Location</td>
-                            <td>Photo</td>
-                            <td>Created</td>
-                            <td>Updated</td>
+                            <td>' . __('app.name') . '</td>
+                            <td>' . __('app.description') . '</td>
+                            <td>' . __('app.group') . '</td>
+                            <td>' . __('app.amount') . '</td>
+                            <td>' . __('app.location') . '</td>
+                            <td>' . __('app.photo') . '</td>
+                            <td>' . __('app.created_at') . '</td>
+                            <td>' . __('app.updated_at') . '</td>
                         </tr>
                     </thead>
                     <tbody>
