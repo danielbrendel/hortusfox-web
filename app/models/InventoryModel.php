@@ -397,7 +397,65 @@ class InventoryModel extends \Asatru\Database\Model {
     public static function exportItemsAsPdf($items)
     {
         try {
-            throw new \Exception('Not yet implemented');
+            $file_name = 'inventory_export_' . md5(random_bytes(55) . date('Y-m-d H:i:s')) . '.pdf';
+
+            $pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', false);
+
+            $pdf->SetCreator(PDF_CREATOR);
+            $pdf->SetAuthor(env('APP_NAME'));
+            $pdf->SetTitle(__('app.inventory') . ' | ' . __('app.export'));
+
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+            $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+
+            $pdf->AddPage();
+            $pdf->SetFont('helvetica', '', 12);
+
+            $html = '
+                <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+                    <thead>
+                        <tr style="background-color: rgb(150, 150, 150); font-weight: bold; text-align: left;">
+                            <td>ID</td>
+                            <td>Name</td>
+                            <td>Description</td>
+                            <td>Group</td>
+                            <td>Amount</td>
+                            <td>Location</td>
+                            <td>Photo</td>
+                            <td>Created</td>
+                            <td>Updated</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+            ';
+
+            foreach ($items as $item) {
+                $html .= '
+                    <tr>
+                        <td>#' . $item[0] . '</td>
+                        <td>' . $item[1] . '</td>
+                        <td>' . $item[2] . '</td>
+                        <td>' . $item[3] . '</td>
+                        <td>' . $item[4] . '</td>
+                        <td>' . $item[5] . '</td>
+                        <td>' . $item[6] . '</td>
+                        <td>' . $item[7] . '</td>
+                        <td>' . $item[8] . '</td>
+                    </tr>
+                ';
+            }
+
+            $html .= '
+                </tbody>
+                </table>
+            ';
+
+            $pdf->writeHTML($html, true, false, true, false, '');
+            $pdf->Output(public_path() . '/exports/' . $file_name, 'F');
+
+            return $file_name;
         } catch (\Exception $e) {
             throw $e;
         }
