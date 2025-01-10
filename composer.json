@@ -19,9 +19,9 @@
     "prefer-stable": true,
 	"require": {
         "php": "^8.3",
-		"danielbrendel/asatru-php-framework": "^1.0",
+		"danielbrendel/asatru-php-framework": "^1.5",
         "phpmailer/phpmailer": "^6.1",
-        "nesbot/carbon": "^2.0",
+        "nesbot/carbon": "^3.0",
         "chillerlan/php-qrcode": "^5.0",
         "tecnickcom/tcpdf": "^6.8"
     },
