@@ -60,6 +60,32 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/plants/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function add_plant($request)
+    {
+        try {
+            $name = $request->params()->query('name', null);
+            $location = $request->params()->query('location', null);
+            
+            $plant_id = PlantsModel::addPlant($name, $location, true);
+
+            return json([
+                'code' => 200,
+                'plant' => $plant_id
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/plants/update
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

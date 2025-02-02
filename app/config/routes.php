@@ -163,6 +163,7 @@ return [
 
     /** API Controller */
     array('/api/plants/get', 'ANY', 'api@get_plant'),
+    array('/api/plants/add', 'ANY', 'api@add_plant'),
     array('/api/plants/update', 'ANY', 'api@update_plant'),
     array('/api/plants/remove', 'ANY', 'api@remove_plant'),
     array('/api/plants/list', 'ANY', 'api@get_plant_list'),

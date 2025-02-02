@@ -253,15 +253,20 @@ class PlantsModel extends \Asatru\Database\Model {
     /**
      * @param $name
      * @param $location
+     * @param $api
      * @return int
      * @throws \Exception
      */
-    public static function addPlant($name, $location)
+    public static function addPlant($name, $location, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            $user = null;
+            
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
             if ((isset($_FILES['photo'])) && ($_FILES['photo']['error'] === UPLOAD_ERR_OK)) {
@@ -283,15 +288,17 @@ class PlantsModel extends \Asatru\Database\Model {
             } else {
                 $fullFileName = self::PLANT_PLACEHOLDER_FILE;
             }
-
+            
             static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, CURRENT_TIMESTAMP)', [
-                $name, $location, $fullFileName, $user->get('id')
+                $name, $location, $fullFileName, $user?->get('id')
             ]);
-
+            
             $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
 
-            TextBlockModule::newPlant($name, url('/plants/details/' . $query->get('id')));
-            LogModel::addLog($user->get('id'), $location, 'add_plant', $name, url('/plants/details/' . $query->get('id')));
+            if (!$api) {
+                TextBlockModule::newPlant($name, url('/plants/details/' . $query->get('id')));
+                LogModel::addLog($user->get('id'), $location, 'add_plant', $name, url('/plants/details/' . $query->get('id')));
+            }
 
             return $query->get('id');
         } catch (\Exception $e) {
