@@ -550,7 +550,7 @@ window.vue = new Vue({
         editTask: function(id)
         {
             document.getElementById('inpEditTaskId').value = id;
-            document.getElementById('inpEditTaskTitle').value = document.getElementById('task-item-title-' + id).innerText;
+            document.getElementById('inpEditTaskTitle').value = document.getElementById('task-item-title-' + id).childNodes[1].textContent;
             document.getElementById('inpEditTaskDescription').value = document.getElementById('task-item-description-' + id).innerText;
             document.getElementById('inpEditTaskDueDate').value = document.getElementById('task-item-due-' + id).innerText;
 
