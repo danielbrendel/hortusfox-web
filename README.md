@@ -376,7 +376,7 @@ Testing data should be specified as environment variables in the `php` section v
 
 ## External Services
 
-Some features rely on external services. These features however need to be activated and are not enabled by default.
+There are features that rely on external services. Some of these features are mandatory, while others can be enabled if desired.
 
 ### App icons
 
