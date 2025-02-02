@@ -632,4 +632,16 @@ class UtilsModule {
 
         return preg_split('/\s+/', trim($expression));
     }
+
+    /**
+     * @param $html
+     * @return string
+     */
+    public static function purify($html)
+    {
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        
+        return $purifier->purify($html);
+    }
 }

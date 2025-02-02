@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="chat-message-content">
-                                <pre>{!! UtilsModule::translateURLs($message->get('message')) !!}</pre>
+                                <pre>{!! UtilsModule::purify(UtilsModule::translateURLs($message->get('message'))) !!}</pre>
                             </div>
 
                             <div class="chat-message-info">
@@ -63,7 +63,7 @@
                             <div class="system-message-left {{ ($isNewMessage) ? 'system-message-left-new' : '' }}">
                                 <div class="system-message-context" title="{{ date('Y-m-d H:i:s', strtotime($message->get('created_at'))) }}">{{ (($message->get('userId')) ? UserModel::getNameById($message->get('userId')) : 'System') . ' @ ' . (new Carbon(strtotime($message->get('created_at'))))->diffForHumans() }}</div>
                                 
-                                <div class="system-message-content">{!! $message->get('message') !!}</div>
+                                <div class="system-message-content">{!! UtilsModule::purify($message->get('message')) !!}</div>
                             </div>
 
                             @if ($isNewMessage)

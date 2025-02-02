@@ -23,7 +23,8 @@
         "phpmailer/phpmailer": "^6.1",
         "nesbot/carbon": "^3.0",
         "chillerlan/php-qrcode": "^5.0",
-        "tecnickcom/tcpdf": "^6.8"
+        "tecnickcom/tcpdf": "^6.8",
+        "ezyang/htmlpurifier": "^4.18"
     },
 	"scripts": {
 		"post-root-package-install": [
