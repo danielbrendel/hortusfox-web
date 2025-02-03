@@ -12,7 +12,7 @@ class CustBulkCmdModel extends \Asatru\Database\Model {
     public static function getCmdList()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '`');
+            return static::raw('SELECT * FROM `@THIS`');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -28,7 +28,7 @@ class CustBulkCmdModel extends \Asatru\Database\Model {
     public static function addCmd($label, $attribute, $styles)
     {
         try {
-            static::raw('INSERT INTO `' . self::tableName() . '` (label, attribute, styles) VALUES(?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (label, attribute, styles) VALUES(?, ?, ?)', [
                 $label, $attribute, $styles
             ]);
         } catch (\Exception $e) {
@@ -47,7 +47,7 @@ class CustBulkCmdModel extends \Asatru\Database\Model {
     public static function editCmd($id, $label, $attribute, $styles)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET label = ?, attribute = ?, styles = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET label = ?, attribute = ?, styles = ? WHERE id = ?', [
                 $label, $attribute, $styles, $id
             ]);
         } catch (\Exception $e) {
@@ -63,19 +63,9 @@ class CustBulkCmdModel extends \Asatru\Database\Model {
     public static function removeCmd($id)
     {
         try {
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$id]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$id]);
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'custbulkcmd';
     }
 }
