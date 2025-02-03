@@ -11,6 +11,14 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo4dot1()
+    {
+        ApiModel::raw('RENAME TABLE `apitable` TO `@THIS`');
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo4dot0()
     {
         PlantsModel::raw('ALTER TABLE `' . PlantsModel::tableName() . '` ADD COLUMN IF NOT EXISTS last_photo_date DATETIME NULL');
