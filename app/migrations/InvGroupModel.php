@@ -25,7 +25,7 @@ class InvGroupModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('invgroup', $this->connection);
+        $this->database = new Asatru\Database\Migration('InvGroupModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('token VARCHAR(512) NOT NULL');

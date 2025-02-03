@@ -13,7 +13,7 @@ class InvGroupModel extends \Asatru\Database\Model {
     public static function getAll()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY token ASC');
+            return static::raw('SELECT * FROM `@THIS` ORDER BY token ASC');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -27,7 +27,7 @@ class InvGroupModel extends \Asatru\Database\Model {
     public static function getLabel($ident)
     {
         try {
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE token = ?', [$ident])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE token = ?', [$ident])->first();
             return $row->get('label');
         } catch (\Exception $e) {
             throw $e;
@@ -41,7 +41,7 @@ class InvGroupModel extends \Asatru\Database\Model {
     public static function isValidGroupToken($token)
     {
         try {
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE token = ?', [$token])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE token = ?', [$token])->first();
             return $row !== null;
         } catch (\Exception $e) {
             return false;
@@ -64,16 +64,16 @@ class InvGroupModel extends \Asatru\Database\Model {
 
             $token = trim(strtolower($token));
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE token = ?', [$token])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE token = ?', [$token])->first();
             if ($row) {
                 throw new \Exception('Token already in use: ' . $token);
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (token, label) VALUES(?, ?)', [
+            static::raw('INSERT INTO `@THIS` (token, label) VALUES(?, ?)', [
                 $token, $label
             ]);
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $item = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
 
             LogModel::addLog($user->get('id'), 'inventory_groups', 'add_group_item', $token . '|' . $label, url('/inventory'));
 
@@ -98,17 +98,17 @@ class InvGroupModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$row) {
                 throw new \Exception('Item not found: ' . $id);
             }
 
             if ($what === 'token') {
-                static::raw('UPDATE `' . self::tableName() . '` SET token = ? WHERE id = ?', [
+                static::raw('UPDATE `@THIS` SET token = ? WHERE id = ?', [
                     trim(strtolower($value)), $id
                 ]);
             } else if ($what === 'label') {
-                static::raw('UPDATE `' . self::tableName() . '` SET label = ? WHERE id = ?', [
+                static::raw('UPDATE `@THIS` SET label = ? WHERE id = ?', [
                     $value, $id
                 ]);
             } else {
@@ -134,7 +134,7 @@ class InvGroupModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$row) {
                 throw new \Exception('Invalid item: ' . $id);
             }
@@ -143,21 +143,11 @@ class InvGroupModel extends \Asatru\Database\Model {
                 throw new \Exception('Token is still in use: ' . $row->get('token'));
             }
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$id]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$id]);
 
             LogModel::addLog($user->get('id'), 'inventory_groups', 'remove_group_item', $id, url('/inventory'));
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'invgroup';
     }
 }
