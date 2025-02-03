@@ -25,7 +25,7 @@ class CustAttrSchemaModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('custattrschema', $this->connection);
+        $this->database = new Asatru\Database\Migration('CustAttrSchemaModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('label VARCHAR(512) NOT NULL');

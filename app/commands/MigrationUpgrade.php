@@ -48,6 +48,12 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         } catch (\Exception $e) {
             echo $e->getMessage() . PHP_EOL;
         }
+
+        try {
+            CustAttrSchemaModel::raw('RENAME TABLE `custattrschema` TO `@THIS`');
+        } catch (\Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+        }
     }
 
     /**
