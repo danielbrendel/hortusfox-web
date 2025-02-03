@@ -17,7 +17,7 @@ class UserModel extends \Asatru\Database\Model {
                 return null;
             }
 
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$session->get('userId')])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$session->get('userId')])->first();
             if (!$data) {
                 return null;
             }
@@ -67,19 +67,19 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid username header value provided: ' . $header_username);
             }
 
-            $authuser = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$header_email])->first();
+            $authuser = static::raw('SELECT * FROM `@THIS` WHERE email = ?', [$header_email])->first();
             if (!$authuser) {
                 if (app('auth_proxy_sign_up')) {
                     static::createUser($header_username, $header_email, false);
 
-                    $authuser = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$header_email])->first();
+                    $authuser = static::raw('SELECT * FROM `@THIS` WHERE email = ?', [$header_email])->first();
                 } else {
                     throw new \Exception('User not found: ' . $header_email);
                 }
             }
 
             if (!$header_username !== $authuser->get('name')) {
-                static::raw('UPDATE `' . self::tableName() . '` SET name = ? WHERE id = ?', [$header_username, $authuser->get('id')]);
+                static::raw('UPDATE `@THIS` SET name = ? WHERE id = ?', [$header_username, $authuser->get('id')]);
             }
             
             SessionModel::loginSession($authuser->get('id'), session_id());
@@ -97,7 +97,7 @@ class UserModel extends \Asatru\Database\Model {
     public static function login($email, $password)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$email])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE email = ?', [$email])->first();
             if (!$data) {
                 throw new \Exception(__('app.user_not_found', ['email' => $email]));
             }
@@ -140,7 +140,7 @@ class UserModel extends \Asatru\Database\Model {
 
             $password = password_hash($password, PASSWORD_BCRYPT);
 
-            static::raw('UPDATE `' . self::tableName() . '` SET password = ? WHERE id = ?', [$password, $user->get('id')]);
+            static::raw('UPDATE `@THIS` SET password = ? WHERE id = ?', [$password, $user->get('id')]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -154,14 +154,14 @@ class UserModel extends \Asatru\Database\Model {
     public static function restorePassword($email)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE email = ?', [$email])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE email = ?', [$email])->first();
             if (!$data) {
                 throw new \Exception(__('app.user_not_found', ['email' => $email]));
             }
 
             $reset_token = md5(random_bytes(55) . date('Y-m-d H:i:s'));
 
-            static::raw('UPDATE `' . self::tableName() . '` SET password_reset = ? WHERE id = ?', [$reset_token, $data->get('id')]);
+            static::raw('UPDATE `@THIS` SET password_reset = ? WHERE id = ?', [$reset_token, $data->get('id')]);
 
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($email);
@@ -183,14 +183,14 @@ class UserModel extends \Asatru\Database\Model {
     public static function resetPassword($reset_token, $password)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE password_reset = ?', [$reset_token])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE password_reset = ?', [$reset_token])->first();
             if (!$data) {
                 throw new \Exception('Token not found');
             }
 
             $password = password_hash($password, PASSWORD_BCRYPT);
 
-            static::raw('UPDATE `' . self::tableName() . '` SET password_reset = NULL, password = ? WHERE id = ?', [$password, $data->get('id')]);
+            static::raw('UPDATE `@THIS` SET password_reset = NULL, password = ? WHERE id = ?', [$password, $data->get('id')]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -203,7 +203,7 @@ class UserModel extends \Asatru\Database\Model {
     public static function getUserById($userId)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$userId])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$userId])->first();
             return $data;
         } catch (\Exception $e) {
             return null;
@@ -234,7 +234,7 @@ class UserModel extends \Asatru\Database\Model {
     public static function getCount()
     {
         try {
-            return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '`')->first()->get('count');
+            return static::raw('SELECT COUNT(*) as count FROM `@THIS`')->first()->get('count');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -264,7 +264,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, lang = ?, theme = ?, chatcolor = ?, show_log = ?, show_calendar_view = ?, show_plant_id = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, notify_calendar_reminder = ?, show_plants_aoru = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET name = ?, email = ?, lang = ?, theme = ?, chatcolor = ?, show_log = ?, show_calendar_view = ?, show_plant_id = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, notify_calendar_reminder = ?, show_plants_aoru = ? WHERE id = ?', [
                 trim($name), trim($email), $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_calendar_reminder, (int)$show_plants_aoru, $user->get('id')
             ]);
         } catch (\Exception $e) {
@@ -285,7 +285,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET notes = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET notes = ? WHERE id = ?', [
                 trim($notes), $user->get('id')
             ]);
         } catch (\Exception $e) {
@@ -306,7 +306,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
 
             return $row?->get('name');
         } catch (\Exception $e) {
@@ -327,7 +327,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
 
             return $row->get('email');
         } catch (\Exception $e) {
@@ -348,7 +348,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
 
             $color = $row?->get('chatcolor');
             if (($color === null) || (strlen($color) === 0)) {
@@ -374,7 +374,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET last_seen_msg = ? WHERE id = ?', [$id, $user->get('id')]);
+            static::raw('UPDATE `@THIS` SET last_seen_msg = ? WHERE id = ?', [$id, $user->get('id')]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -393,7 +393,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET last_seen_sysmsg = ? WHERE id = ?', [$id, $user->get('id')]);
+            static::raw('UPDATE `@THIS` SET last_seen_sysmsg = ? WHERE id = ?', [$id, $user->get('id')]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -411,7 +411,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET last_action = CURRENT_TIMESTAMP WHERE id = ?', [$user->get('id')]);
+            static::raw('UPDATE `@THIS` SET last_action = CURRENT_TIMESTAMP WHERE id = ?', [$user->get('id')]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -429,7 +429,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET last_typing = CURRENT_TIMESTAMP WHERE id = ?', [$user->get('id')]);
+            static::raw('UPDATE `@THIS` SET last_typing = CURRENT_TIMESTAMP WHERE id = ?', [$user->get('id')]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -447,7 +447,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            $rows = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id <> ?', [$user->get('id')]);
+            $rows = static::raw('SELECT * FROM `@THIS` WHERE id <> ?', [$user->get('id')]);
             foreach ($rows as $row) {
                 if ((static::isUserOnline($row->get('id'))) && (UtilsModule::isTyping($row->get('last_typing')))) {
                     return true;
@@ -467,7 +467,7 @@ class UserModel extends \Asatru\Database\Model {
     public static function isUserOnline($id)
     {
         try {
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$row) {
                 return false;
             }
@@ -487,7 +487,7 @@ class UserModel extends \Asatru\Database\Model {
         try {
             $result = [];
 
-            $rows = static::raw('SELECT * FROM `' . self::tableName() . '`');
+            $rows = static::raw('SELECT * FROM `@THIS`');
             foreach ($rows as $row) {
                 if (static::isUserOnline($row->get('id'))) {
                     $result[] = $row;
@@ -506,7 +506,7 @@ class UserModel extends \Asatru\Database\Model {
     public static function getAll()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '`');
+            return static::raw('SELECT * FROM `@THIS`');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -528,7 +528,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid E-Mail given: ' . $email);
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, email, password) VALUES(?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (name, email, password) VALUES(?, ?, ?)', [
                 $name, $email, password_hash($password, PASSWORD_BCRYPT)
             ]);
 
@@ -564,7 +564,7 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid E-Mail given: ' . $email);
             }
             
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, email = ?, admin = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET name = ?, email = ?, admin = ? WHERE id = ?', [
                 $name, $email, $admin, $id
             ]);
         } catch (\Exception $e) {
@@ -582,21 +582,11 @@ class UserModel extends \Asatru\Database\Model {
         try {
             SessionModel::clearForUser($id);
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [
                 $id
             ]);
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'users';
     }
 }
