@@ -62,10 +62,10 @@ class CalendarClsCommand implements Asatru\Commands\Command {
         if ($args->get(0)?->getValue(0) === '--force') {
             echo "Dropping previous calendar classes.\n";
 
-            CalendarClassModel::raw('DELETE FROM `' . CalendarClassModel::tableName() . '`');
+            CalendarClassModel::raw('DELETE FROM `@THIS`');
         }
 
-        $entry_count = CalendarClassModel::raw('SELECT COUNT(*) AS `count` FROM `' . CalendarClassModel::tableName() . '`')->first()->get('count');
+        $entry_count = CalendarClassModel::raw('SELECT COUNT(*) AS `count` FROM `@THIS`')->first()->get('count');
         if ($entry_count > 0) {
             return;
         }
@@ -73,7 +73,7 @@ class CalendarClsCommand implements Asatru\Commands\Command {
         foreach (self::$class_table as $key => $value) {
             echo "Adding calendar class: {$key} {$value['name']} {$value['color_background']} {$value['color_border']}\n";
 
-            CalendarClassModel::raw('INSERT INTO `' . CalendarClassModel::tableName() . '` (ident, name, color_background, color_border) VALUES(?, ?, ?, ?)', [
+            CalendarClassModel::raw('INSERT INTO `@THIS` (ident, name, color_background, color_border) VALUES(?, ?, ?, ?)', [
                 $key, $value['name'], $value['color_background'], $value['color_border']
             ]);
         }
