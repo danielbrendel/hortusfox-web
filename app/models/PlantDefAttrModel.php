@@ -14,7 +14,7 @@ class PlantDefAttrModel extends \Asatru\Database\Model {
     public static function isActive($name)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE name = ?', [$name])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE name = ?', [$name])->first();
             if (!$data) {
                 throw new \Exception('Attribute ' . $name . ' does not exist');
             }
@@ -33,9 +33,9 @@ class PlantDefAttrModel extends \Asatru\Database\Model {
     public static function toggle($name)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET active = NOT active WHERE name = ?', [$name]);
+            static::raw('UPDATE `@THIS` SET active = NOT active WHERE name = ?', [$name]);
             
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE name = ?', [$name])->first()->get('active');
+            return static::raw('SELECT * FROM `@THIS` WHERE name = ?', [$name])->first()->get('active');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -50,7 +50,7 @@ class PlantDefAttrModel extends \Asatru\Database\Model {
     public static function update($name, $value)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET active = ? WHERE name = ?', [$value, $name]);
+            static::raw('UPDATE `@THIS` SET active = ? WHERE name = ?', [$value, $name]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -63,19 +63,9 @@ class PlantDefAttrModel extends \Asatru\Database\Model {
     public static function getAll()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '`');
+            return static::raw('SELECT * FROM `@THIS`');
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'plantdefattr';
     }
 }
