@@ -20,7 +20,7 @@ class LocationLogModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (location, content) VALUES(?, ?)', [
+            static::raw('INSERT INTO `@THIS` (location, content) VALUES(?, ?)', [
                 $location, $content
             ]);
 
@@ -44,12 +44,12 @@ class LocationLogModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$item) {
                 throw new \Exception('Invalid entry: ' . $id);
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET content = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET content = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [
                 $content, $item->get('id')
             ]);
 
@@ -72,12 +72,12 @@ class LocationLogModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$item) {
                 throw new \Exception('Invalid entry: ' . $id);
             }
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [
                 $item->get('id')
             ]);
 
@@ -98,22 +98,12 @@ class LocationLogModel extends \Asatru\Database\Model {
     {
         try {
             if ($paginate) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$location, $paginate]);
+                return static::raw('SELECT * FROM `@THIS` WHERE location = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$location, $paginate]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? ORDER BY id DESC LIMIT ' . $limit, [$location]);
+                return static::raw('SELECT * FROM `@THIS` WHERE location = ? ORDER BY id DESC LIMIT ' . $limit, [$location]);
             }
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'locationlog';
     }
 }

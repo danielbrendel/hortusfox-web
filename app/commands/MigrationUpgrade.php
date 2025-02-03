@@ -78,6 +78,12 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         } catch (\Exception $e) {
             echo $e->getMessage() . PHP_EOL;
         }
+
+        try {
+            LocationLogModel::raw('RENAME TABLE `locationlog` TO `@THIS`');
+        } catch (\Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+        }
     }
 
     /**
