@@ -126,6 +126,12 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         } catch (\Exception $e) {
             echo $e->getMessage() . PHP_EOL;
         }
+
+        try {
+            TaskInformerModel::raw('RENAME TABLE `taskinformer` TO `@THIS`');
+        } catch (\Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+        }
     }
 
     /**

@@ -25,7 +25,7 @@ class TaskInformerModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('taskinformer', $this->connection);
+        $this->database = new Asatru\Database\Migration('TaskInformerModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('task INT NOT NULL');

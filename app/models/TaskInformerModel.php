@@ -16,7 +16,7 @@ class TaskInformerModel extends \Asatru\Database\Model {
     public static function userInformed($userId, $taskId, $what)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE user = ? AND task = ? AND what = ?', [$userId, $taskId, $what])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE user = ? AND task = ? AND what = ?', [$userId, $taskId, $what])->first();
             if ($data) {
                 return true;
             }
@@ -57,7 +57,7 @@ class TaskInformerModel extends \Asatru\Database\Model {
                         $mailobj->setProperties(mail_properties());
                         $mailobj->send();
 
-                        static::raw('INSERT INTO `' . self::tableName() . '` (user, task, what) VALUES(?, ?, ?)', [$user->get('id'), $task->get('id'), $what]);
+                        static::raw('INSERT INTO `@THIS` (user, task, what) VALUES(?, ?, ?)', [$user->get('id'), $task->get('id'), $what]);
                         
                         $count++;
                     }
@@ -66,15 +66,5 @@ class TaskInformerModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'taskinformer';
     }
 }
