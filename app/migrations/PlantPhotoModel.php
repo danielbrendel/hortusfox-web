@@ -25,7 +25,7 @@ class PlantPhotoModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('plantphotos', $this->connection);
+        $this->database = new Asatru\Database\Migration('PlantPhotoModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('plant INT NOT NULL');

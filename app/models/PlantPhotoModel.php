@@ -39,7 +39,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 throw new \Exception('createThumbFile failed');
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label) VALUES(?, ?, ?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (plant, author, thumb, original, label) VALUES(?, ?, ?, ?, ?)', [
                 $plantId, (($user) ? $user->get('id') : 0), $file_name . '_thumb.' . $file_ext, $file_name . '.' . $file_ext, $label
             ]);
 
@@ -51,7 +51,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 }
             }
 
-            $recent = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $recent = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
             if ($recent) {
                 return $recent->get('id');
             }
@@ -78,7 +78,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label) VALUES(?, ?, ?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (plant, author, thumb, original, label) VALUES(?, ?, ?, ?, ?)', [
                 $plantId, (($user) ? $user->get('id') : 0), $photo, $photo, $label
             ]);
 
@@ -90,7 +90,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 }
             }
 
-            $recent = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $recent = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
             if ($recent) {
                 return $recent->get('id');
             }
@@ -109,7 +109,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     public static function getPlantGallery($plantId)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ? ORDER BY id DESC', [$plantId]);
+            return static::raw('SELECT * FROM `@THIS` WHERE plant = ? ORDER BY id DESC', [$plantId]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -129,7 +129,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $photo_data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$photo])->first();
+            $photo_data = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$photo])->first();
 
             $plant = PlantsModel::getDetails($photo_data->get('plant'));
 
@@ -141,7 +141,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 unlink(public_path('/img/' . $photo_data->get('thumb')));
             }
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$photo]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$photo]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_gallery_photo', $photo_data->get('label'), url('/plants/details/' . $plant->get('id') . '#plant-gallery-photo-anchor'));
@@ -163,7 +163,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     public static function clearForPlant($plantId)
     {
         try {
-            $rows = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ?', [$plantId]);
+            $rows = static::raw('SELECT * FROM `@THIS` WHERE plant = ?', [$plantId]);
             foreach ($rows as $row) {
                 if (file_exists(public_path('/img/' . $row->get('original')))) {
                     unlink(public_path('/img/' . $row->get('original')));
@@ -173,7 +173,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                     unlink(public_path('/img/' . $row->get('thumb')));
                 }
 
-                static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$row->get('id')]);
+                static::raw('DELETE FROM `@THIS` WHERE id = ?', [$row->get('id')]);
             }
         } catch (\Exception $e) {
             throw $e;
@@ -188,7 +188,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     public static function getItem($id)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            return static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -204,10 +204,10 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     public static function editLabel($id, $label, $api = false)
     {
         try {
-            $photo_data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $photo_data = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             $plant = PlantsModel::getDetails($photo_data->get('plant'));
 
-            static::raw('UPDATE `' . self::tableName() . '` SET label = ? WHERE id = ?', [$label, $id]);
+            static::raw('UPDATE `@THIS` SET label = ? WHERE id = ?', [$label, $id]);
 
             if ((app('system_message_plant_log')) && (!$api)) {
                 PlantLogModel::addEntry($plant->get('id'), '[System] edit_gallery_photo: \'' . $photo_data->get('label') . '\' to \'' . $label . '\'');
@@ -236,19 +236,9 @@ class PlantPhotoModel extends \Asatru\Database\Model {
                 $date = convert_date('Y-m-d H:i:s');
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (plant, author, thumb, original, label, created_at) VALUES (?, ?, ?, ?, ?, ?)', [$plant, (($user) ? $user->get('id') : 0), $thumb, $original, $label, $date]);
+            static::raw('INSERT INTO `@THIS` (plant, author, thumb, original, label, created_at) VALUES (?, ?, ?, ?, ?, ?)', [$plant, (($user) ? $user->get('id') : 0), $thumb, $original, $label, $date]);
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'plantphotos';
     }
 }
