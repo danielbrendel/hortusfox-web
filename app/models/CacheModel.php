@@ -143,17 +143,7 @@ class CacheModel extends \Asatru\Database\Model {
 	 */
 	public static function clear()
 	{
-		static::raw('DELETE FROM `' . self::tableName() . '`');
-	}
-	
-	/**
-	 * Return the associated table name of the migration
-	 * 
-	 * @return string
-	 */
-	public static function tableName()
-	{
-		return 'CacheModel';
+		static::raw('DELETE FROM `@THIS`');
 	}
 }
     
