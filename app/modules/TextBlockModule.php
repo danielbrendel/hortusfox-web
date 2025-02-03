@@ -212,7 +212,7 @@ class TextBlockModule {
 
             $icon = html_entity_decode('&#' . $icon, ENT_COMPAT | ENT_QUOTES);
 
-            ChatMsgModel::raw('INSERT INTO `' . ChatMsgModel::tableName() . '` (userId, message, sysmsg, created_at) VALUES(?, ?, 1, CURRENT_TIMESTAMP)', [
+            ChatMsgModel::raw('INSERT INTO `@THIS` (userId, message, sysmsg, created_at) VALUES(?, ?, 1, CURRENT_TIMESTAMP)', [
                 (($user) ? $user->get('id') : 0),
                 $icon . ' ' . $message
             ]);

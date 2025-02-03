@@ -22,14 +22,14 @@ class TasksModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
             
-            static::raw('INSERT INTO `' . self::tableName() . '` (title, description, due_date) VALUES(?, ?, ?)', [$title, $description, $due_date]);
+            static::raw('INSERT INTO `@THIS` (title, description, due_date) VALUES(?, ?, ?)', [$title, $description, $due_date]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title, url('/tasks'));
                 TextBlockModule::createdTask($title, url('/tasks'));
             }
 
-            $latest = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $latest = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
             if ($latest) {
                 return $latest->get('id');
             }
@@ -58,7 +58,7 @@ class TasksModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$taskId])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$taskId])->first();
 
             if ($title === null) {
                 $title = $item->get('title');
@@ -78,7 +78,7 @@ class TasksModel extends \Asatru\Database\Model {
                 $done = $item->get('done');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET title = ?, description = ?, due_date = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $done, $taskId]);
+            static::raw('UPDATE `@THIS` SET title = ?, description = ?, due_date = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $done, $taskId]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title, url('/tasks#task-anchor-' . $taskId));
@@ -101,7 +101,7 @@ class TasksModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET done = 1 WHERE id = ?', [$taskId]);
+            static::raw('UPDATE `@THIS` SET done = 1 WHERE id = ?', [$taskId]);
 
             $task = static::getTask($taskId);
 
@@ -125,7 +125,7 @@ class TasksModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET done = NOT done WHERE id = ?', [$taskId]);
+            static::raw('UPDATE `@THIS` SET done = NOT done WHERE id = ?', [$taskId]);
 
             $task = static::getTask($taskId);
             
@@ -151,9 +151,9 @@ class TasksModel extends \Asatru\Database\Model {
     {
         try {
             if (!$done) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = ? ORDER BY -due_date DESC, created_at DESC LIMIT ' . $limit, [$done]);
+                return static::raw('SELECT * FROM `@THIS` WHERE done = ? ORDER BY -due_date DESC, created_at DESC LIMIT ' . $limit, [$done]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = ? ORDER BY created_at DESC LIMIT ' . $limit, [$done]);
+                return static::raw('SELECT * FROM `@THIS` WHERE done = ? ORDER BY created_at DESC LIMIT ' . $limit, [$done]);
             }
         } catch (\Exception $e) {
             throw $e;
@@ -167,7 +167,7 @@ class TasksModel extends \Asatru\Database\Model {
     public static function getOverdueTasks()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = 0 AND DATE(due_date) < CURRENT_DATE ORDER BY due_date ASC');
+            return static::raw('SELECT * FROM `@THIS` WHERE done = 0 AND DATE(due_date) < CURRENT_DATE ORDER BY due_date ASC');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -181,7 +181,7 @@ class TasksModel extends \Asatru\Database\Model {
     {
         try {
             $tomorrow = date('Y-m-d', strtotime('+1 day'));
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE done = 0 AND DATE(due_date) = ? ORDER BY due_date ASC', [$tomorrow]);
+            return static::raw('SELECT * FROM `@THIS` WHERE done = 0 AND DATE(due_date) = ? ORDER BY due_date ASC', [$tomorrow]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -194,7 +194,7 @@ class TasksModel extends \Asatru\Database\Model {
     public static function getOpenTaskCount()
     {
         try {
-            return static::raw('SELECT COUNT(*) AS count FROM `' . self::tableName() . '` WHERE done = 0')->first()->get('count');
+            return static::raw('SELECT COUNT(*) AS count FROM `@THIS` WHERE done = 0')->first()->get('count');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -208,7 +208,7 @@ class TasksModel extends \Asatru\Database\Model {
     public static function getTask($id)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            return static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -260,19 +260,9 @@ class TasksModel extends \Asatru\Database\Model {
     public static function removeTask($taskId)
     {
         try {
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$taskId]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$taskId]);
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'tasks';
     }
 }
