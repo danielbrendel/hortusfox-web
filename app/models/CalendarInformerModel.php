@@ -15,7 +15,7 @@ class CalendarInformerModel extends \Asatru\Database\Model {
     public static function userInformed($userId, $itemId)
     {
         try {
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE user = ? AND item = ?', [$userId, $itemId])->first();
+            $data = static::raw('SELECT * FROM `@THIS` WHERE user = ? AND item = ?', [$userId, $itemId])->first();
             if ($data) {
                 return true;
             }
@@ -55,7 +55,7 @@ class CalendarInformerModel extends \Asatru\Database\Model {
                         $mailobj->setProperties(mail_properties());
                         $mailobj->send();
 
-                        static::raw('INSERT INTO `' . self::tableName() . '` (user, item) VALUES(?, ?)', [$user->get('id'), $item->get('id')]);
+                        static::raw('INSERT INTO `@THIS` (user, item) VALUES(?, ?)', [$user->get('id'), $item->get('id')]);
                         
                         $count++;
                     }
@@ -64,15 +64,5 @@ class CalendarInformerModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'calendarinformer';
     }
 }
