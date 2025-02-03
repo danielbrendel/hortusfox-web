@@ -127,7 +127,7 @@ class PlantsModel extends \Asatru\Database\Model {
             static::validateSorting($sorting);
             static::validateDirection($direction);
 
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? AND history = 0 ORDER BY ' . $sorting . ' ' . $direction, [$location]);
+            return static::raw('SELECT * FROM `@THIS` WHERE location = ? AND history = 0 ORDER BY ' . $sorting . ' ' . $direction, [$location]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -141,7 +141,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getAuthoredPlants($userId)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE last_edited_user = ? ORDER BY last_edited_date DESC', [$userId]);
+            return static::raw('SELECT * FROM `@THIS` WHERE last_edited_user = ? ORDER BY last_edited_date DESC', [$userId]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -154,7 +154,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getLastAddedPlants()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 ORDER BY id DESC LIMIT ' . strval(self::PLANT_LAST_UPDATED_AUTHORED_COUNT));
+            return static::raw('SELECT * FROM `@THIS` WHERE history = 0 ORDER BY id DESC LIMIT ' . strval(self::PLANT_LAST_UPDATED_AUTHORED_COUNT));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -167,7 +167,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getLastAuthoredPlants()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 0 AND last_edited_user IS NOT NULL ORDER BY last_edited_date DESC LIMIT ' . strval(self::PLANT_LAST_UPDATED_AUTHORED_COUNT));
+            return static::raw('SELECT * FROM `@THIS` WHERE history = 0 AND last_edited_user IS NOT NULL ORDER BY last_edited_date DESC LIMIT ' . strval(self::PLANT_LAST_UPDATED_AUTHORED_COUNT));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -181,7 +181,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getDetails($id)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            return static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -194,7 +194,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getWarningPlants()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE health_state <> \'in_good_standing\' AND history = 0 ORDER BY last_edited_date DESC');
+            return static::raw('SELECT * FROM `@THIS` WHERE health_state <> \'in_good_standing\' AND history = 0 ORDER BY last_edited_date DESC');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -228,9 +228,9 @@ class PlantsModel extends \Asatru\Database\Model {
             }
 
             if ($year !== null) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE YEAR(history_date) = ? AND history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit, [$year]);
+                return static::raw('SELECT * FROM `@THIS` WHERE YEAR(history_date) = ? AND history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit, [$year]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit);
+                return static::raw('SELECT * FROM `@THIS` WHERE history = 1 ORDER BY ' . $sorting . ' ' . $direction . $strlimit);
             }
         } catch (\Exception $e) {
             throw $e;
@@ -244,7 +244,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getHistoryYears()
     {
         try {
-            return static::raw('SELECT DISTINCT YEAR(history_date) AS history_year FROM `' . self::tableName() . '` WHERE history = 1 AND history_date IS NOT NULL ORDER BY YEAR(history_date) DESC');
+            return static::raw('SELECT DISTINCT YEAR(history_date) AS history_year FROM `@THIS` WHERE history = 1 AND history_date IS NOT NULL ORDER BY YEAR(history_date) DESC');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -289,11 +289,11 @@ class PlantsModel extends \Asatru\Database\Model {
                 $fullFileName = self::PLANT_PLACEHOLDER_FILE;
             }
             
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, location, photo, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+            static::raw('INSERT INTO `@THIS` (name, location, photo, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, CURRENT_TIMESTAMP)', [
                 $name, $location, $fullFileName, $user?->get('id')
             ]);
             
-            $query = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $query = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
 
             if (!$api) {
                 TextBlockModule::newPlant($name, url('/plants/details/' . $query->get('id')));
@@ -326,7 +326,7 @@ class PlantsModel extends \Asatru\Database\Model {
                 }
             }
             
-            static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [($value !== '#null') ? $value : null, $user?->get('id'), $plantId]);
+            static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [($value !== '#null') ? $value : null, $user?->get('id'), $plantId]);
         
             if (!$api) {
                 LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
@@ -361,7 +361,7 @@ class PlantsModel extends \Asatru\Database\Model {
                 }
             }
             
-            static::raw('UPDATE `' . self::tableName() . '` SET scientific_name = ?, knowledge_link = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$text, $link, $user->get('id'), $plantId]);
+            static::raw('UPDATE `@THIS` SET scientific_name = ?, knowledge_link = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [$text, $link, $user->get('id'), $plantId]);
         
             LogModel::addLog($user->get('id'), $plantId, 'scientific_name|knowledge_link', $text . '|' . ((strlen($link) > 0) ? $link : 'null'), url('/plants/details/' . $plantId));
         
@@ -410,7 +410,7 @@ class PlantsModel extends \Asatru\Database\Model {
                 throw new \Exception('createThumbFile failed');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name . '_thumb.' . $file_ext, $user->get('id'), $plantId]);
+            static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name . '_thumb.' . $file_ext, $user->get('id'), $plantId]);
         
             LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
 
@@ -437,7 +437,7 @@ class PlantsModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
+            static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
         
             LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
 
@@ -462,13 +462,13 @@ class PlantsModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$plantId])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$plantId])->first();
 
             if ($item->get('photo') === self::PLANT_PLACEHOLDER_FILE) {
                 throw new \Exception('There is no preview photo set');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET photo = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [self::PLANT_PLACEHOLDER_FILE, $user->get('id'), $plantId]);
+            static::raw('UPDATE `@THIS` SET photo = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [self::PLANT_PLACEHOLDER_FILE, $user->get('id'), $plantId]);
         
             if (file_exists(public_path() . '/img/' . $item->get('photo'))) {
                 unlink(public_path() . '/img/' . $item->get('photo'));
@@ -495,7 +495,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getCount()
     {
         try {
-            return static::raw('SELECT COUNT(*) as count FROM `' . self::tableName() . '` WHERE history = 0')->first()->get('count');
+            return static::raw('SELECT COUNT(*) as count FROM `@THIS` WHERE history = 0')->first()->get('count');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -515,7 +515,7 @@ class PlantsModel extends \Asatru\Database\Model {
         try {
             $text = trim(strtolower($text));
 
-            $query = 'SELECT * FROM `' . self::tableName() . '` ';
+            $query = 'SELECT * FROM `@THIS` ';
             $hasAny = false;
 
             $args = [];
@@ -523,7 +523,7 @@ class PlantsModel extends \Asatru\Database\Model {
             if (substr($text, 0, 1) === '#') {
                 $text = ltrim(substr($text, 1), '0');
 
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ? LIMIT 1', [$text]);
+                return static::raw('SELECT * FROM `@THIS` WHERE id = ? LIMIT 1', [$text]);
             }
 
             if ($search_name) {
@@ -586,7 +586,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function updateLastWatered($location)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET last_watered = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
+            static::raw('UPDATE `@THIS` SET last_watered = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -600,7 +600,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function updateLastRepotted($location)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET last_repotted = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
+            static::raw('UPDATE `@THIS` SET last_repotted = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -614,7 +614,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function updateLastFertilised($location)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET last_fertilised = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
+            static::raw('UPDATE `@THIS` SET last_fertilised = CURRENT_TIMESTAMP WHERE location = ?', [$location]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -635,7 +635,7 @@ class PlantsModel extends \Asatru\Database\Model {
 
             $plant = PlantsModel::getDetails($plantId);
 
-            static::raw('UPDATE `' . self::tableName() . '` SET history = 1, history_date = CURRENT_TIMESTAMP WHERE id = ?', [$plantId]);
+            static::raw('UPDATE `@THIS` SET history = 1, history_date = CURRENT_TIMESTAMP WHERE id = ?', [$plantId]);
 
             LogModel::addLog($user->get('id'), $plant->get('name'), 'mark_historical', '', url('/plants/history'));
             TextBlockModule::plantToHistory($plant->get('name'), url('/plants/history'));
@@ -663,7 +663,7 @@ class PlantsModel extends \Asatru\Database\Model {
 
             $plant = PlantsModel::getDetails($plantId);
 
-            static::raw('UPDATE `' . self::tableName() . '` SET history = 0, history_date = NULL WHERE id = ?', [$plantId]);
+            static::raw('UPDATE `@THIS` SET history = 0, history_date = NULL WHERE id = ?', [$plantId]);
 
             LogModel::addLog($user->get('id'), $plant->get('name'), 'historical_restore', '', url('/plants/details/' . $plantId));
             TextBlockModule::plantFromHistory($plant->get('name'), url('/plants/details/' . $plantId));
@@ -705,7 +705,7 @@ class PlantsModel extends \Asatru\Database\Model {
 
             PlantPhotoModel::clearForPlant($plantId);
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$plantId]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$plantId]);
 
             LogModel::addLog($user->get('id'), $plant->get('name'), 'remove_plant', '');
             TextBlockModule::deletePlant($plant->get('name'));
@@ -723,7 +723,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function migratePlants($from, $to)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET location = ? WHERE location = ?', [
+            static::raw('UPDATE `@THIS` SET location = ? WHERE location = ?', [
                 $to, $from
             ]);
         } catch (\Exception $e) {
@@ -744,7 +744,7 @@ class PlantsModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
                 $user->get('id'), (int)$plantId
             ]);
         } catch (\Exception $e) {
@@ -760,7 +760,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getPlantCount($id)
     {
         try {
-            return static::raw('SELECT COUNT(*) AS count FROM `' . self::tableName() . '` WHERE location = ? AND history = 0', [$id])->first()->get('count');
+            return static::raw('SELECT COUNT(*) AS count FROM `@THIS` WHERE location = ? AND history = 0', [$id])->first()->get('count');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -774,7 +774,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getDangerCount($id)
     {
         try {
-            return static::raw('SELECT COUNT(*) AS count FROM `' . self::tableName() . '` WHERE location = ? AND health_state <> ? AND history = 0', [
+            return static::raw('SELECT COUNT(*) AS count FROM `@THIS` WHERE location = ? AND health_state <> ? AND history = 0', [
                 $id, 'in_good_standing'
             ])->first()->get('count');
         } catch (\Exception $e) {
@@ -795,7 +795,7 @@ class PlantsModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $source = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $source = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$source) {
                 throw new \Exception('Plant with ID not found: ' . $id);
             }
@@ -805,7 +805,7 @@ class PlantsModel extends \Asatru\Database\Model {
             if (strpos($source->get('tags'), strtolower($source->get('name'))) === false) {
                 $updated_tags = $source->get('tags') . ' ' . strtolower($source->get('name'));
 
-                static::raw('UPDATE `' . self::tableName() . '` SET tags = ?, clone_num = ? WHERE id = ?', [
+                static::raw('UPDATE `@THIS` SET tags = ?, clone_num = ? WHERE id = ?', [
                     $updated_tags, 0, $source->get('id')
                 ]);
             }
@@ -820,11 +820,11 @@ class PlantsModel extends \Asatru\Database\Model {
                 $target_thumb_name = $source->get('photo');
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, last_fertilised, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, last_edited_user, last_edited_date, clone_num) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, last_fertilised, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, last_edited_user, last_edited_date, clone_num) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
                 $source->get('name'), $source->get('scientific_name'), $source->get('knowledge_link'), $updated_tags, $source->get('location'), $target_thumb_name, $source->get('last_watered'), $source->get('last_repotted'), $source->get('last_fertilised'), $source->get('perennial'), $source->get('cutting_month'), $source->get('date_of_purchase'), $source->get('humidity'), $source->get('light_level'), $source->get('health_state'), $source->get('notes'), $user->get('id'), date('Y-m-d H:i:s'), static::getNameCount($source->get('name'))
             ]);
 
-            $clone = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $clone = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
 
             return $clone->get('id');
         } catch (\Exception $e) {
@@ -840,7 +840,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getNameCount($name)
     {
         try {
-            $result = static::raw('SELECT COUNT(name) AS `count` FROM `' . self::tableName() . '` WHERE name = ?', [$name])->first();
+            $result = static::raw('SELECT COUNT(name) AS `count` FROM `@THIS` WHERE name = ?', [$name])->first();
             return $result->get('count');
         } catch (\Exception $e) {
             throw $e;
@@ -855,7 +855,7 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function generateQRCode($id)
     {
         try {
-            $plant = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $plant = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$plant) {
                 throw new \Exception('Plant not found: ' . $id);
             }
@@ -894,22 +894,12 @@ class PlantsModel extends \Asatru\Database\Model {
             }
 
             if (($from !== null) && (is_numeric($from))) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ? AND id > ?' . $sort . $limit, [$location, $from]);
+                return static::raw('SELECT * FROM `@THIS` WHERE location = ? AND id > ?' . $sort . $limit, [$location, $from]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE location = ?' . $sort . $limit, [$location]);
+                return static::raw('SELECT * FROM `@THIS` WHERE location = ?' . $sort . $limit, [$location]);
             }
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'plants';
     }
 }
