@@ -1,7 +1,7 @@
 <?php
 
 /*
-    Asatru PHP - English language file for errors
+    Asatru PHP - Dutch language file for errors
 
     Modify and add error related messages here
 
