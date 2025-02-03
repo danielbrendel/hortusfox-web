@@ -20,13 +20,13 @@ class PlantLogModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (plant, content) VALUES(?, ?)', [
+            static::raw('INSERT INTO `@THIS` (plant, content) VALUES(?, ?)', [
                 $plant, $content
             ]);
 
             LogModel::addLog($user->get('id'), $plant, 'add_plant_log', $content, url('/plants/details/' . $plant));
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $item = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
             if ($item) {
                 return $item->get('id');
             }
@@ -51,12 +51,12 @@ class PlantLogModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$item) {
                 throw new \Exception('Invalid entry: ' . $id);
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET content = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET content = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [
                 $content, $item->get('id')
             ]);
 
@@ -79,12 +79,12 @@ class PlantLogModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$item) {
                 throw new \Exception('Invalid entry: ' . $id);
             }
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [
                 $item->get('id')
             ]);
 
@@ -105,22 +105,12 @@ class PlantLogModel extends \Asatru\Database\Model {
     {
         try {
             if ($paginate) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$plant, $paginate]);
+                return static::raw('SELECT * FROM `@THIS` WHERE plant = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$plant, $paginate]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ? ORDER BY id DESC LIMIT ' . $limit, [$plant]);
+                return static::raw('SELECT * FROM `@THIS` WHERE plant = ? ORDER BY id DESC LIMIT ' . $limit, [$plant]);
             }
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'plantlog';
     }
 }

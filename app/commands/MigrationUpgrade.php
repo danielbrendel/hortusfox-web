@@ -102,6 +102,12 @@ class MigrationUpgrade implements Asatru\Commands\Command {
         } catch (\Exception $e) {
             echo $e->getMessage() . PHP_EOL;
         }
+
+        try {
+            PlantLogModel::raw('RENAME TABLE `plantlog` TO `@THIS`');
+        } catch (\Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+        }
     }
 
     /**
