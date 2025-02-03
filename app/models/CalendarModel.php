@@ -22,7 +22,7 @@ class CalendarModel extends \Asatru\Database\Model {
     public static function getItems($date_from = null, $date_till = null)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE DATE(date_from) >= ? AND DATE(date_till) <= ?', [$date_from, $date_till]);
+            return static::raw('SELECT * FROM `@THIS` WHERE DATE(date_from) >= ? AND DATE(date_till) <= ?', [$date_from, $date_till]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -52,7 +52,7 @@ class CalendarModel extends \Asatru\Database\Model {
                 $class_item = $class_item->asArray();
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, date_from, date_till, class_name, color_background, color_border, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (name, date_from, date_till, class_name, color_background, color_border, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [
                 $name, $date_from, $date_till, $class, $class_item['color_background'], $class_item['color_border'], (($user) ? $user->get('id') : 0), date('Y-m-d H:i:s')
             ]);
 
@@ -61,7 +61,7 @@ class CalendarModel extends \Asatru\Database\Model {
                 LogModel::addLog($user->get('id'), $date_from . ' - ' . $date_till, 'add_calendar', $name, url('/calendar'));
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $item = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
             if ($item) {
                 return $item->get('id');
             }
@@ -97,7 +97,7 @@ class CalendarModel extends \Asatru\Database\Model {
                 $class_item = $class_item->asArray();
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, date_from = ?, date_till = ?, class_name = ?, color_background = ?, color_border = ?, last_edited_user = ?, last_edited_date = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET name = ?, date_from = ?, date_till = ?, class_name = ?, color_background = ?, color_border = ?, last_edited_user = ?, last_edited_date = ? WHERE id = ?', [
                 $name, $date_from, $date_till, $class, $class_item['color_background'], $class_item['color_border'], (($user) ? $user->get('id') : 0), date('Y-m-d H:i:s'), $ident
             ]);
 
@@ -118,7 +118,7 @@ class CalendarModel extends \Asatru\Database\Model {
     public static function removeItem($ident)
     {
         try {
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$ident]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$ident]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -132,7 +132,7 @@ class CalendarModel extends \Asatru\Database\Model {
     {
         try {
             $tomorrow = date('Y-m-d', strtotime('+1 day'));
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE DATE(date_from) = ? ORDER BY date_from ASC', [$tomorrow]);
+            return static::raw('SELECT * FROM `@THIS` WHERE DATE(date_from) = ? ORDER BY date_from ASC', [$tomorrow]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -152,15 +152,5 @@ class CalendarModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'calendar';
     }
 }
