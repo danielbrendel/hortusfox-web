@@ -15,9 +15,9 @@ class ChatViewModel extends \Asatru\Database\Model {
     public static function handleNewMessage($userId, $messageId)
     {
         try {
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? AND messageId = ?', [$userId, $messageId])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE userId = ? AND messageId = ?', [$userId, $messageId])->first();
             if (!$row) {
-                static::raw('INSERT INTO `' . self::tableName() . '` (userId, messageId) VALUES(?, ?)', [
+                static::raw('INSERT INTO `@THIS` (userId, messageId) VALUES(?, ?)', [
                     $userId, $messageId
                 ]);
 
@@ -28,15 +28,5 @@ class ChatViewModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'chatview';
     }
 }
