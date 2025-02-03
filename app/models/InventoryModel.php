@@ -49,11 +49,11 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid group token: ' . $group);
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (name, group_ident, description, tags, location, amount, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
+            static::raw('INSERT INTO `@THIS` (name, group_ident, description, tags, location, amount, last_edited_user, last_edited_date) VALUES(?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)', [
                 $name, $group, $description, trim($tags), $location, $amount, (($user) ? $user->get('id') : 0)
             ]);
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $row = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
 
             if ((isset($_FILES['photo'])) && ($_FILES['photo']['error'] === UPLOAD_ERR_OK)) {
                 $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
@@ -70,12 +70,12 @@ class InventoryModel extends \Asatru\Database\Model {
                     throw new \Exception('createThumbFile failed');
                 }
 
-                static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
+                static::raw('UPDATE `@THIS` SET photo = ? WHERE id = ?', [
                     $file_name . '_thumb.' . $file_ext, $row->get('id')
                 ]);
             } else {
                 if ((is_string($photo)) && ((strpos($photo, 'http://') === 0) || (strpos($photo, 'https://') === 0))) {
-                    static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
+                    static::raw('UPDATE `@THIS` SET photo = ? WHERE id = ?', [
                         $photo, $row->get('id')
                     ]);
                 }
@@ -113,12 +113,12 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$row) {
                 throw new \Exception('Invalid item: ' . $id);
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET name = ?, group_ident = ?, location = ?, description = ?, tags = ?, amount = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET name = ?, group_ident = ?, location = ?, description = ?, tags = ?, amount = ? WHERE id = ?', [
                 $name, $group, $location, $description, $tags, $amount, $row->get('id')
             ]);
 
@@ -141,18 +141,18 @@ class InventoryModel extends \Asatru\Database\Model {
                     unlink(public_path('/img/' . $row->get('photo')));
                 }
 
-                static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
+                static::raw('UPDATE `@THIS` SET photo = ? WHERE id = ?', [
                     $file_name . '_thumb.' . $file_ext, $row->get('id')
                 ]);
             } else {
                 if ((is_string($photo)) && ((strpos($photo, 'http://') === 0) || (strpos($photo, 'https://') === 0))) {
-                    static::raw('UPDATE `' . self::tableName() . '` SET photo = ? WHERE id = ?', [
+                    static::raw('UPDATE `@THIS` SET photo = ? WHERE id = ?', [
                         $photo, $row->get('id')
                     ]);
                 }
             }
 
-            static::raw('UPDATE `' . self::tableName() . '` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
                 (($user) ? $user->get('id') : 0), $row->get('id')
             ]);
 
@@ -178,14 +178,14 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$row) {
                 throw new \Exception('Invalid item: ' . $id);
             }
 
             $amount = $row->get('amount') + 1;
             
-            static::raw('UPDATE `' . self::tableName() . '` SET amount = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET amount = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
                 $amount, (($user) ? $user->get('id') : 0), $row->get('id')
             ]);
 
@@ -213,7 +213,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$row) {
                 throw new \Exception('Invalid item: ' . $id);
             }
@@ -223,7 +223,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 $amount = 0;
             }
             
-            static::raw('UPDATE `' . self::tableName() . '` SET amount = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET amount = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [
                 $amount, (($user) ? $user->get('id') : 0), $row->get('id')
             ]);
 
@@ -244,7 +244,7 @@ class InventoryModel extends \Asatru\Database\Model {
     public static function getInventory()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY group_ident, name ASC');
+            return static::raw('SELECT * FROM `@THIS` ORDER BY group_ident, name ASC');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -264,7 +264,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $row = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $row = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$row) {
                 throw new \Exception('Invalid item: ' . $id);
             }
@@ -273,7 +273,7 @@ class InventoryModel extends \Asatru\Database\Model {
                 unlink(public_path('/img/' . $row->get('photo')));
             }
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$row->get('id')]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$row->get('id')]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), 'inventory', 'remove_inventory_item', $row->get('name'), url('/inventory'));
@@ -292,7 +292,7 @@ class InventoryModel extends \Asatru\Database\Model {
     public static function isGroupInUse($group_ident)
     {
         try {
-            $row = static::raw('SELECT COUNT(*) AS `count` FROM `' . self::tableName() . '` WHERE group_ident = ?', [$group_ident])->first();
+            $row = static::raw('SELECT COUNT(*) AS `count` FROM `@THIS` WHERE group_ident = ?', [$group_ident])->first();
             if (!$row) {
                 return false;
             }
@@ -311,7 +311,7 @@ class InventoryModel extends \Asatru\Database\Model {
     public static function generateQRCode($id)
     {
         try {
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$item) {
                 throw new \Exception('Invalid item: ' . $id);
             }
@@ -495,15 +495,5 @@ class InventoryModel extends \Asatru\Database\Model {
     public static function exports()
     {
         return static::$supported_exports;
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'inventory';
     }
 }

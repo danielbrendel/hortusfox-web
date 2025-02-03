@@ -25,7 +25,7 @@ class InventoryModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('inventory', $this->connection);
+        $this->database = new Asatru\Database\Migration('InventoryModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('name VARCHAR(512) NOT NULL');
