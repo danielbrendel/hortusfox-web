@@ -349,7 +349,7 @@ class ImportModule {
             $calendar_class_items = json_decode(file_get_contents($path . '/data.json'));
             if ($calendar_class_items) {
                 foreach ($calendar_class_items as $calendar_class_item) {
-                    CalendarModel::raw('INSERT IGNORE INTO `@THIS` (ident, name, color_background, color_border, created_at) VALUES(?, ?, ?, ?, ?)', [
+                    CalendarModel::raw('INSERT IGNORE INTO `@THIS` (id, name, color_background, color_border, created_at) VALUES(?, ?, ?, ?, ?)', [
                         $calendar_class_item->ident,
                         $calendar_class_item->name,
                         $calendar_class_item->color_background,
