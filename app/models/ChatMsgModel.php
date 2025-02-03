@@ -21,7 +21,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
 
             $message = trim($message);
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (userId, message) VALUES(?, ?)', [
+            static::raw('INSERT INTO `@THIS` (userId, message) VALUES(?, ?)', [
                 $user->get('id'), $message
             ]);
         } catch (\Exception $e) {
@@ -38,13 +38,13 @@ class ChatMsgModel extends \Asatru\Database\Model {
     public static function getChat($limit = 50, $api = false)
     {
         try {
-            $result = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY created_at DESC LIMIT ' . $limit);
+            $result = static::raw('SELECT * FROM `@THIS` ORDER BY created_at DESC LIMIT ' . $limit);
 
             if (!$api) {
                 if (count($result) > 0) {
                     UserModel::updateLastSeenMsg($result->get(0)->get('id'));
 
-                    $lastsysmsg = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE sysmsg = 1 ORDER BY created_at DESC')->first();
+                    $lastsysmsg = static::raw('SELECT * FROM `@THIS` WHERE sysmsg = 1 ORDER BY created_at DESC')->first();
                     if ($lastsysmsg) {
                         UserModel::updateLastSeenSysMsg($lastsysmsg->get('id'));
                     }
@@ -69,7 +69,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id > ? ORDER BY created_at DESC', [($user->get('last_seen_msg')) ? $user->get('last_seen_msg') : 0]);
+            $result = static::raw('SELECT * FROM `@THIS` WHERE id > ? ORDER BY created_at DESC', [($user->get('last_seen_msg')) ? $user->get('last_seen_msg') : 0]);
 
             if (($result) && (count($result) > 0)) {
                 UserModel::updateLastSeenMsg($result->get(0)->get('id'));
@@ -99,7 +99,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
                 $limit_token = 'LIMIT ' . strval($limit);
             }
 
-            $result = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE sysmsg = 1 AND id > ? ORDER BY created_at DESC ' . $limit_token, [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
+            $result = static::raw('SELECT * FROM `@THIS` WHERE sysmsg = 1 AND id > ? ORDER BY created_at DESC ' . $limit_token, [($user->get('last_seen_sysmsg')) ? $user->get('last_seen_sysmsg') : 0]);
             if (($result) && (count($result) > 0)) {
                 $msg = $result->get(count($result) - 1);
 
@@ -126,7 +126,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
-            $data = static::raw('SELECT COUNT(*) AS `count` FROM `' . self::tableName() . '` WHERE userId <> ? AND id > ? ORDER BY id ASC', [
+            $data = static::raw('SELECT COUNT(*) AS `count` FROM `@THIS` WHERE userId <> ? AND id > ? ORDER BY id ASC', [
                 $user->get('id'), ($user->get('last_seen_msg')) ? $user->get('last_seen_msg') : 0
             ])->first();
 
@@ -134,15 +134,5 @@ class ChatMsgModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'chatmsg';
     }
 }
