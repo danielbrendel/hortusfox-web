@@ -24,7 +24,7 @@ class LogModel extends \Asatru\Database\Model {
                 $value = substr($value, 0, self::LOG_MAX_STRING_LENGTH - 4) . '...';
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (user, target, property, value, link) VALUES(?, ?, ?, ?, ?)', [$user, $target, $property, $value, $link]);
+            static::raw('INSERT INTO `@THIS` (user, target, property, value, link) VALUES(?, ?, ?, ?, ?)', [$user, $target, $property, $value, $link]);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -43,9 +43,9 @@ class LogModel extends \Asatru\Database\Model {
             $history = null;
 
             if (($user) && (is_int($user))) {
-                $history = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE user = ? ORDER BY created_at DESC LIMIT ' . $limit, [$user]);
+                $history = static::raw('SELECT * FROM `@THIS` WHERE user = ? ORDER BY created_at DESC LIMIT ' . $limit, [$user]);
             } else {
-                $history = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY created_at DESC LIMIT ' . $limit);
+                $history = static::raw('SELECT * FROM `@THIS` ORDER BY created_at DESC LIMIT ' . $limit);
             }
 
             foreach ($history as $entry) {
@@ -67,15 +67,5 @@ class LogModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'log';
     }
 }

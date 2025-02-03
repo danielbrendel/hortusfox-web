@@ -25,7 +25,7 @@ class LogModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('log', $this->connection);
+        $this->database = new Asatru\Database\Migration('LogModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('user INT NOT NULL');
