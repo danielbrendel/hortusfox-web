@@ -26,7 +26,7 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
 
             $globals = CustAttrSchemaModel::getAll()?->asArray();
 
-            $data = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ?', [$plantId]);
+            $data = static::raw('SELECT * FROM `@THIS` WHERE plant = ?', [$plantId]);
             foreach ($data as $item) {
                 $entry = new stdClass();
                 $entry->id = $item->get('id');
@@ -111,7 +111,7 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
                 }
             }
 
-            static::raw('INSERT INTO `' . self::tableName() . '` (plant, label, datatype, content) VALUES(?, ?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (plant, label, datatype, content) VALUES(?, ?, ?, ?)', [
                 $plant, $label, $datatype, static::interpretContent($content, $datatype)
             ]);
 
@@ -119,7 +119,7 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
                 LogModel::addLog($user->get('id'), $plant, '[add] ' . $label . ' (' . $datatype . ')', $content, url('/plants/details/' . $plant));
             }
 
-            $new_entry = static::raw('SELECT * FROM `' . self::tableName() . '` ORDER BY id DESC LIMIT 1')->first();
+            $new_entry = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
             
             return ($new_entry) ? $new_entry->get('id') : 0;
         } catch (\Exception $e) {
@@ -147,12 +147,12 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
                 }
             }
 
-            $exists = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $exists = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$exists) {
                 $id = static::addAttribute($plant, $label, $datatype, $content);
             }
             
-            static::raw('UPDATE `' . self::tableName() . '` SET label = ?, datatype = ?, content = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET label = ?, datatype = ?, content = ? WHERE id = ?', [
                 $label, $datatype, static::interpretContent($content, $datatype), $id
             ]);
 
@@ -180,12 +180,12 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
                 }
             }
 
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE id = ?', [$id])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$item) {
                 throw new \Exception('Custom plant attribute not found: ' . $id);
             }
 
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$id]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$id]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), $item->get('plant'), '[remove] ' . $item->get('label') . ' (' . $item->get('datatype') . ')', $item->get('content'), url('/plants/details/' . $item->get('plant')));
@@ -203,7 +203,7 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
     public static function performSearch($expression)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE CONVERT(content USING ' . env('DB_CHARSET', 'utf8') . ') LIKE ?', ['%' . $expression . '%']);
+            return static::raw('SELECT * FROM `@THIS` WHERE CONVERT(content USING ' . env('DB_CHARSET', 'utf8') . ') LIKE ?', ['%' . $expression . '%']);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -218,7 +218,7 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
     public static function getAttrIdOfPlant($plant, $label)
     {
         try {
-            $item = static::raw('SELECT * FROM `' . self::tableName() . '` WHERE plant = ? AND label = ?', [$plant, $label])->first();
+            $item = static::raw('SELECT * FROM `@THIS` WHERE plant = ? AND label = ?', [$plant, $label])->first();
             if ($item) {
                 return $item->get('id');
             }
@@ -227,15 +227,5 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'custplantattr';
     }
 }
