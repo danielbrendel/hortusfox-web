@@ -25,7 +25,7 @@ class LocationsModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('locations', $this->connection);
+        $this->database = new Asatru\Database\Migration('LocationsModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('name VARCHAR(512) NOT NULL');
