@@ -116,14 +116,4 @@ class AppModel extends \Asatru\Database\Model {
             'SSL' => 'smtps'
         ];
     }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'AppModel';
-    }
 }
