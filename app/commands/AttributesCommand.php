@@ -32,10 +32,10 @@ class AttributesCommand implements Asatru\Commands\Command {
         if ($args->get(0)?->getValue(0) === '--force') {
             echo "Dropping previous plant attributes.\n";
 
-            PlantDefAttrModel::raw('DELETE FROM `' . PlantDefAttrModel::tableName() . '`');
+            PlantDefAttrModel::raw('DELETE FROM `@THIS`');
         }
 
-        $entry_count = PlantDefAttrModel::raw('SELECT COUNT(*) AS `count` FROM `' . PlantDefAttrModel::tableName() . '`')->first()->get('count');
+        $entry_count = PlantDefAttrModel::raw('SELECT COUNT(*) AS `count` FROM `@THIS`')->first()->get('count');
         if ($entry_count > 0) {
             return;
         }
@@ -43,7 +43,7 @@ class AttributesCommand implements Asatru\Commands\Command {
         foreach (self::$default_plant_attributes as $def_attribute) {
             echo "Adding default plant attribute: {$def_attribute}\n";
 
-            PlantDefAttrModel::raw('INSERT INTO `' . PlantDefAttrModel::tableName() . '` (name, active) VALUES(?, 1)', [$def_attribute]);
+            PlantDefAttrModel::raw('INSERT INTO `@THIS` (name, active) VALUES(?, 1)', [$def_attribute]);
         }
     }
 }
