@@ -18,7 +18,7 @@ class ShareLogModel extends \Asatru\Database\Model {
     public static function addEntry($userId, $ident, $url, $asset, $title)
     {
         try {
-            static::raw('INSERT INTO `' . self::tableName() . '` (userId, ident, url, asset, title) VALUES(?, ?, ?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (userId, ident, url, asset, title) VALUES(?, ?, ?, ?, ?)', [
                 $userId, $ident, $url, $asset, $title
             ]);
         } catch (\Exception $e) {
@@ -37,9 +37,9 @@ class ShareLogModel extends \Asatru\Database\Model {
     {
         try {
             if ($paginate) {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$userId, $paginate]);
+                return static::raw('SELECT * FROM `@THIS` WHERE userId = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$userId, $paginate]);
             } else {
-                return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE userId = ? ORDER BY id DESC LIMIT ' . $limit, [$userId]);
+                return static::raw('SELECT * FROM `@THIS` WHERE userId = ? ORDER BY id DESC LIMIT ' . $limit, [$userId]);
             }
         } catch (\Exception $e) {
             throw $e;
@@ -55,21 +55,11 @@ class ShareLogModel extends \Asatru\Database\Model {
     public static function removeEntry($userId, $ident)
     {
         try {
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE userId = ? AND ident = ?', [
+            static::raw('DELETE FROM `@THIS` WHERE userId = ? AND ident = ?', [
                 $userId, $ident
             ]);
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'sharelog';
     }
 }

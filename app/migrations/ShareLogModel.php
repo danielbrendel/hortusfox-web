@@ -25,7 +25,7 @@ class ShareLogModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('sharelog', $this->connection);
+        $this->database = new Asatru\Database\Migration('ShareLogModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('userId INT NOT NULL');
