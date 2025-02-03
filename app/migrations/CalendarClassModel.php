@@ -25,7 +25,7 @@ class CalendarClassModel_Migration {
      */
     public function up()
     {
-        $this->database = new Asatru\Database\Migration('calendarclasses', $this->connection);
+        $this->database = new Asatru\Database\Migration('CalendarClassModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('ident VARCHAR(512) NOT NULL');

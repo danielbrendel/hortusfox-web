@@ -13,7 +13,7 @@ class CalendarClassModel extends \Asatru\Database\Model {
     public static function getAll()
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '`');
+            return static::raw('SELECT * FROM `@THIS`');
         } catch (\Exception $e) {
             throw $e;
         }
@@ -27,7 +27,7 @@ class CalendarClassModel extends \Asatru\Database\Model {
     public static function findClass($ident)
     {
         try {
-            return static::raw('SELECT * FROM `' . self::tableName() . '` WHERE ident = ?', [$ident])->first();
+            return static::raw('SELECT * FROM `@THIS` WHERE ident = ?', [$ident])->first();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -44,7 +44,7 @@ class CalendarClassModel extends \Asatru\Database\Model {
     public static function addClass($ident, $name, $color_background, $color_border)
     {
         try {
-            static::raw('INSERT INTO `' . self::tableName() . '` (ident, name, color_background, color_border) VALUES(?, ?, ?, ?)', [
+            static::raw('INSERT INTO `@THIS` (ident, name, color_background, color_border) VALUES(?, ?, ?, ?)', [
                 $ident, $name, $color_background, $color_border
             ]);
         } catch (\Exception $e) {
@@ -64,7 +64,7 @@ class CalendarClassModel extends \Asatru\Database\Model {
     public static function editClass($id, $ident, $name, $color_background, $color_border)
     {
         try {
-            static::raw('UPDATE `' . self::tableName() . '` SET ident = ?, name = ?, color_background = ?, color_border = ? WHERE id = ?', [
+            static::raw('UPDATE `@THIS` SET ident = ?, name = ?, color_background = ?, color_border = ? WHERE id = ?', [
                 $ident, $name, $color_background, $color_border, $id
             ]);
         } catch (\Exception $e) {
@@ -80,19 +80,9 @@ class CalendarClassModel extends \Asatru\Database\Model {
     public static function removeClass($id)
     {
         try {
-            static::raw('DELETE FROM `' . self::tableName() . '` WHERE id = ?', [$id]);
+            static::raw('DELETE FROM `@THIS` WHERE id = ?', [$id]);
         } catch (\Exception $e) {
             throw $e;
         }
-    }
-
-    /**
-     * Return the associated table name of the migration
-     * 
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'calendarclasses';
     }
 }

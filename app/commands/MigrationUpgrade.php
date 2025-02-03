@@ -13,7 +13,17 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo4dot1()
     {
-        ApiModel::raw('RENAME TABLE `apitable` TO `@THIS`');
+        try {
+            ApiModel::raw('RENAME TABLE `apitable` TO `@THIS`');
+        } catch (\Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+        }
+
+        try {
+            CalendarClassModel::raw('RENAME TABLE `calendarclasses` TO `@THIS`');
+        } catch (\Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+        }
     }
 
     /**
