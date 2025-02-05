@@ -415,7 +415,7 @@
                 $workspace, 'en', true, true, 5, true, false, true, true, 'History', false, md5(random_bytes(55) . date('Y-m-d H:i:s')), null, $smtpaddr, $smtpaddr, $smtphost, $smtpport, $smtpuser, $smtppw, 'tls', 0, 0, null, null, null, 'default', 300
             ]);
 
-            dbquery($pdo, 'INSERT INTO `users` (name, email, password, admin) VALUES(?, ?, ?, ?)', [
+            dbquery($pdo, 'INSERT INTO `UserModel` (name, email, password, admin) VALUES(?, ?, ?, ?)', [
                 $name, $email, password_hash($password, PASSWORD_BCRYPT), true
             ]);
 
