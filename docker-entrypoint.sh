@@ -264,6 +264,9 @@ cp -r /tmp/themes/* /var/www/html/public/themes
 # Set permissions to folder for themes
 chown -R www-data:www-data /var/www/html/public/themes
 
+# Set permissions to folder for cache
+chown -R www-data:www-data /var/www/html/cache
+
 # Set permissions to public folder
 chown -R www-data:www-data /var/www/html/public
 chmod 755 /var/www/html/public

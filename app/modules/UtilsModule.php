@@ -640,6 +640,8 @@ class UtilsModule {
     public static function purify($html)
     {
         $config = HTMLPurifier_Config::createDefault();
+        $config->set('Cache.SerializerPath', base_path() . '/cache');
+
         $purifier = new HTMLPurifier($config);
         
         return $purifier->purify($html);
