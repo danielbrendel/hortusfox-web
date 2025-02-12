@@ -22,12 +22,12 @@ WORKDIR /var/www/html
 # Install system dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
  && apt-get install -y build-essential || exit 1
-RUN DEBIAN_FRONTEND=noninteractive apt-get install libpng-dev \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libpng-dev \
         libjpeg-dev \
         libonig-dev \
         libxml2-dev || exit 1
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install libzip-dev \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libzip-dev \
         zip \
         unzip \
         git \
