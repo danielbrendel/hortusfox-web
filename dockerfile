@@ -20,19 +20,19 @@ FROM php:8.3.0-apache
 WORKDIR /var/www/html
 
 # Install system dependencies
-RUN apt-get update \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
  && apt-get install -y build-essential || exit 1
-RUN apt-get install libpng-dev \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install libpng-dev \
         libjpeg-dev \
         libonig-dev \
         libxml2-dev || exit 1
 
-RUN apt-get install libzip-dev \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install libzip-dev \
         zip \
         unzip \
         git \
         default-mysql-client  || exit 1
-RUN apt-get clean \
+RUN DEBIAN_FRONTEND=noninteractive apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
 # Install PHP extensions
  && docker-php-ext-install \
