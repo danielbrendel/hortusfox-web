@@ -1028,6 +1028,9 @@
         <?php if (env('APP_SERVICE_URL')) { ?>
             <div class="version-check">
                 <a class="button is-link" href="{{ url('/admin?cv=1&tab=info') }}">{{ __('app.check_for_new_version') }}</a>
+                @if (VersionModule::getCachedVersion() > config('version'))
+                    <i class="is-indicator-tab is-indicator-button"></i>
+                @endif
             </div>
         <?php } ?>
     <?php } ?>
