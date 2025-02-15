@@ -198,7 +198,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function add_attribute($request)
+    public function add_attribute($request)
     {
         try {
             $plant = $request->params()->query('plant', null);
@@ -225,7 +225,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function edit_attribute($request)
+    public function edit_attribute($request)
     {
         try {
             $plant = $request->params()->query('plant', null);
@@ -252,7 +252,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function remove_attribute($request)
+    public function remove_attribute($request)
     {
         try {
             $plant = $request->params()->query('plant', null);
@@ -277,7 +277,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function update_plant_photo($request)
+    public function update_plant_photo($request)
     {
         try {
             $plantId = $request->params()->query('plant', null);
@@ -308,7 +308,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function add_plant_gallery_photo($request)
+    public function add_plant_gallery_photo($request)
     {
         try {
             $plantId = $request->params()->query('plant', null);
@@ -343,7 +343,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function edit_plant_gallery_photo($request)
+    public function edit_plant_gallery_photo($request)
     {
         try {
             $plantId = $request->params()->query('plant', null);
@@ -369,7 +369,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function remove_plant_gallery_photo($request)
+    public function remove_plant_gallery_photo($request)
     {
         try {
             $item = $request->params()->query('item', null);
@@ -393,7 +393,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function add_plant_log_entry($request)
+    public function add_plant_log_entry($request)
     {
         try {
             $plantId = $request->params()->query('plant', null);
@@ -419,7 +419,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function edit_plant_log_entry($request)
+    public function edit_plant_log_entry($request)
     {
         try {
             $logid = $request->params()->query('logid', null);
@@ -444,7 +444,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function remove_plant_log_entry($request)
+    public function remove_plant_log_entry($request)
     {
         try {
             $logid = $request->params()->query('logid', null);
@@ -468,7 +468,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function fetch_plant_log_entries($request)
+    public function fetch_plant_log_entries($request)
     {
         try {
             $plantId = $request->params()->query('plant', null);
@@ -566,7 +566,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function fetch_tasks_list($request)
+    public function fetch_tasks_list($request)
     {
         try {
             $done = (bool)$request->params()->query('done', false);
@@ -592,7 +592,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function add_task($request)
+    public function add_task($request)
     {
         try {
             $title = $request->params()->query('title', null);
@@ -619,7 +619,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function edit_task($request)
+    public function edit_task($request)
     {
         try {
             $taskid = $request->params()->query('task', null);
@@ -647,7 +647,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function remove_task($request)
+    public function remove_task($request)
     {
         try {
             $taskid = $request->params()->query('task', null);
@@ -671,7 +671,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function fetch_inventory($request)
+    public function fetch_inventory($request)
     {
         try {
 			$data = InventoryModel::getInventory();
@@ -694,7 +694,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function add_inventory_item($request)
+    public function add_inventory_item($request)
     {
         try {
             $name = $request->params()->query('name', null);
@@ -725,7 +725,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function edit_inventory_item($request)
+    public function edit_inventory_item($request)
     {
         try {
             $item = $request->params()->query('item', null);
@@ -756,7 +756,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function inc_inventory_item($request)
+    public function inc_inventory_item($request)
     {
         try {
             $item = $request->params()->query('item', null);
@@ -781,7 +781,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function dec_inventory_item($request)
+    public function dec_inventory_item($request)
     {
         try {
             $item = $request->params()->query('item', null);
@@ -806,7 +806,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function remove_inventory_item($request)
+    public function remove_inventory_item($request)
     {
         try {
             $item = $request->params()->query('item', null);
@@ -830,7 +830,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function fetch_calendar_entries($request)
+    public function fetch_calendar_entries($request)
     {
         try {
 			$date_from = $request->params()->query('date_from', null);
@@ -879,7 +879,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function add_calendar_entry($request)
+    public function add_calendar_entry($request)
     {
         try {
             $name = $request->params()->query('name', null);
@@ -915,7 +915,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function edit_calendar_entry($request)
+    public function edit_calendar_entry($request)
     {
         try {
             $ident = $request->params()->query('ident', null);
@@ -951,7 +951,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function remove_calendar_entry($request)
+    public function remove_calendar_entry($request)
     {
         try {
             $ident = $request->params()->query('ident', null);
@@ -975,7 +975,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function fetch_chat_messages($request)
+    public function fetch_chat_messages($request)
     {
         try {
             $limit = $request->params()->query('limit', 50);
@@ -1000,7 +1000,7 @@ class ApiController extends BaseController {
 	 * @param Asatru\Controller\ControllerArg $request
 	 * @return Asatru\View\JsonHandler
 	 */
-    public static function add_chat_message($request)
+    public function add_chat_message($request)
     {
         try {
             $message = $request->params()->query('message', null);
