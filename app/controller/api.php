@@ -515,6 +515,41 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/locations/info
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function fetch_location_info($request)
+    {
+        try {
+            $location = $request->params()->query('location', null);
+            $include_plants = $request->params()->query('include_plants', false);
+
+			$data = LocationsModel::getLocationById($location)?->asArray();
+
+            if (($include_plants) && ($data)) {
+                $data['plants'] = [];
+
+                $plants = PlantsModel::getAll($location);
+                if ($plants) {
+                    $data['plants'] = $plants->asArray();
+                }
+            }
+
+            return json([
+                'code' => 200,
+                'data' => $data
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/tasks/fetch
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

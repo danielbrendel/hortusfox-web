@@ -180,6 +180,7 @@ return [
     array('/api/plants/log/remove', 'ANY', 'api@remove_plant_log_entry'),
     array('/api/plants/log/fetch', 'ANY', 'api@fetch_plant_log_entries'),
     array('/api/locations/list', 'ANY', 'api@fetch_location_list'),
+    array('/api/locations/info', 'ANY', 'api@fetch_location_info'),
     array('/api/tasks/fetch', 'ANY', 'api@fetch_tasks_list'),
     array('/api/tasks/add', 'ANY', 'api@add_task'),
     array('/api/tasks/edit', 'ANY', 'api@edit_task'),

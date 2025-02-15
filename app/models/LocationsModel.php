@@ -52,6 +52,20 @@ class LocationsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getLocationById($id)
+    {
+        try {
+            return static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $name
      * @param $icon
      * @return void
