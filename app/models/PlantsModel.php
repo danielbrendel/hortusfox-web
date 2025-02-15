@@ -902,4 +902,19 @@ class PlantsModel extends \Asatru\Database\Model {
             throw $e;
         }
     }
+
+    /**
+     * @param $location
+     * @param $include
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getSpecificInfo($location, $include = 'id')
+    {
+        try {
+            return static::raw('SELECT ' . $include . ' FROM `@THIS` WHERE location = ? AND history = 0', [$location]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }

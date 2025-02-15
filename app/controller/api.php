@@ -500,12 +500,13 @@ class ApiController extends BaseController {
         try {
             $only_active = $request->params()->query('only_active', false);
             $include_plants = $request->params()->query('include_plants', false);
+            $include_info = $request->params()->query('include_info', 'id');
 
 			$locations = LocationsModel::getAll($only_active)?->asArray();
 
             if (($locations) && ($include_plants)) {
                 foreach ($locations as $key => $location) {
-                    $cur_plants = PlantsModel::getAll($location['id'])?->asArray();
+                    $cur_plants = PlantsModel::getSpecificInfo($location['id'], $include_info)?->asArray();
 
                     $locations[$key]['plant_count'] = count($cur_plants);
                     $locations[$key]['plant_list'] = $cur_plants;
