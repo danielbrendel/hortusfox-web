@@ -11,6 +11,25 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo4dot2()
+    {
+        $this->ensureTableMigration();
+    }
+
+    /**
+     * @return void
+     */
+    private function ensureTableMigration()
+    {
+        $plantsTable = PlantsModel::raw('SHOW TABLES LIKE \'@THIS\';')->first();
+        if ($plantsTable === null) {
+            $this->upgradeTo4dot1();
+        }
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo4dot1()
     {
         try {
