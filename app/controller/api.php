@@ -490,6 +490,31 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/locations/list
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function fetch_location_list($request)
+    {
+        try {
+            $only_active = $request->params()->query('only_active', false);
+
+			$data = LocationsModel::getAll($only_active);
+
+            return json([
+                'code' => 200,
+                'list' => $data?->asArray()
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /api/tasks/fetch
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
