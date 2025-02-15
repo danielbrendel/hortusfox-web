@@ -1,5 +1,5 @@
 # First stage: Composer installation
-FROM composer:latest as composer
+FROM composer:latest AS composer
 
 # Set the working directory in the Composer container
 WORKDIR /app
