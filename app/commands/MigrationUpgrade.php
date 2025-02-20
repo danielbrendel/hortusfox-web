@@ -13,6 +13,7 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo4dot3()
     {
+        LocationsModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS notes TEXT NULL');
     }
 
     /**
