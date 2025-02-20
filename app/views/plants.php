@@ -1,4 +1,4 @@
-<h1>{{ $location_name }}</h1>
+<h1>{{ $location_data->get('name') }}</h1>
 
 <div class="margin-vertical">
 	<div class="action-strip action-strip-left">
@@ -25,6 +25,15 @@
 </div>
 
 @include('flashmsg.php')
+
+<div class="location-notes">
+	<a name="location-notes-anchor" class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('location-notes-edit').classList.toggle('is-hidden')">{{ __('app.notes') }}</a>
+
+	<div id="location-notes-edit" class="is-hidden">
+		<div><textarea id="location-notes-content" class="textarea" oninput="document.getElementById('location-notes-result').innerHTML = '';">{{ $location_data->get('notes') ?? '' }}</textarea></div>
+		<div><a class="button is-success" href="javascript:void(0);" onclick="window.vue.saveLocationNotes('{{ $location_data->get('id') }}', 'location-notes-content', 'location-notes-result');">{{ __('app.save') }}</a>&nbsp;<span id="location-notes-result"></span></div>
+	</div>
+</div>
 
 <div class="sorting">
 	<div class="sorting-control sorting-mobile-only">

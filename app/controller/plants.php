@@ -47,7 +47,7 @@ class PlantsController extends BaseController {
 			'sorting_types' => PlantsModel::$sorting_list,
 			'sorting_dirs' => PlantsModel::$sorting_dir,
 			'location' => $location,
-			'location_name' => LocationsModel::getNameById($location),
+			'location_data' => LocationsModel::getLocationById($location),
 			'location_log_entries' => $location_log_entries
 		]);
 	}
@@ -121,6 +121,33 @@ class PlantsController extends BaseController {
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());
 			return back();
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/location/{id}/notes/save
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function save_location_notes($request)
+	{
+		try {
+			$user = UserModel::getAuthUser();
+
+			$location = $request->arg('id');
+			$notes = $request->params()->query('notes', '');
+
+			LocationsModel::saveNotes($location, $notes);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 

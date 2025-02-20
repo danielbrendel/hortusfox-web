@@ -103,6 +103,23 @@ class LocationsModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
+     * @param $notes
+     * @return void
+     * @throws \Exception
+     */
+    public static function saveNotes($id, $notes)
+    {
+        try {
+            static::raw('UPDATE `@THIS` SET notes = ? WHERE id = ?', [
+                $notes, $id
+            ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
      * @param $target
      * @return void
      * @throws \Exception

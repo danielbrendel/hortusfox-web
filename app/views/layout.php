@@ -1474,7 +1474,7 @@
 						@endif
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="window.vue.bulkPrintQRCodes('plant-bulk-print-qrcode', '{{ ((isset($location_name)) ? $location_name : '') }}');">{{ __('app.print') }}</button>
+						<button class="button is-success" onclick="window.vue.bulkPrintQRCodes('plant-bulk-print-qrcode', '{{ ((isset($location_data)) ? $location_data->get('name') : '') }}');">{{ __('app.print') }}</button>
 						<button class="button" onclick="window.vue.bShowPlantBulkPrint = false;">{{ __('app.close') }}</button>
 					</footer>
 				</div>

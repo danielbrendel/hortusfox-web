@@ -617,6 +617,27 @@ fieldset .field {
     }
 }
 
+.location-notes {
+    margin-bottom: 20px;
+}
+
+.location-notes textarea {
+    color: rgb(150, 150, 150);
+    background-color: rgb(50, 50, 50);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.location-notes span {
+    position: relative;
+    top: 5px;
+    margin-left: 10px;
+}
+
+.location-notes i {
+    color: rgb(115, 215, 105);
+}
+
 .upcoming-tasks-overview {
     position: relative;
     text-align: center;

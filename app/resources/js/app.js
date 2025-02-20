@@ -1746,6 +1746,24 @@ window.vue = new Vue({
             }
         },
 
+        saveLocationNotes: function(location, notes, reselem) {
+            let elem = document.getElementById(notes);
+            if (elem) {
+                let elNotes = document.getElementById(notes);
+
+                window.vue.ajaxRequest('post', window.location.origin + '/plants/location/' + location + '/notes/save', { notes: elNotes.value }, function(response) {
+                    if (response.code == 200) {
+                        let elResult = document.getElementById(reselem);
+                        if (elResult) {
+                            elResult.innerHTML = '<i class="fa-solid fa-check fa-lg"></i>';
+                        }
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            }
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;
