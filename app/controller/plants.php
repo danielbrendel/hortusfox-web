@@ -140,6 +140,8 @@ class PlantsController extends BaseController {
 
 			LocationsModel::saveNotes($location, $notes);
 
+			LocationLogModel::addEntry($location, '[System] save_notes: ' . $notes);
+
 			return json([
 				'code' => 200
 			]);
