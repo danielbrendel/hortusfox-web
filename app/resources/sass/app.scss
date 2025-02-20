@@ -693,12 +693,13 @@ fieldset .field {
 
 .action-strip-left {
     @media screen and (max-width: 1111px) {
-        width: 83%;
+        width: 80%;
     }
 }
 
 .action-strip-right {
     position: relative;
+    top: 5px;
     float: right;
 }
 
