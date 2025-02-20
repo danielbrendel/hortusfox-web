@@ -1023,7 +1023,7 @@ window.vue = new Vue({
         },
 
         selectAdminTab: function(tab) {
-            const tabs = ['environment', 'media', 'users', 'locations', 'attributes', 'calendar', 'mail', 'themes', 'backup', 'weather', 'api', 'info'];
+            const tabs = ['environment', 'media', 'users', 'locations', 'auth', 'attributes', 'calendar', 'mail', 'themes', 'backup', 'weather', 'api', 'info'];
 
             let selEl = document.querySelector('.admin-' + tab);
             if (selEl) {
@@ -1049,7 +1049,11 @@ window.vue = new Vue({
         },
 
         switchAdminTab: function(tab) {
-            location.href = window.location.origin + '/admin?tab=' + tab;
+            window.vue.selectAdminTab(tab);
+
+            const url = new URL(window.location);
+            url.searchParams.set('tab', tab);
+            history.replaceState(null, '', url.toString());
         },
 
         showImagePreview: function(asset, aspect = 'is-3by5') {
