@@ -21,19 +21,11 @@
 
 	<div class="action-strip action-strip-right">
 		<div class="is-inline-block is-action-button-margin float-right"><a class="is-gray-link" href="javascript:void(0);" onclick="document.querySelector('#location-log-anchor').scrollIntoView({behavior: 'smooth'});"><i class="far fa-file-alt fa-lg"></i></a></div>
+		<div class="is-inline-block is-action-button-margin float-right"><a class="is-gray-link" href="javascript:void(0);" onclick="document.querySelector('#location-notes-anchor').scrollIntoView({behavior: 'smooth'});"><i class="fa-solid fa-align-center fa-lg"></i></a></div>
 	</div>
 </div>
 
 @include('flashmsg.php')
-
-<div class="location-notes">
-	<a name="location-notes-anchor" class="is-default-link" href="javascript:void(0);" onclick="document.getElementById('location-notes-edit').classList.toggle('is-hidden')">{{ __('app.notes') }}</a>
-
-	<div id="location-notes-edit" class="is-hidden">
-		<div><textarea id="location-notes-content" class="textarea" oninput="document.getElementById('location-notes-result').innerHTML = '';">{{ $location_data->get('notes') ?? '' }}</textarea></div>
-		<div><a class="button is-success" href="javascript:void(0);" onclick="window.vue.saveLocationNotes('{{ $location_data->get('id') }}', 'location-notes-content', 'location-notes-result');">{{ __('app.save') }}</a>&nbsp;<span id="location-notes-result"></span></div>
-	</div>
-</div>
 
 <div class="sorting">
 	<div class="sorting-control sorting-mobile-only">
@@ -127,6 +119,19 @@
 			<div class="plants-empty-text">{{ __('app.content_empty') }}</div>
 		</div>
 	@endif
+</div>
+
+<div class="is-dark-delimiter"><hr/></div>
+
+<div class="location-notes">
+	<div class="location-notes-title">{{ __('app.notes') }}</div>
+
+	<a name="location-notes-anchor" id="location-notes-anchor"></a>
+
+	<div id="location-notes-edit">
+		<div><textarea id="location-notes-content" class="textarea" oninput="document.getElementById('location-notes-result').innerHTML = '';">{{ $location_data->get('notes') ?? '' }}</textarea></div>
+		<div><a class="button is-success" href="javascript:void(0);" onclick="window.vue.saveLocationNotes('{{ $location_data->get('id') }}', 'location-notes-content', 'location-notes-result');">{{ __('app.save') }}</a>&nbsp;<span id="location-notes-result"></span></div>
+	</div>
 </div>
 
 <div class="is-dark-delimiter"><hr/></div>
