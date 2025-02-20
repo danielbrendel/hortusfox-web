@@ -11,6 +11,14 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo4dot3()
+    {
+        $this->ensureTableMigration();
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo4dot2()
     {
         $this->ensureTableMigration();
