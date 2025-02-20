@@ -13,7 +13,6 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo4dot3()
     {
-        $this->ensureTableMigration();
     }
 
     /**
@@ -21,18 +20,6 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo4dot2()
     {
-        $this->ensureTableMigration();
-    }
-
-    /**
-     * @return void
-     */
-    private function ensureTableMigration()
-    {
-        $plantsTable = PlantsModel::raw('SHOW TABLES LIKE \'@THIS\';')->first();
-        if ($plantsTable === null) {
-            $this->upgradeTo4dot1();
-        }
     }
 
     /**
@@ -40,137 +27,6 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo4dot1()
     {
-        try {
-            ApiModel::raw('RENAME TABLE `apitable` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            CalendarClassModel::raw('RENAME TABLE `calendarclasses` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            CalendarInformerModel::raw('RENAME TABLE `calendarinformer` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            CalendarModel::raw('RENAME TABLE `calendar` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            ChatMsgModel::raw('RENAME TABLE `chatmsg` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            ChatViewModel::raw('RENAME TABLE `chatview` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            CustAttrSchemaModel::raw('RENAME TABLE `custattrschema` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            CustBulkCmdModel::raw('RENAME TABLE `custbulkcmd` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            CustPlantAttrModel::raw('RENAME TABLE `custplantattr` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            InventoryModel::raw('RENAME TABLE `inventory` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            InvGroupModel::raw('RENAME TABLE `invgroup` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            LocationLogModel::raw('RENAME TABLE `locationlog` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            LocationsModel::raw('RENAME TABLE `locations` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            LogModel::raw('RENAME TABLE `log` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            PlantDefAttrModel::raw('RENAME TABLE `plantdefattr` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            PlantLogModel::raw('RENAME TABLE `plantlog` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            PlantPhotoModel::raw('RENAME TABLE `plantphotos` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            PlantsModel::raw('RENAME TABLE `plants` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            ShareLogModel::raw('RENAME TABLE `sharelog` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            TaskInformerModel::raw('RENAME TABLE `taskinformer` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            TasksModel::raw('RENAME TABLE `tasks` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
-
-        try {
-            UserModel::raw('RENAME TABLE `users` TO `@THIS`');
-        } catch (\Exception $e) {
-            echo $e->getMessage() . PHP_EOL;
-        }
     }
 
     /**
@@ -314,6 +170,147 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     }
 
     /**
+     * @return void
+     */
+    private function ensureTableMigration()
+    {
+        $plantsTable = PlantsModel::raw('SHOW TABLES LIKE \'@THIS\';')->first();
+        if ($plantsTable === null) {
+            try {
+                ApiModel::raw('RENAME TABLE `apitable` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                CalendarClassModel::raw('RENAME TABLE `calendarclasses` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                CalendarInformerModel::raw('RENAME TABLE `calendarinformer` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                CalendarModel::raw('RENAME TABLE `calendar` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                ChatMsgModel::raw('RENAME TABLE `chatmsg` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                ChatViewModel::raw('RENAME TABLE `chatview` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                CustAttrSchemaModel::raw('RENAME TABLE `custattrschema` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                CustBulkCmdModel::raw('RENAME TABLE `custbulkcmd` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                CustPlantAttrModel::raw('RENAME TABLE `custplantattr` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                InventoryModel::raw('RENAME TABLE `inventory` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                InvGroupModel::raw('RENAME TABLE `invgroup` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                LocationLogModel::raw('RENAME TABLE `locationlog` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                LocationsModel::raw('RENAME TABLE `locations` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                LogModel::raw('RENAME TABLE `log` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                PlantDefAttrModel::raw('RENAME TABLE `plantdefattr` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                PlantLogModel::raw('RENAME TABLE `plantlog` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                PlantPhotoModel::raw('RENAME TABLE `plantphotos` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                PlantsModel::raw('RENAME TABLE `plants` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                ShareLogModel::raw('RENAME TABLE `sharelog` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                TaskInformerModel::raw('RENAME TABLE `taskinformer` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                TasksModel::raw('RENAME TABLE `tasks` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+    
+            try {
+                UserModel::raw('RENAME TABLE `users` TO `@THIS`');
+            } catch (\Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+        }
+    }
+
+    /**
      * Command handler method
      * 
      * @param $args
@@ -333,6 +330,10 @@ class MigrationUpgrade implements Asatru\Commands\Command {
             $method = 'upgradeTo' . str_replace('.', 'dot', $version);
 
             if (method_exists($this, $method)) {
+                if (version_compare($version, '4.0', '>')) {
+                    $this->ensureTableMigration();
+                }
+
                 $this->$method();
 
                 echo "\033[32mDone!\033[39m\n";
