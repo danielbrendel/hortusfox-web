@@ -73,7 +73,7 @@ class BackupModule {
     private static function backupLocations(ZipArchive $zip)
     {
         try {
-            $locations = LocationsModel::raw('SELECT * FROM `locations`');
+            $locations = LocationsModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('locations');
 
@@ -94,7 +94,7 @@ class BackupModule {
     private static function backupPlants(ZipArchive $zip)
     {
         try {
-            $plants = PlantsModel::raw('SELECT * FROM `plants`');
+            $plants = PlantsModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('plants');
             $zip->addEmptyDir('plants/img');
@@ -122,7 +122,7 @@ class BackupModule {
     private static function backupPlantLog(ZipArchive $zip)
     {
         try {
-            $plantlog = PlantLogModel::raw('SELECT * FROM `plantlog`');
+            $plantlog = PlantLogModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('plantlog');
 
@@ -143,7 +143,7 @@ class BackupModule {
     public static function backupGallery(ZipArchive $zip)
     {
         try {
-            $photos = PlantPhotoModel::raw('SELECT * FROM `plantphotos`');
+            $photos = PlantPhotoModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('gallery');
             $zip->addEmptyDir('gallery/img');
@@ -175,7 +175,7 @@ class BackupModule {
     public static function backupTasks(ZipArchive $zip)
     {
         try {
-            $tasks = TasksModel::raw('SELECT * FROM `tasks`');
+            $tasks = TasksModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('tasks');
 
@@ -196,7 +196,7 @@ class BackupModule {
     public static function backupInvGroups(ZipArchive $zip)
     {
         try {
-            $invgroups = InvgroupModel::raw('SELECT * FROM `invgroup`');
+            $invgroups = InvgroupModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('invgroups');
 
@@ -217,7 +217,7 @@ class BackupModule {
     public static function backupInventory(ZipArchive $zip)
     {
         try {
-            $inventory = InventoryModel::raw('SELECT * FROM `inventory`');
+            $inventory = InventoryModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('inventory');
             $zip->addEmptyDir('inventory/img');
@@ -245,7 +245,7 @@ class BackupModule {
     public static function backupCalendar(ZipArchive $zip)
     {
         try {
-            $calendar_items = CalendarModel::raw('SELECT * FROM `calendar`');
+            $calendar_items = CalendarModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('calendar');
 
@@ -266,7 +266,7 @@ class BackupModule {
     public static function backupCalClasses(ZipArchive $zip)
     {
         try {
-            $calendar_class_items = CalendarClassModel::raw('SELECT * FROM `calendarclasses`');
+            $calendar_class_items = CalendarClassModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('calcls');
 
