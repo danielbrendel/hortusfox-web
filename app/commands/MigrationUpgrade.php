@@ -326,6 +326,10 @@ class MigrationUpgrade implements Asatru\Commands\Command {
                 $version = $args->get(0)->getValue();
             }
 
+            if (strpos($version, '.') === false) {
+                $version .= '.0';
+            }
+
             echo "Upgrading to \033[94m{$version}\033[39m...\n";
 
             $method = 'upgradeTo' . str_replace('.', 'dot', $version);
