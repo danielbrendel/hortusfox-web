@@ -1,5 +1,6 @@
 /app/logs
 /app/migrations/migrations.list
+/app/migrations/verhist.json
 /vendor
 /node_modules
 /.idea
