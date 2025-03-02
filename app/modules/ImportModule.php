@@ -79,10 +79,16 @@ class ImportModule {
             $locations = json_decode(file_get_contents($path . '/data.json'));
             if ($locations) {
                 foreach ($locations as $location) {
-                    LocationsModel::raw('INSERT IGNORE INTO `@THIS` (id, name, icon, active, created_at) VALUES(?, ?, ?, ?, ?)', [
+                    //Location notes were added with version 4.3
+                    if (!isset($location->notes)) {
+                        $location->notes = '';
+                    }
+
+                    LocationsModel::raw('INSERT IGNORE INTO `@THIS` (id, name, icon, notes, active, created_at) VALUES(?, ?, ?, ?, ?, ?)', [
                         $location->id,
                         $location->name,
                         $location->icon,
+                        $location->notes,
                         $location->active,
                         $location->created_at
                     ]);
