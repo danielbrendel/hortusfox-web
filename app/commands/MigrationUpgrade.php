@@ -11,6 +11,13 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     /**
      * @return void
      */
+    public function upgradeTo4dot5()
+    {
+    }
+
+    /**
+     * @return void
+     */
     public function upgradeTo4dot4()
     {
     }
