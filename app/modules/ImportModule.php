@@ -30,6 +30,7 @@ class ImportModule {
 
                 if ((isset($options['locations'])) && ($options['locations'])) {
                     static::importLocations(public_path() . '/backup/' . $import_file . '/locations');
+                    static::importLocationLog(public_path() . '/backup/' . $import_file . '/locationlog');
                 }
 
                 if ((isset($options['plants'])) && ($options['plants'])) {
@@ -91,6 +92,34 @@ class ImportModule {
                         $location->notes,
                         $location->active,
                         $location->created_at
+                    ]);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importLocationLog($path)
+    {
+        try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
+            $locationlog_entries = json_decode(file_get_contents($path . '/data.json'));
+            if ($locationlog_entries) {
+                foreach ($locationlog_entries as $locationlog_entry) {
+                    LocationLogModel::raw('INSERT IGNORE INTO `@THIS` (location, content, updated_at, created_at) VALUES(?, ?, ?, ?)', [
+                        $locationlog_entry->location,
+                        $locationlog_entry->content,
+                        $locationlog_entry->updated_at,
+                        $locationlog_entry->created_at
                     ]);
                 }
             }

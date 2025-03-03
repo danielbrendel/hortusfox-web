@@ -23,6 +23,7 @@ class BackupModule {
             if ($zip->open(public_path() . '/backup/' . $backup_file, ZIPARCHIVE::CREATE | ZipArchive::OVERWRITE)) {
                 if ((isset($options['locations'])) && ($options['locations'])) {
                     $cleanup_files[] = static::backupLocations($zip);
+                    $cleanup_files[] = static::backupLocationLog($zip);
                 }
 
                 if ((isset($options['plants'])) && ($options['plants'])) {
@@ -81,6 +82,27 @@ class BackupModule {
             $zip->addFile(public_path() . '/backup/_locations.json', 'locations/data.json');
 
             return public_path() . '/backup/_locations.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    private static function backupLocationLog(ZipArchive $zip)
+    {
+        try {
+            $locationlog = LocationLogModel::raw('SELECT * FROM `@THIS`');
+
+            $zip->addEmptyDir('locationlog');
+
+            file_put_contents(public_path() . '/backup/_locationlog.json', json_encode($locationlog->asArray()));
+            $zip->addFile(public_path() . '/backup/_locationlog.json', 'locationlog/data.json');
+
+            return public_path() . '/backup/_locationlog.json';
         } catch (\Exception $e) {
             throw $e;
         }
