@@ -155,6 +155,7 @@ return [
     /** Cronjob Controller */
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),
     array('/cronjob/tasks/tomorrow', 'GET', 'cronjobs@tomorrow_tasks'),
+    array('/cronjob/tasks/recurring', 'GET', 'cronjobs@recurring_tasks'),
     array('/cronjob/calendar/reminder', 'GET', 'cronjobs@calendar_reminder'),
     array('/cronjob/backup/auto', 'GET', 'cronjobs@auto_backup'),
 

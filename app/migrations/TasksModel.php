@@ -31,8 +31,10 @@ class TasksModel_Migration {
         $this->database->add('title VARCHAR(512) NOT NULL');
         $this->database->add('description TEXT NOT NULL');
         $this->database->add('due_date TIMESTAMP NULL');
+        $this->database->add('recurring_time INT NULL');
         $this->database->add('done BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        $this->database->add('updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }
 

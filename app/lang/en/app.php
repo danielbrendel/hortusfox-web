@@ -466,5 +466,7 @@ return [
 	'move_current_photo_to_gallery' => 'Move current photo to gallery',
 	'created_at' => 'Created at',
 	'updated_at' => 'Updated at',
-	'tags' => 'Tags'
+	'tags' => 'Tags',
+	'recurring' => 'Recurring',
+	'recurring_time' => 'Repeat each hours',
 ];

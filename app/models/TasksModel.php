@@ -10,11 +10,12 @@ class TasksModel extends \Asatru\Database\Model {
      * @param $title
      * @param $description
      * @param $due_date
+     * @param $recurring_time
      * @param $api
      * @return int
      * @throws \Exception
      */
-    public static function addTask($title, $description = '', $due_date = null, $api = false)
+    public static function addTask($title, $description = '', $due_date = null, $recurring_time = null, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -22,7 +23,7 @@ class TasksModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
             
-            static::raw('INSERT INTO `@THIS` (title, description, due_date) VALUES(?, ?, ?)', [$title, $description, $due_date]);
+            static::raw('INSERT INTO `@THIS` (title, description, due_date, recurring_time) VALUES(?, ?, ?, ?)', [$title, $description, $due_date, $recurring_time]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title, url('/tasks'));
@@ -151,9 +152,9 @@ class TasksModel extends \Asatru\Database\Model {
     {
         try {
             if (!$done) {
-                return static::raw('SELECT * FROM `@THIS` WHERE done = ? ORDER BY -due_date DESC, created_at DESC LIMIT ' . $limit, [$done]);
+                return static::raw('SELECT * FROM `@THIS` WHERE done = ? ORDER BY -due_date DESC, updated_at DESC LIMIT ' . $limit, [$done]);
             } else {
-                return static::raw('SELECT * FROM `@THIS` WHERE done = ? ORDER BY created_at DESC LIMIT ' . $limit, [$done]);
+                return static::raw('SELECT * FROM `@THIS` WHERE done = ? ORDER BY updated_at DESC LIMIT ' . $limit, [$done]);
             }
         } catch (\Exception $e) {
             throw $e;
@@ -246,6 +247,22 @@ class TasksModel extends \Asatru\Database\Model {
             $tasks = static::getTomorrowTasks();
             foreach ($tasks as $task) {
                 TaskInformerModel::inform($task, 'tomorrow', env('APP_CRONJOB_MAILLIMIT', 5));
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public static function cronjobRecurring()
+    {
+        try {
+            $tasks = static::raw('SELECT * FROM `@THIS` WHERE done = 0 AND due_date IS NOT NULL AND recurring_time IS NOT NULL AND DATE_ADD(due_date, INTERVAL recurring_time HOUR) < CURRENT_DATE');
+            foreach ($tasks as $task) {
+                static::raw('UPDATE `@THIS` SET due_date = DATE_ADD(due_date, INTERVAL recurring_time HOUR) WHERE id = ?', [$task->get('id')]);
             }
         } catch (\Exception $e) {
             throw $e;

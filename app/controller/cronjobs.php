@@ -67,6 +67,26 @@ class CronjobsController extends BaseController {
     }
 
     /**
+	 * Handles URL: /cronjob/tasks/recurring
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function recurring_tasks($request)
+    {
+        try {
+            TasksModel::cronjobRecurring();
+
+            return json(['code' => 200]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
 	 * Handles URL: /cronjob/calendar/reminder
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

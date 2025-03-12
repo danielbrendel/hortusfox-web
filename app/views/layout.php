@@ -475,7 +475,20 @@
 							<div class="field">
 								<label class="label">{{ __('app.due') }}</label>
 								<div class="control">
-									<input type="date" class="input" name="due_date">
+									<input type="date" class="input" name="due_date" onchange="if (this.value.length > 0) { document.getElementById('recurring-flag').classList.remove('is-hidden'); } else { document.getElementById('recurring-flag').classList.add('is-hidden'); }">
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="recurring-flag">
+								<div class="control">
+									<input type="checkbox" name="recurring" value="1" onchange="if (this.checked) { document.getElementById('recurring-time').classList.remove('is-hidden'); } else { document.getElementById('recurring-time').classList.add('is-hidden'); }">&nbsp;{{ __('app.recurring') }}
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="recurring-time">
+								<label class="label">{{ __('app.recurring_time') }}</label>
+								<div class="control">
+									<input type="number" class="input" name="recurring_time">
 								</div>
 							</div>
 
