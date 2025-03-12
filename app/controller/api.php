@@ -631,9 +631,10 @@ class ApiController extends BaseController {
             $title = $request->params()->query('title', null);
             $description = $request->params()->query('description', null);
             $due_date = $request->params()->query('due_date', null);
+            $recurring_time = $request->params()->query('recurring_time', null);
             $done = $request->params()->query('done', null);
 			
-			TasksModel::editTask($taskid, $title, $description, $due_date, $done, true);
+			TasksModel::editTask($taskid, $title, $description, $due_date, $recurring_time, $done, true);
 
             return json([
                 'code' => 200
