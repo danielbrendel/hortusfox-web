@@ -466,5 +466,10 @@ return [
 	'move_current_photo_to_gallery' => 'Flytt gjeldende bilde til galleriet',
 	'created_at' => 'Opprettet',
 	'updated_at' => 'Redigert',
-	'tags' => 'Tags'
+	'tags' => 'Tags',
+	'recurring' => 'Tilbakevendende',
+	'recurring_time' => 'Gjenta hver time',
+	'mail_info_task_recurring' => 'Gjentakende oppgave',
+	'mail_info_task_recurring_hint' => 'Oppgaven <strong>{name}</strong> er klar nå og vil gjenta seg om {time} timer. Forfallsdato: {date}. Gå til oppgaver: <a href="{url}">{url}</a>',
+	'notify_tasks_recurring' => 'Gi meg beskjed om gjentakende oppgaver',
 ];
