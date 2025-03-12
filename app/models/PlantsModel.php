@@ -138,10 +138,14 @@ class PlantsModel extends \Asatru\Database\Model {
      * @return mixed
      * @throws \Exception
      */
-    public static function getAuthoredPlants($userId)
+    public static function getAuthoredPlants($userId, $limit = 0)
     {
         try {
-            return static::raw('SELECT * FROM `@THIS` WHERE last_edited_user = ? ORDER BY last_edited_date DESC', [$userId]);
+            if ($limit == 0) {
+                return static::raw('SELECT * FROM `@THIS` WHERE last_edited_user = ? ORDER BY last_edited_date DESC', [$userId]);
+            } else {
+                return static::raw('SELECT * FROM `@THIS` WHERE last_edited_user = ? ORDER BY last_edited_date DESC LIMIT ' . $limit, [$userId]);
+            }
         } catch (\Exception $e) {
             throw $e;
         }

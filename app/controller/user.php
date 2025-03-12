@@ -27,7 +27,7 @@ class UserController extends BaseController {
 	public function view_profile($request)
 	{
 		$user = UserModel::getAuthUser();
-		$plants = PlantsModel::getAuthoredPlants($user->get('id'));
+		$plants = PlantsModel::getAuthoredPlants($user->get('id'), 40);
 		$log = LogModel::getHistory($user->get('id'));
 		$sharelog = ShareLogModel::getForUser($user->get('id'));
 		
