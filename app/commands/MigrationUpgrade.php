@@ -13,6 +13,8 @@ class MigrationUpgrade implements Asatru\Commands\Command {
      */
     public function upgradeTo4dot5()
     {
+        TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS recurring_time INT NULL');
+        TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
     }
 
     /**
