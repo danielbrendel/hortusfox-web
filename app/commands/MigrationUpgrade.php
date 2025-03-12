@@ -15,6 +15,8 @@ class MigrationUpgrade implements Asatru\Commands\Command {
     {
         TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS recurring_time INT NULL');
         TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+
+        UserModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS notify_tasks_recurring BOOLEAN NOT NULL DEFAULT 1');
     }
 
     /**
