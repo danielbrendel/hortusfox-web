@@ -466,5 +466,10 @@ return [
 	'move_current_photo_to_gallery' => 'Verplaats huidige foto naar gallerij',
 	'created_at' => 'Aangemaakt op',
 	'updated_at' => 'Bijgewerkt op',
-	'tags' => 'Tags'
+	'tags' => 'Tags',
+	'recurring' => 'Terugkerend',
+	'recurring_time' => 'Herhaal elk uur',
+	'mail_info_task_recurring' => 'Terugkerende taak',
+	'mail_info_task_recurring_hint' => 'De taak <strong>{name}</strong> moet nu worden uitgevoerd en zal over {time} uur opnieuw worden uitgevoerd. Vervaldatum: {date}. Ga naar taken: <a href="{url}">{url}</a>',
+	'notify_tasks_recurring' => 'Stuur mij een melding over terugkerende taken',
 ];
