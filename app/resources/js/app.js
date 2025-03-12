@@ -558,11 +558,19 @@ window.vue = new Vue({
                 document.getElementById('inpEditTaskDueDate').value = dueDate.childNodes[0].innerText;
                 document.getElementById('inpEditTaskRecurringTime').value = dueDate.childNodes[2].dataset.time;
 
-                if (document.getElementById('inpEditTaskRecurringTime').value.length > 0) {
-                    document.getElementById('edit-recurring-flag').classList.remove('is-hidden');
-                    document.getElementById('edit-recurring-time').classList.remove('is-hidden');
+                document.getElementById('edit-recurring-flag').classList.remove('is-hidden');
+                document.getElementById('edit-recurring-time').classList.remove('is-hidden');
 
-                    document.getElementById('inpEditTaskRecurringFlag').checked = true;
+                document.getElementById('inpEditTaskRecurringFlag').checked = document.getElementById('inpEditTaskRecurringTime').value.length > 0;
+            } else {
+                document.getElementById('inpEditTaskDueDate').value = '';
+
+                if (!document.getElementById('edit-recurring-flag').classList.contains('is-hidden')) {
+                    document.getElementById('edit-recurring-flag').classList.add('is-hidden');
+                }
+
+                if (!document.getElementById('edit-recurring-time').classList.contains('is-hidden')) {
+                    document.getElementById('edit-recurring-time').classList.add('is-hidden');
                 }
             }
 
