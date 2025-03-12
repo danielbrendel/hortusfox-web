@@ -466,5 +466,10 @@ return [
 	'move_current_photo_to_gallery' => 'Mover la foto actual a la galería',
 	'created_at' => 'Creado',
 	'updated_at' => 'Editado',
-	'tags' => 'Tags'
+	'tags' => 'Tags',
+	'recurring' => 'Repetición',
+	'recurring_time' => 'Repetir cada hora',
+	'mail_info_task_recurring' => 'tarea recurrente',
+	'mail_info_task_recurring_hint' => 'La tarea <strong>{name}</strong> vence ahora y se repetirá en {time} horas. Fecha de vencimiento: {date}. Ir a tareas: <a href="{url}">{url}</a>',
+	'notify_tasks_recurring' => 'Notificarme sobre tareas recurrentes',
 ];
