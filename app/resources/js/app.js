@@ -552,7 +552,19 @@ window.vue = new Vue({
             document.getElementById('inpEditTaskId').value = id;
             document.getElementById('inpEditTaskTitle').value = document.getElementById('task-item-title-' + id).childNodes[1].textContent;
             document.getElementById('inpEditTaskDescription').value = document.getElementById('task-item-description-' + id).innerText;
-            document.getElementById('inpEditTaskDueDate').value = document.getElementById('task-item-due-' + id).innerText;
+
+            let dueDate = document.getElementById('task-item-due-' + id);
+            if ((dueDate) && (dueDate.childNodes.length > 0)) {
+                document.getElementById('inpEditTaskDueDate').value = dueDate.childNodes[0].innerText;
+                document.getElementById('inpEditTaskRecurringTime').value = dueDate.childNodes[2].dataset.time;
+
+                if (document.getElementById('inpEditTaskRecurringTime').value.length > 0) {
+                    document.getElementById('edit-recurring-flag').classList.remove('is-hidden');
+                    document.getElementById('edit-recurring-time').classList.remove('is-hidden');
+
+                    document.getElementById('inpEditTaskRecurringFlag').checked = true;
+                }
+            }
 
             window.vue.bShowEditTask = true;
         },

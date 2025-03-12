@@ -532,7 +532,20 @@
 							<div class="field">
 								<label class="label">{{ __('app.due') }}</label>
 								<div class="control">
-									<input type="date" class="input" name="due_date" id="inpEditTaskDueDate">
+									<input type="date" class="input" name="due_date" id="inpEditTaskDueDate" onchange="if (this.value.length > 0) { document.getElementById('edit-recurring-flag').classList.remove('is-hidden'); } else { document.getElementById('edit-recurring-flag').classList.add('is-hidden'); }">
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="edit-recurring-flag">
+								<div class="control">
+									<input type="checkbox" name="recurring" id="inpEditTaskRecurringFlag" value="1" onchange="if (this.checked) { document.getElementById('edit-recurring-time').classList.remove('is-hidden'); } else { document.getElementById('edit-recurring-time').classList.add('is-hidden'); }">&nbsp;{{ __('app.recurring') }}
+								</div>
+							</div>
+
+							<div class="field is-hidden" id="edit-recurring-time">
+								<label class="label">{{ __('app.recurring_time') }}</label>
+								<div class="control">
+									<input type="number" class="input" name="recurring_time" id="inpEditTaskRecurringTime">
 								</div>
 							</div>
 						</form>

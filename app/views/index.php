@@ -185,6 +185,7 @@
 					<div class="task-footer-due" id="task-item-due-{{ $task->get('id') }}">
 						@if ($task->get('due_date') !== null)
 							<span class="{{ ((new DateTime($task->get('due_date'))) < (new DateTime())) ? 'is-task-overdue' : '' }}">{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</span>
+							<span class="is-task-recurring" data-time="{{ $task->get('recurring_time') ?? '' }}"><i class="far fa-clock {{ ((!$task->get('recurring_time')) ? 'is-hidden' : '') }}"></i></span>
 						@endif
 					</div>
 					

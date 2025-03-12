@@ -1919,6 +1919,11 @@ fieldset .field {
     color: rgb(212, 50, 50);
 }
 
+.is-task-recurring {
+    color: rgb(0, 145, 215);
+    margin-left: 5px;
+}
+
 .task-footer-action {
     position: relative;
     display: inline-block;

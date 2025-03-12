@@ -46,12 +46,13 @@ class TasksModel extends \Asatru\Database\Model {
      * @param $title
      * @param $description
      * @param $due_date
+     * @param $recurring_time
      * @param $done
      * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editTask($taskId, $title, $description, $due_date, $done = null, $api = false)
+    public static function editTask($taskId, $title, $description, $due_date, $recurring_time, $done = null, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -79,7 +80,7 @@ class TasksModel extends \Asatru\Database\Model {
                 $done = $item->get('done');
             }
 
-            static::raw('UPDATE `@THIS` SET title = ?, description = ?, due_date = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $done, $taskId]);
+            static::raw('UPDATE `@THIS` SET title = ?, description = ?, due_date = ?, recurring_time = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $recurring_time, $done, $taskId]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title, url('/tasks#task-anchor-' . $taskId));
