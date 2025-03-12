@@ -466,5 +466,10 @@ return [
 	'move_current_photo_to_gallery' => 'Déplacer la photo actuelle vers la galerie',
 	'created_at' => 'Créé',
 	'updated_at' => 'Édité',
-	'tags' => 'Tags'
+	'tags' => 'Tags',
+	'recurring' => 'Répétition',
+	'recurring_time' => 'Répétez toutes les heures',
+	'mail_info_task_recurring' => 'Tâche récurrente',
+	'mail_info_task_recurring_hint' => 'La tâche <strong>{name}</strong> doit être exécutée maintenant et se reproduira dans {time} heures. Date d\'échéance: {date}. Accéder aux tâches: <a href="{url}">{url}</a>',
+	'notify_tasks_recurring' => 'M\'avertir des tâches récurrentes',
 ];
