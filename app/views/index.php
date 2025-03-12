@@ -173,8 +173,15 @@
 				<a name="task-anchor-{{ $task->get('id') }}"></a>
 
 				<div class="task-header">
-					<div class="task-header-title" id="task-item-title-{{ $task->get('id') }}">{{ $task->get('title') }}</div>
-					<div class="task-header-action"><a href="javascript:void(0);" onclick="window.vue.editTask({{ $task->get('id') }});"><i class="fas fa-edit"></i></a></div>
+				<div class="task-header-title task-header-title-dashboard" id="task-item-title-{{ $task->get('id') }}"><span>#{{ sprintf('%03d', $task->get('id')) }}</span> {{ $task->get('title') }}</div>
+
+					<div class="task-header-action">
+						<span><a href="javascript:void(0);" onclick="window.vue.editTask({{ $task->get('id') }});"><i class="fas fa-edit"></i></a></span>
+
+						@if ($task->get('done'))
+							<span><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_task') }}')) { window.vue.removeTask({{ $task->get('id') }}); }"><i class="fas fa-trash-alt"></i></a></span>
+						@endif
+					</div>
 				</div>
 
 				<div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{{ ($task->get('description')) ?? 'N/A' }}</pre></div>
