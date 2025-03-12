@@ -64,7 +64,7 @@
 
 				<tr>
 					<td><strong>{{ __('app.location') }}</strong></td>
-					<td>{{ LocationsModel::getNameById($plant->get('location')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'location', window.vue.comboLocation, {{ $plant->get('location') }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
+					<td>{{ ((!$plant->get('history')) ? LocationsModel::getNameById($plant->get('location')) : app('history_name')) }} <span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'location', window.vue.comboLocation, {{ $plant->get('location') }});"><i class="fas fa-edit is-color-darker"></i></a></span></td>
 				</tr>
 
 				@if (plant_attr('last_watered'))
