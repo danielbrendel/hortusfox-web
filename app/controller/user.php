@@ -108,10 +108,11 @@ class UserController extends BaseController {
 			$show_plant_id = $request->params()->query('show_plant_id', false);
 			$notify_tasks_overdue = $request->params()->query('notify_tasks_overdue', false);
 			$notify_tasks_tomorrow = $request->params()->query('notify_tasks_tomorrow', false);
+			$notify_tasks_recurring = $request->params()->query('notify_tasks_recurring', false);
 			$notify_calendar_reminder = $request->params()->query('notify_calendar_reminder', false);
 			$show_plants_aoru = $request->params()->query('show_plants_aoru', 'added');
 
-			UserModel::editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_calendar_reminder, $show_plants_aoru);
+			UserModel::editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, $show_plants_aoru);
 
 			$password = $request->params()->query('password', null);
 			if ($password) {

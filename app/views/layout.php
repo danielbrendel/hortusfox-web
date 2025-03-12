@@ -1000,6 +1000,12 @@
 
 							<div class="field">
 								<div class="control">
+									<input type="checkbox" name="notify_tasks_recurring" value="1" {{ ($user->get('notify_tasks_recurring')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_tasks_recurring') }}
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
 									<input type="checkbox" name="notify_calendar_reminder" value="1" {{ ($user->get('notify_calendar_reminder')) ? 'checked' : ''}}>&nbsp;{{ __('app.notify_calendar_reminder') }}
 								</div>
 							</div>
