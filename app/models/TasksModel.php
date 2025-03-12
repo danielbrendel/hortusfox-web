@@ -168,7 +168,7 @@ class TasksModel extends \Asatru\Database\Model {
     public static function getOverdueTasks()
     {
         try {
-            return static::raw('SELECT * FROM `@THIS` WHERE done = 0 AND DATE(due_date) < CURRENT_DATE ORDER BY due_date ASC');
+            return static::raw('SELECT * FROM `@THIS` WHERE done = 0 AND recurring_time IS NULL AND DATE(due_date) < CURRENT_DATE ORDER BY due_date ASC');
         } catch (\Exception $e) {
             throw $e;
         }
