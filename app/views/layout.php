@@ -229,7 +229,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditDate').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="window.vue.validateAndSubmitForm(document.getElementById('frmEditDate'), this);">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditDate = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
@@ -1935,6 +1935,7 @@
 				window.vue.noListItemsSelected = '{{ __('app.noListItemsSelected') }}';
 				window.vue.editProperty = '{{ __('app.edit_property') }}';
 				window.vue.loadMore = '{{ __('app.load_more') }}';
+				window.vue.loading_please_wait = '{{ __('app.loading_please_wait') }}';
 				window.vue.operationSucceeded = '{{ __('app.operationSucceeded') }}';
 				window.vue.copiedToClipboard = '{{ __('app.copied_to_clipboard') }}';
 

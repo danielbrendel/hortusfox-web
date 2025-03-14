@@ -68,6 +68,7 @@ window.vue = new Vue({
         comboCuttingMonth: [],
         comboLightLevel: [],
         comboHealthState: [],
+        loading_please_wait: 'Please wait...',
         confirmPhotoRemoval: 'Are you sure you want to remove this photo?',
         confirmPlantRemoval: 'Are you sure you want to remove this plant?',
         confirmSetAllWatered: 'Are you sure you want to update the last watered date of all these plants?',
@@ -1781,6 +1782,18 @@ window.vue = new Vue({
                         alert(response.msg);
                     }
                 });
+            }
+        },
+
+        validateAndSubmitForm: function(form, button) {
+            let origtext = button.innerHTML;
+            button.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;' + window.vue.loading_please_wait; 
+
+            if (form.checkValidity()) {
+                form.submit();
+            } else {
+                form.reportValidity();
+                button.innerHTML = origtext;
             }
         },
 
