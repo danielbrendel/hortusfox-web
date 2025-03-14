@@ -404,7 +404,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmUploadPhoto').submit();">{{ __('app.upload') }}</button>
+						<button class="button is-success" onclick="window.vue.validateAndSubmitForm(document.getElementById('frmUploadPhoto'), this);">{{ __('app.upload') }}</button>
 						<button class="button" onclick="window.vue.bShowUploadPhoto = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
