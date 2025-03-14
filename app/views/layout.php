@@ -69,7 +69,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" id="button-add-plant" onclick="document.getElementById('frmAddPlant').addEventListener('submit', function() { document.getElementById('button-add-plant').innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; return true; }); document.getElementById('submit-add-plant').click();">{{ __('app.add') }}</button>
+						<button class="button is-success" id="button-add-plant" onclick="window.vue.validateAndSubmitForm(document.getElementById('frmAddPlant'), this);">{{ __('app.add') }}</button>
 						<button class="button" onclick="window.vue.bShowAddPlant = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
