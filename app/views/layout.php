@@ -98,7 +98,7 @@
 						</form>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditText').submit();">{{ __('app.save') }}</button>
+						<button class="button is-success" onclick="window.vue.validateAndSubmitForm(document.getElementById('frmEditText'), this);">{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowEditText = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>
