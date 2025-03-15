@@ -472,4 +472,7 @@ return [
 	'mail_info_task_recurring' => 'Tilbagevendende opgave',
 	'mail_info_task_recurring_hint' => 'Opgaven <strong>{name}</strong> er klar nu og vil gentage sig om {time} timer. Forfaldsdato: {date}. Gå til opgaver: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Giv mig besked om tilbagevendende opgaver',
+	'species' => 'Species',
+	'list_of_species' => 'List of species',
+	'plantrec_quickscan_label' => 'Enable quick-scan widget'
 ];
