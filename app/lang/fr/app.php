@@ -472,4 +472,7 @@ return [
 	'mail_info_task_recurring' => 'Tâche récurrente',
 	'mail_info_task_recurring_hint' => 'La tâche <strong>{name}</strong> doit être exécutée maintenant et se reproduira dans {time} heures. Date d\'échéance: {date}. Accéder aux tâches: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'M\'avertir des tâches récurrentes',
+	'species' => 'Espèces',
+	'list_of_species' => 'Liste des espèces',
+	'plantrec_quickscan_label' => 'Activer le widget d\'analyse rapide'
 ];
