@@ -404,7 +404,7 @@
 		@if (app('history_enable'))
 			@if (!$plant->get('history'))
 				<span>
-					<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ app('history_name') }}</a>&nbsp;
+					<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }});">{{ app('history_name') }}</a>&nbsp;
 				</span>
 			@else
 				<span>
