@@ -249,8 +249,29 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
     padding-top: unset;
 }
 
+.dropdown-content {
+    background-color: rgb(32, 32, 32);
+}
+
+.dropdown-item {
+    color: rgb(200, 200, 200);
+}
+
+.dropdown-item i {
+    background: transparent !important;
+}
+
+.dropdown-item i:hover {
+    background: transparent !important;
+}
+
+a.dropdown-item:hover, button.dropdown-item:hover {
+    background-color: rgb(50, 50, 50);
+    color: rgb(230, 230, 230);
+}
+
 .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(58, 58, 58, 0);
 }
 
 @media screen and (max-width: 1087px) {
