@@ -108,6 +108,7 @@ class AdminController extends BaseController {
 			$enablepwa = (bool)$request->params()->query('enablepwa', 0);
 			$plantrec_enable = (bool)$request->params()->query('plantrec_enable', 0);
 			$plantrec_apikey = $request->params()->query('plantrec_apikey', app('plantrec_apikey'));
+			$plantrec_quickscan = (bool)$request->params()->query('plantrec_quickscan', 0);
 
 			$set = [
 				'workspace' => $workspace,
@@ -131,7 +132,8 @@ class AdminController extends BaseController {
 				'custom_head_code' => $custom_head_code,
 				'pwa_enable' => $enablepwa,
 				'plantrec_enable' => $plantrec_enable,
-				'plantrec_apikey' => $plantrec_apikey
+				'plantrec_apikey' => $plantrec_apikey,
+				'plantrec_quickscan' => $plantrec_quickscan
 			];
 
 			AppModel::updateSet($set);

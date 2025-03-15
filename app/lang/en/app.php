@@ -473,5 +473,6 @@ return [
 	'mail_info_task_recurring_hint' => 'The task <strong>{name}</strong> is due now and will recur in {time} hours. Due date: {date}. Go to tasks: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Notify me about recurring tasks',
 	'species' => 'Species',
-	'list_of_species' => 'List of species'
+	'list_of_species' => 'List of species',
+	'plantrec_quickscan_label' => 'Enable quick-scan widget'
 ];

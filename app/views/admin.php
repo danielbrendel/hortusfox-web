@@ -162,6 +162,12 @@
             </div>
         </div>
 
+        <div class="field">
+            <div class="control">
+                <input type="checkbox" class="checkbox" name="plantrec_quickscan" value="1" {{ (app('plantrec_quickscan')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.plantrec_quickscan_label') }}</span>
+            </div>
+        </div>
+
         <div><hr></div>
 
         <div class="field">
