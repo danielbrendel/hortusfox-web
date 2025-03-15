@@ -79,7 +79,6 @@ create_environment_file() {
     APP_ENABLESCROLLER="$APP_ENABLE_SCROLLER"
     APP_OVERLAYALPHA="$APP_OVERLAY_ALPHA"
     APP_OVERDUETASK_HOURS=$APP_OVERDUE_TASK_HOURS
-    APP_CRONPW="$APP_CRON_PW"
     APP_CRONJOB_MAILLIMIT=$APP_CRON_MAIL_LIMIT
     APP_GITHUB_URL="https://github.com/danielbrendel/hortusfox-web"
     APP_GITHUB_SPONSOR="https://github.com/sponsors/danielbrendel"
