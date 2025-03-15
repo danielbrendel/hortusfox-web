@@ -63,6 +63,7 @@ window.vue = new Vue({
         bShowEditLocationLogEntry: false,
         bShowCreateNewBulkCmd: false,
         bShowSelectRecognizedPlant: false,
+        bShowQuickScanPlant: false,
         clsLastImagePreviewAspect: '',
         comboLocation: [],
         comboCuttingMonth: [],
@@ -1765,6 +1766,39 @@ window.vue = new Vue({
                     break;
                 }
             }
+        },
+
+        quickPlantRecognition: function(target, actionIcon, destContent) {
+            const form = document.getElementById(target);
+            const data = new FormData(form);
+
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/details/identify', data, function(response) {
+                if (response.code == 200) {
+                    let dest = document.getElementById(destContent);
+
+                    dest.innerHTML = '<fieldset>';
+
+                    response.data.forEach(function(elem, index) {
+                        dest.innerHTML += `
+                            <div class="field">
+                                <div class="control">
+                                    <div>` + elem.species.scientificNameWithoutAuthor + ` (` + (elem.score * 100).toFixed(2) + '%)' + `</div>
+                                </div>
+                            </div>
+                            `;
+                    });
+
+                    dest.innerHTML += '</fieldset>';
+
+                    document.getElementById(actionIcon).classList.remove('fa-spinner');
+                    document.getElementById(actionIcon).classList.remove('fa-spin');
+                    document.getElementById(actionIcon).classList.add('fa-microscope');
+
+                    window.vue.bShowQuickScanPlant = true;
+                } else {
+                    alert(response.msg);
+                }
+            });
         },
 
         saveLocationNotes: function(location, notes, reselem) {

@@ -1870,6 +1870,23 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowQuickScanPlant}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.list_of_species') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowQuickScanPlant = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<div id="quickscan-results"></div>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button" onclick="window.vue.bShowQuickScanPlant = false;">{{ __('app.close') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			@include('scanner.php')
 			@include('scroller.php')
 
 			@if (app('pwa_enable'))
