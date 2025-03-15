@@ -359,8 +359,6 @@
             $env .= 'APP_CRONJOB_MAILLIMIT=5' . PHP_EOL;
             $env .= 'APP_GITHUB_URL="' . APP_GITHUB_URL . '"' . PHP_EOL;
             $env .= 'APP_SERVICE_URL="' . APP_SERVICE_URL . '"' . PHP_EOL;
-            $env .= 'APP_ENABLEHISTORY=true' . PHP_EOL;
-            $env .= 'APP_HISTORY_NAME="History"' . PHP_EOL;
             $env .= 'APP_ENABLE_PHOTO_SHARE=false' . PHP_EOL;
             $env .= '' . PHP_EOL;
             $env .= '# Session' . PHP_EOL;
