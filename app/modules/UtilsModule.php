@@ -351,32 +351,6 @@ class UtilsModule {
     }
 
     /**
-     * @param $smtp_fromname
-     * @param $smtp_fromaddress
-     * @param $smtp_host
-     * @param $smtp_port
-     * @param $smtp_username
-     * @param $smtp_password
-     * @param $smtp_encryption
-     * @return void
-     * @deprecated
-     */
-    public static function saveMailSettings($smtp_fromname, $smtp_fromaddress, $smtp_host, $smtp_port, $smtp_username, $smtp_password, $smtp_encryption)
-    {
-        $new_env_settings = [
-            'SMTP_FROMNAME' => $smtp_fromname,
-            'SMTP_FROMADDRESS' => $smtp_fromaddress,
-            'SMTP_HOST' => $smtp_host,
-            'SMTP_PORT' => $smtp_port,
-            'SMTP_USERNAME' => $smtp_username,
-            'SMTP_PASSWORD' => $smtp_password,
-            'SMTP_ENCRYPTION' => $smtp_encryption
-        ];
-
-        static::saveEnvSettings($new_env_settings);
-    }
-
-    /**
      * @param $folder
      * @return void
      * @throws \Exception
