@@ -472,4 +472,7 @@ return [
 	'mail_info_task_recurring' => 'Wiederholende Aufgabe',
 	'mail_info_task_recurring_hint' => 'Die Aufgabe <strong>{name}</strong> ist jetzt fällig und wiederholt sich in {time} Stunden. Fälligkeitsdatum: {date}. Gehe zu Aufgaben: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Mich über wiederholende Aufgaben benachrichtigen',
+	'species' => 'Spezies',
+	'list_of_species' => 'Liste der Spezies',
+	'plantrec_quickscan_label' => 'Quick-Scan Widget aktivieren'
 ];
