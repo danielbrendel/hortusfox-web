@@ -472,4 +472,7 @@ return [
 	'mail_info_task_recurring' => 'Terugkerende taak',
 	'mail_info_task_recurring_hint' => 'De taak <strong>{name}</strong> moet nu worden uitgevoerd en zal over {time} uur opnieuw worden uitgevoerd. Vervaldatum: {date}. Ga naar taken: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Stuur mij een melding over terugkerende taken',
+	'species' => 'Soort',
+	'list_of_species' => 'Lijst met soorten',
+	'plantrec_quickscan_label' => 'Widget voor snel scannen inschakelen'
 ];
