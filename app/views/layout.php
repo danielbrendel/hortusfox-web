@@ -1966,6 +1966,11 @@
 					if (scroller) {
 						scroller.style.bottom = '83px';
 					}
+
+					let quickscanwidget = document.querySelector('.quickscan');
+					if (quickscanwidget) {
+						quickscanwidget.style.bottom = '151px';
+					}
 				}
 				@endif
 
