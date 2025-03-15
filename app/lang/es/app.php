@@ -472,4 +472,7 @@ return [
 	'mail_info_task_recurring' => 'tarea recurrente',
 	'mail_info_task_recurring_hint' => 'La tarea <strong>{name}</strong> vence ahora y se repetirá en {time} horas. Fecha de vencimiento: {date}. Ir a tareas: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Notificarme sobre tareas recurrentes',
+	'species' => 'Especies',
+	'list_of_species' => 'Lista de especies',
+	'plantrec_quickscan_label' => 'Habilitar el widget de escaneo rápido'
 ];
