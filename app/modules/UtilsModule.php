@@ -299,40 +299,6 @@ class UtilsModule {
     }
 
     /**
-     * @param $workspace
-     * @param $lang
-     * @param $scroller
-     * @param $enablechat
-     * @param $onlinetimelimit
-     * @param $chatonlineusers
-     * @param $chattypingindicator
-     * @param $enablehistory
-     * @param $history_name
-     * @param $enablephotoshare
-     * @param $cronpw
-     * @return void
-     * @deprecated
-     */
-    public static function saveEnvironment($workspace, $lang, $scroller, $enablechat, $onlinetimelimit, $chatonlineusers, $chattypingindicator, $enablehistory, $history_name, $enablephotoshare, $cronpw)
-    {
-        $new_env_settings = [
-            'APP_WORKSPACE' => $workspace,
-            'APP_LANG' => $lang,
-            'APP_ENABLESCROLLER' => $scroller,
-            'APP_ENABLECHAT' => $enablechat,
-            'APP_ONLINEMINUTELIMIT' => $onlinetimelimit,
-            'APP_SHOWCHATONLINEUSERS' => $chatonlineusers,
-            'APP_SHOWCHATTYPINGINDICATOR' => $chattypingindicator,
-            'APP_ENABLEHISTORY' => $enablehistory,
-            'APP_HISTORY_NAME' => $history_name,
-            'APP_ENABLE_PHOTO_SHARE' => $enablephotoshare,
-            'APP_CRONPW' => $cronpw
-        ];
-
-        static::saveEnvSettings($new_env_settings);
-    }
-
-    /**
      * @param $folder
      * @return void
      * @throws \Exception
