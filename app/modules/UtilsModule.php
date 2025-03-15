@@ -333,24 +333,6 @@ class UtilsModule {
     }
 
     /**
-     * @param $overlayalpha
-     * @return void
-     * @deprecated
-     */
-    public static function saveOverlayAlphaValue($overlayalpha)
-    {
-        if (!isset($_ENV['APP_OVERLAYALPHA'])) {
-            $_ENV['APP_OVERLAYALPHA'] = $overlayalpha;
-        }
-
-        $new_env_settings = [
-            'APP_OVERLAYALPHA' => $overlayalpha,
-        ];
-
-        static::saveEnvSettings($new_env_settings);
-    }
-
-    /**
      * @param $folder
      * @return void
      * @throws \Exception
