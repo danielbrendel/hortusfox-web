@@ -264,41 +264,6 @@ class UtilsModule {
     }
 
     /**
-     * @param array $settings
-     * @return void
-     */
-    public static function saveEnvSettings(array $settings)
-    {
-        foreach ($settings as $key => $value) {
-            if (isset($_ENV[$key])) {
-                $_ENV[$key] = $value;
-            }
-        }
-        
-        $env_content = "# Automatically generated at " . date('Y-m-d H:i:s') . "\n";
-
-        foreach ($_ENV as $key => $value) {
-            if (gettype($value) === 'boolean') {
-                $env_content .= $key . '=' . (($value) ? "true" : "false");
-            } else if (gettype($value) === 'double') {
-                $env_content .= $key . '=' . $value;
-            } else if (gettype($value) === 'integer') {
-                $env_content .= $key . '=' . $value;
-            } else if (gettype($value) === 'string') {
-                $env_content .= $key . '="' . $value . '"';
-            } else if ($value === null) {
-                $env_content .= $key . '=null';
-            } else {
-                $env_content .= $key . '=' . $value;
-            }
-
-            $env_content .= "\n";
-        }
-
-        file_put_contents(base_path() . '/.env', $env_content);
-    }
-
-    /**
      * @param $folder
      * @return void
      * @throws \Exception
