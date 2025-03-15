@@ -348,7 +348,6 @@
             $env .= 'APP_BASEDIR=""' . PHP_EOL;
             $env .= 'APP_LANG="en"' . PHP_EOL;
             $env .= 'APP_WORKSPACE="' . $workspace . '"' . PHP_EOL;
-            $env .= 'APP_OVERLAYALPHA=null' . PHP_EOL;
             $env .= 'APP_OVERDUETASK_HOURS=10' . PHP_EOL;
             $env .= 'APP_CRONJOB_MAILLIMIT=5' . PHP_EOL;
             $env .= 'APP_GITHUB_URL="' . APP_GITHUB_URL . '"' . PHP_EOL;
