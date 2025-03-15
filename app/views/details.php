@@ -402,9 +402,15 @@
 <div class="columns plant-column">
 	<div class="column is-full plant-button-group">
 		@if (app('history_enable'))
-		<span>
-			<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ app('history_name') }}</a>&nbsp;
-		</span>
+			@if (!$plant->get('history'))
+				<span>
+					<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.markHistorical({{ $plant->get('id') }}, {{ $plant->get('location') }});">{{ app('history_name') }}</a>&nbsp;
+				</span>
+			@else
+				<span>
+					<a class="button is-warning" href="javascript:void(0);" onclick="window.vue.unmarkHistorical({{ $plant->get('id') }});">{{ app('history_name') }}</a>&nbsp;
+				</span>
+			@endif
 		@endif
 
 		<span>	
