@@ -46,8 +46,10 @@
 - [Application testing](#application-testing)
 - [System requirements](#system-requirements)
 - [External Services](#external-services)
+  - [App Icons](#app-icons)
   - [Weather Forecast](#weather-forecast)
   - [Plant Identification](#plant-identification)
+  - [Plant information](#plant-information)
 - [Contributing](#contributing)
 - [Security](#security)
 
