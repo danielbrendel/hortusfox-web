@@ -1453,8 +1453,14 @@
 						<input type="hidden" id="plant-bulk-perform-operation-custom" value="1"/>
 
 						<div class="field">
-							<div class="control is-centered">
+							<div class="control is-centered is-margin-bottom-20">
 								<a href="javascript:void(0);" onclick="window.vue.bulkChecked('plant-bulk-perform-operation', true);">{{ __('app.select_all') }}</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="window.vue.bulkChecked('plant-bulk-perform-operation', false);">{{ __('app.unselect_all') }}</a>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control is-margin-bottom-20">
+								<input type="date" class="input" name="bulkdate" id="plant-bulk-perform-operation-bulkdate" value="{{ date('Y-m-d') }}">
 							</div>
 						</div>
 
@@ -1475,7 +1481,7 @@
 						@endif
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantUpdate('plant-bulk-perform-operation', document.getElementById('plant-bulk-perform-operation-operation').value, document.getElementById('plant-bulk-perform-operation-location').value, document.getElementById('plant-bulk-perform-operation-custom').checked);"></button>
+						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantUpdate('plant-bulk-perform-operation', document.getElementById('plant-bulk-perform-operation-operation').value, document.getElementById('plant-bulk-perform-operation-location').value, document.getElementById('plant-bulk-perform-operation-bulkdate').value, document.getElementById('plant-bulk-perform-operation-custom').checked);"></button>
 						<button class="button" onclick="window.vue.bShowPlantBulkPerformUpdate = false;">{{ __('app.close') }}</button>
 					</footer>
 				</div>

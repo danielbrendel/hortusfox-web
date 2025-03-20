@@ -1378,12 +1378,15 @@ window.vue = new Vue({
             document.getElementById('plant-bulk-perform-operation-button').innerText = button;
             document.getElementById('plant-bulk-perform-operation-custom').checked = is_custom;
 
+            let curDate = new Date();
+            document.getElementById('plant-bulk-perform-operation-bulkdate').value = curDate.toISOString().split('T')[0];
+            
             window.vue.bulkChecked('plant-bulk-perform-operation', false);
 
             window.vue.bShowPlantBulkPerformUpdate = true;
         },
 
-        bulkPerformPlantUpdate: function(target, attribute, location, is_custom = false) {
+        bulkPerformPlantUpdate: function(target, attribute, location, bulkdate, is_custom = false) {
             let plantIds = [];
 
             let elems = document.getElementsByClassName(target);
@@ -1395,7 +1398,7 @@ window.vue = new Vue({
                 });
                 
                 if (plantIds.length > 0) {
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds), location: location, custom: is_custom }, function(response) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds), location: location, bulkdate: bulkdate, custom: is_custom }, function(response) {
                         if (response.code == 200) {
                             alert(window.vue.operationSucceeded);
                             window.vue.bShowPlantBulkPerformUpdate = false;

@@ -803,7 +803,7 @@ class PlantsController extends BaseController {
 			$location = $request->params()->query('location', null);
 			$custom = (bool)$request->params()->query('custom', false);
 
-			$updated_datetime = date('Y-m-d H:i:s');
+			$updated_datetime = $request->params()->query('bulkdate', date('Y-m-d'));
 
 			foreach ($plants as $plant) {
 				if (!$custom) {
