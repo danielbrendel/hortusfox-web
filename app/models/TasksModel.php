@@ -261,9 +261,9 @@ class TasksModel extends \Asatru\Database\Model {
     public static function cronjobRecurring()
     {
         try {
-            $tasks = static::raw('SELECT * FROM `@THIS` WHERE done = 0 AND due_date IS NOT NULL AND recurring_time IS NOT NULL AND DATE_ADD(due_date, INTERVAL recurring_time HOUR) < CURRENT_DATE');
+            $tasks = static::raw('SELECT * FROM `@THIS` WHERE done = 0 AND due_date IS NOT NULL AND recurring_time IS NOT NULL AND due_date < NOW()');
             foreach ($tasks as $task) {
-                static::raw('UPDATE `@THIS` SET due_date = DATE_ADD(due_date, INTERVAL recurring_time HOUR) WHERE id = ?', [$task->get('id')]);
+                static::raw('UPDATE `@THIS` SET due_date = DATE_ADD(NOW(), INTERVAL recurring_time HOUR) WHERE id = ?', [$task->get('id')]);
 
                 TaskInformerModel::inform($task, 'recurring', env('APP_CRONJOB_MAILLIMIT', 5));
             }
