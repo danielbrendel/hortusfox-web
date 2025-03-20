@@ -170,7 +170,7 @@ return [
 	'remove' => 'Entfernen',
 	'create_user' => 'User erstellen',
 	'account_created' => 'Konto wurde erstellt',
-	'account_created_hint' => 'Dein Account für {workspace} wurde gerade erstellt. Bitte <a href="{url}">melde</a> mit deiner E-Mail Adresse und dem Passwort <strong>{password}</strong> an. Es wird dringend empfohlen, nach der Anmeldung dein Passwort zu ändern.',
+	'account_created_hint' => 'Dein Account für {workspace} wurde gerade erstellt. Bitte <a href="{url}">melde</a> dich mit deiner E-Mail Adresse und dem Passwort <strong>{password}</strong> an. Es wird dringend empfohlen, nach der Anmeldung dein Passwort zu ändern.',
 	'environment_settings_saved' => 'Umgebungseinstellungen wurden erfolgreich gespeichert',
 	'user_created_successfully' => 'Neuer User-Account wurde erfolgreich erstellt',
 	'user_updated_successfully' => 'Die Daten wurden erfolgreich aktualisiert',
