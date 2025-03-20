@@ -1831,6 +1831,17 @@ window.vue = new Vue({
             }
         },
 
+        fixQuickScanPos: function(pwa = false) {
+            let quickscanwidget = document.querySelector('.quickscan');
+            if (quickscanwidget) {
+                quickscanwidget.style.bottom = '12px';
+
+                if ((pwa) && (window.innerWidth <= 1089)) {
+                    quickscanwidget.style.bottom = '83px';
+                }
+            }
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;

@@ -1974,6 +1974,10 @@
 				}
 				@endif
 
+				@if ((!app('scroller')) && (app('plantrec_quickscan')))
+					window.vue.fixQuickScanPos({{ ((app('pwa_enable')) ? 'true' : 'false') }});
+				@endif
+
 				window.currentLocale = '{{ UtilsModule::getLanguage() }}';
 				window.currentOpenTaskCount = {{ TasksModel::getOpenTaskCount() }};
 
