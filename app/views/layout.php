@@ -1974,7 +1974,7 @@
 				}
 				@endif
 
-				@if ((!app('scroller')) && (app('plantrec_quickscan')))
+				@if ((!app('scroller')) && (app('plantrec_enable')) && (app('plantrec_quickscan')))
 					window.vue.fixQuickScanPos({{ ((app('pwa_enable')) ? 'true' : 'false') }});
 				@endif
 
