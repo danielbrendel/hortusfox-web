@@ -921,4 +921,36 @@ class PlantsModel extends \Asatru\Database\Model {
             throw $e;
         }
     }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function getDistinctTags()
+    {
+        try {
+            $sql = '
+                WITH RECURSIVE tag_split AS (
+                    SELECT 
+                        SUBSTRING_INDEX(tags, " ", 1) AS tag,
+                        SUBSTRING(tags, LOCATE(" ", tags) + 1) AS remaining
+                    FROM `@THIS`
+                    WHERE tags <> ""
+
+                    UNION ALL
+
+                    SELECT 
+                        SUBSTRING_INDEX(remaining, " ", 1),
+                        SUBSTRING(remaining, LOCATE(" ", remaining) + 1)
+                    FROM tag_split
+                    WHERE remaining LIKE "% %"
+                )
+                SELECT DISTINCT tag FROM tag_split WHERE tag <> "";
+            ';
+
+            return static::raw($sql);
+        } catch (\Exception) {
+            throw $e;
+        }
+    }
 }

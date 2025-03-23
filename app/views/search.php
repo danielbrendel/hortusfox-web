@@ -2,6 +2,14 @@
 
 <h2 class="smaller-headline">{{ __('app.search_hint') }}</h2>
 
+@if (count($tag_list) > 0)
+    <div class="search-tag-list">
+        @foreach ($tag_list as $tag)
+            <div class="plant-tags-item"><a href="{{ url('/search?query=' . $tag['tag']) }}">{{ $tag['tag'] }}</a></div>
+        @endforeach
+    </div>
+@endif
+
 <div class="margin-vertical">
     <form method="POST" action="{{ url('/search/perform') }}">
         @csrf

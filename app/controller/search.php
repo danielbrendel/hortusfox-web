@@ -30,9 +30,12 @@ class SearchController extends BaseController {
 
 		$query = $request->params()->query('query', '');
 
+		$tag_list = PlantsModel::getDistinctTags()?->asArray();
+		
 		return parent::view(['content', 'search'], [
 			'user' => $user,
 			'query' => $query,
+			'tag_list' => $tag_list,
 			'_action_query' => 'action-search',
 			'search_name' => true,
 			'search_scientific_name' => true,
@@ -80,10 +83,13 @@ class SearchController extends BaseController {
 					}
 				}
 			}
+
+			$tag_list = PlantsModel::getDistinctTags()?->asArray();
 			
 			return parent::view(['content', 'search'], [
 				'user' => $user,
 				'query' => $text,
+				'tag_list' => $tag_list,
 				'plants' => $search_result,
 				'search_name' => $search_name,
 				'search_scientific_name' => $search_scientific_name,
