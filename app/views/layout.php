@@ -2056,6 +2056,10 @@
 					@endif
 				}
 
+				@if (isset($scroll_to_anchor))
+					window.vue.scrollTo('a[name={{ $scroll_to_anchor }}]');
+				@endif
+
 				@if (app('chat_system'))
 					window.vue.fetchNewSystemMessage(document.getElementById('small-system-messages'));
 				@endif

@@ -61,6 +61,8 @@
 
 @if (isset($plants))
     <div class="plants">
+        <a name="plants-search-result-anchor"></a>
+
         @if (count($plants) > 0)
             @foreach ($plants as $plant)
                 <a href="{{ url('/plants/details/' . $plant['id']) }}">

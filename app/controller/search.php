@@ -95,7 +95,8 @@ class SearchController extends BaseController {
 				'search_scientific_name' => $search_scientific_name,
 				'search_tags' => $search_tags,
 				'search_notes' => $search_notes,
-				'search_custom' => $search_custom
+				'search_custom' => $search_custom,
+				'scroll_to_anchor' => 'plants-search-result-anchor'
 			]);
 		} catch (\Exception $e) {
 			FlashMessage::setMsg('error', $e->getMessage());

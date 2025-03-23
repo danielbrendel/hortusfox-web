@@ -1845,6 +1845,13 @@ window.vue = new Vue({
             }
         },
 
+        scrollTo: function(target) {
+            let elem = document.querySelector(target);
+            if (elem) {
+                elem.scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+
         copyToClipboard: function(text) {
             const el = document.createElement('textarea');
             el.value = text;
