@@ -48,6 +48,9 @@ require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/console.p
 //Require database handler
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/database.php';
 
+//Require modules
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/modules.php';
+
 //Require command handler
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/commands.php';
 
