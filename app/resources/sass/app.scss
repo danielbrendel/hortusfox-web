@@ -1807,6 +1807,11 @@ fieldset .field {
 .plant-tags-item {
     position: relative;
     display: inline-block;
+}
+
+.plant-tags-item a {
+    position: relative;
+    display: inline-block;
     min-width: 125px;
     padding-left: 10px;
     padding-right: 10px;
@@ -1817,19 +1822,13 @@ fieldset .field {
     margin-bottom: 16px;
     text-align: center;
     background-color: rgba(123, 123, 123, 0.3);
+    color: rgb(190, 190, 190);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
-.plant-tags-item:hover {
-    background-color: rgba(150, 150, 150, 0.5);
-}
-
-.plant-tags-item a {
-    color: rgb(190, 190, 190);
-}
-
 .plant-tags-item a:hover {
+    background-color: rgba(150, 150, 150, 0.5);
     color: rgb(230, 230, 230);
 }
 
