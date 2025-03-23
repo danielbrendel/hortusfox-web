@@ -468,7 +468,7 @@ return [
 	'updated_at' => 'Updated at',
 	'tags' => 'Tags',
 	'recurring' => 'Recurring',
-	'recurring_time' => 'Repeat each hours',
+	'recurring_time' => 'Repetition by hours',
 	'mail_info_task_recurring' => 'Recurring task',
 	'mail_info_task_recurring_hint' => 'The task <strong>{name}</strong> is due now and will recur in {time} hours. Due date: {date}. Go to tasks: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Notify me about recurring tasks',
