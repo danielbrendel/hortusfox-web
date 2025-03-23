@@ -18,10 +18,16 @@ class MigrationSpecific implements Asatru\Commands\Command {
     {
         $version = $args?->get(0)?->getValue();
 
-        try {
-            UpgradeModule::upgrade($version);
+        if (strpos($version, '.') === false) {
+            $version .= '.0';
+        }
 
-            echo "\033[39m[\033[93m$version\033[39m] \033[32mDone!\033[39m\n";
+        try {
+            if (UpgradeModule::upgrade($version)) {
+                echo "\033[39m[\033[93m$version\033[39m] \033[32mDone!\033[39m\n";
+            } else {
+                echo "\033[93m[$version] Nothing to migrate or upgrade.\033[39m\n";
+            }
         } catch (\Exception $e) {
             echo "\033[31mOperation failed: {$e->getMessage()}\033[39m\n";
         }
