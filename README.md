@@ -271,7 +271,7 @@ At this point you need to create your first user. Go to your database control pa
 Add the user account that should get access to the application with admin privileges. The following is an example:
 
 ```sql
-INSERT INTO `users` (`name`, `email`, `password`, `admin`) VALUES
+INSERT INTO `UserModel` (`name`, `email`, `password`, `admin`) VALUES
 (
     'Username',
     'name@example.com',
@@ -296,7 +296,7 @@ Last but not least you need to add all your locations of your local environment 
 manually by inserting entries into the locations table.
 
 ```sql
-INSERT INTO `locations` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
+INSERT INTO `LocationsModel` (`id`, `name`, `icon`, `active`, `created_at`) VALUES
 (
     NULL,
     'Name of location',
