@@ -1796,12 +1796,18 @@ fieldset .field {
     position: relative;
     display: inline-block;
     width: 90%;
+    @media screen and (max-width: 1087px) {
+        margin-top: 20px;
+    }
 }
 
 .plant-tags-edit {
     position: relative;
     display: inline-block;
     float: right;
+    @media screen and (max-width: 1087px) {
+        margin-top: 20px;
+    }
 }
 
 .plant-tags-item {
