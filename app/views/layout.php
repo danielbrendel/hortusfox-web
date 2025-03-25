@@ -1868,9 +1868,31 @@
 					</header>
 					<section class="modal-card-body is-stretched">
 						<div id="recognized-plant-selection"></div>
+
+						<div><hr/></div>
+
+						<div class="field">
+							<div class="control">
+								{{ __('app.attribute') }}
+							</div>
+						</div>
+
+						<div id="plants-attribute-selection">
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" class="checkbox" name="update_name" id="cbSelRecPlantUpdateName" value="1" onclick="document.getElementById('action-save-selected-plant-data').disabled = !window.vue.allRecognizedPlantSelectionGroupsValid();" checked>&nbsp;{{ __('app.name') }}
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
+									<input type="checkbox" class="checkbox" name="update_scientific_name" id="cbSelRecPlantUpdateScientificName" value="1" onclick="document.getElementById('action-save-selected-plant-data').disabled = !window.vue.allRecognizedPlantSelectionGroupsValid();" checked>&nbsp;{{ __('app.scientific_name') }}
+								</div>
+							</div>
+						</div>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button id="action-save-selected-plant-data" class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; window.vue.storeRecognizedPlantData('recognized-plant-selection');" disabled>{{ __('app.save') }}</button>
+						<button id="action-save-selected-plant-data" class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; window.vue.storeRecognizedPlantData('recognized-plant-selection', document.getElementById('cbSelRecPlantUpdateName').checked, document.getElementById('cbSelRecPlantUpdateScientificName').checked);" disabled>{{ __('app.save') }}</button>
 						<button class="button" onclick="window.vue.bShowSelectRecognizedPlant = false;">{{ __('app.cancel') }}</button>
 					</footer>
 				</div>

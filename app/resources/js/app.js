@@ -1703,7 +1703,7 @@ window.vue = new Vue({
                         dest.innerHTML += `
                             <div class="field">
                                 <div class="control">
-                                    <input type="radio" name="plant-selection" data-plantid="` + plantid + `" data-plantname="` + elem.species.scientificNameWithoutAuthor + `" data-plantscientificname="` + elem.species.scientificName + `" onclick="document.getElementById('action-save-selected-plant-data').removeAttribute('disabled');">&nbsp;` + elem.species.scientificNameWithoutAuthor + ` (` + (elem.score * 100).toFixed(2) + '%)' + `
+                                    <input type="radio" name="plant-selection" data-plantid="` + plantid + `" data-plantname="` + elem.species.scientificNameWithoutAuthor + `" data-plantscientificname="` + elem.species.scientificName + `" onclick="document.getElementById('action-save-selected-plant-data').disabled = !window.vue.allRecognizedPlantSelectionGroupsValid();">&nbsp;` + elem.species.scientificNameWithoutAuthor + ` (` + (elem.score * 100).toFixed(2) + '%)' + `
                                 </div>
                             </div>
                             `;
@@ -1722,7 +1722,7 @@ window.vue = new Vue({
             });
         },
 
-        storeRecognizedPlantData: function(target) {
+        storeRecognizedPlantData: function(target, update_name, update_scientific_name) {
             const selection = document.getElementById(target).getElementsByTagName('input');
 
             for (let i = 0; i < selection.length; i++) {
@@ -1732,31 +1732,39 @@ window.vue = new Vue({
                     window.plantRecStorageStep = 0;
                     window.plantRecErrorCount = 0;
 
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/details/edit/ajax', {
-                        plant: item.dataset.plantid,
-                        attribute: 'name',
-                        value: item.dataset.plantname
-                    }, function(response) {
+                    if (update_name) {
+                        window.vue.ajaxRequest('post', window.location.origin + '/plants/details/edit/ajax', {
+                            plant: item.dataset.plantid,
+                            attribute: 'name',
+                            value: item.dataset.plantname
+                        }, function(response) {
+                            window.plantRecStorageStep++;
+                            
+                            if (response.code == 500) {
+                                window.plantRecErrorCount++;
+                                alert(response.msg);
+                            }
+                        });
+                    } else {
                         window.plantRecStorageStep++;
-                        
-                        if (response.code == 500) {
-                            window.plantRecErrorCount++;
-                            alert(response.msg);
-                        }
-                    });
+                    }
 
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/details/edit/ajax', {
-                        plant: item.dataset.plantid,
-                        attribute: 'scientific_name',
-                        value: item.dataset.plantscientificname
-                    }, function(response) {
+                    if (update_scientific_name) {
+                        window.vue.ajaxRequest('post', window.location.origin + '/plants/details/edit/ajax', {
+                            plant: item.dataset.plantid,
+                            attribute: 'scientific_name',
+                            value: item.dataset.plantscientificname
+                        }, function(response) {
+                            window.plantRecStorageStep++;
+
+                            if (response.code == 500) {
+                                window.plantRecErrorCount++;
+                                alert(response.msg);
+                            }
+                        });
+                    } else {
                         window.plantRecStorageStep++;
-
-                        if (response.code == 500) {
-                            window.plantRecErrorCount++;
-                            alert(response.msg);
-                        }
-                    });
+                    }
 
                     setTimeout(function awaitPlantAttributeStorage() {
                         if (window.plantRecStorageStep < 2) {
@@ -1769,6 +1777,22 @@ window.vue = new Vue({
                     break;
                 }
             }
+        },
+
+        recognizedPlantsGroupSelectionValid: function(group, type) {
+            let elems = document.getElementById(group).querySelectorAll('input[type="' + type + '"]');
+
+            for (let i = 0; i < elems.length; i++) {
+                if (elems[i].checked) {
+                    return true;
+                }
+            }
+
+            return false;
+        },
+
+        allRecognizedPlantSelectionGroupsValid: function() {
+            return (window.vue.recognizedPlantsGroupSelectionValid('recognized-plant-selection', 'radio')) && (window.vue.recognizedPlantsGroupSelectionValid('plants-attribute-selection', 'checkbox'));
         },
 
         quickPlantRecognition: function(target, actionIcon, destContent) {
