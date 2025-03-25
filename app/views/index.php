@@ -128,7 +128,7 @@
 				</div>
 
 				<div class="location-icon">
-					<i class="{{ $location->get('icon') }}"></i>
+					<i class="{{ $location->get('icon') }} fa-5x"></i>
 				</div>
 
 				<div class="location-footer">

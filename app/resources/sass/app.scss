@@ -566,7 +566,7 @@ fieldset .field {
     }
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 59px;
     background-color: rgb(55, 59, 62);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -594,22 +594,14 @@ fieldset .field {
 
 .location-icon {
     text-align: center;
-}
-
-.location-icon i {
-    color: #99ac97;
-    font-size: 5em;
-    @media screen and (max-width: 830px) {
-        font-size: 2em;
-    }
     @media screen and (min-width: 831px) {
-        margin-top: 25px;
+        padding-top: 35px;
     }
 }
 
 .location-footer {
     position: relative;
-    bottom: -30px;
+    bottom: -52px;
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
