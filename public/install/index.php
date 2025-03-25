@@ -28,7 +28,7 @@
             <link rel="stylesheet" type="text/css" href="/../css/bulma.css"/>
             <link rel="stylesheet" type="text/css" href="/install/install.css"/>
 
-            <script src="https://kit.fontawesome.com/c46e231beb.js" crossorigin="anonymous"></script>
+            <script src="/js/app.js"></script>
             <script src="/install/install.js"></script>
         </head>
 
