@@ -1,7 +1,7 @@
 @if ((app('plantrec_enable')) && (app('plantrec_quickscan')))
 <div class="quickscan">
     <div class="quickscan-inner">
-        <a href="javascript:void(0);" onclick="document.getElementById('quickscan-file-input').click();"><i id="quickscan-action-icon" class="fas fa-microscope fa-xl up-color"></i></a>
+        <a href="javascript:void(0);" onclick="document.getElementById('quickscan-file-input').click();"><i id="quickscan-action-icon" class="fas fa-microscope fa-lg up-color"></i></a>
     </div>
 </div>
 

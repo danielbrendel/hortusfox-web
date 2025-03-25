@@ -9,6 +9,11 @@ import './../sass/app.scss';
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import 'fontawesome-free/scss/fontawesome.scss';
+import 'fontawesome-free/js/all.min.js';
+import 'fontawesome-free/js/solid.js';
+import 'fontawesome-free/js/brands.js';
+
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
 
