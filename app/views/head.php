@@ -13,7 +13,6 @@
 @else
 <script src="{{ asset('js/vue.min.js') }}"></script>
 @endif
-<script src="https://kit.fontawesome.com/c46e231beb.js" crossorigin="anonymous"></script>
 
 @if (is_string(app('custom_head_code')))
 {!! app('custom_head_code') !!}
