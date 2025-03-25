@@ -152,9 +152,7 @@ docker-compose up -d
 
 4. The application should now be running on http://localhost:8080.
 
-5. You can now go to the <a href="http://localhost:8080/admin">admin dashboard</a> in order to adjust your workspace settings and also go to your <a href="http://localhost:8080/profile">profile page</a> in order to adjust your user preferences. 
-
-Hint: You should use a file system <i>not</i> like NTFS due to it can't deal with Unix ownerships, groups & permissions properly.
+5. You can now go to the <a href="http://localhost:8080/admin">admin dashboard</a> in order to adjust your workspace settings and also go to your <a href="http://localhost:8080/profile">profile page</a> in order to adjust your user preferences.
 
 ### Installer
 
