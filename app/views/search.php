@@ -66,21 +66,23 @@
         @if (count($plants) > 0)
             @foreach ($plants as $plant)
                 <a href="{{ url('/plants/details/' . $plant['id']) }}">
-                    <div class="plant-card" style="background-image: url('{{ abs_photo($plant['photo']) }}');">
-                        <div class="plant-card-overlay">
-                            <div class="plant-card-health-state">
-                                @if ($plant['health_state'] !== 'in_good_standing')
-                                    <i class="{{ PlantsModel::$plant_health_states[$plant['health_state']]['icon'] }} plant-state-{{ $plant['health_state'] }}"></i>
-                                @endif
-                            </div>
+                    <div class="plant-card">
+                        <div class="plant-card-image" style="background-image: url('{{ abs_photo($plant['photo']) }}');">
+                            <div class="plant-card-overlay"></div>
+                        </div>
 
-                            <div class="plant-card-title {{ ((strlen($plant['name']) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
-                                @if ($user->get('show_plant_id'))
-                                    <span class="plant-card-title-plant-id">{{ $plant['id'] }}</span>
-                                @endif
+                        <div class="plant-card-health-state">
+                            @if ($plant['health_state'] !== 'in_good_standing')
+                                <i class="{{ PlantsModel::$plant_health_states[$plant['health_state']]['icon'] }} plant-state-{{ $plant['health_state'] }}"></i>
+                            @endif
+                        </div>
 
-                                <span>{{ $plant['name'] . ((!is_null($plant['clone_num'])) ? ' (' . strval($plant['clone_num'] + 1) . ')' : '') }}</span>
-                            </div>
+                        <div class="plant-card-title {{ ((strlen($plant['name']) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
+                            @if ($user->get('show_plant_id'))
+                                <span class="plant-card-title-plant-id">{{ $plant['id'] }}</span>
+                            @endif
+
+                            <span>{{ $plant['name'] . ((!is_null($plant['clone_num'])) ? ' (' . strval($plant['clone_num'] + 1) . ')' : '') }}</span>
                         </div>
                     </div>
                 </a>
