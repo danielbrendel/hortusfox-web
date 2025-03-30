@@ -39,38 +39,40 @@
 <div class="plants">
 	@if (count($history) > 0)
 		@foreach ($history as $plant)
-			<div class="plant-card is-pointer" onclick="window.open('{{ url('/plants/details/' . $plant->get('id')) }}');" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
-				<div class="plant-card-overlay">
-					<div class="plant-card-options">
-						<div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
-							<div class="dropdown-trigger">
-								<i class="fas fa-ellipsis-v is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'));"></i>
-							</div>
-							<div class="dropdown-menu" role="menu">
-								<div class="dropdown-content">
-									<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.unmarkHistorical({{ $plant->get('id') }});" class="dropdown-item">
-										<i class="fas fa-undo-alt"></i>&nbsp;{{ __('app.restore_from_history') }}
-									</a>
+			<div class="plant-card is-pointer" onclick="window.open('{{ url('/plants/details/' . $plant->get('id')) }}');">
+				<div class="plant-card-image" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
+					<div class="plant-card-overlay"></div>
+				</div>
 
-									<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.deletePlant({{ $plant->get('id') }}, 0);" class="dropdown-item">
-										<i class="fas fa-trash-alt"></i>&nbsp;{{ __('app.remove') }}
-									</a>
-								</div>
+				<div class="plant-card-options">
+					<div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
+						<div class="dropdown-trigger">
+							<i class="fas fa-ellipsis-v is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'));"></i>
+						</div>
+						<div class="dropdown-menu" role="menu">
+							<div class="dropdown-content">
+								<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.unmarkHistorical({{ $plant->get('id') }});" class="dropdown-item">
+									<i class="fas fa-undo-alt"></i>&nbsp;{{ __('app.restore_from_history') }}
+								</a>
+
+								<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.deletePlant({{ $plant->get('id') }}, 0);" class="dropdown-item">
+									<i class="fas fa-trash-alt"></i>&nbsp;{{ __('app.remove') }}
+								</a>
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="plant-card-title plant-card-title-with-hint">
-						<div class="plant-card-title-first">
-							@if ($user->get('show_plant_id'))
-								<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
-							@endif
-							
-							<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
-						</div>
-
-						<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
+				<div class="plant-card-title plant-card-title-with-hint">
+					<div class="plant-card-title-first">
+						@if ($user->get('show_plant_id'))
+							<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
+						@endif
+						
+						<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
 					</div>
+
+					<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
 				</div>
 			</div>
 		@endforeach
