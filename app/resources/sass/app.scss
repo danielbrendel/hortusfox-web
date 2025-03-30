@@ -560,15 +560,16 @@ fieldset .field {
     display: inline-block;
     width: 245px;
     min-height: 250px;
-    @media screen and (max-width: 830px) {
-        width: 134px;
-        min-height: 137px;
-    }
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 59px;
     background-color: rgb(55, 59, 62);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: 830px) {
+        width: 134px;
+        min-height: 137px;
+        margin-bottom: 43px;
+    }
 }
 
 .location:hover {
@@ -594,9 +595,21 @@ fieldset .field {
 
 .location-icon {
     text-align: center;
+    transition: transform 0.2s ease;
     @media screen and (min-width: 831px) {
         padding-top: 35px;
     }
+}
+
+.location-icon svg {
+    transition: transform 0.3s ease;
+    @media screen and (max-width: 831px) {
+        font-size: 3em;
+    }
+}
+
+.location-icon svg:hover {
+    transform: scale(1.2);
 }
 
 .location-footer {
@@ -1158,6 +1171,7 @@ fieldset .field {
     width: 100%;
     height: 45px;
     background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(150, 150, 150);
 }
 
 .plant-photo-view {
@@ -2700,6 +2714,10 @@ fieldset .field {
     text-align: center;
 }
 
+.profile-shared-photos svg {
+    color: rgb(150, 150, 150);
+}
+
 .admin-tabs {
     margin-top: 23px;
 }
@@ -3159,11 +3177,11 @@ fieldset .field {
     border: 1px solid rgb(200, 200, 200);
 }
 
-.admin-themes-list td i {
+.admin-themes-list td svg {
     color: rgb(150, 150, 150);
 }
 
-.admin-themes-list td i:hover {
+.admin-themes-list td svg:hover {
     color: rgb(150, 150, 150);
 }
 
