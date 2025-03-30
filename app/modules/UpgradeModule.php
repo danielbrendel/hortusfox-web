@@ -9,6 +9,20 @@ class UpgradeModule {
     /**
      * @return void
      */
+    private static function upgradeTo4dot7()
+    {
+    }
+
+    /**
+     * @return void
+     */
+    private static function upgradeTo4dot6()
+    {
+    }
+
+    /**
+     * @return void
+     */
     private static function upgradeTo4dot5()
     {
         TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS recurring_time INT NULL');
