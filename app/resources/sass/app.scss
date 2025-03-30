@@ -1583,19 +1583,19 @@ fieldset .field {
     float: right;
 }
 
-.plant-gallery-item-header-action i.is-action-share, .is-action-edit {
+.plant-gallery-item-header-action svg.is-action-share, .is-action-edit {
     color: rgb(200, 200, 200);
 }
 
-.plant-gallery-item-header-action i.is-action-share:hover, i.is-action-edit:hover {
+.plant-gallery-item-header-action svg.is-action-share:hover, svg.is-action-edit:hover {
     color: rgb(220, 220, 220);
 }
 
-.plant-gallery-item-header-action i.is-action-delete {
+.plant-gallery-item-header-action svg.is-action-delete {
     color: rgb(173, 86, 86);
 }
 
-.plant-gallery-item-header-action i.is-action-delete:hover {
+.plant-gallery-item-header-action svg.is-action-delete:hover {
     color: rgb(173, 90, 90);
 }
 
