@@ -225,21 +225,23 @@
 	<div class="plants">
 		@foreach ($last_plants_list as $plant)
 			<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
-				<div class="plant-card" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
-					<div class="plant-card-overlay">
-						<div class="plant-card-health-state">
-							@if ($plant->get('health_state') !== 'in_good_standing')
-								<i class="{{ PlantsModel::$plant_health_states[$plant->get('health_state')]['icon'] }} plant-state-{{ $plant->get('health_state') }}"></i>
-							@endif
-						</div>
+				<div class="plant-card">
+					<div class="plant-card-image" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
+						<div class="plant-card-overlay"></div>
+					</div>
 
-						<div class="plant-card-title {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
-							@if ($user->get('show_plant_id'))
-								<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
-							@endif
+					<div class="plant-card-health-state">
+						@if ($plant->get('health_state') !== 'in_good_standing')
+							<i class="{{ PlantsModel::$plant_health_states[$plant->get('health_state')]['icon'] }} plant-state-{{ $plant->get('health_state') }}"></i>
+						@endif
+					</div>
 
-							<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
-						</div>
+					<div class="plant-card-title {{ ((strlen($plant->get('name')) > PlantsModel::PLANT_LONG_TEXT_THRESHOLD) ? 'plant-card-title-longtext' : '') }}">
+						@if ($user->get('show_plant_id'))
+							<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
+						@endif
+
+						<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
 					</div>
 				</div>
 			</a>
