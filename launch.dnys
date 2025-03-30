@@ -3,7 +3,7 @@
 # This script launches a local web environment and opens the default browser with the URL of the web app.
 # 
 # Requires AquaShell, Windows and PHP with Apache & MariaDB (e.g. XAMPP installation)
-# On first start you'll need to specify your paths to httpd and mysqld.
+# On first start you'll need to specify the paths to httpd and mysqld executables.
 #
 
 require "auto";
