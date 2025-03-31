@@ -47,7 +47,7 @@
 				<div class="plant-card-options">
 					<div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
 						<div class="dropdown-trigger">
-							<i class="fas fa-ellipsis-v is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'));"></i>
+							<div class="is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'));"><i class="fas fa-caret-down"></i></div>
 						</div>
 						<div class="dropdown-menu" role="menu">
 							<div class="dropdown-content">

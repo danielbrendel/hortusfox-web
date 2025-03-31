@@ -257,11 +257,11 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
     color: rgb(200, 200, 200);
 }
 
-.dropdown-item i {
+.dropdown-item svg {
     background: transparent !important;
 }
 
-.dropdown-item i:hover {
+.dropdown-item svg:hover {
     background: transparent !important;
 }
 
@@ -666,7 +666,7 @@ fieldset .field {
     margin-left: 10px;
 }
 
-.location-notes i {
+.location-notes svg {
     color: rgb(115, 215, 105);
 }
 
@@ -749,7 +749,7 @@ fieldset .field {
     color: rgb(200, 200, 200);
 }
 
-.sorting-control i {
+.sorting-control svg {
     margin-right: 5px;
 }
 
@@ -936,10 +936,11 @@ fieldset .field {
     color: rgb(200, 200, 200);
 }
 
-.plant-card-health-state i, .plant-card-options i {
+.plant-card-health-state svg, .plant-card-options svg {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
     border-radius: 32%;
+    font-size: 1.7em;
 }
 
 .plant-list-item {
@@ -1218,7 +1219,7 @@ fieldset .field {
     border-radius: 4px;
 }
 
-.plant-photo-edit i, .plant-photo-view i, .plant-photo-share i, .plant-photo-clear i {
+.plant-photo-edit svg, .plant-photo-view svg, .plant-photo-share svg, .plant-photo-clear svg {
     color: rgb(200, 200, 200);
 }
 
@@ -2051,7 +2052,7 @@ fieldset .field {
     display: inline-block;
 }
 
-.inventory-item-amount i {
+.inventory-item-amount svg {
     color: rgb(150, 150, 150);
 }
 
@@ -2069,7 +2070,7 @@ fieldset .field {
     float: right;
 }
 
-.inventory-item-actions i {
+.inventory-item-actions svg {
     color: rgb(100, 100, 100);
 }
 
@@ -2682,7 +2683,7 @@ fieldset .field {
     position: relative;
 }
 
-.preferences-header i {
+.preferences-header svg {
     color: rgb(150, 150, 150);
 }
 
@@ -2713,11 +2714,11 @@ fieldset .field {
     text-decoration: underline;
 }
 
-.profile-shared-photos td i {
+.profile-shared-photos td svg {
     color: rgb(150, 150, 150);
 }
 
-.profile-shared-photos td i:hover {
+.profile-shared-photos td svg:hover {
     color: rgb(150, 150, 150);
 }
 
@@ -3163,7 +3164,7 @@ fieldset .field {
     background-color: rgb(185, 255, 164);
 }
 
-.admin-themes-result i {
+.admin-themes-result svg {
     color: rgb(50, 50, 50);
 }
 
@@ -3214,7 +3215,7 @@ fieldset .field {
     background-color: rgb(185, 255, 164);
 }
 
-.admin-backup-result i {
+.admin-backup-result svg {
     color: rgb(50, 50, 50);
 }
 
@@ -3325,11 +3326,11 @@ fieldset .field {
     background-color: rgb(35, 167, 202) !important;
 }
 
-.admin-info-sponsor i {
+.admin-info-sponsor svg {
     color: rgb(205, 50, 50);
 }
 
-.admin-info-sponsor i:hover {
+.admin-info-sponsor svg:hover {
     color: rgb(205, 50, 50);
 }
 
@@ -3353,11 +3354,11 @@ fieldset .field {
     background-color: rgb(195, 150, 95) !important;
 }
 
-.admin-info-donation i {
+.admin-info-donation svg {
     color: rgb(90, 67, 10);
 }
 
-.admin-info-donation i:hover {
+.admin-info-donation svg:hover {
     color: rgb(90, 67, 10);
 }
 
@@ -3373,10 +3374,17 @@ fieldset .field {
 .admin-info-social-button {
     width: 152px;
     height: 35px;
+    padding-top: 8px;
+    padding-bottom: 9px;
     @media screen and (max-width: 495px) {
         width: 32%;
         height: 40px;
+        padding-top: 7px;
     }
+}
+
+.admin-info-social-button svg {
+    padding-top: 1px;
 }
 
 .is-social-discord {

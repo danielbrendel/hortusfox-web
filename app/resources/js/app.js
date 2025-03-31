@@ -1842,7 +1842,7 @@ window.vue = new Vue({
                     if (response.code == 200) {
                         let elResult = document.getElementById(reselem);
                         if (elResult) {
-                            elResult.innerHTML = '<i class="fa-solid fa-check fa-lg"></i>';
+                            elResult.innerHTML = '<i class="far fa-check-circle fa-lg"></i>';
                         }
                     } else {
                         alert(response.msg);
