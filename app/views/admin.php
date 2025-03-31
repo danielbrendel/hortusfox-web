@@ -981,15 +981,15 @@
 
     <div class="admin-info-social">
         @if (env('APP_SOCIAL_DISCORD'))
-        <a href="{{ env('APP_SOCIAL_DISCORD') }}" target="_blank"><img src="https://img.shields.io/badge/discord-5715BA?style=for-the-badge&logo=discord&logoColor=white" alt="social-discord"></a>
+        <a class="button admin-info-social-button is-social-discord" href="{{ env('APP_SOCIAL_DISCORD') }}" target="_blank"><i class="fab fa-discord"></i>&nbsp;Discord</a>
         @endif
         
         @if (env('APP_SOCIAL_MASTODON'))
-        <a href="{{ env('APP_SOCIAL_MASTODON') }}" target="_blank"><img src="https://img.shields.io/badge/mastodon-D1550A?style=for-the-badge&logo=mastodon&logoColor=white" alt="social-mastodon"></a>
+        <a class="button admin-info-social-button is-social-mastodon" href="{{ env('APP_SOCIAL_MASTODON') }}" target="_blank"><i class="fab fa-mastodon"></i>&nbsp;Mastodon</a>
         @endif
 
-        @if (env('APP_SOCIAL_YOUTUBE'))
-        <a href="{{ env('APP_SOCIAL_YOUTUBE') }}" target="_blank"><img src="https://img.shields.io/badge/youtube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="social-youtube"></a>
+        @if (env('APP_SERVICE_URL'))
+        <a class="button admin-info-social-button is-social-videos" href="{{ env('APP_SERVICE_URL') }}/videos" target="_blank"><i class="fas fa-play-circle"></i>&nbsp;Videos</a>
         @endif
     </div>
 

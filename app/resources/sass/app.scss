@@ -3365,15 +3365,54 @@ fieldset .field {
     position: relative;
     margin-top: 15px;
     margin-bottom: 35px;
+    @media screen and (max-width: 495px) {
+        text-align: center;
+    }
 }
 
-.admin-info-social img {
+.admin-info-social-button {
     width: 152px;
     height: 35px;
     @media screen and (max-width: 495px) {
         width: 32%;
-        height: 30px;
+        height: 40px;
     }
+}
+
+.is-social-discord {
+    background-color: rgb(87, 20, 185);
+    border-color: rgb(87, 20, 185);
+    color: rgb(250, 250, 250);
+}
+
+.is-social-discord:hover {
+    background-color: rgb(105, 45, 195);
+    border-color: rgb(105, 45, 195);
+    color: rgb(250, 250, 250);
+}
+
+.is-social-mastodon {
+    background-color: rgb(205, 85, 10);
+    border-color: rgb(205, 85, 10);
+    color: rgb(250, 250, 250);
+}
+
+.is-social-mastodon:hover {
+    background-color: rgb(202, 100, 35);
+    border-color: rgb(202, 100, 35);
+    color: rgb(250, 250, 250);
+}
+
+.is-social-videos {
+    background-color: rgb(225, 93, 68);
+    border-color: rgb(225, 93, 68);
+    color: rgb(250, 250, 250);
+}
+
+.is-social-videos:hover {
+    background-color: rgb(225, 111, 87);
+    border-color: rgb(225, 111, 87);
+    color: rgb(250, 250, 250);
 }
 
 .admin-info-extensions {

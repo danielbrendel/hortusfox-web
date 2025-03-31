@@ -20,9 +20,10 @@
 </p>
 
 <p align="center">
-    <a href="https://discord.gg/kc6xGmjzVS"><img src="https://img.shields.io/badge/discord-5715BA?style=for-the-badge&logo=discord&logoColor=white" alt="social-discord"></a>
-    <a href="https://mastodon.social/@hortusfox"><img src="https://img.shields.io/badge/mastodon-D1550A?style=for-the-badge&logo=mastodon&logoColor=white" alt="social-mastodon"></a>
-    <a href="https://www.youtube.com/@HortusFox"><img src="https://img.shields.io/badge/youtube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="social-youtube"></a>
+    <a href="https://discord.gg/kc6xGmjzVS"><img src="https://img.shields.io/badge/discord-5715BA?style=for-the-badge&logoColor=white" alt="discord"></a>
+    <a href="https://mastodon.social/@hortusfox"><img src="https://img.shields.io/badge/mastodon-D1550A?style=for-the-badge&logoColor=white" alt="mastodon"></a>
+    <a href="https://www.hortusfox.com/videos"><img src="https://img.shields.io/badge/videos-red?style=for-the-badge&logoColor=white" alt="videos"></a>
+    <a href="https://www.hortusfox.com/faq"><img src="https://img.shields.io/badge/faq-yellow?style=for-the-badge&logoColor=white" alt="faq"></a>
 </p>
 
 <p align="center">
