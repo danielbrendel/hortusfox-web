@@ -166,7 +166,7 @@ class UserModel extends \Asatru\Database\Model {
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($email);
             $mailobj->setSubject(__('app.reset_password'));
-            $mailobj->setView('mail/mailreset', [], ['workspace' => app('workspace'), 'token' => $reset_token]);
+            $mailobj->setView('mail/mail_layout', [['mail_content', 'mail/mailreset']], ['workspace' => app('workspace'), 'token' => $reset_token]);
             $mailobj->setProperties(mail_properties());
             $mailobj->send();
         } catch (\Exception $e) {
@@ -532,12 +532,12 @@ class UserModel extends \Asatru\Database\Model {
             static::raw('INSERT INTO `@THIS` (name, email, password) VALUES(?, ?, ?)', [
                 $name, $email, password_hash($password, PASSWORD_BCRYPT)
             ]);
-
+            
             if ($sendmail) {
                 $mailobj = new Asatru\SMTPMailer\SMTPMailer();
                 $mailobj->setRecipient($email);
                 $mailobj->setSubject(__('app.account_created'));
-                $mailobj->setView('mail/mailacccreated', [], ['workspace' => app('workspace'), 'password' => $password]);
+                $mailobj->setView('mail/mail_layout', [['mail_content', 'mail/mailacccreated']], ['workspace' => app('workspace'), 'password' => $password]);
                 $mailobj->setProperties(mail_properties());
                 $mailobj->send();
 

@@ -54,7 +54,7 @@ class ShareController extends BaseController {
             $mailobj = new Asatru\SMTPMailer\SMTPMailer();
             $mailobj->setRecipient($user->get('email'));
             $mailobj->setSubject(__('app.mail_share_photo_title'));
-            $mailobj->setView('mail/share_photo', [], ['url_photo' => $result->data->url, 'url_asset' => $result->data->asset, 'url_removal' => share_api_host() . '/api/photo/remove?ident=' . $result->data->ident . '&ret=home']);
+            $mailobj->setView('mail/mail_layout', [['mail_content', 'mail/share_photo']], ['url_photo' => $result->data->url, 'url_asset' => $result->data->asset, 'url_removal' => share_api_host() . '/api/photo/remove?ident=' . $result->data->ident . '&ret=home']);
             $mailobj->setProperties(mail_properties());
             $mailobj->send();
 

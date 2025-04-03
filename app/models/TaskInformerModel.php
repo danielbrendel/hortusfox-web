@@ -53,7 +53,7 @@ class TaskInformerModel extends \Asatru\Database\Model {
                         $mailobj = new Asatru\SMTPMailer\SMTPMailer();
                         $mailobj->setRecipient($user->get('email'));
                         $mailobj->setSubject(__('app.mail_info_task_' . $what));
-                        $mailobj->setView('mail/task_' . $what, [], ['task' => $task, 'user' => $user]);
+                        $mailobj->setView('mail/mail_layout', [['mail_content', 'mail/task_' . $what]], ['task' => $task, 'user' => $user]);
                         $mailobj->setProperties(mail_properties());
                         $mailobj->send();
 
