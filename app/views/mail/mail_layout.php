@@ -25,14 +25,12 @@
 
 			.headline img {
                 position: relative;
-                top: 10px;
 				width: 32px;
 				height: 32px;
 			}
 
 			.headline a {
 				position: relative;
-				top: 2px;
 				font-size: 2.0em;
 				text-decoration: none;
 				color: rgb(111, 205, 132);
@@ -78,6 +76,10 @@
 				width: 93%;
 			}
 
+			.footer small {
+				font-size: 1.0em;
+			}
+
 			.footer a {
 				color: rgb(150, 135, 73);
 				text-decoration: none;
@@ -98,7 +100,14 @@
 
     <body>
 		<div class="headline">
-            <span><img src="{{ asset('logo.png') }}"/>&nbsp;&nbsp;<a href="{{ url('/') }}">{{ app('workspace') }}</a></span>
+			<table cellspacing="0" cellpadding="0" border="0">
+				<tbody>
+					<tr>
+						<td><img src="{{ asset('logo.png') }}"/>&nbsp;&nbsp;</td>
+						<td><a href="{{ url('/') }}">{{ app('workspace') }}</a></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		
 		<div class="content">
