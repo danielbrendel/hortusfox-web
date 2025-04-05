@@ -6,11 +6,16 @@
 # On first start you'll need to specify the paths to httpd and mysqld executables.
 #
 
+require "array";
 require "auto";
 require "fileio";
 require "input";
 
 const SERVER_PORT int <= 8000;
+
+array arrExecutables string 3 (
+	"php.exe", "mysqld.exe", "httpd.exe"
+);
 
 global project_path string;
 getscriptpath project_path;
@@ -65,6 +70,6 @@ print "Press any key to shutdown this service";
 
 pause;
 
-sys { taskkill /F /IM php.exe };
-sys { taskkill /F /IM mysqld.exe };
-sys { taskkill /F /IM httpd.exe };
+for (i, 0, %arrExecutables.length, -inc) {
+	sys { taskkill /F /IM %arrExecutables[%i] };
+};
