@@ -21,7 +21,7 @@
 
 	<div class="action-strip action-strip-right">
 		<div class="is-inline-block is-action-button-margin float-right"><a class="is-gray-link" href="javascript:void(0);" onclick="document.querySelector('#location-log-anchor').scrollIntoView({behavior: 'smooth'});"><i class="far fa-file-alt fa-lg"></i></a></div>
-		<div class="is-inline-block is-action-button-margin float-right"><a class="is-gray-link" href="javascript:void(0);" onclick="document.querySelector('#location-notes-anchor').scrollIntoView({behavior: 'smooth'});"><i class="fa-solid fa-align-center fa-lg"></i></a></div>
+		<div class="is-inline-block is-action-button-margin float-right"><a class="is-gray-link" href="javascript:void(0);" onclick="document.querySelector('#location-notes-anchor').scrollIntoView({behavior: 'smooth'});"><i class="fas fa-align-center fa-lg"></i></a></div>
 	</div>
 </div>
 
