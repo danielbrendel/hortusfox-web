@@ -21,6 +21,8 @@
 	@endif
 </div>
 
+@include('flashmsg.php')
+
 <div class="stats">
 	<div class="stats-item is-pointer" onclick="location.href = '{{ url('/#last-added-or-authored-plants') }}';">
 		<div class="stats-item-count">{{ $stats['plants'] }}</div>

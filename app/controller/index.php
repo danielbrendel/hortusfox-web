@@ -42,9 +42,11 @@ class IndexController extends BaseController {
 		}
 
 		if (app('owm_enable')) {
-			$weather = WeatherModule::today();
-		} else {
-			$weather = null;
+			try {
+				$weather = WeatherModule::today();
+			} catch (\Exception $e) {
+				$weather = null;
+			}
 		}
 		
 		return parent::view(['content', 'index'], [

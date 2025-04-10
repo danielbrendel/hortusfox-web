@@ -43,9 +43,19 @@ class WeatherModule {
     public static function today()
     {
         try {
-            return json_decode(CacheModel::remember('weather_today', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
+            $data = json_decode(CacheModel::remember('weather_today', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
                 return static::request('/data/2.5/weather?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
             }));
+
+            if ((isset($data->cod)) && ($data->cod != 200)) {
+                if (isset($data->message)) {
+                    throw new \Exception($data->message);
+                } else {
+                    throw new \Exception('Unknown exception occurred.');
+                }
+            }
+
+            return $data;
         } catch (\Exception $e) {
             throw $e;
         }
@@ -89,9 +99,17 @@ class WeatherModule {
             $forecast = json_decode(CacheModel::remember('weather_forecast', app('owm_cache', self::WEATHER_CACHE_TIME), function() { 
                 return static::request('/data/2.5/forecast?appid=' . app('owm_api_key') . '&lat=' . app('owm_latitude') . '&lon=' . app('owm_longitude') . '&units=' . app('owm_unittype'));
             }));
-
+            
             if ((!isset($forecast->cod)) && (!$forecast->cod != 200)) {
                 throw new \Exception('Forecast query failed.');
+            }
+
+            if ((isset($forecast->cod)) && ($forecast->cod != 200)) {
+                if (isset($forecast->message)) {
+                    throw new \Exception($forecast->message);
+                } else {
+                    throw new \Exception('Unknown exception occurred.');
+                }
             }
 
             $forecast->is_filled = false;

@@ -30,23 +30,28 @@ class WeatherController extends BaseController {
 	 */
 	public function view_forecast($request)
 	{
-		$user = UserModel::getAuthUser();
-        $forecast = WeatherModule::forecast();
+		try {
+			$user = UserModel::getAuthUser();
+			$forecast = WeatherModule::forecast();
 
-        $weekdays = [];
-        for ($i = 0; $i < 5; $i++) {
-            $curtime = strtotime('+' . strval($i) . ' days');
+			$weekdays = [];
+			for ($i = 0; $i < 5; $i++) {
+				$curtime = strtotime('+' . strval($i) . ' days');
 
-            $weekdays[] = [
-                'date' => date('Y-m-d', $curtime),
-                'day' => date('l', $curtime)
-            ];
-        }
-		
-		return parent::view(['content', 'weather'], [
-			'user' => $user,
-            'forecast' => $forecast,
-            'weekdays' => $weekdays
-		]);
+				$weekdays[] = [
+					'date' => date('Y-m-d', $curtime),
+					'day' => date('l', $curtime)
+				];
+			}
+			
+			return parent::view(['content', 'weather'], [
+				'user' => $user,
+				'forecast' => $forecast,
+				'weekdays' => $weekdays
+			]);
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/');
+		}
 	}
 }
