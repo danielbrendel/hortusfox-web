@@ -474,5 +474,7 @@ return [
 	'notify_tasks_recurring' => 'Stuur mij een melding over terugkerende taken',
 	'species' => 'Soort',
 	'list_of_species' => 'Lijst met soorten',
-	'plantrec_quickscan_label' => 'Widget voor snel scannen inschakelen'
+	'plantrec_quickscan_label' => 'Widget voor snel scannen inschakelen',
+	'move_plants' => 'Verplaats planten',
+	'bulk_move_plants' => 'Verplaats planten naar een andere locatie'
 ];

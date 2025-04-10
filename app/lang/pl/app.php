@@ -474,5 +474,7 @@ return [
 	'notify_tasks_recurring' => 'Powiadom mnie o powtarzających się zadaniach',
 	'species' => 'Gatunek',
 	'list_of_species' => 'Lista gatunków',
-	'plantrec_quickscan_label' => 'Włącz widget szybkiego skanowania'
+	'plantrec_quickscan_label' => 'Włącz widget szybkiego skanowania',
+	'move_plants' => 'Przenieś rośliny',
+	'bulk_move_plants' => 'Przenieś rośliny w inne miejsce'
 ];

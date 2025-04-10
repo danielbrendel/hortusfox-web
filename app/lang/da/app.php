@@ -474,5 +474,7 @@ return [
 	'notify_tasks_recurring' => 'Giv mig besked om tilbagevendende opgaver',
 	'species' => 'Arter',
 	'list_of_species' => 'Liste over arter',
-	'plantrec_quickscan_label' => 'Aktiver quick-scan widget'
+	'plantrec_quickscan_label' => 'Aktiver quick-scan widget',
+	'move_plants' => 'Flyt planter',
+	'bulk_move_plants' => 'Flyt planter til et andet sted'
 ];

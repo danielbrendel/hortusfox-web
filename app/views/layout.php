@@ -1451,6 +1451,7 @@
 						<input type="hidden" id="plant-bulk-perform-operation-operation" value=""/>
 						<input type="hidden" id="plant-bulk-perform-operation-location" value=""/>
 						<input type="hidden" id="plant-bulk-perform-operation-custom" value="1"/>
+						<input type="hidden" id="plant-bulk-perform-operation-datatype" value="datetime"/>
 
 						<div class="field">
 							<div class="control is-centered is-margin-bottom-20">
@@ -1460,7 +1461,7 @@
 
 						<div class="field">
 							<div class="control is-margin-bottom-20">
-								<input type="date" class="input" name="bulkdate" id="plant-bulk-perform-operation-bulkdate" value="{{ date('Y-m-d') }}">
+								<input type="" class="input" name="bulkvalue" id="plant-bulk-perform-operation-bulkvalue" value="{{ date('Y-m-d') }}">
 							</div>
 						</div>
 
@@ -1481,7 +1482,7 @@
 						@endif
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantUpdate('plant-bulk-perform-operation', document.getElementById('plant-bulk-perform-operation-operation').value, document.getElementById('plant-bulk-perform-operation-location').value, document.getElementById('plant-bulk-perform-operation-bulkdate').value, document.getElementById('plant-bulk-perform-operation-custom').checked);"></button>
+						<button class="button is-success" id="plant-bulk-perform-operation-button" onclick="window.vue.bulkPerformPlantUpdate('plant-bulk-perform-operation', document.getElementById('plant-bulk-perform-operation-operation').value, document.getElementById('plant-bulk-perform-operation-location').value, document.getElementById('plant-bulk-perform-operation-bulkvalue').value, document.getElementById('plant-bulk-perform-operation-custom').checked, document.getElementById('plant-bulk-perform-operation-datatype').value);"></button>
 						<button class="button" onclick="window.vue.bShowPlantBulkPerformUpdate = false;">{{ __('app.close') }}</button>
 					</footer>
 				</div>
@@ -1987,6 +1988,11 @@
 				window.vue.chatTypingEnable = {{ (app('chat_indicator', false)) ? 'true' : 'false' }};
 
 				window.vue.initNavBar();
+
+				window.locationList = [];
+				@foreach (LocationsModel::getAll() as $location_item)
+				window.locationList.push({ id: {{ $location_item->get('id') }}, name: '{{ $location_item->get('name') }}' });
+				@endforeach
 
 				@if (app('pwa_enable'))
 				if (window.innerWidth <= 1089) {
