@@ -474,5 +474,7 @@ return [
 	'notify_tasks_recurring' => 'Mich über wiederholende Aufgaben benachrichtigen',
 	'species' => 'Spezies',
 	'list_of_species' => 'Liste der Spezies',
-	'plantrec_quickscan_label' => 'Quick-Scan Widget aktivieren'
+	'plantrec_quickscan_label' => 'Quick-Scan Widget aktivieren',
+	'move_plants' => 'Pflanzen verschieben',
+	'bulk_move_plants' => 'Pflanzen in einen anderen Raum verschieben'
 ];
