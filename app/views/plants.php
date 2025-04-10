@@ -16,6 +16,7 @@
 		<div class="is-inline-block is-action-button-margin"><a class="button" style="{{ $bulk_cmd->get('styles') }}" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('{{ $bulk_cmd->get('attribute') }}', '{{ $bulk_cmd->get('label') }}', '{{ $bulk_cmd->get('label') }}', '{{ $location }}', true);">{{ $bulk_cmd->get('label') }}</a></div>
 		@endforeach
 		<div class="is-inline-block is-action-button-margin"><a class="button" href="javascript:void(0);" onclick="window.vue.bShowPlantBulkPrint = true;">{{ __('app.bulk_print_qr_codes') }}</a></div>
+		<div class="is-inline-block is-action-button-margin"><a class="button" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('location', '{{ __('app.bulk_move_plants') }}', '{{ __('app.move_plants') }}', '{{ $location }}', false, 'string'); window.vue.setBulkComboValues(window.locationList);">{{ __('app.move_plants') }}</a></div>
 		<div class="is-inline-block is-action-button-margin"><a class="is-default-link is-fixed-button-link is-fixed-margin-left-mobile" href="{{ url('/') }}">{{ __('app.back_to_dashboard') }}</a></div>
 	</div>
 

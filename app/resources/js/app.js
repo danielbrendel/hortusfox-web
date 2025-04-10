@@ -1376,22 +1376,46 @@ window.vue = new Vue({
             });
         },
 
-        showPerformBulkUpdate: function(operation, title, button, location, is_custom = false) {
+        showPerformBulkUpdate: function(operation, title, button, location, is_custom = false, datatype = 'datetime') {
             document.getElementById('plant-bulk-perform-operation-operation').value = operation;
             document.getElementById('plant-bulk-perform-operation-location').value = location;
             document.getElementById('plant-bulk-perform-operation-title').innerText = title;
             document.getElementById('plant-bulk-perform-operation-button').innerText = button;
             document.getElementById('plant-bulk-perform-operation-custom').checked = is_custom;
+            document.getElementById('plant-bulk-perform-operation-datatype').value = datatype;
 
-            let curDate = new Date();
-            document.getElementById('plant-bulk-perform-operation-bulkdate').value = curDate.toISOString().split('T')[0];
+            if (document.getElementById('plant-bulk-perform-operation-bulkvalue').tagName.toLowerCase() === 'select') {
+                let parentElem = document.getElementById('plant-bulk-perform-operation-bulkvalue').parentElement;
+                parentElem.innerHTML = `<input type="" class="input" name="bulkvalue" id="plant-bulk-perform-operation-bulkvalue" value="">`;
+            }
+
+            if (datatype === 'datetime') {
+                let curDate = new Date();
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').type = 'date';
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').value = curDate.toISOString().split('T')[0];
+            } else if (datatype == 'string') {
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').type = 'text';
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').value = '';
+            } else if (datatype == 'int') {
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').type = 'number';
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').value = 0;
+            } else if (datatype == 'double') {
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').type = 'text';
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').value = '0.0';
+            } else if (datatype == 'bool') {
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').type = 'number';
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').value = 0;
+            } else {
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').type = 'text';
+                document.getElementById('plant-bulk-perform-operation-bulkvalue').value = '';
+            }
             
             window.vue.bulkChecked('plant-bulk-perform-operation', false);
 
             window.vue.bShowPlantBulkPerformUpdate = true;
         },
 
-        bulkPerformPlantUpdate: function(target, attribute, location, bulkdate, is_custom = false) {
+        bulkPerformPlantUpdate: function(target, attribute, location, bulkvalue, is_custom = false, bulktype = 'datetime') {
             let plantIds = [];
 
             let elems = document.getElementsByClassName(target);
@@ -1403,7 +1427,7 @@ window.vue = new Vue({
                 });
                 
                 if (plantIds.length > 0) {
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds), location: location, bulkdate: bulkdate, custom: is_custom }, function(response) {
+                    window.vue.ajaxRequest('post', window.location.origin + '/plants/update/bulk', { attribute: attribute, list: JSON.stringify(plantIds), location: location, bulkvalue: bulkvalue, bulktype: bulktype, custom: is_custom }, function(response) {
                         if (response.code == 200) {
                             alert(window.vue.operationSucceeded);
                             window.vue.bShowPlantBulkPerformUpdate = false;
@@ -1415,6 +1439,18 @@ window.vue = new Vue({
                    alert(window.vue.noListItemsSelected); 
                 }
             }
+        },
+
+        setBulkComboValues: function(list) {
+            let parentElement = document.getElementById('plant-bulk-perform-operation-bulkvalue').parentElement;
+            
+            let listitems = '';
+
+            list.forEach(function(elem, index) {
+                listitems += '<option value="' + elem.id + '">' + elem.name + '</option>';
+            });
+
+            parentElement.innerHTML = `<select class="input" name="bulkvalue" id="plant-bulk-perform-operation-bulkvalue">` + listitems + `</select>`;
         },
 
         generateAndShowQRCode: function(plant) {

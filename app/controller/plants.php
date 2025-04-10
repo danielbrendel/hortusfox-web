@@ -803,13 +803,14 @@ class PlantsController extends BaseController {
 			$location = $request->params()->query('location', null);
 			$custom = (bool)$request->params()->query('custom', false);
 
-			$updated_datetime = $request->params()->query('bulkdate', date('Y-m-d'));
+			$bulkvalue = $request->params()->query('bulkvalue');
+			$bulktype = $request->params()->query('bulktype');
 
 			foreach ($plants as $plant) {
 				if (!$custom) {
-					PlantsModel::editPlantAttribute($plant[0], $attribute, $updated_datetime);
+					PlantsModel::editPlantAttribute($plant[0], $attribute, $bulkvalue);
 				} else {
-					CustPlantAttrModel::editAttribute(CustPlantAttrModel::getAttrIdOfPlant($plant[0], $attribute), $plant[0], $attribute, 'datetime', $updated_datetime);
+					CustPlantAttrModel::editAttribute(CustPlantAttrModel::getAttrIdOfPlant($plant[0], $attribute), $plant[0], $attribute, $bulktype, $bulkvalue);
 				}
 			}
 
