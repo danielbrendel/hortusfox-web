@@ -34,6 +34,12 @@ There is also an [online documentation](https://asatru-php.github.io/) available
 
 Submitting new localizations helps to bring the project to a broader audience. Language files are located in the `/app/lang` directory.
 
+All localizations must meet the following requirements
+- Comment headers need to stay in english
+- Comment headers need to contain the language name
+- Language identifiers must comply with [ISO_639-1](https://en.wikipedia.org/wiki/ISO_639-1)
+- Some phrases may not be translated, but must remain in english (e.g. names of products, services or platforms)
+
 Steps to create a new language
 
 1. Create a new folder with your language and add the following files (copy them from `/app/en`). As an example we use `de` as german language.
