@@ -341,7 +341,7 @@
 
             $env = '# App settings' . PHP_EOL;
             $env .= 'APP_NAME="HortusFox"' . PHP_EOL;
-            $env .= 'APP_VERSION="1.0"' . PHP_EOL;
+            $env .= 'APP_VERSION="5.0"' . PHP_EOL;
             $env .= 'APP_AUTHOR="Daniel Brendel"' . PHP_EOL;
             $env .= 'APP_CONTACT="dbrendel1988@gmail.com"' . PHP_EOL;
             $env .= 'APP_DEBUG=true' . PHP_EOL;
