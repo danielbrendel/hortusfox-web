@@ -248,8 +248,45 @@ class UtilsModule {
         $files = scandir(app_path('/lang'));
         foreach ($files as $file) {
             if (substr($file, 0, 1) !== '.') {
-                $result[] = ['ident' => $file, 'name' => locale_get_display_language($file, static::getLanguage())];
+                $result[] = [
+                    'ident' => $file, 
+                    'name' => locale_get_display_language($file, static::getLanguage()),
+                    'region' => locale_get_display_region($file, static::getLanguage())
+                ];
             }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getLabeledLanguageList()
+    {
+        $result = [];
+
+        $list = static::getLanguageList();
+        $duplicates = [];
+
+        foreach ($list as $item) {
+            if (isset($duplicates[$item['name']])) {
+                $duplicates[$item['name']]++;
+            } else {
+                $duplicates[$item['name']] = 0;
+            }
+        }
+        
+        foreach ($list as $item) {
+            $entry = $item;
+
+            if ($duplicates[$item['name']] > 0) {
+                $entry['label'] = $item['name'] . ' (' . $item['region'] . ')';
+            } else {
+                $entry['label'] = $item['name'];
+            }
+
+            $result[] = $entry;
         }
 
         return $result;

@@ -949,8 +949,8 @@
 								<label class="label">{{ __('app.language') }}</label>
 								<div class="control">
 									<select class="input" name="lang" id="selEditCombo">
-										@foreach (UtilsModule::getLanguageList() as $lang)
-											<option value="{{ $lang['ident'] }}" {{ (UtilsModule::getLanguage() === $lang['ident']) ? 'selected' : ''}}>{{ $lang['name'] }}</option>
+										@foreach (UtilsModule::getLabeledLanguageList() as $lang)
+											<option value="{{ $lang['ident'] }}" {{ (UtilsModule::getLanguage() === $lang['ident']) ? 'selected' : ''}}>{{ $lang['label'] }}</option>
 										@endforeach
 									</select>
 								</div>
