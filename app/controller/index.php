@@ -41,6 +41,8 @@ class IndexController extends BaseController {
 			$last_plants_list = PlantsModel::getLastAuthoredPlants();
 		}
 
+		$weather = null;
+
 		if (app('owm_enable')) {
 			try {
 				$weather = WeatherModule::today();
