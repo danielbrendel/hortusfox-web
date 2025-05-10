@@ -476,5 +476,7 @@ return [
 	'list_of_species' => 'Lista de especies',
 	'plantrec_quickscan_label' => 'Habilitar el widget de escaneo rápido',
 	'move_plants' => 'Mover plantas',
-	'bulk_move_plants' => 'Mover plantas a una ubicación diferente'
+	'bulk_move_plants' => 'Mover plantas a una ubicación diferente',
+	'hardy' => 'Resistente al frío',
+	'sorting_type_hardy' => 'Hardy'
 ];

@@ -476,5 +476,7 @@ return [
 	'list_of_species' => 'Liste over arter',
 	'plantrec_quickscan_label' => 'Aktiver quick-scan widget',
 	'move_plants' => 'Flyt planter',
-	'bulk_move_plants' => 'Flyt planter til et andet sted'
+	'bulk_move_plants' => 'Flyt planter til et andet sted',
+	'hardy' => 'Hårdfør',
+	'sorting_type_hardy' => 'Hardy'
 ];

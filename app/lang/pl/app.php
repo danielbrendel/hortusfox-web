@@ -476,5 +476,7 @@ return [
 	'list_of_species' => 'Lista gatunków',
 	'plantrec_quickscan_label' => 'Włącz widget szybkiego skanowania',
 	'move_plants' => 'Przenieś rośliny',
-	'bulk_move_plants' => 'Przenieś rośliny w inne miejsce'
+	'bulk_move_plants' => 'Przenieś rośliny w inne miejsce',
+	'hardy' => 'Mrozoodporna',
+	'sorting_type_hardy' => 'Hardy'
 ];

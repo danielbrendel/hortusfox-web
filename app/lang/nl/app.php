@@ -476,5 +476,7 @@ return [
 	'list_of_species' => 'Lijst met soorten',
 	'plantrec_quickscan_label' => 'Widget voor snel scannen inschakelen',
 	'move_plants' => 'Verplaats planten',
-	'bulk_move_plants' => 'Verplaats planten naar een andere locatie'
+	'bulk_move_plants' => 'Verplaats planten naar een andere locatie',
+	'hardy' => 'Winterhard',
+	'sorting_type_hardy' => 'Hardy'
 ];
