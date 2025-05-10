@@ -476,5 +476,6 @@ return [
 	'list_of_species' => 'Liste der Spezies',
 	'plantrec_quickscan_label' => 'Quick-Scan Widget aktivieren',
 	'move_plants' => 'Pflanzen verschieben',
-	'bulk_move_plants' => 'Pflanzen in einen anderen Raum verschieben'
+	'bulk_move_plants' => 'Pflanzen in einen anderen Raum verschieben',
+	'hardy' => 'Winterhart'
 ];

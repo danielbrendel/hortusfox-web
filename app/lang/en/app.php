@@ -476,5 +476,6 @@ return [
 	'list_of_species' => 'List of species',
 	'plantrec_quickscan_label' => 'Enable quick-scan widget',
 	'move_plants' => 'Move plants',
-	'bulk_move_plants' => 'Move plants to a different location'
+	'bulk_move_plants' => 'Move plants to a different location',
+	'hardy' => 'Hardy'
 ];

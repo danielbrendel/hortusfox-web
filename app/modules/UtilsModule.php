@@ -403,7 +403,7 @@ class UtilsModule {
                 return date('Y-m-d', strtotime($content));
             } else if ($type === 'health_state') {
                 return __('app.' . $content);
-            } else if (($type === 'perennial') || ($type === 'annual')) {
+            } else if (($type === 'perennial') || ($type === 'annual') || ($type === 'hardy')) {
                 if (is_null($content)) {
                     return 'N/A';
                 } else {
