@@ -143,7 +143,7 @@ class ImportModule {
             $plants = json_decode(file_get_contents($path . '/data.json'));
             if ($plants) {
                 foreach ($plants as $plant) {
-                    PlantsModel::raw('INSERT IGNORE INTO `@THIS` (id, name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, perennial, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, history, history_date, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                    PlantsModel::raw('INSERT IGNORE INTO `@THIS` (id, name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, perennial, hardy, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, history, history_date, last_edited_user, last_edited_date, created_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
                         $plant->id,
                         $plant->name,
                         $plant->scientific_name,
@@ -154,6 +154,7 @@ class ImportModule {
                         $plant->last_watered,
                         $plant->last_repotted,
                         $plant->perennial,
+                        $plant->hardy,
                         $plant->cutting_month,
                         $plant->date_of_purchase,
                         $plant->humidity,
