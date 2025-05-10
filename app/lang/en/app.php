@@ -477,5 +477,6 @@ return [
 	'plantrec_quickscan_label' => 'Enable quick-scan widget',
 	'move_plants' => 'Move plants',
 	'bulk_move_plants' => 'Move plants to a different location',
-	'hardy' => 'Hardy'
+	'hardy' => 'Hardy',
+	'sorting_type_hardy' => 'Hardy'
 ];

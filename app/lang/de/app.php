@@ -477,5 +477,6 @@ return [
 	'plantrec_quickscan_label' => 'Quick-Scan Widget aktivieren',
 	'move_plants' => 'Pflanzen verschieben',
 	'bulk_move_plants' => 'Pflanzen in einen anderen Raum verschieben',
-	'hardy' => 'Winterhart'
+	'hardy' => 'Winterhart',
+	'sorting_type_hardy' => 'Winterhart'
 ];
