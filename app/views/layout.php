@@ -1951,7 +1951,10 @@
 				
 				window.vue.comboLightLevel.push({ ident: 'light_level_sunny', label: '{{ __('app.light_level_sunny') }}'});
 				window.vue.comboLightLevel.push({ ident: 'light_level_half_shade', label: '{{ __('app.light_level_half_shade') }}'});
+				window.vue.comboLightLevel.push({ ident: 'light_level_filtered_light', label: '{{ __('app.light_level_filtered_light') }}' });
+				window.vue.comboLightLevel.push({ ident: 'light_level_indirect_light', label: '{{ __('app.light_level_indirect_light') }}' });
 				window.vue.comboLightLevel.push({ ident: 'light_level_full_shade', label: '{{ __('app.light_level_full_shade') }}'});
+				window.vue.comboLightLevel.push({ ident: 'light_level_darkness', label: '{{ __('app.light_level_darkness') }}'});
 				window.vue.comboHealthState.push({ ident: 'in_good_standing', label: '{{ __(PlantsModel::$plant_health_states['in_good_standing']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'overwatered', label: '{{ __(PlantsModel::$plant_health_states['overwatered']['localization']) }}'});
 				window.vue.comboHealthState.push({ ident: 'withering', label: '{{ __(PlantsModel::$plant_health_states['withering']['localization']) }}'});
