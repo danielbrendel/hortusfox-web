@@ -21,7 +21,7 @@ WORKDIR /var/www/html
 
 # Install system dependencies
 RUN apt-get update \
- && apt-get install -y \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libpng-dev \
         libjpeg-dev \
         libonig-dev \
@@ -31,6 +31,7 @@ RUN apt-get update \
         unzip \
         git \
         default-mysql-client \
+        tzdata \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
 # Install PHP extensions
@@ -47,7 +48,7 @@ RUN apt-get update \
  && docker-php-ext-install gd
 
 # Install tzdata package
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
 
 # Enable Apache mod_rewrite for .htaccess support
 RUN a2enmod rewrite
@@ -84,6 +85,7 @@ COPY ./99-php.ini /usr/local/etc/php/conf.d/
 
 # Copy the Composer dependencies from the first stage
 COPY --from=composer /app/vendor/ /var/www/html/vendor/
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 # Copy docker-entrypoint.sh into the container
 COPY --chmod=555 docker-entrypoint.sh /usr/local/bin/

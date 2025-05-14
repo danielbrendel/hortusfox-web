@@ -7,6 +7,7 @@ DEFAULT_ADMIN_PASSWORD=$(openssl rand -base64 12)  # Generate a random password
 # Default values for environment variables
 DEFAULT_APP_BASE_DIR=""
 DEFAULT_APP_DEBUG=true
+DEFAULT_APP_UPDATEDEPS=false
 DEFAULT_APP_LANG="en"
 DEFAULT_APP_WORKSPACE="My plant home"
 DEFAULT_APP_TIMEZONE="UTC"
@@ -28,6 +29,7 @@ ADMIN_EMAIL="${APP_ADMIN_EMAIL:-$DEFAULT_ADMIN_EMAIL}"
 ADMIN_PASSWORD="${APP_ADMIN_PASSWORD:-$DEFAULT_ADMIN_PASSWORD}"
 APP_BASE_DIR="${APP_BASE_DIR:-$DEFAULT_APP_BASE_DIR}"
 APP_DEBUG=${APP_DEBUG:-$DEFAULT_APP_DEBUG}
+APP_UPDATEDEPS=${APP_UPDATEDEPS:-$DEFAULT_APP_UPDATEDEPS}
 APP_LANG="${APP_LANG:-$DEFAULT_APP_LANG}"
 APP_WORKSPACE="${APP_WORKSPACE:-$DEFAULT_APP_WORKSPACE}"
 APP_TIMEZONE="${APP_TIMEZONE:-$DEFAULT_APP_TIMEZONE}"
@@ -210,6 +212,11 @@ chown -R www-data:www-data /var/www/html/app/migrations
 
 # Show product version
 php asatru product:version
+
+# Update dependencies if desired
+if [ "$APP_UPDATEDEPS" = "true" ]; then
+    composer update
+fi
 
 # Run database migrations
 if [ $(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$DB_DATABASE' AND TABLE_NAME IN ('plants', 'PlantsModel');") -eq 1 ]
