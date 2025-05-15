@@ -132,7 +132,7 @@ If you want composer dependencies to be updated when the app container starts, s
 APP_UPDATEDEPS: "true"
 ```
 
-Set database settings if required. It is encouraged to set custom passwords due to security reasons. All other settings can be left unaltered.
+Set database settings if required. It is recommended to set custom passwords due to security reasons. All other settings can be left unaltered.
 ```yaml
 # Settings used to establish connections to the database
 # services.app.environment
