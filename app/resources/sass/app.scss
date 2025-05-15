@@ -567,7 +567,7 @@ fieldset .field {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     @media screen and (max-width: 830px) {
         width: 134px;
-        min-height: 137px;
+        min-height: 152px;
         margin-bottom: 43px;
     }
 }
@@ -596,13 +596,14 @@ fieldset .field {
 .location-icon {
     text-align: center;
     transition: transform 0.2s ease;
-    @media screen and (min-width: 831px) {
-        padding-top: 35px;
-    }
 }
 
 .location-icon svg {
     transition: transform 0.3s ease;
+    @media screen and (min-width: 831px) {
+        position: relative;
+        top: 17px;
+    }
     @media screen and (max-width: 831px) {
         font-size: 3em;
     }
