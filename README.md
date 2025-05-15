@@ -125,6 +125,13 @@ Set your prefered timezone. Default is UTC.
 APP_TIMEZONE: "UTC"
 ```
 
+If you want composer dependencies to be updated when the app container starts, set the following setting
+```yaml
+# Update composer dependencies during start if set to true
+# services.app.environment
+APP_UPDATEDEPS: "true"
+```
+
 Set database settings if required. It is encouraged to set custom passwords due to security reasons. All other settings can be left unaltered.
 ```yaml
 # Settings used to establish connections to the database
