@@ -527,6 +527,31 @@ class PlantsController extends BaseController {
 			]);
 		}
 	}
+
+	/**
+	 * Handles URL: /plants/details/gallery/photo/setmain
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function set_gallery_photo_as_main($request)
+	{
+		try {
+			$photo = $request->params()->query('id', null);
+			$plant = $request->params()->query('plant', null);
+
+			PlantPhotoModel::setAsMainPhoto($photo);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 	
 	/**
 	 * Handles URL: /plants/details/identify

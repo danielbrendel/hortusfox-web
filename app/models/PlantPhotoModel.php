@@ -218,6 +218,23 @@ class PlantPhotoModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return void
+     * @throws \Exception
+     */
+    public static function setAsMainPhoto($id)
+    {
+        try {
+            $photo_data = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
+            $plant = PlantsModel::getDetails($photo_data->get('plant'));
+
+            PlantsModel::editPlantAttribute($plant->get('id'), 'photo', UtilsModule::absolutePhoto($photo_data->get('thumb')));
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $plant
      * @param $thumb
      * @param $original

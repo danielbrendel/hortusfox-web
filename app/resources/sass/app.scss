@@ -1597,11 +1597,11 @@ fieldset .field {
     float: right;
 }
 
-.plant-gallery-item-header-action svg.is-action-share, .is-action-edit {
+.plant-gallery-item-header-action svg.is-action-share, .is-action-edit, .is-action-setmain {
     color: rgb(200, 200, 200);
 }
 
-.plant-gallery-item-header-action svg.is-action-share:hover, svg.is-action-edit:hover {
+.plant-gallery-item-header-action svg.is-action-share:hover, svg.is-action-edit:hover, svg.is-action-setmain:hover {
     color: rgb(220, 220, 220);
 }
 

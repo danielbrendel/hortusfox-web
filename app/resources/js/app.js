@@ -86,6 +86,7 @@ window.vue = new Vue({
         confirmRemovePlantLogEntry: 'Do you really want to remove this entry?',
         confirmRemoveLocationLogEntry: 'Do you really want to remove this entry?',
         confirmRemoveSharedPlantPhoto: 'Do you really want to remove this item?',
+        confirmSetGalleryPhotoAsMain: 'Do you want to replace the main photo with this one?',
         addItem: 'Add',
         newChatMessage: 'New',
         currentlyOnline: 'Currently online: ',
@@ -1614,6 +1615,21 @@ window.vue = new Vue({
                     }
                 });
             }
+        },
+
+        setGalleryPhotoAsMain: function(id, plant) {
+            let query = confirm(window.vue.confirmSetGalleryPhotoAsMain);
+            if (!query) {
+                return;
+            }
+
+            window.vue.ajaxRequest('post', window.location.origin + '/plants/details/gallery/photo/setmain', { id: id, plant: plant }, function(response) {
+                if (response.code == 200) {
+                    location.href = window.location.origin + '/plants/details/' + plant;
+                } else {
+                    alert(response.msg);
+                }
+            });
         },
 
         removeSharedPhoto: function(ident) {
