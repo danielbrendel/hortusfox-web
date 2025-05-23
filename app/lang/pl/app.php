@@ -481,5 +481,6 @@ return [
 	'move_plants' => 'Przenieś rośliny',
 	'bulk_move_plants' => 'Przenieś rośliny w inne miejsce',
 	'hardy' => 'Mrozoodporna',
-	'sorting_type_hardy' => 'Hardy'
+	'sorting_type_hardy' => 'Hardy',
+	'confirm_set_gallery_photo_as_main' => 'Czy chcesz zastąpić główne zdjęcie tym?'
 ];

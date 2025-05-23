@@ -481,5 +481,6 @@ return [
 	'move_plants' => 'Move plants',
 	'bulk_move_plants' => 'Move plants to a different location',
 	'hardy' => 'Hardy',
-	'sorting_type_hardy' => 'Hardy'
+	'sorting_type_hardy' => 'Hardy',
+	'confirm_set_gallery_photo_as_main' => 'Do you want to replace the main photo with this one?'
 ];

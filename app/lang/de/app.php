@@ -481,5 +481,6 @@ return [
 	'move_plants' => 'Pflanzen verschieben',
 	'bulk_move_plants' => 'Pflanzen in einen anderen Raum verschieben',
 	'hardy' => 'Winterhart',
-	'sorting_type_hardy' => 'Winterhart'
+	'sorting_type_hardy' => 'Winterhart',
+	'confirm_set_gallery_photo_as_main' => 'Soll das Hauptfoto mit diesem hier ersetzt werden?'
 ];

@@ -481,5 +481,6 @@ return [
 	'move_plants' => 'Flytt planter',
 	'bulk_move_plants' => 'Flytt planter til et annet sted',
 	'hardy' => 'Hardfør',
-	'sorting_type_hardy' => 'Hardy'
+	'sorting_type_hardy' => 'Hardy',
+	'confirm_set_gallery_photo_as_main' => 'Vil du bytte ut hovedbildet med dette?'
 ];

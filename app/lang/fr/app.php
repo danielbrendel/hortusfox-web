@@ -481,5 +481,6 @@ return [
 	'move_plants' => 'Déplacer les plantes',
 	'bulk_move_plants' => 'Déplacer les plantes vers un autre emplacement',
 	'hardy' => 'Résistante au froid',
-	'sorting_type_hardy' => 'Hardy'
+	'sorting_type_hardy' => 'Hardy',
+	'confirm_set_gallery_photo_as_main' => 'Voulez-vous remplacer la photo principale par celle-ci?'
 ];
