@@ -200,6 +200,7 @@ return [
     array('/api/calendar/remove', 'ANY', 'api@remove_calendar_entry'),
     array('/api/chat/fetch', 'ANY', 'api@fetch_chat_messages'),
     array('/api/chat/message/add', 'ANY', 'api@add_chat_message'),
+    array('/api/backup/export', 'ANY', 'api@export_backup'),
 
     /** Backup Controller */
     array('/export/start', 'POST', 'backup@export'),
