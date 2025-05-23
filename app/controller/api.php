@@ -1055,4 +1055,35 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/backup/import
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function import_backup($request)
+    {
+        try {
+            $items = [
+                'locations' => (bool)$request->params()->query('locations', 0),
+                'plants' => (bool)$request->params()->query('plants', 0),
+                'gallery' => (bool)$request->params()->query('gallery', 0),
+                'tasks' => (bool)$request->params()->query('tasks', 0),
+                'inventory' => (bool)$request->params()->query('inventory', 0),
+                'calendar' => (bool)$request->params()->query('calendar', 0),
+            ];
+
+            ImportModule::start($items);
+
+            return json([
+                'code' => 200
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }
