@@ -28,7 +28,7 @@ class AppModel_Migration {
         $this->database = new Asatru\Database\Migration('AppModel', $this->connection);
         $this->database->drop();
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
-        $this->database->add('workspace VARCHAR(512) NOT NULL DEFAULT \'My home\'');
+        $this->database->add('workspace VARCHAR(512) NOT NULL DEFAULT \'My workspace\'');
         $this->database->add('language VARCHAR(512) NOT NULL DEFAULT \'en\'');
         $this->database->add('timezone VARCHAR(512) NULL');
         $this->database->add('scroller BOOLEAN NOT NULL DEFAULT 1');

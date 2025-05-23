@@ -153,7 +153,7 @@
                             <div class="field">
                                 <label class="label">Workspace name</label>
                                 <div class="control">
-                                    <input type="text" class="input" name="workspace" value="My Home" required>
+                                    <input type="text" class="input" name="workspace" value="My workspace" required>
                                 </div>
                             </div>
 
