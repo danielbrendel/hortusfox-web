@@ -1948,6 +1948,27 @@
                 @endif
 			};
 
+			window.fixWidgetPositions = function() {
+				let widgetincr = 70;
+				let widgetoffset = 12;
+
+				@if (app('pwa_enable'))
+				if (window.innerWidth <= 1089) {
+					widgetoffset = 83;
+				}
+				@endif
+
+				let widgetlist = ['.scroll-to-top', '.quickscan', '.quick-add'];
+
+				for (let i = 0; i < widgetlist.length; i++) {
+					let currentwidget = document.querySelector(widgetlist[i]);
+					if (currentwidget) {
+						currentwidget.style.bottom = widgetoffset + 'px';
+						widgetoffset += widgetincr;
+					}
+				}
+			};
+
 			document.addEventListener('DOMContentLoaded', function(){
 				@foreach (LocationsModel::getAll() as $location)
 				window.vue.comboLocation.push({ ident: {{ $location->get('id') }}, label: '{{ $location->get('name') }}'});
@@ -2007,19 +2028,7 @@
 				window.locationList.push({ id: {{ $location_item->get('id') }}, name: '{{ $location_item->get('name') }}' });
 				@endforeach
 
-				@if (app('pwa_enable'))
-				if (window.innerWidth <= 1089) {
-					let scroller = document.querySelector('.scroll-to-top');
-					if (scroller) {
-						scroller.style.bottom = '83px';
-					}
-
-					let quickscanwidget = document.querySelector('.quickscan');
-					if (quickscanwidget) {
-						quickscanwidget.style.bottom = '151px';
-					}
-				}
-				@endif
+				window.fixWidgetPositions();
 
 				@if ((!app('scroller')) && (app('plantrec_enable')) && (app('plantrec_quickscan')))
 					window.vue.fixQuickScanPos({{ ((app('pwa_enable')) ? 'true' : 'false') }});
