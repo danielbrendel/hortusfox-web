@@ -71,6 +71,12 @@
 
         <div class="field">
             <div class="control">
+                <input type="checkbox" class="checkbox" name="quick_add" value="1" {{ (app('quick_add')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.enable_quick_add') }}</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
                 <input type="checkbox" class="checkbox" name="enablepwa" value="1" {{ (app('pwa_enable')) ? 'checked': '' }}>&nbsp;<span>{{ __('app.pwa_enable') }}</span>
             </div>
         </div>

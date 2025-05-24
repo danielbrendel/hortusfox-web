@@ -90,6 +90,7 @@ class AdminController extends BaseController {
 			$lang = $request->params()->query('lang', app('language'));
 			$timezone = $request->params()->query('timezone', app('timezone'));
 			$scroller = (bool)$request->params()->query('scroller', 0);
+			$quick_add = (bool)$request->params()->query('quick_add', 0);
 			$enabletasks = (bool)$request->params()->query('enabletasks', 0);
 			$enableinventory = (bool)$request->params()->query('enableinventory', 0);
 			$enablecalendar = (bool)$request->params()->query('enablecalendar', 0);
@@ -115,6 +116,7 @@ class AdminController extends BaseController {
 				'language' => $lang,
 				'timezone' => $timezone,
 				'scroller' => $scroller,
+				'quick_add' => $quick_add,
 				'tasks_enable' => $enabletasks,
 				'inventory_enable' => $enableinventory,
 				'calendar_enable' => $enablecalendar,
