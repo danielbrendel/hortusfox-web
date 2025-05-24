@@ -32,6 +32,7 @@ class AppModel_Migration {
         $this->database->add('language VARCHAR(512) NOT NULL DEFAULT \'en\'');
         $this->database->add('timezone VARCHAR(512) NULL');
         $this->database->add('scroller BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('quick_add BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('tasks_enable BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('inventory_enable BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('calendar_enable BOOLEAN NOT NULL DEFAULT 1');

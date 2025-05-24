@@ -11,6 +11,7 @@ class UpgradeModule {
      */
     private static function upgradeTo5dot0()
     {
+        AppModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS quick_add BOOLEAN NOT NULL DEFAULT 0');
         PlantsModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS hardy BOOLEAN NULL');
         PlantDefAttrModel::raw('INSERT INTO `@THIS` (name, active) VALUES(?, ?)', ['hardy', true]);
     }

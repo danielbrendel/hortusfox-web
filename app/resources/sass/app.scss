@@ -2538,6 +2538,27 @@ fieldset .field {
     color: rgb(255, 255, 255);
 }
 
+.quick-add {
+    position: fixed;
+    z-index: 102;
+    bottom: 150px;
+    right: 12px;
+}
+
+.quick-add-inner {
+    background-color: rgb(102, 195, 83);
+    border-radius: 50%;
+    padding-top: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.quick-add-inner a {
+    color: rgb(255, 255, 255);
+}
+
 .auth-main {
     width: 100%;
     height: 100%;

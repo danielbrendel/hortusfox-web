@@ -1915,6 +1915,7 @@
 				</div>
 			</div>
 
+			@include('quickadd.php')
 			@include('scanner.php')
 			@include('scroller.php')
 
@@ -1938,6 +1939,14 @@
                 }
             };
 			@endif
+
+			window.addNewPlant = function() {
+				@if (LocationsModel::getCount() > 0)
+                	document.getElementById('inpLocationId').value = {{ ((isset($location)) && (is_numeric($location)) ? $location : '0') }}; window.vue.bShowAddPlant = true;
+                @else
+                	window.vue.bShowAddFirstLocation = true;
+                @endif
+			};
 
 			document.addEventListener('DOMContentLoaded', function(){
 				@foreach (LocationsModel::getAll() as $location)
