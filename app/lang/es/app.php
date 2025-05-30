@@ -481,6 +481,7 @@ return [
 	'move_plants' => 'Mover plantas',
 	'bulk_move_plants' => 'Mover plantas a una ubicación diferente',
 	'hardy' => 'Resistente al frío',
-	'sorting_type_hardy' => 'Hardy',
-	'confirm_set_gallery_photo_as_main' => '¿Quieres reemplazar la foto principal con esta?'
+	'sorting_type_hardy' => 'Resistente al frío',
+	'confirm_set_gallery_photo_as_main' => '¿Quieres reemplazar la foto principal con esta?',
+	'enable_quick_add' => 'Activar el widget de adición rápida'
 ];

@@ -481,6 +481,7 @@ return [
 	'move_plants' => 'Przenieś rośliny',
 	'bulk_move_plants' => 'Przenieś rośliny w inne miejsce',
 	'hardy' => 'Mrozoodporna',
-	'sorting_type_hardy' => 'Hardy',
-	'confirm_set_gallery_photo_as_main' => 'Czy chcesz zastąpić główne zdjęcie tym?'
+	'sorting_type_hardy' => 'Mrozoodporna',
+	'confirm_set_gallery_photo_as_main' => 'Czy chcesz zastąpić główne zdjęcie tym?',
+	'enable_quick_add' => 'Włącz widżet szybkiego dodawania'
 ];

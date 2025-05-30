@@ -481,6 +481,7 @@ return [
 	'move_plants' => 'Flyt planter',
 	'bulk_move_plants' => 'Flyt planter til et andet sted',
 	'hardy' => 'Hårdfør',
-	'sorting_type_hardy' => 'Hardy',
-	'confirm_set_gallery_photo_as_main' => 'Vil du erstatte hovedbilledet med dette?'
+	'sorting_type_hardy' => 'Hårdfør',
+	'confirm_set_gallery_photo_as_main' => 'Vil du erstatte hovedbilledet med dette?',
+	'enable_quick_add' => 'Aktiver Quick-Add-widget'
 ];

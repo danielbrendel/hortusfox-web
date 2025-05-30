@@ -481,6 +481,7 @@ return [
 	'move_plants' => 'Verplaats planten',
 	'bulk_move_plants' => 'Verplaats planten naar een andere locatie',
 	'hardy' => 'Winterhard',
-	'sorting_type_hardy' => 'Hardy',
-	'confirm_set_gallery_photo_as_main' => 'Wil je de hoofdafbeelding vervangen door deze?'
+	'sorting_type_hardy' => 'Winterhard',
+	'confirm_set_gallery_photo_as_main' => 'Wil je de hoofdafbeelding vervangen door deze?',
+	'enable_quick_add' => 'Quick-Add-widget inschakelen'
 ];
