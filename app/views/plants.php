@@ -2,7 +2,7 @@
 
 <div class="margin-vertical">
 	<div class="action-strip action-strip-left">
-		<div class="is-inline-block is-action-button-margin"><a class="button is-success" href="javascript:void(0);" onclick="document.getElementById('inpLocationId').value = {{ $location }}; window.vue.bShowAddPlant = true;">{{ __('app.add_plant') }}</a></div>
+		<div class="is-inline-block is-action-button-margin"><a class="button is-success" href="javascript:void(0);" onclick="window.addNewPlant();">{{ __('app.add_plant') }}</a></div>
 		@if (plant_attr('last_watered'))
 		<div class="is-inline-block is-action-button-margin"><a class="button is-info" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('last_watered', '{{ __('app.bulk_set_watered') }}', '{{ __('app.set_watered') }}', '{{ $location }}');">{{ __('app.set_watered') }}</a></div>
 		@endif
