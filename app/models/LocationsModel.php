@@ -25,6 +25,34 @@ class LocationsModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $only_active
+     * @param $paginate
+     * @param $limit
+     */
+    public static function getPaginated($only_active = true, $paginate = null, $limit = null)
+    {
+        try {
+            $limit = ((is_numeric($limit) && ($limit > 0)) ? 'LIMIT ' . $limit : '');
+
+            if ($paginate === null) {
+                if ($only_active) {
+                    return static::raw('SELECT * FROM `@THIS` WHERE active = 1 ORDER BY id ASC ' . $limit);
+                } else {
+                    return static::raw('SELECT * FROM `@THIS` ORDER BY id ASC ' . $limit);
+                }
+            } else {
+                if ($only_active) {
+                    return static::raw('SELECT * FROM `@THIS` WHERE active = 1 AND id >= ? ORDER BY id ASC ' . $limit, [$paginate]);
+                } else {
+                    return static::raw('SELECT * FROM `@THIS` WHERE id >= ? ORDER BY id ASC ' . $limit, [$paginate]);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $id
      * @return string
      * @throws \Exception

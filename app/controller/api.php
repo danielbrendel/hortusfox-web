@@ -501,8 +501,10 @@ class ApiController extends BaseController {
             $only_active = $request->params()->query('only_active', false);
             $include_plants = $request->params()->query('include_plants', false);
             $include_info = $request->params()->query('include_info', 'id');
+            $paginate = $request->params()->query('paginate', null);
+            $limit = $request->params()->query('limit', null);
 
-			$locations = LocationsModel::getAll($only_active)?->asArray();
+            $locations = LocationsModel::getPaginated($only_active, $paginate, $limit)?->asArray();
 
             if (($locations) && ($include_plants)) {
                 foreach ($locations as $key => $location) {
