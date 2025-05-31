@@ -104,8 +104,12 @@ class InvGroupModel extends \Asatru\Database\Model {
             }
 
             if ($what === 'token') {
+                $new_token = trim(strtolower($value));
+
+                InventoryModel::renameGroupToken($row->get('token'), $new_token);
+
                 static::raw('UPDATE `@THIS` SET token = ? WHERE id = ?', [
-                    trim(strtolower($value)), $id
+                    $new_token, $id
                 ]);
             } else if ($what === 'label') {
                 static::raw('UPDATE `@THIS` SET label = ? WHERE id = ?', [

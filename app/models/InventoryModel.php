@@ -304,6 +304,21 @@ class InventoryModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $old_token
+     * @param $new_token
+     * @return void
+     * @throws \Exception
+     */
+    public static function renameGroupToken($old_token, $new_token)
+    {
+        try {
+            static::raw('UPDATE `@THIS` SET group_ident = ? WHERE group_ident = ?', [$new_token, $old_token]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $id
      * @return mixed
      * @throws \Exception
