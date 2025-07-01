@@ -9,6 +9,13 @@ class UpgradeModule {
     /**
      * @return void
      */
+    private static function upgradeTo5dot1()
+    {
+    }
+
+    /**
+     * @return void
+     */
     private static function upgradeTo5dot0()
     {
         AppModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS quick_add BOOLEAN NOT NULL DEFAULT 0');
