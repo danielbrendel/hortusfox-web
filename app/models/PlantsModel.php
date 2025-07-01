@@ -338,7 +338,7 @@ class PlantsModel extends \Asatru\Database\Model {
             }
 
             if (app('system_message_plant_log')) {
-                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $value);
+                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $value, true);
             }
         } catch (\Exception $e) {
             throw $e;

@@ -9,22 +9,29 @@ class PlantLogModel extends \Asatru\Database\Model {
     /**
      * @param $plant
      * @param $content
+     * @param $api
      * @return int
      * @throws \Exception
      */
-    public static function addEntry($plant, $content)
+    public static function addEntry($plant, $content, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            $user = null;
+
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
             static::raw('INSERT INTO `@THIS` (plant, content) VALUES(?, ?)', [
                 $plant, $content
             ]);
 
-            LogModel::addLog($user->get('id'), $plant, 'add_plant_log', $content, url('/plants/details/' . $plant));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plant, 'add_plant_log', $content, url('/plants/details/' . $plant));
+            }
 
             $item = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
             if ($item) {
@@ -40,15 +47,20 @@ class PlantLogModel extends \Asatru\Database\Model {
     /**
      * @param $id
      * @param $content
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editEntry($id, $content)
+    public static function editEntry($id, $content, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            $user = null;
+
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
             $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
@@ -60,7 +72,9 @@ class PlantLogModel extends \Asatru\Database\Model {
                 $content, $item->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), $item->get('id'), 'edit_plant_log', $content, url('/plants/details/' . $item->get('plant')));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $item->get('id'), 'edit_plant_log', $content, url('/plants/details/' . $item->get('plant')));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
@@ -68,15 +82,20 @@ class PlantLogModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function removeEntry($id)
+    public static function removeEntry($id, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            $user = null;
+
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
             $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
@@ -88,7 +107,9 @@ class PlantLogModel extends \Asatru\Database\Model {
                 $item->get('id')
             ]);
 
-            LogModel::addLog($user->get('id'), $item->get('id'), 'remove_plant_log', '', url('/plants/details/' . $item->get('plant')));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $item->get('id'), 'remove_plant_log', '', url('/plants/details/' . $item->get('plant')));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
