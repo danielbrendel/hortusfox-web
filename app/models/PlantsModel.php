@@ -431,23 +431,30 @@ class PlantsModel extends \Asatru\Database\Model {
      * @param $plantId
      * @param $attribute
      * @param $value
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editPlantPhotoURL($plantId, $attribute, $value)
+    public static function editPlantPhotoURL($plantId, $attribute, $value, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            $user = null;
+
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
-            static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user->get('id'), $plantId]);
+            static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user?->get('id'), $plantId]);
         
-            LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+            }
 
             if (app('system_message_plant_log')) {
-                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $value);
+                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $value, $api);
             }
         } catch (\Exception $e) {
             throw $e;

@@ -288,7 +288,7 @@ class ApiController extends BaseController {
             } else {
                 $photo = $request->params()->query('photo', null);
 
-                PlantsModel::editPlantPhotoURL($plantId, 'photo', $photo);
+                PlantsModel::editPlantPhotoURL($plantId, 'photo', $photo, true);
             }
 
             return json([
