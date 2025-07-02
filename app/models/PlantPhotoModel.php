@@ -240,13 +240,20 @@ class PlantPhotoModel extends \Asatru\Database\Model {
      * @param $original
      * @param $label
      * @param $date
+     * @param $api
+     * @return void
+     * @throws \Exception
      */
-    public static function addCustom($plant, $thumb, $original, $label, $date = null)
+    public static function addCustom($plant, $thumb, $original, $label, $date = null, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if ((!$user) && (!$api)) {
-                throw new \Exception('Invalid user');
+            $user = null;
+
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if ((!$user) && (!$api)) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
             if ($date === null) {
