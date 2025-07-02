@@ -284,7 +284,7 @@ class ApiController extends BaseController {
             $external = (bool)$request->params()->query('external', false);
 
             if (!$external) {
-                PlantsModel::editPlantPhoto($plantId, 'photo', 'photo');
+                PlantsModel::editPlantPhoto($plantId, 'photo', 'photo', true);
             } else {
                 $photo = $request->params()->query('photo', null);
 

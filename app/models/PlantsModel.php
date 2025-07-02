@@ -386,15 +386,20 @@ class PlantsModel extends \Asatru\Database\Model {
      * @param $plantId
      * @param $attribute
      * @param $value
+     * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editPlantPhoto($plantId, $attribute, $value)
+    public static function editPlantPhoto($plantId, $attribute, $value, $api = false)
     {
         try {
-            $user = UserModel::getAuthUser();
-            if (!$user) {
-                throw new \Exception('Invalid user');
+            $user = null;
+
+            if (!$api) {
+                $user = UserModel::getAuthUser();
+                if (!$user) {
+                    throw new \Exception('Invalid user');
+                }
             }
 
             if ((!isset($_FILES[$value])) || ($_FILES[$value]['error'] !== UPLOAD_ERR_OK)) {
@@ -415,12 +420,14 @@ class PlantsModel extends \Asatru\Database\Model {
                 throw new \Exception('createThumbFile failed');
             }
 
-            static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name . '_thumb.' . $file_ext, $user->get('id'), $plantId]);
+            static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$file_name . '_thumb.' . $file_ext, $user?->get('id'), $plantId]);
         
-            LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+            if (!$api) {
+                LogModel::addLog($user->get('id'), $plantId, $attribute, $value, url('/plants/details/' . $plantId));
+            }
 
             if (app('system_message_plant_log')) {
-                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $file_name . '.' . $file_ext);
+                PlantLogModel::addEntry($plantId, '[System] ' . $attribute . ' = ' . $file_name . '.' . $file_ext, $api);
             }
         } catch (\Exception $e) {
             throw $e;
