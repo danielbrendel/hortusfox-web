@@ -28,7 +28,10 @@ class BackupModule {
 
                 if ((isset($options['plants'])) && ($options['plants'])) {
                     $cleanup_files[] = static::backupPlants($zip);
+                    $cleanup_files[] = static::backupAttributeSchemata($zip);
+                    $cleanup_files[] = static::backupPlantAttributes($zip);
                     $cleanup_files[] = static::backupPlantLog($zip);
+                    $cleanup_files[] = static::backupCustBulkCmds($zip);
                 }
 
                 if ((isset($options['gallery'])) && ($options['gallery'])) {
@@ -131,6 +134,69 @@ class BackupModule {
             $zip->addFile(public_path() . '/backup/_plants.json', 'plants/data.json');
 
             return public_path() . '/backup/_plants.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    private static function backupAttributeSchemata(ZipArchive $zip)
+    {
+        try {
+            $attrschemata = CustAttrSchemaModel::raw('SELECT * FROM `@THIS`');
+
+            $zip->addEmptyDir('attrschemata');
+
+            file_put_contents(public_path() . '/backup/_attrschemata.json', json_encode($attrschemata->asArray()));
+            $zip->addFile(public_path() . '/backup/_attrschemata.json', 'attrschemata/data.json');
+
+            return public_path() . '/backup/_attrschemata.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    private static function backupPlantAttributes(ZipArchive $zip)
+    {
+        try {
+            $plantattrs = CustPlantAttrModel::raw('SELECT * FROM `@THIS`');
+
+            $zip->addEmptyDir('plantattrs');
+
+            file_put_contents(public_path() . '/backup/_plantattrs.json', json_encode($plantattrs->asArray()));
+            $zip->addFile(public_path() . '/backup/_plantattrs.json', 'plantattrs/data.json');
+
+            return public_path() . '/backup/_plantattrs.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    private static function backupCustBulkCmds(ZipArchive $zip)
+    {
+        try {
+            $bulkcmds = CustBulkCmdModel::raw('SELECT * FROM `@THIS`');
+
+            $zip->addEmptyDir('bulkcmds');
+
+            file_put_contents(public_path() . '/backup/_bulkcmds.json', json_encode($bulkcmds->asArray()));
+            $zip->addFile(public_path() . '/backup/_bulkcmds.json', 'bulkcmds/data.json');
+
+            return public_path() . '/backup/_bulkcmds.json';
         } catch (\Exception $e) {
             throw $e;
         }
