@@ -35,6 +35,9 @@ class ImportModule {
 
                 if ((isset($options['plants'])) && ($options['plants'])) {
                     static::importPlants(public_path() . '/backup/' . $import_file . '/plants');
+                    static::importAttributeSchemata(public_path() . '/backup/' . $import_file . '/attrschemata');
+                    static::importPlantAttributes(public_path() . '/backup/' . $import_file . '/plantattrs');
+                    static::importCustBulkCmds(public_path() . '/backup/' . $import_file . '/bulkcmds');
                     static::importPlantLog(public_path() . '/backup/' . $import_file . '/plantlog');
                 }
 
@@ -171,6 +174,91 @@ class ImportModule {
                     if ((!file_exists(public_path() . '/img/' . $plant->photo)) && (file_exists($path . '/img/' . $plant->photo))) {
                         copy($path . '/img/' . $plant->photo, public_path() . '/img/' . $plant->photo);
                     }
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importAttributeSchemata($path)
+    {
+        try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
+            $schemata = json_decode(file_get_contents($path . '/data.json'));
+            if ($schemata) {
+                foreach ($schemata as $schema) {
+                    CustAttrSchemaModel::raw('INSERT IGNORE INTO `@THIS` (label, datatype, active, created_at) VALUES(?, ?, ?, ?)', [
+                        $schema->label,
+                        $schema->datatype,
+                        $schema->active,
+                        $schema->created_at
+                    ]);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importPlantAttributes($path)
+    {
+        try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
+            $attributes = json_decode(file_get_contents($path . '/data.json'));
+            if ($attributes) {
+                foreach ($attributes as $attribute) {
+                    CustPlantAttrModel::raw('INSERT IGNORE INTO `@THIS` (plant, label, datatype, content, created_at) VALUES(?, ?, ?, ?, ?)', [
+                        $attribute->plant,
+                        $attribute->label,
+                        $attribute->datatype,
+                        $attribute->content,
+                        $attribute->created_at
+                    ]);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importCustBulkCmds($path)
+    {
+        try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
+            $bulkcmds = json_decode(file_get_contents($path . '/data.json'));
+            if ($bulkcmds) {
+                foreach ($bulkcmds as $bulkcmd) {
+                    CustBulkCmdModel::raw('INSERT IGNORE INTO `@THIS` (label, attribute, styles, created_at) VALUES(?, ?, ?, ?)', [
+                        $bulkcmd->label,
+                        $bulkcmd->attribute,
+                        $bulkcmd->styles,
+                        $bulkcmd->created_at
+                    ]);
                 }
             }
         } catch (\Exception $e) {
