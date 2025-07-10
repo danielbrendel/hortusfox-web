@@ -1,9 +1,13 @@
 <?php
+
 /*
     Asatru PHP - Russian language file
+
     Extend this with your phrases
+    
     Set variables with {variable-name}
 */
+
 return [
     'workspace_title' => '{name} (' . env('APP_NAME') . ' v' . env('APP_VERSION') . ')',
     'enter_email' => 'Введите ваш e-mail',
