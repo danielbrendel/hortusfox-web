@@ -62,3 +62,5 @@ return [
 ```
 
 Users can now select the new language via their preferences and you can also set the language as default in the admin dashboard.
+
+**Note:** Pull requests of missing translations are appreciated. Please tag the associated issue of your pull request with the `localization` tag.
