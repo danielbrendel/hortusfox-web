@@ -51,9 +51,13 @@ class CustAttrSchemaModel extends \Asatru\Database\Model {
     public static function editSchema($id, $label, $datatype, $active)
     {
         try {
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
+
             static::raw('UPDATE `@THIS` SET label = ?, datatype = ?, active = ? WHERE id = ?', [
                 $label, $datatype, $active, $id
             ]);
+
+            CustPlantAttrModel::removeDataTypeAll($item->get('label'), $item->get('datatype'));
         } catch (\Exception $e) {
             throw $e;
         }

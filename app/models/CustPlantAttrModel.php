@@ -228,4 +228,34 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
             throw $e;
         }
     }
+
+    /**
+     * @param $label
+     * @param $datatype
+     * @return void
+     * @throws \Exception
+     */
+    public static function editDataTypeAll($label, $datatype)
+    {
+        try {
+            static::raw('UPDATE `@THIS` SET content = NULL, datatype = ? WHERE label = ?', [$datatype, $label]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $label
+     * @param $datatype
+     * @return void
+     * @throws \Exception
+     */
+    public static function removeDataTypeAll($label, $datatype)
+    {
+        try {
+            static::raw('DELETE FROM `@THIS` WHERE label = ? AND datatype = ?', [$label, $datatype]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
