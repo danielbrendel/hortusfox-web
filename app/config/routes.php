@@ -152,6 +152,7 @@ return [
     array('/admin/api/add', 'ANY', 'admin@add_api_key'),
     array('/admin/api/{token}/remove', 'ANY', 'admin@remove_api_key'),
     array('/admin/api/{id}/toggle', 'ANY', 'admin@toggle_api_key'),
+    array('/admin/cache/clear', 'ANY', 'admin@clear_cache'),
 
     /** Cronjob Controller */
     array('/cronjob/tasks/overdue', 'GET', 'cronjobs@overdue_tasks'),

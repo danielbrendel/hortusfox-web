@@ -483,5 +483,6 @@ return [
 	'hardy' => 'Hardy',
 	'sorting_type_hardy' => 'Hardy',
 	'confirm_set_gallery_photo_as_main' => 'Do you want to replace the main photo with this one?',
-	'enable_quick_add' => 'Enable Quick-Add widget'
+	'enable_quick_add' => 'Enable Quick-Add widget',
+	'clear_cache' => 'Clear cache'
 ];

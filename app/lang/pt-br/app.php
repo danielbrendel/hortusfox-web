@@ -483,5 +483,6 @@ return [
 	'hardy' => 'Resistente ao frio',
 	'sorting_type_hardy' => 'Resistente ao frio',
 	'confirm_set_gallery_photo_as_main' => 'Você quer substituir a foto principal por esta?',
-	'enable_quick_add' => 'Ativar o widget de adição rápida'
+	'enable_quick_add' => 'Ativar o widget de adição rápida',
+	'clear_cache' => 'Limpar cache'
 ];

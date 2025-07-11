@@ -483,5 +483,6 @@ return [
 	'hardy' => 'Winterhard',
 	'sorting_type_hardy' => 'Winterhard',
 	'confirm_set_gallery_photo_as_main' => 'Wil je de hoofdafbeelding vervangen door deze?',
-	'enable_quick_add' => 'Quick-Add-widget inschakelen'
+	'enable_quick_add' => 'Quick-Add-widget inschakelen',
+	'clear_cache' => 'Cache wissen'
 ];

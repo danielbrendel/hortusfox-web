@@ -1926,6 +1926,17 @@ window.vue = new Vue({
             }
         },
 
+        clearCache: function(button) {
+            window.vue.ajaxRequest('post', window.location.origin + '/admin/cache/clear', {}, function(response) {
+                if (response.code == 200) {
+                    button.innerHTML = '<i class="fas fa-check"></i>&nbsp;' + button.innerHTML;
+                    button.setAttribute('disabled', 'disabled');
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
         scrollTo: function(target) {
             let elem = document.querySelector(target);
             if (elem) {

@@ -483,5 +483,6 @@ return [
 	'hardy' => 'Winterhart',
 	'sorting_type_hardy' => 'Winterhart',
 	'confirm_set_gallery_photo_as_main' => 'Soll das Hauptfoto mit diesem hier ersetzt werden?',
-	'enable_quick_add' => 'Quick-Add-Widget aktivieren'
+	'enable_quick_add' => 'Quick-Add-Widget aktivieren',
+	'clear_cache' => 'Cache leeren'
 ];

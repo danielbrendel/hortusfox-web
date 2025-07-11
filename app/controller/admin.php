@@ -964,4 +964,24 @@ class AdminController extends BaseController {
 			return back();
         }
 	}
+
+	/**
+	 * Handles URL: /admin/cache/clear
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function clear_cache($request)
+	{
+		try {
+			CacheModel::clear();
+
+			return json(['code' => 200]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
 }

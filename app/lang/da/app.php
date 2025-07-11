@@ -483,5 +483,6 @@ return [
 	'hardy' => 'Hårdfør',
 	'sorting_type_hardy' => 'Hårdfør',
 	'confirm_set_gallery_photo_as_main' => 'Vil du erstatte hovedbilledet med dette?',
-	'enable_quick_add' => 'Aktiver Quick-Add-widget'
+	'enable_quick_add' => 'Aktiver Quick-Add-widget',
+	'clear_cache' => 'Ryd cache'
 ];

@@ -1028,6 +1028,10 @@
         </div>
     </div>
 
+    <div class="admin-action-clear-cache">
+        <a class="button is-warning" href="javascript:void(0);" onclick="window.vue.clearCache(this);">{{ __('app.clear_cache') }}</a>
+    </div>
+
     <?php if ((!empty($new_version)) && (!empty($current_version))) { ?>
         <div class="version-info">
             <?php if ($new_version > $current_version) { ?>
