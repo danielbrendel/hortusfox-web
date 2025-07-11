@@ -976,6 +976,10 @@ class AdminController extends BaseController {
 		try {
 			CacheModel::clear();
 
+			$cache_dir = base_path() . '/cache';
+			UtilsModule::clearFolder($cache_dir . '/HTML');
+			UtilsModule::clearFolder($cache_dir . '/URI');
+
 			return json(['code' => 200]);
 		} catch (\Exception $e) {
 			return json([
