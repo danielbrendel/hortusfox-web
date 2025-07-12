@@ -484,5 +484,6 @@ return [
     'sorting_type_hardy' => 'Морозоустойчивость',
     'confirm_set_gallery_photo_as_main' => 'Вы хотите заменить главное фото на это?',
     'enable_quick_add' => 'Включить виджет быстрого добавления',
-    'clear_cache' => 'Очистить кэш'
+    'clear_cache' => 'Очистить кэш',
+    'schema_attribute_already_exists' => 'Атрибут с таким ярлыком уже существует'
 ];

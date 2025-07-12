@@ -32,6 +32,10 @@ class CustAttrSchemaModel extends \Asatru\Database\Model {
     public static function addSchema($label, $datatype)
     {
         try {
+            if (static::schemaExists($label)) {
+                throw new \Exception(__('app.schema_attribute_already_exists'));
+            }
+
             static::raw('INSERT INTO `@THIS` (label, datatype, active) VALUES(?, ?, 1)', [
                 $label, $datatype
             ]);
@@ -51,6 +55,10 @@ class CustAttrSchemaModel extends \Asatru\Database\Model {
     public static function editSchema($id, $label, $datatype, $active)
     {
         try {
+            if (static::schemaExists($label)) {
+                throw new \Exception(__('app.schema_attribute_already_exists'));
+            }
+
             $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
 
             static::raw('UPDATE `@THIS` SET label = ?, datatype = ?, active = ? WHERE id = ?', [
@@ -58,6 +66,22 @@ class CustAttrSchemaModel extends \Asatru\Database\Model {
             ]);
 
             CustPlantAttrModel::removeDataTypeAll($item->get('label'), $item->get('datatype'));
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $label
+     * @return bool
+     * @throws \Exception
+     */
+    public static function schemaExists($label)
+    {
+        try {
+            $count = static::raw('SELECT COUNT(*) AS count FROM `@THIS` WHERE label = ? LIMIT 1', [$label])->first()->get('count');
+            
+            return $count > 0;
         } catch (\Exception $e) {
             throw $e;
         }

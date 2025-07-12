@@ -484,5 +484,6 @@ return [
 	'sorting_type_hardy' => 'Hardfør',
 	'confirm_set_gallery_photo_as_main' => 'Vil du bytte ut hovedbildet med dette?',
 	'enable_quick_add' => 'Aktiver Quick-Add-modulen',
-	'clear_cache' => 'Tøm cache'
+	'clear_cache' => 'Tøm cache',
+	'schema_attribute_already_exists' => 'Det finnes allerede et attributt med denne etiketten'
 ];

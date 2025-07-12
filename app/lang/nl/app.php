@@ -484,5 +484,6 @@ return [
 	'sorting_type_hardy' => 'Winterhard',
 	'confirm_set_gallery_photo_as_main' => 'Wil je de hoofdafbeelding vervangen door deze?',
 	'enable_quick_add' => 'Quick-Add-widget inschakelen',
-	'clear_cache' => 'Cache wissen'
+	'clear_cache' => 'Cache wissen',
+	'schema_attribute_already_exists' => 'Er bestaat al een attribuut met dit label'
 ];

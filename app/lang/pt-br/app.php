@@ -484,5 +484,6 @@ return [
 	'sorting_type_hardy' => 'Resistente ao frio',
 	'confirm_set_gallery_photo_as_main' => 'Você quer substituir a foto principal por esta?',
 	'enable_quick_add' => 'Ativar o widget de adição rápida',
-	'clear_cache' => 'Limpar cache'
+	'clear_cache' => 'Limpar cache',
+	'schema_attribute_already_exists' => 'Já existe um atributo com esse rótulo'
 ];
