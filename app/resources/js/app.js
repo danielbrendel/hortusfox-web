@@ -145,6 +145,25 @@ window.vue = new Vue({
             }
         },
 
+        getCookieValue: function (name, def = null)
+        {
+            let cookies = document.cookie.split(';');
+
+            for (let i = 0; i < cookies.length; i++) {
+                if (cookies[i].indexOf(name) !== -1) {
+                    return cookies[i].substr(cookies[i].indexOf('=') + 1);
+                }
+            }
+
+            return def;
+        },
+
+        setCookieValue: function(name, value)
+        {
+            let expDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 365);
+            document.cookie = name + '=' + value + '; path=/; expires=' + expDate.toUTCString() + ';';
+        },
+
         showEditText: function(plant, property, defval, anchor = '')
         {
             document.getElementById('inpEditTextPlantId').value = plant;

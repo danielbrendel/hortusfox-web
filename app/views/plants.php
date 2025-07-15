@@ -30,14 +30,14 @@
 
 <div class="sorting">
 	<div class="sorting-control sorting-mobile-only">
-		<a class="{{ (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=cards' . url_query('sorting', '&') . url_query('direction', '&')) }}">
+		<a class="{{ ((((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) && ((!isset($_COOKIE['list_show_style'])) || ($_COOKIE['list_show_style'] === 'cards'))) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=cards' . url_query('sorting', '&') . url_query('direction', '&')) }}">
 			<i class="far fa-file-image"></i>
 			<span>{{ __('app.plant_sorting_view_cards') }}</span>
 		</a>
 	</div>
 
 	<div class="sorting-control sorting-mobile-only sorting-mobile-only-last-elem">
-		<a class="{{ (((isset($_GET['show'])) && ($_GET['show'] === 'list')) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=list' . url_query('sorting', '&') . url_query('direction', '&')) }}">
+		<a class="{{ ((((isset($_GET['show'])) && ($_GET['show'] === 'list')) || ((isset($_COOKIE['list_show_style'])) && ($_COOKIE['list_show_style'] === 'list'))) ? 'is-selected' : '') }}" href="{{ url('/plants/location/' . $location . '?show=list' . url_query('sorting', '&') . url_query('direction', '&')) }}">
 			<i class="far fa-list-alt"></i>
 			<span>{{ __('app.plant_sorting_view_list') }}</span>
 		</a>
@@ -69,7 +69,7 @@
 <div class="plants">
 	@if (count($plants) > 0)
 		@foreach ($plants as $plant)
-			@if ((!isset($_GET['show'])) || ($_GET['show'] === 'cards'))
+			@if (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) && ((!isset($_COOKIE['list_show_style'])) || ($_COOKIE['list_show_style'] === 'cards')))
 				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
 					<div class="plant-card plant-filter-text-root">
 						<div class="plant-card-image" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
@@ -95,7 +95,7 @@
 						</div>
 					</div>
 				</a>
-			@elseif ((isset($_GET['show'])) && ($_GET['show'] === 'list'))
+			@elseif (((isset($_GET['show'])) && ($_GET['show'] === 'list')) || ((isset($_COOKIE['list_show_style'])) && ($_COOKIE['list_show_style'] === 'list')))
 				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
 					<div class="plant-list-item plant-filter-text-root">
 						<div class="plant-list-id">#{{ sprintf('%04d', $plant->get('id')) }}</div>

@@ -36,10 +36,16 @@ class PlantsController extends BaseController {
 
 		$sorting = $request->params()->query('sorting', null);
 		$direction = $request->params()->query('direction', null);
+		$show = $request->params()->query('show', null);
 
 		$plants = PlantsModel::getAll($location, $sorting, $direction);
 
 		$location_log_entries = LocationLogModel::getLogEntries($location);
+
+		if ((is_string($show)) && ((isset($_COOKIE['list_show_style'])) && ($_COOKIE['list_show_style'] !== $show))) {
+			setcookie('list_show_style', $show, time() + 31536000, '/');
+			return redirect('/plants/location/' . $location);
+		}
 		
 		return parent::view(['content', 'plants'], [
 			'user' => $user,
