@@ -14,6 +14,10 @@
 <script src="{{ asset('js/vue.min.js') }}"></script>
 @endif
 
+@if ((ThemeModule::ready()) && (ThemeModule::data()->script))
+<script src="{{ ThemeModule::data()->script }}"></script>
+@endif
+
 @if (is_string(app('custom_head_code')))
 {!! app('custom_head_code') !!}
 @endif

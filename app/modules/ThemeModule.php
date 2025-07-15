@@ -42,6 +42,12 @@ class ThemeModule {
                 self::$theme_data->include = null;
             }
 
+            if ((isset(self::$theme_data->script)) && (file_exists(public_path() . '/themes/' . self::$theme_data->name . '/' . self::$theme_data->script))) {
+                self::$theme_data->script = asset('themes/' . self::$theme_data->name . '/' . self::$theme_data->script);
+            } else {
+                self::$theme_data->script = null;
+            }
+
             self::$theme_data->banner_url = asset('themes/' . self::$theme_data->name . '/' . self::$theme_data->banner);
 
             self::$theme_data->inline_rules = '';
