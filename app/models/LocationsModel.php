@@ -225,6 +225,8 @@ class LocationsModel extends \Asatru\Database\Model {
 
             PlantsModel::migratePlants($id, $target);
 
+            static::clearPhoto($id);
+
             static::raw('DELETE FROM `@THIS` WHERE id = ?', [$id]);
         } catch (\Exception $e) {
             throw $e;
