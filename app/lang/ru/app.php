@@ -484,5 +484,7 @@ return [
     'confirm_set_gallery_photo_as_main' => 'Вы хотите заменить главное фото на это?',
     'enable_quick_add' => 'Включить виджет быстрого добавления',
     'clear_cache' => 'Очистить кэш',
-    'schema_attribute_already_exists' => 'Атрибут с таким ярлыком уже существует'
+    'schema_attribute_already_exists' => 'Атрибут с таким ярлыком уже существует',
+    'send_test_mail' => 'Отправить тестовое письмо',
+	'confirm_test_mail' => 'Хотите отправить тестовое письмо на {mail}?'
 ];

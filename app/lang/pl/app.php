@@ -484,5 +484,7 @@ return [
 	'confirm_set_gallery_photo_as_main' => 'Czy chcesz zastąpić główne zdjęcie tym?',
 	'enable_quick_add' => 'Włącz widżet szybkiego dodawania',
 	'clear_cache' => 'Wyczyść pamięć podręczną',
-	'schema_attribute_already_exists' => 'Atrybut z tym oznaczeniem już istnieje'
+	'schema_attribute_already_exists' => 'Atrybut z tym oznaczeniem już istnieje',
+	'send_test_mail' => 'Wyślij wiadomość testową',
+	'confirm_test_mail' => 'Czy chcesz wysłać wiadomość testową na {mail}?'
 ];

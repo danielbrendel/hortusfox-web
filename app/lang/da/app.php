@@ -484,5 +484,7 @@ return [
 	'confirm_set_gallery_photo_as_main' => 'Vil du erstatte hovedbilledet med dette?',
 	'enable_quick_add' => 'Aktiver Quick-Add-widget',
 	'clear_cache' => 'Ryd cache',
-	'schema_attribute_already_exists' => 'Der findes allerede et attribut med den angivne etiket'
+	'schema_attribute_already_exists' => 'Der findes allerede et attribut med den angivne etiket',
+	'send_test_mail' => 'Send testmail',
+	'confirm_test_mail' => 'Vil du sende en testmail til {mail}?'
 ];

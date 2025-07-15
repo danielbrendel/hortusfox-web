@@ -484,5 +484,7 @@ return [
 	'confirm_set_gallery_photo_as_main' => 'Você quer substituir a foto principal por esta?',
 	'enable_quick_add' => 'Ativar o widget de adição rápida',
 	'clear_cache' => 'Limpar cache',
-	'schema_attribute_already_exists' => 'Já existe um atributo com esse rótulo'
+	'schema_attribute_already_exists' => 'Já existe um atributo com esse rótulo',
+	'send_test_mail' => 'Enviar e-mail de teste',
+	'confirm_test_mail' => 'Deseja enviar um e-mail de teste para {mail}?'
 ];
