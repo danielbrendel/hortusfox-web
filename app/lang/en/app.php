@@ -484,5 +484,7 @@ return [
 	'confirm_set_gallery_photo_as_main' => 'Do you want to replace the main photo with this one?',
 	'enable_quick_add' => 'Enable Quick-Add widget',
 	'clear_cache' => 'Clear cache',
-	'schema_attribute_already_exists' => 'There is already an attribute with the given label'
+	'schema_attribute_already_exists' => 'There is already an attribute with the given label',
+	'send_test_mail' => 'Send test mail',
+	'confirm_test_mail' => 'Do you want to send a test e-mail to {mail}?'
 ];

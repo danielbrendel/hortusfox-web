@@ -96,6 +96,7 @@ window.vue = new Vue({
         loadMore: 'Load more',
         operationSucceeded: 'Operation succeeded',
         copiedToClipboard: 'Content has been copied to clipboard.',
+        origTestMailButtonContent: '',
         chatTypingEnable: false,
         chatTypingTimer: null,
         chatTypingHide: null,
@@ -1931,6 +1932,22 @@ window.vue = new Vue({
                 if (response.code == 200) {
                     button.innerHTML = '<i class="fas fa-check"></i>&nbsp;' + button.innerHTML;
                     button.setAttribute('disabled', 'disabled');
+                } else {
+                    alert(response.msg);
+                }
+            });
+        },
+
+        sendTestMail: function(button) {
+            if (window.vue.origTestMailButtonContent === '') {
+                window.vue.origTestMailButtonContent = button.innerHTML;
+            }
+
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + window.vue.origTestMailButtonContent;
+
+            window.vue.ajaxRequest('post', window.location.origin + '/admin/mail/test', {}, function(response) {
+                if (response.code == 200) {
+                    button.innerHTML = '<i class="fas fa-check"></i>&nbsp;' + window.vue.origTestMailButtonContent;
                 } else {
                     alert(response.msg);
                 }

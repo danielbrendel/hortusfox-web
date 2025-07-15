@@ -783,6 +783,35 @@ class AdminController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /admin/mail/test
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function send_test_email($request)
+	{
+		try {
+			$user = UserModel::getAuthUser();
+
+			$mailobj = new Asatru\SMTPMailer\SMTPMailer();
+			$mailobj->setRecipient($user->get('email'));
+			$mailobj->setSubject('[' . env('APP_NAME') . '] Test E-Mail');
+			$mailobj->setView('mail/mail_layout', [['mail_content', 'mail/mail_admintest']], ['user' => $user]);
+			$mailobj->setProperties(mail_properties());
+			$mailobj->send();
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
 	 * Handles URL: /admin/cronjob/token
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

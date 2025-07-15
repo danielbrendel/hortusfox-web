@@ -695,7 +695,10 @@
 
         <div class="field">
             <div class="control">
-                <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
+                <span>
+                    <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>&nbsp;
+                    <a class="button is-warning" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_test_mail', ['mail' => $user->get('email')]) }}')) { window.vue.sendTestMail(this); } return false;">{{ __('app.send_test_mail') }}</a>
+                </span>
             </div>
         </div>
     </form>

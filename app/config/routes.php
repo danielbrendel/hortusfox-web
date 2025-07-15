@@ -145,6 +145,7 @@ return [
     array('/admin/media/overlay/alpha', 'POST', 'admin@save_overlay_alpha'),
     array('/admin/media/sound/message', 'POST', 'admin@upload_media_sound_message'),
     array('/admin/mail/save', 'POST', 'admin@save_mail_settings'),
+    array('/admin/mail/test', 'ANY', 'admin@send_test_email'),
     array('/admin/themes/import', 'POST', 'admin@import_theme'),
     array('/admin/themes/remove', 'POST', 'admin@remove_theme'),
     array('/admin/backup/cronjob/save', 'POST', 'admin@save_backup_cronjob_settings'),
