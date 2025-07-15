@@ -563,18 +563,41 @@ fieldset .field {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 59px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     @media screen and (max-width: 830px) {
         width: 310px;
         min-height: 185px;
-        margin-bottom: 43px;
+        margin-bottom: 23px;
     }
+}
+
+.location::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    background-image: var(--bg-image);
+    transition: transform 0.3s ease;
+    z-index: 0;
 }
 
 .location:hover {
     box-shadow: 0 0 20px 0 rgba(105, 165, 85, 0.95);
+}
+
+.location:hover::before {
+    transform: scale(1.05);
+}
+
+.location > * {
+  position: relative;
+  z-index: 1;
 }
 
 .location-title {
@@ -594,26 +617,9 @@ fieldset .field {
     color: rgb(200, 200, 200);
 }
 
-.location-icon {
-    text-align: center;
-    transition: transform 0.2s ease;
-    transition: transform 0.3s ease;
-    @media screen and (min-width: 831px) {
-        position: relative;
-        top: 17px;
-    }
-    @media screen and (max-width: 831px) {
-        font-size: 3em;
-    }
-}
-
-.location-icon:hover {
-    transform: scale(1.2);
-}
-
 .location-footer {
     position: relative;
-    bottom: -133px;
+    bottom: -134px;
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;

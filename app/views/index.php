@@ -124,7 +124,7 @@
 
 	@foreach ($locations as $location)
 		<a href="{{ url('/plants/location/' . $location->get('id')) }}">
-			<div class="location" style="background-image: url('{{ UtilsModule::iconAsset($location->get('icon')) }}');">
+			<div class="location" style="--bg-image: url('{{ UtilsModule::iconAsset($location->get('icon')) }}');">
 				<div class="location-title">
 					{{ $location->get('name') }}
 				</div>
