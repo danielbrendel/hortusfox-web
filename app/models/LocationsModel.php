@@ -139,6 +139,8 @@ class LocationsModel extends \Asatru\Database\Model {
                 throw new \Exception('No image provided');
             }
 
+            static::clearPhoto($id);
+
             $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
 
             if ($file_ext === null) {
@@ -156,6 +158,36 @@ class LocationsModel extends \Asatru\Database\Model {
             $fullFileName = $file_name . '_thumb.' . $file_ext;
 
             static::raw('UPDATE `@THIS` SET icon = ? WHERE id = ?', [$fullFileName, $id]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return void
+     * @throws \Exception
+     */
+    public static function clearPhoto($id)
+    {
+        try {
+            $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
+            if (!$item) {
+                throw new \Exception('Item not found: ' . $id);
+            }
+
+            $thumb_photo = $item->get('icon');
+            $full_photo = str_replace('_thumb', '', $item->get('icon'));
+
+            if (file_exists(public_path() . '/img/' . $thumb_photo)) {
+                unlink(public_path() . '/img/' . $thumb_photo);
+            }
+
+            if (file_exists(public_path() . '/img/' . $full_photo)) {
+                unlink(public_path() . '/img/' . $full_photo);
+            }
+
+            static::raw('UPDATE `@THIS` SET icon = NULL WHERE id = ?', [$id]);
         } catch (\Exception $e) {
             throw $e;
         }
