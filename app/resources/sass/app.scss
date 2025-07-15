@@ -558,16 +558,17 @@ fieldset .field {
 .location {
     position: relative;
     display: inline-block;
-    width: 245px;
+    width: 338px;
     min-height: 250px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 59px;
-    background-color: rgb(55, 59, 62);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     @media screen and (max-width: 830px) {
-        width: 134px;
-        min-height: 152px;
+        width: 310px;
+        min-height: 185px;
         margin-bottom: 43px;
     }
 }
@@ -589,16 +590,13 @@ fieldset .field {
         padding-bottom: 7px;
     }
     margin-bottom: 20px;
-    background-color: rgba(115, 143, 100, 0.9);
-    color: #c3e4a3;
+    background-color: rgba(0, 0, 0, 0.83);
+    color: rgb(200, 200, 200);
 }
 
 .location-icon {
     text-align: center;
     transition: transform 0.2s ease;
-}
-
-.location-icon svg {
     transition: transform 0.3s ease;
     @media screen and (min-width: 831px) {
         position: relative;
@@ -609,24 +607,24 @@ fieldset .field {
     }
 }
 
-.location-icon svg:hover {
+.location-icon:hover {
     transform: scale(1.2);
 }
 
 .location-footer {
     position: relative;
-    bottom: -52px;
+    bottom: -133px;
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
     font-size: 0.9em;
     text-align: left;
     color: rgb(150, 150, 150);
-    background-color: rgb(50, 54, 59);
+    background-color: rgba(0, 0, 0, 0.8);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     @media screen and (max-width: 830px) {
         font-size: 0.75em;
-        bottom: -15px;
+        bottom: -96px;
     }
 }
 
@@ -2920,6 +2918,10 @@ fieldset .field {
 
 .admin-location-item-input {
     width: 30%;
+}
+
+.admin-location-control-icon {
+    width: 87%;
 }
 
 .admin-location-actions {

@@ -265,7 +265,6 @@ return [
 	'mail_share_photo_hint' => 'Twoje zdjęcie zostało pomyślnie udostępnione!<br/><br/>Link do zdjęcia: {url_photo}><br/>Link do usunięcia: {url_removal}',
 	'enable_photo_share' => 'Włącz udostępnianie zdjęć',
 	'restore_password_email_placeholder' => 'Wpisz swój adres e-mail',
-	'search_for_location_icons' => 'Szukaj ikon <a href="{url}" target="_blank">tutaj</a>.',
 	'upcoming_tasks_overview' => 'Nadchodzące zadania',
 	'view_more' => 'Zobacz więcej',
 	'generate' => 'Wygeneruj',

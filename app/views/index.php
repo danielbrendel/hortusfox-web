@@ -124,15 +124,11 @@
 
 	@foreach ($locations as $location)
 		<a href="{{ url('/plants/location/' . $location->get('id')) }}">
-			<div class="location">
+			<div class="location" style="background-image: url('{{ UtilsModule::iconAsset($location->get('icon')) }}');">
 				<div class="location-title">
 					{{ $location->get('name') }}
 				</div>
-
-				<div class="location-icon">
-					<i class="{{ $location->get('icon') }} fa-5x"></i>
-				</div>
-
+				
 				<div class="location-footer">
 					<div class="is-inline-block">
 						<?php $plant_count = PlantsModel::getPlantCount($location->get('id')); ?>

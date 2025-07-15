@@ -126,6 +126,7 @@ return [
     array('/admin/user/remove', 'ANY', 'admin@remove_user'),
     array('/admin/location/add', 'POST', 'admin@add_location'),
     array('/admin/location/update', 'POST', 'admin@update_location'),
+    array('/admin/location/photo', 'POST', 'admin@set_location_photo'),
     array('/admin/location/remove', 'ANY', 'admin@remove_location'),
     array('/admin/auth/proxy/save', 'POST', 'admin@save_proxy_auth_settings'),
     array('/admin/attribute/schema/add', 'POST', 'admin@add_attribute_schema'),

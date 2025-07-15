@@ -265,7 +265,6 @@ return [
 	'mail_share_photo_hint' => 'Bildet ditt ble delt!<br/><br/>Lenke til bildet: {url_photo}<br/>Fjerningslenke: {url_removal}',
 	'enable_photo_share' => 'Aktiver bildedeling',
 	'restore_password_email_placeholder' => 'Skriv inn din e-postadresse',
-	'search_for_location_icons' => 'Søk etter ikoner <a href="{url}" target="_blank">her</a>.',
 	'upcoming_tasks_overview' => 'Kommende oppgaver',
 	'view_more' => 'Vis mer',
 	'generate' => 'Generer',

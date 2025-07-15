@@ -262,9 +262,8 @@ class AdminController extends BaseController {
 	{
 		try {
 			$name = $request->params()->query('name', null);
-			$icon = $request->params()->query('icon', null);
 			
-			LocationsModel::addLocation($name, $icon);
+			LocationsModel::addLocation($name);
 
 			FlashMessage::setMsg('success', __('app.location_added_successfully'));
 
@@ -286,10 +285,31 @@ class AdminController extends BaseController {
 		try {
 			$id = $request->params()->query('id');
 			$name = $request->params()->query('name', null);
-			$icon = $request->params()->query('icon', null);
 			$active = $request->params()->query('active', 0);
 			
-			LocationsModel::editLocation($id, $name, $icon, (int)$active);
+			LocationsModel::editLocation($id, $name, (int)$active);
+
+			FlashMessage::setMsg('success', __('app.location_updated_successfully'));
+
+			return redirect('/admin?tab=locations');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+	
+	/**
+	 * Handles URL: /admin/location/photo
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function set_location_photo($request)
+	{
+		try {
+			$ident = $request->params()->query('ident');
+			
+			LocationsModel::setPhoto($ident);
 
 			FlashMessage::setMsg('success', __('app.location_updated_successfully'));
 

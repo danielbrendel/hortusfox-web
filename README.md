@@ -307,14 +307,13 @@ INSERT INTO `LocationsModel` (`id`, `name`, `icon`, `active`, `created_at`) VALU
 (
     NULL,
     'Name of location',
-    'fas fa-leaf',
+    NULL,
     1,
     CURRENT_TIMESTAMP
 );
 ```
 
-The mandatory fields are name of location (e.g. garden, living room, kitchen, etc) as well as the FontAwesome icon to be used.
-You can use all free FontAwesome v5.x icons. For a complete list of available icons, visit the <a href="https://fontawesome.com/v5/search?o=r&m=free">FontAwesome search page</a>. Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges.
+The mandatory fields are name of location (e.g. garden, living room, kitchen, etc). Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges. There you can also set a photo (refered to as icon) for the location.
 
 ## Cronjobs
 

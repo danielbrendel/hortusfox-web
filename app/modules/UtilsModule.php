@@ -570,4 +570,17 @@ class UtilsModule {
         
         return $purifier->purify($html);
     }
+
+    /**
+     * @param $icon
+     * @return string
+     */
+    public static function iconAsset($icon)
+    {
+        if ((is_string($icon)) && (file_exists(public_path() . '/img/' . $icon))) {
+            return asset('img/' . $icon);
+        }
+
+        return asset('img/nolocicon.jpg');
+    }
 }

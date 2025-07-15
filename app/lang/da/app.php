@@ -265,7 +265,6 @@ return [
 	'mail_share_photo_hint' => 'Dit billede er blevet delt succesfuldt!<br/><br/>Link til billede: {url_photo}<br/>Fjern billede link: {url_removal}',
 	'enable_photo_share' => 'Slå billede deling til',
 	'restore_password_email_placeholder' => 'Indtast din E-mail adresse',
-	'search_for_location_icons' => 'Søg efter ikoner <a href="{url}" target="_blank">here</a>.',
 	'upcoming_tasks_overview' => 'Kommende opgaver',
 	'view_more' => 'Vis mere',
 	'generate' => 'Generer',

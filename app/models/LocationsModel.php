@@ -95,15 +95,14 @@ class LocationsModel extends \Asatru\Database\Model {
 
     /**
      * @param $name
-     * @param $icon
      * @return void
      * @throws \Exception
      */
-    public static function addLocation($name, $icon)
+    public static function addLocation($name)
     {
         try {
-            static::raw('INSERT INTO `@THIS` (name, icon) VALUES(?, ?)', [
-                $name, $icon
+            static::raw('INSERT INTO `@THIS` (name) VALUES(?)', [
+                $name
             ]);
         } catch (\Exception $e) {
             throw $e;
@@ -113,17 +112,50 @@ class LocationsModel extends \Asatru\Database\Model {
     /**
      * @param $id
      * @param $name
-     * @param $icon
      * @param $active
      * @return void
      * @throws \Exception
      */
-    public static function editLocation($id, $name, $icon, $active)
+    public static function editLocation($id, $name, $active)
     {
         try {
-            static::raw('UPDATE `@THIS` SET name = ?, icon = ?, active = ? WHERE id = ?', [
-                $name, $icon, $active, $id
+            static::raw('UPDATE `@THIS` SET name = ?, active = ? WHERE id = ?', [
+                $name, $active, $id
             ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return void
+     * @throws \Exception
+     */
+    public static function setPhoto($id)
+    {
+        try {
+            if ((!isset($_FILES['photo'])) || ($_FILES['photo']['error'] !== UPLOAD_ERR_OK)) {
+                throw new \Exception('No image provided');
+            }
+
+            $file_ext = UtilsModule::getImageExt($_FILES['photo']['tmp_name']);
+
+            if ($file_ext === null) {
+                throw new \Exception('File is not a valid image');
+            }
+
+            $file_name = md5(random_bytes(55) . date('Y-m-d H:i:s'));
+
+            move_uploaded_file($_FILES['photo']['tmp_name'], public_path('/img/' . $file_name . '.' . $file_ext));
+
+            if (!UtilsModule::createThumbFile(public_path('/img/' . $file_name . '.' . $file_ext), UtilsModule::getImageType($file_ext, public_path('/img/' . $file_name)), public_path('/img/' . $file_name), $file_ext)) {
+                throw new \Exception('createThumbFile failed');
+            }
+
+            $fullFileName = $file_name . '_thumb.' . $file_ext;
+
+            static::raw('UPDATE `@THIS` SET icon = ? WHERE id = ?', [$fullFileName, $id]);
         } catch (\Exception $e) {
             throw $e;
         }

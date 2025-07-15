@@ -265,7 +265,6 @@ return [
 	'mail_share_photo_hint' => '¡Tu foto ha sido compartida con éxito!<br/><br/>Enlace a la foto: {url_photo}<br/>Enlace para borrarla: {url_removal}',
 	'enable_photo_share' => 'Activar intercambio de fotos',
 	'restore_password_email_placeholder' => 'Introduce tu dirección de e-mail',
-	'search_for_location_icons' => 'Buscar iconos <a href="{url}" target="_blank">aquí</a>.',
 	'upcoming_tasks_overview' => 'Próximas tareas',
 	'view_more' => 'Ver más',
 	'generate' => 'Generar',

@@ -265,7 +265,6 @@ return [
     'mail_share_photo_hint' => 'Ваше фото успешно опубликовано!<br/><br/>Ссылка на фото: {url_photo}<br/>Ссылка для удаления: {url_removal}',
     'enable_photo_share' => 'Включить публикацию фото',
     'restore_password_email_placeholder' => 'Введите ваш адрес электронной почты',
-    'search_for_location_icons' => 'Поиск иконок <a href="{url}" target="_blank">здесь</a>.',
     'upcoming_tasks_overview' => 'Предстоящие задачи',
     'view_more' => 'Подробнее',
     'generate' => 'Сгенерировать',

@@ -363,6 +363,16 @@
 <div class="admin-locations {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'locations')) ? 'is-hidden' : ''}}">
     <h2>{{ __('app.locations') }}</h2>
 
+    <div>
+        <form id="location-image-upload-form" class="is-hidden" method="POST" action="{{ url('/admin/location/photo') }}" enctype="multipart/form-data">
+            @csrf
+
+            <input type="hidden" name="ident" id="location-image-upload-ident"/>
+
+            <input type="file" name="photo" id="location-image-upload-input" accept="image/*" onchange="document.getElementById('location-image-upload-form').submit(); return false;"/>
+        </form>
+    </div>
+
     <div class="admin-locations-list">
         @foreach ($locations as $location)
             <div class="admin-location">
@@ -378,7 +388,14 @@
                     </div>
 
                     <div class="admin-location-item admin-location-item-input">
-                        <input type="text" class="input" name="icon" value="{{ $location->get('icon') }}"/>
+                        <div class="field has-addons">
+                            <div class="control admin-location-control-icon">
+                                <input type="text" class="input" name="icon" value="{{ $location->get('icon') ?? '' }}"/>
+                            </div>
+                            <div class="control">
+                                <a class="button is-warning" href="javascript:void(0);" onclick="document.getElementById('location-image-upload-ident').value = '{{ $location->get('id') }}'; document.getElementById('location-image-upload-input').click();"><i class="fas fa-image"></i></a>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="admin-location-item admin-location-item-centered">

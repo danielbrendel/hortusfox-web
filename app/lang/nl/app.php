@@ -265,7 +265,6 @@ return [
 	'mail_share_photo_hint' => 'Je foto is met succes gedeeld!<br/><br/>Koppeling naar de foto: {url_photo}<br/>Koppeling om te verwijderen: {url_removal}',
 	'enable_photo_share' => 'Schakel foto delen in',
 	'restore_password_email_placeholder' => 'Voer je e-mailadres in',
-	'search_for_location_icons' => 'Zoek <a href="{url}" target="_blank">hier</a> naar iconen.',
 	'upcoming_tasks_overview' => 'Aankomende taken',
 	'view_more' => 'Bekijk meer',
 	'generate' => 'Genereer',
