@@ -313,7 +313,7 @@ INSERT INTO `LocationsModel` (`id`, `name`, `icon`, `active`, `created_at`) VALU
 );
 ```
 
-The mandatory fields are name of location (e.g. garden, living room, kitchen, etc). Note that you can then manage various aspects of the system via the admin section when logged in as a user with admin privileges. There you can also set a photo (refered to as icon) for the location.
+The mandatory field is the name of the location (e.g. garden, living room, kitchen, etc).
 
 ## Cronjobs
 
