@@ -570,6 +570,12 @@ fieldset .field {
         min-height: 185px;
         margin-bottom: 23px;
     }
+    @media screen and (max-width: 450px) {
+        width: 100%;
+        min-height: 230px;
+        margin-left: unset;
+        margin-right: unset;
+    }
 }
 
 .location::before {
@@ -631,6 +637,9 @@ fieldset .field {
     @media screen and (max-width: 830px) {
         font-size: 0.75em;
         bottom: -96px;
+    }
+    @media screen and (max-width: 450px) {
+        bottom: -141px;
     }
 }
 
