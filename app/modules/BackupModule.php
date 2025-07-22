@@ -80,6 +80,13 @@ class BackupModule {
             $locations = LocationsModel::raw('SELECT * FROM `@THIS`');
 
             $zip->addEmptyDir('locations');
+            $zip->addEmptyDir('locations/img');
+
+            foreach ($locations as $location) {
+                if (file_exists(public_path() . '/img/' . $location->get('icon'))) {
+                    $zip->addFile(public_path() . '/img/' . $location->get('icon'), 'locations/img/' . $location->get('icon'));
+                }
+            }
 
             file_put_contents(public_path() . '/backup/_locations.json', json_encode($locations->asArray()));
             $zip->addFile(public_path() . '/backup/_locations.json', 'locations/data.json');

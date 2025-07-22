@@ -96,6 +96,10 @@ class ImportModule {
                         $location->active,
                         $location->created_at
                     ]);
+
+                    if ((!file_exists(public_path() . '/img/' . $location->icon)) && (file_exists($path . '/img/' . $location->icon))) {
+                        copy($path . '/img/' . $location->icon, public_path() . '/img/' . $location->icon);
+                    }
                 }
             }
         } catch (\Exception $e) {
