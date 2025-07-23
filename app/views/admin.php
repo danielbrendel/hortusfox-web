@@ -993,6 +993,12 @@
     </div>
     @endif
 
+    @if (env('APP_GITHUB_URL'))
+    <div class="admin-info-github">
+        <a class="button is-info" href="{{ env('APP_GITHUB_URL') }}"><i class="fab fa-github"></i>&nbsp;GitHub Repository</a>
+    </div>
+    @endif
+
     @if (env('APP_GITHUB_SPONSOR'))
     <div class="admin-info-sponsor">
         <a class="button is-info" href="{{ env('APP_GITHUB_SPONSOR') }}"><i class="far fa-heart"></i>&nbsp;{{ __('app.donation_sponsoring') }}</a>

@@ -3345,6 +3345,34 @@ fieldset .field {
 .admin-info-support a:hover {
 }
 
+.admin-info-github {
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.admin-info-github a {
+    width: 465px;
+    @media screen and (max-width: 495px) {
+        width: 100%;
+        height: 50px;
+        font-size: 1.4em;
+    }
+    background-color: rgb(87, 190, 240) !important;
+}
+
+.admin-info-github a:hover {
+    background-color: rgb(115, 203, 250) !important;
+}
+
+.admin-info-github svg {
+    color: rgb(50, 50, 50);
+}
+
+.admin-info-github svg:hover {
+    color: rgb(50, 50, 50);
+}
+
 .admin-info-sponsor {
     position: relative;
     margin-top: 15px;
