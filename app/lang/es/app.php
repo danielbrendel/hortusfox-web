@@ -418,6 +418,7 @@ return [
 	'photo_edit_specify_url' => 'Especificar URL al recurso externo',
 	'photo_edit_specify_file' => 'Seleccionar un archivo para cargar',
 	'photo_edit_url_placeholder' => 'Introducir URL...',
+	'github_repository' => 'GitHub Repository',
 	'donation_sponsoring' => 'Patrocinar en GitHub',
 	'donation_kofi' => 'Buy Me a Coffee',
 	'auto_backup' => 'Habilitar copia de seguridad automática',

@@ -418,6 +418,7 @@ return [
 	'photo_edit_specify_url' => 'Angi URL til ekstern ressurs',
 	'photo_edit_specify_file' => 'Velg en fil å laste opp',
 	'photo_edit_url_placeholder' => 'Skriv inn URL...',
+	'github_repository' => 'GitHub Repository',
 	'donation_sponsoring' => 'GitHub Sponsoring',
 	'donation_kofi' => 'Buy Me a Coffee',
 	'auto_backup' => 'Aktiver Auto-Backup',

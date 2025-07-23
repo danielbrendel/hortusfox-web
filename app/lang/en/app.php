@@ -418,6 +418,7 @@ return [
 	'photo_edit_specify_url' => 'Specify URL to external resource',
 	'photo_edit_specify_file' => 'Select a file to upload',
 	'photo_edit_url_placeholder' => 'Enter URL...',
+	'github_repository' => 'GitHub Repository',
 	'donation_sponsoring' => 'GitHub Sponsoring',
 	'donation_kofi' => 'Buy Me a Coffee',
 	'auto_backup' => 'Enable Auto-Backup',

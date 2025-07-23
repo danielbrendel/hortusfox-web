@@ -418,6 +418,7 @@ return [
     'photo_edit_specify_url' => 'Укажите URL к внешнему ресурсу',
     'photo_edit_specify_file' => 'Выберите файл для загрузки',
     'photo_edit_url_placeholder' => 'Введите URL...',
+    'github_repository' => 'GitHub Repository',
     'donation_sponsoring' => 'GitHub Sponsoring',
     'donation_kofi' => 'Buy Me a Coffee',
     'auto_backup' => 'Включить автоматическое резервное копирование',

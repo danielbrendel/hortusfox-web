@@ -995,7 +995,7 @@
 
     @if (env('APP_GITHUB_URL'))
     <div class="admin-info-github">
-        <a class="button is-info" href="{{ env('APP_GITHUB_URL') }}"><i class="fab fa-github"></i>&nbsp;GitHub Repository</a>
+        <a class="button is-info" href="{{ env('APP_GITHUB_URL') }}"><i class="fab fa-github"></i>&nbsp;{{ __('app.github_repository') }}</a>
     </div>
     @endif
 

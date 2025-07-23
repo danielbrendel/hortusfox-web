@@ -418,6 +418,7 @@ return [
 	'photo_edit_specify_url' => 'Voer koppeling in naar externe bron',
 	'photo_edit_specify_file' => 'Selecteer bestand om te uploaden',
 	'photo_edit_url_placeholder' => 'Voer koppeling in...',
+	'github_repository' => 'GitHub Repository',
 	'donation_sponsoring' => 'GitHub Sponsoring',
 	'donation_kofi' => 'Buy Me a Coffee',
 	'auto_backup' => 'Automatische backup inschakelen',
