@@ -71,6 +71,7 @@ class TasksController extends BaseController {
 		$due_date = $request->params()->query('due_date', '');
 		$recurring = (bool)$request->params()->query('recurring', false);
 		$recurring_time = (int)$request->params()->query('recurring_time', 0);
+		$plant_id = (int)$request->params()->query('plant_id', 0);
 
 		if (strlen($due_date) === 0) {
 			$due_date = null;
@@ -80,11 +81,19 @@ class TasksController extends BaseController {
 			$recurring_time = null;
 		}
 
-		TasksModel::addTask($title, $description, $due_date, $recurring_time);
+		$task_id = TasksModel::addTask($title, $description, $due_date, $recurring_time);
+
+		$redirect_url = '/tasks';
+
+		if ($plant_id) {
+			PlantTasksRefModel::addReference($plant_id, $task_id);
+
+			$redirect_url = '/plants/details/' . $plant_id . '#plant-tasks-anchor';
+		}
 
 		FlashMessage::setMsg('success', __('app.task_created_successfully'));
 
-		return redirect('/tasks');
+		return redirect($redirect_url);
 	}
 
 	/**
@@ -166,6 +175,10 @@ class TasksController extends BaseController {
 			$task = $request->params()->query('task', null);
 
 			TasksModel::removeTask($task);
+
+			if (PlantTasksRefModel::hasPlantReference($task)) {
+				PlantTasksRefModel::removeForTask($task);
+			}
 
 			return json([
 				'code' => 200

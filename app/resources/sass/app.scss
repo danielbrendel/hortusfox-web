@@ -1659,6 +1659,22 @@ fieldset .field {
     color: rgb(135, 135, 135);
 }
 
+.plant-tasks {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @media screen and (max-width: 410px) {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+.plant-tasks-title {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: rgb(150, 150, 150);
+}
+
 .plant-log {
     position: relative;
     margin-top: 10px;
@@ -1951,6 +1967,23 @@ fieldset .field {
     text-decoration: underline;
 }
 
+.task-plant-reference {
+    position: relative;
+    margin-bottom: 43px;
+    padding: 10px;
+    font-size: 1.0em;
+    color: rgb(150, 150, 150);
+    overflow-y: auto;
+}
+
+.task-plant-reference a {
+    color: rgb(111, 185, 235);
+}
+
+.task-plant-reference a:hover {
+    text-decoration: underline;
+}
+
 .task-footer {
     position: absolute;
     bottom: 0;
@@ -2008,9 +2041,19 @@ fieldset .field {
     height: 256px;
 }
 
+.tasks-all-done-image-small img {
+    width: 128px;
+    height: 128px;
+}
+
 .tasks-all-done-text {
     color: rgb(120, 215, 105);
     font-size: 2.0em;
+}
+
+.tasks-all-done-text-small {
+    color: rgb(120, 215, 105);
+    font-size: 1.5em;
 }
 
 .inventory {

@@ -194,6 +194,18 @@ class PlantsController extends BaseController {
 		$photos = PlantPhotoModel::getPlantGallery($plant_id);
 		$custom_attributes = CustPlantAttrModel::getForPlant($plant_id);
 		$plant_log_entries = PlantLogModel::getLogEntries($plant_id);
+
+		$plant_tasks = [];
+		$plant_task_refs = PlantTasksRefModel::getForPlant($plant_id);
+		if (is_countable($plant_task_refs)) {
+			foreach ($plant_task_refs as $plant_task_ref) {
+				$task_item = TasksModel::getTask($plant_task_ref->get('task_id'));
+
+				if (is_object($task_item)) {
+					$plant_tasks[] = $task_item;
+				}
+			}
+		}
 		
 		return parent::view(['content', 'details'], [
 			'user' => $user,
@@ -202,6 +214,7 @@ class PlantsController extends BaseController {
 			'photos' => $photos,
 			'tags' => $tags,
 			'custom_attributes' => $custom_attributes,
+			'plant_tasks' => $plant_tasks,
 			'plant_log_entries' => $plant_log_entries,
 			'edit_user_name' => $edit_user_name,
 			'edit_user_when' => $edit_user_when
@@ -712,6 +725,10 @@ class PlantsController extends BaseController {
 			$location = $request->params()->query('location', 0);
 
 			PlantsModel::removePlant($plant);
+
+			if (PlantTasksRefModel::hasTaskReference($plant)) {
+				PlantTasksRefModel::removeForPlant($plant);
+			}
 
 			if ($location == 0) {
 				return back();

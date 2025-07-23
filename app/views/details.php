@@ -369,6 +369,64 @@
 
 <div class="columns plant-column">
 	<div class="column is-full">
+		<div class="plant-tasks">
+			<div class="plant-tasks-title">{{ __('app.tasks') }}</div>
+
+			<a name="plant-tasks-anchor"></a>
+
+			<div class="margin-vertical">
+    			<a class="button is-warning" href="javascript:void(0);" onclick="document.getElementById('create-task-plant-id').value = '{{ $plant->get('id') }}'; window.vue.bShowCreateTask = true;">{{ __('app.create_new') }}</a>
+			</div>
+
+			@if ((is_countable($plant_tasks)) && (count($plant_tasks) > 0))
+				@foreach ($plant_tasks as $task)
+					@if (!$task->get('done'))
+						<div class="task" id="task-item-{{ $task->get('id') }}">
+							<a name="task-anchor-{{ $task->get('id') }}"></a>
+
+							<div class="task-header">
+								<div class="task-header-title" id="task-item-title-{{ $task->get('id') }}"><span>#{{ sprintf('%03d', $task->get('id')) }}</span> {{ $task->get('title') }}</div>
+								<div class="task-header-action">
+									<span><a href="javascript:void(0);" onclick="window.vue.editTask({{ $task->get('id') }});"><i class="fas fa-edit"></i></a></span>
+									<span><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_task') }}')) { window.vue.removeTask({{ $task->get('id') }}); }"><i class="fas fa-trash-alt"></i></a></span>
+								</div>
+							</div>
+
+							<div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{!! ($task->get('description')) ? UtilsModule::translateURLs($task->get('description')) : 'N/A' !!}</pre></div>
+							
+							<div class="task-footer">
+								<div class="task-footer-date">{{ (new Carbon($task->get('created_at')))->diffForHumans() }}</div>
+
+								<div class="task-footer-due" id="task-item-due-{{ $task->get('id') }}">
+									@if ($task->get('due_date') !== null)
+										<span class="{{ ((new DateTime($task->get('due_date'))) < (new DateTime())) ? 'is-task-overdue' : '' }}">{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</span>
+										
+										<span class="is-task-recurring" data-time="{{ $task->get('recurring_time') ?? '' }}"><i class="far fa-clock {{ ((!$task->get('recurring_time')) ? 'is-hidden' : '') }}"></i></span>
+									@endif
+								</div>
+								
+								<div class="task-footer-action">
+									<input type="radio" onclick="window.vue.toggleTaskStatus({{ $task->get('id') }});" {{ ($task->get('done')) ? 'checked' : '' }} /><a href="javascript:void(0);" onclick="window.vue.toggleTaskStatus({{ $task->get('id') }});">&nbsp;{{ __('app.done') }}</a>
+								</div>
+							</div>
+						</div>
+					@endif
+				@endforeach
+			@else
+				<div class="tasks-all-done">
+					<div class="tasks-all-done-image-small">
+						<img src="{{ asset('img/partypopper.png') }}" width="128" height="128" alt="image"/>
+					</div>
+
+					<div class="tasks-all-done-text-small">{{ __('app.all_tasks_done') }}</div>
+            	</div>
+			@endif
+		</div>
+	</div>
+</div>
+
+<div class="columns plant-column">
+	<div class="column is-full">
 		<div class="plant-log">
 			<div class="plant-log-title">{{ __('app.plant_log') }}</div>
 

@@ -458,6 +458,8 @@
 						<form id="frmCreateTask" method="POST" action="{{ url('/tasks/create') }}">
 							@csrf
 
+							<input type="hidden" id="create-task-plant-id" name="plant_id" value="0">
+
 							<div class="field">
 								<label class="label">{{ __('app.title') }}</label>
 								<div class="control">

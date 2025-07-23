@@ -33,6 +33,11 @@
 
                     <div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{!! ($task->get('description')) ? UtilsModule::translateURLs($task->get('description')) : 'N/A' !!}</pre></div>
                     
+                    @if (PlantTasksRefModel::hasPlantReference($task->get('id')))
+                        <?php $plant_data = PlantsModel::getDetails(PlantTasksRefModel::getForTask($task->get('id'))?->get('plant_id')); ?>
+                        <div class="task-plant-reference"><a href="{{ url('/plants/details/' . $plant_data->get('id')) }}">{{ $plant_data->get('name') }}</a></div>
+                    @endif
+
                     <div class="task-footer">
                         <div class="task-footer-date">{{ (new Carbon($task->get('created_at')))->diffForHumans() }}</div>
 
