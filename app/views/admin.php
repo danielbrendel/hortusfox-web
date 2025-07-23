@@ -1013,15 +1013,15 @@
 
     <div class="admin-info-social">
         @if (env('APP_SOCIAL_DISCORD'))
-        <a class="button admin-info-social-button is-social-discord" href="{{ env('APP_SOCIAL_DISCORD') }}" target="_blank"><i class="fab fa-discord"></i>&nbsp;Discord</a>
+        <a class="button admin-info-social-button is-social-discord" href="{{ env('APP_SOCIAL_DISCORD') }}" target="_blank"><i class="fab fa-discord"></i>&nbsp;{{ __('app.link_discord') }}</a>
         @endif
         
         @if (env('APP_SOCIAL_MASTODON'))
-        <a class="button admin-info-social-button is-social-mastodon" href="{{ env('APP_SOCIAL_MASTODON') }}" target="_blank"><i class="fab fa-mastodon"></i>&nbsp;Mastodon</a>
+        <a class="button admin-info-social-button is-social-mastodon" href="{{ env('APP_SOCIAL_MASTODON') }}" target="_blank"><i class="fab fa-mastodon"></i>&nbsp;{{ __('app.link_mastodon') }}</a>
         @endif
 
         @if (env('APP_SERVICE_URL'))
-        <a class="button admin-info-social-button is-social-videos" href="{{ env('APP_SERVICE_URL') }}/videos" target="_blank"><i class="fas fa-play-circle"></i>&nbsp;Videos</a>
+        <a class="button admin-info-social-button is-social-videos" href="{{ env('APP_SERVICE_URL') }}/videos" target="_blank"><i class="fas fa-play-circle"></i>&nbsp;{{ __('app.link_videos') }}</a>
         @endif
     </div>
 
