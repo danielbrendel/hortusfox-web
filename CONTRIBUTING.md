@@ -22,7 +22,7 @@ The following rules for pull requests apply:
 - If required, provide answers to possible questions
 
 Contributions must comply with open-source definitions and need to be compatible with the projects license.
-Also some principles of selfhosted must be respected. These include (but are not limited to) data privacy.
+Also some principles of self-hosted must be respected. These include (but are not limited to) data privacy.
 
 If you have any questions before submitting a PR, you can first create an issue to get answers.
 
