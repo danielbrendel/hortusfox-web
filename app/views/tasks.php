@@ -31,12 +31,17 @@
                         </div>
                     </div>
 
-                    <div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{!! ($task->get('description')) ? UtilsModule::translateURLs($task->get('description')) : 'N/A' !!}</pre></div>
-                    
-                    @if (PlantTasksRefModel::hasPlantReference($task->get('id')))
-                        <?php $plant_data = PlantsModel::getDetails(PlantTasksRefModel::getForTask($task->get('id'))?->get('plant_id')); ?>
-                        <div class="task-plant-reference"><a href="{{ url('/plants/details/' . $plant_data->get('id')) }}">{{ $plant_data->get('name') }}</a></div>
-                    @endif
+                    <?php
+                        $plant_link = '';
+                        if (PlantTasksRefModel::hasPlantReference($task->get('id'))) {
+                            $plant_data = PlantsModel::getDetails(PlantTasksRefModel::getForTask($task->get('id'))?->get('plant_id'));
+                            if ($plant_data) {
+                                $plant_link = html_entity_decode('&#x1fab4', ENT_COMPAT | ENT_QUOTES) . '&nbsp;<a href="' . url('/plants/details/' . $plant_data->get('id')) . '">' . $plant_data->get('name') . '</a><br/><br/>';
+                            }
+                        }
+                    ?>
+
+                    <div class="task-description" id="task-item-description-{{ $task->get('id') }}"><pre>{!! $plant_link . (($task->get('description')) ? UtilsModule::translateURLs($task->get('description')) : 'N/A') !!}</pre></div>
 
                     <div class="task-footer">
                         <div class="task-footer-date">{{ (new Carbon($task->get('created_at')))->diffForHumans() }}</div>
