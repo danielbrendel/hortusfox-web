@@ -230,7 +230,16 @@ class TasksModel extends \Asatru\Database\Model {
                 $date1 = new DateTime('now');
                 $date2 = new DateTime($ckdate);
                 if ($date1 > $date2) {
-                    TaskInformerModel::inform($task, 'overdue', env('APP_CRONJOB_MAILLIMIT', 5));
+                    $plant = null;
+
+                    if (PlantTasksRefModel::hasPlantReference($task->get('id'))) {
+                        $reference = PlantTasksRefModel::getForTask($task->get('id'));
+                        if ($reference) {
+                            $plant = PlantsModel::getDetails($reference->get('plant_id'));
+                        }
+                    }
+
+                    TaskInformerModel::inform($task, 'overdue', env('APP_CRONJOB_MAILLIMIT', 5), $plant);
                 }
             }
         } catch (\Exception $e) {
@@ -247,7 +256,16 @@ class TasksModel extends \Asatru\Database\Model {
         try {
             $tasks = static::getTomorrowTasks();
             foreach ($tasks as $task) {
-                TaskInformerModel::inform($task, 'tomorrow', env('APP_CRONJOB_MAILLIMIT', 5));
+                $plant = null;
+
+                if (PlantTasksRefModel::hasPlantReference($task->get('id'))) {
+                    $reference = PlantTasksRefModel::getForTask($task->get('id'));
+                    if ($reference) {
+                        $plant = PlantsModel::getDetails($reference->get('plant_id'));
+                    }
+                }
+
+                TaskInformerModel::inform($task, 'tomorrow', env('APP_CRONJOB_MAILLIMIT', 5), $plant);
             }
         } catch (\Exception $e) {
             throw $e;
@@ -265,7 +283,16 @@ class TasksModel extends \Asatru\Database\Model {
             foreach ($tasks as $task) {
                 static::raw('UPDATE `@THIS` SET due_date = DATE_ADD(NOW(), INTERVAL recurring_time HOUR) WHERE id = ?', [$task->get('id')]);
 
-                TaskInformerModel::inform($task, 'recurring', env('APP_CRONJOB_MAILLIMIT', 5));
+                $plant = null;
+
+                if (PlantTasksRefModel::hasPlantReference($task->get('id'))) {
+                    $reference = PlantTasksRefModel::getForTask($task->get('id'));
+                    if ($reference) {
+                        $plant = PlantsModel::getDetails($reference->get('plant_id'));
+                    }
+                }
+
+                TaskInformerModel::inform($task, 'recurring', env('APP_CRONJOB_MAILLIMIT', 5), $plant);
             }
         } catch (\Exception $e) {
             throw $e;
