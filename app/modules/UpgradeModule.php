@@ -12,6 +12,7 @@ class UpgradeModule {
     private static function upgradeTo5dot2()
     {
         LocationsModel::raw('ALTER TABLE `@THIS` MODIFY COLUMN icon VARCHAR(512) NULL');
+        PlantsModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS clone_origin INT NULL');
     }
 
     /**

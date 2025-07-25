@@ -52,6 +52,7 @@ class PlantsModel_Migration {
         $this->database->add('last_edited_date DATETIME NULL');
         $this->database->add('last_photo_date DATETIME NULL');
         $this->database->add('clone_num INT NULL');
+        $this->database->add('clone_origin INT NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();
     }

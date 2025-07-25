@@ -184,6 +184,11 @@ class PlantsController extends BaseController {
 			$edit_user_when = (new Carbon($plant_data->get('last_edited_date')))->diffForHumans();
 		}
 
+		$orig_plant = null;
+		if ($plant_data->get('clone_origin')) {
+			$orig_plant = PlantsModel::getDetails($plant_data->get('clone_origin'));
+		}
+
 		$tagstr = $plant_data->get('tags');
 		if (substr($tagstr, strlen($tagstr) - 1, 1) !== ' ') {
 			$tagstr .= ' ';
@@ -206,16 +211,20 @@ class PlantsController extends BaseController {
 				}
 			}
 		}
+
+		$offspring = PlantsModel::findOffspring($plant_id);
 		
 		return parent::view(['content', 'details'], [
 			'user' => $user,
 			'plant' => $plant_data,
+			'orig_plant' => $orig_plant,
 			'plant_ident' => $plant_ident,
 			'photos' => $photos,
 			'tags' => $tags,
 			'custom_attributes' => $custom_attributes,
 			'plant_tasks' => $plant_tasks,
 			'plant_log_entries' => $plant_log_entries,
+			'offspring' => $offspring,
 			'edit_user_name' => $edit_user_name,
 			'edit_user_when' => $edit_user_when
 		]);

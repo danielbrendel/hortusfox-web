@@ -839,13 +839,34 @@ class PlantsModel extends \Asatru\Database\Model {
                 $target_thumb_name = $source->get('photo');
             }
 
-            static::raw('INSERT INTO `@THIS` (name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, last_fertilised, perennial, hardy, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, last_edited_user, last_edited_date, clone_num) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-                $source->get('name'), $source->get('scientific_name'), $source->get('knowledge_link'), $updated_tags, $source->get('location'), $target_thumb_name, $source->get('last_watered'), $source->get('last_repotted'), $source->get('last_fertilised'), $source->get('perennial'), $source->get('hardy'), $source->get('cutting_month'), $source->get('date_of_purchase'), $source->get('humidity'), $source->get('light_level'), $source->get('health_state'), $source->get('notes'), $user->get('id'), date('Y-m-d H:i:s'), static::getNameCount($source->get('name'))
+            $clone_origin = null;
+            if ($source->get('clone_num')) {
+                $clone_origin = $source->get('clone_origin');
+            } else {
+                $clone_origin = $source->get('id');
+            }
+
+            static::raw('INSERT INTO `@THIS` (name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, last_fertilised, perennial, hardy, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, last_edited_user, last_edited_date, clone_num, clone_origin) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                $source->get('name'), $source->get('scientific_name'), $source->get('knowledge_link'), $updated_tags, $source->get('location'), $target_thumb_name, $source->get('last_watered'), $source->get('last_repotted'), $source->get('last_fertilised'), $source->get('perennial'), $source->get('hardy'), $source->get('cutting_month'), $source->get('date_of_purchase'), $source->get('humidity'), $source->get('light_level'), $source->get('health_state'), $source->get('notes'), $user->get('id'), date('Y-m-d H:i:s'), static::getNameCount($source->get('name')), $clone_origin
             ]);
 
             $clone = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
 
             return $clone->get('id');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function findOffspring($id)
+    {
+        try {
+            return static::raw('SELECT * FROM `@THIS` WHERE clone_origin = ?', [$id]);
         } catch (\Exception $e) {
             throw $e;
         }

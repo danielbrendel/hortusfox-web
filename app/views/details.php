@@ -14,6 +14,22 @@
 	{{ __('app.last_edited_by', ['name' => $edit_user_name, 'when' => $edit_user_when]) }}
 </div>
 
+@if ($plant->get('clone_num'))
+	<div class="margin-vertical is-default-text-color">
+		<i class="fas fa-clone"></i>&nbsp;<a class="is-default-link" href="{{ url('/plants/details/' . $orig_plant->get('id')) }}">{{ $orig_plant->get('name') }}</a>
+	</div>
+@endif
+
+@if (($offspring) && (is_countable($offspring)))
+	<div class="margin-vertical is-default-text-color">
+		@foreach ($offspring as $child)
+			<div>
+				<i class="fas fa-seedling"></i>&nbsp;<a class="is-default-link" href="{{ url('/plants/details/' . $child->get('id')) }}">{{ '[#' . sprintf('%04d', (int)$child->get('clone_num') + 1) . '] ' . $child->get('name') }}</a>
+			</div>
+		@endforeach
+	</div>
+@endif
+
 @if ($plant->get('health_state') !== 'in_good_standing')
 	<div class="plant-warning">{{ __('app.plant_warning', ['reason' => __('app.' . $plant->get('health_state'))]) }}</div>
 @endif
