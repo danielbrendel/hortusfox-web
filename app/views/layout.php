@@ -1911,7 +1911,6 @@
 			@endif
 		</div>
 
-		<script src="{{ asset('js/app.js', true) }}"></script>
 		<script>
 			@if (app('pwa_enable'))
 			window.onload = function() {

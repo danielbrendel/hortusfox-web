@@ -14,6 +14,8 @@
 <script src="{{ asset('js/vue.min.js') }}"></script>
 @endif
 
+<script src="{{ asset('js/app.js', true) }}"></script>
+
 @if ((ThemeModule::ready()) && (ThemeModule::data()->script))
 <script src="{{ ThemeModule::data()->script }}"></script>
 @endif
