@@ -151,6 +151,17 @@ MYSQL_USER: user
 MYSQL_PASSWORD: password
 ```
 
+You can optionally specify proxy authentication settings for your app
+```yaml
+# services.app.environment
+PROXY_ENABLE: "true"
+PROXY_HEADER_EMAIL: "Your e-mail header identifier here"
+PROXY_HEADER_USERNAME: "Your username header identifier here"
+PROXY_AUTO_SIGNUP: "true"
+PROXY_WHITELIST: ""
+PROXY_HIDE_LOGOUT: "true"
+```
+
 3. Pull the image and run the application:
 
 ```shell
