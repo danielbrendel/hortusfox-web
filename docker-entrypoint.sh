@@ -23,6 +23,12 @@ DEFAULT_SMTP_PORT=587
 DEFAULT_SMTP_USERNAME=""
 DEFAULT_SMTP_PASSWORD=""
 DEFAULT_SMTP_ENCRYPTION="tls"
+DEFAULT_PROXY_ENABLE=false
+DEFAULT_PROXY_HEADER_EMAIL=""
+DEFAULT_PROXY_HEADER_USERNAME=""
+DEFAULT_PROXY_AUTO_SIGNUP=false
+DEFAULT_PROXY_WHITELIST=""
+DEFAULT_PROXY_HIDE_LOGOUT=false
 
 # Use environment variables if provided, otherwise use defaults
 ADMIN_EMAIL="${APP_ADMIN_EMAIL:-$DEFAULT_ADMIN_EMAIL}"
@@ -45,6 +51,12 @@ SMTP_PORT=${SMTP_PORT:-$DEFAULT_SMTP_PORT}
 SMTP_USERNAME="${SMTP_USERNAME:-$DEFAULT_SMTP_USERNAME}"
 SMTP_PASSWORD="${SMTP_PASSWORD:-$DEFAULT_SMTP_PASSWORD}"
 SMTP_ENCRYPTION="${SMTP_ENCRYPTION:-$DEFAULT_SMTP_ENCRYPTION}"
+PROXY_ENABLE=${PROXY_ENABLE:-$DEFAULT_PROXY_ENABLE}
+PROXY_HEADER_EMAIL="${PROXY_HEADER_EMAIL:-$DEFAULT_PROXY_HEADER_EMAIL}"
+PROXY_HEADER_USERNAME="${PROXY_HEADER_USERNAME:-$DEFAULT_PROXY_HEADER_USERNAME}"
+PROXY_AUTO_SIGNUP=${PROXY_AUTO_SIGNUP:-$DEFAULT_PROXY_AUTO_SIGNUP}
+PROXY_WHITELIST="${PROXY_WHITELIST:-$DEFAULT_PROXY_WHITELIST}"
+PROXY_HIDE_LOGOUT=${PROXY_HIDE_LOGOUT:-$DEFAULT_PROXY_HIDE_LOGOUT}
 
 # Function to set the desired timezone
 configure_timezone() {
@@ -142,6 +154,13 @@ create_app_settings() {
     echo "App settings profile created."
 }
 
+# Function to update proxy authentication settings
+update_proxy_auth_settings() {
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "UPDATE AppModel SET auth_proxy_enable = $PROXY_ENABLE, auth_proxy_header_email = '$PROXY_HEADER_EMAIL', auth_proxy_header_username = '$PROXY_HEADER_USERNAME', auth_proxy_sign_up = $PROXY_AUTO_SIGNUP, auth_proxy_whitelist = '$PROXY_WHITELIST', auth_proxy_hide_logout = $PROXY_HIDE_LOGOUT;"
+
+    echo "Updated proxy authentication settings: status=$( [ "$PROXY_ENABLE" = "true" ] && echo enabled || echo disabled )"
+}
+
 # Function to check if the admin user exists and add if not
 add_admin_user_if_missing() {
     local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM UserModel WHERE email='$ADMIN_EMAIL';")
@@ -231,6 +250,9 @@ fi
 
 # Check if app settings profile exists and create it if not.
 add_initial_settings_if_missing
+
+# Update proxy authentication settings
+update_proxy_auth_settings
 
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing

@@ -53,7 +53,7 @@ class UserModel extends \Asatru\Database\Model {
                 }
 
                 if (!$accepted) {
-                    throw new \Exception('Unauthorized Proxy: ' . $remote_addr);
+                    throw new \Exception('Unauthorized remote address: ' . $remote_addr);
                 }
             }
 
