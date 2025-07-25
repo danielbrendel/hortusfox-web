@@ -64,6 +64,14 @@
 				text-decoration: underline;
 			}
 
+			.content span.is-success-info {
+				color: rgb(132, 255, 123);
+			}
+
+			.content span.is-critical-info {
+    			color: rgb(212, 50, 50);
+			}
+
 			.footer {
 				width: 100%;
 				padding: 10px;

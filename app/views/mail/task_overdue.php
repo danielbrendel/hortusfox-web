@@ -11,5 +11,10 @@
 @endif
 
 <p>
-    {!! __('app.mail_info_task_overdue_hint', ['name' => $task->get('title'), 'date' => date('Y-m-d', strtotime($task->get('due_date'))), 'url' => workspace_url('/tasks')]) !!}
+    <pre>{{ $task->get('description') }}</pre>
 </p>
+
+<div>
+    <div><strong>{{ __('app.due') }}:&nbsp;</strong><span class="is-critical-info">{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</span></div>
+    <div><a href="{{ workspace_url('/tasks') }}">{{ workspace_url('/tasks') }}</div>
+</div>

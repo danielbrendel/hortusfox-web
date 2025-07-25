@@ -11,5 +11,11 @@
 @endif
 
 <p>
-    {!! __('app.mail_info_task_recurring_hint', ['name' => $task->get('title'), 'date' => date('Y-m-d', strtotime($task->get('due_date'))), 'time' => $task->get('recurring_time'), 'url' => workspace_url('/tasks')]) !!}
+    <pre>{{ $task->get('description') }}</pre>
 </p>
+
+<div>
+    <div><strong>{{ __('app.recurring_time') }}:&nbsp;</strong>{{ $task->get('recurring_time') }}</div>
+    <div><strong>{{ __('app.due') }}:&nbsp;</strong>{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</div>
+    <div><a href="{{ workspace_url('/tasks') }}">{{ workspace_url('/tasks') }}</div>
+</div>
