@@ -1,5 +1,9 @@
 <h1>{{ $task->get('title') }}</h1>
 
+<p>
+    <pre>{{ $task->get('description') }}</pre>
+</p>
+
 @if (is_object($plant))
 <p>
     <a href="{{ url('/plants/details/' . $plant->get('id')) }}">{{ $plant->get('name') }}</a>
@@ -9,10 +13,6 @@
     <img src="{{ abs_photo($plant->get('photo')) }}" alt="plant-photo"/>
 </p>
 @endif
-
-<p>
-    <pre>{{ $task->get('description') }}</pre>
-</p>
 
 <div>
     <div><strong>{{ __('app.due') }}:&nbsp;</strong><span class="is-critical-info">{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</span></div>

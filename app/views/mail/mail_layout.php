@@ -72,6 +72,10 @@
     			color: rgb(212, 50, 50);
 			}
 
+			.content img {
+				max-width: 355px;
+			}
+
 			.footer {
 				width: 100%;
 				padding: 10px;
