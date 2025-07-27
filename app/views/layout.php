@@ -1127,9 +1127,11 @@
 								<div class="control">
 									<select class="input" name="target" id="selRemoveLocation">
 										<option value="">-</option>
-										@foreach ($locations as $location)
-											<option class="remove-location-item-option" id="remove-location-item-{{ $location->get('id') }}" value="{{ $location->get('id') }}">{{ $location->get('name') }}</option>
-										@endforeach
+										@if (isset($locations))
+											@foreach ($locations as $location)
+												<option class="remove-location-item-option" id="remove-location-item-{{ $location->get('id') }}" value="{{ $location->get('id') }}">{{ $location->get('name') }}</option>
+											@endforeach
+										@endif
 									</select>
 								</div>
 							</div>
