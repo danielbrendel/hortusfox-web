@@ -192,7 +192,7 @@ return [
 	'sorting_dir_desc' => 'Aflopend',
 	'filter_by_text' => 'Filter op tekst',
 	'mail_info_task_overdue' => 'Taak is verlopen',
-	'mail_info_task_overdue_hint' => 'De taak <strong>{name}</strong> is velopen! Vervaldatum: {date}. Ga naar taken: <a href="{url}">{url}</a>',
+	'mail_info_task_overdue_hint' => 'De taak <strong>{name}</strong> is verlopen! Vervaldatum: {date}. Ga naar taken: <a href="{url}">{url}</a>',
 	'notify_tasks_overdue' => 'Waarschuw mij over verlopen taken',
 	'mail_info_task_tomorrow' => 'Taak verloopt morgen',
 	'mail_info_task_tomorrow_hint' => 'De taak <strong>{name}</strong> verloopt morgen. Vervaldatum: {date}. Ga naar taken: <a href="{url}">{url}</a>',
