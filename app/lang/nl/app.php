@@ -316,7 +316,7 @@ return [
 	'calendar_class_repot' => 'Verpotten',
 	'calendar_class_fertilise' => 'Bemesten',
 	'calendar_class_purchase' => 'Aankoop',
-	'calendar_class_cut' => 'Snoeien',
+	'calendar_class_cut' => 'Stekken',
 	'calendar_class_treat' => 'Behandeling',
 	'calendar_class_harvest' => 'Oogst',
 	'calendar_class_other' => 'Overig',
