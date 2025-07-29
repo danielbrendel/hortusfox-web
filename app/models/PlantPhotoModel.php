@@ -228,7 +228,7 @@ class PlantPhotoModel extends \Asatru\Database\Model {
             $photo_data = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             $plant = PlantsModel::getDetails($photo_data->get('plant'));
 
-            PlantsModel::editPlantAttribute($plant->get('id'), 'photo', UtilsModule::absolutePhoto($photo_data->get('thumb')));
+            PlantsModel::editPlantAttribute($plant->get('id'), 'photo', $photo_data->get('thumb'));
         } catch (\Exception $e) {
             throw $e;
         }
