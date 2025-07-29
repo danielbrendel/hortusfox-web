@@ -1145,7 +1145,7 @@
 			</div>
 
 			<div class="modal" :class="{'is-active': bShowPreviewImageModal}">
-				<div class="modal-background"></div>
+				<div class="modal-background" onclick="window.vue.bShowPreviewImageModal = false;"></div>
 
 				<div class="modal-content">
 					<p class="image">
