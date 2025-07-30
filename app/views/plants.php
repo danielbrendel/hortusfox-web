@@ -99,7 +99,7 @@
 				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
 					<div class="plant-list-item plant-filter-text-root">
 						<div class="plant-list-id">#{{ sprintf('%04d', $plant->get('id')) }}</div>
-						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') }}</div>
+						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</div>
 						<div class="plant-list-name-short">{{ substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
 						<div class="plant-list-scientific-name plant-list-item-hide-small-devices">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
 						@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
