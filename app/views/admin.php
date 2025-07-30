@@ -369,7 +369,7 @@
 
             <input type="hidden" name="ident" id="location-image-upload-ident"/>
 
-            <input type="file" name="photo" id="location-image-upload-input" accept="image/*" onchange="document.getElementById('location-image-upload-form').submit(); return false;"/>
+            <input type="file" name="photo" id="location-image-upload-input" accept="image/*" onchange="if (this.files.length) { document.getElementById('admin-location-item-icon-input-' + document.getElementById('location-image-upload-ident').value).innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; document.getElementById('location-image-upload-form').submit(); return false; } else { document.getElementById('admin-location-item-icon-input-' + document.getElementById('location-image-upload-ident').value).innerHTML = '<i class=\'fas fa-image\'></i>'; }"/>
         </form>
     </div>
 
@@ -393,7 +393,7 @@
                                 <input type="text" class="input" name="icon" value="{{ $location->get('icon') ?? '' }}"/>
                             </div>
                             <div class="control">
-                                <a class="button is-warning" href="javascript:void(0);" onclick="document.getElementById('location-image-upload-ident').value = '{{ $location->get('id') }}'; this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; document.getElementById('location-image-upload-input').click();"><i class="fas fa-image"></i></a>
+                                <a class="button is-warning" id="admin-location-item-icon-input-{{ $location->get('id') }}" href="javascript:void(0);" onclick="document.getElementById('location-image-upload-ident').value = '{{ $location->get('id') }}'; document.getElementById('location-image-upload-input').click();"><i class="fas fa-image"></i></a>
                             </div>
                         </div>
                     </div>
