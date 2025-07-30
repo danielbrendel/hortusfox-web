@@ -73,7 +73,7 @@ class SearchController extends BaseController {
 					if ($exists > -1) {
 						$search_result[$exists][$cust_plant['label']] = $cust_plant['content'];
 					} else {
-						$plant_info = PlantsModel::getDetails($cust_plant['plant'])->asArray();
+						$plant_info = PlantsModel::getDetails($cust_plant['plant'])?->asArray();
 
 						if ($plant_info) {
 							$plant_info[$cust_plant['label']] = $cust_plant['content'];
