@@ -176,18 +176,20 @@ class LocationsModel extends \Asatru\Database\Model {
                 throw new \Exception('Item not found: ' . $id);
             }
 
-            $thumb_photo = $item->get('icon');
-            $full_photo = str_replace('_thumb', '', $item->get('icon'));
+            if ($item->get('icon')) {
+                $thumb_photo = $item->get('icon');
+                $full_photo = str_replace('_thumb', '', $item->get('icon'));
 
-            if (file_exists(public_path() . '/img/' . $thumb_photo)) {
-                unlink(public_path() . '/img/' . $thumb_photo);
+                if (file_exists(public_path() . '/img/' . $thumb_photo)) {
+                    unlink(public_path() . '/img/' . $thumb_photo);
+                }
+
+                if (file_exists(public_path() . '/img/' . $full_photo)) {
+                    unlink(public_path() . '/img/' . $full_photo);
+                }
+
+                static::raw('UPDATE `@THIS` SET icon = NULL WHERE id = ?', [$id]);
             }
-
-            if (file_exists(public_path() . '/img/' . $full_photo)) {
-                unlink(public_path() . '/img/' . $full_photo);
-            }
-
-            static::raw('UPDATE `@THIS` SET icon = NULL WHERE id = ?', [$id]);
         } catch (\Exception $e) {
             throw $e;
         }
