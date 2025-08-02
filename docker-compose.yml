@@ -32,6 +32,9 @@ services:
       MYSQL_DATABASE: hortusfox
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+      ## if the DB_PORT above is set to something other than MySQL's
+      ## 3306, the variable MYSQL_TCP_PORT must also be set.
+      # MYSQL_TCP_PORT: 3306
     ports:
       - "3306:3306"
     volumes:
