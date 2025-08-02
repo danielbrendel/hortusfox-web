@@ -118,7 +118,7 @@ APP_ADMIN_EMAIL: "admin@example.com"
 APP_ADMIN_PASSWORD: "password"
 ```
 
-Set your prefered timezone. Default is UTC.
+Set your preferred timezone. Default is UTC.
 ```yaml
 # Timezone setting
 # services.app.environment
@@ -165,9 +165,11 @@ PROXY_HIDE_LOGOUT: "true"
 3. Pull the image and run the application:
 
 ```shell
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
+
+note: docker v1 syntax uses "docker-compose" instead of v2's "docker compose"
 
 4. The application should now be running on http://localhost:8080.
 
@@ -186,7 +188,7 @@ http://localhost/install
 
 Be sure that PHP is installed and both your webserver and mariadb server are running. If there is no vendor folder already created then
 the system will try to run Composer in order to install all required dependencies. For that to work you need to have Composer installed
-on your system. Altough the system tries to create the database for you, sometimes this might fail, so you will have to create the
+on your system. Although the system tries to create the database for you, sometimes this might fail, so you will have to create the
 database before running the installation. However all table migrations will then be created by the system. The system can then be managed
 via the admin section (e.g. environment settings, users, locations).
 
@@ -203,7 +205,7 @@ composer install
 Now we need to configure the project. Create a .env file from the .env.example, open it and manage the following variables:
 
 ```sh
-# URL to the official service backend. Used for e.g. version comparision
+# URL to the official service backend. Used for e.g. version comparison
 APP_SERVICE_URL="https://www.hortusfox.com"
 
 # URL to the repository of the project
@@ -252,7 +254,7 @@ SMTP_PASSWORD=""
 SMTP_ENCRYPTION=tls
 ```
 
-After saving the file you can now let the product create all neccessary tables via the following command:
+After saving the file you can now let the product create all necessary tables via the following command:
 
 ```shell
 php asatru migrate:fresh
@@ -394,7 +396,7 @@ Testing data should be specified as environment variables in the `php` section v
 - PHP ^8.3
 - MariaDB ^11.4
 - SMTP server for e-mailing
-- Docker with Docker-Compose for containerization
+- Docker with Docker Compose for containerization
 
 ## External Services
 
@@ -402,7 +404,7 @@ There are features that rely on external services. Some of these features are ma
 
 ### App icons
 
-The project uses <a href="https://fontawesome.com/">FontAwesome</a> free to display icons on various occassions. Please see the free license <a href="https://fontawesome.com/license/free">here</a>.
+The project uses <a href="https://fontawesome.com/">FontAwesome</a> free to display icons on various occasions. Please see the free license <a href="https://fontawesome.com/license/free">here</a>.
 
 ### Weather forecast
 
