@@ -9,6 +9,13 @@ class UpgradeModule {
     /**
      * @return void
      */
+    private static function upgradeTo5dot3()
+    {
+    }
+
+    /**
+     * @return void
+     */
     private static function upgradeTo5dot2()
     {
         LocationsModel::raw('ALTER TABLE `@THIS` MODIFY COLUMN icon VARCHAR(512) NULL');
