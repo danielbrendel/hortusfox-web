@@ -32,8 +32,11 @@ services:
       MYSQL_DATABASE: hortusfox
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+      MYSQL_TCP_PORT: 3306
     ports:
       - "3306:3306"
+    expose:
+      - 3306
     volumes:
       - db_data:/var/lib/mysql
 
