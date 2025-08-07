@@ -11,6 +11,7 @@ class UpgradeModule {
      */
     private static function upgradeTo5dot3()
     {
+        TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS recurring_scope VARCHAR(512) NOT NULL DEFAULT \'hours\'');
     }
 
     /**
