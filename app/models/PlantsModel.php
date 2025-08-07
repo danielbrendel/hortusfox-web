@@ -16,6 +16,7 @@ class PlantsModel extends \Asatru\Database\Model {
 
     static $sorting_list = [
         'name',
+        'last_edited_date',
         'last_watered',
         'last_repotted',
         'last_fertilised',

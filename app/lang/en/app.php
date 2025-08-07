@@ -491,5 +491,6 @@ return [
 	'schema_attribute_already_exists' => 'There is already an attribute with the given label',
 	'send_test_mail' => 'Send test mail',
 	'confirm_test_mail' => 'Do you want to send a test e-mail to {mail}?',
-	'none' => 'None'
+	'none' => 'None',
+	'sorting_type_last_edited_date' => 'Last edited'
 ];
