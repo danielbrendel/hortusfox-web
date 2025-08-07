@@ -497,5 +497,6 @@ return [
 	'days' => 'Tage',
 	'weeks' => 'Wochen',
 	'months' => 'Monate',
-	'years' => 'Jahre'
+	'years' => 'Jahre',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];
