@@ -417,7 +417,7 @@
 									@if ($task->get('due_date') !== null)
 										<span class="{{ ((new DateTime($task->get('due_date'))) < (new DateTime())) ? 'is-task-overdue' : '' }}">{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</span>
 										
-										<span class="is-task-recurring" data-time="{{ $task->get('recurring_time') ?? '' }}"><i class="far fa-clock {{ ((!$task->get('recurring_time')) ? 'is-hidden' : '') }}"></i></span>
+										<span class="is-task-recurring" data-time="{{ $task->get('recurring_time') ?? '' }}" data-scope="{{ $task->get('recurring_scope') ?? '' }}"><i class="far fa-clock {{ ((!$task->get('recurring_time')) ? 'is-hidden' : '') }}"></i></span>
 									@endif
 								</div>
 								
