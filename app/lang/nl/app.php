@@ -490,5 +490,6 @@ return [
 	'clear_cache' => 'Cache wissen',
 	'schema_attribute_already_exists' => 'Er bestaat al een attribuut met dit label',
 	'send_test_mail' => 'Testmail verzenden',
-	'confirm_test_mail' => 'Wil je een testmail verzenden naar {mail}?'
+	'confirm_test_mail' => 'Wil je een testmail verzenden naar {mail}?',
+	'none' => 'Geen'
 ];

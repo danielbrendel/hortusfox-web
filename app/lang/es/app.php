@@ -490,5 +490,6 @@ return [
 	'clear_cache' => 'Borrar caché',
 	'schema_attribute_already_exists' => 'Ya existe un atributo con esta etiqueta',
 	'send_test_mail' => 'Enviar correo de prueba',
-	'confirm_test_mail' => '¿Quieres enviar un correo de prueba a {mail}?'
+	'confirm_test_mail' => '¿Quieres enviar un correo de prueba a {mail}?',
+	'none' => 'Ninguno'
 ];

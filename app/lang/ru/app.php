@@ -490,5 +490,6 @@ return [
     'clear_cache' => 'Очистить кэш',
     'schema_attribute_already_exists' => 'Атрибут с таким ярлыком уже существует',
     'send_test_mail' => 'Отправить тестовое письмо',
-	'confirm_test_mail' => 'Хотите отправить тестовое письмо на {mail}?'
+	'confirm_test_mail' => 'Хотите отправить тестовое письмо на {mail}?',
+    'none' => 'Нет'
 ];

@@ -490,5 +490,6 @@ return [
 	'clear_cache' => 'Ryd cache',
 	'schema_attribute_already_exists' => 'Der findes allerede et attribut med den angivne etiket',
 	'send_test_mail' => 'Send testmail',
-	'confirm_test_mail' => 'Vil du sende en testmail til {mail}?'
+	'confirm_test_mail' => 'Vil du sende en testmail til {mail}?',
+	'none' => 'Ingen'
 ];

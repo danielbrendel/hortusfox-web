@@ -490,5 +490,6 @@ return [
 	'clear_cache' => 'Gyorsítótár törlése',
 	'schema_attribute_already_exists' => 'Már létezik egy attribútum a megadott címkével',
 	'send_test_mail' => 'Teszt email küldése',
-	'confirm_test_mail' => 'Szeretne teszt e-mailt küldeni a következő címre: {mail}?'
+	'confirm_test_mail' => 'Szeretne teszt e-mailt küldeni a következő címre: {mail}?',
+	'none' => 'Nincs'
 ];
