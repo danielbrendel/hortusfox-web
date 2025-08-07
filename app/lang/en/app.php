@@ -492,5 +492,10 @@ return [
 	'send_test_mail' => 'Send test mail',
 	'confirm_test_mail' => 'Do you want to send a test e-mail to {mail}?',
 	'none' => 'None',
-	'sorting_type_last_edited_date' => 'Last edited'
+	'sorting_type_last_edited_date' => 'Last edited',
+	'hours' => 'Hours',
+	'days' => 'Days',
+	'weeks' => 'Weeks',
+	'months' => 'Months',
+	'years' => 'Years'
 ];
