@@ -609,7 +609,7 @@ class ApiController extends BaseController {
             $description = $request->params()->query('description', null);
             $due_date = $request->params()->query('due_date', null);
             $recurring_time = (int)$request->params()->query('recurring_time', 0);
-            $recurring_scope = $request->params()->query('recurring_scope', 'hours');
+            $recurring_scope = $request->params()->query('recurring_scope', TasksModel::DEFAULT_SCOPE);
             $plant_id = (int)$request->params()->query('plant', 0);
 
             if ((!$due_date) || (!$recurring_time)) {
@@ -648,7 +648,7 @@ class ApiController extends BaseController {
             $description = $request->params()->query('description', null);
             $due_date = $request->params()->query('due_date', null);
             $recurring_time = $request->params()->query('recurring_time', null);
-            $recurring_scope = $request->params()->query('recurring_scope', 'hours');
+            $recurring_scope = $request->params()->query('recurring_scope', TasksModel::DEFAULT_SCOPE);
             $done = $request->params()->query('done', null);
 			
 			TasksModel::editTask($taskid, $title, $description, $due_date, $recurring_time, $recurring_scope, $done, true);
