@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Bearbeitet',
 	'tags' => 'Tags',
 	'recurring' => 'Wiederholend',
-	'recurring_time' => 'Stündliche Wiederholung',
+	'recurring_time' => 'Wiederholung',
 	'mail_info_task_recurring' => 'Wiederholende Aufgabe',
 	'mail_info_task_recurring_hint' => 'Die Aufgabe <strong>{name}</strong> ist jetzt fällig und wiederholt sich in {time} Stunden. Fälligkeitsdatum: {date}. Gehe zu Aufgaben: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Mich über wiederholende Aufgaben benachrichtigen',
