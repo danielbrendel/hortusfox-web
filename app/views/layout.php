@@ -494,11 +494,9 @@
 								</div>
 								<div class="control is-margin-top-10">
 									<select class="input" name="timescope">
-										<option value="hours">{{ __('app.hours') }}</option>
-										<option value="days">{{ __('app.days') }}</option>
-										<option value="weeks">{{ __('app.weeks') }}</option>
-										<option value="months">{{ __('app.months') }}</option>
-										<option value="years">{{ __('app.years') }}</option>
+										@foreach (TasksModel::$scope_quantities as $scope_key => $scope_value)
+											<option value="{{ $scope_key }}">{{ __('app.' . $scope_key) }}</option>
+										@endforeach
 									</select>
 								</div>
 							</div>
