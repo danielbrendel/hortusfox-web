@@ -25,7 +25,7 @@ class TasksModel extends \Asatru\Database\Model {
      * @return int
      * @throws \Exception
      */
-    public static function addTask($title, $description = '', $due_date = null, $recurring_time = null, $recurring_scope = 'hours', $api = false)
+    public static function addTask($title, $description = '', $due_date = null, $recurring_time = null, $recurring_scope = self::DEFAULT_SCOPE, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -67,7 +67,7 @@ class TasksModel extends \Asatru\Database\Model {
      * @return void
      * @throws \Exception
      */
-    public static function editTask($taskId, $title, $description, $due_date, $recurring_time, $recurring_scope = 'hours', $done = null, $api = false)
+    public static function editTask($taskId, $title, $description, $due_date, $recurring_time, $recurring_scope = self::DEFAULT_SCOPE, $done = null, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
