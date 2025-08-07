@@ -491,5 +491,6 @@ return [
 	'schema_attribute_already_exists' => 'Már létezik egy attribútum a megadott címkével',
 	'send_test_mail' => 'Teszt email küldése',
 	'confirm_test_mail' => 'Szeretne teszt e-mailt küldeni a következő címre: {mail}?',
-	'none' => 'Nincs'
+	'none' => 'Nincs',
+	'sorting_type_last_edited_date' => 'Utoljára szerkesztve'
 ];

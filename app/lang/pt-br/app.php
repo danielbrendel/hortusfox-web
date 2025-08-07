@@ -491,5 +491,6 @@ return [
 	'schema_attribute_already_exists' => 'Já existe um atributo com esse rótulo',
 	'send_test_mail' => 'Enviar e-mail de teste',
 	'confirm_test_mail' => 'Deseja enviar um e-mail de teste para {mail}?',
-	'none' => 'Nenhum'
+	'none' => 'Nenhum',
+	'sorting_type_last_edited_date' => 'Última edição'
 ];

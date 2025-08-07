@@ -491,5 +491,6 @@ return [
     'schema_attribute_already_exists' => 'Атрибут с таким ярлыком уже существует',
     'send_test_mail' => 'Отправить тестовое письмо',
 	'confirm_test_mail' => 'Хотите отправить тестовое письмо на {mail}?',
-    'none' => 'Нет'
+    'none' => 'Нет',
+    'sorting_type_last_edited_date' => 'Последнее изменение'
 ];

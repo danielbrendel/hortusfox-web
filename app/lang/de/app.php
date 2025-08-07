@@ -491,5 +491,6 @@ return [
 	'schema_attribute_already_exists' => 'Es gibt bereits ein Attribut mit dieser Bezeichnung',
 	'send_test_mail' => 'Test-E-Mail senden',
 	'confirm_test_mail' => 'Möchtest du eine Test-E-Mail an {mail} senden?',
-	'none' => 'Keins'
+	'none' => 'Keins',
+	'sorting_type_last_edited_date' => 'Zuletzt bearbeitet'
 ];

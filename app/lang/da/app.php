@@ -491,5 +491,6 @@ return [
 	'schema_attribute_already_exists' => 'Der findes allerede et attribut med den angivne etiket',
 	'send_test_mail' => 'Send testmail',
 	'confirm_test_mail' => 'Vil du sende en testmail til {mail}?',
-	'none' => 'Ingen'
+	'none' => 'Ingen',
+	'sorting_type_last_edited_date' => 'Sidst redigeret'
 ];

@@ -491,5 +491,6 @@ return [
 	'schema_attribute_already_exists' => 'Un attribut avec ce libellé existe déjà',
 	'send_test_mail' => 'Envoyer un e-mail de test',
 	'confirm_test_mail' => 'Voulez-vous envoyer un e-mail de test à {mail}?',
-	'none' => 'Aucun'
+	'none' => 'Aucun',
+	'sorting_type_last_edited_date' => 'Dernière modification'
 ];

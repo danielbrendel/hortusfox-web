@@ -491,5 +491,6 @@ return [
 	'schema_attribute_already_exists' => 'Atrybut z tym oznaczeniem już istnieje',
 	'send_test_mail' => 'Wyślij wiadomość testową',
 	'confirm_test_mail' => 'Czy chcesz wysłać wiadomość testową na {mail}?',
-	'none' => 'Brak'
+	'none' => 'Brak',
+	'sorting_type_last_edited_date' => 'Ostatnio edytowane'
 ];
