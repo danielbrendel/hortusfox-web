@@ -492,5 +492,10 @@ return [
 	'send_test_mail' => 'Test-E-Mail senden',
 	'confirm_test_mail' => 'Möchtest du eine Test-E-Mail an {mail} senden?',
 	'none' => 'Keins',
-	'sorting_type_last_edited_date' => 'Zuletzt bearbeitet'
+	'sorting_type_last_edited_date' => 'Zuletzt bearbeitet',
+	'hours' => 'Stunden',
+	'days' => 'Tage',
+	'weeks' => 'Wochen',
+	'months' => 'Monate',
+	'years' => 'Jahre'
 ];
