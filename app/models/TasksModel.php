@@ -6,6 +6,7 @@
  * Manages tasks
  */ 
 class TasksModel extends \Asatru\Database\Model {
+    const DEFAULT_SCOPE = 'hours';
     static $scope_quantities = [
         'hours' => 1,
         'days' => 24,

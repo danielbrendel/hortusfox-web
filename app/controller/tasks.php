@@ -71,7 +71,7 @@ class TasksController extends BaseController {
 		$due_date = $request->params()->query('due_date', '');
 		$recurring = (bool)$request->params()->query('recurring', false);
 		$recurring_time = (int)$request->params()->query('recurring_time', 0);
-		$timescope = $request->params()->query('timescope', 'hours');
+		$timescope = $request->params()->query('timescope', TasksModel::DEFAULT_SCOPE);
 		$plant_id = (int)$request->params()->query('plant_id', 0);
 
 		if (strlen($due_date) === 0) {
@@ -128,7 +128,7 @@ class TasksController extends BaseController {
 		$due_date = $request->params()->query('due_date', '');
 		$recurring = (bool)$request->params()->query('recurring', false);
 		$recurring_time = (int)$request->params()->query('recurring_time', 0);
-		$timescope = $request->params()->query('timescope', 'hours');
+		$timescope = $request->params()->query('timescope', TasksModel::DEFAULT_SCOPE);
 
 		if ((!$due_date) || (!$recurring)) {
 			$recurring_time = null;
