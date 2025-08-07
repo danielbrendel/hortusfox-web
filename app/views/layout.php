@@ -558,6 +558,13 @@
 								<div class="control">
 									<input type="number" class="input" name="recurring_time" id="inpEditTaskRecurringTime">
 								</div>
+								<div class="control is-margin-top-10">
+									<select class="input" name="timescope" id="inpEditTaskRecurringScope">
+										@foreach (TasksModel::$scope_quantities as $scope_key => $scope_value)
+											<option value="{{ $scope_key }}">{{ __('app.' . $scope_key) }}</option>
+										@endforeach
+									</select>
+								</div>
 							</div>
 						</form>
 					</section>

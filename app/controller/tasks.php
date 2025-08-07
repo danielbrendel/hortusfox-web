@@ -128,12 +128,13 @@ class TasksController extends BaseController {
 		$due_date = $request->params()->query('due_date', '');
 		$recurring = (bool)$request->params()->query('recurring', false);
 		$recurring_time = (int)$request->params()->query('recurring_time', 0);
+		$timescope = $request->params()->query('timescope', 'hours');
 
 		if ((!$due_date) || (!$recurring)) {
 			$recurring_time = null;
 		}
 
-		TasksModel::editTask($task, $title, $description, $due_date, $recurring_time);
+		TasksModel::editTask($task, $title, $description, $due_date, $recurring_time, $timescope);
 
 		FlashMessage::setMsg('success', __('app.task_edited_successfully'));
 
