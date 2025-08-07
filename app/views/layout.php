@@ -962,6 +962,7 @@
 								<label class="label">{{ __('app.theme') }}</label>
 								<div class="control">
 									<select class="input" name="theme" id="selEditCombo">
+										<option value="0" {{ ($user->get('theme') === null) ? 'selected' : ''}}>{{ '- ' . strtolower(__('app.none')) . ' -' }}</option>
 										@foreach (ThemeModule::list() as $theme)
 											<option value="{{ $theme }}" {{ ($user->get('theme') === $theme) ? 'selected' : ''}}>{{ $theme }}</option>
 										@endforeach
