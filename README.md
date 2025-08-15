@@ -145,10 +145,10 @@ DB_CHARSET: "utf8mb4"
 
 # Settings of the database container
 # services.db.environment
-MYSQL_ROOT_PASSWORD: my-secret-pw
-MYSQL_DATABASE: hortusfox
-MYSQL_USER: user
-MYSQL_PASSWORD: password
+MARIADB_ROOT_PASSWORD: my-secret-pw
+MARIADB_DATABASE: hortusfox
+MARIADB_USER: user
+MARIADB_PASSWORD: password
 ```
 
 You can optionally specify proxy authentication settings for your app

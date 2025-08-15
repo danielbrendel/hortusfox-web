@@ -28,10 +28,10 @@ services:
     image: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw
-      MYSQL_DATABASE: hortusfox
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: my-secret-pw
+      MARIADB_DATABASE: hortusfox
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
     ports:
       - "3306:3306"
     volumes:
