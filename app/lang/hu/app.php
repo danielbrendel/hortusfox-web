@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Frissítve:',
 	'tags' => 'Címkék',
 	'recurring' => 'Ismétlődő',
-	'recurring_time' => 'Ismétlés óránként',
+	'recurring_time' => 'Ismétlés',
 	'mail_info_task_recurring' => 'Ismétlődő feladat',
 	'mail_info_task_recurring_hint' => 'A(z) <strong>{name}</strong> feladat határideje most van, és {time} óra múlva ismétlődik. Határidő: {date}. Ugrás a feladatokhoz: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Értesíts az ismétlődő feladatokról',

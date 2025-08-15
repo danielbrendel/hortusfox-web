@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Bijgewerkt op',
 	'tags' => 'Tags',
 	'recurring' => 'Terugkerend',
-	'recurring_time' => 'Herhaal elk uur',
+	'recurring_time' => 'Herhaling',
 	'mail_info_task_recurring' => 'Terugkerende taak',
 	'mail_info_task_recurring_hint' => 'De taak <strong>{name}</strong> moet nu worden uitgevoerd en zal over {time} uur opnieuw worden uitgevoerd. Vervaldatum: {date}. Ga naar taken: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Stuur mij een melding over terugkerende taken',

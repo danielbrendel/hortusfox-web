@@ -474,7 +474,7 @@ return [
     'updated_at' => 'Обновлено',
     'tags' => 'Теги',
     'recurring' => 'Повторяющаяся',
-    'recurring_time' => 'Повторять через часы',
+    'recurring_time' => 'Повторение',
     'mail_info_task_recurring' => 'Повторяющаяся задача',
     'mail_info_task_recurring_hint' => 'Задача <strong>{name}</strong> должна быть выполнена сейчас и повторится через {time} часов. Срок: {date}. Перейдите к задачам: <a href="{url}">{url}</a>',
     'notify_tasks_recurring' => 'Уведомлять меня о повторяющихся задачах',

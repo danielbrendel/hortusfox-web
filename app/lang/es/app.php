@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Editado',
 	'tags' => 'Tags',
 	'recurring' => 'Recurrente',
-	'recurring_time' => 'Repetición por horas',
+	'recurring_time' => 'Repetición',
 	'mail_info_task_recurring' => 'Tarea recurrente',
 	'mail_info_task_recurring_hint' => 'La tarea <strong>{name}</strong> vence ahora y se repetirá en {time} horas. Fecha de vencimiento: {date}. Ir a tareas: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Notificarme sobre tareas recurrentes',

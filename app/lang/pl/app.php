@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Edytowane',
 	'tags' => 'Tags',
 	'recurring' => 'Powtórzenie',
-	'recurring_time' => 'Powtarzaj co godzinę',
+	'recurring_time' => 'Powtarzanie',
 	'mail_info_task_recurring' => 'Zadanie powtarzające się',
 	'mail_info_task_recurring_hint' => 'Zadanie <strong>{name}</strong> jest teraz wymagane i powtórzy się za {time} godzin. Termin: {date}. Przejdź do zadań: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Powiadom mnie o powtarzających się zadaniach',

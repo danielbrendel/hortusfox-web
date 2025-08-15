@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Redigeret',
 	'tags' => 'Tags',
 	'recurring' => 'Tilbagevendende',
-	'recurring_time' => 'Gentag hver time',
+	'recurring_time' => 'Gentagelse',
 	'mail_info_task_recurring' => 'Tilbagevendende opgave',
 	'mail_info_task_recurring_hint' => 'Opgaven <strong>{name}</strong> er klar nu og vil gentage sig om {time} timer. Forfaldsdato: {date}. Gå til opgaver: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Giv mig besked om tilbagevendende opgaver',
