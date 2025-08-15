@@ -493,10 +493,10 @@ return [
 	'confirm_test_mail' => 'Vil du sende en test-e-post til {mail}?',
 	'none' => 'Ingen',
 	'sorting_type_last_edited_date' => 'Sist redigert',
-	'hours' => 'Hours',
-	'days' => 'Days',
-	'weeks' => 'Weeks',
-	'months' => 'Months',
-	'years' => 'Years',
+	'hours' => 'Timer',
+	'days' => 'Dager',
+	'weeks' => 'Uker',
+	'months' => 'Måneder',
+	'years' => 'År',
 	'recurring_time_with_scope' => '{time} {scope}'
 ];

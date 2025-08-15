@@ -493,10 +493,10 @@ return [
 	'confirm_test_mail' => 'Szeretne teszt e-mailt küldeni a következő címre: {mail}?',
 	'none' => 'Nincs',
 	'sorting_type_last_edited_date' => 'Utoljára szerkesztve',
-	'hours' => 'Hours',
-	'days' => 'Days',
-	'weeks' => 'Weeks',
-	'months' => 'Months',
-	'years' => 'Years',
+	'hours' => 'Órák',
+	'days' => 'Napok',
+	'weeks' => 'Hetek',
+	'months' => 'Hónapok',
+	'years' => 'Évek',
 	'recurring_time_with_scope' => '{time} {scope}'
 ];

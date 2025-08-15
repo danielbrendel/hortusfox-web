@@ -493,10 +493,10 @@ return [
 	'confirm_test_mail' => 'Czy chcesz wysłać wiadomość testową na {mail}?',
 	'none' => 'Brak',
 	'sorting_type_last_edited_date' => 'Ostatnio edytowane',
-	'hours' => 'Hours',
-	'days' => 'Days',
-	'weeks' => 'Weeks',
-	'months' => 'Months',
-	'years' => 'Years',
+	'hours' => 'Godzina',
+	'days' => 'Dni',
+	'weeks' => 'Tygodnie',
+	'months' => 'Miesiące',
+	'years' => 'Lata',
 	'recurring_time_with_scope' => '{time} {scope}'
 ];
