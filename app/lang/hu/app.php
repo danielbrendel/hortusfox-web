@@ -492,5 +492,11 @@ return [
 	'send_test_mail' => 'Teszt email küldése',
 	'confirm_test_mail' => 'Szeretne teszt e-mailt küldeni a következő címre: {mail}?',
 	'none' => 'Nincs',
-	'sorting_type_last_edited_date' => 'Utoljára szerkesztve'
+	'sorting_type_last_edited_date' => 'Utoljára szerkesztve',
+	'hours' => 'Hours',
+	'days' => 'Days',
+	'weeks' => 'Weeks',
+	'months' => 'Months',
+	'years' => 'Years',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

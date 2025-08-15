@@ -492,5 +492,11 @@ return [
     'send_test_mail' => 'Отправить тестовое письмо',
 	'confirm_test_mail' => 'Хотите отправить тестовое письмо на {mail}?',
     'none' => 'Нет',
-    'sorting_type_last_edited_date' => 'Последнее изменение'
+    'sorting_type_last_edited_date' => 'Последнее изменение',
+    'hours' => 'Hours',
+	'days' => 'Days',
+	'weeks' => 'Weeks',
+	'months' => 'Months',
+	'years' => 'Years',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

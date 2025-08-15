@@ -492,5 +492,11 @@ return [
 	'send_test_mail' => 'Send test-e-post',
 	'confirm_test_mail' => 'Vil du sende en test-e-post til {mail}?',
 	'none' => 'Ingen',
-	'sorting_type_last_edited_date' => 'Sist redigert'
+	'sorting_type_last_edited_date' => 'Sist redigert',
+	'hours' => 'Hours',
+	'days' => 'Days',
+	'weeks' => 'Weeks',
+	'months' => 'Months',
+	'years' => 'Years',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

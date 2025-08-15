@@ -492,5 +492,11 @@ return [
 	'send_test_mail' => 'Testmail verzenden',
 	'confirm_test_mail' => 'Wil je een testmail verzenden naar {mail}?',
 	'none' => 'Geen',
-	'sorting_type_last_edited_date' => 'Laatst bewerkt'
+	'sorting_type_last_edited_date' => 'Laatst bewerkt',
+	'hours' => 'Hours',
+	'days' => 'Days',
+	'weeks' => 'Weeks',
+	'months' => 'Months',
+	'years' => 'Years',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];
