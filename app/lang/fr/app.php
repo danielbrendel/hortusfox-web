@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Édité',
 	'tags' => 'Tags',
 	'recurring' => 'Répétition',
-	'recurring_time' => 'Répétez toutes les heures',
+	'recurring_time' => 'Répétition',
 	'mail_info_task_recurring' => 'Tâche récurrente',
 	'mail_info_task_recurring_hint' => 'La tâche <strong>{name}</strong> doit être exécutée maintenant et se reproduira dans {time} heures. Date d\'échéance: {date}. Accéder aux tâches: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'M\'avertir des tâches récurrentes',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Vider le cache',
 	'schema_attribute_already_exists' => 'Un attribut avec ce libellé existe déjà',
 	'send_test_mail' => 'Envoyer un e-mail de test',
-	'confirm_test_mail' => 'Voulez-vous envoyer un e-mail de test à {mail}?'
+	'confirm_test_mail' => 'Voulez-vous envoyer un e-mail de test à {mail}?',
+	'none' => 'Aucun',
+	'sorting_type_last_edited_date' => 'Dernière modification',
+	'hours' => 'Heures',
+	'days' => 'Jours',
+	'weeks' => 'Semaines',
+	'months' => 'Mois',
+	'years' => 'Ans',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

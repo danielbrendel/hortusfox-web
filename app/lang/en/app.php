@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Updated at',
 	'tags' => 'Tags',
 	'recurring' => 'Recurring',
-	'recurring_time' => 'Repetition by hours',
+	'recurring_time' => 'Repetition',
 	'mail_info_task_recurring' => 'Recurring task',
 	'mail_info_task_recurring_hint' => 'The task <strong>{name}</strong> is due now and will recur in {time} hours. Due date: {date}. Go to tasks: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Notify me about recurring tasks',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Clear cache',
 	'schema_attribute_already_exists' => 'There is already an attribute with the given label',
 	'send_test_mail' => 'Send test mail',
-	'confirm_test_mail' => 'Do you want to send a test e-mail to {mail}?'
+	'confirm_test_mail' => 'Do you want to send a test e-mail to {mail}?',
+	'none' => 'None',
+	'sorting_type_last_edited_date' => 'Last edited',
+	'hours' => 'Hours',
+	'days' => 'Days',
+	'weeks' => 'Weeks',
+	'months' => 'Months',
+	'years' => 'Years',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

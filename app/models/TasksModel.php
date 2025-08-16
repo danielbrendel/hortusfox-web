@@ -6,24 +6,38 @@
  * Manages tasks
  */ 
 class TasksModel extends \Asatru\Database\Model {
+    const DEFAULT_SCOPE = 'hours';
+    static $scope_quantities = [
+        'hours' => 1,
+        'days' => 24,
+        'weeks' => 24 * 7,
+        'months' => 24 * 7 * 4,
+        'years' => 24 * 365
+    ];
+
     /**
      * @param $title
      * @param $description
      * @param $due_date
      * @param $recurring_time
+     * @param $recurring_scope
      * @param $api
      * @return int
      * @throws \Exception
      */
-    public static function addTask($title, $description = '', $due_date = null, $recurring_time = null, $api = false)
+    public static function addTask($title, $description = '', $due_date = null, $recurring_time = null, $recurring_scope = self::DEFAULT_SCOPE, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
             if ((!$user) && (!$api)) {
                 throw new \Exception('Invalid user');
             }
+
+            if (($recurring_time !== null) && (is_numeric($recurring_time))) {
+                $recurring_time = static::calcScope($recurring_time, $recurring_scope);
+            }
             
-            static::raw('INSERT INTO `@THIS` (title, description, due_date, recurring_time) VALUES(?, ?, ?, ?)', [$title, $description, $due_date, $recurring_time]);
+            static::raw('INSERT INTO `@THIS` (title, description, due_date, recurring_time, recurring_scope) VALUES(?, ?, ?, ?, ?)', [$title, $description, $due_date, $recurring_time, $recurring_scope]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), 'tasks', 'add_task', $title, url('/tasks'));
@@ -47,12 +61,13 @@ class TasksModel extends \Asatru\Database\Model {
      * @param $description
      * @param $due_date
      * @param $recurring_time
+     * @param $recurring_scope
      * @param $done
      * @param $api
      * @return void
      * @throws \Exception
      */
-    public static function editTask($taskId, $title, $description, $due_date, $recurring_time, $done = null, $api = false)
+    public static function editTask($taskId, $title, $description, $due_date, $recurring_time, $recurring_scope = self::DEFAULT_SCOPE, $done = null, $api = false)
     {
         try {
             $user = UserModel::getAuthUser();
@@ -80,7 +95,7 @@ class TasksModel extends \Asatru\Database\Model {
                 $done = $item->get('done');
             }
 
-            static::raw('UPDATE `@THIS` SET title = ?, description = ?, due_date = ?, recurring_time = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $recurring_time, $done, $taskId]);
+            static::raw('UPDATE `@THIS` SET title = ?, description = ?, due_date = ?, recurring_time = ?, recurring_scope = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $recurring_time, $recurring_scope, $done, $taskId]);
 
             if (!$api) {
                 LogModel::addLog($user->get('id'), 'tasks', 'edit_task', $title, url('/tasks#task-anchor-' . $taskId));
@@ -311,5 +326,19 @@ class TasksModel extends \Asatru\Database\Model {
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    /**
+     * @param $quantity
+     * @param $scope
+     * @return int
+     */
+    private static function calcScope($quantity, $scope)
+    {
+        if (isset(static::$scope_quantities[$scope])) {
+            return $quantity * static::$scope_quantities[$scope];
+        }
+
+        return $quantity;
     }
 }

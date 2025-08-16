@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Asatru PHP - English language file
+	Asatru PHP - German language file
 
 	Extend this with your phrases
 	
@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Bearbeitet',
 	'tags' => 'Tags',
 	'recurring' => 'Wiederholend',
-	'recurring_time' => 'Stündliche Wiederholung',
+	'recurring_time' => 'Wiederholung',
 	'mail_info_task_recurring' => 'Wiederholende Aufgabe',
 	'mail_info_task_recurring_hint' => 'Die Aufgabe <strong>{name}</strong> ist jetzt fällig und wiederholt sich in {time} Stunden. Fälligkeitsdatum: {date}. Gehe zu Aufgaben: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Mich über wiederholende Aufgaben benachrichtigen',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Cache leeren',
 	'schema_attribute_already_exists' => 'Es gibt bereits ein Attribut mit dieser Bezeichnung',
 	'send_test_mail' => 'Test-E-Mail senden',
-	'confirm_test_mail' => 'Möchtest du eine Test-E-Mail an {mail} senden?'
+	'confirm_test_mail' => 'Möchtest du eine Test-E-Mail an {mail} senden?',
+	'none' => 'Keins',
+	'sorting_type_last_edited_date' => 'Zuletzt bearbeitet',
+	'hours' => 'Stunden',
+	'days' => 'Tage',
+	'weeks' => 'Wochen',
+	'months' => 'Monate',
+	'years' => 'Jahre',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

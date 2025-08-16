@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Frissítve:',
 	'tags' => 'Címkék',
 	'recurring' => 'Ismétlődő',
-	'recurring_time' => 'Ismétlés óránként',
+	'recurring_time' => 'Ismétlés',
 	'mail_info_task_recurring' => 'Ismétlődő feladat',
 	'mail_info_task_recurring_hint' => 'A(z) <strong>{name}</strong> feladat határideje most van, és {time} óra múlva ismétlődik. Határidő: {date}. Ugrás a feladatokhoz: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Értesíts az ismétlődő feladatokról',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Gyorsítótár törlése',
 	'schema_attribute_already_exists' => 'Már létezik egy attribútum a megadott címkével',
 	'send_test_mail' => 'Teszt email küldése',
-	'confirm_test_mail' => 'Szeretne teszt e-mailt küldeni a következő címre: {mail}?'
+	'confirm_test_mail' => 'Szeretne teszt e-mailt küldeni a következő címre: {mail}?',
+	'none' => 'Nincs',
+	'sorting_type_last_edited_date' => 'Utoljára szerkesztve',
+	'hours' => 'Órák',
+	'days' => 'Napok',
+	'weeks' => 'Hetek',
+	'months' => 'Hónapok',
+	'years' => 'Évek',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

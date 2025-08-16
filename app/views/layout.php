@@ -492,6 +492,13 @@
 								<div class="control">
 									<input type="number" class="input" name="recurring_time">
 								</div>
+								<div class="control is-margin-top-10">
+									<select class="input" name="timescope">
+										@foreach (TasksModel::$scope_quantities as $scope_key => $scope_value)
+											<option value="{{ $scope_key }}">{{ __('app.' . $scope_key) }}</option>
+										@endforeach
+									</select>
+								</div>
 							</div>
 
 							<input type="submit" id="submit-create-task" class="is-hidden"/>
@@ -548,6 +555,13 @@
 								<label class="label">{{ __('app.recurring_time') }}</label>
 								<div class="control">
 									<input type="number" class="input" name="recurring_time" id="inpEditTaskRecurringTime">
+								</div>
+								<div class="control is-margin-top-10">
+									<select class="input" name="timescope" id="inpEditTaskRecurringScope">
+										@foreach (TasksModel::$scope_quantities as $scope_key => $scope_value)
+											<option value="{{ $scope_key }}">{{ __('app.' . $scope_key) }}</option>
+										@endforeach
+									</select>
 								</div>
 							</div>
 						</form>
@@ -962,6 +976,7 @@
 								<label class="label">{{ __('app.theme') }}</label>
 								<div class="control">
 									<select class="input" name="theme" id="selEditCombo">
+										<option value="0" {{ ($user->get('theme') === null) ? 'selected' : ''}}>{{ '- ' . strtolower(__('app.none')) . ' -' }}</option>
 										@foreach (ThemeModule::list() as $theme)
 											<option value="{{ $theme }}" {{ ($user->get('theme') === $theme) ? 'selected' : ''}}>{{ $theme }}</option>
 										@endforeach

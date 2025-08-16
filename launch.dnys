@@ -46,7 +46,7 @@ function create_path_file void()
 		fwriteline %hfile "# Auto-generated at %tmstamp";
 		fwriteline %hfile "";
 		fwriteline %hfile { const APACHE_PATH string <= "%apache_path"; };
-		fwriteline %hfile { const MYSQL_PATH string <= "%mysql_path"; };
+		fwriteline %hfile { const MARIADB_PATH string <= "%mysql_path"; };
 		
 		fclose %hfile;
 	};
@@ -60,7 +60,7 @@ if (%flag, -eq, false) {
 exec "%project_path/paths.dnys";
 
 aut_run "%APACHE_PATH/httpd.exe" "" "%APACHE_PATH" void;
-aut_run "%MYSQL_PATH/mysqld" "--defaults-file=%MYSQL_PATH/my.ini --standalone" "%MYSQL_PATH" void;
+aut_run "%MARIADB_PATH/mysqld" "--defaults-file=%MARIADB_PATH/my.ini --standalone" "%MARIADB_PATH" void;
 
 aut_run "php" "asatru serve %SERVER_PORT" "%project_path" void;
 aut_run "%server_url" "" "" void;

@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Edytowane',
 	'tags' => 'Tags',
 	'recurring' => 'Powtórzenie',
-	'recurring_time' => 'Powtarzaj co godzinę',
+	'recurring_time' => 'Powtarzanie',
 	'mail_info_task_recurring' => 'Zadanie powtarzające się',
 	'mail_info_task_recurring_hint' => 'Zadanie <strong>{name}</strong> jest teraz wymagane i powtórzy się za {time} godzin. Termin: {date}. Przejdź do zadań: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Powiadom mnie o powtarzających się zadaniach',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Wyczyść pamięć podręczną',
 	'schema_attribute_already_exists' => 'Atrybut z tym oznaczeniem już istnieje',
 	'send_test_mail' => 'Wyślij wiadomość testową',
-	'confirm_test_mail' => 'Czy chcesz wysłać wiadomość testową na {mail}?'
+	'confirm_test_mail' => 'Czy chcesz wysłać wiadomość testową na {mail}?',
+	'none' => 'Brak',
+	'sorting_type_last_edited_date' => 'Ostatnio edytowane',
+	'hours' => 'Godzina',
+	'days' => 'Dni',
+	'weeks' => 'Tygodnie',
+	'months' => 'Miesiące',
+	'years' => 'Lata',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

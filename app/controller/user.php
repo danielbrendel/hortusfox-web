@@ -112,6 +112,10 @@ class UserController extends BaseController {
 			$notify_calendar_reminder = $request->params()->query('notify_calendar_reminder', false);
 			$show_plants_aoru = $request->params()->query('show_plants_aoru', 'added');
 
+			if ((is_numeric($theme)) && ((int)$theme === 0)) {
+				$theme = null;
+			}
+
 			UserModel::editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, $show_plants_aoru);
 
 			$password = $request->params()->query('password', null);

@@ -588,6 +588,7 @@ window.createVueInstance = function(element) {
                 if ((dueDate) && (dueDate.childNodes.length > 0)) {
                     document.getElementById('inpEditTaskDueDate').value = dueDate.childNodes[0].innerText;
                     document.getElementById('inpEditTaskRecurringTime').value = dueDate.childNodes[2].dataset.time;
+                    document.getElementById('inpEditTaskRecurringScope').value = dueDate.childNodes[2].dataset.scope;
 
                     document.getElementById('edit-recurring-flag').classList.remove('is-hidden');
                     document.getElementById('edit-recurring-time').classList.remove('is-hidden');

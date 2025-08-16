@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Atualizado em',
 	'tags' => 'Etiquetas',
 	'recurring' => 'Recorrente',
-	'recurring_time' => 'Repetição por horas',
+	'recurring_time' => 'Repetição',
 	'mail_info_task_recurring' => 'Tarefa recorrente',
 	'mail_info_task_recurring_hint' => 'A tarefa <strong>{name}</strong> está vencida agora e se repetirá em {time} horas. Data de vencimento: {date}. Acesse as tarefas: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Notificar-me sobre tarefas recorrentes',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Limpar cache',
 	'schema_attribute_already_exists' => 'Já existe um atributo com esse rótulo',
 	'send_test_mail' => 'Enviar e-mail de teste',
-	'confirm_test_mail' => 'Deseja enviar um e-mail de teste para {mail}?'
+	'confirm_test_mail' => 'Deseja enviar um e-mail de teste para {mail}?',
+	'none' => 'Nenhum',
+	'sorting_type_last_edited_date' => 'Última edição',
+	'hours' => 'Horas',
+	'days' => 'Dias',
+	'weeks' => 'Semanas',
+	'months' => 'Meses',
+	'years' => 'Anos',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

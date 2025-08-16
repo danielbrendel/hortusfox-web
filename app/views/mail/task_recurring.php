@@ -15,7 +15,7 @@
 @endif
 
 <div>
-    <div><strong>{{ __('app.recurring_time') }}:&nbsp;</strong>{{ $task->get('recurring_time') }}</div>
+    <div><strong>{{ __('app.recurring_time') }}:&nbsp;</strong>{{ __('app.recurring_time_with_scope', ['time' => $task->get('recurring_time'), 'scope' => __('app.' . $task->get('recurring_scope'))]) }}</div>
     <div><strong>{{ __('app.due') }}:&nbsp;</strong>{{ date('Y-m-d', strtotime($task->get('due_date'))) }}</div>
     <div><a href="{{ workspace_url('/tasks') }}">{{ workspace_url('/tasks') }}</div>
 </div>

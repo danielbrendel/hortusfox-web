@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Redigeret',
 	'tags' => 'Tags',
 	'recurring' => 'Tilbagevendende',
-	'recurring_time' => 'Gentag hver time',
+	'recurring_time' => 'Gentagelse',
 	'mail_info_task_recurring' => 'Tilbagevendende opgave',
 	'mail_info_task_recurring_hint' => 'Opgaven <strong>{name}</strong> er klar nu og vil gentage sig om {time} timer. Forfaldsdato: {date}. Gå til opgaver: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Giv mig besked om tilbagevendende opgaver',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Ryd cache',
 	'schema_attribute_already_exists' => 'Der findes allerede et attribut med den angivne etiket',
 	'send_test_mail' => 'Send testmail',
-	'confirm_test_mail' => 'Vil du sende en testmail til {mail}?'
+	'confirm_test_mail' => 'Vil du sende en testmail til {mail}?',
+	'none' => 'Ingen',
+	'sorting_type_last_edited_date' => 'Sidst redigeret',
+	'hours' => 'Timer',
+	'days' => 'Dage',
+	'weeks' => 'Uger',
+	'months' => 'Måneder',
+	'years' => 'År',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

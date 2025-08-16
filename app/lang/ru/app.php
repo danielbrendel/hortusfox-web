@@ -474,7 +474,7 @@ return [
     'updated_at' => 'Обновлено',
     'tags' => 'Теги',
     'recurring' => 'Повторяющаяся',
-    'recurring_time' => 'Повторять через часы',
+    'recurring_time' => 'Повторение',
     'mail_info_task_recurring' => 'Повторяющаяся задача',
     'mail_info_task_recurring_hint' => 'Задача <strong>{name}</strong> должна быть выполнена сейчас и повторится через {time} часов. Срок: {date}. Перейдите к задачам: <a href="{url}">{url}</a>',
     'notify_tasks_recurring' => 'Уведомлять меня о повторяющихся задачах',
@@ -490,5 +490,13 @@ return [
     'clear_cache' => 'Очистить кэш',
     'schema_attribute_already_exists' => 'Атрибут с таким ярлыком уже существует',
     'send_test_mail' => 'Отправить тестовое письмо',
-	'confirm_test_mail' => 'Хотите отправить тестовое письмо на {mail}?'
+	'confirm_test_mail' => 'Хотите отправить тестовое письмо на {mail}?',
+    'none' => 'Нет',
+    'sorting_type_last_edited_date' => 'Последнее изменение',
+    'hours' => 'Часов',
+	'days' => 'Дней',
+	'weeks' => 'Недель',
+	'months' => 'Месяцев',
+	'years' => 'Лет',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];

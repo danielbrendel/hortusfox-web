@@ -474,7 +474,7 @@ return [
 	'updated_at' => 'Redigert',
 	'tags' => 'Tags',
 	'recurring' => 'Tilbakevendende',
-	'recurring_time' => 'Gjenta hver time',
+	'recurring_time' => 'Gjentakelse',
 	'mail_info_task_recurring' => 'Gjentakende oppgave',
 	'mail_info_task_recurring_hint' => 'Oppgaven <strong>{name}</strong> er klar nå og vil gjenta seg om {time} timer. Forfallsdato: {date}. Gå til oppgaver: <a href="{url}">{url}</a>',
 	'notify_tasks_recurring' => 'Gi meg beskjed om gjentakende oppgaver',
@@ -490,5 +490,13 @@ return [
 	'clear_cache' => 'Tøm cache',
 	'schema_attribute_already_exists' => 'Det finnes allerede et attributt med denne etiketten',
 	'send_test_mail' => 'Send test-e-post',
-	'confirm_test_mail' => 'Vil du sende en test-e-post til {mail}?'
+	'confirm_test_mail' => 'Vil du sende en test-e-post til {mail}?',
+	'none' => 'Ingen',
+	'sorting_type_last_edited_date' => 'Sist redigert',
+	'hours' => 'Timer',
+	'days' => 'Dager',
+	'weeks' => 'Uker',
+	'months' => 'Måneder',
+	'years' => 'År',
+	'recurring_time_with_scope' => '{time} {scope}'
 ];
