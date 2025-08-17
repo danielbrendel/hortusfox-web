@@ -28,7 +28,7 @@ If applicable, add screenshots to help explain your problem.
 - PHP Version
 - MySQL version (if related to the problem)
 - Docker version if used in a docker environment
-- Changes to your docker-compose file if altered
+- Changes to your `docker-compose.yml` file if altered
 
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
