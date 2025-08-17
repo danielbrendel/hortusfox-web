@@ -4,6 +4,7 @@
 - [Overview](#overview)
 - [Framework](#framework)
 - [Localization](#localization)
+- [Docker](#docker)
 
 ## Overview
 
@@ -68,4 +69,4 @@ Users can now select the new language via their preferences and you can also set
 
 ## Docker
 
-The primary purpose of this project is the HortusFox app, so only a minimal Docker setup is provided. Since there are many specific use cases and deployment tools, the project cannot reasonably support all of them. You are welcome to expand on the current Docker setup for your own needs, but pull requests with Docker-specific changes will be rejected unless they address security vulnerabilities or bug fixes.
+The primary purpose of this project is the HortusFox app, so only a minimal Docker setup is provided. Since there are many specific use cases and deployment tools, the project cannot reasonably support all of them. You are welcome to expand on the current Docker setup for your own needs, but pull requests with changes specific to Docker will be rejected unless they address security vulnerabilities or bug fixes.
