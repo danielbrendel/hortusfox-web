@@ -68,4 +68,4 @@ Users can now select the new language via their preferences and you can also set
 
 ## Docker / docker compose
 
-The project's main purpose is the HortusFox app. Thus there is only a minimum docker setup provided. There are many specific uses cases and deployment tools available and the project can hardly support all of them. In conclusion you can expand on the current docker setup, but pull requests for docker specific changes will be rejected unless they address security vulnerabilities or bug fixes.
+The primary purpose of this project is the HortusFox app, so only a minimal Docker setup is provided. Since there are many specific use cases and deployment tools, the project cannot reasonably support all of them. You are welcome to expand on the current Docker setup for your own needs, but pull requests with Docker-specific changes will be rejected unless they address security vulnerabilities or bug fixes.
