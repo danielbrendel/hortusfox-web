@@ -65,3 +65,7 @@ return [
 Users can now select the new language via their preferences and you can also set the language as default in the admin dashboard.
 
 **Note:** Pull requests of missing translations are appreciated. Please tag the associated issue of your pull request with the `localization` tag.
+
+## Docker / docker compose
+
+The project's main purpose is the HortusFox app. Thus there is only a minimum docker setup provided. There are many specific uses cases and deployment tools available and the project can hardly support all of them. In conclusion you can expand on the current docker setup, but pull requests for docker specific changes will be rejected unless they address security vulnerabilities or bug fixes.
