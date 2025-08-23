@@ -142,7 +142,7 @@ return [
 	'confirmSetAllWatered' => 'Are you sure you want to update the last watered date of all these plants?',
 	'no_plants_found' => 'There were no plants found using your search query',
 	'inventory' => 'Inventory',
-	'inventory_hint' => 'Manage here your inventory',
+	'inventory_hint' => 'Manage your inventory here',
 	'group' => 'Group',
 	'confirmInventoryItemRemoval' => 'Are you sure you want to remove this item?',
 	'add_inventory_item' => 'Add inventory item',
