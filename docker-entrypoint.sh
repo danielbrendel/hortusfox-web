@@ -97,7 +97,7 @@ create_environment_file() {
     APP_DONATION_KOFI="https://ko-fi.com/danielbrendel"
     APP_SERVICE_URL="https://www.hortusfox.com"
     APP_SOCIAL_DISCORD="https://discord.gg/kc6xGmjzVS"
-    APP_SOCIAL_MASTODON="https://mastodon.social/@hortusfox"
+    APP_SOCIAL_BLUESKY="https://bsky.app/profile/danielbrendel.com"
 
     # Session
     SESSION_ENABLE=true
