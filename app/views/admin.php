@@ -1017,7 +1017,7 @@
         @endif
         
         @if (env('APP_SOCIAL_BLUESKY'))
-        <a class="button admin-info-social-button is-social-mastodon" href="{{ env('APP_SOCIAL_BLUESKY') }}" target="_blank"><i class="fab fa-mastodon"></i>&nbsp;{{ __('app.link_bluesky') }}</a>
+        <a class="button admin-info-social-button is-social-bluesky" href="{{ env('APP_SOCIAL_BLUESKY') }}" target="_blank"><i class="fab fa-bluesky"></i>&nbsp;{{ __('app.link_bluesky') }}</a>
         @endif
 
         @if (env('APP_SERVICE_URL'))

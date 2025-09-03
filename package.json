@@ -28,11 +28,11 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.1",
     "axios": "^1.6.7",
     "chart.js": "^4.4.2",
     "chartjs-adapter-date-fns": "^3.0.0",
     "date-fns": "^3.6.0",
-    "fontawesome-free": "^1.0.4",
     "style-loader": "^1.2.1"
   }
 }
