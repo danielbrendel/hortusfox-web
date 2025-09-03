@@ -422,7 +422,7 @@ return [
 	'donation_sponsoring' => 'Patrocinar en GitHub',
 	'donation_kofi' => 'Buy Me a Coffee',
 	'link_discord' => 'Discord',
-	'link_mastodon' => 'Mastodon',
+	'link_bluesky' => 'Bluesky',
 	'link_videos' => 'Videos',
 	'auto_backup' => 'Habilitar copia de seguridad automática',
 	'auto_backup_cronjob_url' => 'URL de Cronjob',

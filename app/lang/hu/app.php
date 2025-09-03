@@ -422,7 +422,7 @@ return [
 	'donation_sponsoring' => 'GitHub szponzoráció',
 	'donation_kofi' => 'Hívj meg egy kávéra',
 	'link_discord' => 'Discord',
-	'link_mastodon' => 'Mastodon',
+	'link_bluesky' => 'Bluesky',
 	'link_videos' => 'Videók',
 	'auto_backup' => 'Automatikus biztonsági mentés engedélyezése',
 	'auto_backup_cronjob_url' => 'Cronjob URL',
