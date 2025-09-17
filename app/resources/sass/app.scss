@@ -2616,11 +2616,21 @@ fieldset .field {
 
 .auth-content {
     position: absolute;
+    @media screen and (max-width: 400px) {
+        min-width: 90%;
+    }
+    @media screen and (min-width: 401px) {
+        min-width: 375px;
+    }
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 20px;
+    background-color: rgba(35, 35, 35);
+    border-radius: 5px;
+    border: 1px solid rgb(41, 41, 41);
+    box-shadow: 0 4px 8px 0 rgba(5, 5, 5, 0.9), 0 6px 20px 0 rgba(5, 5, 5, 0.9);
 }
 
 .auth-header {
@@ -2637,6 +2647,9 @@ fieldset .field {
 
 .auth-header h1 {
     font-size: 2.5em;
+    @media screen and (max-width: 400px) {
+        font-size: 2.0em;
+    }
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     color: rgb(150, 150, 150);
@@ -2665,7 +2678,7 @@ fieldset .field {
 }
 
 .auth-form input[type=email]::placeholder, .auth-form input[type=password]::placeholder {
-    color: rgb(200, 200, 200);
+    color: rgb(100, 100, 100);
 }
 
 .auth-form input[type=submit] {
