@@ -14,9 +14,9 @@ class CustAttrSchemaModel extends \Asatru\Database\Model {
     {
         try {
             if ($filter_active) {
-                return static::raw('SELECT * FROM `@THIS` WHERE active = 1');
+                return static::raw('SELECT * FROM `@THIS` WHERE active = 1 ORDER BY sort_order ASC, id ASC');
             } else {
-                return static::raw('SELECT * FROM `@THIS`');
+                return static::raw('SELECT * FROM `@THIS` ORDER BY sort_order ASC, id ASC');
             }
         } catch (\Exception $e) {
             throw $e;
@@ -36,8 +36,12 @@ class CustAttrSchemaModel extends \Asatru\Database\Model {
                 throw new \Exception(__('app.schema_attribute_already_exists'));
             }
 
-            static::raw('INSERT INTO `@THIS` (label, datatype, active) VALUES(?, ?, 1)', [
-                $label, $datatype
+            // Get the next sort order
+            $maxOrder = static::raw('SELECT MAX(sort_order) as max_order FROM `@THIS`')->first();
+            $nextOrder = ($maxOrder && $maxOrder->get('max_order') !== null) ? $maxOrder->get('max_order') + 1 : 0;
+
+            static::raw('INSERT INTO `@THIS` (label, datatype, active, sort_order) VALUES(?, ?, 1, ?)', [
+                $label, $datatype, $nextOrder
             ]);
         } catch (\Exception $e) {
             throw $e;
@@ -96,6 +100,37 @@ class CustAttrSchemaModel extends \Asatru\Database\Model {
     {
         try {
             static::raw('DELETE FROM `@THIS` WHERE id = ?', [$id]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $newOrder
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateSortOrder($id, $newOrder)
+    {
+        try {
+            static::raw('UPDATE `@THIS` SET sort_order = ? WHERE id = ?', [$newOrder, $id]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $attributeIds
+     * @return void
+     * @throws \Exception
+     */
+    public static function reorderAttributes($attributeIds)
+    {
+        try {
+            foreach ($attributeIds as $index => $id) {
+                static::updateSortOrder($id, $index);
+            }
         } catch (\Exception $e) {
             throw $e;
         }

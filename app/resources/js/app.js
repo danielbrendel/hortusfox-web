@@ -339,6 +339,82 @@ window.createVueInstance = function(element) {
                 });
             },
 
+            reorderCustomAttributes: function(attributeIds)
+            {
+                window.vue.ajaxRequest('post', window.location.origin + '/plants/attributes/reorder', {
+                    attribute_ids: JSON.stringify(attributeIds)
+                }, function(response){
+                    if (response.code == 200) {
+                        // Success - the order has been updated
+                        console.log('Attributes reordered successfully');
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
+            initDragAndDrop: function()
+            {
+                const container = document.querySelector('[data-sortable="admin-attributes"]');
+                if (!container) return;
+
+                // Make attribute schemas sortable
+                let draggedElement = null;
+
+                container.addEventListener('dragstart', function(e) {
+                    draggedElement = e.target.closest('.admin-attribute-schema');
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/html', draggedElement.outerHTML);
+                    draggedElement.style.opacity = '0.5';
+                });
+
+                container.addEventListener('dragend', function(e) {
+                    if (draggedElement) {
+                        draggedElement.style.opacity = '';
+                        draggedElement = null;
+                    }
+                });
+
+                container.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    
+                    const afterElement = window.vue.getDragAfterElement(container, e.clientY);
+                    if (afterElement == null) {
+                        container.appendChild(draggedElement);
+                    } else {
+                        container.insertBefore(draggedElement, afterElement);
+                    }
+                });
+
+                container.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the new order of attribute IDs
+                    const elements = Array.from(container.querySelectorAll('.admin-attribute-schema[data-attribute-id]'));
+                    const attributeIds = elements.map(element => parseInt(element.dataset.attributeId));
+                    
+                    // Send the new order to the server
+                    window.vue.reorderCustomAttributes(attributeIds);
+                });
+            },
+
+            getDragAfterElement: function(container, y)
+            {
+                const draggableElements = [...container.querySelectorAll('.admin-attribute-schema[data-attribute-id]:not(.dragging)')];
+                
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            },
+
             saveAllAttributes: function(source) {
                 const forms = document.querySelector(source).getElementsByTagName('form');
                 window.vue.bulkSubmitForm(0, forms, 100);
@@ -2003,4 +2079,9 @@ window.createVueInstance = function(element) {
 
 document.addEventListener('DOMContentLoaded', function() {
     window.vue = window.createVueInstance('#app');
+    
+    // Initialize drag and drop for custom attributes
+    setTimeout(function() {
+        window.vue.initDragAndDrop();
+    }, 100);
 });

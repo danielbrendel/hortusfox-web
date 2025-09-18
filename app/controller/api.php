@@ -1107,4 +1107,39 @@ class ApiController extends BaseController {
             ]);
         }
     }
+
+    /**
+	 * Handles URL: /api/attributes/reorder
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+    public function reorder_attributes($request)
+    {
+        try {
+            $attributeIds = $request->params()->query('attribute_ids', null);
+            
+            if (!$attributeIds) {
+                throw new \Exception('Attribute IDs are required');
+            }
+
+            // Parse the JSON string
+            $ids = json_decode($attributeIds, true);
+            if (!is_array($ids)) {
+                throw new \Exception('Invalid attribute IDs format');
+            }
+
+            CustAttrSchemaModel::reorderAttributes($ids);
+
+            return json([
+                'code' => 200,
+                'msg' => 'Attributes reordered successfully'
+            ]);
+        } catch (\Exception $e) {
+            return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+        }
+    }
 }

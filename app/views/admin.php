@@ -491,15 +491,17 @@
 
     <p>{{ __('app.attributes_schema_hint') }}</p>
 
-    <div class="admin-attribute-schema-list">
+    <div class="admin-attribute-schema-list" data-sortable="admin-attributes">
         @foreach ($global_attributes as $global_attribute)
-            <div class="admin-attribute-schema">
+            <div class="admin-attribute-schema" data-attribute-id="{{ $global_attribute->get('id') }}" draggable="true" style="cursor: move;">
                 <form method="POST" action="{{ url('/admin/attribute/schema/edit') }}">
                     @csrf
 
                     <input type="hidden" name="id" value="{{ $global_attribute->get('id') }}"/>
 
-                    <div class="admin-attribute-schema-item">#{{ $global_attribute->get('id') }}</div>
+                    <div class="admin-attribute-schema-item">
+                        <i class="fas fa-grip-vertical" style="color: #999; margin-right: 8px; cursor: grab;"></i>
+                    </div>
 
                     <div class="admin-attribute-schema-item admin-attribute-schema-item-input">
                         <input type="text" class="input" name="label" value="{{ $global_attribute->get('label') }}"/>

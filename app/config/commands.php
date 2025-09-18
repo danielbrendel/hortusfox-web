@@ -19,5 +19,6 @@ return [
     ['migrate:specific', 'Perform version specific migration upgrade', 'MigrationSpecific'],
     ['calendar:classes', 'Add default calendar classes', 'CalendarClsCommand'],
     ['plants:attributes', 'Add default plant attributes', 'AttributesCommand'],
-    ['cache:clear', 'Clear the entire cache', 'CacheClearCommand']
+    ['cache:clear', 'Clear the entire cache', 'CacheClearCommand'],
+    ['attributes:sort-order', 'Add sort_order field to existing attribute schemas', 'AddSortOrderCommand']
 ];
