@@ -84,6 +84,10 @@
             @endif
 
             <div class="navbar-item">
+                @include('theme-toggle.php')
+            </div>
+
+            <div class="navbar-item">
                 <a href="{{ url('/profile') }}">
                     <i class="fas fa-user" title="{{ __('app.profile') }}"></i><span class="navbar-item-only-mobile">&nbsp;{{ __('app.profile') }}</span>
                 </a>

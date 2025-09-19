@@ -251,6 +251,63 @@ class ThemeModule {
     }
 
     /**
+     * Get CSS variables for theme customization
+     * @return array
+     */
+    public static function getCssVariables()
+    {
+        if (!self::ready()) {
+            return [];
+        }
+
+        $variables = [];
+        
+        // Add theme-specific CSS variables if defined
+        if (isset(self::$theme_data->css_variables)) {
+            foreach (self::$theme_data->css_variables as $key => $value) {
+                $variables[$key] = $value;
+            }
+        }
+
+        return $variables;
+    }
+
+    /**
+     * Generate inline CSS for theme variables
+     * @return string
+     */
+    public static function getCssVariablesInline()
+    {
+        $variables = self::getCssVariables();
+        
+        if (empty($variables)) {
+            return '';
+        }
+
+        $css = '<style id="theme-variables">:root {';
+        foreach ($variables as $key => $value) {
+            $css .= '--' . $key . ': ' . $value . ';';
+        }
+        $css .= '}</style>';
+
+        return $css;
+    }
+
+    /**
+     * Check if theme supports light/dark mode
+     * @return bool
+     */
+    public static function supportsLightDarkMode()
+    {
+        if (!self::ready()) {
+            return false;
+        }
+
+        return isset(self::$theme_data->supports_light_dark_mode) && 
+               self::$theme_data->supports_light_dark_mode === true;
+    }
+
+    /**
      * @param $theme
      * @return void
      * @throws \Exception
