@@ -1,0 +1,405 @@
+/*
+ * CSS Custom Properties (Variables) for HortusFox Theming
+ * 
+ * This file defines all themeable CSS variables that can be customized
+ * through themes or user preferences.
+ */
+
+:root {
+  /* ===== LIGHT/DARK MODE SUPPORT ===== */
+  
+  /* System preference detection and localStorage override support */
+  /* Default to light mode, will be overridden by system preference or user choice */
+  
+  /* ===== LIGHT MODE COLORS ===== */
+  --color-primary: #4f86ca;
+  --color-primary-hover: #3a6bb8;
+  --color-primary-light: #6ba3e0;
+  --color-primary-dark: #2c5aa0;
+  
+  --color-secondary: #9c7343;
+  --color-secondary-hover: #7a5a2c;
+  --color-secondary-light: #b88a5a;
+  --color-secondary-dark: #5c3a1a;
+  
+  /* Light Mode Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-bg-quaternary: #dee2e6;
+  --color-bg-overlay: rgba(0, 0, 0, 0.1);
+  --color-bg-overlay-light: rgba(0, 0, 0, 0.05);
+  --color-bg-overlay-dark: rgba(0, 0, 0, 0.2);
+  
+  /* Light Mode Text Colors */
+  --color-text-primary: #212529;
+  --color-text-secondary: #495057;
+  --color-text-tertiary: #6c757d;
+  --color-text-quaternary: #adb5bd;
+  --color-text-muted: #6c757d;
+  --color-text-disabled: #ced4da;
+  
+  /* Link Colors */
+  --color-link-default: #4f86ca;
+  --color-link-default-hover: #4f86ca;
+  --color-link-yellow: #9c7343;
+  --color-link-yellow-hover: #9c7343;
+  --color-link-gray: #969696;
+  --color-link-gray-hover: #969696;
+  --color-link-blue: #0091d7;
+  --color-link-blue-hover: #0091d7;
+  
+  /* Status Colors */
+  --color-success: #73d667;
+  --color-success-light: #d7fdc8;
+  --color-success-dark: #5cb85c;
+  --color-warning: #d4d450;
+  --color-warning-light: #fff3cd;
+  --color-warning-dark: #f0ad4e;
+  --color-error: #d43f3a;
+  --color-error-light: #f2dede;
+  --color-error-dark: #c9302c;
+  --color-info: #0091d7;
+  --color-info-light: #d1ecf1;
+  --color-info-dark: #0c5460;
+  
+  /* Plant State Colors */
+  --color-plant-good: #73d667;
+  --color-plant-overwatered: #3669c9;
+  --color-plant-withering: #9c7343;
+  --color-plant-infected: #cd6fcd;
+  --color-plant-pest: #ad5353;
+  --color-plant-shock: #8fd7c3;
+  --color-plant-deficiency: #af7d9b;
+  --color-plant-sunburn: #dedc50;
+  --color-plant-frostbite: #ffffff;
+  --color-plant-root-rot: #7b8266;
+  
+  /* UI Element Colors */
+  --color-border: #646464;
+  --color-border-light: #969696;
+  --color-border-dark: #404040;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-shadow-light: rgba(0, 0, 0, 0.1);
+  --color-shadow-dark: rgba(0, 0, 0, 0.3);
+  
+  /* Form Colors */
+  --color-input-bg: rgba(90, 90, 90, 0.5);
+  --color-input-bg-focus: rgba(100, 100, 100, 0.7);
+  --color-input-text: #c8c8c8;
+  --color-input-placeholder: #fafafa;
+  --color-input-border: #646464;
+  --color-input-border-focus: #4f86ca;
+  
+  /* Button Colors */
+  --color-button-primary: #4f86ca;
+  --color-button-primary-hover: #3a6bb8;
+  --color-button-secondary: #969696;
+  --color-button-secondary-hover: #b8b8b8;
+  --color-button-success: #73d667;
+  --color-button-success-hover: #5cb85c;
+  --color-button-warning: #f0ad4e;
+  --color-button-warning-hover: #ec971f;
+  --color-button-danger: #d43f3a;
+  --color-button-danger-hover: #c9302c;
+  --color-button-chocolate: #b3693e;
+  --color-button-chocolate-hover: #a75f37;
+  
+  /* ===== SPACING ===== */
+  
+  /* Base Spacing Unit */
+  --spacing-unit: 1rem;
+  
+  /* Spacing Scale */
+  --spacing-xs: calc(var(--spacing-unit) * 0.25);  /* 4px */
+  --spacing-sm: calc(var(--spacing-unit) * 0.5);   /* 8px */
+  --spacing-md: calc(var(--spacing-unit) * 1);     /* 16px */
+  --spacing-lg: calc(var(--spacing-unit) * 1.5);   /* 24px */
+  --spacing-xl: calc(var(--spacing-unit) * 2);     /* 32px */
+  --spacing-2xl: calc(var(--spacing-unit) * 3);    /* 48px */
+  --spacing-3xl: calc(var(--spacing-unit) * 4);    /* 64px */
+  
+  /* Specific Spacing */
+  --spacing-banner-height: 250px;
+  --spacing-navbar-height: 3.25rem;
+  --spacing-bottom-nav-height: 70px;
+  --spacing-content-padding: 15px;
+  --spacing-card-padding: 20px;
+  --spacing-section-margin: 30px;
+  
+  /* ===== TYPOGRAPHY ===== */
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 2rem;      /* 32px */
+  --font-size-4xl: 2.5rem;    /* 40px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* ===== BORDERS ===== */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-full: 50%;
+  
+  /* Border Widths */
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+  
+  /* ===== SHADOWS ===== */
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px 0 rgba(105, 165, 85, 0.95);
+  
+  /* ===== TRANSITIONS ===== */
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.65s linear;
+  
+  /* ===== Z-INDEX ===== */
+  
+  --z-index-dropdown: 10;
+  --z-index-sticky: 20;
+  --z-index-fixed: 30;
+  --z-index-modal-backdrop: 40;
+  --z-index-modal: 50;
+  --z-index-popover: 60;
+  --z-index-tooltip: 70;
+  --z-index-toast: 80;
+  
+  /* ===== BREAKPOINTS ===== */
+  
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  
+  /* ===== COMPONENT SPECIFIC ===== */
+  
+  /* Banner */
+  --banner-height: 250px;
+  --banner-icon-size: 72px;
+  --banner-icon-top: 210px;
+  --banner-icon-left: 195px;
+  --banner-accessory-size: 256px;
+  --banner-accessory-top: 172px;
+  --banner-accessory-right: -83%;
+  
+  /* Cards */
+  --card-border-radius: 10px;
+  --card-shadow: var(--shadow-md);
+  --card-padding: var(--spacing-card-padding);
+  
+  /* Plant Cards */
+  --plant-card-width: 245px;
+  --plant-card-height: 375px;
+  --plant-card-width-mobile: 141px;
+  --plant-card-height-mobile: 222px;
+  
+  /* Location Cards */
+  --location-card-width: 338px;
+  --location-card-min-height: 250px;
+  --location-card-width-mobile: 310px;
+  --location-card-min-height-mobile: 185px;
+  
+  /* Stats Cards */
+  --stats-card-width: 243.9px;
+  --stats-card-height: 130px;
+  --stats-card-width-mobile: 135px;
+  
+  /* Tasks */
+  --task-width: 45%;
+  --task-width-mobile: 95%;
+  --task-header-height: 50px;
+  --task-description-height: 150px;
+  
+  /* Modals */
+  --modal-z-index: 105;
+  --modal-backdrop-bg: rgba(0, 0, 0, 0.5);
+  
+  /* Notifications */
+  --notification-badge-bg: rgba(255, 0, 0, 0.9);
+  --notification-badge-color: #ffffff;
+  
+  /* Indicators */
+  --indicator-size: 10px;
+  --indicator-bg: #df3232;
+  --indicator-top: 17px;
+  --indicator-left: 20px;
+  
+  /* ===== THEME OVERRIDES ===== */
+  
+  /* These can be overridden by theme-specific CSS files */
+  --theme-primary-color: var(--color-primary);
+  --theme-secondary-color: var(--color-secondary);
+  --theme-background-color: var(--color-bg-primary);
+  --theme-text-color: var(--color-text-primary);
+  --theme-accent-color: var(--color-success);
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+/* System preference detection */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Dark Mode Background Colors */
+    --color-bg-primary: #303437;
+    --color-bg-secondary: #373b3e;
+    --color-bg-tertiary: #323232;
+    --color-bg-quaternary: #1a1a1a;
+    --color-bg-overlay: rgba(0, 0, 0, 0.5);
+    --color-bg-overlay-light: rgba(0, 0, 0, 0.2);
+    --color-bg-overlay-dark: rgba(0, 0, 0, 0.8);
+    
+    /* Dark Mode Text Colors */
+    --color-text-primary: #fafafa;
+    --color-text-secondary: #c8c8c8;
+    --color-text-tertiary: #969696;
+    --color-text-quaternary: #646464;
+    --color-text-muted: #787878;
+    --color-text-disabled: #505050;
+    
+    /* Dark Mode Link Colors */
+    --color-link-default: #4f86ca;
+    --color-link-default-hover: #4f86ca;
+    --color-link-yellow: #9c7343;
+    --color-link-yellow-hover: #9c7343;
+    --color-link-gray: #969696;
+    --color-link-gray-hover: #969696;
+    --color-link-blue: #0091d7;
+    --color-link-blue-hover: #0091d7;
+    
+    /* Dark Mode Form Colors */
+    --color-input-bg: rgba(90, 90, 90, 0.5);
+    --color-input-bg-focus: rgba(100, 100, 100, 0.7);
+    --color-input-text: #c8c8c8;
+    --color-input-placeholder: #fafafa;
+    --color-input-border: #646464;
+    --color-input-border-focus: #4f86ca;
+    
+    /* Dark Mode UI Element Colors */
+    --color-border: #646464;
+    --color-border-light: #969696;
+    --color-border-dark: #404040;
+    --color-shadow: rgba(0, 0, 0, 0.2);
+    --color-shadow-light: rgba(0, 0, 0, 0.1);
+    --color-shadow-dark: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ===== EXPLICIT THEME OVERRIDES ===== */
+/* Dark mode override (when user explicitly chooses dark) */
+[data-theme="dark"] {
+  /* Dark Mode Background Colors */
+  --color-bg-primary: #303437;
+  --color-bg-secondary: #373b3e;
+  --color-bg-tertiary: #323232;
+  --color-bg-quaternary: #1a1a1a;
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+  --color-bg-overlay-light: rgba(0, 0, 0, 0.2);
+  --color-bg-overlay-dark: rgba(0, 0, 0, 0.8);
+  
+  /* Dark Mode Text Colors */
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #c8c8c8;
+  --color-text-tertiary: #969696;
+  --color-text-quaternary: #646464;
+  --color-text-muted: #787878;
+  --color-text-disabled: #505050;
+  
+  /* Dark Mode Link Colors */
+  --color-link-default: #4f86ca;
+  --color-link-default-hover: #4f86ca;
+  --color-link-yellow: #9c7343;
+  --color-link-yellow-hover: #9c7343;
+  --color-link-gray: #969696;
+  --color-link-gray-hover: #969696;
+  --color-link-blue: #0091d7;
+  --color-link-blue-hover: #0091d7;
+  
+  /* Dark Mode Form Colors */
+  --color-input-bg: rgba(90, 90, 90, 0.5);
+  --color-input-bg-focus: rgba(100, 100, 100, 0.7);
+  --color-input-text: #c8c8c8;
+  --color-input-placeholder: #fafafa;
+  --color-input-border: #646464;
+  --color-input-border-focus: #4f86ca;
+  
+  /* Dark Mode UI Element Colors */
+  --color-border: #646464;
+  --color-border-light: #969696;
+  --color-border-dark: #404040;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-shadow-light: rgba(0, 0, 0, 0.1);
+  --color-shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode override (when user explicitly chooses light) */
+[data-theme="light"] {
+  /* Light Mode Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-bg-quaternary: #dee2e6;
+  --color-bg-overlay: rgba(0, 0, 0, 0.1);
+  --color-bg-overlay-light: rgba(0, 0, 0, 0.05);
+  --color-bg-overlay-dark: rgba(0, 0, 0, 0.2);
+  
+  /* Light Mode Text Colors */
+  --color-text-primary: #212529;
+  --color-text-secondary: #495057;
+  --color-text-tertiary: #6c757d;
+  --color-text-quaternary: #adb5bd;
+  --color-text-muted: #6c757d;
+  --color-text-disabled: #ced4da;
+  
+  /* Light Mode Link Colors */
+  --color-link-default: #4f86ca;
+  --color-link-default-hover: #3a6bb8;
+  --color-link-yellow: #9c7343;
+  --color-link-yellow-hover: #7a5a2c;
+  --color-link-gray: #6c757d;
+  --color-link-gray-hover: #495057;
+  --color-link-blue: #0091d7;
+  --color-link-blue-hover: #007bb5;
+  
+  /* Light Mode Form Colors */
+  --color-input-bg: #ffffff;
+  --color-input-bg-focus: #ffffff;
+  --color-input-text: #495057;
+  --color-input-placeholder: #6c757d;
+  --color-input-border: #ced4da;
+  --color-input-border-focus: #4f86ca;
+  
+  /* Light Mode UI Element Colors */
+  --color-border: #dee2e6;
+  --color-border-light: #e9ecef;
+  --color-border-dark: #adb5bd;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-light: rgba(0, 0, 0, 0.05);
+  --color-shadow-dark: rgba(0, 0, 0, 0.15);
+}

@@ -70,6 +70,11 @@ class BaseController extends Asatru\Controller\Controller {
 
 			if (($theme) && (is_dir(public_path() . '/themes/' . $theme))) {
 				ThemeModule::load(public_path() . '/themes/' . $theme);
+			} else {
+				// Load default theme if no user theme is set
+				if (is_dir(public_path() . '/themes/default')) {
+					ThemeModule::load(public_path() . '/themes/default');
+				}
 			}
 		}
 	}

@@ -2,7 +2,9 @@
 	"name": "default",
 	"author": "Daniel Brendel",
 	"contact": "https://www.hortusfox.com",
-	"version": "1.0",
+	"version": "2.0",
+	"description": "Default theme with enhanced theming support and light/dark mode",
+	"supports_light_dark_mode": true,
 	"banner": "banner.jpg",
 	"rules": {
 		"height": "250px"
@@ -28,5 +30,17 @@
 			"width": "256px",
 			"height": "256px"
 		}
+	},
+	"css_variables": {
+		"theme-primary-color": "#4f86ca",
+		"theme-secondary-color": "#9c7343",
+		"theme-accent-color": "#73d667",
+		"banner-height": "250px",
+		"banner-icon-size": "72px",
+		"banner-icon-top": "210px",
+		"banner-icon-left": "195px",
+		"banner-accessory-size": "256px",
+		"banner-accessory-top": "172px",
+		"banner-accessory-right": "-83%"
 	}
 }

@@ -8,12 +8,17 @@
 <link rel="stylesheet" type="text/css" href="{{ ThemeModule::data()->include }}"/>
 @endif
 
+@if (ThemeModule::ready())
+{!! ThemeModule::getCssVariablesInline() !!}
+@endif
+
 @if (env('APP_DEBUG'))
 <script src="{{ asset('js/vue.js') }}"></script>
 @else
 <script src="{{ asset('js/vue.min.js') }}"></script>
 @endif
 
+<script src="{{ asset('js/theme-manager.js') }}"></script>
 <script src="{{ asset('js/app.js', true) }}"></script>
 
 @if ((ThemeModule::ready()) && (ThemeModule::data()->script))
