@@ -3671,3 +3671,35 @@ fieldset .field {
 .button-margin-left {
     margin-left: 5px;
 }
+
+/* Drag and Drop Styles for Admin Attribute Schemas */
+.admin-attribute-schema[data-attribute-id] {
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.admin-attribute-schema[data-attribute-id]:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-attribute-schema[data-attribute-id].dragging {
+    opacity: 0.5;
+    transform: rotate(2deg);
+}
+
+.admin-attribute-schema[data-attribute-id] .fa-grip-vertical {
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.admin-attribute-schema[data-attribute-id]:hover .fa-grip-vertical {
+    opacity: 1;
+}
+
+.admin-attribute-schema[data-attribute-id]:active .fa-grip-vertical {
+    cursor: grabbing;
+}
