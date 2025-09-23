@@ -8,8 +8,8 @@
 
 require "array";
 require "auto";
+require "dialog";
 require "fileio";
-require "input";
 
 const SERVER_PORT int <= 8000;
 
