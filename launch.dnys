@@ -85,15 +85,19 @@ function setup_deps void()
 	};
 };
 
+function launch_web_service void()
+{
+	aut_run "%APACHE_PATH/httpd.exe" "" "%APACHE_PATH" void;
+	aut_run "%MARIADB_PATH/mysqld.exe" "--defaults-file=%MARIADB_PATH/my.ini --standalone" "%MARIADB_PATH" void;
+
+	aut_run "php" "asatru serve %SERVER_PORT" "%project_path" void;
+	aut_run "%server_url" "" "" void;
+};
+
 call setup_path_file() => void;
 call setup_env() => void;
 call setup_deps() => void;
-
-aut_run "%APACHE_PATH/httpd.exe" "" "%APACHE_PATH" void;
-aut_run "%MARIADB_PATH/mysqld.exe" "--defaults-file=%MARIADB_PATH/my.ini --standalone" "%MARIADB_PATH" void;
-
-aut_run "php" "asatru serve %SERVER_PORT" "%project_path" void;
-aut_run "%server_url" "" "" void;
+call launch_web_service() => void;
 
 print "HortusFox is now running...";
 print "Press any key to shutdown this service";
