@@ -1493,14 +1493,18 @@ window.createVueInstance = function(element) {
             },
 
             printQRCode: function(content, title) {
-                let wnd = window.open('', title, 'height=auto, width=auto');
+                const html = '<html><head><title>' + title + '</title></head><body><img src="' + content + '"/></body></html>';
 
-                wnd.document.write('<html><head><title>' + title + '</title></head><body>');
-                wnd.document.write('<img src="' + content + '"/>');
-                wnd.document.write('</body></html>');
+                const blob = new Blob([html], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
 
-                wnd.print();
-                wnd.close();
+                let wnd = window.open(url, title, 'height=auto, width=auto');
+                wnd.onload = function() {
+                    wnd.print();
+                    wnd.close();
+
+                    URL.revokeObjectURL(url);
+                };
             },
 
             bulkChecked: function(target, flag) {
