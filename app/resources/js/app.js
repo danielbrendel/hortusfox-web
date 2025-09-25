@@ -1587,18 +1587,24 @@ window.createVueInstance = function(element) {
                     if (invIds.length > 0) {
                         window.vue.ajaxRequest('post', window.location.origin + '/inventory/qrcode/bulk', { list: JSON.stringify(invIds) }, function(response) {
                             if (response.code == 200) {
-                                let wnd = window.open('', title, 'height=auto, width=auto');
-
-                                wnd.document.write('<html><head><title>' + title + '</title></head><body>');
+                                let html = '<html><head><title>' + title + '</title></head><body>';
 
                                 response.list.forEach(function(elem, index) {
-                                    wnd.document.write('<div style="position: relative; display: inline-block; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">#' + elem.invitemid + ' [' + elem.invgroup + '] ' + elem.invitemname + '<br/><img src="' + elem.qrcode + '" width="152" height="152"/></div>');
+                                    html += '<div style="position: relative; display: inline-block; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">#' + elem.invitemid + ' [' + elem.invgroup + '] ' + elem.invitemname + '<br/><img src="' + elem.qrcode + '" width="152" height="152"/></div>';
                                 });
 
-                                wnd.document.write('</body></html>');
+                                html += '</body></html>';
 
-                                wnd.print();
-                                wnd.close();
+                                const blob = new Blob([html], { type: 'text/html' });
+                                const url = URL.createObjectURL(blob);
+
+                                let wnd = window.open(url, title, 'height=auto, width=auto');
+                                wnd.onload = function() {
+                                    wnd.print();
+                                    wnd.close();
+
+                                    URL.revokeObjectURL(url);
+                                };
                             } else {
                                 alert(response.msg);
                             }
