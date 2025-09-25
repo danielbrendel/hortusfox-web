@@ -799,10 +799,7 @@ window.createVueInstance = function(element) {
                         response.messages.forEach(function(elem, index) {
                             document.getElementById('chat').innerHTML = window.vue.renderNewChatMessage(elem, auth_user) + document.getElementById('chat').innerHTML;
                         
-                            let audio = new Audio(window.location.origin + '/snd/new_message.wav');
-                            audio.onloadeddata = function() {
-                                audio.play();
-                            };
+                            window.vue.playAudio('new_message.wav');
                         });
                     }
                 });
@@ -981,11 +978,8 @@ window.createVueInstance = function(element) {
                     if (response.code == 200) {
                         if (response.message) {
                             window.vue.fadeSystemMessage(target, window.vue.renderNewSystemMessage(response.message), response.message.id);
-                        
-                            let audio = new Audio(window.location.origin + '/snd/new_message.wav');
-                            audio.onloadeddata = function() {
-                                audio.play();
-                            };
+
+                            window.vue.playAudio('new_message.wav');
                         }
                     }
                 });
@@ -2008,6 +2002,13 @@ window.createVueInstance = function(element) {
                 document.execCommand('copy');
                 document.body.removeChild(el);
                 alert(window.vue.copiedToClipboard);
+            },
+
+            playAudio: function(soundfile) {
+                let audio = new Audio(window.location.origin + '/snd/' + soundfile);
+                audio.onloadeddata = function() {
+                    audio.play();
+                };
             },
 
             isProgressiveWebApp: function() {

@@ -242,12 +242,18 @@
             </div>
         </div>
 
+        <div class="admin-media-preview">
+            <img src="{{ asset('logo.png') }}" alt="media-preview"/>
+        </div>
+
         <div class="field">
             <div class="control">
                 <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
             </div>
         </div>
     </form>
+
+    <div><hr/></div>
 
     <form method="POST" action="{{ url('/admin/media/banner') }}" enctype="multipart/form-data">
         @csrf
@@ -259,12 +265,18 @@
             </div>
         </div>
 
+        <div class="admin-media-preview">
+            <img src="{{ asset('img/banner.jpg') }}" alt="media-preview"/>
+        </div>
+
         <div class="field">
             <div class="control">
                 <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
             </div>
         </div>
     </form>
+
+    <div><hr/></div>
 
     <form method="POST" action="{{ url('/admin/media/background') }}" enctype="multipart/form-data">
         @csrf
@@ -276,12 +288,18 @@
             </div>
         </div>
 
+        <div class="admin-media-preview">
+            <img src="{{ asset('img/background.jpg') }}" alt="media-preview"/>
+        </div>
+
         <div class="field">
             <div class="control">
                 <input type="submit" class="button is-success" value="{{ __('app.save') }}"/>
             </div>
         </div>
     </form>
+
+    <div><hr/></div>
 
     <form method="POST" action="{{ url('/admin/media/overlay/alpha') }}">
         @csrf
@@ -300,6 +318,8 @@
         </div>
     </form>
 
+    <div><hr/></div>
+
     <form method="POST" action="{{ url('/admin/media/sound/message') }}" enctype="multipart/form-data">
         @csrf
 
@@ -309,6 +329,12 @@
                 <input type="file" class="input" name="asset" accept=".wav" required>
             </div>
         </div>
+
+        @if (file_exists(public_path() . '/snd/new_message.wav'))
+        <div class="admin-media-preview">
+            <a href="javascript:void(0);" onclick="window.vue.playAudio('new_message.wav');">new_message.wav</a>
+        </div>
+        @endif
 
         <div class="field">
             <div class="control">

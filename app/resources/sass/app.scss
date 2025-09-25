@@ -1079,11 +1079,12 @@ fieldset .field {
 }
 
 .plant-custom-attribute a {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
 }
 
 .plant-custom-attribute a:hover {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
+    text-decoration: underline;
 }
 
 .plant-custom-attribute-removal {
@@ -1537,7 +1538,7 @@ fieldset .field {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 1.3em;
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
 }
 
 .log-content {
@@ -1715,11 +1716,11 @@ fieldset .field {
 }
 
 .plant-log-paginate a {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
 }
 
 .plant-log-paginate a:hover {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
     text-decoration: underline;
 }
 
@@ -1774,11 +1775,11 @@ fieldset .field {
 }
 
 .location-log-paginate a {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
 }
 
 .location-log-paginate a:hover {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
     text-decoration: underline;
 }
 
@@ -1795,11 +1796,11 @@ fieldset .field {
 }
 
 .share-log-paginate a {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
 }
 
 .share-log-paginate a:hover {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
     text-decoration: underline;
 }
 
@@ -2002,7 +2003,7 @@ fieldset .field {
 }
 
 .is-task-recurring {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
     margin-left: 5px;
 }
 
@@ -2866,6 +2867,19 @@ fieldset .field {
     margin-bottom: 20px;
 }
 
+.admin-media a {
+    color: rgb(55, 145, 243);
+}
+
+.admin-media a:hover {
+    color: rgb(55, 145, 243);
+    text-decoration: underline;
+}
+
+.admin-media hr {
+    background-color: rgb(100, 100, 100);
+}
+
 .admin-media label {
     color: rgb(150, 150, 150);
 }
@@ -3111,6 +3125,10 @@ fieldset .field {
     margin-bottom: 30px;
 }
 
+.admin-attributes hr {
+    background-color: rgb(100, 100, 100);
+}
+
 .admin-bulk-commands-list {
     position: relative;
 }
@@ -3245,6 +3263,10 @@ fieldset .field {
     font-size: 1.2em;
 }
 
+.admin-themes hr {
+    background-color: rgb(100, 100, 100);
+}
+
 .admin-themes input, .admin-themes select {
     color: rgb(150, 150, 150);
     background-color: rgb(50, 50, 50);
@@ -3299,6 +3321,10 @@ fieldset .field {
 
 .admin-backup label, .admin-backup span {
     color: rgb(150, 150, 150);
+}
+
+.admin-backup hr {
+    background-color: rgb(100, 100, 100);
 }
 
 .admin-backup-result {
@@ -3557,11 +3583,11 @@ fieldset .field {
 }
 
 .admin-info-extensions a {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
 }
 
 .admin-info-extensions a:hover {
-    color: rgb(0, 145, 215);
+    color: rgb(55, 145, 243);
     text-decoration: underline;
 }
 
