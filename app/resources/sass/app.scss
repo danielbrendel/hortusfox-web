@@ -204,6 +204,11 @@ h2 {
     margin-bottom: 20px !important;
 }
 
+.table-scroll-horizontally {
+    position: relative;
+    overflow-x: auto;
+}
+
 .field small {
     color: rgb(120, 120, 120);
 }
