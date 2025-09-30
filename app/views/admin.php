@@ -980,9 +980,9 @@
     <p>{{ __('app.admin_api_hint') }}</p>
 
     <a class="button is-link" href="{{ url('/admin/api/add') }}">{{ __('app.add') }}</a>
-
-    <div>
-        @if ((is_countable($api_keys)) && (count($api_keys) > 0))
+    
+    @if ((is_countable($api_keys)) && (count($api_keys) > 0))
+    <div class="table-scroll-horizontally">
         <table>
             <thead>
                 <tr>
@@ -1001,8 +1001,8 @@
                 @endforeach
             </tbody>
         </table>
-        @endif
     </div>
+    @endif
 </div>
 
 <div class="admin-info {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'info')) ? 'is-hidden' : ''}}">
