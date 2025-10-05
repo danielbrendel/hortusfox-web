@@ -14,7 +14,7 @@
 	{{ __('app.last_edited_by', ['name' => $edit_user_name, 'when' => $edit_user_when]) }}
 </div>
 
-@if ($plant->get('clone_num'))
+@if (($plant->get('clone_num')) && ($orig_plant))
 	<div class="margin-vertical is-default-text-color">
 		<i class="fas fa-clone"></i>&nbsp;<a class="is-default-link" href="{{ url('/plants/details/' . $orig_plant->get('id')) }}">{{ $orig_plant->get('name') }}</a>
 	</div>
