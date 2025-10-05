@@ -160,7 +160,9 @@ PROXY_HEADER_USERNAME: "Your username header identifier here"
 PROXY_AUTO_SIGNUP: "true"
 PROXY_WHITELIST: ""
 PROXY_HIDE_LOGOUT: "true"
+PROXY_OVERWRITE_VALUES: "true"
 ```
+Note: Setting `PROXY_OVERWRITE_VALUES` to `true` is mandatory if you want to update your proxy authentication settings upon container launch.
 
 3. Pull the image and run the application:
 

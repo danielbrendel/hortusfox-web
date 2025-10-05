@@ -29,6 +29,7 @@ DEFAULT_PROXY_HEADER_USERNAME=""
 DEFAULT_PROXY_AUTO_SIGNUP=false
 DEFAULT_PROXY_WHITELIST=""
 DEFAULT_PROXY_HIDE_LOGOUT=false
+DEFAULT_PROXY_OVERWRITE_VALUES=false
 
 # Use environment variables if provided, otherwise use defaults
 ADMIN_EMAIL="${APP_ADMIN_EMAIL:-$DEFAULT_ADMIN_EMAIL}"
@@ -57,6 +58,7 @@ PROXY_HEADER_USERNAME="${PROXY_HEADER_USERNAME:-$DEFAULT_PROXY_HEADER_USERNAME}"
 PROXY_AUTO_SIGNUP=${PROXY_AUTO_SIGNUP:-$DEFAULT_PROXY_AUTO_SIGNUP}
 PROXY_WHITELIST="${PROXY_WHITELIST:-$DEFAULT_PROXY_WHITELIST}"
 PROXY_HIDE_LOGOUT=${PROXY_HIDE_LOGOUT:-$DEFAULT_PROXY_HIDE_LOGOUT}
+PROXY_OVERWRITE_VALUES=${PROXY_OVERWRITE_VALUES:-$DEFAULT_PROXY_OVERWRITE_VALUES}
 
 # Function to set the desired timezone
 configure_timezone() {
@@ -251,8 +253,10 @@ fi
 # Check if app settings profile exists and create it if not.
 add_initial_settings_if_missing
 
-# Update proxy authentication settings
-update_proxy_auth_settings
+# Update proxy authentication settings if desired
+if [ "$PROXY_OVERWRITE_VALUES" = "true" ]; then
+    update_proxy_auth_settings
+fi
 
 # Check if admin user exists and create it if not.
 add_admin_user_if_missing
