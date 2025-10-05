@@ -449,35 +449,37 @@
 			<a name="plant-log-anchor"></a>
 
 			@if ((is_countable($plant_log_entries)) && (count($plant_log_entries) > 0))
-			<table id="plant-log-table">
-				<thead>
-					<tr>
-						<td>{{ __('app.plant_log_content') }}</td>
-						<td>{{ __('app.plant_log_date') }}</td>
-						<td><span class="float-right">{{ __('app.plant_log_actions') }}</span></td>
-					</tr>
-				</thead>
-
-				<tbody>
-					@foreach ($plant_log_entries as $plant_log_entry)
-					<tr id="plant-log-entry-table-row-{{ $plant_log_entry->get('id') }}">
-						<td id="plant-log-entry-item-{{ $plant_log_entry->get('id') }}">{{ $plant_log_entry->get('content') }}</td>
-						<td>{{ date('Y-m-d', strtotime($plant_log_entry->get('created_at'))) }} / {{ date('Y-m-d', strtotime($plant_log_entry->get('updated_at'))) }}</td>
-						<td>
-							<span class="float-right">
-								<span><a href="javascript:void(0);" onclick="window.vue.showEditPlantLogEntry('{{ $plant_log_entry->get('id') }}', '{{ $plant->get('id') }}', document.getElementById('plant-log-entry-item-{{ $plant_log_entry->get('id') }}').innerText, 'plant-log-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_plant_log_entry') }}')) { window.vue.removePlantLogEntry('{{ $plant_log_entry->get('id') }}', 'plant-log-entry-table-row-{{ $plant_log_entry->get('id') }}'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
-							</span>
-						</td>
-					</tr>
-					@endforeach
-
-					@if ($plant_log_entries->get(count($plant_log_entries) - 1)?->get('id') > 1)
-						<tr id="plant-log-load-more" class="plant-log-paginate">
-							<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantLogEntries(this, '{{ $plant->get('id') }}', document.getElementById('plant-log-table'));" data-paginate="{{ $plant_log_entries->get(count($plant_log_entries) - 1)?->get('id') }}">{{ __('app.load_more') }}</a></td>
+			<div class="table-scroll-horizontally">
+				<table id="plant-log-table">
+					<thead>
+						<tr>
+							<td>{{ __('app.plant_log_content') }}</td>
+							<td>{{ __('app.plant_log_date') }}</td>
+							<td><span class="float-right">{{ __('app.plant_log_actions') }}</span></td>
 						</tr>
-					@endif
-				</tbody>
-			</table>
+					</thead>
+
+					<tbody>
+						@foreach ($plant_log_entries as $plant_log_entry)
+						<tr id="plant-log-entry-table-row-{{ $plant_log_entry->get('id') }}">
+							<td id="plant-log-entry-item-{{ $plant_log_entry->get('id') }}">{{ $plant_log_entry->get('content') }}</td>
+							<td>{{ date('Y-m-d', strtotime($plant_log_entry->get('created_at'))) }} / {{ date('Y-m-d', strtotime($plant_log_entry->get('updated_at'))) }}</td>
+							<td>
+								<span class="float-right">
+									<span><a href="javascript:void(0);" onclick="window.vue.showEditPlantLogEntry('{{ $plant_log_entry->get('id') }}', '{{ $plant->get('id') }}', document.getElementById('plant-log-entry-item-{{ $plant_log_entry->get('id') }}').innerText, 'plant-log-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_plant_log_entry') }}')) { window.vue.removePlantLogEntry('{{ $plant_log_entry->get('id') }}', 'plant-log-entry-table-row-{{ $plant_log_entry->get('id') }}'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+								</span>
+							</td>
+						</tr>
+						@endforeach
+
+						@if ($plant_log_entries->get(count($plant_log_entries) - 1)?->get('id') > 1)
+							<tr id="plant-log-load-more" class="plant-log-paginate">
+								<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantLogEntries(this, '{{ $plant->get('id') }}', document.getElementById('plant-log-table'));" data-paginate="{{ $plant_log_entries->get(count($plant_log_entries) - 1)?->get('id') }}">{{ __('app.load_more') }}</a></td>
+							</tr>
+						@endif
+					</tbody>
+				</table>
+			</div>
 			@else
 				<strong>{{ __('app.no_plant_log_entries_yet') }}</strong>
 			@endif
