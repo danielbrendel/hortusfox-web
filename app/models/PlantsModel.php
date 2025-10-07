@@ -34,6 +34,29 @@ class PlantsModel extends \Asatru\Database\Model {
         'desc'
     ];
 
+    static $allowed_attributes = [
+        'name',
+        'scientific_name',
+        'knowledge_link',
+        'location',
+        'tags',
+        'photo',
+        'last_watered',
+        'last_repotted',
+        'last_fertilised',
+        'perennial',
+        'annual',
+        'hardy',
+        'cutting_month',
+        'date_of_purchase',
+        'humidity',
+        'light_level',
+        'health_state',
+        'notes',
+        'history',
+        'history_date'
+    ];
+
     static $plant_health_states = [
         'in_good_standing' => [
             'localization' => 'app.in_good_standing',
@@ -88,6 +111,7 @@ class PlantsModel extends \Asatru\Database\Model {
 
     /**
      * @param $type
+     * @return void
      * @throws \Exception
      */
     public static function validateSorting($type)
@@ -99,12 +123,25 @@ class PlantsModel extends \Asatru\Database\Model {
 
     /**
      * @param $dir
+     * @return void
      * @throws \Exception
      */
     public static function validateDirection($dir)
     {
         if (!in_array($dir, static::$sorting_dir)) {
             throw new \Exception('Invalid sorting direction: ' . $dir);
+        }
+    }
+
+    /**
+     * @param $attribute
+     * @return void
+     * @throws \Exception
+     */
+    public static function validateAttribute($attribute)
+    {
+        if (!in_array($attribute, static::$allowed_attributes)) {
+            throw new \Exception('Invalid attribute specified: ' . $attribute);
         }
     }
 
@@ -331,6 +368,8 @@ class PlantsModel extends \Asatru\Database\Model {
                     throw new \Exception('Invalid user');
                 }
             }
+
+            static::validateAttribute($attribute);
             
             static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP WHERE id = ?', [($value !== '#null') ? $value : null, $user?->get('id'), $plantId]);
         
@@ -403,6 +442,8 @@ class PlantsModel extends \Asatru\Database\Model {
                 }
             }
 
+            static::validateAttribute($attribute);
+
             if ((!isset($_FILES[$value])) || ($_FILES[$value]['error'] !== UPLOAD_ERR_OK)) {
                 throw new \Exception('Errorneous file');
             }
@@ -454,6 +495,8 @@ class PlantsModel extends \Asatru\Database\Model {
                     throw new \Exception('Invalid user');
                 }
             }
+
+            static::validateAttribute($attribute);
 
             static::raw('UPDATE `@THIS` SET ' . $attribute . ' = ?, last_edited_user = ?, last_edited_date = CURRENT_TIMESTAMP, last_photo_date = CURRENT_TIMESTAMP WHERE id = ?', [$value, $user?->get('id'), $plantId]);
         
