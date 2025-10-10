@@ -178,6 +178,7 @@ return [
     array('/api/plants/attributes/edit', 'ANY', 'api@edit_attribute'),
     array('/api/plants/attributes/remove', 'ANY', 'api@remove_attribute'),
     array('/api/plants/photo/update', 'ANY', 'api@update_plant_photo'),
+    array('/api/plants/gallery/list', 'ANY', 'api@list_plant_gallery_photos'),
     array('/api/plants/gallery/add', 'ANY', 'api@add_plant_gallery_photo'),
     array('/api/plants/gallery/edit', 'ANY', 'api@edit_plant_gallery_photo'),
     array('/api/plants/gallery/remove', 'ANY', 'api@remove_plant_gallery_photo'),
