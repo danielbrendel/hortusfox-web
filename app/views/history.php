@@ -39,15 +39,15 @@
 <div class="plants">
 	@if (count($history) > 0)
 		@foreach ($history as $plant)
-			<div class="plant-card is-pointer" onclick="window.open('{{ url('/plants/details/' . $plant->get('id')) }}');">
-				<div class="plant-card-image" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
+			<div id="plant-card-container-{{ $plant->get('id') }}" class="plant-card is-pointer" onclick="window.open('{{ url('/plants/details/' . $plant->get('id')) }}');">
+				<div class="plant-card-image plant-card-dropdown" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
 					<div class="plant-card-overlay"></div>
 				</div>
 
 				<div class="plant-card-options">
 					<div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
 						<div class="dropdown-trigger">
-							<div class="is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'));"><i class="fas fa-caret-down"></i></div>
+							<div class="is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'), document.getElementById('plant-card-container-{{ $plant->get('id') }}'));"><i class="fas fa-caret-down"></i></div>
 						</div>
 						<div class="dropdown-menu" role="menu">
 							<div class="dropdown-content">

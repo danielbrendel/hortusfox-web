@@ -853,6 +853,10 @@ fieldset .field {
     box-shadow: 0 0 20px 0 rgba(105, 165, 85, 0.95);
 }
 
+.plant-card-dropdown {
+    overflow: unset;
+}
+
 .plant-card-image {
     width: 100%;
     height: 100%;
@@ -863,6 +867,10 @@ fieldset .field {
 
 .plant-card-image:hover {
     transform: scale(1.1);
+}
+
+.plant-card-image-dropdown {
+    border-radius: 10px;
 }
 
 .plant-card-overlay {

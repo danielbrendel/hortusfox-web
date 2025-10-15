@@ -1060,11 +1060,13 @@ window.createVueInstance = function(element) {
                 }
             },
 
-            toggleDropdown: function(elem) {
+            toggleDropdown: function(elem, container) {
                 if (elem.classList.contains('is-active')) {
                     elem.classList.remove('is-active');
+                    container.classList.remove('plant-card-dropdown');
                 } else {
                     elem.classList.add('is-active');
+                    container.classList.add('plant-card-dropdown');
                 }
             },
 
