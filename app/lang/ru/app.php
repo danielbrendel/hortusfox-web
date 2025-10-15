@@ -498,5 +498,7 @@ return [
 	'weeks' => 'Недель',
 	'months' => 'Месяцев',
 	'years' => 'Лет',
-	'recurring_time_with_scope' => '{time} {scope}'
+	'recurring_time_with_scope' => '{time} {scope}',
+    'sorting_type_cutting_month' => 'Месяц черенкования',
+	'sorting_type_date_of_purchase' => 'Дата покупки'
 ];

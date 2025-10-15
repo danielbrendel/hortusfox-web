@@ -26,6 +26,8 @@ class PlantsModel extends \Asatru\Database\Model {
         'hardy',
         'light_level',
         'humidity',
+        'cutting_month',
+        'date_of_purchase',
         'history_date'
     ];
 

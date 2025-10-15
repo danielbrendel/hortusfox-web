@@ -401,6 +401,8 @@ class UtilsModule {
                 return date('Y-m-d', strtotime($content));
             } else if ($type === 'last_fertilised') {
                 return date('Y-m-d', strtotime($content));
+            } else if ($type === 'date_of_purchase') {
+                return date('Y-m-d', strtotime($content));
             } else if ($type === 'health_state') {
                 return __('app.' . $content);
             } else if (($type === 'perennial') || ($type === 'annual') || ($type === 'hardy')) {
@@ -413,6 +415,8 @@ class UtilsModule {
                 return __('app.' . $content);
             } else if ($type === 'humidity') {
                 return $content . '%';
+            } else if ($type === 'cutting_month') {
+                return UtilsModule::getMonthList()[$content];
             } else {
                 return $content;
             }

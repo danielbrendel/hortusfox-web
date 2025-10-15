@@ -498,5 +498,7 @@ return [
 	'weeks' => 'Semanas',
 	'months' => 'Meses',
 	'years' => 'Anos',
-	'recurring_time_with_scope' => '{time} {scope}'
+	'recurring_time_with_scope' => '{time} {scope}',
+	'sorting_type_cutting_month' => 'Mês do corte',
+	'sorting_type_date_of_purchase' => 'Data de compra'
 ];

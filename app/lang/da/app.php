@@ -498,5 +498,7 @@ return [
 	'weeks' => 'Uger',
 	'months' => 'Måneder',
 	'years' => 'År',
-	'recurring_time_with_scope' => '{time} {scope}'
+	'recurring_time_with_scope' => '{time} {scope}',
+	'sorting_type_cutting_month' => 'Skæring måned',
+	'sorting_type_date_of_purchase' => 'Købsdato'
 ];

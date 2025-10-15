@@ -498,5 +498,7 @@ return [
 	'weeks' => 'Tygodnie',
 	'months' => 'Miesiące',
 	'years' => 'Lata',
-	'recurring_time_with_scope' => '{time} {scope}'
+	'recurring_time_with_scope' => '{time} {scope}',
+	'sorting_type_cutting_month' => 'Miesiąc przycinania',
+	'sorting_type_date_of_purchase' => 'Data zakupu'
 ];
