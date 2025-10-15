@@ -395,13 +395,7 @@ class UtilsModule {
 
             if ($type === 'name') {
                 return $content;
-            } else if ($type === 'last_watered') {
-                return date('Y-m-d', strtotime($content));
-            } else if ($type === 'last_repotted') {
-                return date('Y-m-d', strtotime($content));
-            } else if ($type === 'last_fertilised') {
-                return date('Y-m-d', strtotime($content));
-            } else if ($type === 'date_of_purchase') {
+            } else if (($type === 'last_watered') || ($type === 'last_repotted') || ($type === 'last_fertilised') || ($type === 'date_of_purchase')) {
                 return date('Y-m-d', strtotime($content));
             } else if ($type === 'health_state') {
                 return __('app.' . $content);
