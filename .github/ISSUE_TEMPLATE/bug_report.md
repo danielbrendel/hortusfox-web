@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Software:**
 - HortusFox version
 - PHP Version
-- MySQL version (if related to the problem)
+- MariaDB version (if related to the problem)
 - Docker version if used in a docker environment
 - Changes to your `docker-compose.yml` file if altered
 
