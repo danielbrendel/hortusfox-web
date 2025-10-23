@@ -29,8 +29,8 @@ If you have any questions before submitting a PR, feel free to create an issue t
 
 ## Framework
 
-HortusFox is built with the [Asatru PHP Framework](https://github.com/danielbrendel/dnyAsatruPHP-App). The documentation is located in the `/doc` directory.
-There is also an [online documentation](https://asatru-php.github.io/) available.
+HortusFox is built with the [Asatru PHP Framework](https://www.asatru-php.com). The documentation is located in the `/doc` directory.
+There is also an [online documentation](https://www.asatru-php.com/doc/main/installation) available.
 
 ## Localization
 
