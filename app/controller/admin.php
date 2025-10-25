@@ -485,9 +485,10 @@ class AdminController extends BaseController {
 		try {
 			$label = $request->params()->query('label');
 			$attribute = $request->params()->query('attribute');
+			$datatype = $request->params()->query('datatype');
 			$styles = $request->params()->query('styles');
 			
-			CustBulkCmdModel::addCmd($label, $attribute, $styles);
+			CustBulkCmdModel::addCmd($label, $attribute, $datatype, $styles);
 
 			FlashMessage::setMsg('success', __('app.bulk_cmd_added_successfully'));
 
@@ -510,9 +511,10 @@ class AdminController extends BaseController {
 			$id = $request->params()->query('id');
 			$label = $request->params()->query('label');
 			$attribute = $request->params()->query('attribute');
+			$datatype = $request->params()->query('datatype');
 			$styles = $request->params()->query('styles');
 			
-			CustBulkCmdModel::editCmd($id, $label, $attribute, $styles);
+			CustBulkCmdModel::editCmd($id, $label, $attribute, $datatype, $styles);
 
 			FlashMessage::setMsg('success', __('app.bulk_cmd_updated_successfully'));
 

@@ -30,6 +30,7 @@ class CustBulkCmdModel_Migration {
         $this->database->add('id INT NOT NULL AUTO_INCREMENT PRIMARY KEY');
         $this->database->add('label VARCHAR(512) NOT NULL');
         $this->database->add('attribute VARCHAR(512) NOT NULL');
+        $this->database->add('datatype VARCHAR(512) NOT NULL');
         $this->database->add('styles VARCHAR(512) NOT NULL');
         $this->database->add('created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
         $this->database->create();

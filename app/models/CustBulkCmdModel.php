@@ -21,15 +21,16 @@ class CustBulkCmdModel extends \Asatru\Database\Model {
     /**
      * @param $label
      * @param $attribute
+     * @param $datatype
      * @param $styles
      * @return void
      * @throws \Exception
      */
-    public static function addCmd($label, $attribute, $styles)
+    public static function addCmd($label, $attribute, $datatype, $styles)
     {
         try {
-            static::raw('INSERT INTO `@THIS` (label, attribute, styles) VALUES(?, ?, ?)', [
-                $label, $attribute, $styles
+            static::raw('INSERT INTO `@THIS` (label, attribute, datatype, styles) VALUES(?, ?, ?, ?)', [
+                $label, $attribute, $datatype, $styles
             ]);
         } catch (\Exception $e) {
             throw $e;
@@ -40,15 +41,16 @@ class CustBulkCmdModel extends \Asatru\Database\Model {
      * @param $id
      * @param $label
      * @param $attribute
+     * @param $datatype
      * @param $styles
      * @return void
      * @throws \Exception
      */
-    public static function editCmd($id, $label, $attribute, $styles)
+    public static function editCmd($id, $label, $attribute, $datatype, $styles)
     {
         try {
-            static::raw('UPDATE `@THIS` SET label = ?, attribute = ?, styles = ? WHERE id = ?', [
-                $label, $attribute, $styles, $id
+            static::raw('UPDATE `@THIS` SET label = ?, attribute = ?, datatype = ?, styles = ? WHERE id = ?', [
+                $label, $attribute, $datatype, $styles, $id
             ]);
         } catch (\Exception $e) {
             throw $e;

@@ -1455,7 +1455,7 @@
 						<input type="hidden" id="plant-bulk-perform-operation-operation" value=""/>
 						<input type="hidden" id="plant-bulk-perform-operation-location" value=""/>
 						<input type="hidden" id="plant-bulk-perform-operation-custom" value="1"/>
-						<input type="hidden" id="plant-bulk-perform-operation-datatype" value="datetime"/>
+						<input type="hidden" id="plant-bulk-perform-operation-datatype" value=""/>
 
 						<div class="field">
 							<div class="control is-centered is-margin-bottom-20">
@@ -1465,7 +1465,7 @@
 
 						<div class="field">
 							<div class="control is-margin-bottom-20">
-								<input type="" class="input" name="bulkvalue" id="plant-bulk-perform-operation-bulkvalue" value="{{ date('Y-m-d') }}">
+								<input type="" class="input" name="bulkvalue" id="plant-bulk-perform-operation-bulkvalue" value="">
 							</div>
 						</div>
 
@@ -1728,6 +1728,18 @@
 								<label class="label">{{ __('app.attribute') }}</label>
 								<div class="control">
 									<input type="text" class="input" name="attribute" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.datatype') }}</label>
+								<div class="control">
+									<select class="input" name="datatype" onfocus="this.selectedIndex = -1;" required>
+										<option value="" selected disabled>- {{ __('app.select') }} -</option>
+										@foreach (CustPlantAttrModel::$data_types as $datatype)
+											<option value="{{ $datatype }}">{{ __('app.custom_attribute_datatype_' . $datatype) }}</option>
+										@endforeach
+									</select>
 								</div>
 							</div>
 

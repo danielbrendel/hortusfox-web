@@ -13,7 +13,7 @@
 		<div class="is-inline-block is-action-button-margin"><a class="button is-chocolate" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('last_fertilised', '{{ __('app.bulk_set_fertilised') }}', '{{ __('app.set_fertilised') }}', '{{ $location }}');">{{ __('app.set_fertilised') }}</a></div>
 		@endif
 		@foreach (CustBulkCmdModel::getCmdList() as $bulk_cmd)
-		<div class="is-inline-block is-action-button-margin"><a class="button" style="{{ $bulk_cmd->get('styles') }}" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('{{ $bulk_cmd->get('attribute') }}', '{{ $bulk_cmd->get('label') }}', '{{ $bulk_cmd->get('label') }}', '{{ $location }}', true);">{{ $bulk_cmd->get('label') }}</a></div>
+		<div class="is-inline-block is-action-button-margin"><a class="button" style="{{ $bulk_cmd->get('styles') }}" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('{{ $bulk_cmd->get('attribute') }}', '{{ $bulk_cmd->get('label') }}', '{{ $bulk_cmd->get('label') }}', '{{ $location }}', true, '{{ $bulk_cmd->get('datatype') }}');">{{ $bulk_cmd->get('label') }}</a></div>
 		@endforeach
 		<div class="is-inline-block is-action-button-margin"><a class="button" href="javascript:void(0);" onclick="window.vue.bShowPlantBulkPrint = true;">{{ __('app.bulk_print_qr_codes') }}</a></div>
 		<div class="is-inline-block is-action-button-margin"><a class="button" href="javascript:void(0);" onclick="window.vue.showPerformBulkUpdate('location', '{{ __('app.bulk_move_plants') }}', '{{ __('app.move_plants') }}', '{{ $location }}', false, 'string'); window.vue.setBulkComboValues(window.locationList);">{{ __('app.move_plants') }}</a></div>
