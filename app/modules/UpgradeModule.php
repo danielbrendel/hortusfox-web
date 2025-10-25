@@ -22,8 +22,8 @@ class UpgradeModule {
             }
         }
 
-        PlantsModel::raw('ALTER TABLE `@THIS` DROP annual');
-        PlantsModel::raw('ALTER TABLE `@THIS` DROP perennial');
+        PlantsModel::raw('ALTER TABLE `@THIS` DROP COLUMN IF EXISTS annual');
+        PlantsModel::raw('ALTER TABLE `@THIS` DROP COLUMN IF EXISTS perennial');
 
         TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS recurring_scope VARCHAR(512) NOT NULL DEFAULT \'hours\'');
     }
