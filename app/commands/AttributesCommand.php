@@ -14,6 +14,7 @@ class AttributesCommand implements Asatru\Commands\Command {
         'last_fertilised',
         'perennial',
         'annual',
+        'lifespan',
         'hardy',
         'cutting_month',
         'date_of_purchase',

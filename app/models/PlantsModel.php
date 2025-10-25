@@ -48,6 +48,7 @@ class PlantsModel extends \Asatru\Database\Model {
         'last_fertilised',
         'perennial',
         'annual',
+        'lifespan',
         'hardy',
         'cutting_month',
         'date_of_purchase',

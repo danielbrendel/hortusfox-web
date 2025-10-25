@@ -160,6 +160,21 @@
 				</tr>
 				@endif
 
+				@if (plant_attr('lifespan'))
+				<tr>
+					<td><strong>{{ __('app.lifespan') }}</strong></td>
+					<td>
+						@if ($plant->get('lifespan'))
+							{{ __('app.' . $plant->get('lifespan')) }}
+						@else
+							<span class="is-not-available">N/A</span>
+						@endif
+
+						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditCombo({{ $plant->get('id') }}, 'lifespan', window.vue.comboLifespan, '{{ ($plant->get('lifespan') ?? 'N/A') }}');"><i class="fas fa-edit is-color-darker"></i></a></span>
+					</td>
+				</tr>
+				@endif
+
 				@if (plant_attr('hardy'))
 				<tr>
 					<td><strong>{{ __('app.hardy') }}</strong></td>

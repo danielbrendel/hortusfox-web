@@ -75,6 +75,7 @@ window.createVueInstance = function(element) {
             clsLastImagePreviewAspect: '',
             comboLocation: [],
             comboCuttingMonth: [],
+            comboLifespan: [],
             comboLightLevel: [],
             comboHealthState: [],
             loading_please_wait: 'Please wait...',

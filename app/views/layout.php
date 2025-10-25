@@ -1982,6 +1982,9 @@
 				window.vue.comboCuttingMonth.push({ ident: {{ $key }}, label: '{{ $value }}'});
 				@endforeach
 				
+				window.vue.comboLifespan.push({ ident: 'lifespan_annual', label: '{{ __('app.lifespan_annual') }}'});
+				window.vue.comboLifespan.push({ ident: 'lifespan_biennial', label: '{{ __('app.lifespan_biennial') }}'});
+				window.vue.comboLifespan.push({ ident: 'lifespan_perennial', label: '{{ __('app.lifespan_perennial') }}'});
 				window.vue.comboLightLevel.push({ ident: 'light_level_sunny', label: '{{ __('app.light_level_sunny') }}'});
 				window.vue.comboLightLevel.push({ ident: 'light_level_half_shade', label: '{{ __('app.light_level_half_shade') }}'});
 				window.vue.comboLightLevel.push({ ident: 'light_level_filtered_light', label: '{{ __('app.light_level_filtered_light') }}' });
