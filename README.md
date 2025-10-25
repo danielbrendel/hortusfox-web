@@ -20,10 +20,10 @@
 </p>
 
 <p align="center">
-    <a href="https://discord.gg/kc6xGmjzVS"><img src="https://img.shields.io/badge/discord-5715BA?style=for-the-badge&logoColor=white" alt="discord"></a>
-    <a href="https://bsky.app/profile/danielbrendel.com"><img src="https://img.shields.io/badge/bluesky-D1550A?style=for-the-badge&logoColor=white" alt="bluesky"></a>
-    <a href="https://www.hortusfox.com/videos"><img src="https://img.shields.io/badge/videos-red?style=for-the-badge&logoColor=white" alt="videos"></a>
-    <a href="https://www.hortusfox.com/faq"><img src="https://img.shields.io/badge/faq-yellow?style=for-the-badge&logoColor=white" alt="faq"></a>
+    <a href="https://www.hortusfox.com/support"><img src="https://img.shields.io/badge/support-00CC55?style=for-the-badge&logoColor=white" alt="support"></a>
+    <a href="https://www.hortusfox.com/faq"><img src="https://img.shields.io/badge/faq-FFDE23?style=for-the-badge&logoColor=white" alt="faq"></a>
+    <a href="https://discord.gg/kc6xGmjzVS"><img src="https://img.shields.io/badge/discord-5735FF?style=for-the-badge&logoColor=white" alt="discord"></a>
+    <a href="https://bsky.app/profile/danielbrendel.com"><img src="https://img.shields.io/badge/bluesky-00A3FF?style=for-the-badge&logoColor=white" alt="bluesky"></a>
 </p>
 
 <p align="center">
