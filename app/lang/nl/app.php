@@ -500,5 +500,6 @@ return [
 	'years' => 'Jaren',
 	'recurring_time_with_scope' => '{time} {scope}',
 	'sorting_type_cutting_month' => 'Stekmaand',
-	'sorting_type_date_of_purchase' => 'Aankoopdatum'
+	'sorting_type_date_of_purchase' => 'Aankoopdatum',
+	'smtp_enable_auth' => 'Verificatie inschakelen'
 ];

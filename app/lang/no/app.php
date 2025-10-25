@@ -500,5 +500,6 @@ return [
 	'years' => 'År',
 	'recurring_time_with_scope' => '{time} {scope}',
 	'sorting_type_cutting_month' => 'Stiklingsmåned',
-	'sorting_type_date_of_purchase' => 'Innkjøpsdato'
+	'sorting_type_date_of_purchase' => 'Innkjøpsdato',
+	'smtp_enable_auth' => 'Aktiver autentisering'
 ];

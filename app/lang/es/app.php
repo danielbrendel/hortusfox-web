@@ -500,5 +500,6 @@ return [
 	'years' => 'Años',
 	'recurring_time_with_scope' => '{time} {scope}',
 	'sorting_type_cutting_month' => 'Mes de poda',
-	'sorting_type_date_of_purchase' => 'Fecha de compra'
+	'sorting_type_date_of_purchase' => 'Fecha de compra',
+	'smtp_enable_auth' => 'Activar autenticación'
 ];

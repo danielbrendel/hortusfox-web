@@ -500,5 +500,6 @@ return [
 	'years' => 'Évek',
 	'recurring_time_with_scope' => '{time} {scope}',
 	'sorting_type_cutting_month' => 'Vágási hónap',
-	'sorting_type_date_of_purchase' => 'Vásárlás dátuma'
+	'sorting_type_date_of_purchase' => 'Vásárlás dátuma',
+	'smtp_enable_auth' => 'Hitelesítés engedélyezése'
 ];
