@@ -37,8 +37,6 @@ class PlantsModel_Migration {
         $this->database->add('last_watered DATETIME NULL');
         $this->database->add('last_repotted DATETIME NULL');
         $this->database->add('last_fertilised DATETIME NULL');
-        $this->database->add('perennial BOOLEAN NULL');
-        $this->database->add('annual BOOLEAN NULL');
         $this->database->add('lifespan VARCHAR(512) NULL');
         $this->database->add('hardy BOOLEAN NULL');
         $this->database->add('cutting_month INT NULL');

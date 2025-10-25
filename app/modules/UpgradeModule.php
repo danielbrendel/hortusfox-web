@@ -11,6 +11,20 @@ class UpgradeModule {
      */
     private static function upgradeTo5dot3()
     {
+        PlantsModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS lifespan VARCHAR(512) NULL');
+
+        $plants = PlantsModel::raw('SELECT * FROM `@THIS`');
+        foreach ($plants as $plant) {
+            if ($plant->get('annual')) {
+                PlantsModel::raw('UPDATE `@THIS` SET lifespan = ? WHERE id = ?', ['lifespan_annual', $plant->get('id')]);
+            } else if ($plant->get('perennial')) {
+                PlantsModel::raw('UPDATE `@THIS` SET lifespan = ? WHERE id = ?', ['lifespan_perennial', $plant->get('id')]);
+            }
+        }
+
+        PlantsModel::raw('ALTER TABLE `@THIS` DROP annual');
+        PlantsModel::raw('ALTER TABLE `@THIS` DROP perennial');
+
         TasksModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS recurring_scope VARCHAR(512) NOT NULL DEFAULT \'hours\'');
     }
 

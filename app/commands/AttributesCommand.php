@@ -12,8 +12,6 @@ class AttributesCommand implements Asatru\Commands\Command {
         'last_watered',
         'last_repotted',
         'last_fertilised',
-        'perennial',
-        'annual',
         'lifespan',
         'hardy',
         'cutting_month',
