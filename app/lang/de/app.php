@@ -424,7 +424,6 @@ return [
 	'donation_kofi' => 'Buy Me a Coffee',
 	'link_discord' => 'Discord',
 	'link_bluesky' => 'Bluesky',
-	'link_videos' => 'Videos',
 	'auto_backup' => 'Automatisches Backup aktivieren',
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Optionaler Speicherort der Backup-Dateien',
