@@ -187,8 +187,6 @@ return [
 	'sorting_type_last_repotted' => 'Last time repotted',
 	'sorting_type_last_fertilised' => 'Last time fertilised',
 	'sorting_type_health_state' => 'Health state',
-	'sorting_type_perennial' => 'Perennial',
-	'sorting_type_annual' => 'Annual',
 	'sorting_type_light_level' => 'Light Level',
 	'sorting_type_humidity' => 'Humidity',
 	'sorting_dir_asc' => 'Ascending',
