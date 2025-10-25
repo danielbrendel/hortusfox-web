@@ -749,6 +749,7 @@ class AdminController extends BaseController {
 	public function save_mail_settings($request)
 	{
 		try {
+			$smtp_enable_auth = (bool)$request->params()->query('smtp_enable_auth', false);
 			$smtp_fromname = $request->params()->query('smtp_fromname', app('smtp_fromname'));
 			$smtp_fromaddress = $request->params()->query('smtp_fromaddress', app('smtp_fromaddress'));
 			$smtp_host = $request->params()->query('smtp_host', app('smtp_host'));
@@ -758,11 +759,12 @@ class AdminController extends BaseController {
 			$smtp_encryption = $request->params()->query('smtp_encryption', app('smtp_encryption'));
 			$mail_rp_address = $request->params()->query('mail_rp_address', app('mail_rp_address'));
 
-			if (substr($mail_rp_address, strlen($mail_rp_address) - 1) === '/') {
+			if ((is_string($mail_rp_address)) && (strlen($mail_rp_address) > 1) && (substr($mail_rp_address, strlen($mail_rp_address) - 1) === '/')) {
 				$mail_rp_address = substr($mail_rp_address, 0, strlen($$mail_rp_address) - 1);
 			}
 			
 			$set = [
+				'smtp_enable_auth' => $smtp_enable_auth,
 				'smtp_fromname' => $smtp_fromname,
 				'smtp_fromaddress' => $smtp_fromaddress,
 				'smtp_host' => $smtp_host,

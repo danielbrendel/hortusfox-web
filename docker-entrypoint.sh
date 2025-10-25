@@ -16,6 +16,7 @@ DEFAULT_APP_OVERDUE_TASK_HOURS=10
 DEFAULT_APP_CRON_PW=$(openssl rand -base64 12)
 DEFAULT_APP_CRON_MAIL_LIMIT=5
 DEFAULT_LOG_ENABLE=true
+DEFAULT_SMTP_AUTH=true
 DEFAULT_SMTP_FROMNAME="Test"
 DEFAULT_SMTP_FROMADDRESS="test@domain.tld"
 DEFAULT_SMTP_HOST=""
@@ -45,6 +46,7 @@ APP_OVERDUE_TASK_HOURS=${APP_OVERDUE_TASK_HOURS:-$DEFAULT_APP_OVERDUE_TASK_HOURS
 APP_CRON_PW="${APP_CRON_PW:-$DEFAULT_APP_CRON_PW}"
 APP_CRON_MAIL_LIMIT=${APP_CRON_MAIL_LIMIT:-$DEFAULT_APP_CRON_MAIL_LIMIT}
 LOG_ENABLE={$LOG_ENABLE:-$DEFAULT_LOG_ENABLE}
+SMTP_AUTH=${SMTP_AUTH:-$DEFAULT_SMTP_AUTH}
 SMTP_FROMNAME="${SMTP_FROMNAME:-$DEFAULT_SMTP_FROMNAME}"
 SMTP_FROMADDRESS="${SMTP_FROMADDRESS:-$DEFAULT_SMTP_FROMADDRESS}"
 SMTP_HOST="${SMTP_HOST:-$DEFAULT_SMTP_HOST}"
@@ -125,6 +127,7 @@ create_environment_file() {
     DB_CHARSET="$DB_CHARSET"
     
     # SMTP Settings
+    SMTP_AUTH=$SMTP_AUTH
     SMTP_FROMNAME="$SMTP_FROMNAME"
     SMTP_FROMADDRESS="$SMTP_FROMADDRESS"
     SMTP_HOST="$SMTP_HOST"
@@ -151,7 +154,7 @@ add_initial_settings_if_missing() {
 
 # Function to create initial settings
 create_app_settings() {
-    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, cronjob_pw, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', '$APP_CRON_PW', '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', CURRENT_TIMESTAMP);"
+    mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, cronjob_pw, smtp_enable_auth, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', '$APP_CRON_PW', $SMTP_AUTH, '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', CURRENT_TIMESTAMP);"
 
     echo "App settings profile created."
 }

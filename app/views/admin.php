@@ -665,7 +665,11 @@
     <h2>{{ __('app.mail') }}</h2>
 
     <form method="POST" action="{{ url('/admin/mail/save') }}">
-        @csrf 
+        @csrf
+
+        <div class="field">
+            <input type="checkbox" name="smtp_enable_auth" value="1" {{ (app('smtp_enable_auth') ? 'checked' : '') }}/>&nbsp;<span>{{ __('app.smtp_enable_auth') }}</span>
+        </div>
 
         <div class="field">
             <label class="label">{{ __('app.smtp_fromname') }}</label>

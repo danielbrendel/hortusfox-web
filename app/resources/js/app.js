@@ -1940,6 +1940,16 @@ window.createVueInstance = function(element) {
                 }
             },
 
+            setElementGroupStatus: function(container, tagname, type, flag) {
+                let subelems = document.querySelector(container).getElementsByTagName(tagname);
+                
+                for (let i = 0; i < subelems.length; i++) {
+                    if (subelems[i].type === type) {
+                        subelems[i].disabled = flag;
+                    }
+                }
+            },
+
             validateAndSubmitForm: function(form, button) {
                 let origtext = button.innerHTML;
                 button.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;' + window.vue.loading_please_wait; 

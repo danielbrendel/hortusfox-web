@@ -3270,6 +3270,11 @@ fieldset .field {
     background-color: rgb(50, 50, 50);
 }
 
+.admin-mail input:disabled, .admin-mail select:disabled {
+    color: rgb(100, 100, 100);
+    background-color: rgb(55, 55, 55);
+}
+
 .admin-themes p {
     color: rgb(150, 150, 150);
     margin-bottom: 30px;

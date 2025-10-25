@@ -11,6 +11,8 @@ class UpgradeModule {
      */
     private static function upgradeTo5dot3()
     {
+        AppModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS smtp_enable_auth BOOLEAN NOT NULL DEFAULT 1');
+
         PlantsModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS lifespan VARCHAR(512) NULL');
 
         $plants = PlantsModel::raw('SELECT * FROM `@THIS`');

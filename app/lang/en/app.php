@@ -500,5 +500,6 @@ return [
 	'years' => 'Years',
 	'recurring_time_with_scope' => '{time} {scope}',
 	'sorting_type_cutting_month' => 'Cutting month',
-	'sorting_type_date_of_purchase' => 'Date of purchase'
+	'sorting_type_date_of_purchase' => 'Date of purchase',
+	'smtp_enable_auth' => 'Enable authentication'
 ];

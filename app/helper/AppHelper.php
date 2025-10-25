@@ -49,6 +49,7 @@ function url_query($ident, $precedence, $default = '')
  */
 function app_mail_config()
 {
+    $_ENV['SMTP_AUTH'] = app('smtp_enable_auth');
     $_ENV['SMTP_FROMNAME'] = app('smtp_fromname');
     $_ENV['SMTP_FROMADDRESS'] = app('smtp_fromaddress');
     $_ENV['SMTP_HOST'] = app('smtp_host');

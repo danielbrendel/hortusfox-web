@@ -48,6 +48,7 @@ class AppModel_Migration {
         $this->database->add('cronjob_pw VARCHAR(512) NOT NULL DEFAULT \'\'');
         $this->database->add('custom_head_code TEXT NULL DEFAULT \'\'');
         $this->database->add('overlay_alpha VARCHAR(512) NULL');
+        $this->database->add('smtp_enable_auth BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('smtp_fromname VARCHAR(512) NULL');
         $this->database->add('smtp_fromaddress VARCHAR(512) NULL');
         $this->database->add('smtp_host VARCHAR(512) NULL');
