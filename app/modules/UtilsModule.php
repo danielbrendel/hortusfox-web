@@ -397,7 +397,7 @@ class UtilsModule {
                 return $content;
             } else if (($type === 'last_watered') || ($type === 'last_repotted') || ($type === 'last_fertilised') || ($type === 'date_of_purchase')) {
                 return date('Y-m-d', strtotime($content));
-            } else if ($type === 'health_state') {
+            } else if (($type === 'health_state') || ($type === 'lifespan')) {
                 return __('app.' . $content);
             } else if ($type === 'hardy') {
                 if (is_null($content)) {

@@ -41,6 +41,7 @@ return [
 	'lifespan_annual' => 'Annual',
 	'lifespan_biennial' => 'Biennial',
 	'lifespan_perennial' => 'Perennial',
+	'sorting_type_lifespan' => 'Lifespan',
 	'cutting_month' => 'Cutting month',
 	'date_of_purchase' => 'Date of purchase',
 	'humidity' => 'Humidity',
