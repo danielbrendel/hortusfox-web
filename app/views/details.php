@@ -130,36 +130,6 @@
 				</tr>
 				@endif
 
-				@if (plant_attr('perennial'))
-				<tr>
-					<td><strong>{{ __('app.perennial') }}</strong></td>
-					<td>
-						@if (!is_null($plant->get('perennial')))
-							{!! ($plant->get('perennial')) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!}
-						@else
-							<span class="is-not-available">N/A</span>
-						@endif
-
-						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'perennial', '{{ __('app.perennial') }}', {{ ($plant->get('perennial')) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span>
-					</td>
-				</tr>
-				@endif
-
-				@if (plant_attr('annual'))
-				<tr>
-					<td><strong>{{ __('app.annual') }}</strong></td>
-					<td>
-						@if (!is_null($plant->get('annual')))
-							{!! ($plant->get('annual')) ? '<span class="is-color-yes">' . __('app.yes') . '</span>' : '<span class="is-color-no">' . __('app.no') . '</span>' !!}
-						@else
-							<span class="is-not-available">N/A</span>
-						@endif
-
-						<span class="float-right"><a href="javascript:void(0);" onclick="window.vue.showEditBoolean({{ $plant->get('id') }}, 'annual', '{{ __('app.annual') }}', {{ ($plant->get('annual')) ? 'true' : 'false' }});"><i class="fas fa-edit is-color-darker"></i></a></span>
-					</td>
-				</tr>
-				@endif
-
 				@if (plant_attr('lifespan'))
 				<tr>
 					<td><strong>{{ __('app.lifespan') }}</strong></td>
