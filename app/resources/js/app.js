@@ -1170,6 +1170,7 @@ window.createVueInstance = function(element) {
             startBackup: function(button, plants, gallery, tasks, inventory, calendar) {
                 let oldText = button.innerHTML;
                 button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
+                button.disabled = true;
 
                 window.vue.ajaxRequest('post', window.location.origin + '/export/start', {
                     plants: plants,
@@ -1179,6 +1180,7 @@ window.createVueInstance = function(element) {
                     calendar: calendar
                 }, function(response) {
                     button.innerHTML = oldText;
+                    button.disabled = false;
 
                     if (response.code == 200) {
                         let export_result = document.getElementById('export-result');
@@ -1195,6 +1197,7 @@ window.createVueInstance = function(element) {
             startImport: function(button, file, locations, plants, gallery, tasks, inventory, calendar) {
                 let oldText = button.innerHTML;
                 button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;' + oldText;
+                button.disabled = true;
                 
                 let formData = new FormData();
                 formData.append('import', file.files[0]);
@@ -1207,6 +1210,7 @@ window.createVueInstance = function(element) {
 
                 window.vue.ajaxRequest('post', window.location.origin + '/import/start', formData, function(response) {
                     button.innerHTML = oldText;
+                    button.disabled = false;
 
                     if (response.code == 200) {
                         let import_result = document.getElementById('import-result');
