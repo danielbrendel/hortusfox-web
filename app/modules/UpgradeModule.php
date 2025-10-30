@@ -9,6 +9,13 @@ class UpgradeModule {
     /**
      * @return void
      */
+    private static function upgradeTo5dot4()
+    {
+    }
+
+    /**
+     * @return void
+     */
     private static function upgradeTo5dot3()
     {
         AppModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS smtp_enable_auth BOOLEAN NOT NULL DEFAULT 1');
