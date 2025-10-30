@@ -389,7 +389,7 @@ class UtilsModule {
     public static function readablePlantAttribute($content, $type)
     {
         try {
-            if ((!$content) && ($type !== 'perennial')) {
+            if (!$content) {
                 return 'N/A';
             }
 
