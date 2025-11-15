@@ -44,6 +44,7 @@
   - [Docker](#docker)
   - [Installer](#installer)
   - [Manual](#manual)
+  - [AquaShell](#aquashell)
 - [Cronjobs](#cronjobs)
 - [Application testing](#application-testing)
 - [System requirements](#system-requirements)
@@ -327,6 +328,35 @@ INSERT INTO `LocationsModel` (`id`, `name`, `icon`, `active`, `created_at`) VALU
 ```
 
 The mandatory field is the name of the location (e.g. garden, living room, kitchen, etc).
+
+### AquaShell
+
+If you have [AquaShell](https://github.com/danielbrendel/dnyAquaShell) installed, you can also use the installer script to install the project
+on your machine. Therefore the following requirements must be met:
+- Web server with PHP and MariaDB installed
+- Composer package manager installed
+- PHP, MariaDB and Composer must be available via the commandline
+- Create a `do_install` file in the project root directory, so that the installer is enabled
+
+If all these requirements are met, you can launch the installer script either interactively or via script arguments.
+
+#### Interactive usage
+
+Run the installer script
+```sh
+aquashell scripts/install.dnys --launch
+```
+
+The installer will prompt you with all required input fields. The `--launch` will lead the script to launch `http://localhost` in your default browser when finished.
+
+#### Usage with script arguments
+
+If you want to run the installer script without any prompts, you can just pass every required input field as script arguments
+```sh
+aquashell scripts/install.dnys --workspace "Your workspace name" --username "Your admin profile name" --email "your@loginmail.tld" --password "your-login-password" --database "hortusfox" --dbhost "localhost" --dbport "3306" --dbuser "root" --dbpw "your-access-password" --continue --launch
+```
+
+**Note**: If you don't have a database access password (e.g. due to a local XAMPP installation), you can pass `--dbpw "!"` to specify an empty password.
 
 ## Cronjobs
 
