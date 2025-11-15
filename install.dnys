@@ -6,6 +6,21 @@
 # It's mandatory that PHP, MariaDB and Composer are installed and available via the commandline.
 # Also your web server and mariadb server must be launched before running this script.
 #
+# This script can be launched in interactive mode, or with the following arguments
+#  * --workspace "Your workspace name"
+#  * --username "Your admin profile name"
+#  * --email "your@loginmail.tld"
+#  * --password "your-login-password"
+#  * --database "hortusfox"
+#  * --dbhost "localhost"
+#  * --dbport "3306"
+#  * --dbuser "root"
+#  * --dbpw "your-access-password"
+#  * --continue (skips the confirmation prompt)
+#  * --launch (opens http://localhost in your default browser)
+# You can run the script as follows:
+# > aquashell install.dnys [opt:arguments]
+#
 
 require "auto";
 require "dialog";
@@ -26,6 +41,41 @@ global szInputDbPort string;
 global szInputDbUser string;
 global szInputDbPw string;
 global szInputContinue string;
+global szArgumentValue string;
+global bArgumentExists bool;
+
+function CmdHas bool(search string)
+{
+    result false;
+
+    if (%argc, -gr, 1) {
+        for (i, 1, %argc, -inc) {
+            if ("%argv[%i]", -eq, "%search") {
+                result true;
+            };
+        };
+    };
+};
+
+function CmdPair string(key string)
+{
+    result "";
+
+    if (%argc, -gr, 1) {
+        for (i, 1, %argc, -inc) {
+            if ("%argv[%i]", -eq, "%key") {
+                local varIncr int;
+
+                set varIncr <= %i;
+                ++ varIncr;
+
+                if (%varIncr, -ls, %argc) {
+                    result "%argv[%varIncr]";
+                };
+            };
+        };
+    };
+};
 
 function ValidateIndicatorFile void()
 {
@@ -133,6 +183,16 @@ function StepAddAdminUser void()
 	sys {mysql -u root -e "INSERT INTO `%szInputDbName`.`UserModel` (name, email, password, admin) VALUES('%szInputUserName', '%szInputUserEmail', '%szHashedPassword', 1)"};
 };
 
+function CheckLaunch void()
+{
+	local bCmdHasResult bool;
+
+	call CmdHas("--launch") => bCmdHasResult;
+	if (%bCmdHasResult, -eq, true) {
+		aut_run "http://localhost" "" "" void;
+	};
+};
+
 function CleanUp void()
 {
 	local bRemovalOperationStatus bool;
@@ -150,22 +210,83 @@ call ValidateIndicatorFile();
 print "Welcome to the HortusFox commandline installation%CR%LF";
 print "Please fill out the following questions before the installation can take place.%CR%LF";
 
-input szInputWorkspaceName "Enter workspace name: ";
-input szInputUserName "Enter your name: ";
-input szInputUserEmail "Enter your e-mail: ";
-input szInputUserPassword "Enter login password: ";
-input szInputDbName "Enter database name: ";
-input szInputDbHost "Enter database host: ";
-input szInputDbPort "Enter database port: ";
-input szInputDbUser "Enter database user: ";
-input szInputDbPw "Enter database password: ";
+call CmdPair("--workspace") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputWorkspaceName <= "%szArgumentValue";
+} else {
+	input szInputWorkspaceName "Enter workspace name: ";
+};
 
-input szInputContinue "All set. Do you want to continue? (y/n) ";
-s_lower szInputContinue;
+call CmdPair("--username") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputUserName <= "%szArgumentValue";
+} else {
+	input szInputUserName "Enter your name: ";
+};
 
-if ("%szInputContinue", -eq, "n") {
-	print "Aborted by user";
-	exit;
+call CmdPair("--email") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputUserEmail <= "%szArgumentValue";
+} else {
+	input szInputUserEmail "Enter your e-mail: ";
+};
+
+call CmdPair("--password") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputUserPassword <= "%szArgumentValue";
+} else {
+	input szInputUserPassword "Enter login password: ";
+};
+
+call CmdPair("--database") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputDbName <= "%szArgumentValue";
+} else {
+	input szInputDbName "Enter database name: ";
+};
+
+call CmdPair("--dbhost") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputDbHost <= "%szArgumentValue";
+} else {
+	input szInputDbHost "Enter database host: ";
+};
+
+call CmdPair("--dbport") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputDbPort <= "%szArgumentValue";
+} else {
+	input szInputDbPort "Enter database port: ";
+};
+
+call CmdPair("--dbuser") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	set szInputDbUser <= "%szArgumentValue";
+} else {
+	input szInputDbUser "Enter database user: ";
+};
+
+call CmdPair("--dbpw") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	if (%szArgumentValue, -eq, "!") {
+		set szArgumentValue <= "";
+	};
+
+	set szInputDbPw <= "%szArgumentValue";
+} else {
+	input szInputDbPw "Enter database password: ";
+};
+
+call CmdHas("--continue") => bArgumentExists;
+if (%bArgumentExists, -nt, true) {
+	input szInputContinue "All set. Do you want to continue? (y/n) ";
+
+	s_lower szInputContinue;
+	
+	if ("%szInputContinue", -eq, "n") {
+		print "Aborted by user";
+		exit;
+	};
 };
 
 print "Proceeding with installation...%CR%LF";
@@ -189,6 +310,6 @@ print "> Adding admin user";
 call StepAddAdminUser();
 
 print "%CR%LF>> Installation done <<!%CR%LF";
-aut_run "http://localhost" "" "" void;
 
+call CheckLaunch();
 call CleanUp();
