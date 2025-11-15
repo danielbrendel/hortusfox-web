@@ -44,39 +44,6 @@ global szInputContinue string;
 global szArgumentValue string;
 global bArgumentExists bool;
 
-function CmdHas bool(search string)
-{
-    result false;
-
-    if (%argc, -gr, 1) {
-        for (i, 1, %argc, -inc) {
-            if ("%argv[%i]", -eq, "%search") {
-                result true;
-            };
-        };
-    };
-};
-
-function CmdPair string(key string)
-{
-    result "";
-
-    if (%argc, -gr, 1) {
-        for (i, 1, %argc, -inc) {
-            if ("%argv[%i]", -eq, "%key") {
-                local varIncr int;
-
-                set varIncr <= %i;
-                ++ varIncr;
-
-                if (%varIncr, -ls, %argc) {
-                    result "%argv[%varIncr]";
-                };
-            };
-        };
-    };
-};
-
 function ValidateIndicatorFile void()
 {
 	local bIndicatorFileExists bool;
@@ -90,7 +57,7 @@ function ValidateIndicatorFile void()
 
 function StepComposer void()
 {
-	sys {composer install --ignore-platform-reqs};
+	sys {composer install --ignore-platform-reqs --working-dir "%szCurrentScriptPath"};
 };
 
 function StepEnvironmentConfig void()
@@ -159,7 +126,7 @@ function StepEnvironmentConfig void()
 
 function StepDatabaseCreation void()
 {
-	sys {mysql -u root -e "CREATE DATABASE IF NOT EXISTS `%szInputDbName`"};
+	sys {mysql -u %szInputDbUser -e "CREATE DATABASE IF NOT EXISTS `%szInputDbName`"};
 };
 
 function StepSeedingTables void()
@@ -171,7 +138,7 @@ function StepSeedingTables void()
 
 function StepCreateAppConfig void()
 {
-	sys {mysql -u root -e "INSERT INTO `%szInputDbName`.`AppModel` (workspace) VALUES('%szInputWorkspaceName')"};
+	sys {mysql -u %szInputDbUser -e "INSERT INTO `%szInputDbName`.`AppModel` (workspace) VALUES('%szInputWorkspaceName')"};
 };
 
 function StepAddAdminUser void()
@@ -180,7 +147,7 @@ function StepAddAdminUser void()
 	
 	sys {php -r "echo password_hash('%szInputUserPassword', PASSWORD_BCRYPT);"} szHashedPassword;
 
-	sys {mysql -u root -e "INSERT INTO `%szInputDbName`.`UserModel` (name, email, password, admin) VALUES('%szInputUserName', '%szInputUserEmail', '%szHashedPassword', 1)"};
+	sys {mysql -u %szInputDbUser -e "INSERT INTO `%szInputDbName`.`UserModel` (name, email, password, admin) VALUES('%szInputUserName', '%szInputUserEmail', '%szHashedPassword', 1)"};
 };
 
 function CheckLaunch void()
@@ -205,10 +172,11 @@ function CleanUp void()
 
 getscriptpath szCurrentScriptPath;
 
+exec "%szCurrentScriptPath/scripts/args.dnys";
+
 call ValidateIndicatorFile();
 
 print "Welcome to the HortusFox commandline installation%CR%LF";
-print "Please fill out the following questions before the installation can take place.%CR%LF";
 
 call CmdPair("--workspace") => szArgumentValue;
 if (%szArgumentValue, -nt, "") {

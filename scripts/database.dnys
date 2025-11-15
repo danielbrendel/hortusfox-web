@@ -1,0 +1,45 @@
+# Helper script to setup initial database settings
+
+require "dialog";
+require "fileio";
+
+global _helper_database_script_path string;
+getscriptpath _helper_database_script_path;
+
+function create_database_file void()
+{
+    local database_name string;
+    local database_user string;
+	local tmstamp string;
+	local hfile int;
+	
+	input database_name "Please enter the database name: ";
+    input database_user "Please enter the database user: ";
+	
+	fmtdatetime "%F %T" tmstamp;
+	
+	fopen "%_helper_database_script_path/scripts/tmp/db.conf.dnys" false hfile;
+	if (%hfile, -nt, %FIO_INVALID_HANDLE) {
+		fwriteline %hfile "# Auto-generated at %tmstamp";
+		fwriteline %hfile "";
+		fwriteline %hfile { const DATABASE_NAME string <= "%database_name"; };
+        fwriteline %hfile { const DATABASE_USER string <= "%database_user"; };
+		
+		fclose %hfile;
+	};
+};
+
+function setup_database_file void()
+{
+	local flag bool;
+
+	fexists "%_helper_database_script_path/scripts/tmp/db.conf.dnys" flag;
+
+	if (%flag, -eq, false) {
+		call create_database_file() => void;
+	};
+
+	exec "%_helper_database_script_path/scripts/tmp/db.conf.dnys";
+};
+
+call setup_database_file() => void;

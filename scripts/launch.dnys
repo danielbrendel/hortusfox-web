@@ -13,10 +13,10 @@ require "fileio";
 
 const SERVER_PORT int <= 8000;
 
-global project_path string;
+global script_path string;
 global server_url string;
 
-getscriptpath project_path;
+getscriptpath script_path;
 
 set server_url <= "http://localhost";
 if (%SERVER_PORT, -nt, 80) {
@@ -39,7 +39,7 @@ function create_path_file void()
 	
 	fmtdatetime "%F %T" tmstamp;
 	
-	fopen "%project_path/paths.dnys" false hfile;
+	fopen "%script_path/scripts/tmp/paths.conf.dnys" false hfile;
 	if (%hfile, -nt, %FIO_INVALID_HANDLE) {
 		fwriteline %hfile "# Auto-generated at %tmstamp";
 		fwriteline %hfile "";
@@ -54,23 +54,23 @@ function setup_path_file void()
 {
 	local flag bool;
 
-	fexists "%project_path/paths.dnys" flag;
+	fexists "%script_path/scripts/tmp/paths.conf.dnys" flag;
 
 	if (%flag, -eq, false) {
 		call create_path_file() => void;
 	};
 
-	exec "%project_path/paths.dnys";
+	exec "%script_path/scripts/tmp/paths.conf.dnys";
 };
 
 function setup_env void()
 {
 	local flag bool;
 
-	fexists "%project_path/.env" flag;
+	fexists "%script_path/.env" flag;
 
 	if (%flag, -eq, false) {
-		fcopy "%project_path/.env.example" "%project_path/.env" flag;
+		fcopy "%script_path/.env.example" "%script_path/.env" flag;
 	};
 };
 
@@ -78,10 +78,10 @@ function setup_deps void()
 {
 	local flag bool;
 
-	dexists "%project_path/vendor" flag;
+	dexists "%script_path/vendor" flag;
 
 	if (%flag, -eq, false) {
-		sys {composer install --ignore-platform-reqs --working-dir "%project_path"};
+		sys {composer install --ignore-platform-reqs --working-dir "%script_path"};
 	};
 };
 
@@ -90,7 +90,7 @@ function launch_web_service void()
 	aut_run "%APACHE_PATH/httpd.exe" "" "%APACHE_PATH" void;
 	aut_run "%MARIADB_PATH/mysqld.exe" "--defaults-file=%MARIADB_PATH/my.ini --standalone" "%MARIADB_PATH" void;
 
-	aut_run "php" "asatru serve %SERVER_PORT" "%project_path" void;
+	aut_run "php" "asatru serve %SERVER_PORT" "%script_path" void;
 	aut_run "%server_url" "" "" void;
 };
 

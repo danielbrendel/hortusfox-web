@@ -1,0 +1,25 @@
+# Clear current cache
+
+global szCurrentScriptPath string;
+getscriptpath szCurrentScriptPath;
+
+exec "%szCurrentScriptPath/scripts/database.dnys";
+
+function clear_cache void()
+{
+    local bDirExists bool;
+
+    sys {mysql -u %DATABASE_USER -e "DELETE FROM `%DATABASE_NAME`.`CacheModel`"};
+
+    dexists "%szCurrentScriptPath/cache/HTML" bDirExists;
+    if (%bDirExists, -eq, true) {
+        sys {rmdir /S /Q "%szCurrentScriptPath/cache/HTML"};
+    };
+
+    dexists "%szCurrentScriptPath/cache/URI" bDirExists;
+    if (%bDirExists, -eq, true) {
+        sys {rmdir /S /Q "%szCurrentScriptPath/cache/URI"};
+    };
+};
+
+call clear_cache();

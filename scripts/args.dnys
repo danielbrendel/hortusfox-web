@@ -1,0 +1,34 @@
+# Helper script to handle script arguments via the command line
+
+function CmdHas bool(search string)
+{
+    result false;
+
+    if (%argc, -gr, 1) {
+        for (i, 1, %argc, -inc) {
+            if ("%argv[%i]", -eq, "%search") {
+                result true;
+            };
+        };
+    };
+};
+
+function CmdPair string(key string)
+{
+    result "";
+
+    if (%argc, -gr, 1) {
+        for (i, 1, %argc, -inc) {
+            if ("%argv[%i]", -eq, "%key") {
+                local varIncr int;
+
+                set varIncr <= %i;
+                ++ varIncr;
+
+                if (%varIncr, -ls, %argc) {
+                    result "%argv[%varIncr]";
+                };
+            };
+        };
+    };
+};
