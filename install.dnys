@@ -1,0 +1,194 @@
+# HortusFox install script
+#
+# This script installs HortusFox on the current system
+# 
+# Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell) as scripting shell.
+# It's mandatory that PHP, MariaDB and Composer are installed and available via the commandline.
+# Also your web server and mariadb server must be launched before running this script.
+#
+
+require "auto";
+require "dialog";
+require "fileio";
+require "strings";
+
+const C_GITHUB_URL string <= "https://github.com/danielbrendel/hortusfox-web";
+const C_SERVICE_URL string <= "https://www.hortusfox.com";
+
+global szCurrentScriptPath string;
+global szInputWorkspaceName string;
+global szInputUserName string;
+global szInputUserEmail string;
+global szInputUserPassword string;
+global szInputDbName string;
+global szInputDbHost string;
+global szInputDbPort string;
+global szInputDbUser string;
+global szInputDbPw string;
+global szInputContinue string;
+
+function ValidateIndicatorFile void()
+{
+	local bIndicatorFileExists bool;
+	
+	fexists "%szCurrentScriptPath/do_install" bIndicatorFileExists;
+	if (%bIndicatorFileExists, -eq, false) {
+		print "Indicator file not found! Aborting...";
+		exit;
+	};
+};
+
+function StepComposer void()
+{
+	sys {composer install --ignore-platform-reqs};
+};
+
+function StepEnvironmentConfig void()
+{
+	local hEnvFile int;
+	local bFileOpened bool;
+
+	fopen "%szCurrentScriptPath/.env" false hEnvFile;
+	fisopen %hEnvFile bFileOpened;
+	if (%bFileOpened, -eq, true) {
+		fwriteline %hEnvFile "# App settings";
+		fwriteline %hEnvFile {APP_NAME="HortusFox"};
+		fwriteline %hEnvFile {APP_VERSION="5.5"};
+		fwriteline %hEnvFile {APP_AUTHOR="Daniel Brendel"};
+		fwriteline %hEnvFile {APP_CONTACT="dbrendel1988@gmail.com"};
+		fwriteline %hEnvFile {APP_DEBUG=true};
+		fwriteline %hEnvFile {APP_BASEDIR=""};
+		fwriteline %hEnvFile {APP_LANG="en"};
+		fwriteline %hEnvFile {APP_WORKSPACE="%szInputWorkspaceName"};
+		fwriteline %hEnvFile {APP_OVERDUETASK_HOURS=10};
+		fwriteline %hEnvFile {APP_CRONJOB_MAILLIMIT=5};
+		fwriteline %hEnvFile {APP_GITHUB_URL="%C_GITHUB_URL"};
+		fwriteline %hEnvFile {APP_SERVICE_URL="%C_SERVICE_URL"};
+		fwriteline %hEnvFile "";
+		fwriteline %hEnvFile "# Session";
+		fwriteline %hEnvFile {SESSION_ENABLE=true};
+		fwriteline %hEnvFile {SESSION_DURATION=31536000};
+		fwriteline %hEnvFile {SESSION_NAME=null};
+		fwriteline %hEnvFile "";
+		fwriteline %hEnvFile "# Photo resize factors";
+		fwriteline %hEnvFile {PHOTO_RESIZE_FACTOR_DEFAULT=1.0};
+		fwriteline %hEnvFile {PHOTO_RESIZE_FACTOR_1=0.5};
+		fwriteline %hEnvFile {PHOTO_RESIZE_FACTOR_2=0.4};
+		fwriteline %hEnvFile {PHOTO_RESIZE_FACTOR_3=0.4};
+		fwriteline %hEnvFile {PHOTO_RESIZE_FACTOR_4=0.3};
+		fwriteline %hEnvFile {PHOTO_RESIZE_FACTOR_5=0.2};
+		fwriteline %hEnvFile "";
+		fwriteline %hEnvFile "# Database settings";
+		fwriteline %hEnvFile {DB_ENABLE=true};
+		fwriteline %hEnvFile {DB_HOST="%szInputDbHost"};
+		fwriteline %hEnvFile {DB_USER="%szInputDbUser"};
+		fwriteline %hEnvFile {DB_PASSWORD="%szInputDbPw"};
+		fwriteline %hEnvFile {DB_PORT=%szInputDbPort};
+		fwriteline %hEnvFile {DB_DATABASE="%szInputDbName"};
+		fwriteline %hEnvFile {DB_DRIVER=mysql};
+		fwriteline %hEnvFile {DB_CHARSET="utf8mb4"};
+		fwriteline %hEnvFile "";
+		fwriteline %hEnvFile "# SMTP settings";
+		fwriteline %hEnvFile {SMTP_AUTH=true};
+		fwriteline %hEnvFile {SMTP_FROMNAME=""};
+		fwriteline %hEnvFile {SMTP_FROMADDRESS=""};
+		fwriteline %hEnvFile {SMTP_HOST=""};
+		fwriteline %hEnvFile {SMTP_PORT=587};
+		fwriteline %hEnvFile {SMTP_USERNAME=""};
+		fwriteline %hEnvFile {SMTP_PASSWORD=""};
+		fwriteline %hEnvFile {SMTP_ENCRYPTION=tls};
+		fwriteline %hEnvFile "";
+		fwriteline %hEnvFile "# Logging";
+		fwriteline %hEnvFile {LOG_ENABLE=true};
+		fclose %hEnvFile;
+	} else {
+		print "Error: Could not create .env";
+		exit;
+	};
+};
+
+function StepDatabaseCreation void()
+{
+	sys {mysql -u root -e "CREATE DATABASE IF NOT EXISTS `%szInputDbName`"};
+};
+
+function StepSeedingTables void()
+{
+	sys {php asatru migrate:fresh};
+	sys {php asatru calendar:classes};
+	sys {php asatru plants:attributes};
+};
+
+function StepCreateAppConfig void()
+{
+	sys {mysql -u root -e "INSERT INTO `%szInputDbName`.`AppModel` (workspace) VALUES('%szInputWorkspaceName')"};
+};
+
+function StepAddAdminUser void()
+{
+	local szHashedPassword string;
+	
+	sys {php -r "echo password_hash('%szInputUserPassword', PASSWORD_BCRYPT);"} szHashedPassword;
+
+	sys {mysql -u root -e "INSERT INTO `%szInputDbName`.`UserModel` (name, email, password, admin) VALUES('%szInputUserName', '%szInputUserEmail', '%szHashedPassword', 1)"};
+};
+
+function CleanUp void()
+{
+	local bRemovalOperationStatus bool;
+	
+	fremove "%szCurrentScriptPath/do_install" bRemovalOperationStatus;
+	if (%bRemovalOperationStatus, -nt, true) {
+		print "Warning: Could not remove indicator file";
+	};
+};
+
+getscriptpath szCurrentScriptPath;
+
+call ValidateIndicatorFile();
+
+print "Welcome to the HortusFox commandline installation%CR%LF";
+print "Please fill out the following questions before the installation can take place.%CR%LF";
+
+input szInputWorkspaceName "Enter workspace name: ";
+input szInputUserName "Enter your name: ";
+input szInputUserEmail "Enter your e-mail: ";
+input szInputUserPassword "Enter login password: ";
+input szInputDbName "Enter database name: ";
+input szInputDbHost "Enter database host: ";
+input szInputDbPort "Enter database port: ";
+input szInputDbUser "Enter database user: ";
+input szInputDbPw "Enter database password: ";
+
+input szInputContinue "All set. Do you want to continue? (y/n) ";
+s_lower szInputContinue;
+
+if ("%szInputContinue", -eq, "n") {
+	print "Aborted by user";
+	exit;
+};
+
+print "Proceeding with installation...%CR%LF";
+
+print "> Installing composer";
+call StepComposer();
+
+print "> Creating environment config";
+call StepEnvironmentConfig();
+
+print "> Creating database";
+call StepDatabaseCreation();
+
+print "> Seeding tables";
+call StepSeedingTables();
+
+print "> Creating app config";
+call StepCreateAppConfig();
+
+print "> Adding admin user";
+call StepAddAdminUser();
+
+print "%CR%LF>> Installation done <<!%CR%LF";
+aut_run "http://localhost" "" "" void;
+
+call CleanUp();
