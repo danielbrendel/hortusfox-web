@@ -5,6 +5,9 @@
 # Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell), Windows and PHP with Apache & MariaDB (e.g. XAMPP installation)
 # On first start you'll be prompted to specify the paths to httpd and mysqld executables.
 #
+# You can run the script from the project's root directory as follows:
+# > aquashell scripts/launch.dnys
+#
 
 require "array";
 require "auto";

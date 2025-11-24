@@ -2,6 +2,9 @@
 #
 # Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell) as scripting shell.
 #
+# You can run the script from the project's root directory as follows:
+# > aquashell scripts/clear-cache.dnys
+#
 
 global szCurrentScriptPath string;
 getscriptpath szCurrentScriptPath;
