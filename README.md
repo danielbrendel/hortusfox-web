@@ -48,11 +48,12 @@
 - [Cronjobs](#cronjobs)
 - [Application testing](#application-testing)
 - [System requirements](#system-requirements)
-- [External Services](#external-services)
-  - [App Icons](#app-icons)
-  - [Weather Forecast](#weather-forecast)
-  - [Plant Identification](#plant-identification)
+- [External services](#external-services)
+  - [App icons](#app-icons)
+  - [Weather forecast](#weather-forecast)
+  - [Plant identification](#plant-identification)
   - [Plant information](#plant-information)
+- [Maintenance scripts](#maintenance-scripts)
 - [Contributing](#contributing)
 - [Security](#security)
 
@@ -428,7 +429,7 @@ Testing data should be specified as environment variables in the `php` section v
 - SMTP server for e-mailing
 - Docker with Docker Compose for containerization
 
-## External Services
+## External services
 
 There are features that rely on external services. Some of these features are mandatory, while others can be enabled if desired.
 
@@ -448,6 +449,15 @@ The project uses the [Pl@ntNet API](https://my.plantnet.org/) to identify plants
 ### Plant information
 
 The project uses the [Global Biodiversity Information Facility](https://techdocs.gbif.org/en/) in order to query plant data on various occasions. As of now you do not need to obtain an extra API key in order for this to work.
+
+## Maintenance scripts
+
+There are various [AquaShell](https://github.com/danielbrendel/dnyAquaShell) scripts in the `/scripts` directory that can be used for maintenance tasks. These are for local development only, and are optional. The following scripts are currently available:
+
+- clear-cache.dnys: A script to clear the current application cache (both database and folders).
+- install.dnys: A script to install the project to the local system.
+- launch.dnys: A script to quickly launch a web server and open the project in the default browser.
+- vercheck.dnys: A script that prints the local version of the project, the latest available version, and whether there is a new version available or not.
 
 ## Contributing
 
