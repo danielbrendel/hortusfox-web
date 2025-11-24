@@ -454,10 +454,15 @@ The project uses the [Global Biodiversity Information Facility](https://techdocs
 
 There are various [AquaShell](https://github.com/danielbrendel/dnyAquaShell) scripts in the `/scripts` directory that can be used for maintenance tasks. These are for local development only, and are optional. The following scripts are currently available:
 
-- clear-cache.dnys: A script to clear the current application cache (both database and folders).
-- install.dnys: A script to install the project to the local system.
-- launch.dnys: A script to quickly launch a web server and open the project in the default browser.
-- vercheck.dnys: A script that prints the local version of the project, the latest available version, and whether there is a new version available or not.
+- **clear-cache.dnys**: A script to clear the current application cache (both database and folders).
+- **install.dnys**: A script to install the project to the local system.
+- **launch.dnys**: A script to quickly launch a web server and open the project in the default browser.
+- **vercheck.dnys**: A script that prints the local version of the project, the latest available version, and whether there is a new version available or not.
+
+There following directories do also exist in the `/scripts` directory:
+
+- **incl**: This directory contains useful helper scripts that can be used by entry-point scripts.
+- **tmp**: This directory contains scripts or other files that are intended to be temporary and/or automatically generated/overwritten.
 
 ## Contributing
 

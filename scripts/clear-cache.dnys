@@ -9,7 +9,7 @@
 global szCurrentScriptPath string;
 getscriptpath szCurrentScriptPath;
 
-exec "%szCurrentScriptPath/scripts/database.dnys";
+exec "%szCurrentScriptPath/scripts/incl/database.dnys";
 
 function clear_cache void()
 {

@@ -172,7 +172,7 @@ function CleanUp void()
 
 getscriptpath szCurrentScriptPath;
 
-exec "%szCurrentScriptPath/scripts/args.dnys";
+exec "%szCurrentScriptPath/scripts/incl/args.dnys";
 
 call ValidateIndicatorFile();
 
