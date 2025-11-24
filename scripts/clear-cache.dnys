@@ -1,4 +1,7 @@
 # Clear current cache
+#
+# Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell) as scripting shell.
+#
 
 global szCurrentScriptPath string;
 getscriptpath szCurrentScriptPath;

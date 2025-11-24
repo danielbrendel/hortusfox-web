@@ -1,0 +1,71 @@
+# Check and compare local HortusFox version with latest available version
+#
+# Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell) as scripting shell.
+#
+
+require "fileio";
+require "strings";
+
+const HF_ENDPOINT string <= "https://www.hortusfox.com/software/version";
+const HF_TOK_VERSION string <= "version";
+
+global szCurrentScriptPath string;
+getscriptpath szCurrentScriptPath;
+
+function query_local_version string()
+{
+	local szLocalVer string;
+
+	sys {php -r "echo include(__DIR__ . '/app/config/version.php');"} szLocalVer;
+
+	result "%szLocalVer";
+};
+
+function query_hortusfox_version string()
+{
+	local response string;
+	local reslen int;
+	local verpos int;
+	local verlen int;
+	local vertok string;
+
+	result "";
+
+	sys {curl "%HF_ENDPOINT" --silent} response;
+
+	s_replace response "{" "";
+	s_replace response "}" "";
+
+	s_getlen "%HF_TOK_VERSION" verlen;
+	s_getlen "%response" reslen;
+	
+	s_find "%response" "%HF_TOK_VERSION" verpos;
+	
+	if (%verpos, -gr, 0) {
+		+= verpos %verlen;
+		+= verpos 3;
+		
+		-= reslen %verpos;
+		-- reslen;
+		
+		s_substr "%response" %verpos %reslen vertok;
+		
+		result "%vertok";
+	};
+};
+
+global szLocalVersion string;
+global szLatestVersion string;
+
+call query_local_version() => szLocalVersion;
+print "Local version: %szLocalVersion";
+
+call query_hortusfox_version() => szLatestVersion;
+print "Latest version: %szLatestVersion";
+
+if ("%szLocalVersion", -nt, "%szLatestVersion") {
+	print "%CR%LFYour version does not match the latest version %szLatestVersion";
+	print "Get the latest version here: https://github.com/danielbrendel/hortusfox-web/releases/tag/v%szLatestVersion %CR%LF";
+} else {
+	print "%CR%LFYour version does match the latest version";
+};
