@@ -18,8 +18,8 @@
 #  * --dbpw "your-access-password"
 #  * --continue (skips the confirmation prompt)
 #  * --launch (opens http://localhost in your default browser)
-# You can run the script as follows:
-# > aquashell install.dnys [opt:arguments]
+# You can run the script from the project's root directory as follows:
+# > aquashell scripts/install.dnys [opt:arguments]
 #
 
 require "auto";
