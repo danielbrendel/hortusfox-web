@@ -348,7 +348,7 @@ Run the installer script
 aquashell scripts/install.dnys --launch
 ```
 
-The installer will prompt you with all required input fields. The `--launch` will lead the script to launch `http://localhost` in your default browser when finished.
+The installer will prompt you with all required input fields. The `--launch` argument will lead the script to launch `http://localhost` in your default browser when finished.
 
 #### Usage with script arguments
 
@@ -356,6 +356,8 @@ If you want to run the installer script without any prompts, you can just pass e
 ```sh
 aquashell scripts/install.dnys --workspace "Your workspace name" --username "Your admin profile name" --email "your@loginmail.tld" --password "your-login-password" --database "hortusfox" --dbhost "localhost" --dbport "3306" --dbuser "root" --dbpw "your-access-password" --continue --launch
 ```
+
+Since there is a confirmation prompt once all input fields are provided, you can use the `--continue` argument to skip this confirmation.
 
 **Note**: If you don't have a database access password (e.g. due to a local XAMPP installation), you can pass `--dbpw "!"` to specify an empty password.
 
@@ -459,10 +461,10 @@ There are various [AquaShell](https://github.com/danielbrendel/dnyAquaShell) scr
 - **launch.dnys**: A script to quickly launch a web server and open the project in the default browser.
 - **vercheck.dnys**: A script that prints the local version of the project, the latest available version, and whether there is a new version available or not.
 
-There following directories do also exist in the `/scripts` directory:
+The following directories do also exist in the `/scripts` directory:
 
 - **incl**: This directory contains useful helper scripts that can be used by entry-point scripts.
-- **tmp**: This directory contains scripts or other files that are intended to be temporary and/or automatically generated/overwritten.
+- **tmp**: This directory contains scripts, or other files, that are intended to be temporary and/or automatically generated/overwritten.
 
 ## Contributing
 
