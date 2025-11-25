@@ -7,8 +7,22 @@
 @include('flashmsg.php')
 
 <div class="sorting">
+	<div class="sorting-control sorting-mobile-only">
+		<a class="{{ ((((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) && ((!isset($_COOKIE['list_show_style'])) || ($_COOKIE['list_show_style'] === 'cards'))) ? 'is-selected' : '') }}" href="{{ url('/plants/history?show=cards' . url_query('sorting', '&') . url_query('direction', '&')) }}">
+			<i class="far fa-file-image"></i>
+			<span>{{ __('app.plant_sorting_view_cards') }}</span>
+		</a>
+	</div>
+
+	<div class="sorting-control sorting-mobile-only sorting-mobile-only-last-elem">
+		<a class="{{ ((((isset($_GET['show'])) && ($_GET['show'] === 'list')) || ((isset($_COOKIE['list_show_style'])) && ($_COOKIE['list_show_style'] === 'list'))) ? 'is-selected' : '') }}" href="{{ url('/plants/history?show=list' . url_query('sorting', '&') . url_query('direction', '&')) }}">
+			<i class="far fa-list-alt"></i>
+			<span>{{ __('app.plant_sorting_view_list') }}</span>
+		</a>
+	</div>
+
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/plants/history?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') }}' + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') }}';">
+		<select onchange="location.href = '{{ url('/plants/history?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') }}' + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') . url_query('show', '&') }}';">
 			@foreach ($sorting_types as $sorting_type)
 				<option value="{{ $sorting_type }}" {{ ((isset($_GET['sorting'])) && ($_GET['sorting'] === $sorting_type)) ? 'selected' : '' }}>{{ __('app.sorting_type_' . $sorting_type) }}</option>
 			@endforeach
@@ -16,7 +30,7 @@
 	</div>
 
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/plants/history?sorting=' . ((isset($_GET['sorting'])) ? $_GET['sorting'] : 'name')) }}&direction=' + this.value + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') }}';">
+		<select onchange="location.href = '{{ url('/plants/history?sorting=' . ((isset($_GET['sorting'])) ? $_GET['sorting'] : 'name')) }}&direction=' + this.value + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') . url_query('show', '&') }}';">
 			@foreach ($sorting_dirs as $sorting_dir)
 				<option value="{{ $sorting_dir }}" {{ ((isset($_GET['direction'])) && ($_GET['direction'] === $sorting_dir)) ? 'selected' : '' }}>{{ __('app.sorting_dir_' . $sorting_dir) }}</option>
 			@endforeach
@@ -39,42 +53,60 @@
 <div class="plants">
 	@if (count($history) > 0)
 		@foreach ($history as $plant)
-			<div id="plant-card-container-{{ $plant->get('id') }}" class="plant-card is-pointer" onclick="window.open('{{ url('/plants/details/' . $plant->get('id')) }}');">
-				<div class="plant-card-image plant-card-dropdown" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
-					<div class="plant-card-overlay"></div>
-				</div>
+			@if (((!isset($_GET['show'])) || ($_GET['show'] === 'cards')) && ((!isset($_COOKIE['list_show_style'])) || ($_COOKIE['list_show_style'] === 'cards')))
+				<div id="plant-card-container-{{ $plant->get('id') }}" class="plant-card is-pointer" onclick="window.open('{{ url('/plants/details/' . $plant->get('id')) }}');">
+					<div class="plant-card-image plant-card-dropdown" style="background-image: url('{{ abs_photo($plant->get('photo')) }}');">
+						<div class="plant-card-overlay"></div>
+					</div>
 
-				<div class="plant-card-options">
-					<div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
-						<div class="dropdown-trigger">
-							<div class="is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'), document.getElementById('plant-card-container-{{ $plant->get('id') }}'));"><i class="fas fa-caret-down"></i></div>
-						</div>
-						<div class="dropdown-menu" role="menu">
-							<div class="dropdown-content">
-								<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.unmarkHistorical({{ $plant->get('id') }});" class="dropdown-item">
-									<i class="fas fa-undo-alt"></i>&nbsp;{{ __('app.restore_from_history') }}
-								</a>
+					<div class="plant-card-options">
+						<div class="dropdown is-right" id="plant-card-item-{{ $plant->get('id') }}">
+							<div class="dropdown-trigger">
+								<div class="is-pointer" onclick="event.stopPropagation(); window.vue.toggleDropdown(document.getElementById('plant-card-item-{{ $plant->get('id') }}'), document.getElementById('plant-card-container-{{ $plant->get('id') }}'));"><i class="fas fa-caret-down"></i></div>
+							</div>
+							<div class="dropdown-menu" role="menu">
+								<div class="dropdown-content">
+									<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.unmarkHistorical({{ $plant->get('id') }});" class="dropdown-item">
+										<i class="fas fa-undo-alt"></i>&nbsp;{{ __('app.restore_from_history') }}
+									</a>
 
-								<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.deletePlant({{ $plant->get('id') }}, 0);" class="dropdown-item">
-									<i class="fas fa-trash-alt"></i>&nbsp;{{ __('app.remove') }}
-								</a>
+									<a href="javascript:void(0);" onclick="event.stopPropagation(); window.vue.deletePlant({{ $plant->get('id') }}, 0);" class="dropdown-item">
+										<i class="fas fa-trash-alt"></i>&nbsp;{{ __('app.remove') }}
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="plant-card-title plant-card-title-with-hint">
-					<div class="plant-card-title-first">
-						@if ($user->get('show_plant_id'))
-							<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
-						@endif
-						
-						<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
+					<div class="plant-card-title plant-card-title-with-hint">
+						<div class="plant-card-title-first">
+							@if ($user->get('show_plant_id'))
+								<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
+							@endif
+							
+							<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
+						</div>
+
+						<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
 					</div>
-
-					<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
 				</div>
-			</div>
+			@elseif (((isset($_GET['show'])) && ($_GET['show'] === 'list')) || ((isset($_COOKIE['list_show_style'])) && ($_COOKIE['list_show_style'] === 'list')))
+				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
+					<div class="plant-list-item plant-filter-text-root">
+						<div class="plant-list-id">#{{ sprintf('%04d', $plant->get('id')) }}</div>
+						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</div>
+						<div class="plant-list-name-short">{{ ((!is_null($plant->get('clone_num'))) ? '(' . strval($plant->get('clone_num') + 1) . ') ' : '') . substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
+						<div class="plant-list-scientific-name plant-list-item-hide-small-devices">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
+						@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
+							<div class="plant-list-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>
+						@else
+							@if ($plant->get('last_edited_date'))
+							<div class="plant-list-last-edited">{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</div>
+							@endif
+						@endif
+					</div>
+				</a>
+			@endif
 		@endforeach
 	@else
 		<div class="plants-empty">

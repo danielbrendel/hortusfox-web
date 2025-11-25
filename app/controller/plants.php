@@ -766,11 +766,17 @@ class PlantsController extends BaseController {
 		$limit = $request->params()->query('limit', null);
 		$sorting = $request->params()->query('sorting', null);
 		$direction = $request->params()->query('direction', null);
+		$show = $request->params()->query('show', null);
 
 		$user = UserModel::getAuthUser();
 
 		$years = PlantsModel::getHistoryYears();
 		$history = PlantsModel::getHistory($year, $limit, $sorting, $direction);
+
+		if ((is_string($show)) && ((isset($_COOKIE['list_show_style'])) && ($_COOKIE['list_show_style'] !== $show))) {
+			setcookie('list_show_style', $show, time() + 31536000, '/');
+			return redirect('/plants/history');
+		}
 
 		return parent::view(['content', 'history'], [
 			'user' => $user,
