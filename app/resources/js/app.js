@@ -588,13 +588,16 @@ window.createVueInstance = function(element) {
                 let dueDate = document.getElementById('task-item-due-' + id);
                 if ((dueDate) && (dueDate.childNodes.length > 0)) {
                     document.getElementById('inpEditTaskDueDate').value = dueDate.childNodes[0].innerText;
-                    document.getElementById('inpEditTaskRecurringTime').value = dueDate.childNodes[2].dataset.time;
-                    document.getElementById('inpEditTaskRecurringScope').value = dueDate.childNodes[2].dataset.scope;
+                    document.getElementById('inpEditTaskRecurringTime').value = (typeof dueDate.childNodes[2] !== 'undefined') ? dueDate.childNodes[2].dataset.time : '';
+                    document.getElementById('inpEditTaskRecurringScope').value = (typeof dueDate.childNodes[2] !== 'undefined') ? dueDate.childNodes[2].dataset.scope : '';
 
                     document.getElementById('edit-recurring-flag').classList.remove('is-hidden');
                     document.getElementById('edit-recurring-time').classList.remove('is-hidden');
 
                     document.getElementById('inpEditTaskRecurringFlag').checked = document.getElementById('inpEditTaskRecurringTime').value.length > 0;
+                    if (!document.getElementById('inpEditTaskRecurringFlag').checked) {
+                        document.getElementById('edit-recurring-time').classList.add('is-hidden');
+                    }
                 } else {
                     document.getElementById('inpEditTaskDueDate').value = '';
 

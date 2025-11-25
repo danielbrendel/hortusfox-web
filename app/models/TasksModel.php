@@ -95,6 +95,10 @@ class TasksModel extends \Asatru\Database\Model {
                 $done = $item->get('done');
             }
 
+            if (($recurring_time !== null) && (is_numeric($recurring_time))) {
+                $recurring_time = static::calcScope($recurring_time, $recurring_scope);
+            }
+
             static::raw('UPDATE `@THIS` SET title = ?, description = ?, due_date = ?, recurring_time = ?, recurring_scope = ?, done = ? WHERE id = ?', [$title, $description, $due_date, $recurring_time, $recurring_scope, $done, $taskId]);
 
             if (!$api) {
@@ -340,5 +344,19 @@ class TasksModel extends \Asatru\Database\Model {
         }
 
         return $quantity;
+    }
+
+    /**
+     * @param $quantity
+     * @param $scope
+     * @return int
+     */
+    public static function translateScope($quantity, $scope)
+    {
+        if (isset(static::$scope_quantities[$scope])) {
+            return $quantity / static::$scope_quantities[$scope];
+        }
+
+        return null;
     }
 }
