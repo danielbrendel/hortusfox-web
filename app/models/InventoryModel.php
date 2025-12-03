@@ -137,8 +137,18 @@ class InventoryModel extends \Asatru\Database\Model {
                     throw new \Exception('createThumbFile failed');
                 }
 
-                if (file_exists(public_path('/img/' . $row->get('photo')))) {
-                    unlink(public_path('/img/' . $row->get('photo')));
+                if (is_string($row->get('photo'))) {
+                    $oldThumbFile = public_path('/img/' . $row->get('photo'));
+
+                    if (file_exists($oldThumbFile)) {
+                        unlink($oldThumbFile);
+                    }
+
+                    $oldOrigFile = public_path('/img/' . str_replace('_thumb', '', $row->get('photo')));
+
+                    if (file_exists($oldOrigFile)) {
+                        unlink($oldOrigFile);
+                    }
                 }
 
                 static::raw('UPDATE `@THIS` SET photo = ? WHERE id = ?', [
@@ -269,8 +279,18 @@ class InventoryModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid item: ' . $id);
             }
 
-            if ((is_string($row->get('photo'))) && (strlen($row->get('photo')) > 0) && (file_exists(public_path('/img/' . $row->get('photo'))))) {
-                unlink(public_path('/img/' . $row->get('photo')));
+            if (is_string($row->get('photo'))) {
+                $oldThumbFile = public_path('/img/' . $row->get('photo'));
+
+                if (file_exists($oldThumbFile)) {
+                    unlink($oldThumbFile);
+                }
+
+                $oldOrigFile = public_path('/img/' . str_replace('_thumb', '', $row->get('photo')));
+
+                if (file_exists($oldOrigFile)) {
+                    unlink($oldOrigFile);
+                }
             }
 
             static::raw('DELETE FROM `@THIS` WHERE id = ?', [$row->get('id')]);
