@@ -795,6 +795,8 @@ window.createVueInstance = function(element) {
                         if (elem) {
                             elem.remove();
                         }
+
+                        window.vue.bInvGroupChanges = true;
                     } else {
                         alert(response.msg);
                     }
