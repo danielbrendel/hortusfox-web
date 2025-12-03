@@ -111,9 +111,9 @@ class AppModel extends \Asatru\Database\Model {
     public static function getMailEncryptionTypes()
     {
         return [
-            'none' => 'none',
-            'TLS' => 'tls',
-            'SSL' => 'smtps'
+            'none' => 'N/A',
+            'tls' => 'STARTTLS',
+            'smtps' => 'SMTPS'
         ];
     }
 }

@@ -718,7 +718,7 @@
             <div class="control">
                 <select class="input" name="smtp_encryption">
                     @foreach ($mail_encryption_types as $mail_encryption_type_key => $mail_encryption_type_value)
-                        <option value="{{ $mail_encryption_type_value }}" {{ (($mail_encryption_type_value === app('smtp_encryption')) ? 'selected' : '') }}>{{ $mail_encryption_type_key }}</option>
+                        <option value="{{ $mail_encryption_type_key }}" {{ (($mail_encryption_type_key === app('smtp_encryption')) ? 'selected' : '') }}>{{ $mail_encryption_type_value }}</option>
                     @endforeach
                 </select>
             </div>
