@@ -298,6 +298,10 @@ class InventoryController extends BaseController {
 				$token = 'token_' . substr(md5(random_bytes(55)), 0, 10);
 			}
 
+			if ((!is_string($label)) || (strlen($label) === 0)) {
+				$label = 'label_' . substr(md5(random_bytes(55)), 0, 10);
+			}
+
 			$itemid = InvGroupModel::addItem($token, $label);
 
 			return json([
