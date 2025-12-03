@@ -306,7 +306,9 @@ class InventoryController extends BaseController {
 
 			return json([
 				'code' => 200,
-				'itemid' => $itemid
+				'itemid' => $itemid,
+				'token' => $token,
+				'label' => $label
 			]);
 		} catch (\Exception $e) {
 			return json([

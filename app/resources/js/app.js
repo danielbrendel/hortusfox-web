@@ -742,8 +742,8 @@ window.createVueInstance = function(element) {
                         let newRow = document.createElement('tr');
                         newRow.id = 'inventory-group-item-' + response.itemid;
                         newRow.innerHTML = `
-                            <td><a href="javascript:void(0);" id="inventory-group-elem-token-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'token', document.getElementById('inventory-group-elem-token-` + response.itemid + `').innerText);">` + token + `</a></td>
-                            <td><a href="javascript:void(0);" id="inventory-group-elem-label-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'label', document.getElementById('inventory-group-elem-label-` + response.itemid + `').innerText);">` + label + `</a></td>
+                            <td><a href="javascript:void(0);" id="inventory-group-elem-token-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'token', document.getElementById('inventory-group-elem-token-` + response.itemid + `').innerText);">` + response.token + `</a></td>
+                            <td><a href="javascript:void(0);" id="inventory-group-elem-label-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'label', document.getElementById('inventory-group-elem-label-` + response.itemid + `').innerText);">` + response.label + `</a></td>
                             <td><a href="javascript:void(0);" onclick="window.vue.removeInventoryGroupItem(` + response.itemid + `, 'inventory-group-item-` + response.itemid + `');"><i class="fas fa-times"></i></a></td>
                         `;
 
