@@ -1,7 +1,7 @@
 {
   "name": "asatruphp",
   "version": "1.0.0",
-  "description": "(C) 2019 - 2024 by Daniel Brendel",
+  "description": "A lightweight PHP framework",
   "main": "index.js",
   "directories": {},
   "scripts": {

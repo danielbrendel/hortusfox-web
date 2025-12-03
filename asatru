@@ -3,7 +3,7 @@
 /*
     Asatru PHP (dnyAsatruPHP) developed by Daniel Brendel
     
-    (C) 2019 - 2024 by Daniel Brendel
+    (C) 2019 - 2025 by Daniel Brendel
     
     Contact: dbrendel1988<at>gmail<dot>com
     GitHub: https://github.com/danielbrendel/
@@ -45,11 +45,29 @@ require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/helper.ph
 //Include CLI handler
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/console.php';
 
+//Require localization
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/locale.php';
+
+//Require view components
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/view.php';
+
 //Require database handler
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/database.php';
 
 //Require modules
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/modules.php';
+
+//Require event manager
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/events.php';
+
+//Require mail wrapper
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/mailwrapper.php';
+
+//Require SMTP mail handler
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/smtpmailer.php';
+
+//Require testing component
+require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/testing.php';
 
 //Require command handler
 require_once __DIR__ . '/vendor/danielbrendel/asatru-php-framework/src/commands.php';
