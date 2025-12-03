@@ -49,6 +49,7 @@ window.createVueInstance = function(element) {
             bShowInventoryBulkPrint: false,
             bShowInventoryExport: false,
             bShowManageGroups: false,
+            bInvGroupChanges: false,
             bShowRestorePassword: false,
             bShowCreateNewUser: false,
             bShowCreateNewLocation: false,
@@ -748,6 +749,8 @@ window.createVueInstance = function(element) {
                         `;
 
                         tbody.appendChild(newRow);
+
+                        window.vue.bInvGroupChanges = true;
                     } else {
                         button.innerText = window.vue.addItem;
                         alert(response.msg);
@@ -794,6 +797,19 @@ window.createVueInstance = function(element) {
                         alert(response.msg);
                     }
                 });
+            },
+
+            showInvGroupModal: function() {
+                window.vue.bInvGroupChanges = false;
+                window.vue.bShowManageGroups = true;
+            },
+
+            closeInvGroupModal: function() {
+                window.vue.bShowManageGroups = false;
+
+                if (window.vue.bInvGroupChanges) {
+                    location.reload();
+                }
             },
 
             refreshChat: function(auth_user)

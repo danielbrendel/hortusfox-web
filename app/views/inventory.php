@@ -8,7 +8,7 @@
     <div class="margin-vertical is-inline-block">
         <a class="button is-success" href="javascript:void(0);" onclick="window.vue.bShowAddInventoryItem = true;">{{ __('app.create_new') }}</a>
         &nbsp;
-        <a class="button is-link" href="javascript:void(0);" onclick="window.vue.bShowManageGroups = true;">{{ __('app.manage_groups') }}</a>
+        <a class="button is-link" href="javascript:void(0);" onclick="window.vue.showInvGroupModal();">{{ __('app.manage_groups') }}</a>
         &nbsp;
         <a class="button" href="javascript:void(0);" onclick="window.vue.bShowInventoryBulkPrint = true;">{{ __('app.bulk_print_qr_codes') }}</a>
         &nbsp;

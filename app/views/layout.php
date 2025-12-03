@@ -875,7 +875,7 @@
 				<div class="modal-card">
 					<header class="modal-card-head is-stretched">
 						<p class="modal-card-title">{{ __('app.manage_groups') }}</p>
-						<button class="delete" aria-label="close" onclick="window.vue.bShowManageGroups = false;"></button>
+						<button class="delete" aria-label="close" onclick="window.vue.closeInvGroupModal();"></button>
 					</header>
 					<section class="modal-card-body is-stretched">
 						<table class="table inventory-groups">
@@ -917,7 +917,7 @@
 						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; window.vue.createInventoryGroup(document.getElementById('inventory-group-token').value, document.getElementById('inventory-group-label').value, document.getElementById('inventory-group-list'), this);">{{ __('app.add') }}</button>
 					</section>
 					<footer class="modal-card-foot is-stretched">
-						<button class="button" onclick="window.vue.bShowManageGroups = false;">{{ __('app.close') }}</button>
+						<button class="button" onclick="window.vue.closeInvGroupModal();">{{ __('app.close') }}</button>
 					</footer>
 				</div>
 			</div>
