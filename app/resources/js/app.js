@@ -774,6 +774,8 @@ window.createVueInstance = function(element) {
                             } else if (what === 'label') {
                                 document.getElementById('inventory-group-elem-label-' + id).innerText = input;
                             }
+
+                            window.vue.bInvGroupChanges = true;
                         } else {
                             alert(response.msg);
                         }
