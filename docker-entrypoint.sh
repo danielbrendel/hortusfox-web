@@ -166,13 +166,13 @@ update_proxy_auth_settings() {
     echo "Updated proxy authentication settings: status=$( [ "$PROXY_ENABLE" = "true" ] && echo enabled || echo disabled )"
 }
 
-# Function to check if the admin user exists and add if not
+# Function to check if at least one admin user exists and add if not
 add_admin_user_if_missing() {
-    local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM UserModel WHERE email='$ADMIN_EMAIL';")
+    local user_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM UserModel WHERE admin = 1;")
     if [[ $user_count -gt 0 ]]; then
-        echo "Admin user ($ADMIN_EMAIL) already exists. Skipping user creation."
+        echo "Admin user already exists. Skipping user creation."
     else
-        echo "Admin user ($ADMIN_EMAIL) does not exist. Creating..."
+        echo "Admin user does not exist. Creating..."
         create_admin_user
     fi
 }
