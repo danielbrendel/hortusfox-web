@@ -1523,11 +1523,14 @@ window.createVueInstance = function(element) {
                 const url = URL.createObjectURL(blob);
 
                 let wnd = window.open(url, title, 'height=auto, width=auto');
+
+                wnd.onafterprint = function() {
+                    wnd.close();
+                    URL.revokeObjectURL(url);
+                };
+
                 wnd.onload = function() {
                     wnd.print();
-                    wnd.close();
-
-                    URL.revokeObjectURL(url);
                 };
             },
 
@@ -1567,11 +1570,14 @@ window.createVueInstance = function(element) {
                                 const url = URL.createObjectURL(blob);
 
                                 let wnd = window.open(url, location, 'height=auto, width=auto');
+
+                                wnd.onafterprint = function() {
+                                    wnd.close();
+                                    URL.revokeObjectURL(url);
+                                };
+                                
                                 wnd.onload = function() {
                                     wnd.print();
-                                    wnd.close();
-
-                                    URL.revokeObjectURL(url);
                                 };
                             } else {
                                 alert(response.msg);
@@ -1623,11 +1629,14 @@ window.createVueInstance = function(element) {
                                 const url = URL.createObjectURL(blob);
 
                                 let wnd = window.open(url, title, 'height=auto, width=auto');
+
+                                wnd.onafterprint = function() {
+                                    wnd.close();
+                                    URL.revokeObjectURL(url);
+                                };
+
                                 wnd.onload = function() {
                                     wnd.print();
-                                    wnd.close();
-
-                                    URL.revokeObjectURL(url);
                                 };
                             } else {
                                 alert(response.msg);
