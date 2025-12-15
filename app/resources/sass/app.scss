@@ -632,8 +632,9 @@ fieldset .field {
 }
 
 .location-footer {
-    position: relative;
-    bottom: -134px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
@@ -644,10 +645,6 @@ fieldset .field {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     @media screen and (max-width: 830px) {
         font-size: 0.75em;
-        bottom: -96px;
-    }
-    @media screen and (max-width: 450px) {
-        bottom: -141px;
     }
 }
 
