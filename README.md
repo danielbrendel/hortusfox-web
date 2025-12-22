@@ -459,6 +459,7 @@ There are various [AquaShell](https://github.com/danielbrendel/dnyAquaShell) scr
 - **clear-cache.dnys**: A script to clear the current application cache (both database and folders).
 - **install.dnys**: A script to install the project to the local system.
 - **launch.dnys**: A script to quickly launch a web server and open the project in the default browser.
+- **theme.dnys**: A script to manage local theme installations
 - **vercheck.dnys**: A script that prints the local version of the project, the latest available version, and whether there is a new version available or not.
 
 The following directories do also exist in the `/scripts` directory:
