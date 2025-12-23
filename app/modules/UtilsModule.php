@@ -581,4 +581,33 @@ class UtilsModule {
 
         return asset('img/nolocicon.jpg');
     }
+
+    /**
+     * @param $source
+     * @param $destination
+     * @return bool
+     */
+    public static function downloadFile($source, $destination)
+    {
+        $curl = curl_init();
+
+        $fp = fopen($destination, 'w+');
+        if (!$fp) {
+            return false;
+        }
+
+        curl_setopt($curl, CURLOPT_URL, $source);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($curl, CURLOPT_FILE, $fp);
+
+        curl_exec($curl);
+
+        if (curl_error($curl)) {
+            return false;
+        }
+
+        curl_close($curl);
+
+        return fclose($fp);
+    }
 }

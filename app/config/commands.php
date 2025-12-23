@@ -19,5 +19,8 @@ return [
     ['migrate:specific', 'Perform version specific migration upgrade', 'MigrationSpecific'],
     ['calendar:classes', 'Add default calendar classes', 'CalendarClsCommand'],
     ['plants:attributes', 'Add default plant attributes', 'AttributesCommand'],
-    ['cache:clear', 'Clear the entire cache', 'CacheClearCommand']
+    ['cache:clear', 'Clear the entire cache', 'CacheClearCommand'],
+    ['theme:list', 'List all installed themes', 'ThemeListCommand'],
+    ['theme:install', 'Install a theme', 'ThemeInstallCommand'],
+    ['theme:remove', 'Remove an installed theme', 'ThemeRemoveCommand']
 ];
