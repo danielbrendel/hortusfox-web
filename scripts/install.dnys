@@ -76,8 +76,12 @@ function StepEnvironmentConfig void()
 		fwriteline %hEnvFile {APP_WORKSPACE="%szInputWorkspaceName"};
 		fwriteline %hEnvFile {APP_OVERDUETASK_HOURS=10};
 		fwriteline %hEnvFile {APP_CRONJOB_MAILLIMIT=5};
-		fwriteline %hEnvFile {APP_GITHUB_URL="%APP_GITHUB_URL"};
-		fwriteline %hEnvFile {APP_SERVICE_URL="%APP_SERVICE_URL"};
+		fwriteline %hEnvFile {APP_GITHUB_URL="https://github.com/danielbrendel/hortusfox-web"};
+		fwriteline %hEnvFile {APP_SERVICE_URL="https://www.hortusfox.com"};
+		fwriteline %hEnvFile {APP_GITHUB_SPONSOR="https://github.com/sponsors/danielbrendel"};
+		fwriteline %hEnvFile {APP_DONATION_KOFI="https://ko-fi.com/danielbrendel"};
+		fwriteline %hEnvFile {APP_SOCIAL_DISCORD="https://discord.gg/kc6xGmjzVS"};
+		fwriteline %hEnvFile {APP_SOCIAL_BLUESKY="https://bsky.app/profile/danielbrendel.com";};
 		fwriteline %hEnvFile "";
 		fwriteline %hEnvFile "# Session";
 		fwriteline %hEnvFile {SESSION_ENABLE=true};
@@ -147,6 +151,11 @@ function StepAddAdminUser void()
 	sys {mysql -u %szInputDbUser -e "INSERT INTO `%szInputDbName`.`UserModel` (name, email, password, admin) VALUES('%szInputUserName', '%szInputUserEmail', '%szHashedPassword', 1)"};
 };
 
+function StepCreateAquaShellConfig void()
+{
+	sys {php asatru aquashell:config};
+};
+
 function CheckLaunch void()
 {
 	local bCmdHasResult bool;
@@ -170,7 +179,6 @@ function CleanUp void()
 getscriptpath szCurrentScriptPath;
 
 exec "%szCurrentScriptPath/scripts/incl/args.dnys";
-exec "%szCurrentScriptPath/scripts/tmp/urls.conf.dnys";
 
 call ValidateIndicatorFile();
 
@@ -274,6 +282,9 @@ call StepCreateAppConfig();
 
 print "> Adding admin user";
 call StepAddAdminUser();
+
+print "> Creating AquaShell config";
+call StepCreateAquaShellConfig();
 
 print "%CR%LF>> Installation done <<!%CR%LF";
 

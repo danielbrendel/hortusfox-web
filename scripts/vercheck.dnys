@@ -6,11 +6,15 @@
 require "fileio";
 require "strings";
 
-const HF_ENDPOINT string <= "https://www.hortusfox.com/software/version";
-const HF_TOK_VERSION string <= "version";
+const TOK_VERSION string <= "version";
 
 global szCurrentScriptPath string;
+global szLocalVersion string;
+global szLatestVersion string;
+
 getscriptpath szCurrentScriptPath;
+
+exec "%szCurrentScriptPath/scripts/tmp/urls.conf.dnys";
 
 function query_local_version string()
 {
@@ -31,15 +35,15 @@ function query_hortusfox_version string()
 
 	result "";
 
-	sys {curl "%HF_ENDPOINT" --silent} response;
+	sys {curl "%APP_SERVICE_URL/software/version" --silent} response;
 
 	s_replace response "{" "";
 	s_replace response "}" "";
 
-	s_getlen "%HF_TOK_VERSION" verlen;
+	s_getlen "%TOK_VERSION" verlen;
 	s_getlen "%response" reslen;
 	
-	s_find "%response" "%HF_TOK_VERSION" verpos;
+	s_find "%response" "%TOK_VERSION" verpos;
 	
 	if (%verpos, -gr, 0) {
 		+= verpos %verlen;
@@ -54,9 +58,6 @@ function query_hortusfox_version string()
 	};
 };
 
-global szLocalVersion string;
-global szLatestVersion string;
-
 call query_local_version() => szLocalVersion;
 print "Local version: %szLocalVersion";
 
@@ -65,7 +66,7 @@ print "Latest version: %szLatestVersion";
 
 if ("%szLocalVersion", -nt, "%szLatestVersion") {
 	print "%CR%LFYour version does not match the latest version %szLatestVersion";
-	print "Get the latest version here: https://github.com/danielbrendel/hortusfox-web/releases/tag/v%szLatestVersion %CR%LF";
+	print "Get the latest version here: %APP_GITHUB_URL/releases/tag/v%szLatestVersion %CR%LF";
 } else {
 	print "%CR%LFYour version does match the latest version";
 };

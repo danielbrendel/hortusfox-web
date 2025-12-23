@@ -7,18 +7,18 @@
 #  * --install "name"
 #  * --remove "name"
 # You can run the script from the project's root directory as follows:
-# > aquashell scripts/theme.dnys [arguments]
+# > aquashell scripts/themes.dnys [arguments]
 #
 
 require "fileio";
-
-const C_SERVICE_URL string <= "https://www.hortusfox.com";
 
 global szCurrentScriptPath string;
 global bArgumentExists bool;
 global szArgumentValue string;
 
 getscriptpath szCurrentScriptPath;
+
+exec "%szCurrentScriptPath/scripts/tmp/urls.conf.dnys";
 
 function ListInstalledThemes int(baseObject string, iteratedObject string)
 {
@@ -51,7 +51,7 @@ function install_theme void(themeName string)
 
     dexists "%szCurrentScriptPath/public/themes/%themeName" checkdir;
     if (%checkdir, -nt, true) {
-        sys {curl %C_SERVICE_URL/downloads/%themeName.zip --output %szCurrentScriptPath/public/themes/%themeName.zip --silent};
+        sys {curl %APP_SERVICE_URL/downloads/%themeName.zip --output %szCurrentScriptPath/public/themes/%themeName.zip --silent};
         sys {powershell -Command "Expand-Archive %szCurrentScriptPath/public/themes/%themeName.zip -DestinationPath %szCurrentScriptPath/public/themes"};
 
         fremove "%szCurrentScriptPath/public/themes/%themeName.zip" checkrem;
