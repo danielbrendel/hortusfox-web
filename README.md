@@ -94,7 +94,7 @@ There are many more features. You can see a list of features below.
 
 ### Docker
 
-Using Docker and Docker Compose simplifies the setup process and ensures consistency across different environments.
+You can use Docker and Docker Compose to simplify the setup process and ensure consistency across different environments.
 
 Prerequisites
 
