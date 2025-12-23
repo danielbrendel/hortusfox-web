@@ -467,6 +467,12 @@ The following directories do also exist in the `/scripts` directory:
 - **incl**: This directory contains useful helper scripts that can be used by entry-point scripts.
 - **tmp**: This directory contains scripts, or other files, that are intended to be temporary and/or automatically generated/overwritten.
 
+**Note**: Some scripts require specific configuration files. You can manually create them via the following command:
+
+```shell
+php asatru aquashell:config
+```
+
 ## Contributing
 
 Please view the [contribution guidelines](CONTRIBUTING.md) if you intend to contribute to this repository.
