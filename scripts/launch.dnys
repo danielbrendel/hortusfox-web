@@ -44,10 +44,10 @@ function create_path_file void()
 	
 	fopen "%script_path/scripts/tmp/paths.conf.dnys" false hfile;
 	if (%hfile, -nt, %FIO_INVALID_HANDLE) {
-		fwriteline %hfile "# Auto-generated at %tmstamp";
+		fwriteline %hfile "# AquaShell paths config, auto-generated at %tmstamp";
 		fwriteline %hfile "";
-		fwriteline %hfile { const APACHE_PATH string <= "%apache_path"; };
-		fwriteline %hfile { const MARIADB_PATH string <= "%mysql_path"; };
+		fwriteline %hfile {const APACHE_PATH string <= "%apache_path";};
+		fwriteline %hfile {const MARIADB_PATH string <= "%mysql_path";};
 		
 		fclose %hfile;
 	};
