@@ -27,9 +27,6 @@ require "dialog";
 require "fileio";
 require "strings";
 
-const C_GITHUB_URL string <= "https://github.com/danielbrendel/hortusfox-web";
-const C_SERVICE_URL string <= "https://www.hortusfox.com";
-
 global szCurrentScriptPath string;
 global szInputWorkspaceName string;
 global szInputUserName string;
@@ -79,8 +76,8 @@ function StepEnvironmentConfig void()
 		fwriteline %hEnvFile {APP_WORKSPACE="%szInputWorkspaceName"};
 		fwriteline %hEnvFile {APP_OVERDUETASK_HOURS=10};
 		fwriteline %hEnvFile {APP_CRONJOB_MAILLIMIT=5};
-		fwriteline %hEnvFile {APP_GITHUB_URL="%C_GITHUB_URL"};
-		fwriteline %hEnvFile {APP_SERVICE_URL="%C_SERVICE_URL"};
+		fwriteline %hEnvFile {APP_GITHUB_URL="%APP_GITHUB_URL"};
+		fwriteline %hEnvFile {APP_SERVICE_URL="%APP_SERVICE_URL"};
 		fwriteline %hEnvFile "";
 		fwriteline %hEnvFile "# Session";
 		fwriteline %hEnvFile {SESSION_ENABLE=true};
@@ -173,6 +170,7 @@ function CleanUp void()
 getscriptpath szCurrentScriptPath;
 
 exec "%szCurrentScriptPath/scripts/incl/args.dnys";
+exec "%szCurrentScriptPath/scripts/tmp/urls.conf.dnys";
 
 call ValidateIndicatorFile();
 
