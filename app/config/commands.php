@@ -22,5 +22,6 @@ return [
     ['cache:clear', 'Clear the entire cache', 'CacheClearCommand'],
     ['theme:list', 'List all installed themes', 'ThemeListCommand'],
     ['theme:install', 'Install a theme', 'ThemeInstallCommand'],
-    ['theme:remove', 'Remove an installed theme', 'ThemeRemoveCommand']
+    ['theme:remove', 'Remove an installed theme', 'ThemeRemoveCommand'],
+    ['aquashell:config', 'Create config file for AquaShell scripts', 'AquaShellConfigCommand']
 ];
