@@ -270,6 +270,9 @@ php asatru calendar:classes
 # Add default plant attributes if missing
 php asatru plants:attributes
 
+# Create AquaShell configuration files
+php asatru aquashell:config
+
 # Copy default images
 cp /tmp/img/* /var/www/html/public/img
 
