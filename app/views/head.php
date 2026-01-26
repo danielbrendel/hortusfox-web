@@ -12,7 +12,6 @@
 
 <script src="{{ asset('js/app.js', true) }}"></script>
 
-<!-- Marker: Webpack-injected styles go BEFORE this, theme styles load AFTER -->
 <meta name="webpack-styles-end" content="marker"/>
 
 @if ((ThemeModule::ready()) && (ThemeModule::data()->include))
