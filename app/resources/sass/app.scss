@@ -3700,3 +3700,18 @@ fieldset .field {
 .button-margin-left {
     margin-left: 5px;
 }
+
+.preview-image {
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    img {
+        vertical-align: middle;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
