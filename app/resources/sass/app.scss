@@ -415,12 +415,12 @@ a.navbar-burger:hover {
 
 .modal-card-body input, .modal-card-body select, .modal-card-body textarea, .modal-card-body table {
     background-color: rgb(57, 59, 63);
-    color: rgb(150, 150, 150);
+    color: rgb(250, 250, 250);
     border: 1px solid rgb(100, 100, 100);
 }
 
 .modal-card-body input::placeholder, .modal-card-body select::placeholder, .modal-card-body textarea::placeholder {
-    color: rgb(250, 250, 250);
+    color: rgb(150, 150, 150);
 }
 
 .modal-card-body hr {
