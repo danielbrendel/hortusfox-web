@@ -308,7 +308,7 @@
 			</div>
 
 			<div class="plant-notes-edit">
-				<a href="javascript:void(0);" onclick="window.vue.showEditMultilineText({{ $plant->get('id') }}, 'notes', document.getElementById('plant-notes-content').children[0].innerText, 'plant-notes-anchor');">
+				<a href="javascript:void(0);" onclick="window.vue.showEditMultilineText({{ $plant->get('id') }}, 'notes', (document.querySelector('#plant-notes-content pre')?.innerText || ''), 'plant-notes-anchor', '{{ __('app.notes_placeholder') }}');">
 					<i class="fas fa-edit is-color-darker"></i>
 				</a>
 			</div>

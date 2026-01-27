@@ -60,6 +60,7 @@ return [
 	'plant_warning' => 'Figyelmeztetés: Ez a növény különleges felügyeletet igényel. Indoklás: {reason}',
 	'notes' => 'Megjegyzések',
 	'no_notes_specified' => 'Még nincsenek megjegyzések',
+	'notes_placeholder' => 'Írja be a megjegyzéseit itt',
 	'select_month' => '- Válasszon hónapot -',
 	'select_light_level' => '- Válasszon megvilágítási szintet -',
 	'january' => 'Január',

@@ -60,6 +60,7 @@ return [
 	'plant_warning' => 'Warning: This plant requires special monitoring. Reason: {reason}',
 	'notes' => 'Notes',
 	'no_notes_specified' => 'No notes specified yet',
+	'notes_placeholder' => 'Enter your notes here',
 	'select_month' => '- Select month -',
 	'select_light_level' => '- Select light level -',
 	'january' => 'January',

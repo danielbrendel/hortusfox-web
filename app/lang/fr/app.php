@@ -60,6 +60,7 @@ return [
 	'plant_warning' => 'Attention: Cette plante nécessite une surveillance particulière. Raison: {reason}',
 	'notes' => 'Notes',
 	'no_notes_specified' => 'Aucune note n\'a été spécifiée pour l\'instant',
+	'notes_placeholder' => 'Entrez vos notes ici',
 	'select_month' => '- Sélectionner le mois -',
 	'select_light_level' => '- Sélectionner l\'ensoleillement -',
 	'january' => 'Janvier',
