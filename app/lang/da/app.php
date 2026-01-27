@@ -60,6 +60,7 @@ return [
 	'plant_warning' => 'Advarsel: Denne plante behøver særligt opsyn. Begrundelse: {reason}',
 	'notes' => 'Noter',
 	'no_notes_specified' => 'Ingen noter specificeret endnu',
+	'notes_placeholder' => 'Indtast dine noter her',
 	'select_month' => '- Vælg måned -',
 	'select_light_level' => '- Vælg lys niveau -',
 	'january' => 'Januar',

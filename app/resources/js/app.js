@@ -178,11 +178,12 @@ window.createVueInstance = function(element) {
                 window.vue.bShowEditText = true;
             },
 
-            showEditMultilineText: function(plant, property, defval, anchor = '')
+            showEditMultilineText: function(plant, property, defval, anchor = '', placeholder = '')
             {
                 document.getElementById('inpEditMultilineTextPlantId').value = plant;
                 document.getElementById('inpEditMultilineTextAttribute').value = property;
                 document.getElementById('inpEditMultilineTextValue').value = defval;
+                document.getElementById('inpEditMultilineTextValue').placeholder = placeholder;
                 document.getElementById('inpEditMultilineTextAnchor').value = anchor;
                 window.vue.bShowEditMultilineText = true;
             },

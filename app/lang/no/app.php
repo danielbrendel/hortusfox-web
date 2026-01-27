@@ -60,6 +60,7 @@ return [
 	'plant_warning' => 'Advarsel: Denne planten krever spesiell oppfølging. Årsak: {reason}',
 	'notes' => 'Notater',
 	'no_notes_specified' => 'Ingen notater er spesifisert ennå',
+	'notes_placeholder' => 'Skriv inn dine notater her',
 	'select_month' => '- Velg måned -',
 	'select_light_level' => '- Velg lysnivå -',
 	'january' => 'Januar',

@@ -60,6 +60,7 @@ return [
 	'plant_warning' => 'Uwaga: Roślina ta wymaga specjalnego monitorowania. Powód: {reason}',
 	'notes' => 'Notatki',
 	'no_notes_specified' => 'Nie dodano jeszcze notatek',
+	'notes_placeholder' => 'Wpisz swoje notatki tutaj',
 	'select_month' => '- Wybierz miesiąc -',
 	'select_light_level' => '- Wybierz poziom światła -',
 	'january' => 'Styczeń',

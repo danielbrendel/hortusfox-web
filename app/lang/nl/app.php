@@ -60,6 +60,7 @@ return [
 	'plant_warning' => 'Waarschuwing: Deze plant heeft speciale aandacht nodig. Reden: {reason}',
 	'notes' => 'Notities',
 	'no_notes_specified' => 'Geen notities toegevoegd',
+	'notes_placeholder' => 'Voer je notities hier in',
 	'select_month' => '- Selecteer maand -',
 	'select_light_level' => '- Selecteer lichtniveau -',
 	'january' => 'Januari',
