@@ -3702,16 +3702,8 @@ fieldset .field {
 }
 
 .preview-image {
-    width: 80vw;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 80vw;
+    max-height: 80vh;
+    vertical-align: middle;
     z-index: 1;
-
-    img {
-        vertical-align: middle;
-        max-width: 100%;
-        max-height: 100%;
-    }
 }

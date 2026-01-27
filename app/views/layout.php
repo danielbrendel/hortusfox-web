@@ -1162,9 +1162,7 @@
 			<div class="modal" :class="{'is-active': bShowPreviewImageModal}">
 				<div class="modal-background" onclick="window.vue.bShowPreviewImageModal = false;"></div>
 
-                <div class="preview-image">
-						<img id="preview-image-modal-img" alt="image">
-				</div>
+				<img id="preview-image-modal-img" alt="image" class="preview-image">
 
 				<button class="modal-close is-large" aria-label="close" onclick="window.vue.bShowPreviewImageModal = false;"></button>
 			</div>
