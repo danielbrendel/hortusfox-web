@@ -622,43 +622,77 @@
 <div class="admin-calendar {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'calendar')) ? 'is-hidden' : ''}}">
     <h2>{{ __('app.calendar') }}</h2>
 
-    <div class="admin-calendar-classes-list">
+    <form method="POST" action="{{ url('/admin/calendar/class/edit-all') }}" class="admin-calendar-classes-list">
+        @csrf
+        
+        <div class="admin-calendar-classes-header">
+            <p class="label">{{ __('app.calendar_class_ident') }}</p>
+            <p class="label">{{ __('app.calendar_class_name') }}</p>
+            <p class="label">{{ __('app.calendar_class_background') }}</p>
+            <p class="label">{{ __('app.calendar_class_border') }}</p>
+        </div>
+
         @foreach ($calendar_classes as $calendar_class)
-            <div class="admin-calendar-class" id="admin-calendar-class-item-{{ $calendar_class->get('id') }}">
-                <form method="POST" action="{{ url('/admin/calendar/class/edit') }}">
-                    @csrf
+            <div id="admin-calendar-class-item-{{ $calendar_class->get('id') }}" class="admin-calendar-class-item">
+                <input type="hidden" name="items[{{ $calendar_class->get('id') }}][id]" value="{{ $calendar_class->get('id') }}"/>
 
-                    <input type="hidden" name="id" value="{{ $calendar_class->get('id') }}"/>
+                <div class="admin-calendar-class-item-form-field">
+                    <label class="label" for="ident-{{ $calendar_class->get('id') }}">{{ __('app.calendar_class_ident') }}</label>
+                    <input
+                        type="text"
+                        id="ident-{{ $calendar_class->get('id') }}"
+                        class="input"
+                        name="items[{{ $calendar_class->get('id') }}][ident]"
+                        value="{{ $calendar_class->get('ident') }}"/>
+                </div>
+                
+                <div class="admin-calendar-class-item-form-field">
+                    <label class="label" for="name-{{ $calendar_class->get('id') }}">{{ __('app.calendar_class_name') }}</label>
+                    <input
+                        type="text"
+                        id="name-{{ $calendar_class->get('id') }}"
+                        class="input"
+                        name="items[{{ $calendar_class->get('id') }}][name]"
+                        value="{{ $calendar_class->get('name') }}"/>
+                </div>
+                
+                <div class="admin-calendar-class-item-form-field">
+                    <label class="label" for="background-{{ $calendar_class->get('id') }}">{{ __('app.calendar_class_color_background') }}</label>
+                    <input
+                        type="color"
+                        id="background-{{ $calendar_class->get('id') }}"
+                        class="input"
+                        name="items[{{ $calendar_class->get('id') }}][color_background]"
+                        value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_background')) }}"/>
+                </div>
+                
+                <div class="admin-calendar-class-item-form-field">
+                    <label class="label" for="border-{{ $calendar_class->get('id') }}">{{ __('app.calendar_class_border') }}</label>
+                    <input
+                        type="color"
+                        id="border-{{ $calendar_class->get('id') }}"
+                        class="input"
+                        name="items[{{ $calendar_class->get('id') }}][color_border]"
+                        value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_border')) }}"/>
+                </div>
 
-                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
-                        <input type="text" class="input" name="ident" value="{{ $calendar_class->get('ident') }}"/>
-                    </div>
-
-                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
-                        <input type="text" class="input" name="name" value="{{ $calendar_class->get('name') }}"/>
-                    </div>
-
-                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
-                        <input type="color" class="input" name="color_background" value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_background')) }}"/>
-                    </div>
-
-                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
-                        <input type="color" class="input" name="color_border" value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_border')) }}"/>
-                    </div>
-
-                    <div class="admin-calendar-class-actions">
-                        <span class="admin-calendar-class-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
-                        <span class="admin-calendar-class-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_calendar_class') }}')) { window.vue.removeCalendarClass('{{ $calendar_class->get('id') }}'); }">{{ __('app.remove') }}</a></span> 
-                    </div>
-                </form>
+                <div class="admin-calendar-class-actions">
+                    <button
+                        type="button"
+                        class="button is-danger"
+                        onclick="if (confirm('{{ __('app.confirm_remove_calendar_class') }}')) { window.vue.removeCalendarClass('{{ $calendar_class->get('id') }}'); }"
+                    >
+                        {{ __('app.remove') }}
+                    </button>
+                </div>
             </div>
         @endforeach
-    </div>
+        <div class="admin-calendar-classes-actions">
+            <button type="button" class="button is-info" onclick="window.vue.bShowCreateNewCalendarClass = true;">{{ __('app.add_calendar_class') }}</button>
+            <button type="submit" class="button is-success">{{ __('app.save_all') }}</button>
+        </div>
+    </form>
 
-    <div class="admin-calendar-classes-actions">
-        <span><a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowCreateNewCalendarClass = true;">{{ __('app.add_calendar_class') }}</a></span>
-        <span><a class="button is-success button-margin-left" href="javascript:void(0);" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>'; window.vue.saveAllAttributes('.admin-calendar-classes-list');">{{ __('app.save_all') }}</a></span>
-    </div>
 </div>
 
 <div class="admin-mail {{ ((!isset($_GET['tab'])) || ($_GET['tab'] !== 'mail')) ? 'is-hidden' : ''}}">
