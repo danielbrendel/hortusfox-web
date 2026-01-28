@@ -1,0 +1,13 @@
+{
+    "extends": ["stylelint-config-standard-scss"],
+    "ignoreFiles": ["**/*", "!**/*.scss", "**/public/**/*.scss"],
+    "rules": {
+        "selector-id-pattern": null,
+        "selector-class-pattern": null,
+        "selector-pseudo-class-no-unknown": true,
+        "at-rule-no-unknown": null,
+        "no-invalid-position-at-import-rule": null,
+        "function-no-unknown": null,
+        "import-notation": null
+    }
+}
