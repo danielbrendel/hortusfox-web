@@ -138,6 +138,7 @@ return [
     array('/admin/attributes/bulkcmd/remove', 'ANY', 'admin@remove_bulk_cmd'),
     array('/admin/calendar/class/add', 'POST', 'admin@add_calendar_class'),
     array('/admin/calendar/class/edit', 'POST', 'admin@edit_calendar_class'),
+    array('/admin/calendar/class/edit-all', 'POST', 'admin@edit_all_calendar_classes'),
     array('/admin/calendar/class/remove', 'POST', 'admin@remove_calendar_class'),
     array('/admin/media/logo', 'POST', 'admin@upload_media_logo'),
     array('/admin/media/banner', 'POST', 'admin@upload_media_banner'),

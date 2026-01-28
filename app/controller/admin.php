@@ -599,6 +599,38 @@ class AdminController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /admin/calendar/class/edit-all
+	 *
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_all_calendar_classes($request)
+	{
+		try {
+			$items = $_POST['items'] ?? [];
+			
+			foreach ($items as $item) {
+				$id = $item['id'] ?? null;
+				$ident = $item['ident'] ?? null;
+				$name = $item['name'] ?? null;
+				$color_background = $item['color_background'] ?? null;
+				$color_border = $item['color_border'] ?? null;
+				
+				if ($id) {
+					CalendarClassModel::editClass($id, $ident, $name, $color_background, $color_border);
+				}
+			}
+
+			FlashMessage::setMsg('success', __('app.calendar_classes_edited_successfully'));
+
+			return redirect('/admin?tab=calendar');
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return back();
+		}
+	}
+
+	/**
 	 * Handles URL: /admin/calendar/class/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
