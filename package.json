@@ -7,7 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production",
-    "watch": "webpack --watch --mode=development"
+    "watch": "webpack --watch --mode=development",
+    "lint:css": "stylelint \"**/*.scss\"",
+    "lint:css:fix": "stylelint \"**/*.scss\" --fix"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
     "css-loader": "^5.2.7",
     "sass": "^1.71.1",
     "sass-loader": "^10.5.2",
+    "stylelint-config-standard-scss": "^17.0.0",
     "webpack": "^5.90.3",
     "webpack-cli": "^4.10.0"
   },
