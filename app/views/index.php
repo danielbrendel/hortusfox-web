@@ -246,7 +246,7 @@
 							<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
 						@endif
 
-						<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
+						<span>{{ $plant->get('name') . (((PlantsModel::offspringCount($plant->get('id'))) || (PlantsModel::getDetails($plant->get('clone_origin')) !== null)) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
 					</div>
 				</div>
 			</a>

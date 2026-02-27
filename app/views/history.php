@@ -84,7 +84,7 @@
 								<span class="plant-card-title-plant-id">{{ $plant->get('id') }}</span>
 							@endif
 							
-							<span>{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
+							<span>{{ $plant->get('name') . (((PlantsModel::offspringCount($plant->get('id'))) || (PlantsModel::getDetails($plant->get('clone_origin')) !== null)) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</span>
 						</div>
 
 						<div class="plant-card-title-second">{{ date('Y-m-d', strtotime($plant->get('history_date'))) }}</div>
@@ -94,8 +94,8 @@
 				<a href="{{ url('/plants/details/' . $plant->get('id')) }}">
 					<div class="plant-list-item plant-filter-text-root">
 						<div class="plant-list-id">#{{ sprintf('%04d', $plant->get('id')) }}</div>
-						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') . ((!is_null($plant->get('clone_num'))) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</div>
-						<div class="plant-list-name-short">{{ ((!is_null($plant->get('clone_num'))) ? '(' . strval($plant->get('clone_num') + 1) . ') ' : '') . substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
+						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') . (((PlantsModel::offspringCount($plant->get('id'))) || (PlantsModel::getDetails($plant->get('clone_origin')) !== null)) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</div>
+						<div class="plant-list-name-short">{{ (((PlantsModel::offspringCount($plant->get('id'))) || (PlantsModel::getDetails($plant->get('clone_origin')) !== null)) ? '(' . strval($plant->get('clone_num') + 1) . ') ' : '') . substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
 						<div class="plant-list-scientific-name plant-list-item-hide-small-devices">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
 						@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
 							<div class="plant-list-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>

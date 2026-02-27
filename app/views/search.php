@@ -82,7 +82,7 @@
                                 <span class="plant-card-title-plant-id">{{ $plant['id'] }}</span>
                             @endif
 
-                            <span>{{ $plant['name'] . ((!is_null($plant['clone_num'])) ? ' (' . strval($plant['clone_num'] + 1) . ')' : '') }}</span>
+                            <span>{{ $plant['name'] . (((PlantsModel::offspringCount($plant['id'])) || (PlantsModel::getDetails($plant['clone_origin']) !== null)) ? ' (' . strval($plant['clone_num'] + 1) . ')' : '') }}</span>
                         </div>
                     </div>
                 </a>

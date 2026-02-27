@@ -163,7 +163,7 @@ class PlantsController extends BaseController {
 	 * Handles URL: /plants/details/{id}
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\ViewHandler
+	 * @return Asatru\View\ViewHandler|Asatru\View\RedirectHandler
 	 */
 	public function view_plant_details($request)
 	{
@@ -172,6 +172,9 @@ class PlantsController extends BaseController {
 		$plant_id = $request->arg('id');
 
 		$plant_data = PlantsModel::getDetails($plant_id);
+		if (!$plant_data) {
+			return redirect('/');
+		}
 
 		$plant_ident = '#' . sprintf('%04d', $plant_data->get('id'));
 		

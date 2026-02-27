@@ -884,10 +884,12 @@ class PlantsModel extends \Asatru\Database\Model {
             }
 
             $clone_origin = null;
-            if ($source->get('clone_num')) {
+            if (($source->get('clone_num')) && (static::getDetails($source->get('clone_origin')))) {
                 $clone_origin = $source->get('clone_origin');
             } else {
                 $clone_origin = $source->get('id');
+
+                static::raw('UPDATE `@THIS` SET clone_origin = NULL, clone_num = 0 WHERE id = ?', [$source->get('id')]);
             }
 
             static::raw('INSERT INTO `@THIS` (name, scientific_name, knowledge_link, tags, location, photo, last_watered, last_repotted, last_fertilised, lifespan, hardy, cutting_month, date_of_purchase, humidity, light_level, health_state, notes, last_edited_user, last_edited_date, clone_num, clone_origin) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
@@ -911,6 +913,20 @@ class PlantsModel extends \Asatru\Database\Model {
     {
         try {
             return static::raw('SELECT * FROM `@THIS` WHERE clone_origin = ?', [$id]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return int
+     * @throws \Exception
+     */
+    public static function offspringCount($id)
+    {
+        try {
+            return (int)static::raw('SELECT COUNT(*) AS `count` FROM `@THIS` WHERE clone_origin = ?', [$id])?->first()?->get('count');
         } catch (\Exception $e) {
             throw $e;
         }
