@@ -1172,12 +1172,43 @@ fieldset .field {
     word-wrap: break-word;
 }
 
+.plant-notes-content h1 {
+    margin-top: unset;
+}
+
+.plant-notes-content h2 {
+    margin-bottom: unset;
+}
+
+.plant-notes-content h3 {
+    font-size: 1.5em;
+}
+
+.plant-notes-content h4 {
+    font-size: 1.4em;
+}
+
 .plant-notes-content a {
     color: rgb(111, 185, 235);
 }
 
 .plant-notes-content a:hover {
     text-decoration: underline;
+}
+
+.plant-notes-content strong {
+    font-weight: bold;
+    color: rgb(230, 230, 230);
+    font-size: 1.2em;
+}
+
+.plant-notes-content ul {
+    list-style: square;
+    margin-left: 20px;
+}
+
+.plant-notes-content ol {
+    margin-left: 30px;
 }
 
 .plant-notes-edit {

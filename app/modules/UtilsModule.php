@@ -346,6 +346,22 @@ class UtilsModule {
     }
 
     /**
+     * @param $text
+     * @return string
+     * @throws \Exception
+     */
+    public static function markdown($text)
+    {
+        try {
+            $pd = new \Parsedown();
+            
+            return $pd->text($text);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $code
      * @return string
      * @throws \Exception

@@ -299,16 +299,18 @@
 		<div class="plant-notes">
 			<a name="plant-notes-anchor"></a>
 
-			<div class="plant-notes-content" id="plant-notes-content">
+			<textarea class="is-hidden" id="plant-notes-content">{{ $plant->get('notes') ?? '' }}</textarea>
+
+			<div class="plant-notes-content">
 				@if (is_string($plant->get('notes')))
-					<pre>{!! UtilsModule::translateURLs($plant->get('notes')) !!}</pre>
+					<pre>{!! UtilsModule::markdown($plant->get('notes')) !!}</pre>
 				@else
 					<span class="is-not-available">{{ __('app.no_notes_specified') }}</span>
 				@endif
 			</div>
 
 			<div class="plant-notes-edit">
-				<a href="javascript:void(0);" onclick="window.vue.showEditMultilineText({{ $plant->get('id') }}, 'notes', document.getElementById('plant-notes-content').children[0].innerText, 'plant-notes-anchor');">
+				<a href="javascript:void(0);" onclick="window.vue.showEditMultilineText({{ $plant->get('id') }}, 'notes', document.getElementById('plant-notes-content').value, 'plant-notes-anchor');">
 					<i class="fas fa-edit is-color-darker"></i>
 				</a>
 			</div>
