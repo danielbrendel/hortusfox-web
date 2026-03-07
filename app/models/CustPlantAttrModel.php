@@ -210,6 +210,30 @@ class CustPlantAttrModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $from
+     * @param $to
+     * @return void
+     * @throws \Exception
+     */
+    public static function cloneAttributes($from, $to)
+    {
+        try {
+            $source = static::raw('SELECT * FROM `@THIS` WHERE plant = ?', [$from]);
+            if (!$source) {
+                throw new \Exception('Source plant not found: ' . $from);
+            }
+
+            foreach ($source as $plant) {
+                static::raw('INSERT INTO `@THIS` (plant, label, datatype, content) VALUES(?, ?, ?, ?)', [
+                    $to, $plant->get('label'), $plant->get('datatype'), $plant->get('content')
+                ]);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $plant
      * @param $label
      * @return int

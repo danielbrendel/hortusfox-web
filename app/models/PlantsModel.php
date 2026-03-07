@@ -898,6 +898,8 @@ class PlantsModel extends \Asatru\Database\Model {
 
             $clone = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
 
+            CustPlantAttrModel::cloneAttributes($source->get('id'), $clone->get('id'));
+
             return $clone->get('id');
         } catch (\Exception $e) {
             throw $e;
