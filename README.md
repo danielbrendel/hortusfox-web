@@ -475,6 +475,31 @@ The following directories do also exist in the `/scripts` directory:
 - **incl**: This directory contains useful helper scripts that can be used by entry-point scripts.
 - **tmp**: This directory contains scripts, or other files, that are intended to be temporary and/or automatically generated/overwritten.
 
+## Tech stack
+
+The following technologies are used by HortusFox.
+
+| Technology  | Notes | Link |
+| ------------- | ------------- | ------------- |
+| PHP | General-purpose scripting language geared towards the web | [https://www.php.net](https://www.php.net) |
+| Asatru PHP  | A lightweight PHP framework  | [https://www.asatru-php.com](https://www.asatru-php.com) |
+| MariaDB  | Relational database management system  | [https://github.com/MariaDB/server](https://github.com/MariaDB/server) |
+| Composer  | Dependency manager for PHP  | [https://getcomposer.org](https://getcomposer.org) |
+| phpmailer/phpmailer | E-Mail sending library for PHP | [https://github.com/PHPMailer/PHPMailer](https://github.com/PHPMailer/PHPMailer) |
+| nesbot/carbon  | API extension library for PHP DateTime  | [https://github.com/briannesbitt/Carbon](https://github.com/briannesbitt/Carbon) |
+| chillerlan/php-qrcode | QR-code library for PHP | [https://github.com/chillerlan/php-qrcode](https://github.com/chillerlan/php-qrcode) |
+| tecnickcom/tcpdf | PHP library to generate PDF documents | [https://github.com/tecnickcom/TCPDF](https://github.com/tecnickcom/TCPDF) |
+| ezyang/htmlpurifier | HTML filtering library for PHP  | [https://github.com/ezyang/htmlpurifier](https://github.com/ezyang/htmlpurifier) |
+| erusev/parsedown | Markdown parser for PHP | [https://github.com/erusev/parsedown](https://github.com/erusev/parsedown) |
+| npm | Package manager for JavaScript | [https://www.npmjs.com](https://www.npmjs.com) |
+| webpack | A bundler for JavaScript and other assets | [https://github.com/webpack/webpack](https://github.com/webpack/webpack) |
+| Vue  | A progressive JavaScript framework  | [https://vuejs.org](https://vuejs.org) |
+| Bulma  | A modern CSS framework  | [https://bulma.io](https://bulma.io) |
+| FontAwesome  | A popular icon library  | [https://fontawesome.com](https://fontawesome.com) |
+| chart.js | A charts library using the canvas tag | [https://github.com/chartjs/Chart.js](https://github.com/chartjs/Chart.js) |
+| Docker  | An ecosystem for containerization  | [https://www.docker.com](https://www.docker.com) |
+| AquaShell  | An extendable scripting environment  | [https://www.aquashell-scripting.com](https://www.aquashell-scripting.com) |
+
 ## Contributing
 
 Please view the [contribution guidelines](CONTRIBUTING.md) if you intend to contribute to this repository.
