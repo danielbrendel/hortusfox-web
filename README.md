@@ -54,6 +54,7 @@
   - [Plant identification](#plant-identification)
   - [Plant information](#plant-information)
 - [Maintenance scripts](#maintenance-scripts)
+- [Tech stack](#tech-stack)
 - [Contributing](#contributing)
 - [Security](#security)
 
