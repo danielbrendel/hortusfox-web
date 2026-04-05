@@ -22,6 +22,23 @@ class ImportModule {
 
             move_uploaded_file($_FILES['import']['tmp_name'], public_path() . '/backup/' . $import_file . '.zip');
 
+            static::import($import_file, $options);
+
+            unlink(public_path() . '/backup/' . $import_file . '.zip');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $import_file
+     * @param $options
+     * @return void
+     * @throws \Exception
+     */
+    public static function import($import_file, $options)
+    {
+        try {
             $zip = new ZipArchive();
 
             if ($zip->open(public_path() . '/backup/' . $import_file . '.zip')) {
@@ -61,8 +78,6 @@ class ImportModule {
 
                 UtilsModule::clearFolder(public_path() . '/backup/' . $import_file);
             }
-
-            unlink(public_path() . '/backup/' . $import_file . '.zip');
         } catch (\Exception $e) {
             throw $e;
         }

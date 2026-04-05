@@ -24,5 +24,6 @@ return [
     ['theme:install', 'Install a theme', 'ThemeInstallCommand'],
     ['theme:remove', 'Remove an installed theme', 'ThemeRemoveCommand'],
     ['backup:export', 'Export workspace data as a backup archive', 'BackupExportCommand'],
+    ['backup:import', 'Import workspace data from a backup archive', 'BackupImportCommand'],
     ['aquashell:config', 'Create config file for AquaShell scripts', 'AquaShellConfigCommand']
 ];
