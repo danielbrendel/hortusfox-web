@@ -1,0 +1,34 @@
+# Script to import workspace data from a backup archive
+#
+# Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell) as scripting shell.
+#
+# This script can be launched via the following arguments
+#  * --archive "archive file from /public/backup"
+#  * --items "locations=0/1 plants=0/1 gallery=0/1 tasks=0/1 inventory=0/1 calendar=0/1"
+#  If the items argument is not provided, then all items will be imported by default
+# You can run the script from the project's root directory as follows:
+# > aquashell scripts/backup-import.dnys [arguments]
+#
+
+global szCurrentScriptPath string;
+global szArchiveFile string;
+global szItemList string;
+
+getscriptpath szCurrentScriptPath;
+
+function backup_import void(archive string, items string)
+{
+    sys { php asatru backup:import %archive %items };
+};
+
+exec "%szCurrentScriptPath/scripts/incl/args.dnys";
+
+call CmdPair("--archive") => szArchiveFile;
+call CmdPair("--items") => szItemList;
+
+if ("%szArchiveFile", -eq, "") {
+    print "No archive file specified. Please specify the name of the archive via --archive [file]";
+    exit;
+};
+
+call backup_import("%szArchiveFile", "%szItemList") => void;
