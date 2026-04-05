@@ -1,0 +1,25 @@
+# Script to export workspace data to a backup archive
+#
+# Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell) as scripting shell.
+#
+# This script can be launched via the following arguments
+#  * --items "locations=0/1 plants=0/1 gallery=0/1 tasks=0/1 inventory=0/1 calendar=0/1"
+#  If the items argument is not provided, then all items will be exported by default
+# You can run the script from the project's root directory as follows:
+# > aquashell scripts/backup-export.dnys [arguments]
+#
+
+global szCurrentScriptPath string;
+global szArgumentValue string;
+
+getscriptpath szCurrentScriptPath;
+
+function backup_export void(items string)
+{
+    sys { php asatru backup:export %items };
+};
+
+exec "%szCurrentScriptPath/scripts/incl/args.dnys";
+
+call CmdPair("--items") => szArgumentValue;
+call backup_export("%szArgumentValue") => void;
