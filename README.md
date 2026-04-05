@@ -471,6 +471,7 @@ The following scripts are currently available:
 - **themes.dnys**: A script to manage local theme installations
 - **vercheck.dnys**: A script that prints the local version of the project, the latest available version, and whether there is a new version available or not.
 - **backup-export.dnys**: A script to export workspace data to a backup archive file
+- **backup-import.dnys**: A script to import workspace data from a backup archive file
 
 The following directories do also exist in the `/scripts` directory:
 
