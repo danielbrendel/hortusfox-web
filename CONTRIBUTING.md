@@ -1,5 +1,8 @@
 # Contribution Guidelines
 
+> [!NOTE]
+> As of April 15th, 2026, pull requests are disabled until further notice. Read more [here](https://www.danielbrendel.com/blog/60-hortusfox-anti-ai-enforcement-for-pull-requests).
+
 ## Table of Contents
 - [Overview](#overview)
 - [Framework](#framework)
