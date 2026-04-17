@@ -5,7 +5,7 @@
 
     RewriteEngine On
 
-    # Prevent script execution other than /public/index.php
+    # Prevent public script execution other than /public/index.php
     RewriteCond %{REQUEST_FILENAME} -f
 	RewriteCond %{REQUEST_URI} !^/(public/)?index\.php$
 	RewriteRule \.(php[578]?|phtml)$ - [F,L]
