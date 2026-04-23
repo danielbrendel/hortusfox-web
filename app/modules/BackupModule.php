@@ -83,8 +83,9 @@ class BackupModule {
             $zip->addEmptyDir('locations/img');
 
             foreach ($locations as $location) {
-                if (file_exists(public_path() . '/img/' . $location->get('icon'))) {
-                    $zip->addFile(public_path() . '/img/' . $location->get('icon'), 'locations/img/' . $location->get('icon'));
+                $locicon = $location->get('icon');
+                if (($locicon !== null) && (file_exists(public_path() . '/img/' . $locicon))) {
+                    $zip->addFile(public_path() . '/img/' . $locicon, 'locations/img/' . $locicon);
                 }
             }
 
