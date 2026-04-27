@@ -53,6 +53,7 @@
   - [Weather forecast](#weather-forecast)
   - [Plant identification](#plant-identification)
   - [Plant information](#plant-information)
+- [Console commands](#console-commands)
 - [Maintenance scripts](#maintenance-scripts)
 - [Tech stack](#tech-stack)
 - [Contributing](#contributing)
@@ -452,6 +453,25 @@ The project uses the [Pl@ntNet API](https://my.plantnet.org/) to identify plants
 ### Plant information
 
 The project uses the [Global Biodiversity Information Facility](https://techdocs.gbif.org/en/) in order to query plant data on various occasions. As of now you do not need to obtain an extra API key in order for this to work.
+
+## Console commands
+
+HortusFox provides various console commands in addition to the inbuilt commands. These are mostly useful for development, testing or deployment purposes. Here is a list of all available app specific console commands.
+
+| Command  | Description | Parameters |
+| ------------- | ------------- | ------------- |
+| php asatru product:version | Show current product version | _none_ |
+| php asatru migrate:upgrade  | Perform upgrade from last version to current version | _none_ |
+| php asatru migrate:specific  | Perform version specific migration upgrade | `version` for the version, e.g. `5.3` |
+| php asatru calendar:classes  | Add default calendar classes | `--force` to drop all previous classes |
+| php asatru plants:attributes  | Add default plant attributes | `--force` to drop all previous attributes |
+| php asatru cache:clear  | Clear the entire cache | _none_ |
+| php asatru theme:list  | List all installed themes | _none_ |
+| php asatru theme:install  | Install a theme | `theme` name of the theme |
+| php asatru theme:remove  | Remove an installed theme | `theme` name of the theme |
+| php asatru backup:export  | Export workspace data as a backup archive | `locations=0/1` `plants=0/1` `gallery=0/1` `tasks=0/1` `inventory=0/1` `calendar=0/1` |
+| php asatru backup:import  | Import workspace data from a backup archive | `archive` `locations=0/1` `plants=0/1` `gallery=0/1` `tasks=0/1` `inventory=0/1` `calendar=0/1` |
+| php asatru aquashell:config  | Create config file for AquaShell scripts | _none_ |
 
 ## Maintenance scripts
 
