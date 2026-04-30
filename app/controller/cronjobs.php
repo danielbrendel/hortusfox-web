@@ -18,7 +18,7 @@ class CronjobsController extends BaseController {
             exit('Please set cronjob_pw to a proper authentication token');
         }
 
-        if ((!isset($_GET['cronpw'])) || ($_GET['cronpw'] !== app('cronjob_pw'))) {
+        if (parent::param('cronpw') !== app('cronjob_pw')) {
             http_response_code(403);
             exit();
         }

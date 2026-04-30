@@ -75,6 +75,24 @@ class BaseController extends Asatru\Controller\Controller {
 	}
 
 	/**
+	 * Query URL parameters
+	 * 
+	 * @param $name
+	 * @param $fallback
+	 * @return mixed
+	 */
+	public function param($name, $fallback = null)
+	{
+		if (isset($_GET[$name])) {
+			return $_GET[$name];
+		} else if (isset($_POST[$name])) {
+			return $_POST[$name];
+		}
+
+		return $fallback;
+	}
+
+	/**
 	 * A more convenient view helper
 	 * 
 	 * @param array $yields
