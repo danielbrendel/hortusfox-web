@@ -448,7 +448,7 @@ In order to use this feature you need to create an account and get your own API 
 
 ### Plant identification
 
-The project uses the [Pl@ntNet API](https://my.plantnet.org/) to identify plants. In order to use this feature you need to create an account and get your own API key.
+The project uses the [Pl@ntNet API](https://my.plantnet.org/) to identify plants. In order to use this feature you need to create an account and get your own API key. Furthermore, returned plant name assumptions link to an image search using the [Ecosia](https://www.ecosia.org/) search engine in order to quickly view photos of a given plant.
 
 ### Plant information
 

@@ -1833,7 +1833,7 @@ window.createVueInstance = function(element) {
                             dest.innerHTML += `
                                 <div class="field">
                                     <div class="control">
-                                        <input type="radio" name="plant-selection" data-plantid="` + plantid + `" data-plantname="` + elem.species.scientificNameWithoutAuthor + `" data-plantscientificname="` + elem.species.scientificName + `" onclick="document.getElementById('action-save-selected-plant-data').disabled = !window.vue.allRecognizedPlantSelectionGroupsValid();">&nbsp;` + elem.species.scientificNameWithoutAuthor + ` (` + (elem.score * 100).toFixed(2) + '%)' + `
+                                        <input type="radio" name="plant-selection" data-plantid="` + plantid + `" data-plantname="` + elem.species.scientificNameWithoutAuthor + `" data-plantscientificname="` + elem.species.scientificName + `" onclick="document.getElementById('action-save-selected-plant-data').disabled = !window.vue.allRecognizedPlantSelectionGroupsValid();">&nbsp;<a class="is-default-link" href="` + window.vue.plantSearchURL(elem.species.scientificNameWithoutAuthor) + `">` + elem.species.scientificNameWithoutAuthor + `</a> (` + (elem.score * 100).toFixed(2) + '%)' + `
                                     </div>
                                 </div>
                                 `;
@@ -1939,7 +1939,7 @@ window.createVueInstance = function(element) {
                             dest.innerHTML += `
                                 <div class="field">
                                     <div class="control">
-                                        <div>` + elem.species.scientificNameWithoutAuthor + ` (` + (elem.score * 100).toFixed(2) + '%)' + `</div>
+                                        <div><a class="is-default-link" href="` + window.vue.plantSearchURL(elem.species.scientificNameWithoutAuthor) + `">` + elem.species.scientificNameWithoutAuthor + `</a> (` + (elem.score * 100).toFixed(2) + '%)' + `</div>
                                     </div>
                                 </div>
                                 `;
@@ -2058,6 +2058,10 @@ window.createVueInstance = function(element) {
                 audio.onloadeddata = function() {
                     audio.play();
                 };
+            },
+
+            plantSearchURL: function(plantname) {
+                return 'https://www.ecosia.org/images?q=' + plantname.replace(' ', '+').toLowerCase();
             },
 
             isProgressiveWebApp: function() {
