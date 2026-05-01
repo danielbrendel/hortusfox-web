@@ -1045,19 +1045,11 @@
     </div>
     @endif
 
-    <div class="admin-info-social">
-        @if (env('APP_SERVICE_URL'))
-        <a class="button admin-info-social-button is-success" href="{{ env('APP_SERVICE_URL') }}/support" target="_blank"><i class="fas fa-headset"></i>&nbsp;{{ __('app.admin_support') }}</a>
-        @endif
-        
-        @if (env('APP_SOCIAL_DISCORD'))
-        <a class="button admin-info-social-button is-social-discord" href="{{ env('APP_SOCIAL_DISCORD') }}" target="_blank"><i class="fab fa-discord"></i>&nbsp;{{ __('app.link_discord') }}</a>
-        @endif
-        
-        @if (env('APP_SOCIAL_BLUESKY'))
-        <a class="button admin-info-social-button is-social-bluesky" href="{{ env('APP_SOCIAL_BLUESKY') }}" target="_blank"><i class="fab fa-bluesky"></i>&nbsp;{{ __('app.link_bluesky') }}</a>
-        @endif
+    @if (env('APP_SERVICE_URL'))
+    <div class="admin-info-support">
+        <a class="button is-info" href="{{ env('APP_SERVICE_URL') }}/support"><i class="fas fa-headset"></i>&nbsp;{{ __('app.admin_support') }}</a>
     </div>
+    @endif
 
     <div class="admin-info-extensions">
         <h3>{{ __('app.extensions') }}</h3>

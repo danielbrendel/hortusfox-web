@@ -422,8 +422,6 @@ return [
 	'github_repository' => 'GitHub Repository',
 	'donation_sponsoring' => 'GitHub Sponsoring',
 	'donation_kofi' => 'Buy Me a Coffee',
-	'link_discord' => 'Discord',
-	'link_bluesky' => 'Bluesky',
 	'auto_backup' => 'Włącz automatyczną kopię zapasową',
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Opcjonalna ścieżka do przechowywania plików kopii zapasowych',

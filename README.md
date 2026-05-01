@@ -22,8 +22,8 @@
 <p align="center">
     <a href="https://www.hortusfox.com/support"><img src="https://img.shields.io/badge/support-00CC55?style=for-the-badge&logoColor=white" alt="support"></a>
     <a href="https://www.hortusfox.com/faq"><img src="https://img.shields.io/badge/faq-FFDE23?style=for-the-badge&logoColor=white" alt="faq"></a>
-    <a href="https://discord.gg/kc6xGmjzVS"><img src="https://img.shields.io/badge/discord-5735FF?style=for-the-badge&logoColor=white" alt="discord"></a>
-    <a href="https://bsky.app/profile/danielbrendel.com"><img src="https://img.shields.io/badge/bluesky-00A3FF?style=for-the-badge&logoColor=white" alt="bluesky"></a>
+    <a href="https://www.hortusfox.com/documentation"><img src="https://img.shields.io/badge/documentation-5735FF?style=for-the-badge&logoColor=white" alt="documentation"></a>
+    <a href="https://www.danielbrendel.com"><img src="https://img.shields.io/badge/daniel%20brendel-00A3FF?style=for-the-badge&logoColor=white" alt="Daniel Brendel"></a>
 </p>
 
 <p align="center">

@@ -422,8 +422,6 @@ return [
 	'github_repository' => 'GitHub Repository',
 	'donation_sponsoring' => 'GitHub szponzoráció',
 	'donation_kofi' => 'Hívj meg egy kávéra',
-	'link_discord' => 'Discord',
-	'link_bluesky' => 'Bluesky',
 	'auto_backup' => 'Automatikus biztonsági mentés engedélyezése',
 	'auto_backup_cronjob_url' => 'Cronjob URL',
 	'backup_path' => 'Opcionális elérési út a biztonsági mentési fájlok tárolására',

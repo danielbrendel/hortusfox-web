@@ -422,8 +422,6 @@ return [
 	'github_repository' => 'GitHub Repository',
 	'donation_sponsoring' => 'Patrocinar en GitHub',
 	'donation_kofi' => 'Buy Me a Coffee',
-	'link_discord' => 'Discord',
-	'link_bluesky' => 'Bluesky',
 	'auto_backup' => 'Habilitar copia de seguridad automática',
 	'auto_backup_cronjob_url' => 'URL de Cronjob',
 	'backup_path' => 'Ruta opcional para almacenar archivos de respaldo',

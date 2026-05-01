@@ -3541,11 +3541,11 @@ fieldset .field {
         height: 50px;
         font-size: 1.4em;
     }
-    background-color: rgb(170, 135, 85) !important;
+    background-color: rgb(85, 165, 170) !important;
 }
 
 .admin-info-donation a:hover {
-    background-color: rgb(195, 150, 95) !important;
+    background-color: rgb(100, 185, 192) !important;
 }
 
 .admin-info-donation svg {
@@ -3556,53 +3556,32 @@ fieldset .field {
     color: rgb(90, 67, 10);
 }
 
-.admin-info-social {
+.admin-info-support {
     position: relative;
     margin-top: 15px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
+}
+
+.admin-info-support a {
+    width: 465px;
     @media screen and (max-width: 495px) {
-        text-align: center;
+        width: 100%;
+        height: 50px;
+        font-size: 1.4em;
     }
+    background-color: rgb(105, 170, 183) !important;
 }
 
-.admin-info-social-button {
-    width: 152px;
-    height: 35px;
-    padding-top: 8px;
-    padding-bottom: 9px;
-    @media screen and (max-width: 495px) {
-        width: 32%;
-        height: 40px;
-        padding-top: 7px;
-    }
+.admin-info-support a:hover {
+    background-color: rgb(123, 193, 207) !important;
 }
 
-.admin-info-social-button svg {
-    padding-top: 1px;
+.admin-info-support svg {
+    color: rgb(235, 235, 235);
 }
 
-.is-social-discord {
-    background-color: rgb(155, 111, 225);
-    border-color: rgb(155, 111, 225);
-    color: rgb(250, 250, 250);
-}
-
-.is-social-discord:hover {
-    background-color: rgb(170, 123, 235);
-    border-color: rgb(170, 123, 235);
-    color: rgb(250, 250, 250);
-}
-
-.is-social-bluesky {
-    background-color: rgb(205, 85, 10);
-    border-color: rgb(205, 85, 10);
-    color: rgb(250, 250, 250);
-}
-
-.is-social-bluesky:hover {
-    background-color: rgb(202, 100, 35);
-    border-color: rgb(202, 100, 35);
-    color: rgb(250, 250, 250);
+.admin-info-support svg:hover {
+    color: rgb(235, 235, 235);
 }
 
 .admin-info-extensions {
