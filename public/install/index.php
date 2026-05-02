@@ -270,7 +270,7 @@
                     </div>
 
                     <div class="footer-social">
-                        <a href="<?= APP_GITHUB_URL ?>" target="_blank">View on GitHub</a>
+                        <a href="<?= APP_GITHUB_URL ?>" target="_blank">GitHub</a> | <a href="<?= APP_SERVICE_URL . '/documentation' ?>">Documentation</a> | <a href="<?= APP_SERVICE_URL . '/support' ?>">Support</a>
                     </div>
                 </div>
             </div>
