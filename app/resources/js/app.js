@@ -2061,7 +2061,7 @@ window.createVueInstance = function(element) {
             },
 
             plantSearchURL: function(plantname) {
-                return 'https://www.ecosia.org/images?q=' + plantname.replace(' ', '+').toLowerCase();
+                return 'https://www.ecosia.org/images?q=' + plantname.replaceAll(' ', '+').toLowerCase();
             },
 
             isProgressiveWebApp: function() {
