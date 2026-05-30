@@ -4,6 +4,7 @@
 /vendor
 /node_modules
 /.idea
+/public/manifest.json
 .env
 .phpunit.result.cache
 do_install
