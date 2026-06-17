@@ -67,7 +67,7 @@
                     <div class="inventory-item-description" id="inventory-item-description-{{ $inventory->get($i)->get('id') }}">
                         <pre>
                             @if ((is_string($inventory->get($i)->get('description'))) && (strlen($inventory->get($i)->get('description')) > 0))
-                                {!! UtilsModule::translateURLs($inventory->get($i)->get('description')) !!}
+                                {!! UtilsModule::purify(UtilsModule::translateURLs($inventory->get($i)->get('description'))) !!}
                             @else
                                 {{ 'N/A' }}
                             @endif
@@ -88,7 +88,7 @@
 
                     <div class="inventory-item-footer">
                         <div class="inventory-item-location" id="inventory-item-location-{{ $inventory->get($i)->get('id') }}">
-                            {!! __('app.location_fmt', ['loc' => ($inventory->get($i)->get('location')) ?? 'N/A']) !!}
+                            {!! UtilsModule::purify(__('app.location_fmt', ['loc' => ($inventory->get($i)->get('location')) ?? 'N/A'])) !!}
                         </div>
 
                         <div class="inventory-item-author">
