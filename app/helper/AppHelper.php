@@ -154,3 +154,13 @@ function share_api_host()
 
     return env('APP_SERVICE_URL');
 }
+
+/**
+ * @param $value
+ * @param $fallback
+ * @return int
+ */
+function safe_int($value, $fallback = 0)
+{
+    return UtilsModule::safeIntConversion($value, $fallback);
+}

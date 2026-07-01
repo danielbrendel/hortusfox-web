@@ -626,4 +626,20 @@ class UtilsModule {
 
         return fclose($fp);
     }
+
+    /**
+     * @param $value
+     * @param $fallback
+     * @return int
+     */
+    public static function safeIntConversion($value, $fallback = 0)
+    {
+        $res = filter_var($value, FILTER_VALIDATE_INT);
+
+        if (!is_int($res)) {
+            $res = $fallback;
+        }
+
+        return $res;
+    }
 }

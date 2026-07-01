@@ -38,7 +38,7 @@ class ChatMsgModel extends \Asatru\Database\Model {
     public static function getChat($limit = 50, $api = false)
     {
         try {
-            $result = static::raw('SELECT * FROM `@THIS` ORDER BY created_at DESC LIMIT ' . $limit);
+            $result = static::raw('SELECT * FROM `@THIS` ORDER BY created_at DESC LIMIT ' . safe_int($limit, 50));
 
             if (!$api) {
                 if (count($result) > 0) {
