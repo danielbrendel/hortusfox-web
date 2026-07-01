@@ -61,12 +61,7 @@
 
 ## Description
 
-HortusFox is a self-hosted collaborative plant management system which you can use in your own environment to manage all your plants.
-You can add your plants with various details and photos and assign them to a location of your environment. There is a dashboard
-available that shows all important overview information. The system does also feature a warning system in order to indicate
-which plants need special care, user authentication, tasks, inventory management, calendar, search, collaborative chat and a history log of 
-what actions users have taken. The system features collaborative management, so you can manage your plants with multiple users.
-There are many more features. You can see a list of features below.
+HortusFox is a free opensource self-hosted collaborative plant management system which you can use to manage all your plants. It provides an extensive amount of features to assist you in keeping track, taking care, and journal all things about your plants. The system is designed using a per-location approach, which means that plants are always assigned to locations. Not only does the app allow you to manage attributes, photos, notes, logs and many other things around your plants, it does also provide task management, inventory management, an extensive search feature, a calendar, a collaborative group chat and many, many more features. Your personal workspace can be customized via the integrated theme system, allowing for an individual look and feel while managing your plants. Furthermore, developers can leverage the integrated API to create their own third-party custom software for various scenarios. Please see a list of features below.
 
 ## Features
 
