@@ -80,6 +80,7 @@ HortusFox is a free opensource self-hosted collaborative plant management system
 - 📢 Reminders
 - 💾 Backups
 - 💻 REST API
+- 📱 QR Codes
 - 🔬 Plant identification
 
 ## Resources
