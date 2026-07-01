@@ -983,8 +983,12 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getPlantList($location, $limit = null, $from = null, $sort = null)
     {
         try {
-            if (($limit !== null) && (is_numeric($limit))) {
-                $limit = ' LIMIT ' . $limit;
+            if ($limit !== null) {
+                if (is_numeric($limit)) {
+                    $limit = ' LIMIT ' . $limit;
+                } else {
+                    throw new \Exception('Invalid expression for limit: ' . print_r($limit, true));
+                }
             }
 
             if ($sort !== null) {
@@ -992,6 +996,8 @@ class PlantsModel extends \Asatru\Database\Model {
                     $sort = ' ORDER BY id ASC ';
                 } else if ($sort === 'desc') {
                     $sort = ' ORDER BY id DESC ';
+                } else {
+                    throw new \Exception('Invalid expression for sort: ' . print_r($sort, true));
                 }
             }
 
