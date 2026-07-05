@@ -22,7 +22,7 @@ class CalendarModel extends \Asatru\Database\Model {
     public static function getItems($date_from = null, $date_till = null)
     {
         try {
-            return static::raw('SELECT * FROM `@THIS` WHERE DATE(date_from) >= ? AND DATE(date_till) <= ?', [$date_from, $date_till]);
+            return static::raw('SELECT * FROM `@THIS` WHERE DATE(date_from) <= ? AND DATE(date_till) >= ?', [$date_till, $date_from]);
         } catch (\Exception $e) {
             throw $e;
         }
