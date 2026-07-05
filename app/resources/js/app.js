@@ -1128,7 +1128,7 @@ window.createVueInstance = function(element) {
                 history.replaceState(null, '', url.toString());
             },
 
-            showImagePreview: function(asset, aspect = 'is-3by5') {
+            showImagePreview: function(asset, aspect = 'is-2by3') {
                 let img = document.getElementById('preview-image-modal-img');
                 if (img) {
                     img.src = asset;
