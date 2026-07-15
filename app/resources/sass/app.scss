@@ -3017,6 +3017,8 @@ fieldset .field {
 
 .admin-locations-list {
     position: relative;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .admin-location {
@@ -3039,6 +3041,13 @@ fieldset .field {
     margin-left: 5px;
     margin-right: 5px;
     color: rgb(150, 150, 150);
+}
+
+.admin-location-item-ident {
+    width: 3%;
+    @media screen and (max-width: 500px) {
+        width: 5%;
+    }
 }
 
 .admin-location-item-input {
