@@ -3244,6 +3244,8 @@ fieldset .field {
 
 .admin-calendar-classes-list {
     position: relative;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .admin-calendar-class {
@@ -3269,6 +3271,13 @@ fieldset .field {
 
 .admin-calendar-class-item-input {
     width: 30%;
+}
+
+.admin-calendar-class-input-color {
+    width: 8%;
+    @media screen and (max-width: 768px) {
+        width: 15%;
+    }
 }
 
 .admin-calendar-class-actions {

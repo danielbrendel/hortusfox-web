@@ -638,11 +638,11 @@
                         <input type="text" class="input" name="name" value="{{ $calendar_class->get('name') }}"/>
                     </div>
 
-                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
+                    <div class="admin-calendar-class-item admin-calendar-class-input-color">
                         <input type="color" class="input" name="color_background" value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_background')) }}"/>
                     </div>
 
-                    <div class="admin-calendar-class-item admin-calendar-class-item-input">
+                    <div class="admin-calendar-class-item admin-calendar-class-input-color">
                         <input type="color" class="input" name="color_border" value="{{ UtilsModule::convertRgbToHex($calendar_class->get('color_border')) }}"/>
                     </div>
 
