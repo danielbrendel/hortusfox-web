@@ -2947,6 +2947,8 @@ fieldset .field {
 
 .admin-users-list {
     position: relative;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .admin-user-account {
@@ -3120,6 +3122,8 @@ fieldset .field {
 
 .admin-attribute-schema-list {
     position: relative;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .admin-attribute-schema {
@@ -3181,6 +3185,8 @@ fieldset .field {
 
 .admin-bulk-commands-list {
     position: relative;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .admin-bulk-command {
@@ -3207,6 +3213,13 @@ fieldset .field {
 
 .admin-bulk-command-item-input {
     width: 30%;
+}
+
+.admin-bulk-command-item-input-small {
+    width: 15%;
+    @media screen and (max-width: 768px) {
+        width: 30%;
+    }
 }
 
 .admin-bulk-command-actions {

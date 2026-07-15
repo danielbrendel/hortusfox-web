@@ -593,7 +593,7 @@
                         <input type="text" class="input" name="attribute" value="{{ $bulk_cmd->get('attribute') }}"/>
                     </div>
 
-                    <div class="admin-bulk-command-item admin-bulk-command-item-input">
+                    <div class="admin-bulk-command-item admin-bulk-command-item-input-small">
                         <select class="input" name="datatype">
                             @foreach (CustPlantAttrModel::$data_types as $datatype)
                                 <option value="{{ $datatype }}" {{ (($datatype === $bulk_cmd->get('datatype')) ? 'selected' : '') }}>{{ __('app.custom_attribute_datatype_' . $datatype) }}</option>
@@ -601,7 +601,7 @@
                         </select>
                     </div>
 
-                    <div class="admin-bulk-command-item admin-bulk-command-item-input">
+                    <div class="admin-bulk-command-item admin-bulk-command-item-input-small">
                         <input type="text" class="input" name="styles" value="{{ $bulk_cmd->get('styles') }}"/>
                     </div>
 
