@@ -833,11 +833,11 @@ fieldset .field {
     position: relative;
     display: inline-block;
     width: 245px;
+    height: 375px;
     @media screen and (max-width: 552px) {
         width: 141px;
         height: 222px;
     }
-    height: 375px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
