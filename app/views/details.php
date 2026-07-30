@@ -530,7 +530,6 @@
 	</div>
 </div>
 
-
 <div class="columns plant-column">
 	<div class="column is-full plant-button-group">
 		@if (app('history_enable'))
