@@ -66,6 +66,8 @@ window.createVueInstance = function(element) {
             bShowAddCustomPlantAttribute: false,
             bShowEditCustomPlantAttribute: false,
             bShowCreateNewAttributeSchema: false,
+            bShowAddPlantAttachment: false,
+            bShowEditPlantAttachment: false,
             bShowAddPlantLogEntry: false,
             bShowEditPlantLogEntry: false,
             bShowAddLocationLogEntry: false,
@@ -419,6 +421,64 @@ window.createVueInstance = function(element) {
                         if (elem) {
                             elem.remove();
                         }
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
+            showAddPlantAttachment: function(plant, anchor = '') {
+                document.getElementById('inpAddPlantAttachmentPlantId').value = plant;
+                document.getElementById('inpAddPlantAttachmentAnchor').value = anchor;
+                window.vue.bShowAddPlantAttachment = true;
+            },
+
+            showEditPlantAttachment: function(id, plant, content, anchor = '') {
+                document.getElementById('inpEditPlantAttachmentItemId').value = id;
+                document.getElementById('inpEditPlantAttachmentPlantId').value = plant;
+                document.getElementById('inpEditPlantAttachmentLabel').value = content;
+                document.getElementById('inpEditPlantAttachmentAnchor').value = anchor;
+                window.vue.bShowEditPlantAttachment = true;
+            },
+
+            removePlantAttachment: function(id, table_entry) {
+                window.vue.ajaxRequest('post', window.location.origin + '/plants/attachments/remove', { item: id }, function(response) {
+                    if (response.code == 200) {
+                        document.getElementById(table_entry).remove();
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
+            loadNextPlantAttachments: function(obj, plant, table) {
+                window.vue.ajaxRequest('post', window.location.origin + '/plants/attachments/fetch', { plant: plant, paginate: obj.dataset.paginate }, function(response) {
+                    if (response.code == 200) {
+                        let tbody = table.getElementsByTagName('tbody')[0];
+
+                        response.data.forEach(function(elem, index) {
+                            let newRow = document.createElement('tr');
+                            newRow.id = 'plant-attachment-table-row-' + elem.id;
+                            newRow.innerHTML = `
+                                <td id="plant-attachment-item-` + elem.id + `"><a href="` + window.location.origin + '/attachments/' + elem.file + `">` + elem.label + `</a></td>
+                                <td>` + elem.created_at + ` / ` + elem.updated_at + `</td>
+                                <td>
+                                    <span class="float-right">
+                                        <span><a href="javascript:void(0);" onclick="window.vue.showEditPlantAttachment('` + elem.id + `', '` + plant + `', document.getElementById('plant-attachment-item-` + elem.id + `').innerText, 'plant-attachment-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('` + window.vue.confirmRemovePlantAttachmentEntry + `')) { window.vue.removePlantAttachment('` + elem.id + `', 'plant-attachment-table-row-` + elem.id + `'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+                                    </span>
+                                </td>
+                            `;
+
+                            tbody.appendChild(newRow);
+                        });
+
+                        obj.parentNode.parentNode.remove();
+
+                        let actionRow = document.createElement('tr');
+                        actionRow.id = 'plant-attachments-load-more';
+                        actionRow.classList.add('plant-attachment-paginate');
+                        actionRow.innerHTML = `<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantAttachments(this, '` + plant + `', document.getElementById('plant-attachments-table'));" data-paginate="` + response.data[response.data.length - 1].id + `">` + window.vue.loadMore + `</a></td>`;
+                        tbody.appendChild(actionRow);
                     } else {
                         alert(response.msg);
                     }

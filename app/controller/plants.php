@@ -201,6 +201,7 @@ class PlantsController extends BaseController {
 
 		$photos = PlantPhotoModel::getPlantGallery($plant_id);
 		$custom_attributes = CustPlantAttrModel::getForPlant($plant_id);
+		$plant_attachments = PlantAttachmentModel::getForPlant($plant_id);
 		$plant_log_entries = PlantLogModel::getLogEntries($plant_id);
 
 		$plant_tasks = [];
@@ -226,6 +227,7 @@ class PlantsController extends BaseController {
 			'tags' => $tags,
 			'custom_attributes' => $custom_attributes,
 			'plant_tasks' => $plant_tasks,
+			'plant_attachments' => $plant_attachments,
 			'plant_log_entries' => $plant_log_entries,
 			'offspring' => $offspring,
 			'edit_user_name' => $edit_user_name,
@@ -944,6 +946,107 @@ class PlantsController extends BaseController {
 			return json([
 				'code' => 200,
 				'list' => $result
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/attachments/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function add_plant_attachment($request)
+	{
+		try {
+			$plant = $request->params()->query('plant');
+			$label = $request->params()->query('label');
+			$anchor = $request->params()->query('anchor');
+
+			PlantAttachmentModel::upload($plant, $label);
+
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/attachments/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\RedirectHandler
+	 */
+	public function edit_plant_attachment($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			$plant = $request->params()->query('plant');
+			$label = $request->params()->query('label');
+			$anchor = $request->params()->query('anchor');
+			
+			PlantAttachmentModel::editLabel($item, $label);
+
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		} catch (\Exception $e) {
+			FlashMessage::setMsg('error', $e->getMessage());
+			return redirect('/plants/details/' . $plant . ((strlen($anchor) > 0) ? '#' . $anchor : ''));
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/attachments/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_plant_attachment($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			
+			PlantAttachmentModel::removeAttachment($item);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /plants/attachments/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function fetch_plant_attachments($request)
+	{
+		try {
+			$plant = $request->params()->query('plant');
+			$paginate = $request->params()->query('paginate', null);
+			
+			$data = PlantAttachmentModel::getForPlant($plant, $paginate)?->asArray();
+			if (is_array($data)) {
+				foreach ($data as &$item) {
+					$item['updated_at'] = date('Y-m-d', strtotime($item['updated_at']));
+					$item['created_at'] = date('Y-m-d', strtotime($item['created_at']));
+				}
+			}
+
+			return json([
+				'code' => 200,
+				'data' => $data
 			]);
 		} catch (\Exception $e) {
 			return json([

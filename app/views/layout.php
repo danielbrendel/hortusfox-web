@@ -1758,6 +1758,72 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowAddPlantAttachment}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.add_plant_attachment') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowAddPlantAttachment = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmAddPlantAttachment" method="POST" enctype="multipart/form-data" action="{{ url('/plants/attachments/add') }}">
+							@csrf
+
+							<input type="hidden" name="plant" id="inpAddPlantAttachmentPlantId"/>
+							<input type="hidden" name="anchor" id="inpAddPlantAttachmentAnchor"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.plant_attachment_file') }}</label>
+								<div class="control">
+									<input type="file" class="input" name="attachment" onchange="if (this.files.length > 0) { document.getElementById('plant-attachment-label').value = this.files[0].name; }" required>
+								</div>
+							</div>
+
+							<div class="field">
+								<label class="label">{{ __('app.plant_attachment_label') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="label" id="plant-attachment-label" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmAddPlantAttachment').submit();">{{ __('app.add') }}</button>
+						<button class="button" onclick="window.vue.bShowAddPlantAttachment = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
+			<div class="modal" :class="{'is-active': bShowEditPlantAttachment}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_plant_attachment') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditPlantAttachment = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditPlantAttachment" method="POST" action="{{ url('/plants/attachments/edit') }}">
+							@csrf
+
+							<input type="hidden" name="item" id="inpEditPlantAttachmentItemId"/>
+							<input type="hidden" name="plant" id="inpEditPlantAttachmentPlantId"/>
+							<input type="hidden" name="anchor" id="inpEditPlantAttachmentAnchor"/>
+
+							<div class="field">
+								<label class="label">{{ __('app.plant_attachment_label') }}</label>
+								<div class="control">
+									<input type="text" class="input" name="label" id="inpEditPlantAttachmentLabel" required>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditPlantAttachment').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditPlantAttachment = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			<div class="modal" :class="{'is-active': bShowAddPlantLogEntry}">
 				<div class="modal-background"></div>
 				<div class="modal-card">

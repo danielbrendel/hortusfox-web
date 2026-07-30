@@ -432,6 +432,56 @@
 
 <div class="columns plant-column">
 	<div class="column is-full">
+		<div class="plant-attachments">
+			<div class="plant-attachments-title">{{ __('app.plant_attachments') }}</div>
+
+			<a name="plant-attachments-anchor"></a>
+
+			@if ((is_countable($plant_attachments)) && (count($plant_attachments) > 0))
+			<div class="table-scroll-horizontally">
+				<table id="plant-attachments-table">
+					<thead>
+						<tr>
+							<td>{{ __('app.plant_attachment_label') }}</td>
+							<td>{{ __('app.plant_attachment_date') }}</td>
+							<td><span class="float-right">{{ __('app.plant_attachment_actions') }}</span></td>
+						</tr>
+					</thead>
+
+					<tbody>
+						@foreach ($plant_attachments as $plant_attachment)
+						<tr id="plant-attachment-table-row-{{ $plant_attachment->get('id') }}">
+							<td id="plant-attachment-item-{{ $plant_attachment->get('id') }}"><a href="{{ asset('attachments/' . $plant_attachment->get('file')) }}">{{ $plant_attachment->get('label') }}</a></td>
+							<td>{{ date('Y-m-d', strtotime($plant_attachment->get('created_at'))) }} / {{ date('Y-m-d', strtotime($plant_attachment->get('updated_at'))) }}</td>
+							<td>
+								<span class="float-right">
+									<span><a href="javascript:void(0);" onclick="window.vue.showEditPlantAttachment('{{ $plant_attachment->get('id') }}', '{{ $plant->get('id') }}', document.getElementById('plant-attachment-item-{{ $plant_attachment->get('id') }}').innerText, 'plant-attachments-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_plant_attachment') }}')) { window.vue.removePlantAttachment('{{ $plant_attachment->get('id') }}', 'plant-attachment-table-row-{{ $plant_attachment->get('id') }}'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+								</span>
+							</td>
+						</tr>
+						@endforeach
+
+						@if ($plant_attachments->get(count($plant_attachments) - 1)?->get('id') > 1)
+							<tr id="plant-attachment-load-more" class="plant-attachment-paginate">
+								<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantAttachments(this, '{{ $plant->get('id') }}', document.getElementById('plant-attachments-table'));" data-paginate="{{ $plant_attachments->get(count($plant_attachments) - 1)?->get('id') }}">{{ __('app.load_more') }}</a></td>
+							</tr>
+						@endif
+					</tbody>
+				</table>
+			</div>
+			@else
+				<strong>{{ __('app.no_plant_attachments_yet') }}</strong>
+			@endif
+
+			<div class="plant-attachments-action">
+				<a class="button is-info" href="javascript:void(0);" onclick="window.vue.showAddPlantAttachment('{{ $plant->get('id') }}', 'plant-attachments-anchor');">{{ __('app.add_plant_attachment') }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="columns plant-column">
+	<div class="column is-full">
 		<div class="plant-log">
 			<div class="plant-log-title">{{ __('app.plant_log') }}</div>
 
