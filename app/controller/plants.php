@@ -34,8 +34,8 @@ class PlantsController extends BaseController {
 			return redirect('/');
 		}
 
-		$sorting = $request->params()->query('sorting', null);
-		$direction = $request->params()->query('direction', null);
+		$sorting = $request->params()->query('sorting', $_COOKIE['list_sorting_style'] ?? null);
+		$direction = $request->params()->query('direction', $_COOKIE['list_order_style'] ?? null);
 		$show = $request->params()->query('show', null);
 
 		$plants = PlantsModel::getAll($location, $sorting, $direction);
@@ -46,6 +46,16 @@ class PlantsController extends BaseController {
 			setcookie('list_show_style', $show, time() + 31536000, '/');
 			return redirect('/plants/location/' . $location);
 		}
+
+		if ((is_string($sorting)) && ((isset($_COOKIE['list_sorting_style'])) && ($_COOKIE['list_sorting_style'] !== $sorting))) {
+			setcookie('list_sorting_style', $sorting, time() + 31536000, '/');
+			return redirect('/plants/location/' . $location);
+		}
+
+		if ((is_string($direction)) && ((isset($_COOKIE['list_order_style'])) && ($_COOKIE['list_order_style'] !== $direction))) {
+			setcookie('list_order_style', $direction, time() + 31536000, '/');
+			return redirect('/plants/location/' . $location);
+		}
 		
 		return parent::view(['content', 'plants'], [
 			'user' => $user,
@@ -54,7 +64,9 @@ class PlantsController extends BaseController {
 			'sorting_dirs' => PlantsModel::$sorting_dir,
 			'location' => $location,
 			'location_data' => LocationsModel::getLocationById($location),
-			'location_log_entries' => $location_log_entries
+			'location_log_entries' => $location_log_entries,
+			'list_sorting_style' => $sorting,
+			'list_order_style' => $direction
 		]);
 	}
 

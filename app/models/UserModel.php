@@ -284,10 +284,22 @@ class UserModel extends \Asatru\Database\Model {
         try {
             if ($flag) {
                 setcookie('list_show_style', 'cards', time() + 31536000, '/');
+                setcookie('list_sorting_style', 'name', time() + 31536000, '/');
+                setcookie('list_order_style', 'desc', time() + 31536000, '/');
             } else {
                 if (isset($_COOKIE['list_show_style'])) {
                     unset($_COOKIE['list_show_style']);
                     setcookie('list_show_style', '', 1, '/');
+                }
+
+                if (isset($_COOKIE['list_sorting_style'])) {
+                    unset($_COOKIE['list_sorting_style']);
+                    setcookie('list_sorting_style', '', 1, '/');
+                }
+
+                if (isset($_COOKIE['list_order_style'])) {
+                    unset($_COOKIE['list_order_style']);
+                    setcookie('list_order_style', '', 1, '/');
                 }
             }
         } catch (\Exception $e) {
