@@ -426,6 +426,107 @@ class ApiController extends BaseController {
     }
 
     /**
+	 * Handles URL: /api/plants/attachments/add
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function add_plant_attachment($request)
+	{
+		try {
+			$plant = $request->params()->query('plant');
+			$label = $request->params()->query('label');
+
+			$id = PlantAttachmentModel::upload($plant, $label, true);
+
+			return json([
+                'code' => 200,
+                'attachment_id' => $id
+            ]);
+		} catch (\Exception $e) {
+			return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+		}
+	}
+
+	/**
+	 * Handles URL: /api/plants/attachments/edit
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function edit_plant_attachment($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			$label = $request->params()->query('label');
+			
+			PlantAttachmentModel::editLabel($item, $label, true);
+
+			return json([
+                'code' => 200
+            ]);
+		} catch (\Exception $e) {
+			return json([
+                'code' => 500,
+                'msg' => $e->getMessage()
+            ]);
+		}
+	}
+
+	/**
+	 * Handles URL: /api/plants/attachments/remove
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function remove_plant_attachment($request)
+	{
+		try {
+			$item = $request->params()->query('item');
+			
+			PlantAttachmentModel::removeAttachment($item);
+
+			return json([
+				'code' => 200
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+	/**
+	 * Handles URL: /api/plants/attachments/fetch
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\JsonHandler
+	 */
+	public function fetch_plant_attachments($request)
+	{
+		try {
+			$plant = $request->params()->query('plant');
+			$paginate = $request->params()->query('paginate', null);
+			
+			$data = PlantAttachmentModel::getForPlant($plant, $paginate)?->asArray();
+
+			return json([
+				'code' => 200,
+				'data' => $data
+			]);
+		} catch (\Exception $e) {
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
+		}
+	}
+
+    /**
 	 * Handles URL: /api/plants/log/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
