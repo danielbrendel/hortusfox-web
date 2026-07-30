@@ -477,7 +477,7 @@ window.createVueInstance = function(element) {
 
                         let actionRow = document.createElement('tr');
                         actionRow.id = 'plant-attachments-load-more';
-                        actionRow.classList.add('plant-attachment-paginate');
+                        actionRow.classList.add('plant-attachments-paginate');
                         actionRow.innerHTML = `<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantAttachments(this, '` + plant + `', document.getElementById('plant-attachments-table'));" data-paginate="` + response.data[response.data.length - 1].id + `">` + window.vue.loadMore + `</a></td>`;
                         tbody.appendChild(actionRow);
                     } else {
