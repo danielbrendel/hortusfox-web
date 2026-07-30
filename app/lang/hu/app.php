@@ -201,6 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Naptári emlékeztető információk',
 	'mail_info_calendar_reminder_hint' => 'A(z) <strong>{name}</strong> naptári tétel határideje: {date_from} - {date_till}. Ugrás a naptárra: <a href="{url}">{url</a>',
 	'notify_calendar_reminder' => 'Emlékeztessen a határidőkről',
+	'remember_location_sorting' => 'Remember prefered plant list sorting',
 	'cronpw' => 'Cronjob hitelesítési token',
 	'custom_head_code' => 'Egyéni kód a fejlécterülethez',
 	'custom_head_code_hint' => 'FIGYELMEZTETÉS: A sérült kód tönkreteheti a dokumentumot. Győződjön meg róla, hogy tudja, mit csinál.',

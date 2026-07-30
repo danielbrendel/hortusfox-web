@@ -201,6 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Herinnering aan kalenderitem',
 	'mail_info_calendar_reminder_hint' => 'Het kalender item <strong>{name}</strong> verloopt: {date_from} - {date_till}. Ga naar kalender: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Waarschuw mij over kalenderitems',
+	'remember_location_sorting' => 'Remember prefered plant list sorting',
 	'cronpw' => 'Cronjob authenticatie token',
 	'custom_head_code' => 'Aangepaste code voor head',
 	'custom_head_code_hint' => 'Waarschuwing: corrupte code kan het document kapot maken. Zorg er voor dat je weet wat je doet',

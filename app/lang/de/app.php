@@ -201,6 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Erinnerung zu Kalendereintrag',
 	'mail_info_calendar_reminder_hint' => 'Der Kalendertermin <strong>{name}</strong> ist demnächst fällig: {date_from} - {date_till}. Gehe zum Kalender: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Mich an Kalendertermine erinnern',
+	'remember_location_sorting' => 'Speichere meine Sortierungseinstellungen für Pflanzenlisten',
 	'cronpw' => 'Cronjob Authentifizierungs-Token',
 	'custom_head_code' => 'Zusätzlicher Code für den Kopfbereich',
 	'custom_head_code_hint' => 'WARNUNG: Fehlerhafter Code kann zu unerwünschten Effekten führen. Bitte stelle sicher, dass dein Code funktioniert',

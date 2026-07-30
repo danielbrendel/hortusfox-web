@@ -201,6 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Información sobre recordatorio del calendario',
 	'mail_info_calendar_reminder_hint' => 'El ítem del calendario <strong>{name}</strong> tiene como fecha límite: {date_from} - {date_till}. Ir al calendario: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Notificarme sobre fechas límite del calendario',
+	'remember_location_sorting' => 'Remember prefered plant list sorting',
 	'cronpw' => 'Token de autenticación de CronJob',
 	'custom_head_code' => 'Código personalizado para la sección principal',
 	'custom_head_code_hint' => 'ADVERTENCIA: El código dañado puede dañar el documento. Asegúrate de saber lo que estás haciendo.',

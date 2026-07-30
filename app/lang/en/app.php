@@ -201,6 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Calendar reminder information',
 	'mail_info_calendar_reminder_hint' => 'The calendar item <strong>{name}</strong> is due: {date_from} - {date_till}. Go to calendar: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Remind me about due calendar dates',
+	'remember_location_sorting' => 'Remember prefered plant list sorting',
 	'cronpw' => 'Cronjob authentication token',
 	'custom_head_code' => 'Custom code for head section',
 	'custom_head_code_hint' => 'WARNING: Corrupted code can break the document. Be sure you know what you are doing',
