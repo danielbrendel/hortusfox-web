@@ -2088,6 +2088,7 @@
 				window.vue.confirmSetAllRepotted = '{{ __('app.confirmSetAllRepotted') }}';
 				window.vue.confirmSetAllFertilised = '{{ __('app.confirmSetAllFertilised') }}';
 				window.vue.confirmInventoryItemRemoval = '{{ __('app.confirmInventoryItemRemoval') }}';
+				window.vue.confirmRemovePlantAttachment = '{{ __('app.confirm_remove_plant_attachment') }}';
 				window.vue.confirmRemovePlantLogEntry = '{{ __('app.confirm_remove_plant_log_entry') }}';
 				window.vue.confirmRemoveLocationLogEntry = '{{ __('app.confirm_remove_location_log_entry') }}';
 				window.vue.confirmRemoveSharedPlantPhoto = '{{ __('app.confirm_remove_shared_photo') }}';

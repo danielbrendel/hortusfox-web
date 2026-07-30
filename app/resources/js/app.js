@@ -90,6 +90,7 @@ window.createVueInstance = function(element) {
             confirmInventoryItemRemoval: 'Are you sure you want to remove this item?',
             confirmPlantAddHistory: 'Please confirm if you want to do this action.',
             confirmPlantRemoveHistory: 'Please confirm if you want to do this action.',
+            confirmRemovePlantAttachment: 'Do you really want to remove this attachment?',
             confirmRemovePlantLogEntry: 'Do you really want to remove this entry?',
             confirmRemoveLocationLogEntry: 'Do you really want to remove this entry?',
             confirmRemoveSharedPlantPhoto: 'Do you really want to remove this item?',
@@ -464,7 +465,7 @@ window.createVueInstance = function(element) {
                                 <td>` + elem.created_at + ` / ` + elem.updated_at + `</td>
                                 <td>
                                     <span class="float-right">
-                                        <span><a href="javascript:void(0);" onclick="window.vue.showEditPlantAttachment('` + elem.id + `', '` + plant + `', document.getElementById('plant-attachment-item-` + elem.id + `').innerText, 'plant-attachment-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('` + window.vue.confirmRemovePlantAttachmentEntry + `')) { window.vue.removePlantAttachment('` + elem.id + `', 'plant-attachment-table-row-` + elem.id + `'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
+                                        <span><a href="javascript:void(0);" onclick="window.vue.showEditPlantAttachment('` + elem.id + `', '` + plant + `', document.getElementById('plant-attachment-item-` + elem.id + `').innerText, 'plant-attachment-anchor');"><i class="fas fa-edit is-color-darker"></i></a></span>&nbsp;<span class="float-right"><a href="javascript:void(0);" onclick="if (confirm('` + window.vue.confirmRemovePlantAttachment + `')) { window.vue.removePlantAttachment('` + elem.id + `', 'plant-attachment-table-row-` + elem.id + `'); }"><i class="fas fa-trash-alt is-color-darker"></i></a></span>
                                     </span>
                                 </td>
                             `;
