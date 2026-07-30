@@ -1720,6 +1720,60 @@ fieldset .field {
     color: rgb(150, 150, 150);
 }
 
+.plant-attachments {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @media screen and (max-width: 410px) {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+.plant-attachments-title {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: rgb(150, 150, 150);
+}
+
+.plant-attachments table {
+    width: 100%;
+}
+
+.plant-attachments strong {
+    color: rgb(100, 100, 100);
+}
+
+.plant-attachments-action {
+    margin-top: 20px;
+}
+
+.plant-attachments td a {
+    color: rgb(55, 145, 243);
+}
+
+.plant-attachments td a:hover {
+    color: rgb(55, 145, 243);
+    text-decoration: underline;
+}
+
+.plant-attachments-paginate {
+    position: relative;
+}
+
+.plant-attachments-paginate td {
+    text-align: center;
+}
+
+.plant-attachments-paginate a {
+    color: rgb(55, 145, 243);
+}
+
+.plant-attachments-paginate a:hover {
+    color: rgb(55, 145, 243);
+    text-decoration: underline;
+}
+
 .plant-log {
     position: relative;
     margin-top: 10px;

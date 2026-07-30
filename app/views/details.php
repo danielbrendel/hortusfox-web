@@ -462,7 +462,7 @@
 						@endforeach
 
 						@if ($plant_attachments->get(count($plant_attachments) - 1)?->get('id') > 1)
-							<tr id="plant-attachment-load-more" class="plant-attachment-paginate">
+							<tr id="plant-attachment-load-more" class="plant-attachments-paginate">
 								<td colspan="3"><a href="javascript:void(0);" onclick="window.vue.loadNextPlantAttachments(this, '{{ $plant->get('id') }}', document.getElementById('plant-attachments-table'));" data-paginate="{{ $plant_attachments->get(count($plant_attachments) - 1)?->get('id') }}">{{ __('app.load_more') }}</a></td>
 							</tr>
 						@endif
