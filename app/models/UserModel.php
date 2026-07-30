@@ -254,10 +254,11 @@ class UserModel extends \Asatru\Database\Model {
      * @param $notify_tasks_recurring
      * @param $notify_calendar_reminder
      * @param $show_plants_aoru
+     * @param $remember_location_sorting
      * @return void
      * @throws \Exception
      */
-    public static function editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, $show_plants_aoru)
+    public static function editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, $show_plants_aoru, $remember_location_sorting)
     {
         try {
             $user = static::getAuthUser();
@@ -265,9 +266,30 @@ class UserModel extends \Asatru\Database\Model {
                 throw new \Exception('User not authenticated');
             }
 
-            static::raw('UPDATE `@THIS` SET name = ?, email = ?, lang = ?, theme = ?, chatcolor = ?, show_log = ?, show_calendar_view = ?, show_plant_id = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, notify_tasks_recurring = ?, notify_calendar_reminder = ?, show_plants_aoru = ? WHERE id = ?', [
-                trim($name), trim($email), $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, (int)$show_plants_aoru, $user->get('id')
+            static::raw('UPDATE `@THIS` SET name = ?, email = ?, lang = ?, theme = ?, chatcolor = ?, show_log = ?, show_calendar_view = ?, show_plant_id = ?, notify_tasks_overdue = ?, notify_tasks_tomorrow = ?, notify_tasks_recurring = ?, notify_calendar_reminder = ?, show_plants_aoru = ?, remember_location_sorting = ? WHERE id = ?', [
+                trim($name), trim($email), $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, (int)$show_plants_aoru, $remember_location_sorting, $user->get('id')
             ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $flag
+     * @return void
+     * @throws \Exception
+     */
+    public static function updateListSortingPreferences($flag)
+    {
+        try {
+            if ($flag) {
+                setcookie('list_show_style', 'cards', time() + 31536000, '/');
+            } else {
+                if (isset($_COOKIE['list_show_style'])) {
+                    unset($_COOKIE['list_show_style']);
+                    setcookie('list_show_style', '', 1, '/');
+                }
+            }
         } catch (\Exception $e) {
             throw $e;
         }

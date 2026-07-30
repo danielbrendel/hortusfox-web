@@ -45,6 +45,7 @@ class UserModel_Migration {
         $this->database->add('notify_tasks_tomorrow BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('notify_tasks_recurring BOOLEAN NOT NULL DEFAULT 1');
         $this->database->add('notify_calendar_reminder BOOLEAN NOT NULL DEFAULT 1');
+        $this->database->add('remember_location_sorting BOOLEAN NOT NULL DEFAULT 0');
         $this->database->add('last_seen_msg INT NULL');
         $this->database->add('last_typing TIMESTAMP NULL');
         $this->database->add('last_seen_sysmsg INT NULL');

@@ -1029,6 +1029,12 @@
 
 							<div class="field">
 								<div class="control">
+									<input type="checkbox" name="remember_location_sorting" value="1" {{ ($user->get('remember_location_sorting')) ? 'checked' : ''}}>&nbsp;{{ __('app.remember_location_sorting') }}
+								</div>
+							</div>
+
+							<div class="field">
+								<div class="control">
 									<input type="checkbox" name="show_log" value="1" {{ ($user->get('show_log')) ? 'checked' : ''}}>&nbsp;{{ __('app.show_log') }}
 								</div>
 							</div>

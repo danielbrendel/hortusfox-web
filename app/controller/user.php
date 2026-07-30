@@ -111,12 +111,15 @@ class UserController extends BaseController {
 			$notify_tasks_recurring = $request->params()->query('notify_tasks_recurring', false);
 			$notify_calendar_reminder = $request->params()->query('notify_calendar_reminder', false);
 			$show_plants_aoru = $request->params()->query('show_plants_aoru', 'added');
+			$remember_location_sorting = $request->params()->query('remember_location_sorting', false);
 
 			if ((is_numeric($theme)) && ((int)$theme === 0)) {
 				$theme = null;
 			}
 
-			UserModel::editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, $show_plants_aoru);
+			UserModel::editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, $show_plants_aoru, $remember_location_sorting);
+
+			UserModel::updateListSortingPreferences($remember_location_sorting);
 
 			$password = $request->params()->query('password', null);
 			if ($password) {
