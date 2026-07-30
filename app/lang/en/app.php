@@ -405,6 +405,7 @@ return [
 	'allow_custom_attributes' => 'Allow users to manage custom plant specific attributes',
 	'admin_api_hint' => 'Here you can manage API keys for your workspace. API keys are required to perform REST API requests on your workspace.',
 	'plant_attachments' => 'Plant Attachments',
+	'plant_attachment_file' => 'File',
 	'plant_attachment_label' => 'Label',
 	'plant_attachment_date' => 'Created / Updated',
 	'plant_attachment_actions' => 'Actions',
