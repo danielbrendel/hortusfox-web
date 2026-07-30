@@ -781,8 +781,8 @@ class PlantsController extends BaseController {
 
 		$year = $request->params()->query('year', null);
 		$limit = $request->params()->query('limit', null);
-		$sorting = $request->params()->query('sorting', null);
-		$direction = $request->params()->query('direction', null);
+		$sorting = $request->params()->query('sorting', $_COOKIE['list_sorting_style'] ?? null);
+		$direction = $request->params()->query('direction', $_COOKIE['list_order_style']  ?? null);
 		$show = $request->params()->query('show', null);
 
 		$user = UserModel::getAuthUser();
@@ -795,12 +795,24 @@ class PlantsController extends BaseController {
 			return redirect('/plants/history');
 		}
 
+		if ((is_string($sorting)) && ((isset($_COOKIE['list_sorting_style'])) && ($_COOKIE['list_sorting_style'] !== $sorting))) {
+			setcookie('list_sorting_style', $sorting, time() + 31536000, '/');
+			return redirect('/plants/history');
+		}
+
+		if ((is_string($direction)) && ((isset($_COOKIE['list_order_style'])) && ($_COOKIE['list_order_style'] !== $direction))) {
+			setcookie('list_order_style', $direction, time() + 31536000, '/');
+			return redirect('/plants/history');
+		}
+
 		return parent::view(['content', 'history'], [
 			'user' => $user,
 			'history' => $history,
 			'years' => $years,
 			'sorting_types' => PlantsModel::$sorting_list,
-			'sorting_dirs' => PlantsModel::$sorting_dir
+			'sorting_dirs' => PlantsModel::$sorting_dir,
+			'list_sorting_style' => $sorting,
+			'list_order_style' => $direction
 		]);
 	}
 

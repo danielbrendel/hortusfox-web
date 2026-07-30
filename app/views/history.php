@@ -22,17 +22,17 @@
 	</div>
 
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/plants/history?sorting=') }}' + this.value + '{{ ((isset($_GET['direction'])) ? '&direction=' . $_GET['direction'] : '') }}' + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') . url_query('show', '&') }}';">
+		<select onchange="location.href = '{{ url('/plants/history?sorting=') }}' + this.value + '{{ ((isset($list_order_style)) ? '&direction=' . $list_order_style : '') }}' + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') . url_query('show', '&') }}';">
 			@foreach ($sorting_types as $sorting_type)
-				<option value="{{ $sorting_type }}" {{ ((isset($_GET['sorting'])) && ($_GET['sorting'] === $sorting_type)) ? 'selected' : '' }}>{{ __('app.sorting_type_' . $sorting_type) }}</option>
+				<option value="{{ $sorting_type }}" {{ ((isset($list_sorting_style)) && ($list_sorting_style === $sorting_type)) ? 'selected' : '' }}>{{ __('app.sorting_type_' . $sorting_type) }}</option>
 			@endforeach
 		</select>
 	</div>
 
 	<div class="sorting-control select is-rounded is-small">
-		<select onchange="location.href = '{{ url('/plants/history?sorting=' . ((isset($_GET['sorting'])) ? $_GET['sorting'] : 'name')) }}&direction=' + this.value + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') . url_query('show', '&') }}';">
+		<select onchange="location.href = '{{ url('/plants/history?sorting=' . ((isset($list_sorting_style)) ? $list_sorting_style : 'name')) }}&direction=' + this.value + '{{ (isset($_GET['year']) ? '&year=' . $_GET['year'] : '') . url_query('show', '&') }}';">
 			@foreach ($sorting_dirs as $sorting_dir)
-				<option value="{{ $sorting_dir }}" {{ ((isset($_GET['direction'])) && ($_GET['direction'] === $sorting_dir)) ? 'selected' : '' }}>{{ __('app.sorting_dir_' . $sorting_dir) }}</option>
+				<option value="{{ $sorting_dir }}" {{ ((isset($list_order_style)) && ($list_order_style === $sorting_dir)) ? 'selected' : '' }}>{{ __('app.sorting_dir_' . $sorting_dir) }}</option>
 			@endforeach
 		</select>
 	</div>
@@ -97,8 +97,8 @@
 						<div class="plant-list-name-full plant-filter-text-target">{{ $plant->get('name') . (((PlantsModel::offspringCount($plant->get('id'))) || (PlantsModel::getDetails($plant->get('clone_origin')) !== null)) ? ' (' . strval($plant->get('clone_num') + 1) . ')' : '') }}</div>
 						<div class="plant-list-name-short">{{ (((PlantsModel::offspringCount($plant->get('id'))) || (PlantsModel::getDetails($plant->get('clone_origin')) !== null)) ? '(' . strval($plant->get('clone_num') + 1) . ') ' : '') . substr($plant->get('name'), 0, PlantsModel::PLANT_LIST_MAX_STRLEN) . '...' }}</div>
 						<div class="plant-list-scientific-name plant-list-item-hide-small-devices">{{ ($plant->get('scientific_name') ?? 'N/A') }}</div>
-						@if ((isset($_GET['sorting'])) && ($_GET['sorting'] !== 'name'))
-							<div class="plant-list-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($_GET['sorting']), $_GET['sorting']) }}</div>
+						@if ((isset($list_sorting_style)) && ($list_sorting_style !== 'name'))
+							<div class="plant-list-sorting">{{ UtilsModule::readablePlantAttribute($plant->get($list_sorting_style), $list_sorting_style) }}</div>
 						@else
 							@if ($plant->get('last_edited_date'))
 							<div class="plant-list-last-edited">{{ (new Carbon($plant->get('last_edited_date')))->diffForHumans() }}</div>
