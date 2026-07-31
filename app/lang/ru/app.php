@@ -201,7 +201,7 @@ return [
     'mail_info_calendar_reminder' => 'Напоминание календаря',
     'mail_info_calendar_reminder_hint' => 'Элемент календаря <strong>{name}</strong> должен быть выполнен: {date_from} - {date_till}. Перейдите к календарю: <a href="{url}">{url}</a>',
     'notify_calendar_reminder' => 'Напоминать мне о предстоящих событиях в календаре',
-    'remember_location_sorting' => 'Remember prefered plant list sorting',
+    'remember_location_sorting' => 'Запоминать предпочтительную сортировку списка растений',
     'cronpw' => 'Токен аутентификации Cronjob',
     'custom_head_code' => 'Пользовательский код для секции head',
     'custom_head_code_hint' => 'ПРЕДУПРЕЖДЕНИЕ: Неправильный код может сломать документ. Убедитесь, что вы знаете, что делаете',
