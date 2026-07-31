@@ -201,7 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Kalenderpåminnelse',
 	'mail_info_calendar_reminder_hint' => 'Kalenderhendelsen <strong>{name}</strong> forfaller: {date_from} - {date_till}. Gå til kalenderen: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Varsle meg om kommende kalenderdatoer',
-	'remember_location_sorting' => 'Remember prefered plant list sorting',
+	'remember_location_sorting' => 'Husk foretrukket sortering av planteliste',
 	'cronpw' => 'Autentiseringstoken for cronjob',
 	'custom_head_code' => 'Egendefinert kode for head-seksjonen',
 	'custom_head_code_hint' => 'ADVARSEL: Ødelagt kode kan bryte dokumentet. Sørg for at du vet hva du gjør',
