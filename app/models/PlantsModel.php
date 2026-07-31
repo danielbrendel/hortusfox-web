@@ -767,6 +767,7 @@ class PlantsModel extends \Asatru\Database\Model {
             }
 
             PlantPhotoModel::clearForPlant($plantId);
+            PlantAttachmentModel::clearForPlant($plantId, $plant->get('clone_num') == null);
 
             static::raw('DELETE FROM `@THIS` WHERE id = ?', [$plantId]);
 
@@ -899,6 +900,7 @@ class PlantsModel extends \Asatru\Database\Model {
             $clone = static::raw('SELECT * FROM `@THIS` ORDER BY id DESC LIMIT 1')->first();
 
             CustPlantAttrModel::cloneAttributes($source->get('id'), $clone->get('id'));
+            PlantAttachmentModel::cloneAttachments($source->get('id'), $clone->get('id'));
 
             return $clone->get('id');
         } catch (\Exception $e) {

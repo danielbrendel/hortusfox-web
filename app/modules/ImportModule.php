@@ -55,6 +55,7 @@ class ImportModule {
                     static::importAttributeSchemata(public_path() . '/backup/' . $import_file . '/attrschemata');
                     static::importPlantAttributes(public_path() . '/backup/' . $import_file . '/plantattrs');
                     static::importCustBulkCmds(public_path() . '/backup/' . $import_file . '/bulkcmds');
+                    static::importPlantAttachments(public_path() . '/backup/' . $import_file . '/platts');
                     static::importPlantLog(public_path() . '/backup/' . $import_file . '/plantlog');
                 }
 
@@ -278,6 +279,40 @@ class ImportModule {
                         $bulkcmd->styles,
                         $bulkcmd->created_at
                     ]);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $path
+     * @return void
+     * @throws \Exception
+     */
+    public static function importPlantAttachments($path)
+    {
+        try {
+            if (!file_exists($path . '/data.json')) {
+                return;
+            }
+
+            $attachments = json_decode(file_get_contents($path . '/data.json'));
+            if ($attachments) {
+                foreach ($attachments as $attachment) {
+                    PlantAttachmentModel::raw('INSERT IGNORE INTO `@THIS` (label, file, plant, author, updated_at, created_at) VALUES(?, ?, ?, ?, ?, ?)', [
+                        $attachment->label,
+                        $attachment->file,
+                        $attachment->plant,
+                        $attachment->author,
+                        $attachment->updated_at,
+                        $attachment->created_at
+                    ]);
+
+                    if ((!file_exists(public_path() . '/attachments/' . $attachment->file)) && (file_exists($path . '/attachments/' . $attachment->file))) {
+                        copy($path . '/attachments/' . $attachment->file, public_path() . '/attachments/' . $attachment->file);
+                    }
                 }
             }
         } catch (\Exception $e) {

@@ -78,18 +78,19 @@ class PlantAttachmentModel extends \Asatru\Database\Model {
 
     /**
      * @param $id
+     * @param $ra
      * @return void
      * @throws \Exception
      */
-    public static function removeAttachment($id)
+    public static function removeAttachment($id, $ra = true)
     {
         try {
             $item = static::raw('SELECT * FROM `@THIS` WHERE id = ?', [$id])->first();
             if (!$item) {
                 throw new \Exception('Plant attachment not found: ' . $id);
             }
-
-            if ((strlen($item->get('file')) > 0) && (file_exists(public_path() . '/attachments/' . $item->get('file')))) {
+            
+            if (($ra) && (strlen($item->get('file')) > 0) && (file_exists(public_path() . '/attachments/' . $item->get('file')))) {
                 unlink(public_path() . '/attachments/' . $item->get('file'));
             }
 
@@ -113,6 +114,44 @@ class PlantAttachmentModel extends \Asatru\Database\Model {
                 return static::raw('SELECT * FROM `@THIS` WHERE plant = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$plant, $paginate]);
             } else {
                 return static::raw('SELECT * FROM `@THIS` WHERE plant = ? ORDER BY id DESC LIMIT ' . $limit, [$plant]);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $source
+     * @param $target
+     * @return void
+     * @throws \Exception
+     */
+    public static function cloneAttachments($source, $target)
+    {
+        try {
+            $items = static::raw('SELECT * FROM `@THIS` WHERE plant = ?', [$source]);
+            foreach ($items as $item) {
+                static::raw('INSERT INTO `@THIS` (label, file, plant, author) VALUES(?, ?, ?, ?)', [
+                    $item->get('label'), $item->get('file'), $target, $item->get('author')
+                ]);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $plant_id
+     * @param $remove_files
+     * @return void
+     * @throws \Exception
+     */
+    public static function clearForPlant($plant_id, $remove_files = true)
+    {
+        try {
+            $items = static::raw('SELECT * FROM `@THIS` WHERE plant = ?', [$plant_id]);
+            foreach ($items as $item) {
+                static::removeAttachment($item->get('id'), $remove_files);
             }
         } catch (\Exception $e) {
             throw $e;

@@ -30,6 +30,7 @@ class BackupModule {
                     $cleanup_files[] = static::backupPlants($zip);
                     $cleanup_files[] = static::backupAttributeSchemata($zip);
                     $cleanup_files[] = static::backupPlantAttributes($zip);
+                    $cleanup_files[] = static::backupPlantAttachments($zip);
                     $cleanup_files[] = static::backupPlantLog($zip);
                     $cleanup_files[] = static::backupCustBulkCmds($zip);
                 }
@@ -205,6 +206,36 @@ class BackupModule {
             $zip->addFile(public_path() . '/backup/_bulkcmds.json', 'bulkcmds/data.json');
 
             return public_path() . '/backup/_bulkcmds.json';
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * @param $zip
+     * @return string
+     * @throws \Exception
+     */
+    private static function backupPlantAttachments(ZipArchive $zip)
+    {
+        try {
+            $attachments = PlantAttachmentModel::raw('SELECT * FROM `@THIS`');
+
+            $zip->addEmptyDir('platts');
+            $zip->addEmptyDir('platts/files');
+
+            foreach ($attachments as $attachment) {
+                $plant = PlantsModel::getDetails($attachment->get('plant'));
+
+                if (($plant) && ($plant->get('clone_num') === null) && (file_exists(public_path() . '/attachments/' . $attachment->get('file')))) {
+                    $zip->addFile(public_path() . '/attachments/' . $attachment->get('file'), 'platts/files/' . $attachment->get('file'));
+                }
+            }
+
+            file_put_contents(public_path() . '/backup/_platts.json', json_encode($attachments->asArray()));
+            $zip->addFile(public_path() . '/backup/_platts.json', 'platts/data.json');
+
+            return public_path() . '/backup/_platts.json';
         } catch (\Exception $e) {
             throw $e;
         }
