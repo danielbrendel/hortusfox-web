@@ -61,6 +61,9 @@ RUN mkdir /tmp/img \
  && cp /var/www/html/public/img/* /tmp/img
 VOLUME ["/var/www/html/public/img"]
 
+# Create volume for attachments
+VOLUME ["/var/www/html/public/attachments"]
+
 # Create volume for logs
 VOLUME ["/var/www/html/app/logs"]
 
