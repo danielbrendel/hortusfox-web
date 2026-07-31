@@ -201,7 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Kalender påmindelses information',
 	'mail_info_calendar_reminder_hint' => 'Kalender artiklen <strong>{name}</strong> forfalder: {date_from} - {date_till}. Gå til kalender: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Påmind mig om forfaldne kalender datoer',
-	'remember_location_sorting' => 'Remember prefered plant list sorting',
+	'remember_location_sorting' => 'Husk foretrukken sortering af planteliste',
 	'cronpw' => 'Cronjob godkendelses token',
 	'custom_head_code' => 'Brugerdefineret kode til hovedsektion',
 	'custom_head_code_hint' => 'ADVARSEL: Korrupt kode kan ødelægge dokumentet. Vær sikker på, at du ved, hvad du laver',
