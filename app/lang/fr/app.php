@@ -409,7 +409,7 @@ return [
 	'plant_attachment_label' => 'Libellé',
 	'plant_attachment_date' => 'Création / Mise à jour',
 	'plant_attachment_actions' => 'Actions',
-	'no_plant_attachments_yet' => 'Aucune pièce jointe n'a encore été ajoutée pour cette plante.',
+	'no_plant_attachments_yet' => 'Aucune pièce jointe n\'a encore été ajoutée pour cette plante.',
 	'add_plant_attachment' => 'Ajouter une pièce jointe',
 	'edit_plant_attachment' => 'Modifier la pièce jointe',
 	'confirm_remove_plant_attachment' => 'Voulez-vous vraiment supprimer cette pièce jointe ?',
