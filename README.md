@@ -86,7 +86,7 @@ HortusFox is a free opensource self-hosted collaborative plant management system
 ## Resources
 
 - [Official Homepage](https://www.hortusfox.com/)
-- [Documentation](https://hortusfox.github.io/)
+- [Documentation](https://www.hortusfox.com/documentation)
 
 ## Installation
 
