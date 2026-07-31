@@ -201,7 +201,7 @@ return [
 	'mail_info_calendar_reminder' => 'Lembrete do calendário',
 	'mail_info_calendar_reminder_hint' => 'O item do calendário <strong>{name}</strong> vence: {date_from} - {date_till}. Ir para o calendário: <a href="{url}">{url}</a>',
 	'notify_calendar_reminder' => 'Lembrar sobre datas de calendário próximas',
-	'remember_location_sorting' => 'Remember prefered plant list sorting',
+	'remember_location_sorting' => 'Lembrar a ordenação preferida da lista de plantas',
 	'cronpw' => 'Token de autenticação do Cronjob',
 	'custom_head_code' => 'Código personalizado para a seção head',
 	'custom_head_code_hint' => 'AVISO: Código corrompido pode quebrar o documento. Tenha certeza do que está fazendo',
