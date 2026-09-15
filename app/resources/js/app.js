@@ -43,6 +43,8 @@ window.createVueInstance = function(element) {
             bShowCreateTask: false,
             bShowEditTask: false,
             bShowEditPreferences: false,
+            bShowEditUserNotes: false,
+            bShowEditLocationNotes: false,
             bShowAddInventoryItem: false,
             bShowEditInventoryItem: false,
             bShowInvItemQRCode: false,
@@ -2019,22 +2021,17 @@ window.createVueInstance = function(element) {
                 });
             },
 
-            saveLocationNotes: function(location, notes, reselem) {
-                let elem = document.getElementById(notes);
-                if (elem) {
-                    let elNotes = document.getElementById(notes);
+            showEditUserNotes: function(notes) {
+                document.getElementById('inpEditMultilineUserNotes').value = notes;
 
-                    window.vue.ajaxRequest('post', window.location.origin + '/plants/location/' + location + '/notes/save', { notes: elNotes.value }, function(response) {
-                        if (response.code == 200) {
-                            let elResult = document.getElementById(reselem);
-                            if (elResult) {
-                                elResult.innerHTML = '<i class="far fa-check-circle fa-lg"></i>';
-                            }
-                        } else {
-                            alert(response.msg);
-                        }
-                    });
-                }
+                window.vue.bShowEditUserNotes = true;
+            },
+
+            showEditLocationNotes: function(location, notes, anchor = '') {
+                document.getElementById('frmEditMultilineLocationNotes').action = window.location.origin + '/plants/location/' + location + '/notes/save';
+                document.getElementById('inpEditMultilineLocationNotes').value = notes;
+
+                window.vue.bShowEditLocationNotes = true;
             },
 
             setElementGroupStatus: function(container, tagname, type, flag) {

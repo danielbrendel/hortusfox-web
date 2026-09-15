@@ -13,21 +13,23 @@
 <div class="margin-vertical">
 	<h2 class="smaller-headline">{{ __('app.personal_notes') }}</h2>
 
-	<form method="POST" action="{{ url('/profile/notes/save') }}">
-		@csrf
+	<div class="user-notes">
+		<textarea class="is-hidden" id="user-notes-content">{{ $user->get('notes') ?? '' }}</textarea>
 
-		<div class="field">
-			<div class="control">
-				<textarea class="textarea is-input-dark" name="notes">{{ $user->get('notes') ?? 'N/A' }}</textarea>
-			</div>
+		<div class="user-notes-content">
+			@if (is_string($user->get('notes')))
+				<pre>{!! UtilsModule::markdown($user->get('notes')) !!}</pre>
+			@else
+				<span class="is-not-available">{{ __('app.no_notes_specified') }}</span>
+			@endif
 		</div>
 
-		<div class="field">
-			<div class="control">
-				<input type="submit" class="button is-info" value="{{ __('app.save') }}">
-			</div>
+		<div class="user-notes-edit">
+			<a href="javascript:void(0);" onclick="window.vue.showEditUserNotes(document.getElementById('user-notes-content').value);">
+				<i class="fas fa-edit is-color-darker"></i>
+			</a>
 		</div>
-	</form>
+	</div>
 </div>
 
 <div><hr/></div>

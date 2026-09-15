@@ -146,7 +146,7 @@ class PlantsController extends BaseController {
 	 * Handles URL: /plants/location/{id}/notes/save
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\JsonHandler
+	 * @return Asatru\View\RedirectHandler
 	 */
 	public function save_location_notes($request)
 	{
@@ -157,18 +157,12 @@ class PlantsController extends BaseController {
 			$notes = $request->params()->query('notes', '');
 
 			LocationsModel::saveNotes($location, $notes);
-
 			LocationLogModel::addEntry($location, '[System] save_notes: ' . $notes);
-
-			return json([
-				'code' => 200
-			]);
 		} catch (\Exception $e) {
-			return json([
-				'code' => 500,
-				'msg' => $e->getMessage()
-			]);
+			FlashMessage::setMsg('error', $e->getMessage());
 		}
+
+		return redirect('/plants/location/' . $location . '#location-notes-anchor');
 	}
 
 	/**

@@ -126,14 +126,27 @@
 
 <div class="is-dark-delimiter"><hr/></div>
 
-<div class="location-notes">
+<div>
 	<div class="location-notes-title">{{ __('app.notes') }}</div>
 
-	<a name="location-notes-anchor" id="location-notes-anchor"></a>
+	<div class="location-notes">
+		<a name="location-notes-anchor" id="location-notes-anchor"></a>
 
-	<div id="location-notes-edit">
-		<div><textarea id="location-notes-content" class="textarea" oninput="document.getElementById('location-notes-result').innerHTML = '';">{{ $location_data->get('notes') ?? '' }}</textarea></div>
-		<div><a class="button is-success" href="javascript:void(0);" onclick="window.vue.saveLocationNotes('{{ $location_data->get('id') }}', 'location-notes-content', 'location-notes-result');">{{ __('app.save') }}</a>&nbsp;<span id="location-notes-result"></span></div>
+		<textarea class="is-hidden" id="location-notes-content">{{ $location_data->get('notes') ?? '' }}</textarea>
+
+		<div class="location-notes-content">
+			@if (is_string($location_data->get('notes')))
+				<pre>{!! UtilsModule::markdown($location_data->get('notes')) !!}</pre>
+			@else
+				<span class="is-not-available">{{ __('app.no_notes_specified') }}</span>
+			@endif
+		</div>
+
+		<div class="location-notes-edit">
+			<a href="javascript:void(0);" onclick="window.vue.showEditLocationNotes({{ $location_data->get('id') }}, document.getElementById('location-notes-content').value, 'location-notes-anchor');">
+				<i class="fas fa-edit is-color-darker"></i>
+			</a>
+		</div>
 	</div>
 </div>
 

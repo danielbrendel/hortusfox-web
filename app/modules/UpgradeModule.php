@@ -9,6 +9,13 @@ class UpgradeModule {
     /**
      * @return void
      */
+    private static function upgradeTo6dot0()
+    {
+    }
+
+    /**
+     * @return void
+     */
     private static function upgradeTo5dot9()
     {
         UserModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS remember_location_sorting BOOLEAN NOT NULL DEFAULT 0');
