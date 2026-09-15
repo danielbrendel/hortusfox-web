@@ -162,7 +162,7 @@ class PlantsController extends BaseController {
 			FlashMessage::setMsg('error', $e->getMessage());
 		}
 
-		return redirect('/plants/location/' . $location);
+		return redirect('/plants/location/' . $location . '#location-notes-anchor');
 	}
 
 	/**
