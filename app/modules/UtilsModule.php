@@ -354,6 +354,7 @@ class UtilsModule {
     {
         try {
             $pd = new \Parsedown();
+            $pd->setSafeMode(true);
             
             return $pd->text($text);
         } catch (\Exception $e) {
