@@ -43,6 +43,7 @@ window.createVueInstance = function(element) {
             bShowCreateTask: false,
             bShowEditTask: false,
             bShowEditPreferences: false,
+            bShowEditUserNotes: false,
             bShowAddInventoryItem: false,
             bShowEditInventoryItem: false,
             bShowInvItemQRCode: false,
@@ -2017,6 +2018,12 @@ window.createVueInstance = function(element) {
                         alert(response.msg);
                     }
                 });
+            },
+
+            showEditUserNotes: function(notes) {
+                document.getElementById('inpEditMultilineUserNotes').value = notes;
+
+                window.vue.bShowEditUserNotes = true;
             },
 
             saveLocationNotes: function(location, notes, reselem) {

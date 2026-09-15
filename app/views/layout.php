@@ -1065,6 +1065,31 @@
 				</div>
 			</div>
 
+			<div class="modal" :class="{'is-active': bShowEditUserNotes}">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head is-stretched">
+						<p class="modal-card-title">{{ __('app.edit_property') }}</p>
+						<button class="delete" aria-label="close" onclick="window.vue.bShowEditUserNotes = false;"></button>
+					</header>
+					<section class="modal-card-body is-stretched">
+						<form id="frmEditMultilineUserNotes" method="POST" action="{{ url('/profile/notes/save') }}">
+							@csrf
+
+							<div class="field">
+								<div class="control">
+									<textarea class="input" name="notes" id="inpEditMultilineUserNotes" required></textarea>
+								</div>
+							</div>
+						</form>
+					</section>
+					<footer class="modal-card-foot is-stretched">
+						<button class="button is-success" onclick="this.innerHTML = '<i class=\'fas fa-spinner fa-spin\'></i>&nbsp;{{ __('app.loading_please_wait') }}'; document.getElementById('frmEditMultilineUserNotes').submit();">{{ __('app.save') }}</button>
+						<button class="button" onclick="window.vue.bShowEditUserNotes = false;">{{ __('app.cancel') }}</button>
+					</footer>
+				</div>
+			</div>
+
 			<div class="modal" :class="{'is-active': bShowCreateNewUser}">
 				<div class="modal-background"></div>
 				<div class="modal-card">

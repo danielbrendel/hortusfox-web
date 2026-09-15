@@ -2873,6 +2873,84 @@ fieldset .field {
     color: rgb(150, 150, 150);
 }
 
+.user-notes {
+    position: relative;
+    width: 100%;
+    min-width: 300px;
+    min-height: 75px;
+    //margin-bottom: 10px;
+    padding: 10px;
+    color: rgb(200, 200, 200);
+    background-color: rgba(90, 90, 90, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-size: 1.0em;
+    border: 1px solid rgb(100, 100, 100);
+    border-left: 3px solid rgb(163, 122, 61);
+    border-radius: 4px;
+}
+
+.user-notes-content {
+    position: relative;
+    display: inline-block;
+    width: 90%;
+}
+
+.user-notes-content pre {
+    background-color: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.user-notes-content h1 {
+    margin-top: unset;
+}
+
+.user-notes-content h2 {
+    margin-bottom: unset;
+}
+
+.user-notes-content h3 {
+    font-size: 1.5em;
+}
+
+.user-notes-content h4 {
+    font-size: 1.4em;
+}
+
+.user-notes-content a {
+    color: rgb(111, 185, 235);
+}
+
+.user-notes-content a:hover {
+    text-decoration: underline;
+}
+
+.user-notes-content strong {
+    font-weight: bold;
+    color: rgb(230, 230, 230);
+    font-size: 1.2em;
+}
+
+.user-notes-content ul {
+    list-style: square;
+    margin-left: 20px;
+}
+
+.user-notes-content ol {
+    margin-left: 30px;
+}
+
+.user-notes-edit {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+#frmEditMultilineUserNotes textarea {
+    min-height: 200px;
+}
+
 .profile-shared-photos table {
     width: 100%;
 }
