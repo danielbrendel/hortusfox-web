@@ -187,6 +187,8 @@ class ThemeModule {
                 $zip->extractTo(public_path() . '/themes/' . $import_file);
                 $zip->close();
 
+                UtilsModule::safetyClean(public_path() . '/themes/' . $import_file);
+
                 $folders = scandir(public_path() . '/themes/' . $import_file);
                 foreach ($folders as $folder) {
                     if (substr($folder, 0, 1) !== '.') {

@@ -660,4 +660,33 @@ class UtilsModule {
 
         return preg_match($pattern, $ext, $matches) === 1;
     }
+
+    /**
+     * @param $destination
+     * @return void
+     * @throws \Exception
+     */
+    public static function safetyClean($destination)
+    {
+        try {
+            $assets = scandir($destination);
+            foreach ($assets as $asset) {
+                if ((strlen($asset) <= 2) && (substr($asset, 0, 1) === '.')) {
+                    continue;
+                }
+
+                if (!is_dir($destination . '/' . $asset)) {
+                    if (UtilsModule::checkUnsafeFileName($asset)) {
+                        if (!unlink($destination . '/' . $asset)) {
+                            throw new \Exception('Security alert: unsafe asset could not be removed: ' . $destination . '/' . $asset);
+                        }
+                    }
+                } else {
+                    static::safetyClean($destination . '/' . $asset);
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
