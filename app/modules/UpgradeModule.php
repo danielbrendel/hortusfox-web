@@ -9,6 +9,13 @@ class UpgradeModule {
     /**
      * @return void
      */
+    private static function upgradeTo6dot2()
+    {
+    }
+
+    /**
+     * @return void
+     */
     private static function upgradeTo6dot1()
     {
     }
