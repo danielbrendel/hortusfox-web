@@ -643,4 +643,21 @@ class UtilsModule {
 
         return $res;
     }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public static function checkUnsafeFileName($name)
+    {
+        $fc = substr($name, 0, 1);
+        if (($fc === '/') || ($fc === '.')) {
+            return true;
+        }
+
+        $pattern = '/(php[578]?|phtml)$/i';
+        $ext = pathinfo($name, PATHINFO_EXTENSION);
+
+        return preg_match($pattern, $ext, $matches) === 1;
+    }
 }

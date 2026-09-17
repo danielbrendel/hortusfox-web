@@ -114,7 +114,9 @@ class ImportModule {
                     ]);
 
                     if ((!file_exists(public_path() . '/img/' . $location->icon)) && (file_exists($path . '/img/' . $location->icon))) {
-                        copy($path . '/img/' . $location->icon, public_path() . '/img/' . $location->icon);
+                        if (!UtilsModule::checkUnsafeFileName($location->icon)) {
+                            copy($path . '/img/' . $location->icon, public_path() . '/img/' . $location->icon);
+                        }
                     }
                 }
             }
@@ -192,7 +194,9 @@ class ImportModule {
                     ]);
 
                     if ((!file_exists(public_path() . '/img/' . $plant->photo)) && (file_exists($path . '/img/' . $plant->photo))) {
-                        copy($path . '/img/' . $plant->photo, public_path() . '/img/' . $plant->photo);
+                        if (!UtilsModule::checkUnsafeFileName($plant->photo)) {
+                            copy($path . '/img/' . $plant->photo, public_path() . '/img/' . $plant->photo);
+                        }
                     }
                 }
             }
@@ -311,7 +315,9 @@ class ImportModule {
                     ]);
 
                     if ((!file_exists(public_path() . '/attachments/' . $attachment->file)) && (file_exists($path . '/attachments/' . $attachment->file))) {
-                        copy($path . '/attachments/' . $attachment->file, public_path() . '/attachments/' . $attachment->file);
+                        if (!UtilsModule::checkUnsafeFileName($attachment->file)) {
+                            copy($path . '/attachments/' . $attachment->file, public_path() . '/attachments/' . $attachment->file);
+                        }
                     }
                 }
             }
@@ -373,11 +379,15 @@ class ImportModule {
                     ]);
 
                     if ((!file_exists(public_path() . '/img/' . $gallery_item->thumb)) && (file_exists($path . '/img/' . $gallery_item->thumb))) {
-                        copy($path . '/img/' . $gallery_item->thumb, public_path() . '/img/' . $gallery_item->thumb);
+                        if (!UtilsModule::checkUnsafeFileName($gallery_item->thumb)) {
+                            copy($path . '/img/' . $gallery_item->thumb, public_path() . '/img/' . $gallery_item->thumb);
+                        }
                     }
 
                     if ((!file_exists(public_path() . '/img/' . $gallery_item->original)) && (file_exists($path . '/img/' . $gallery_item->original))) {
-                        copy($path . '/img/' . $gallery_item->original, public_path() . '/img/' . $gallery_item->original);
+                        if (!UtilsModule::checkUnsafeFileName($gallery_item->thumb)) {
+                            copy($path . '/img/' . $gallery_item->original, public_path() . '/img/' . $gallery_item->original);
+                        }
                     }
                 }
             }
@@ -470,7 +480,9 @@ class ImportModule {
                     ]);
 
                     if ((!file_exists(public_path() . '/img/' . $inventory_item->photo)) && (file_exists($path . '/img/' . $inventory_item->photo))) {
-                        copy($path . '/img/' . $inventory_item->photo, public_path() . '/img/' . $inventory_item->photo);
+                        if (!UtilsModule::checkUnsafeFileName($inventory_item->photo)) {
+                            copy($path . '/img/' . $inventory_item->photo, public_path() . '/img/' . $inventory_item->photo);
+                        }
                     }
                 }
             }
