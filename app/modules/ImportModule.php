@@ -385,7 +385,7 @@ class ImportModule {
                     }
 
                     if ((!file_exists(public_path() . '/img/' . $gallery_item->original)) && (file_exists($path . '/img/' . $gallery_item->original))) {
-                        if (!UtilsModule::checkUnsafeFileName($gallery_item->thumb)) {
+                        if (!UtilsModule::checkUnsafeFileName($gallery_item->original)) {
                             copy($path . '/img/' . $gallery_item->original, public_path() . '/img/' . $gallery_item->original);
                         }
                     }
