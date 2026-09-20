@@ -509,5 +509,9 @@ return [
 	'recurring_time_with_scope' => '{time} {scope}',
 	'sorting_type_cutting_month' => 'Cutting month',
 	'sorting_type_date_of_purchase' => 'Date of purchase',
-	'smtp_enable_auth' => 'Enable authentication'
+	'smtp_enable_auth' => 'Enable authentication',
+	'date_time_format' => 'Date and time format',
+	'date_format' => 'Date format',
+	'time_format' => 'Time format',
+	'datetime_format_info' => 'Specify the date and time format to be used in the UI'
 ];

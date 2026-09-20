@@ -105,6 +105,8 @@ class AdminController extends BaseController {
 			$enablephotoshare = (bool)$request->params()->query('enablephotoshare', 0);
 			$custom_media_share_host = $request->params()->query('custom_media_share_host', share_api_host());
 			$cronpw = $request->params()->query('cronpw', app('cronjob_pw'));
+			$date_format = $request->params()->query('date_format', app('date_format'));
+			$time_format = $request->params()->query('time_format', app('time_format'));
 			$custom_head_code = $request->params()->query('custom_head_code', app('custom_head_code'));
 			$enablepwa = (bool)$request->params()->query('enablepwa', 0);
 			$plantrec_enable = (bool)$request->params()->query('plantrec_enable', 0);
@@ -131,6 +133,8 @@ class AdminController extends BaseController {
 				'enable_media_share' => $enablephotoshare,
 				'custom_media_share_host' => rtrim($custom_media_share_host, '/'),
 				'cronjob_pw' => $cronpw,
+				'date_format' => $date_format,
+				'time_format' => $time_format,
 				'custom_head_code' => $custom_head_code,
 				'pwa_enable' => $enablepwa,
 				'plantrec_enable' => $plantrec_enable,

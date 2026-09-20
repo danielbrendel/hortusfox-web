@@ -211,6 +211,36 @@
         <div><hr></div>
 
         <div class="field">
+            <label class="label">{{ __('app.date_time_format') }}</label>
+        </div>
+
+        <div class="field is-margin-bottom-20">
+            <p>{{ __('app.datetime_format_info') }}</p>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.date_format') }}</label>
+        </div>
+
+        <div class="field has-addons">
+            <div class="control is-stretched">
+                <input type="text" class="input" name="date_format" value="{{ ((app('date_format') !== null) ? app('date_format') : '') }}">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">{{ __('app.time_format') }}</label>
+        </div>
+
+        <div class="field has-addons">
+            <div class="control is-stretched">
+                <input type="text" class="input" name="time_format" value="{{ ((app('time_format') !== null) ? app('time_format') : '') }}">
+            </div>
+        </div>
+
+        <div><hr></div>
+
+        <div class="field">
             <label class="label">{{ __('app.custom_head_code') }}</label>
             <div class="control">
                 <textarea class="textarea" name="custom_head_code">{{ app('custom_head_code') }}</textarea>

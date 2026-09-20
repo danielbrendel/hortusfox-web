@@ -164,3 +164,30 @@ function safe_int($value, $fallback = 0)
 {
     return UtilsModule::safeIntConversion($value, $fallback);
 }
+
+/**
+ * @param $timestamp
+ * @return string
+ */
+function datefmt($timestamp = null)
+{
+    return UtilsModule::datefmt($timestamp);
+}
+
+/**
+ * @param $timestamp
+ * @return string
+ */
+function timefmt($timestamp = null)
+{
+    return UtilsModule::timefmt($timestamp);
+}
+
+/**
+ * @param $timestamp
+ * @return string
+ */
+function datetimefmt($timestamp = null)
+{
+    return UtilsModule::datetimefmt($timestamp);
+}

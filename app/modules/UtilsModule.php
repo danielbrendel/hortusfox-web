@@ -689,4 +689,43 @@ class UtilsModule {
             throw $e;
         }
     }
+
+    /**
+     * @param $timestamp
+     * @return string
+     */
+    public static function datefmt($timestamp = null)
+    {
+        if (($timestamp === null) || (!is_numeric($timestamp))) {
+            $timestamp = time();
+        }
+
+        return date(AppModel::query('date_format', 'Y-m-d'), $timestamp);
+    }
+
+    /**
+     * @param $timestamp
+     * @return string
+     */
+    public static function timefmt($timestamp = null)
+    {
+        if (($timestamp === null) || (!is_numeric($timestamp))) {
+            $timestamp = time();
+        }
+
+        return date(AppModel::query('time_format', 'H:i:s'), $timestamp);
+    }
+
+    /**
+     * @param $timestamp
+     * @return string
+     */
+    public static function datetimefmt($timestamp = null)
+    {
+        if (($timestamp === null) || (!is_numeric($timestamp))) {
+            $timestamp = time();
+        }
+
+        return static::datefmt($timestamp) . ' ' . static::timefmt($timestamp);
+    }
 }
