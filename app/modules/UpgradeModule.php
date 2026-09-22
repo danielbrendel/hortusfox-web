@@ -11,6 +11,8 @@ class UpgradeModule {
      */
     private static function upgradeTo6dot2()
     {
+        AppModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS date_format VARCHAR(512) NOT NULL DEFAULT \'Y-m-d\'');
+        AppModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS time_format VARCHAR(512) NOT NULL DEFAULT \'H:i:s\'');
     }
 
     /**
