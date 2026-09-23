@@ -1043,6 +1043,32 @@ class PlantsController extends BaseController {
 	}
 
 	/**
+	 * Handles URL: /plants/attachments/download/{id}
+	 * 
+	 * @param Asatru\Controller\ControllerArg $request
+	 * @return Asatru\View\DownloadHandler
+	 */
+	public function download_plant_attachment($request)
+	{
+		try {
+			$id = $request->arg('id');
+			
+			$attachment = PlantAttachmentModel::getById($id);
+			$fullfilename = public_path() . '/attachments/' . $attachment->get('file');
+
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename="' . $attachment->get('label') . '"');
+			header('Content-Length: ' . filesize($fullfilename));
+
+			readfile($fullfilename);
+
+			exit();
+		} catch (\Exception $e) {
+			return abort(500);
+		}
+	}
+
+	/**
 	 * Handles URL: /plants/attachments/fetch
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request

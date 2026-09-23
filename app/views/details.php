@@ -451,7 +451,7 @@
 					<tbody>
 						@foreach ($plant_attachments as $plant_attachment)
 						<tr id="plant-attachment-table-row-{{ $plant_attachment->get('id') }}">
-							<td id="plant-attachment-item-{{ $plant_attachment->get('id') }}"><a href="{{ asset('attachments/' . $plant_attachment->get('file')) }}">{{ $plant_attachment->get('label') }}</a></td>
+							<td id="plant-attachment-item-{{ $plant_attachment->get('id') }}"><a href="{{ url('/plants/attachments/download/' . $plant_attachment->get('id')) }}">{{ $plant_attachment->get('label') }}</a></td>
 							<td>{{ date('Y-m-d', strtotime($plant_attachment->get('created_at'))) }} / {{ date('Y-m-d', strtotime($plant_attachment->get('updated_at'))) }}</td>
 							<td>
 								<span class="float-right">

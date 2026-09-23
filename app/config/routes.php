@@ -59,6 +59,7 @@ return [
     array('/plants/attachments/add', 'ANY', 'plants@add_plant_attachment'),
     array('/plants/attachments/edit', 'ANY', 'plants@edit_plant_attachment'),
     array('/plants/attachments/remove', 'ANY', 'plants@remove_plant_attachment'),
+    array('/plants/attachments/download/{id}', 'ANY', 'plants@download_plant_attachment'),
     array('/plants/attachments/fetch', 'ANY', 'plants@fetch_plant_attachments'),
     array('/plants/log/add', 'POST', 'plants@add_plant_log_entry'),
     array('/plants/log/edit', 'POST', 'plants@edit_plant_log_entry'),

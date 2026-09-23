@@ -121,6 +121,20 @@ class PlantAttachmentModel extends \Asatru\Database\Model {
     }
 
     /**
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getById($id)
+    {
+        try {
+            return static::raw('SELECT * FROM `@THIS` WHERE id = ? LIMIT 1', [$id])->first();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $source
      * @param $target
      * @return void
