@@ -41,6 +41,7 @@ class LogModel extends \Asatru\Database\Model {
         try {
             $result = [];
             $history = null;
+            $limit = safe_int($limit, 100);
 
             if (($user) && (is_int($user))) {
                 $history = static::raw('SELECT * FROM `@THIS` WHERE user = ? ORDER BY created_at DESC LIMIT ' . $limit, [$user]);

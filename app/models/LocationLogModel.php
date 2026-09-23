@@ -97,6 +97,8 @@ class LocationLogModel extends \Asatru\Database\Model {
     public static function getLogEntries($location, $paginate = null, $limit = 10)
     {
         try {
+            $limit = safe_int($limit, 10);
+
             if ($paginate) {
                 return static::raw('SELECT * FROM `@THIS` WHERE location = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$location, $paginate]);
             } else {

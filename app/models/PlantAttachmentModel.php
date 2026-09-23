@@ -110,6 +110,8 @@ class PlantAttachmentModel extends \Asatru\Database\Model {
     public static function getForPlant($plant, $paginate = null, $limit = 10)
     {
         try {
+            $limit = safe_int($limit, 10);
+
             if ($paginate) {
                 return static::raw('SELECT * FROM `@THIS` WHERE plant = ? AND id < ? ORDER BY id DESC LIMIT ' . $limit, [$plant, $paginate]);
             } else {

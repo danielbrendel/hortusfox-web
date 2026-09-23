@@ -171,6 +171,8 @@ class TasksModel extends \Asatru\Database\Model {
     public static function getTasks($done = false, $limit = 100)
     {
         try {
+            $limit = safe_int($limit, 100);
+            
             if (!$done) {
                 return static::raw('SELECT * FROM `@THIS` WHERE done = ? ORDER BY -due_date DESC, updated_at DESC LIMIT ' . $limit, [$done]);
             } else {

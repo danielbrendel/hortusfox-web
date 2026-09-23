@@ -180,6 +180,8 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getAuthoredPlants($userId, $limit = 0)
     {
         try {
+            $limit = safe_int($limit, 0);
+
             if ($limit == 0) {
                 return static::raw('SELECT * FROM `@THIS` WHERE last_edited_user = ? ORDER BY last_edited_date DESC', [$userId]);
             } else {
@@ -267,7 +269,7 @@ class PlantsModel extends \Asatru\Database\Model {
 
             $strlimit = '';
             if ($limit) {
-                $strlimit = ' LIMIT ' . $limit;
+                $strlimit = ' LIMIT ' . safe_int($limit);
             }
 
             if ($year !== null) {
@@ -991,7 +993,7 @@ class PlantsModel extends \Asatru\Database\Model {
 
             if ($limit !== null) {
                 if (is_numeric($limit)) {
-                    $limit = ' LIMIT ' . $limit;
+                    $limit = ' LIMIT ' . safe_int($limit);
                 } else {
                     throw new \Exception('Invalid expression for limit: ' . print_r($limit, true));
                 }

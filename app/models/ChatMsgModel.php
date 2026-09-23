@@ -94,6 +94,8 @@ class ChatMsgModel extends \Asatru\Database\Model {
                 throw new \Exception('Invalid user');
             }
 
+            $limit = safe_int($limit, 0);
+
             $limit_token = '';
             if ($limit > 0) {
                 $limit_token = 'LIMIT ' . strval($limit);
