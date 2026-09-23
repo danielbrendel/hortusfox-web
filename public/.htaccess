@@ -8,7 +8,7 @@
     # Prevent public script execution other than /public/index.php
     RewriteCond %{REQUEST_FILENAME} -f
 	RewriteCond %{REQUEST_URI} !^/(public/)?index\.php$
-	RewriteRule \.(php[578]?|phtml)$ - [F,L]
+	RewriteRule \.(php[34578]?|phtml|phar|pht)$ - [F,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
