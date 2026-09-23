@@ -6,4 +6,4 @@ Security vulnerabilities describe major issues in a supported version of this pr
 
 ## Reporting a Vulnerability
 
-Please report any security vulnerability to daniel@danielbrendel.com confidently. Security vulnerabilities will be addressed as soon as possible in order to provide a fix. 
+Please report any security vulnerability via private vulnerability reporting on GitHub, or via e-mail to daniel@danielbrendel.com confidently. Security vulnerabilities will be addressed as soon as possible in order to provide a fix. 
