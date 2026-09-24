@@ -16,6 +16,7 @@
 return [
     ['product:version', 'Show current product version', 'VersionCommand'],
     ['migrate:version', 'Incrementially update the current product version', 'MigrationVersion'],
+    ['migrate:email', 'Update product contact E-Mail address', 'MigrationMail'],
     ['migrate:upgrade', 'Perform upgrade from last version to current version', 'MigrationUpgrade'],
     ['migrate:specific', 'Perform version specific migration upgrade', 'MigrationSpecific'],
     ['calendar:classes', 'Add default calendar classes', 'CalendarClsCommand'],
