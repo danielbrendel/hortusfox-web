@@ -17,28 +17,23 @@ class MigrationMail implements Asatru\Commands\Command {
     public function handle($args)
     {
         try {
-            $current_mail = $theme = $args->get(0)?->getValue(0);
-            $next_mail = $theme = $args->get(1)?->getValue(0);
+            $current_mail = env('APP_CONTACT');
+            $new_mail = $args->get(0)?->getValue(0);
 
-            $checkvalid = filter_var($current_mail, FILTER_VALIDATE_EMAIL);
+            $checkvalid = filter_var($new_mail, FILTER_VALIDATE_EMAIL);
             if ($checkvalid === false) {
-                throw new \Exception('Invalid address specified for current mailbox: ' . $current_mail);
-            }
-
-            $checkvalid = filter_var($next_mail, FILTER_VALIDATE_EMAIL);
-            if ($checkvalid === false) {
-                throw new \Exception('Invalid address specified for new mailbox: ' . $next_mail);
+                throw new \Exception('Invalid address specified for new mailbox: ' . $new_mail);
             }
 
             $files = ['/.env', '/.env.example', '/.env.testing', '/SECURITY.md', '/public/install/index.php', '/scripts/install.dnys'];
             foreach ($files as $file) {
                 $content = file_get_contents(base_path() . $file);
-                $content = str_replace($current_mail, $next_mail, $content);
+                $content = str_replace($current_mail, $new_mail, $content);
 
                 file_put_contents(base_path() . $file, $content);
             }
 
-            echo "\033[32mUpgraded from {$current_mail} to {$next_mail}\033[39m\n";
+            echo "\033[32mUpgraded from {$current_mail} to {$new_mail}\033[39m\n";
         } catch (\Exception $e) {
             echo "\033[31mOperation failed: {$e->getMessage()}\033[39m\n";
         }
