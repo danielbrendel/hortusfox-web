@@ -459,6 +459,7 @@ HortusFox provides various console commands in addition to the inbuilt commands.
 | Command  | Description | Parameters |
 | ------------- | ------------- | ------------- |
 | php asatru product:version | Show current product version | _none_ |
+| php asatru product:info | Show product and system info | _none_ |
 | php asatru migrate:version | Incrementially update the current product version | _none_ |
 | php asatru migrate:email | Update product contact E-Mail address | `mailbox@domain.tld` new e-mail address |
 | php asatru migrate:upgrade  | Perform upgrade from last version to current version | _none_ |
