@@ -15,6 +15,7 @@
 
 return [
     ['product:version', 'Show current product version', 'VersionCommand'],
+    ['product:info', 'Show product and system info', 'InfoCommand'],
     ['migrate:version', 'Incrementially update the current product version', 'MigrationVersion'],
     ['migrate:email', 'Update product contact E-Mail address', 'MigrationMail'],
     ['migrate:upgrade', 'Perform upgrade from last version to current version', 'MigrationUpgrade'],
