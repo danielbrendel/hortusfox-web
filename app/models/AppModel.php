@@ -6,6 +6,72 @@
  * Management of app environment settings
  */ 
 class AppModel extends \Asatru\Database\Model {
+    static $allowed_attributes = [
+        'id',
+        'workspace',
+        'language',
+        'timezone',
+        'scroller',
+        'quick_add',
+        'tasks_enable',
+        'inventory_enable',
+        'calendar_enable',
+        'chat_enable',
+        'chat_timelimit',
+        'chat_showusers',
+        'chat_indicator',
+        'chat_system',
+        'history_enable',
+        'history_name',
+        'enable_media_share',
+        'custom_media_share_host',
+        'cronjob_pw',
+        'custom_head_code',
+        'overlay_alpha',
+        'smtp_enable_auth',
+        'smtp_fromname',
+        'smtp_fromaddress',
+        'smtp_host',
+        'smtp_port',
+        'smtp_username',
+        'smtp_password',
+        'smtp_encryption',
+        'mail_rp_address',
+        'pwa_enable',
+        'owm_enable',
+        'owm_api_key',
+        'owm_latitude',
+        'owm_longitude',
+        'owm_unittype',
+        'owm_cache',
+        'plantrec_enable',
+        'plantrec_apikey',
+        'plantrec_quickscan',
+        'allow_custom_attributes',
+        'system_message_plant_log',
+        'auto_backup',
+        'backup_path',
+        'auth_proxy_enable',
+        'auth_proxy_header_email',
+        'auth_proxy_header_username',
+        'auth_proxy_sign_up',
+        'auth_proxy_whitelist',
+        'auth_proxy_hide_logout',
+        'created_at'
+    ];
+
+    /**
+     * @param $attribute
+     * @return void
+     * @throws \Exception
+     */
+    public static function validateAttribute($attribute)
+    {
+        if (!in_array($attribute, static::$allowed_attributes)) {
+            throw new \Exception('Invalid attribute specified: ' . $attribute);
+        }
+    }
+
     /**
      * @param $name
      * @param $fallback
@@ -36,6 +102,8 @@ class AppModel extends \Asatru\Database\Model {
     public static function updateSingle($name, $value)
     {
         try {
+            static::validateAttribute($name);
+            
             static::raw('UPDATE `@THIS` SET ' . $name . ' = ?', [$value]);
         } catch (\Exception $e) {
             throw $e;
