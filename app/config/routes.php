@@ -162,11 +162,11 @@ return [
     array('/admin/cache/clear', 'POST', 'admin@clear_cache'),
 
     /** Cronjob Controller */
-    array('/cronjob/tasks/overdue', 'ANY', 'cronjobs@overdue_tasks'),
-    array('/cronjob/tasks/tomorrow', 'ANY', 'cronjobs@tomorrow_tasks'),
-    array('/cronjob/tasks/recurring', 'ANY', 'cronjobs@recurring_tasks'),
-    array('/cronjob/calendar/reminder', 'ANY', 'cronjobs@calendar_reminder'),
-    array('/cronjob/backup/auto', 'ANY', 'cronjobs@auto_backup'),
+    array('/cronjob/tasks/overdue', 'POST', 'cronjobs@overdue_tasks'),
+    array('/cronjob/tasks/tomorrow', 'POST', 'cronjobs@tomorrow_tasks'),
+    array('/cronjob/tasks/recurring', 'POST', 'cronjobs@recurring_tasks'),
+    array('/cronjob/calendar/reminder', 'POST', 'cronjobs@calendar_reminder'),
+    array('/cronjob/backup/auto', 'POST', 'cronjobs@auto_backup'),
 
     /** Share Controller */
     array('/share/photo/post', 'POST', 'share@share_photo'),
