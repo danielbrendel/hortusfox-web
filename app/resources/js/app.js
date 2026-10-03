@@ -1829,10 +1829,31 @@ window.createVueInstance = function(element) {
                 }
             },
 
+            addApiKey: function() {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/api/add', {}, function(response) {
+                    if (response.code == 200) {
+                        alert(response.msg);
+                        location.reload();
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
             toggleApiKey: function(id) {
-                window.vue.ajaxRequest('get', window.location.origin + '/admin/api/' + id + '/toggle', {}, function(response) {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/api/' + id + '/toggle', {}, function(response) {
                     if (response.code == 200) {
                         document.getElementById('api-key-checkbox-' + id).checked = response.active;
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
+            removeApiKey: function(token, target) {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/api/' + token + '/remove', {}, function(response) {
+                    if (response.code == 200) {
+                        document.getElementById('admin-api-key-item-' + target).remove();
                     } else {
                         alert(response.msg);
                     }
@@ -1873,6 +1894,16 @@ window.createVueInstance = function(element) {
                 window.vue.ajaxRequest('post', window.location.origin + '/admin/attribute/schema/remove', {id: id}, function(response) {
                     if (response.code == 200) {
                         document.getElementById('admin-attribute-schema-item-' + id).remove();
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
+            removeBulkCommand: function(id) {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/attributes/bulkcmd/remove', {id: id}, function(response) {
+                    if (response.code == 200) {
+                        document.getElementById('admin-bulk-command-item-' + id).remove();
                     } else {
                         alert(response.msg);
                     }

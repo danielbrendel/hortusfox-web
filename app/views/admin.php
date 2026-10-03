@@ -607,7 +607,7 @@
 
     <div class="admin-bulk-commands-list">
         @foreach ($bulk_cmds as $bulk_cmd)
-            <div class="admin-bulk-command">
+            <div class="admin-bulk-command" id="admin-bulk-command-item-{{ $bulk_cmd->get('id') }}">
                 <form method="POST" action="{{ url('/admin/attributes/bulkcmd/edit') }}">
                     @csrf
 
@@ -637,7 +637,7 @@
 
                     <div class="admin-bulk-command-actions">
                         <span class="admin-bulk-command-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
-                        <span class="admin-bulk-command-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_bulk_cmd') }}')) { location.href = '{{ url('/admin/attributes/bulkcmd/remove?id=' . $bulk_cmd->get('id')) }}'; }">{{ __('app.remove') }}</a></span> 
+                        <span class="admin-bulk-command-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_bulk_cmd') }}')) { window.vue.removeBulkCommand('{{ $bulk_cmd->get('id') }}'); }">{{ __('app.remove') }}</a></span> 
                     </div>
                 </form>
             </div>
@@ -1021,7 +1021,7 @@
 
     <p>{{ __('app.admin_api_hint') }}</p>
 
-    <a class="button is-link" href="{{ url('/admin/api/add') }}">{{ __('app.add') }}</a>
+    <a class="button is-link" href="javascript:void(0);" onclick="window.vue.addApiKey();">{{ __('app.add') }}</a>
     
     @if ((is_countable($api_keys)) && (count($api_keys) > 0))
     <div class="table-scroll-horizontally">
@@ -1035,10 +1035,10 @@
             </thead>
             <tbody>
                 @foreach ($api_keys as $api_key)
-                <tr>
+                <tr id="admin-api-key-item-{{ $api_key->get('id') }}">
                     <td><span id="api-key-{{ $api_key->get('id') }}">{{ $api_key->get('token') }}</span>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="window.vue.copyToClipboard(document.getElementById('api-key-{{ $api_key->get('id') }}').innerText);"><i class="far fa-copy"></i></a></td>
                     <td><input type="checkbox" id="api-key-checkbox-{{ $api_key->get('id') }}" value="1" onclick="window.vue.toggleApiKey({{ $api_key->get('id') }}); return false;" {{ (($api_key->get('active')) ? 'checked': '') }}/>&nbsp;{{ __('app.active') }}</td>
-                    <td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_api_key') }}')) { location.href = '{{ url('/admin/api/' . $api_key->get('token') . '/remove') }}'; }"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><a href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_api_key') }}')) { window.vue.removeApiKey('{{ $api_key->get('token') }}', '{{ $api_key->get('id') }}'); }"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

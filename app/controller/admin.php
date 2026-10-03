@@ -539,7 +539,7 @@ class AdminController extends BaseController {
 	 * Handles URL: /admin/attributes/bulkcmd/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function remove_bulk_cmd($request)
 	{
@@ -548,12 +548,15 @@ class AdminController extends BaseController {
 			
 			CustBulkCmdModel::removeCmd($id);
 
-			FlashMessage::setMsg('success', __('app.bulk_cmd_removed_successfully'));
-
-			return redirect('/admin?tab=attributes');
+			return json([
+				'code' => 200,
+				'bulkcmdid' => $id
+			]);
 		} catch (\Exception $e) {
-			FlashMessage::setMsg('error', $e->getMessage());
-			return redirect('/admin?tab=attributes');
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 
@@ -937,19 +940,22 @@ class AdminController extends BaseController {
 	 * Handles URL: /admin/api/add
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function add_api_key($request)
 	{
 		try {
 			ApiModel::addKey();
 
-			FlashMessage::setMsg('success', __('app.api_key_added'));
-
-			return redirect('/admin?tab=api');
+			return json([
+				'code' => 200,
+				'msg' => __('app.api_key_added')
+			]);
 		} catch (\Exception $e) {
-			FlashMessage::setMsg('error', $e->getMessage());
-			return back();
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 
@@ -957,7 +963,7 @@ class AdminController extends BaseController {
 	 * Handles URL: /admin/api/{token}/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function remove_api_key($request)
 	{
@@ -966,12 +972,14 @@ class AdminController extends BaseController {
 
 			ApiModel::removeKey($token);
 
-			FlashMessage::setMsg('success', __('app.api_key_removed'));
-
-			return redirect('/admin?tab=api');
+			return json([
+				'code' => 200
+			]);
 		} catch (\Exception $e) {
-			FlashMessage::setMsg('error', $e->getMessage());
-			return back();
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 
