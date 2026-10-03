@@ -36,6 +36,7 @@ class PlantsModel extends \Asatru\Database\Model {
     ];
 
     static $allowed_attributes = [
+        'id',
         'name',
         'scientific_name',
         'knowledge_link',
@@ -54,7 +55,8 @@ class PlantsModel extends \Asatru\Database\Model {
         'health_state',
         'notes',
         'history',
-        'history_date'
+        'history_date',
+        'created_at'
     ];
 
     static $plant_health_states = [
@@ -142,6 +144,23 @@ class PlantsModel extends \Asatru\Database\Model {
     {
         if (!in_array($attribute, static::$allowed_attributes)) {
             throw new \Exception('Invalid attribute specified: ' . $attribute);
+        }
+    }
+
+    /**
+     * @param $list
+     * @return void
+     * @throws \Exception
+     */
+    public static function validateAttrList($list)
+    {
+        try {
+            $items = explode(',', $list);
+            foreach ($items as $item) {
+                static::validateAttribute(trim($item));
+            }
+        } catch (\Exception $e) {
+            throw $e;
         }
     }
 
@@ -1028,6 +1047,12 @@ class PlantsModel extends \Asatru\Database\Model {
     public static function getSpecificInfo($location, $include = 'id')
     {
         try {
+            if (strpos($include, ',') !== false) {
+                static::validateAttrList($include);
+            } else {
+                static::validateAttribute($include);
+            }
+
             return static::raw('SELECT ' . $include . ' FROM `@THIS` WHERE location = ? AND history = 0', [$location]);
         } catch (\Exception $e) {
             throw $e;
