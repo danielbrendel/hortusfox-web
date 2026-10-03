@@ -379,7 +379,7 @@
 
     <div class="admin-users-list">
         @foreach ($user_accounts as $user_account)
-            <div class="admin-user-account">
+            <div class="admin-user-account" id="admin-user-account-item-{{ $user_account->get('id') }}">
                 <form method="POST" action="{{ url('/admin/user/update') }}">
                     @csrf
 
@@ -399,7 +399,7 @@
 
                     <div class="admin-user-account-actions">
                         <span class="admin-user-account-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
-                        <span class="admin-user-account-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_user_removal') }}')) { location.href = '{{ url('/admin/user/remove?id=' . $user_account->get('id')) }}'; }">{{ __('app.remove') }}</a></span> 
+                        <span class="admin-user-account-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_user_removal') }}')) { window.vue.removeUserAccount('{{ $user_account->get('id') }}'); }">{{ __('app.remove') }}</a></span> 
                     </div>
                 </form>
             </div>
@@ -549,7 +549,7 @@
 
     <div class="admin-attribute-schema-list">
         @foreach ($global_attributes as $global_attribute)
-            <div class="admin-attribute-schema">
+            <div class="admin-attribute-schema" id="admin-attribute-schema-item-{{ $global_attribute->get('id') }}">
                 <form method="POST" action="{{ url('/admin/attribute/schema/edit') }}">
                     @csrf
 
@@ -575,7 +575,7 @@
 
                     <div class="admin-attribute-schema-actions">
                         <span class="admin-attribute-schema-action-item"><input type="submit" class="button is-success" value="{{ __('app.update') }}"/></span>
-                        <span class="admin-attribute-schema-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_attribute_schema') }}')) { location.href = '{{ url('/admin/attribute/schema/remove?id=' . $global_attribute->get('id')) }}'; }">{{ __('app.remove') }}</a></span> 
+                        <span class="admin-attribute-schema-action-item"><a class="button is-danger" href="javascript:void(0);" onclick="if (confirm('{{ __('app.confirm_remove_attribute_schema') }}')) { window.vue.removeAttributeSchema('{{ $global_attribute->get('id') }}'); }">{{ __('app.remove') }}</a></span> 
                     </div>
                 </form>
             </div>

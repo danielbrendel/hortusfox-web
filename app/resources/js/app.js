@@ -1840,7 +1840,7 @@ window.createVueInstance = function(element) {
             },
 
             toggleAdminPlantAttribute: function(name) {
-                window.vue.ajaxRequest('get', window.location.origin + '/admin/attribute/update?name=' + name, {}, function(response) {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/attribute/update', { name: name }, function(response) {
                     if (response.code == 200) {
                         document.getElementById('admin-attributes-checkbox-' + name).checked = response.active;
                     } else {
@@ -1850,9 +1850,29 @@ window.createVueInstance = function(element) {
             },
 
             toggleAdminBoolSetting: function(name) {
-                window.vue.ajaxRequest('get', window.location.origin + '/admin/environment/boolean/toggle?name=' + name, {}, function(response) {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/environment/boolean/toggle', {name: name}, function(response) {
                     if (response.code == 200) {
                         document.getElementById('admin-attributes-checkbox-allow-custom-attributes').checked = response.value;
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
+            removeUserAccount: function(id) {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/user/remove', {id: id}, function(response) {
+                    if (response.code == 200) {
+                        document.getElementById('admin-user-account-item-' + id).remove();
+                    } else {
+                        alert(response.msg);
+                    }
+                });
+            },
+
+            removeAttributeSchema: function(id) {
+                window.vue.ajaxRequest('post', window.location.origin + '/admin/attribute/schema/remove', {id: id}, function(response) {
+                    if (response.code == 200) {
+                        document.getElementById('admin-attribute-schema-item-' + id).remove();
                     } else {
                         alert(response.msg);
                     }

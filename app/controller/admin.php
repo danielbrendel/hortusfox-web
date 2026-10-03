@@ -238,7 +238,7 @@ class AdminController extends BaseController {
 	 * Handles URL: /admin/user/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function remove_user($request)
 	{
@@ -247,12 +247,15 @@ class AdminController extends BaseController {
 			
 			UserModel::removeUser($id);
 
-			FlashMessage::setMsg('success', __('app.user_removed_successfully'));
-
-			return redirect('/admin?tab=users');
+			return json([
+				'code' => 200,
+				'userid' => $id
+			]);
 		} catch (\Exception $e) {
-			FlashMessage::setMsg('error', $e->getMessage());
-			return back();
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 
@@ -435,7 +438,7 @@ class AdminController extends BaseController {
 	 * Handles URL: /admin/attribute/schema/remove
 	 * 
 	 * @param Asatru\Controller\ControllerArg $request
-	 * @return Asatru\View\RedirectHandler
+	 * @return Asatru\View\JsonHandler
 	 */
 	public function remove_attribute_schema($request)
 	{
@@ -444,12 +447,15 @@ class AdminController extends BaseController {
 			
 			CustAttrSchemaModel::removeSchema($id);
 
-			FlashMessage::setMsg('success', __('app.attribute_schema_removed_successfully'));
-
-			return redirect('/admin?tab=attributes');
+			return json([
+				'code' => 200,
+				'attrid' => $id
+			]);
 		} catch (\Exception $e) {
-			FlashMessage::setMsg('error', $e->getMessage());
-			return redirect('/admin?tab=attributes');
+			return json([
+				'code' => 500,
+				'msg' => $e->getMessage()
+			]);
 		}
 	}
 
