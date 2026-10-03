@@ -363,23 +363,23 @@ Since there is a confirmation prompt once all input fields are provided, you can
 
 ## Cronjobs
 
-Cronjobs are used to regularly execute specific tasks. For each cronjob you need to set the cronjob token via `cronpw`. Depending on the request method, you can set `cronpw` as POST data or as query parameter. The following cronjobs are available:
+Cronjobs are used to regularly execute specific tasks. For each cronjob you need to set the cronjob token via `cronpw` as sent data payload. The following cronjobs are available:
 
 ```sh
 # Used to inform users about overdue tasks. Should be called multiple times per day.
-ANY /cronjob/tasks/overdue
+POST /cronjob/tasks/overdue
 
 # Used to inform users about tasks that are due tomorrow. Should be called multiple times per day.
-ANY /cronjob/tasks/tomorrow
+POST /cronjob/tasks/tomorrow
 
 # Used to check for recurring tasks and reset them accordingly. Should be called at least once, or better multiple times per day.
-ANY /cronjob/tasks/recurring
+POST /cronjob/tasks/recurring
 
 # Used to inform users about due calendar dates
-ANY /cronjob/calendar/reminder
+POST /cronjob/calendar/reminder
 
 # Used to perform the automatic backup of your workspace data
-ANY /cronjob/backup/auto
+POST /cronjob/backup/auto
 ```
 
 ## Application testing
