@@ -57,6 +57,8 @@ class AppModel extends \Asatru\Database\Model {
         'auth_proxy_sign_up',
         'auth_proxy_whitelist',
         'auth_proxy_hide_logout',
+        'date_format',
+        'time_format',
         'created_at'
     ];
 
