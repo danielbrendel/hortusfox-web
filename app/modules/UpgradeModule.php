@@ -9,6 +9,13 @@ class UpgradeModule {
     /**
      * @return void
      */
+    private static function upgradeTo6dot3()
+    {
+    }
+
+    /**
+     * @return void
+     */
     private static function upgradeTo6dot2()
     {
         AppModel::raw('ALTER TABLE `@THIS` ADD COLUMN IF NOT EXISTS date_format VARCHAR(512) NOT NULL DEFAULT \'Y-m-d\'');
