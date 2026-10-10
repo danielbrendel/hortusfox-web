@@ -27,8 +27,11 @@
             <?php 
                 if ($lastCat !== $inventory->get($i)->get('group_ident')) {
                     $lastCat = $inventory->get($i)->get('group_ident');
+                    ?>
 
-                    echo '<div class="inventory-item-group">' . InvGroupModel::getLabel($inventory->get($i)->get('group_ident')) . '</div>';
+                    <div class="inventory-item-group">{{ InvGroupModel::getLabel($inventory->get($i)->get('group_ident')) }}</div>
+
+                    <?php
                 } 
             ?>
 
