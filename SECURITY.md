@@ -1,12 +1,12 @@
 # Security Policy
 
-This policy describes how reported security vulnerabilities will be handled.
-
 ## Preface
 
 Security vulnerabilities describe issues that allow attackers to compromise your workspace. Such potentially dangerous issues must be confidently disclosed via GitHub Private Vulnerability Reporting. Vulnerabilities will be addressed in a manner of time depending on their severity. Also, depending on the severity we will decide whether to release a hotfix, or include a fix within the next scheduled version.
 
-## Guidelines
+## Guidelines & Rules
+
+We operate _For The Greater Good_, which means we want the best for our community. Thus we enforce some rules to ease the process of dealing with submissions. We want to publish security vulnerabilities for the sake of transparency when resolved, however we reserve the right to keep certain submissions in private state if we deem it necessary.
 
 We enforce the following rules within our security policy:
 
@@ -17,13 +17,16 @@ We enforce the following rules within our security policy:
 - Long walls of texts can be dismissed as unnecessary noise
 - Multiple issues must be reported in separate submissions
 - AI slop reports will be closed and dismissed
+- Do not abuse submissions as advertisements 
 - You will be given credit if your report is valid and accepted
 - We will credit you by only mentioning your GitHub handle
 - There is no warranty that your report will be accepted
+- We reserve the right to edit your submission if required
+- We reserve the right to report/ban your account in case of abuse
 
 # Severity tiers
 
-We have our own measurements of severity that affect how fast we respond to an issue as well as how fast we publish a fix.
+We have our own measurements of severity that affect how fast we respond to an issue as well as how fast we publish a fix. These severity tiers are different from CVSS due to being very specific to the use case of this project.
 
 1. High severity
 
