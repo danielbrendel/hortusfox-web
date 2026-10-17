@@ -1,0 +1,34 @@
+# Update management script
+#
+# Requires AquaShell (https://github.com/danielbrendel/dnyAquaShell) as scripting shell.
+#
+# This script can be launched via the following arguments
+#  * --version
+#  * --email "inbox@example.com"
+# You can run the script from the project's root directory as follows:
+# > aquashell scripts/update.dnys [arguments]
+#
+
+require "fileio";
+
+global szCurrentScriptPath string;
+global bArgumentExists bool;
+global szArgumentValue string;
+
+getscriptpath szCurrentScriptPath;
+
+exec "%szCurrentScriptPath/scripts/incl/args.dnys";
+
+call CmdHas("--version") => bArgumentExists;
+if (%bArgumentExists, -eq, true) {
+	sys { php asatru migrate:version };
+    exit;
+};
+
+call CmdPair("--email") => szArgumentValue;
+if (%szArgumentValue, -nt, "") {
+	sys { php asatru migrate:email "%szArgumentValue" };
+    exit;
+};
+
+print "No valid argument provided. Use --version or --email [address]";

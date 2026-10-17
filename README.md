@@ -489,6 +489,7 @@ The following scripts are currently available:
 - **clear-cache.dnys**: A script to clear the current application cache (both database and folders).
 - **install.dnys**: A script to install the project to the local system.
 - **launch.dnys**: A script to quickly launch a web server and open the project in the default browser.
+- **update.dnys**: A script to update various project meta data
 - **themes.dnys**: A script to manage local theme installations
 - **vercheck.dnys**: A script that prints the local version of the project, the latest available version, and whether there is a new version available or not.
 - **backup-export.dnys**: A script to export workspace data to a backup archive file
