@@ -69,7 +69,7 @@ function StepEnvironmentConfig void()
 		fwriteline %hEnvFile {APP_NAME="HortusFox"};
 		fwriteline %hEnvFile {APP_VERSION="6.4"};
 		fwriteline %hEnvFile {APP_AUTHOR="Daniel Brendel"};
-		fwriteline %hEnvFile {APP_CONTACT="dbrendel1988@gmail.com"};
+		fwriteline %hEnvFile {APP_CONTACT="daniel@danielbrendel.com"};
 		fwriteline %hEnvFile {APP_DEBUG=true};
 		fwriteline %hEnvFile {APP_BASEDIR=""};
 		fwriteline %hEnvFile {APP_LANG="en"};
