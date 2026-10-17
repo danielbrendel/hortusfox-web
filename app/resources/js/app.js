@@ -463,7 +463,7 @@ window.createVueInstance = function(element) {
                             let newRow = document.createElement('tr');
                             newRow.id = 'plant-attachment-table-row-' + elem.id;
                             newRow.innerHTML = `
-                                <td id="plant-attachment-item-` + elem.id + `"><a href="` + window.location.origin + '/attachments/' + elem.file + `">` + elem.label + `</a></td>
+                                <td id="plant-attachment-item-` + elem.id + `"><a href="` + window.location.origin + '/attachments/' + elem.file + `">` + window.vue.sanitize(elem.label) + `</a></td>
                                 <td>` + elem.created_at + ` / ` + elem.updated_at + `</td>
                                 <td>
                                     <span class="float-right">
@@ -521,7 +521,7 @@ window.createVueInstance = function(element) {
                             let newRow = document.createElement('tr');
                             newRow.id = 'plant-log-entry-table-row-' + elem.id;
                             newRow.innerHTML = `
-                                <td id="plant-log-entry-item-` + elem.id + `">` + elem.content + `</td>
+                                <td id="plant-log-entry-item-` + elem.id + `">` + window.vue.sanitize(elem.content) + `</td>
                                 <td>` + elem.created_at + ` / ` + elem.updated_at + `</td>
                                 <td>
                                     <span class="float-right">
@@ -579,7 +579,7 @@ window.createVueInstance = function(element) {
                             let newRow = document.createElement('tr');
                             newRow.id = 'location-log-entry-table-row-' + elem.id;
                             newRow.innerHTML = `
-                                <td id="location-log-entry-item-` + elem.id + `">` + elem.content + `</td>
+                                <td id="location-log-entry-item-` + elem.id + `">` + window.vue.sanitize(elem.content) + `</td>
                                 <td>` + elem.created_at + ` / ` + elem.updated_at + `</td>
                                 <td>
                                     <span class="float-right">
@@ -806,8 +806,8 @@ window.createVueInstance = function(element) {
                         let newRow = document.createElement('tr');
                         newRow.id = 'inventory-group-item-' + response.itemid;
                         newRow.innerHTML = `
-                            <td><a href="javascript:void(0);" id="inventory-group-elem-token-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'token', document.getElementById('inventory-group-elem-token-` + response.itemid + `').innerText);">` + response.token + `</a></td>
-                            <td><a href="javascript:void(0);" id="inventory-group-elem-label-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'label', document.getElementById('inventory-group-elem-label-` + response.itemid + `').innerText);">` + response.label + `</a></td>
+                            <td><a href="javascript:void(0);" id="inventory-group-elem-token-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'token', document.getElementById('inventory-group-elem-token-` + response.itemid + `').innerText);">` + window.vue.sanitize(response.token) + `</a></td>
+                            <td><a href="javascript:void(0);" id="inventory-group-elem-label-` + response.itemid + `" onclick="window.vue.editInventoryGroupItem(` + response.itemid + `, 'label', document.getElementById('inventory-group-elem-label-` + response.itemid + `').innerText);">` + window.vue.sanitize(response.label) + `</a></td>
                             <td><a href="javascript:void(0);" onclick="window.vue.removeInventoryGroupItem(` + response.itemid + `, 'inventory-group-item-` + response.itemid + `');"><i class="fas fa-times"></i></a></td>
                         `;
 
@@ -952,7 +952,7 @@ window.createVueInstance = function(element) {
                                 comma = ', ';
                             }
                             
-                            target.innerHTML += elem.name + comma;
+                            target.innerHTML += window.vue.sanitize(elem.name) + comma;
                         });
                     }
                 });
@@ -1745,7 +1745,7 @@ window.createVueInstance = function(element) {
                 if (newLabel.length) {
                     window.vue.ajaxRequest('post', window.location.origin + '/plants/details/gallery/photo/label/edit', { id: id, label: newLabel, plant: plant }, function(response) {
                         if (response.code == 200) {
-                            document.getElementById('photo-gallery-item-' + id).children[0].children[0].innerHTML = newLabel;
+                            document.getElementById('photo-gallery-item-' + id).children[0].children[0].innerHTML = window.vue.sanitize(newLabel);
                         } else {
                             alert(response.msg);
                         }
@@ -1790,7 +1790,7 @@ window.createVueInstance = function(element) {
                             let newRow = document.createElement('tr');
                             newRow.id = 'photo-share-entry-' + elem.id;
                             newRow.innerHTML = `
-                                <td><a href="` + elem.url + `" target="_blank">` + elem.title + `</a></td>
+                                <td><a href="` + elem.url + `" target="_blank">` + window.vue.sanitize(elem.title) + `</a></td>
                                 <td title="`+ elem.created_at + `">` + elem.diffForHumans + `</td>
                                 <td><a href="javascript:void(0);" onclick="if (confirm('` + window.vue.confirmRemoveSharedPlantPhoto + `')) { window.vue.removeSharedPhoto('` + elem.ident + `'); }"><i class="fas fa-trash-alt"></i></a></td>
                             `;
@@ -2175,6 +2175,13 @@ window.createVueInstance = function(element) {
 
             isProgressiveWebApp: function() {
                 return window.matchMedia('(display-mode: standalone)').matches;
+            },
+
+            sanitize: function(html) {
+                const parser = new DOMParser();
+                const document = parser.parseFromString(html, 'text/html');
+
+                return document.body.textContent || '';
             },
         }
     });
