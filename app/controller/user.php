@@ -117,6 +117,11 @@ class UserController extends BaseController {
 				$theme = null;
 			}
 
+			$name = UtilsModule::purify($name);
+			if (strlen($name) == 0) {
+				$name = 'User-' . substr(md5(random_bytes(55)), 0, 10);
+			}
+
 			UserModel::editPreferences($name, $email, $lang, $theme, $chatcolor, $show_log, $show_calendar_view, $show_plant_id, $notify_tasks_overdue, $notify_tasks_tomorrow, $notify_tasks_recurring, $notify_calendar_reminder, $show_plants_aoru, $remember_location_sorting);
 
 			UserModel::updateListSortingPreferences($remember_location_sorting);
