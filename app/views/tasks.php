@@ -36,7 +36,7 @@
                         if (PlantTasksRefModel::hasPlantReference($task->get('id'))) {
                             $plant_data = PlantsModel::getDetails(PlantTasksRefModel::getForTask($task->get('id'))?->get('plant_id'));
                             if ($plant_data) {
-                                $plant_link = html_entity_decode('&#x1fab4', ENT_COMPAT | ENT_QUOTES) . '&nbsp;<a href="' . url('/plants/details/' . $plant_data->get('id')) . '">' . $plant_data->get('name') . '</a><br/><br/>';
+                                $plant_link = html_entity_decode('&#x1fab4', ENT_COMPAT | ENT_QUOTES) . '&nbsp;<a href="' . url('/plants/details/' . $plant_data->get('id')) . '">' . UtilsModule::purify($plant_data->get('name')) . '</a><br/><br/>';
                             }
                         }
                     ?>
