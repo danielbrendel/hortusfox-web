@@ -30,11 +30,16 @@ class VersionModule {
                 throw new \Exception(curl_error($ch));
             }
 
+            $respcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            if ($respcode !== 200) {
+                throw new \Exception('Remote host responded with HTTP code: ' . strval($respcode));
+            }
+
             $json = json_decode($response);
 
             curl_close($ch);
 
-            if ($json->code != 200) {
+            if ((!isset($json->code)) || ($json->code != 200)) {
                 throw new \Exception($json->msg);
             }
 
