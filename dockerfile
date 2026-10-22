@@ -14,7 +14,7 @@ RUN composer install --no-scripts --no-autoloader
 RUN composer dump-autoload --optimize
 
 # Second stage: Apache + PHP setup
-FROM php:8.3.0-apache
+FROM php:8.3.36-apache
 
 # Set the working directory
 WORKDIR /var/www/html
@@ -27,6 +27,8 @@ RUN apt-get update \
         libonig-dev \
         libxml2-dev \
         libzip-dev \
+        libicu-dev \
+        pkg-config \
         zip \
         unzip \
         git \
