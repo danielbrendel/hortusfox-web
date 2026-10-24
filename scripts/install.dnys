@@ -67,7 +67,7 @@ function StepEnvironmentConfig void()
 	if (%bFileOpened, -eq, true) {
 		fwriteline %hEnvFile "# App settings";
 		fwriteline %hEnvFile {APP_NAME="HortusFox"};
-		fwriteline %hEnvFile {APP_VERSION="6.4"};
+		fwriteline %hEnvFile {APP_VERSION="6.5"};
 		fwriteline %hEnvFile {APP_AUTHOR="Daniel Brendel"};
 		fwriteline %hEnvFile {APP_CONTACT="daniel@danielbrendel.com"};
 		fwriteline %hEnvFile {APP_DEBUG=true};
