@@ -407,7 +407,7 @@
     </div>
 
     @if ((isset($_GET['user_password'])))
-        <div class="admin-users-created-password">{!! __('app.user_created_password', ['pw' => $_GET['user_password']]) !!}</div>
+        <div class="admin-users-created-password">{!! __('app.user_created_password', ['pw' => UtilsModule::purify($_GET['user_password'])]) !!}</div>
     @endif
 
     <div class="admin-users-actions">
