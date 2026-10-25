@@ -6,7 +6,7 @@
                 <button class="delete" aria-label="delete" onclick="document.getElementById('success-message').style.display = 'none';"></button>
             </div>
             <div class="message-body">
-                {!! FlashMessage::getMsg('success') !!}
+                {!! UtilsModule::purify(FlashMessage::getMsg('success')) !!}
             </div>
         </article>
     </div>
@@ -20,7 +20,7 @@
                 <button class="delete" aria-label="delete" onclick="document.getElementById('error-message').style.display = 'none';"></button>
             </div>
             <div class="message-body">
-                {!! FlashMessage::getMsg('error') !!}
+                {!! UtilsModule::purify(FlashMessage::getMsg('error')) !!}
             </div>
         </article>
     </div>
