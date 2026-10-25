@@ -50,7 +50,7 @@ class ChatController extends BaseController {
 	public function add_chat_message($request)
 	{
 		$validator = new Asatru\Controller\PostValidator([
-			'message' => 'required'
+			'message' => 'required|min:2'
 		]);
 
 		if (!$validator->isValid()) {
