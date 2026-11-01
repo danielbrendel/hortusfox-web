@@ -1,4 +1,4 @@
-<h1>{{ __('app.weather') }}</h1>
+<h1>{{ $title }}</h1>
 
 <h2 class="smaller-headline">{{ __('app.weather_hint', ['region' => $forecast->city->name]) }}</h2>
 

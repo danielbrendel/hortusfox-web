@@ -1,4 +1,4 @@
-<h1>{{ __('app.search') }}</h1>
+<h1>{{ $title }}</h1>
 
 <h2 class="smaller-headline">{{ __('app.search_hint') }}</h2>
 

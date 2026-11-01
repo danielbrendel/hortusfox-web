@@ -1,4 +1,4 @@
-<h1>{{ __('app.tasks') }}</h1>
+<h1>{{ $title }}</h1>
 
 <h2 class="smaller-headline">{{ __('app.tasks_hint') }}</h2>
 

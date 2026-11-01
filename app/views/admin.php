@@ -1,4 +1,4 @@
-<h1>{{ __('app.admin_area') }}</h1>
+<h1>{{ $title }}</h1>
 
 @include('flashmsg.php')
 

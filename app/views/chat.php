@@ -2,7 +2,7 @@
     <div class="column is-1"></div>
 
     <div class="column is-10">
-        <h1>{{ __('app.chat') }}</h1>
+        <h1>{{ $title }}</h1>
 
         <h2 class="smaller-headline">{{ __('app.chat_hint') }}</h2>
 
