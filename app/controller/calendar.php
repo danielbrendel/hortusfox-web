@@ -33,6 +33,7 @@ class CalendarController extends BaseController {
 		$user = UserModel::getAuthUser();
 		
 		return parent::view(['content', 'calendar'], [
+            'title' => __('app.calendar'),
 			'user' => $user
 		]);
 	}
