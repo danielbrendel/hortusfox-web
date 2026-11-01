@@ -40,6 +40,7 @@ class PlantsController extends BaseController {
 
 		$plants = PlantsModel::getAll($location, $sorting, $direction);
 
+		$location_data = LocationsModel::getLocationById($location);
 		$location_log_entries = LocationLogModel::getLogEntries($location);
 
 		if ((is_string($show)) && ((isset($_COOKIE['list_show_style'])) && ($_COOKIE['list_show_style'] !== $show))) {
@@ -58,12 +59,13 @@ class PlantsController extends BaseController {
 		}
 		
 		return parent::view(['content', 'plants'], [
+			'title' => $location_data->get('name'),
 			'user' => $user,
 			'plants' => $plants,
 			'sorting_types' => PlantsModel::$sorting_list,
 			'sorting_dirs' => PlantsModel::$sorting_dir,
 			'location' => $location,
-			'location_data' => LocationsModel::getLocationById($location),
+			'location_data' => $location_data,
 			'location_log_entries' => $location_log_entries,
 			'list_sorting_style' => $sorting,
 			'list_order_style' => $direction
@@ -225,6 +227,7 @@ class PlantsController extends BaseController {
 		$offspring = PlantsModel::findOffspring($plant_id);
 		
 		return parent::view(['content', 'details'], [
+			'title' => $plant_data->get('name') . (((PlantsModel::offspringCount($plant_data->get('id'))) || (PlantsModel::getDetails($plant_data->get('clone_origin')) !== null)) ? ' (' . strval($plant_data->get('clone_num') + 1) . ')' : ''),
 			'user' => $user,
 			'plant' => $plant_data,
 			'orig_plant' => $orig_plant,
@@ -800,6 +803,7 @@ class PlantsController extends BaseController {
 		}
 
 		return parent::view(['content', 'history'], [
+			'title' => app('history_name'),
 			'user' => $user,
 			'history' => $history,
 			'years' => $years,
