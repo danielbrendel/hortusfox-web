@@ -2,8 +2,7 @@
 <html lang="{{ getLocale() }}">
     <head>
         @include('head.php')
-
-		<title>{{ __('app.reset_password') }}</title>
+        @include('title.php')
     </head>
 
     <body>

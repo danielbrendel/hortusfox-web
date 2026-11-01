@@ -2,8 +2,7 @@
 <html lang="{{ getLocale() }}">
     <head>
         @include('head.php')
-        
-		<title>{{ app('workspace') }}</title>
+        @include('title.php')
     </head>
 
     <body>

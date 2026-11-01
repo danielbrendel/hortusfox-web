@@ -160,7 +160,7 @@ class IndexController extends BaseController {
 	{
 		$token = $request->params()->query('token');
 
-		return view('pwreset', [], ['token' => $token]);
+		return view('pwreset', [], ['token' => $token, 'title' => __('app.reset_password')]);
 	}
 
 	/**

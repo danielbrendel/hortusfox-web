@@ -3,7 +3,7 @@
 	<head>
 		@include('head.php')
 
-		<title>{{ app('workspace') }}</title>
+		@include('title.php')
 
 		<link rel="manifest" href="{{ asset('manifest.json') }}"/>
 	</head>
