@@ -45,6 +45,7 @@ class WeatherController extends BaseController {
 			}
 			
 			return parent::view(['content', 'weather'], [
+				'title' => __('app.weather'),
 				'user' => $user,
 				'forecast' => $forecast,
 				'weekdays' => $weekdays
