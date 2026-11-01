@@ -37,6 +37,7 @@ class InventoryController extends BaseController {
 		$expand = $request->params()->query('expand', null);
 		
 		return parent::view(['content', 'inventory'], [
+			'title' => __('app.inventory'),
 			'user' => $user,
 			'inventory' => $inventory,
 			'_expand_inventory_item' => $expand
