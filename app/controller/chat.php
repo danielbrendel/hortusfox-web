@@ -35,6 +35,7 @@ class ChatController extends BaseController {
 		$messages = ChatMsgModel::getChat();
 
 		return parent::view(['content', 'chat'], [
+			'title' => __('app.chat'),
 			'user' => $user,
 			'messages' => $messages,
 			'_refresh_chat' => true
