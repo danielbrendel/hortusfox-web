@@ -37,6 +37,7 @@ class TasksController extends BaseController {
 		$tasks = TasksModel::getTasks($done);
 
 		return parent::view(['content', 'tasks'], [
+			'title' => __('app.tasks'),
 			'user' => $user,
 			'tasks' => $tasks
 		]);
