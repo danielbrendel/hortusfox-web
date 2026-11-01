@@ -33,6 +33,7 @@ class SearchController extends BaseController {
 		$tag_list = PlantsModel::getDistinctTags()?->asArray();
 		
 		return parent::view(['content', 'search'], [
+			'title' => __('app.search'),
 			'user' => $user,
 			'query' => $query,
 			'tag_list' => $tag_list,
@@ -87,6 +88,7 @@ class SearchController extends BaseController {
 			$tag_list = PlantsModel::getDistinctTags()?->asArray();
 			
 			return parent::view(['content', 'search'], [
+				'title' => __('app.search'),
 				'user' => $user,
 				'query' => $text,
 				'tag_list' => $tag_list,
