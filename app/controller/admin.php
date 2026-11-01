@@ -60,6 +60,7 @@ class AdminController extends BaseController {
 		$bulk_cmds = CustBulkCmdModel::getCmdList();
 		
 		return parent::view(['content', 'admin'], [
+			'title' => __('app.admin_area'),
 			'user' => $user,
 			'locations' => $locs,
 			'user_accounts' => $user_accounts,
