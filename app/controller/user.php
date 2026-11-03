@@ -32,6 +32,7 @@ class UserController extends BaseController {
 		$sharelog = ShareLogModel::getForUser($user->get('id'));
 		
 		return parent::view(['content', 'profile'], [
+			'title' => __('app.profile'),
 			'user' => $user,
 			'plants' => $plants,
 			'log' => $log,

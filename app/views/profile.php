@@ -1,6 +1,6 @@
 <div class="preferences-header">
 	<div class="is-inline-block">
-		<h1>{{ __('app.profile') }}</h1>
+		<h1>{{ $title }}</h1>
 	</div>
 
 	<div class="is-inline-block" title="{{ __('app.preferences') }}">
