@@ -15,7 +15,7 @@ class Error404Controller extends BaseController {
 	public function index($request)
 	{
 		$v = new Asatru\View\ViewHandler();
-		$v->setLayout('layout')
+		$v->setLayout('layout/layout')
 			->setYield('content', 'error/404')
 			->setVars([
 				'user' => UserModel::getAuthUser()

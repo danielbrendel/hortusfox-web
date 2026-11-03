@@ -2,7 +2,7 @@
 
 <h2 class="smaller-headline">{{ __('app.calendar_hint') }}</h2>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="calendar-add">
     <a class="button is-info" href="javascript:void(0);" onclick="window.vue.bShowAddCalendarItem = true;">{{ __('app.add') }}</a>

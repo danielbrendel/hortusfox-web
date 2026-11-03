@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="{{ getLocale() }}">
 	<head>
-		@include('head.php')
+		@include('layout/head.php')
 
-		@include('title.php')
+		@include('layout/title.php')
 
 		<link rel="manifest" href="{{ asset('manifest.json') }}"/>
 	</head>
@@ -12,12 +12,12 @@
 		<div id="app" class="{{ ((app('pwa_enable')) ? 'app-padding-pwa' : '') }}">
 			<div id="scroller-top"></div>
 
-			@include('navbar.php')
+			@include('layout/navbar.php')
 
 			@if (ThemeModule::ready())
-				@include('theme.php')
+				@include('layout/theme.php')
 			@else
-				@include('banner.php')
+				@include('layout/banner.php')
 			@endif
 
 			<div id="small-system-messages"></div>
@@ -2053,12 +2053,12 @@
 				</div>
 			</div>
 
-			@include('quickadd.php')
-			@include('scanner.php')
-			@include('scroller.php')
+			@include('layout/widgets/quickadd.php')
+			@include('layout/widgets/scanner.php')
+			@include('layout/widgets/scroller.php')
 
 			@if (app('pwa_enable'))
-				@include('bottomnav.php')
+				@include('layout/bottomnav.php')
 			@endif
 		</div>
 

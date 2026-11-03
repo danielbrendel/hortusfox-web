@@ -6,7 +6,7 @@
  * Gateway to the inventory
  */
 class InventoryController extends BaseController {
-    const INDEX_LAYOUT = 'layout';
+    const INDEX_LAYOUT = 'layout/layout';
 
 	/**
 	 * Perform base initialization

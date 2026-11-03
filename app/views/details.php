@@ -8,7 +8,7 @@
 	<a class="is-default-link" href="{{ url('/plants/location/' . $plant->get('location')) }}">{{ __('app.back_to_list') }}</a>
 </div>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="margin-vertical is-default-text-color">
 	{{ __('app.last_edited_by', ['name' => $edit_user_name, 'when' => $edit_user_when]) }}

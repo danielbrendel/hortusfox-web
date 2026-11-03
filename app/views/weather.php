@@ -2,7 +2,7 @@
 
 <h2 class="smaller-headline">{{ __('app.weather_hint', ['region' => $forecast->city->name]) }}</h2>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="weather-forecast">
     <?php $lastDate = '';  ?>

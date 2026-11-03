@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="{{ getLocale() }}">
     <head>
-        @include('head.php')
-        @include('title.php')
+        @include('layout/head.php')
+        @include('layout/title.php')
     </head>
 
     <body>

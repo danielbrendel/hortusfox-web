@@ -2,7 +2,7 @@
 
 <h2 class="smaller-headline">{{ __('app.inventory_hint') }}</h2>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div>
     <div class="margin-vertical is-inline-block">

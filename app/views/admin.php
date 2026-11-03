@@ -1,6 +1,6 @@
 <h1>{{ $title }}</h1>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="tabs admin-tabs">
     <ul>

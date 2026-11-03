@@ -6,7 +6,7 @@
  * Gateway to user management
  */
 class UserController extends BaseController {
-    const INDEX_LAYOUT = 'layout';
+    const INDEX_LAYOUT = 'layout/layout';
 
 	/**
 	 * Perform base initialization

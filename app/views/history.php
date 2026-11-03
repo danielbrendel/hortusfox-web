@@ -4,7 +4,7 @@
 	<div class="is-inline-block is-action-button-margin"><a class="is-default-link is-fixed-button-link" href="{{ url('/') }}">{{ __('app.back_to_dashboard') }}</a></div>
 </div>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="sorting">
 	<div class="sorting-control sorting-mobile-only">

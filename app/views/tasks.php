@@ -2,7 +2,7 @@
 
 <h2 class="smaller-headline">{{ __('app.tasks_hint') }}</h2>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="margin-vertical">
     <a class="button is-success" href="javascript:void(0);" onclick="window.vue.bShowCreateTask = true;">{{ __('app.create_new') }}</a>

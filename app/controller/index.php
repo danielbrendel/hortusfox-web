@@ -6,7 +6,7 @@
  * Gateway to all main actions
  */
 class IndexController extends BaseController {
-	const INDEX_LAYOUT = 'layout';
+	const INDEX_LAYOUT = 'layout/layout';
 
 	/**
 	 * Perform base initialization

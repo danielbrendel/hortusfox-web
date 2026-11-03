@@ -26,7 +26,7 @@
 	</div>
 </div>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="sorting">
 	<div class="sorting-control sorting-mobile-only">

@@ -6,7 +6,7 @@
  * Gateway to task actions
  */
 class TasksController extends BaseController {
-    const INDEX_LAYOUT = 'layout';
+    const INDEX_LAYOUT = 'layout/layout';
 
 	/**
 	 * Perform base initialization

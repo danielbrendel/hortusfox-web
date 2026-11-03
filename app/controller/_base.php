@@ -9,7 +9,7 @@ class BaseController extends Asatru\Controller\Controller {
 	/**
 	 * @var string
 	 */
-	protected $layout = 'layout';
+	protected $layout = 'layout/layout';
 
 	/**
 	 * Perform base initialization

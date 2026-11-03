@@ -6,7 +6,7 @@
 
         <h2 class="smaller-headline">{{ __('app.chat_hint') }}</h2>
 
-        @include('flashmsg.php')
+        @include('layout/flashmsg.php')
 
         <div class="margin-vertical">
             <form id="frmSendChatMessage" method="POST" action="{{ url('/chat/add') }}">

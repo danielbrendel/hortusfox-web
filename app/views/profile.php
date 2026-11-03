@@ -8,7 +8,7 @@
 	</div>
 </div>
 
-@include('flashmsg.php')
+@include('layout/flashmsg.php')
 
 <div class="margin-vertical">
 	<h2 class="smaller-headline">{{ __('app.personal_notes') }}</h2>
