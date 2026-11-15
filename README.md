@@ -151,7 +151,14 @@ MARIADB_USER: user
 MARIADB_PASSWORD: password
 ```
 
-You can optionally specify proxy authentication settings for your app
+You can set `APACHE_SERVER_NAME` to a valid resolvable domain, which will be used internally as hostname. This will also set `UseCanonicalName` to `On` to ensure only the serverside configured hostname will be used. Setting `APACHE_SERVER_NAME` is optional, but it may provide another layer of security.
+
+```yaml
+# services.app.environment
+APACHE_SERVER_NAME: "your-hostname-here.tld"
+```
+
+Also, you can optionally specify proxy authentication settings for your app
 ```yaml
 # services.app.environment
 PROXY_ENABLE: "true"

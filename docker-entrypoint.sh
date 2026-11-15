@@ -186,9 +186,15 @@ create_admin_user() {
     echo "Admin user created. E-Mail: $ADMIN_EMAIL. Password: **HIDDEN**"
 }
 
-set_apache_server_name() {
+# Set apache server config if a custom server name shall be used
+set_apache_server_config() {
     if [ -n "$APACHE_SERVER_NAME" ]; then
-        echo "ServerName $APACHE_SERVER_NAME" >> /etc/apache2/apache2.conf;
+        cat <<-EOF > /etc/apache2/conf-available/serverconfig.conf
+			ServerName $APACHE_SERVER_NAME
+			UseCanonicalName On
+		EOF
+
+        a2enconf serverconfig > /dev/null
     fi
 }
 
@@ -220,8 +226,8 @@ configure_php_error_reporting
 # Create .env configuration file
 create_environment_file
 
-# To get rid of apache warnings, you can set the server name with the env var.
-set_apache_server_name
+# Set apache server config
+set_apache_server_config
 
 # Call the wait_for_db function
 wait_for_db
