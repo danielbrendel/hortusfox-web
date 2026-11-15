@@ -88,6 +88,17 @@ function setup_deps void()
 	};
 };
 
+function setup_migrations void()
+{
+	local flag bool;
+
+	fexists "%script_path/app/migrations/migrations.list" flag;
+
+	if (%flag, -eq, false) {
+		sys {php asatru migrate:fresh};
+	};
+};
+
 function launch_web_service void()
 {
 	aut_run "%APACHE_PATH/httpd.exe" "" "%APACHE_PATH" void;
@@ -101,6 +112,7 @@ call setup_path_file() => void;
 call setup_env() => void;
 call setup_deps() => void;
 call launch_web_service() => void;
+call setup_migrations() => void;
 
 print "HortusFox is now running...";
 print "Press any key to shutdown this service";
