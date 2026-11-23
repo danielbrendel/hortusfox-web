@@ -139,7 +139,7 @@ create_environment_file() {
 EOF
 }
 
-# Function to check if initial settings were created and add if not
+# Function to issue initial app settings creation if not already exist
 add_initial_settings_if_missing() {
     local settings_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM AppModel WHERE id=1;")
     if [[ $settings_count -gt 0 ]]; then
