@@ -96,6 +96,7 @@ function setup_migrations void()
 
 	if (%flag, -eq, false) {
 		sys {php asatru migrate:fresh};
+		sys {php asatru settings:init};
 	};
 };
 
