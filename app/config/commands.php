@@ -20,6 +20,7 @@ return [
     ['migrate:email', 'Update product contact E-Mail address', 'MigrationMail'],
     ['migrate:upgrade', 'Perform upgrade from last version to current version', 'MigrationUpgrade'],
     ['migrate:specific', 'Perform version specific migration upgrade', 'MigrationSpecific'],
+    ['settings:init', 'Add initial application settings', 'SettingsInitCommand'],
     ['calendar:classes', 'Add default calendar classes', 'CalendarClsCommand'],
     ['plants:attributes', 'Add default plant attributes', 'AttributesCommand'],
     ['cache:clear', 'Clear the entire cache', 'CacheClearCommand'],
