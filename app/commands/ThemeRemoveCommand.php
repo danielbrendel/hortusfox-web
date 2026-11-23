@@ -21,7 +21,7 @@ class ThemeRemoveCommand implements Asatru\Commands\Command {
             return;
         }
 
-        $theme = $args->get(0)->getValue(0);
+        $theme = $args->get(0)->getValue();
 
         echo "Attempting to remove {$theme}...\n";
 

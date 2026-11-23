@@ -21,7 +21,7 @@ class ThemeInstallCommand implements Asatru\Commands\Command {
             return;
         }
 
-        $theme = $args->get(0)->getValue(0);
+        $theme = $args->get(0)->getValue();
 
         echo "Attempting to install {$theme}...\n";
 

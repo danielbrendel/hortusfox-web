@@ -18,7 +18,7 @@ class MigrationMail implements Asatru\Commands\Command {
     {
         try {
             $current_mail = env('APP_CONTACT');
-            $new_mail = $args->get(0)?->getValue(0);
+            $new_mail = $args->get(0)?->getValue();
 
             $checkvalid = filter_var($new_mail, FILTER_VALIDATE_EMAIL);
             if ($checkvalid === false) {

@@ -56,7 +56,7 @@ class MigrationVersion implements Asatru\Commands\Command {
         try {
             $current_version = config('version');
             $next_version = strval(floatval($current_version) + 0.1);
-            $option = $args?->get(0)?->getValue(0);
+            $option = $args?->get(0)?->getValue();
 
             if (strpos($current_version, '.') === false) {
                 $current_version = $current_version . '.0';

@@ -59,7 +59,7 @@ class CalendarClsCommand implements Asatru\Commands\Command {
      */
     public function handle($args)
     {
-        if ($args->get(0)?->getValue(0) === '--force') {
+        if ($args->get(0)?->getValue() === '--force') {
             echo "Dropping previous calendar classes.\n";
 
             CalendarClassModel::raw('DELETE FROM `@THIS`');
