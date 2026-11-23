@@ -143,7 +143,7 @@ EOF
 add_initial_settings_if_missing() {
     local settings_count=$(mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -N -s -e "SELECT COUNT(*) FROM AppModel WHERE id=1;")
     if [[ $settings_count -gt 0 ]]; then
-        echo "Initial app settings already exist. Skipping creation."
+        echo "Initial app settings do already exist. Skipping creation."
     else
         echo "Initial app settings do not exist. Creating..."
         create_app_settings
