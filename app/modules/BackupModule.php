@@ -14,7 +14,7 @@ class BackupModule {
     public static function start($options = [])
     {
         try {
-            $backup_file = 'hf_backup_' . date('Y-m-d_H-i-s') . '.zip';
+            $backup_file = 'hf_backup_' . md5(random_bytes(55) . date('Y-m-d_H-i-s')) . '.zip';
 
             $zip = new ZipArchive();
 
