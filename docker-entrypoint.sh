@@ -257,7 +257,7 @@ else
     php asatru migrate:fresh
 fi
 
-# Check if app settings profile exists and create it if not.
+# Check if initial app settings exists and create it if not.
 add_initial_settings_if_missing
 
 # Update proxy authentication settings if desired
