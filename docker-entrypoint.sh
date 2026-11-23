@@ -150,11 +150,11 @@ add_initial_settings_if_missing() {
     fi
 }
 
-# Function to create initial settings
+# Function to create initial app settings
 create_app_settings() {
     mysql -u "$DB_USERNAME" -p"$DB_PASSWORD" -h "$DB_HOST" -P "$DB_PORT" -D "$DB_DATABASE" -e "INSERT INTO AppModel (id, workspace, language, cronjob_pw, smtp_enable_auth, smtp_fromname, smtp_fromaddress, smtp_host, smtp_port, smtp_username, smtp_password, smtp_encryption, created_at) VALUES (NULL, '$APP_WORKSPACE', '$APP_LANG', '$APP_CRON_PW', $SMTP_AUTH, '$SMTP_FROMNAME', '$SMTP_FROMADDRESS', '$SMTP_HOST', $SMTP_PORT, '$SMTP_USERNAME', '$SMTP_PASSWORD', '$SMTP_ENCRYPTION', CURRENT_TIMESTAMP);"
 
-    echo "App settings profile created."
+    echo "Initial app settings created."
 }
 
 # Function to update proxy authentication settings
